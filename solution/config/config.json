@@ -1,0 +1,207 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "banner-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/banner/BannerWebPart.js",
+          "manifest": "./src/webparts/banner/BannerWebPart.manifest.json"
+        }
+      ]
+    },
+    "tiles-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/tiles/TilesWebPart.js",
+          "manifest": "./src/webparts/tiles/TilesWebPart.manifest.json"
+        }
+      ]
+    },
+    "site-information-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/siteInformation/SiteInformationWebPart.js",
+          "manifest": "./src/webparts/siteInformation/SiteInformationWebPart.manifest.json"
+        }
+      ]
+    },
+    "recently-visited-sites-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/recentlyVisitedSites/RecentlyVisitedSitesWebPart.js",
+          "manifest": "./src/webparts/recentlyVisitedSites/RecentlyVisitedSitesWebPart.manifest.json"
+        }
+      ]
+    },
+    "recently-used-documents-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/recentlyUsedDocuments/RecentlyUsedDocumentsWebPart.js",
+          "manifest": "./src/webparts/recentlyUsedDocuments/RecentlyUsedDocumentsWebPart.manifest.json"
+        }
+      ]
+    },
+    "recent-contacts-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/recentContacts/RecentContactsWebPart.js",
+          "manifest": "./src/webparts/recentContacts/RecentContactsWebPart.manifest.json"
+        }
+      ]
+    },
+    "followed-sites-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/followedSites/FollowedSitesWebPart.js",
+          "manifest": "./src/webparts/followedSites/FollowedSitesWebPart.manifest.json"
+        }
+      ]
+    },
+    "stock-information-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/stockInformation/StockInformationWebPart.js",
+          "manifest": "./src/webparts/stockInformation/StockInformationWebPart.manifest.json"
+        }
+      ]
+    },
+    "weather-information-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/weatherInformation/WeatherInformationWebPart.js",
+          "manifest": "./src/webparts/weatherInformation/WeatherInformationWebPart.manifest.json"
+        }
+      ]
+    },
+    "links-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/links/LinksWebPart.js",
+          "manifest": "./src/webparts/links/LinksWebPart.manifest.json"
+        }
+      ]
+    },
+    "people-directory-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/peopleDirectory/PeopleDirectoryWebPart.js",
+          "manifest": "./src/webparts/peopleDirectory/PeopleDirectoryWebPart.manifest.json"
+        }
+      ]
+    },
+    "world-time-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/worldTime/WorldTimeWebPart.js",
+          "manifest": "./src/webparts/worldTime/WorldTimeWebPart.manifest.json"
+        }
+      ]
+    },
+    "personal-email-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/personalEmail/PersonalEmailWebPart.js",
+          "manifest": "./src/webparts/personalEmail/PersonalEmailWebPart.manifest.json"
+        }
+      ]
+    },
+    "personal-calendar-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/personalCalendar/PersonalCalendarWebPart.js",
+          "manifest": "./src/webparts/personalCalendar/PersonalCalendarWebPart.manifest.json"
+        }
+      ]
+    },
+    "personal-tasks-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/personalTasks/PersonalTasksWebPart.js",
+          "manifest": "./src/webparts/personalTasks/PersonalTasksWebPart.manifest.json"
+        }
+      ]
+    },
+    "personal-contacts-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/personalContacts/PersonalContactsWebPart.js",
+          "manifest": "./src/webparts/personalContacts/PersonalContactsWebPart.manifest.json"
+        }
+      ]
+    },
+    "tab-page-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/tabPage/TabPageApplicationCustomizer.js",
+          "manifest": "./src/extensions/tabPage/TabPageApplicationCustomizer.manifest.json"
+        }
+      ]
+    },
+    "alert-notitication-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/alertNotitication/AlertNotiticationApplicationCustomizer.js",
+          "manifest": "./src/extensions/alertNotitication/AlertNotiticationApplicationCustomizer.manifest.json"
+        }
+      ]
+    },
+    "redirect-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/redirect/RedirectApplicationCustomizer.js",
+          "manifest": "./src/extensions/redirect/RedirectApplicationCustomizer.manifest.json"
+        }
+      ]
+    },
+    "portal-footer-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/portalFooter/PortalFooterApplicationCustomizer.js",
+          "manifest": "./src/extensions/portalFooter/PortalFooterApplicationCustomizer.manifest.json"
+        }
+      ]
+    },
+    "collab-footer-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/collabFooter/CollabFooterApplicationCustomizer.js",
+          "manifest": "./src/extensions/collabFooter/CollabFooterApplicationCustomizer.manifest.json"
+        }
+      ]
+    },
+    "site-classification-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/siteClassification/SiteClassificationApplicationCustomizer.js",
+          "manifest": "./src/extensions/siteClassification/SiteClassificationApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "BannerWebPartStrings": "lib/webparts/banner/loc/{locale}.js",
+    "TilesWebPartStrings": "lib/webparts/tiles/loc/{locale}.js",
+    "SiteInformationWebPartStrings": "lib/webparts/siteInformation/loc/{locale}.js",
+    "RecentlyVisitedSitesWebPartStrings": "lib/webparts/recentlyVisitedSites/loc/{locale}.js",
+    "RecentlyUsedDocumentsWebPartStrings": "lib/webparts/recentlyUsedDocuments/loc/{locale}.js",
+    "RecentContactsWebPartStrings": "lib/webparts/recentContacts/loc/{locale}.js",
+    "FollowedSitesWebPartStrings": "lib/webparts/followedSites/loc/{locale}.js",
+    "StockInformationWebPartStrings": "lib/webparts/stockInformation/loc/{locale}.js",
+    "WeatherInformationWebPartStrings": "lib/webparts/weatherInformation/loc/{locale}.js",
+    "LinksWebPartStrings": "lib/webparts/links/loc/{locale}.js",
+    "PeopleDirectoryWebPartStrings": "lib/webparts/peopleDirectory/loc/{locale}.js",
+    "WorldTimeWebPartStrings": "lib/webparts/worldTime/loc/{locale}.js",
+    "PersonalEmailWebPartStrings": "lib/webparts/personalEmail/loc/{locale}.js",
+    "PersonalCalendarWebPartStrings": "lib/webparts/personalCalendar/loc/{locale}.js",
+    "PersonalTasksWebPartStrings": "lib/webparts/personalTasks/loc/{locale}.js",
+    "PersonalContactsWebPartStrings": "lib/webparts/personalContacts/loc/{locale}.js",
+    "TabPageApplicationCustomizerStrings": "lib/extensions/tabPage/loc/{locale}.js",
+    "AlertNotiticationApplicationCustomizerStrings": "lib/extensions/alertNotitication/loc/{locale}.js",
+    "RedirectApplicationCustomizerStrings": "lib/extensions/redirect/loc/{locale}.js",
+    "PortalFooterApplicationCustomizerStrings": "lib/extensions/portalFooter/loc/{locale}.js",
+    "CollabFooterApplicationCustomizerStrings": "lib/extensions/collabFooter/loc/{locale}.js",
+    "SiteClassificationApplicationCustomizerStrings": "lib/extensions/siteClassification/loc/{locale}.js"
+  }
+}
