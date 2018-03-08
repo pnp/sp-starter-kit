@@ -202,6 +202,8 @@
     "RedirectApplicationCustomizerStrings": "lib/extensions/redirect/loc/{locale}.js",
     "PortalFooterApplicationCustomizerStrings": "lib/extensions/portalFooter/loc/{locale}.js",
     "CollabFooterApplicationCustomizerStrings": "lib/extensions/collabFooter/loc/{locale}.js",
-    "SiteClassificationApplicationCustomizerStrings": "lib/extensions/siteClassification/loc/{locale}.js"
+    "SiteClassificationApplicationCustomizerStrings": "lib/extensions/siteClassification/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }
