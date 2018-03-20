@@ -1,11 +1,19 @@
+import * as React from 'react';
+import * as ReactDom from 'react-dom';
+
 import { override } from '@microsoft/decorators';
 import { Log } from '@microsoft/sp-core-library';
 import {
-  BaseApplicationCustomizer
+  BaseApplicationCustomizer,
+  PlaceholderContent,
+  PlaceholderName
 } from '@microsoft/sp-application-base';
 import { Dialog } from '@microsoft/sp-dialog';
 
 import * as strings from 'CollabFooterApplicationCustomizerStrings';
+
+import CollabFooter from './components/CollabFooter';
+import { ICollabFooterProps } from './components/ICollabFooterProps';
 
 const LOG_SOURCE: string = 'CollabFooterApplicationCustomizer';
 
@@ -23,6 +31,8 @@ export interface ICollabFooterApplicationCustomizerProperties {
 export default class CollabFooterApplicationCustomizer
   extends BaseApplicationCustomizer<ICollabFooterApplicationCustomizerProperties> {
 
+  private _footerPlaceholder: PlaceholderContent | undefined;
+
   @override
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
@@ -32,8 +42,39 @@ export default class CollabFooterApplicationCustomizer
       message = '(No properties were provided.)';
     }
 
-    Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`);
+    // Call render method for generating the needed html elements
+    this._renderPlaceHolders();
 
     return Promise.resolve();
+  }
+
+  private _renderPlaceHolders(): void {
+
+    // Handling the header placeholder
+    if (!this._footerPlaceholder) {
+      this._footerPlaceholder =
+        this.context.placeholderProvider.tryCreateContent(
+          PlaceholderName.Bottom,
+          { onDispose: this._onDispose });
+
+      // The extension should not assume that the expected placeholder is available.
+      if (!this._footerPlaceholder) {
+        console.error('The expected placeholder (Bottom) was not found.');
+        return;
+      }
+
+      const element: React.ReactElement<ICollabFooterProps> = React.createElement(
+        CollabFooter,
+        {
+        }
+      );
+
+      ReactDom.render(element, this._footerPlaceholder.domElement);
+    }
+
+  }
+
+  private _onDispose(): void {
+    console.log('[CollabFooterApplicationCustomizer._onDispose] Disposed custom bottom placeholder.');
   }
 }
