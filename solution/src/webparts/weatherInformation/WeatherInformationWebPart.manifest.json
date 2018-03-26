@@ -16,11 +16,12 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "WeatherInformation" },
-    "description": { "default": "Weather information" },
-    "officeFabricIconFontName": "Page",
+    "title": { "default": "Weather" },
+    "description": { "default": "Shows weather information for the specified location" },
+    "officeFabricIconFontName": "Sunny",
     "properties": {
-      "description": "WeatherInformation"
+      "location": "",
+      "unit": "c"
     }
   }]
 }

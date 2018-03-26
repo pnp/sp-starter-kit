@@ -1,7 +1,10 @@
-define([], function() {
+define([], function () {
   return {
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
-    "DescriptionFieldLabel": "Description Field"
+    "PropertyPaneDescription": "Weather",
+    "DataGroupName": "Data",
+    "LocationFieldLabel": "Location",
+    "UnitFieldLabel": "Unit",
+    "UnitFieldCelsius": "Celsius",
+    "UnitFieldFahrenheit": "Fahrenheit"
   }
 });
