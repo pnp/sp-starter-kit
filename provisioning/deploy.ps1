@@ -4,7 +4,13 @@ Param(
     [string]$SiteUrl,
 
     [Parameter(Mandatory = $false, Position = 2)]
-    [PSCredential]$Credentials
+    [PSCredential]$Credentials,
+
+    [Parameter(Mandatory = $false, Position = 3)]
+    [switch]$Build,
+
+    [Parameter(Mandatory = $false)]
+    [string]$WeatherCity = "Helsinki"
 )    
 
 # Load helper functions
@@ -31,12 +37,34 @@ if (Test-Url -Url $SiteUrl) {
         Write-Information "Site does not exist. Creating new communications site."
         $uri = [System.Uri]$SiteUrl
         # Connect to root site with same credentials
-        Connect-PnPOnline -Url "$($uri.Scheme)://$($uri.Host)" -Credentials $Credentials
-        New-PnPSite -Type CommunicationSite -Title "SP Portal Showcase" -Url $SiteUrl
+        $rootSiteConnection = Connect-PnPOnline -Url "$($uri.Scheme)://$($uri.Host)" -Credentials $Credentials -ReturnConnection
+        New-PnPSite -Type CommunicationSite -Title "SP Portal Showcase" -Url $SiteUrl -Connection $rootSiteConnection
     } 
-    "Root: $PSScriptRoot"
-    Connect-PnPOnline -Url $SiteUrl -Credentials $Credentials
-    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml"
+
+    # Check if package exists
+    if((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg") -eq $false -or $Build)
+    {
+        # does not exist. Build and Package
+        Write-Host "Building solution" -ForegroundColor Cyan
+        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build 2>&1 | out-null
+        Write-Host "Bundling solution" -ForegroundColor Cyan
+        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" bundle --ship 2>&1 | out-null
+        Write-Host "Packaging solution" -ForegroundColor Cyan 
+        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" package-solution --ship 2>&1 | out-null
+    }
+    $connection = Connect-PnPOnline -Url $SiteUrl -Credentials $Credentials -ReturnConnection
+  
+    # Temporary until schema change is present
+    Remove-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
+
+    # Register the site as the hubsite
+    $isHub = Get-PnPHubSite -Identity $siteUrl -ErrorAction SilentlyContinue
+    if($isHub -eq $null)
+    {
+        Register-PnPHubSite -Site $siteUrl -Connection $connection
+    }
+
+    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity}
 }
 else {
     Write-Error -Message "Url is of incorrect format"

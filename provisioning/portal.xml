@@ -1,5 +1,9 @@
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
-  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a">
+    <pnp:Parameters>
+      <pnp:Parameter Key="WeatherCity">Helsinki</pnp:Parameter>
+    </pnp:Parameters>
+  </pnp:Preferences>
   <pnp:Tenant>
     <pnp:AppCatalog>
       <pnp:Package Src="..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg" Action="UploadAndPublish" SkipFeatureDeployment="true" Overwrite="true" />
@@ -56,7 +60,7 @@
                 <!-- tiles -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="26cb4af3-7f48-4737-b82a-4e24167c2d07" Order="15" Column="1" />
                 <!-- weatherInformation -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9" Order="16" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9" Order="16" Column="1" JsonControlData="{&quot;id&quot;:&quot;0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9&quot;,&quot;instanceId&quot;:&quot;21e23e1d-69d7-4aed-8fca-1599d2440477&quot;,&quot;title&quot;:&quot;Weather&quot;,&quot;description&quot;:&quot;Shows weather information for the specified location&quot;,&quot;serverProcessedContent&quot;:{&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}},&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;location&quot;:&quot;{parameter:WeatherCity}&quot;,&quot;unit&quot;:&quot;c&quot;}}" />
                 <!-- worldTime -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="4f87b698-f910-451f-b4ea-7848a472af0f" Order="17" Column="1" />
               </pnp:Controls>
