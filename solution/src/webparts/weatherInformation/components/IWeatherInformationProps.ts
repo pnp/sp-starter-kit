@@ -1,3 +1,10 @@
+import { HttpClient } from "@microsoft/sp-http";
+
 export interface IWeatherInformationProps {
-  description: string;
+  location: string;
+  unit: string;
+  needsConfiguration: boolean;
+  httpClient: HttpClient;
+  configureHandler: () => void;
+  errorHandler: (errorMessage: string) => void;
 }

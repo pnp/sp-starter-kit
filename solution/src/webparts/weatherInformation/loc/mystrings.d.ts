@@ -1,7 +1,10 @@
 declare interface IWeatherInformationWebPartStrings {
   PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  DataGroupName: string;
+  LocationFieldLabel: string;
+  UnitFieldLabel: string;
+  UnitFieldCelsius: string;
+  UnitFieldFahrenheit: string;
 }
 
 declare module 'WeatherInformationWebPartStrings' {
