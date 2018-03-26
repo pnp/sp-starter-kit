@@ -15,13 +15,11 @@
   <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
     <pnp:ProvisioningTemplate ID="PORTAL-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
       <pnp:WebSettings WelcomePage="SitePages/Home.aspx" Title="SP Portal Showcase" />
-      <!--
 			<pnp:ApplicationLifecycleManagement>
-			<pnp:Apps>
-			<pnp:App AppId="{AppPackageId:sharepoint-portal-showcase.sppkg}" Action="Install" />
-			</pnp:Apps>
+			  <pnp:Apps>
+			    <pnp:App AppId="{AppPackageId:sharepoint-portal-showcase.sppkg}" Action="Install" />
+			  </pnp:Apps>
 			</pnp:ApplicationLifecycleManagement>
-			-->
       <pnp:ClientSidePages>
         <pnp:ClientSidePage PageName="Home.aspx" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
           <pnp:Sections>
