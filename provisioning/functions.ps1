@@ -13,7 +13,7 @@ Function Remove-AppIfPresent {
     )
 
     Process {
-        $app = Get-PnPApp -Identity $AppName -Connection $Connection
+        $app = Get-PnPApp -Identity $AppName -Connection $Connection -ErrorAction SilentlyContinue
         if($app -ne $null)
         {
             if($app.InstalledVersion)

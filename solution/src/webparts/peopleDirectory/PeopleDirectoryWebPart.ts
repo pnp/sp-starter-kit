@@ -8,20 +8,24 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'PeopleDirectoryWebPartStrings';
-import PeopleDirectory from './components/PeopleDirectory';
-import { IPeopleDirectoryProps } from './components/IPeopleDirectoryProps';
+import { PeopleDirectory, PeopleDirectoryProps } from './components/PeopleDirectory/';
 
 export interface IPeopleDirectoryWebPartProps {
-  description: string;
+  title: string;
 }
 
 export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopleDirectoryWebPartProps> {
-
   public render(): void {
-    const element: React.ReactElement<IPeopleDirectoryProps > = React.createElement(
+    const element: React.ReactElement<PeopleDirectoryProps> = React.createElement(
       PeopleDirectory,
       {
-        description: this.properties.description
+        webUrl: this.context.pageContext.web.absoluteUrl,
+        spHttpClient: this.context.spHttpClient,
+        title: this.properties.title,
+        displayMode: this.displayMode,
+        onTitleUpdate: (newTitle: string) => {
+          this.properties.title = newTitle;
+        }
       }
     );
 
@@ -34,23 +38,7 @@ export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopl
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
-      pages: [
-        {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
-        }
-      ]
+      pages: []
     };
   }
 }
