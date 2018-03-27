@@ -10,7 +10,15 @@ Param(
     [switch]$Build,
 
     [Parameter(Mandatory = $false)]
-    [string]$WeatherCity = "Helsinki"
+    [switch]$SkipSolutionDeployment = $false,
+
+    [Parameter(Mandatory = $false)]
+    [string]$WeatherCity = "Helsinki",
+
+    [Parameter(Mandatory = $false)]
+    [string]$PortalTitle = "SP Portal Showcase - Helsinki Style"
+
+    
 )    
 
 # Load helper functions
@@ -54,8 +62,13 @@ if (Test-Url -Url $SiteUrl) {
     }
     $connection = Connect-PnPOnline -Url $SiteUrl -Credentials $Credentials -ReturnConnection
   
-    # Temporary until schema change is present
-    Remove-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
+    if($SkipSolutionDeployment -ne $true)
+    {
+        # Temporary until schema change is present
+        Remove-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
+        Write-Host "Provisioning solution" -ForegroundColor Cyan
+        Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\solution.xml"
+    }
 
     # Register the site as the hubsite
     $isHub = Get-PnPHubSite -Identity $siteUrl -ErrorAction SilentlyContinue
@@ -64,7 +77,8 @@ if (Test-Url -Url $SiteUrl) {
         Register-PnPHubSite -Site $siteUrl -Connection $connection
     }
 
-    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity}
+    Write-Host "Creating portal" -ForegroundColor Cyan
+    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle}
 }
 else {
     Write-Error -Message "Url is of incorrect format"
