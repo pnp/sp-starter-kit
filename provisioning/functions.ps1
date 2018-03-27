@@ -1,7 +1,7 @@
 
 # Helper functions
 
-Function Remove-AppIfPresent {
+Function Update-AppIfPresent {
     [CmdletBinding()]
 
     Param(
@@ -18,22 +18,22 @@ Function Remove-AppIfPresent {
         {
             if($app.InstalledVersion)
             {
-                Write-Host "Uninstalling solution from site... " -ForegroundColor Yellow -NoNewLine
+                Write-Host "Updating solution in site... " -ForegroundColor Yellow -NoNewLine
                 # Uninstall from Site
-                Uninstall-PnPApp -Identity $app.Id
+                Update-PnPApp -Identity $app.Id
                 # Wait for the app to be uninstall
-                $installedVersion = Get-PnPApp -Identity $AppName -Connection $Connection | Select-Object -ExpandProperty InstalledVersion
-                while($installedVersion.Major -ne $null)
-                {
-                    Write-Host "." -ForegroundColor Yellow -NoNewLine
-                    Start-Sleep -Seconds 5
-                    $installedVersion = Get-PnPApp -Identity $AppName -Connection $Connection | Select-Object -ExpandProperty InstalledVersion
-                }
-                Write-Host " Done." -ForegroundColor Green
+                # $installedVersion = Get-PnPApp -Identity $AppName -Connection $Connection | Select-Object -ExpandProperty InstalledVersion
+                # while($installedVersion.Major -ne $null)
+                # {
+                #     Write-Host "." -ForegroundColor Yellow -NoNewLine
+                #     Start-Sleep -Seconds 5
+                #     $installedVersion = Get-PnPApp -Identity $AppName -Connection $Connection | Select-Object -ExpandProperty InstalledVersion
+                # }
+                # Write-Host " Done." -ForegroundColor Green
             }
-            Write-Host "Removing solution from appcatalog... " -ForegroundColor Yellow -NoNewline
-            Remove-PnPApp -Identity $app.Id -Connection $Connection
-            Write-Host " Done." -ForegroundColor Green
+            # Write-Host "Removing solution from appcatalog... " -ForegroundColor Yellow -NoNewline
+            # Remove-PnPApp -Identity $app.Id -Connection $Connection
+            # Write-Host " Done." -ForegroundColor Green
         }
     }
 }
