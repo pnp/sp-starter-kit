@@ -7,6 +7,8 @@
   },
   "scripts": {
     "build": "gulp bundle",
+    "build:dev": "gulp clean && gulp bundle && gulp package-solution",
+    "build:prod": "gulp clean && gulp bundle --ship && gulp package-solution --ship",
     "clean": "gulp clean",
     "test": "gulp test"
   },
