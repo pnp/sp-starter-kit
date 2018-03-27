@@ -27,42 +27,46 @@
       <pnp:ClientSidePages>
         <pnp:ClientSidePage PageName="Home.aspx" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
           <pnp:Sections>
-            <pnp:Section Order="1" Type="OneColumn">
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
               <pnp:Controls>
                 <!-- Banner -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="ab30ff0a-9241-4d5d-8c6f-1dc07b1d1053" Order="1" Column="1" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="2" Type="OneColumn">
+              <pnp:Controls>
                 <!-- Followed Sites -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="92d5cc6c-fae5-4e91-9583-ab33950f5a8d" Order="2" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="92d5cc6c-fae5-4e91-9583-ab33950f5a8d" Order="1" Column="1" />
                 <!-- Links -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="e2365185-558d-4b6d-bee8-3490cf04a0a6" Order="3" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="e2365185-558d-4b6d-bee8-3490cf04a0a6" Order="2" Column="1" />
                 <!-- lobIntegration -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="3228280d-0776-432e-a957-5fb31edf8e00" Order="4" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="3228280d-0776-432e-a957-5fb31edf8e00" Order="3" Column="1" />
                 <!-- peopleDirectory -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="d9d6f014-3fd9-4fb9-af54-044c7c43e081" Order="5" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="d9d6f014-3fd9-4fb9-af54-044c7c43e081" Order="4" Column="1" />
                 <!-- personalCalendar -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="bbcd646e-6b86-4480-a68a-850c98f94519" Order="6" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="bbcd646e-6b86-4480-a68a-850c98f94519" Order="5" Column="1" />
                 <!-- personalContacts -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="a95742b9-5e67-4a11-8e51-7a76812a9d60" Order="7" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="a95742b9-5e67-4a11-8e51-7a76812a9d60" Order="6" Column="1" />
                 <!-- personalEmail -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="ac41debd-d92c-4de0-9d67-e7bc191030ee" Order="8" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="ac41debd-d92c-4de0-9d67-e7bc191030ee" Order="7" Column="1" />
                 <!-- personalTasks -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="ee972022-9937-4b69-9c25-eaf77003f4f9" Order="9" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="ee972022-9937-4b69-9c25-eaf77003f4f9" Order="8" Column="1" />
                 <!-- recentContacts -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="9a151252-c744-4dc6-94f7-a574dda413d6" Order="10" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="9a151252-c744-4dc6-94f7-a574dda413d6" Order="9" Column="1" />
                 <!-- recentlyUsedDocuments -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="596e3e97-f3ca-4cf9-9b8e-cb852f063356" Order="11" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="596e3e97-f3ca-4cf9-9b8e-cb852f063356" Order="10" Column="1" />
                 <!-- recentlyVisitedSites -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="277282d0-debb-42d6-b4b3-30ec543964fd" Order="12" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="277282d0-debb-42d6-b4b3-30ec543964fd" Order="11" Column="1" />
                 <!-- siteInformation -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="e2aa860d-ac7b-4a7f-b590-073e62dc9bc0" Order="13" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="e2aa860d-ac7b-4a7f-b590-073e62dc9bc0" Order="12" Column="1" />
                 <!-- stockInformation -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="50256fc2-a28f-4544-900e-32724d32bc7f" Order="14" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="50256fc2-a28f-4544-900e-32724d32bc7f" Order="13" Column="1" />
                 <!-- tiles -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="26cb4af3-7f48-4737-b82a-4e24167c2d07" Order="15" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="26cb4af3-7f48-4737-b82a-4e24167c2d07" Order="14" Column="1" />
                 <!-- weatherInformation -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9" Order="16" Column="1" JsonControlData="{&quot;id&quot;:&quot;0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9&quot;,&quot;instanceId&quot;:&quot;21e23e1d-69d7-4aed-8fca-1599d2440477&quot;,&quot;title&quot;:&quot;Weather&quot;,&quot;description&quot;:&quot;Shows weather information for the specified location&quot;,&quot;serverProcessedContent&quot;:{&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}},&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;location&quot;:&quot;{parameter:WeatherCity}&quot;,&quot;unit&quot;:&quot;c&quot;}}" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9" Order="15" Column="1" JsonControlData="{&quot;id&quot;:&quot;0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9&quot;,&quot;instanceId&quot;:&quot;21e23e1d-69d7-4aed-8fca-1599d2440477&quot;,&quot;title&quot;:&quot;Weather&quot;,&quot;description&quot;:&quot;Shows weather information for the specified location&quot;,&quot;serverProcessedContent&quot;:{&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}},&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;location&quot;:&quot;{parameter:WeatherCity}&quot;,&quot;unit&quot;:&quot;c&quot;}}" />
                 <!-- worldTime -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="4f87b698-f910-451f-b4ea-7848a472af0f" Order="17" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="4f87b698-f910-451f-b4ea-7848a472af0f" Order="16" Column="1" />
               </pnp:Controls>
             </pnp:Section>
           </pnp:Sections>
