@@ -16,9 +16,13 @@ Param(
     [string]$WeatherCity = "Helsinki",
 
     [Parameter(Mandatory = $false)]
-    [string]$PortalTitle = "SP Portal Showcase - Helsinki Style"
+    [string]$PortalTitle = "SP Portal Showcase - Helsinki Style",
 
-    
+    [Parameter(Mandatory = $false)]
+    [string]$ThemeName = "Portal Showcase",
+
+    [Parameter(Mandatory = $false)]
+    [string]$ThemePath = "$PSScriptRoot\..\Assets\designs\portaltheme.xml"
 )    
 
 # Load helper functions
@@ -70,14 +74,18 @@ if (Test-Url -Url $SiteUrl) {
         Update-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
     }
 
+    # Create and Set theme if needed
+    Set-ThemeIfNotSet -ThemeName $ThemeName -ThemePath $ThemePath -Connection $connection
+
     # Register the site as the hubsite
     $isHub = Get-PnPHubSite -Identity $siteUrl -ErrorAction SilentlyContinue
     if($isHub -eq $null)
     {
+        Write-Host "Registering site as hubsite" -ForegroundColor Cyan
         Register-PnPHubSite -Site $siteUrl -Connection $connection 2>&1 | Out-Null
     }
 
-    Write-Host "Creating portal" -ForegroundColor Cyan
+    Write-Host "Applying template to portal" -ForegroundColor Cyan
     Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle}
 }
 else {

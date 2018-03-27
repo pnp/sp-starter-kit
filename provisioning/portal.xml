@@ -117,6 +117,22 @@
           </pnp:FieldRefs>
         </pnp:ListInstance>
       </pnp:Lists>
+      <pnp:CustomActions>
+        <pnp:WebCustomActions>
+          <!-- alertNotification -->
+          <pnp:CustomAction Name="AlertNotification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="aa8dd198-e2ee-45c5-b746-821d001bb0e1" RegistrationType="None" />
+          <!-- collabFooter -->
+          <pnp:CustomAction Name="CollabFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="c0ab3b94-8609-40cf-861e-2a1759170b43" RegistrationType="None" />
+          <!-- portalFooter -->
+          <pnp:CustomAction Name="PortalFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="b8eb4ec9-934a-4248-a15f-863d27f94f60" RegistrationType="None" />
+          <!-- redirect -->
+          <pnp:CustomAction Name="Redirect" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="f5771a9e-283e-4525-a599-554e8b9e48c2" RegistrationType="None" />
+          <!-- siteClassification -->
+          <pnp:CustomAction Name="SiteClassification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="7f69d5cb-5aeb-4bc6-9f77-146aebfd9a8e" RegistrationType="None" />
+          <!-- tabPage -->
+          <pnp:CustomAction Name="TabPage" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="14a8a106-d508-44d0-8fa6-f2f9ed8f571d" RegistrationType="None" />
+        </pnp:WebCustomActions>
+      </pnp:CustomActions>
       <pnp:Files>
         <pnp:File Src="..\Assets\images\hel2.jpg" Overwrite="true" Folder="Assets"></pnp:File>
       </pnp:Files>

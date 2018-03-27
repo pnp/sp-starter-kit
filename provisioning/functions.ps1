@@ -55,6 +55,37 @@ Function Test-Url {
     }
 }
 
+Function Set-ThemeIfNotSet {
+    [CmdletBinding()]
+
+    Param (
+        [Parameter(Mandatory = $true)]
+        [string]$ThemeName,
+
+        [Parameter(Mandatory = $true)]
+        [string]$ThemePath,
+
+        [Parameter(Mandatory = $true)]
+        [SharePointPnP.PowerShell.Commands.Base.SPOnlineConnection]$Connection
+    )
+
+    Process {
+        $currentTheme = Get-PnPPropertyBag -Key "ThemePrimary" -Connection $Connection
+
+        # deserialize theme in variable
+        $theme = Import-CliXml -Path $ThemePath
+        if($theme.themePrimary -ne $currentTheme)
+        {
+            # The theme 'seems' to not be set. This check is flawed and based only on the primary theme color for now
+            $existingTheme = Get-PnPTenantTheme -Name $ThemeName -ErrorAction SilentlyContinue
+            if($existingTheme -eq $null)
+            {
+                Add-PnPTenantTheme -Identity $ThemeName -Overwrite -Palette $theme -IsInverted $false -Connection $Connection
+            }
+            Set-PnPWebTheme -Theme $ThemeName -Connection $Connection
+        }
+    }
+}
 Function Test-SiteExists {
     [CmdletBinding()]
 
