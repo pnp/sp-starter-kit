@@ -9,6 +9,6 @@ Param(
     [string]$Password
 )    
 
-$secPassword = ConvertTo-SecureString $Password -AsPlainText -Force
-$creds = New-Object System.Management.Automation.PSCredential ($Username, $secPassword)
+#$secPassword = ConvertTo-SecureString $Password -AsPlainText -Force
+$creds = New-Object System.Management.Automation.PSCredential ($Username, $Password)
 .\deploy.ps1 -Build -SiteUrl $SiteUrl -Credentials $creds
