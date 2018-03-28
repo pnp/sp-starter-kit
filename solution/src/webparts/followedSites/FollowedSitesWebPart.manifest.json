@@ -14,7 +14,8 @@
     "officeFabricIconFontName": "FavoriteStarFill",
     "properties": {
       "title": "Followed Sites",
-      "sortOrder": 1
+      "sortOrder": 1,
+      "nrOfItems": 10
     }
   }]
 }

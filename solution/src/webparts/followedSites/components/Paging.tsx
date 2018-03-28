@@ -27,7 +27,7 @@ export default class Paging extends React.Component<IPagingProps, IPagingState> 
   /**
    * Load the previous page
    */
-  private _prevPage = () => {
+  private _prevPage = (): void => {
     let { crntPage } = this.state;
     if (crntPage > 0) {
       crntPage--;
@@ -43,7 +43,7 @@ export default class Paging extends React.Component<IPagingProps, IPagingState> 
   /**
    * Load the previous page
    */
-  private _nextPage = () => {
+  private _nextPage = (): void => {
     let { crntPage } = this.state;
     if ((this.props.nrOfItems*(this.state.crntPage)) < this.props.allItems.length) {
       crntPage++;
@@ -59,7 +59,7 @@ export default class Paging extends React.Component<IPagingProps, IPagingState> 
   /**
    * Triggers the update function with the new batch of items
    */
-  private _triggerUpdate = (pageNr: number) => {
+  private _triggerUpdate = (pageNr: number): void => {
     let allItems = [...this.props.allItems];
     // Pass the next batch of items to render to the parent component
     this.props.fUpdateItems(allItems.splice((pageNr * this.props.nrOfItems), this.props.nrOfItems));

@@ -44,7 +44,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
   /**
    * Retrieves all the current user its followed sites
    */
-  private _fetchFollowedSites() {
+  private _fetchFollowedSites(): void {
     // Types 4 === sites
     const apiUrl = `${this.props.context.pageContext.web.absoluteUrl}/_api/social.following/my/followed(types=4)`;
     this.props.context.spHttpClient.fetch(apiUrl, SPHttpClient.configurations.v1, {
@@ -75,7 +75,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
   /**
    * Updates the current following site state
    */
-  private _updateFollowingSites = (fSites: IFollowedResult[]) => {
+  private _updateFollowingSites = (fSites: IFollowedResult[]): void => {
     const allSites = [...fSites];
     // Check if the array has to be limited
     if (this.props.nrOfItems) {
@@ -93,7 +93,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
    * @param a First item
    * @param b Second item
    */
-  private _sortByName(a: IFollowedResult, b: IFollowedResult) {
+  private _sortByName(a: IFollowedResult, b: IFollowedResult): number {
     if(a.Name.toLowerCase() < b.Name.toLowerCase()) return -1;
     if(a.Name.toLowerCase() > b.Name.toLowerCase()) return 1;
     return 0;
@@ -102,7 +102,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
   /**
    * Update the current site results array
    */
-  private _updatePagedItems = (pagedItems: IFollowedResult[]) => {
+  private _updatePagedItems = (pagedItems: IFollowedResult[]): void => {
     if (pagedItems) {
       this.setState({
         following: pagedItems
@@ -110,7 +110,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
     }
   }
 
-  private _onFilterChanged = (val: string) => {
+  private _onFilterChanged = (val: string): void => {
     // Check if a value was provided
     if (val) {
       const allSites = [...this._allFollowing];

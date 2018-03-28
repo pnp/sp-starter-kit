@@ -57,7 +57,6 @@ export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowe
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyFieldNumber("nrOfItems", {
                   key: "nrOfItems",
