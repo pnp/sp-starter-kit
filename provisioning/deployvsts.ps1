@@ -1,4 +1,14 @@
-$secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
-$mycreds = New-Object System.Management.Automation.PSCredential ("username", $secpasswd)
-$portalurl = "https://officedevpnp.sharepoint.com/sites/portal"
-$PSScriptRoot/deploy.ps1 -Build -SiteUrl $portalurl -Credentials $mycreds
+Param(
+    [Parameter(Mandatory = $false, Position = 1)]
+    [string]$SiteUrl,
+
+    [Parameter(Mandatory = $true, Position = 2)]
+    [string]$Username,
+
+    [Parameter(Mandatory = $true, Position = 3)]
+    [string]$Password
+)    
+
+$secPassword = ConvertTo-SecureString $Password -AsPlainText -Force
+$creds = New-Object System.Management.Automation.PSCredential ($Username, $secPassword)
+.\deploy.ps1 -Build -SiteUrl $SiteUrl -Credentials $creds
