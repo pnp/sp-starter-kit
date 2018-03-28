@@ -25,6 +25,19 @@ export default class Paging extends React.Component<IPagingProps, IPagingState> 
   }
 
   /**
+   * componentWillReceiveProps lifecycle hook
+   * @param nextProps
+   */
+  public componentWillReceiveProps(nextProps: IPagingProps): void {
+    // Check if items were filtered
+    if (this.props.allItems.length !== nextProps.allItems.length) {
+      this.setState({
+        crntPage: 0
+      });
+    }
+  }
+
+  /**
    * Load the previous page
    */
   private _prevPage = (): void => {
@@ -69,6 +82,7 @@ export default class Paging extends React.Component<IPagingProps, IPagingState> 
    * Default React render method
    */
   public render(): React.ReactElement<IPagingProps> {
+    console.log(this.props.allItems.length);
     if (this.props.nrOfItems && this.props.allItems && this.props.allItems.length > this.props.nrOfItems) {
       return (
         <div className={styles.paging}>
