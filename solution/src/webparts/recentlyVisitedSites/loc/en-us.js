@@ -1,7 +1,5 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
-    "DescriptionFieldLabel": "Description Field"
+    "NoRecentSitesMsg": "Sorry, we did not find any recently used sites."
   }
 });

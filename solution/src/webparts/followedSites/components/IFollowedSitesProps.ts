@@ -11,6 +11,7 @@ export interface IFollowedSitesProps extends IFollowedSitesWebPartProps {
 export interface IFollowedSitesState {
   following: IFollowedResult[];
   allFollowing: IFollowedResult[];
+  loading: boolean;
 }
 
 export interface IFollowed {

@@ -18,7 +18,8 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
 
     this.state = {
       following: null,
-      allFollowing: []
+      allFollowing: [],
+      loading: true
     };
   }
 
@@ -45,6 +46,9 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
    * Retrieves all the current user its followed sites
    */
   private _fetchFollowedSites(): void {
+    this.setState({
+      loading: true
+    });
     // Types 4 === sites
     const apiUrl = `${this.props.context.pageContext.web.absoluteUrl}/_api/social.following/my/followed(types=4)`;
     this.props.context.spHttpClient.fetch(apiUrl, SPHttpClient.configurations.v1, {
@@ -84,7 +88,8 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
 
     this.setState({
       following: fSites,
-      allFollowing: allSites
+      allFollowing: allSites,
+      loading: false
     });
   }
 
@@ -161,7 +166,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
                       fUpdateItems={this._updatePagedItems} />
             </div>
           ) : (
-            <span className={styles.noSites}>{strings.NoFollowedSitesMsg}</span>
+            !this.state.loading && <span className={styles.noSites}>{strings.NoFollowedSitesMsg}</span>
           )
         }
       </div>

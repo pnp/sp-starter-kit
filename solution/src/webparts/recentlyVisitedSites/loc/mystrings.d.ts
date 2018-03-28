@@ -1,7 +1,6 @@
 declare interface IRecentlyVisitedSitesWebPartStrings {
-  PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  // Web part
+  NoRecentSitesMsg: string;
 }
 
 declare module 'RecentlyVisitedSitesWebPartStrings' {
