@@ -6,7 +6,7 @@ Param(
     [string]$Username,
 
     [Parameter(Mandatory = $true, Position = 3)]
-    [string]$Password
+    [securestring]$Password
 )    
 
 #$secPassword = ConvertTo-SecureString $Password -AsPlainText -Force
