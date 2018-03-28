@@ -22,11 +22,14 @@ Param(
     [string]$ThemeName = "Portal Showcase",
 
     [Parameter(Mandatory = $false)]
+    [string]$CurrentFolder = $PSScriptRoot,
+
+    [Parameter(Mandatory = $false)]
     [string]$ThemePath = "$PSScriptRoot\..\Assets\designs\portaltheme.xml"
 )    
 
 # Load helper functions
-. "$PSScriptRoot\functions.ps1"
+. "$CurrentFolder\functions.ps1"
 
 # Check if PnP PowerShell is installed
 $modules = Get-Module -Name SharePointPnPPowerShellOnline -ListAvailable
@@ -54,18 +57,18 @@ if (Test-Url -Url $SiteUrl) {
     } 
 
     # Check if package exists
-    if((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg") -eq $false -or $Build)
+    if((Test-Path "$CurrentFolder\..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg") -eq $false -or $Build)
     {
-        Set-Location $PSScriptRoot\..\solution
+        Set-Location $CurrentFolder\..\solution
         npm install
-        Set-Location $PSScriptRoot
+        Set-Location $CurrentFolder
         # does not exist. Build and Package
         Write-Host "Building solution" -ForegroundColor Cyan
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build #2>&1 | Out-Null
+        gulp -f "$CurrentFolder\..\solution\gulpfile.js" build #2>&1 | Out-Null
         Write-Host "Bundling solution" -ForegroundColor Cyan
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" bundle --ship #2>&1 | Out-Null
+        gulp -f "$CurrentFolder\..\solution\gulpfile.js" bundle --ship #2>&1 | Out-Null
         Write-Host "Packaging solution" -ForegroundColor Cyan 
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" package-solution --ship #2>&1 | Out-Null
+        gulp -f "$CurrentFolder\..\solution\gulpfile.js" package-solution --ship #2>&1 | Out-Null
     }
     $connection = Connect-PnPOnline -Url $SiteUrl -Credentials $Credentials -ReturnConnection
   
@@ -78,7 +81,7 @@ if (Test-Url -Url $SiteUrl) {
         {
             Remove-PnPApp -Identity $existingApp
         }
-        Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\solution.xml" -Connection $connection
+        Apply-PnPProvisioningTemplate -Path "$CurrentFolder\solution.xml" -Connection $connection
         Update-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
     }
 
@@ -94,7 +97,7 @@ if (Test-Url -Url $SiteUrl) {
     }
 
     Write-Host "Applying template to portal" -ForegroundColor Cyan
-    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle} -Connection $connection
+    Apply-PnPProvisioningTemplate -Path "$CurrentFolder\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle} -Connection $connection
 }
 else {
     Write-Error -Message "Url is of incorrect format"
