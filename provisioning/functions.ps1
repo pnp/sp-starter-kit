@@ -18,7 +18,7 @@ Function Update-AppIfPresent {
         {
             if($app.InstalledVersion)
             {
-                Write-Host "Updating solution in site... " -ForegroundColor Yellow
+                Write-Host "Updating solution in site" -ForegroundColor Yellow
                 # Uninstall from Site
                 Update-PnPApp -Identity $app.Id
                 # Wait for the app to be uninstall

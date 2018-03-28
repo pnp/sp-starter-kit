@@ -56,6 +56,9 @@ if (Test-Url -Url $SiteUrl) {
     # Check if package exists
     if((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg") -eq $false -or $Build)
     {
+        Set-Location $PSScriptRoot\..\solution
+        npm install
+        Set-Location $PSScriptRoot
         # does not exist. Build and Package
         Write-Host "Building solution" -ForegroundColor Cyan
         gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build 2>&1 | Out-Null
@@ -70,7 +73,12 @@ if (Test-Url -Url $SiteUrl) {
     {
         # Temporary until schema change is present
         Write-Host "Provisioning solution" -ForegroundColor Cyan
-        Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\solution.xml"
+        $existingApp = Get-PnPApp -Identity "sharepoint-portal-showcase-client-side-solution"
+        if($existingApp -ne $null)
+        {
+            Remove-PnPApp -Identity $existingApp
+        }
+        Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\solution.xml" -Connection $connection
         Update-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
     }
 
@@ -78,7 +86,7 @@ if (Test-Url -Url $SiteUrl) {
     Set-ThemeIfNotSet -ThemeName $ThemeName -ThemePath $ThemePath -Connection $connection
 
     # Register the site as the hubsite
-    $isHub = Get-PnPHubSite -Identity $siteUrl -ErrorAction SilentlyContinue
+    $isHub = Get-PnPHubSite -Identity $siteUrl -ErrorAction SilentlyContinue -Connection $connection
     if($isHub -eq $null)
     {
         Write-Host "Registering site as hubsite" -ForegroundColor Cyan
@@ -86,7 +94,7 @@ if (Test-Url -Url $SiteUrl) {
     }
 
     Write-Host "Applying template to portal" -ForegroundColor Cyan
-    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle}
+    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle} -Connection $connection
 }
 else {
     Write-Error -Message "Url is of incorrect format"
