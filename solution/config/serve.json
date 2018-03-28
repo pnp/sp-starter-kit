@@ -16,7 +16,8 @@
         "14a8a106-d508-44d0-8fa6-f2f9ed8f571d": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "personalPageName": "personal.aspx",
+            "organizationPageName": "home.aspx"
           }
         }
       }

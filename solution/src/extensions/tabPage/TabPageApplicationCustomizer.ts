@@ -1,39 +1,130 @@
 import { override } from '@microsoft/decorators';
-import { Log } from '@microsoft/sp-core-library';
+import React = require('react');
+import ReactDom = require('react-dom');
 import {
-  BaseApplicationCustomizer
+  PlaceholderContent,
+  BaseApplicationCustomizer,
+  PlaceholderName,
 } from '@microsoft/sp-application-base';
-import { Dialog } from '@microsoft/sp-dialog';
-
 import * as strings from 'TabPageApplicationCustomizerStrings';
+import {
+  NavigationProps,
+  Navigation
+} from './components';
 
-const LOG_SOURCE: string = 'TabPageApplicationCustomizer';
-
-/**
- * If your command set uses the ClientSideComponentProperties JSON input,
- * it will be deserialized into the BaseExtension.properties object.
- * You can define an interface to describe it.
- */
 export interface ITabPageApplicationCustomizerProperties {
-  // This is an example; replace with your own property
-  testMessage: string;
+  personalPageName: string;
+  organizationPageName: string;
 }
 
-/** A Custom Action which can be run during execution of a Client Side Application */
-export default class TabPageApplicationCustomizer
-  extends BaseApplicationCustomizer<ITabPageApplicationCustomizerProperties> {
+export default class TabPageApplicationCustomizer extends BaseApplicationCustomizer<ITabPageApplicationCustomizerProperties> {
+  private static topPlaceholder?: PlaceholderContent;
+  private static readonly storageKey: string = 'pnpTabPage_HomePage';
 
   @override
   public onInit(): Promise<void> {
-    Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
-
-    let message: string = this.properties.testMessage;
-    if (!message) {
-      message = '(No properties were provided.)';
-    }
-
-    Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`);
+    this.context.application.navigatedEvent.add(this, this.render);
 
     return Promise.resolve();
+  }
+
+  private render(): void {
+    if (!TabPageApplicationCustomizer.topPlaceholder) {
+      TabPageApplicationCustomizer.topPlaceholder = this.context.placeholderProvider
+        .tryCreateContent(PlaceholderName.Top, { onDispose: this.handleDispose });
+    }
+
+    if (!TabPageApplicationCustomizer.topPlaceholder) {
+      return;
+    }
+
+    const element: React.ReactElement<NavigationProps> = React.createElement(
+      Navigation,
+      {
+        currentPage: this.getHomePageType(),
+        personalLabel: strings.Personal,
+        organizationLabel: strings.Organization,
+        personalPageName: this.properties.personalPageName,
+        organizationPageName: this.properties.organizationPageName,
+        onHomePageSet: this.handleHomePageSet.bind(this)
+      }
+    );
+
+    ReactDom.render(element, TabPageApplicationCustomizer.topPlaceholder.domElement);
+
+    this.redirectIfOnSiteRoot();
+  }
+
+  private handleDispose(): void {
+  }
+
+  /**
+   * Compares the name of the currently requested page with the configured
+   * personal and organization pages and returns page type.
+   */
+  private getHomePageType(): string {
+    const pageName: string = this.getCurrentPageName();
+    switch (pageName) {
+      case this.properties.personalPageName:
+        return strings.Personal;
+      case this.properties.organizationPageName:
+        return strings.Organization;
+      default:
+        return '';
+    }
+  }
+
+  /**
+   * Redirects to the page configured for the given page type.
+   * 
+   * @param newPage Type of page to redirect to. Redirects to the URL configured for the given page type
+   */
+  private handlePageSelect(newPage: string): void {
+    let pageName: string = '';
+
+    switch (newPage) {
+      case strings.Personal:
+        pageName = this.properties.personalPageName;
+        break;
+      case strings.Organization:
+        pageName = this.properties.organizationPageName;
+        break;
+    }
+
+    const pageUrl: string = `${this.context.pageContext.list.serverRelativeUrl}/${pageName}`;
+
+    location.href = pageUrl;
+  }
+
+  /**
+   * Stores the current page as the default home page for the user.
+   */
+  private handleHomePageSet(): void {
+    const newHomePage: string = this.getHomePageType();
+    localStorage.setItem(TabPageApplicationCustomizer.storageKey, newHomePage);
+  }
+
+  /**
+   * When user navigates to the site's root, without selecting a page, redirects to the selected home page.
+   */
+  private redirectIfOnSiteRoot(): void {
+    if (location.pathname.indexOf('.aspx') < 0) {
+      let preferredHomePage = localStorage.getItem(TabPageApplicationCustomizer.storageKey);
+      if (!preferredHomePage) {
+        preferredHomePage = strings.Organization;
+      }
+
+      this.handlePageSelect(preferredHomePage);
+    }
+  }
+
+  /**
+   * Gets the name of the current page from the server-relative URL
+   */
+  private getCurrentPageName(): string {
+    const serverRelativePageUrl: string = this.context.pageContext.legacyPageContext.serverRequestPath;
+    const pageName: string = serverRelativePageUrl.substr(serverRelativePageUrl.lastIndexOf('/') + 1).toLowerCase();
+
+    return pageName;
   }
 }
