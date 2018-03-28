@@ -1,0 +1,25 @@
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a">
+  </pnp:Preferences>
+  <pnp:Tenant>
+    <pnp:AppCatalog>
+      <pnp:Package Src="..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg" Action="UploadAndPublish" SkipFeatureDeployment="true" Overwrite="true" />
+    </pnp:AppCatalog>
+    <pnp:ContentDeliveryNetwork>
+      <pnp:Public Enabled="true">
+        <pnp:Origins>
+          <pnp:Origin Url="*/CLIENTSIDEASSETS" Action="Add"/>
+        </pnp:Origins>
+      </pnp:Public>
+    </pnp:ContentDeliveryNetwork>
+  </pnp:Tenant>
+  <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
+    <pnp:ProvisioningTemplate ID="PORTAL-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
+      <pnp:ApplicationLifecycleManagement>
+        <pnp:Apps>
+          <pnp:App AppId="{AppPackageId:sharepoint-portal-showcase.sppkg}" Action="Install" />
+        </pnp:Apps>
+      </pnp:ApplicationLifecycleManagement>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>
