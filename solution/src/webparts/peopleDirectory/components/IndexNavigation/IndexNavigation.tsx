@@ -3,7 +3,6 @@ import styles from './IndexNavigation.module.scss';
 import { IndexNavigationProps } from '.';
 import { Search } from '../Search';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class IndexNavigation extends React.Component<IndexNavigationProps, {}> {
   public render(): React.ReactElement<IndexNavigationProps> {

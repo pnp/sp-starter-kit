@@ -1,5 +1,6 @@
 declare interface ITabPageApplicationCustomizerStrings {
-  Title: string;
+  Personal: string;
+  Organization: string;
 }
 
 declare module 'TabPageApplicationCustomizerStrings' {

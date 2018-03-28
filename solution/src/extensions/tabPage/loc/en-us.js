@@ -1,5 +1,6 @@
-define([], function() {
+define([], function () {
   return {
-    "Title": "TabPageApplicationCustomizer"
+    "Personal": "Personal",
+    "Organization": "Organization"
   }
 });
