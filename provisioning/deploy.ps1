@@ -61,11 +61,11 @@ if (Test-Url -Url $SiteUrl) {
         Set-Location $PSScriptRoot
         # does not exist. Build and Package
         Write-Host "Building solution" -ForegroundColor Cyan
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build 2>&1 | Out-Null
+        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build #2>&1 | Out-Null
         Write-Host "Bundling solution" -ForegroundColor Cyan
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" bundle --ship 2>&1 | Out-Null
+        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" bundle --ship #2>&1 | Out-Null
         Write-Host "Packaging solution" -ForegroundColor Cyan 
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" package-solution --ship 2>&1 | Out-Null
+        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" package-solution --ship #2>&1 | Out-Null
     }
     $connection = Connect-PnPOnline -Url $SiteUrl -Credentials $Credentials -ReturnConnection
   
