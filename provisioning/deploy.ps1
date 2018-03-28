@@ -16,9 +16,13 @@ Param(
     [string]$WeatherCity = "Helsinki",
 
     [Parameter(Mandatory = $false)]
-    [string]$PortalTitle = "SP Portal Showcase - Helsinki Style"
+    [string]$PortalTitle = "SP Portal Showcase - Helsinki Style",
 
-    
+    [Parameter(Mandatory = $false)]
+    [string]$ThemeName = "Portal Showcase",
+
+    [Parameter(Mandatory = $false)]
+    [string]$ThemePath = "$PSScriptRoot\..\Assets\designs\portaltheme.xml"
 )    
 
 # Load helper functions
@@ -54,30 +58,34 @@ if (Test-Url -Url $SiteUrl) {
     {
         # does not exist. Build and Package
         Write-Host "Building solution" -ForegroundColor Cyan
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build 2>&1 | out-null
+        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build 2>&1 | Out-Null
         Write-Host "Bundling solution" -ForegroundColor Cyan
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" bundle --ship 2>&1 | out-null
+        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" bundle --ship 2>&1 | Out-Null
         Write-Host "Packaging solution" -ForegroundColor Cyan 
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" package-solution --ship 2>&1 | out-null
+        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" package-solution --ship 2>&1 | Out-Null
     }
     $connection = Connect-PnPOnline -Url $SiteUrl -Credentials $Credentials -ReturnConnection
   
     if($SkipSolutionDeployment -ne $true)
     {
         # Temporary until schema change is present
-        Remove-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
         Write-Host "Provisioning solution" -ForegroundColor Cyan
         Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\solution.xml"
+        Update-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
     }
+
+    # Create and Set theme if needed
+    Set-ThemeIfNotSet -ThemeName $ThemeName -ThemePath $ThemePath -Connection $connection
 
     # Register the site as the hubsite
     $isHub = Get-PnPHubSite -Identity $siteUrl -ErrorAction SilentlyContinue
     if($isHub -eq $null)
     {
-        Register-PnPHubSite -Site $siteUrl -Connection $connection
+        Write-Host "Registering site as hubsite" -ForegroundColor Cyan
+        Register-PnPHubSite -Site $siteUrl -Connection $connection 2>&1 | Out-Null
     }
 
-    Write-Host "Creating portal" -ForegroundColor Cyan
+    Write-Host "Applying template to portal" -ForegroundColor Cyan
     Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle}
 }
 else {

@@ -1,0 +1,122 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>System.Collections.Hashtable</T>
+      <T>System.Object</T>
+    </TN>
+    <DCT>
+      <En>
+        <S N="Key">neutralPrimaryAlt</S>
+        <S N="Value">#2f2f2f</S>
+      </En>
+      <En>
+        <S N="Key">themeLighterAlt</S>
+        <S N="Value">#fffbed</S>
+      </En>
+      <En>
+        <S N="Key">black</S>
+        <S N="Value">#0b0b0b</S>
+      </En>
+      <En>
+        <S N="Key">themeTertiary</S>
+        <S N="Value">#ffcf3f</S>
+      </En>
+      <En>
+        <S N="Key">primaryBackground</S>
+        <S N="Value">#fff</S>
+      </En>
+      <En>
+        <S N="Key">neutralQuaternaryAlt</S>
+        <S N="Value">#dadada</S>
+      </En>
+      <En>
+        <S N="Key">themePrimary</S>
+        <S N="Value">#ffbe00</S>
+      </En>
+      <En>
+        <S N="Key">neutralSecondary</S>
+        <S N="Value">#373737</S>
+      </En>
+      <En>
+        <S N="Key">themeLighter</S>
+        <S N="Value">#fff4d1</S>
+      </En>
+      <En>
+        <S N="Key">themeDark</S>
+        <S N="Value">#a37a00</S>
+      </En>
+      <En>
+        <S N="Key">neutralPrimary</S>
+        <S N="Value">#000000</S>
+      </En>
+      <En>
+        <S N="Key">neutralLighterAlt</S>
+        <S N="Value">#f8f8f8</S>
+      </En>
+      <En>
+        <S N="Key">neutralLighter</S>
+        <S N="Value">#f4f4f4</S>
+      </En>
+      <En>
+        <S N="Key">neutralDark</S>
+        <S N="Value">#151515</S>
+      </En>
+      <En>
+        <S N="Key">neutralQuaternary</S>
+        <S N="Value">#d0d0d0</S>
+      </En>
+      <En>
+        <S N="Key">neutralLight</S>
+        <S N="Value">#eaeaea</S>
+      </En>
+      <En>
+        <S N="Key">primaryText</S>
+        <S N="Value">#000000</S>
+      </En>
+      <En>
+        <S N="Key">themeDarker</S>
+        <S N="Value">#8c6900</S>
+      </En>
+      <En>
+        <S N="Key">neutralTertiaryAlt</S>
+        <S N="Value">#c8c8c8</S>
+      </En>
+      <En>
+        <S N="Key">themeDarkAlt</S>
+        <S N="Value">#e6ac00</S>
+      </En>
+      <En>
+        <S N="Key">white</S>
+        <S N="Value">#fff</S>
+      </En>
+      <En>
+        <S N="Key">bodyBackground</S>
+        <S N="Value">#fff</S>
+      </En>
+      <En>
+        <S N="Key">themeSecondary</S>
+        <S N="Value">#ffc20b</S>
+      </En>
+      <En>
+        <S N="Key">bodyText</S>
+        <S N="Value">#000000</S>
+      </En>
+      <En>
+        <S N="Key">disabledBackground</S>
+        <S N="Value">#f4f4f4</S>
+      </En>
+      <En>
+        <S N="Key">neutralTertiary</S>
+        <S N="Value">#595959</S>
+      </En>
+      <En>
+        <S N="Key">themeLight</S>
+        <S N="Value">#ffe390</S>
+      </En>
+      <En>
+        <S N="Key">disabledText</S>
+        <S N="Value">#c8c8c8</S>
+      </En>
+    </DCT>
+  </Obj>
+</Objs>

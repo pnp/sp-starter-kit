@@ -5,18 +5,6 @@
       <pnp:Parameter Key="PortalTitle">SP Portal Showcase - Helsinki Style</pnp:Parameter>
     </pnp:Parameters>
   </pnp:Preferences>
-  <pnp:Tenant>
-    <pnp:AppCatalog>
-      <pnp:Package Src="..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg" Action="UploadAndPublish" SkipFeatureDeployment="true" Overwrite="true" />
-    </pnp:AppCatalog>
-    <pnp:ContentDeliveryNetwork>
-      <pnp:Public Enabled="true">
-        <pnp:Origins>
-          <pnp:Origin Url="*/CLIENTSIDEASSETS" Action="Add"/>
-        </pnp:Origins>
-      </pnp:Public>
-    </pnp:ContentDeliveryNetwork>
-  </pnp:Tenant>
   <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
     <pnp:ProvisioningTemplate ID="PORTAL-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
       <pnp:WebSettings WelcomePage="SitePages/Home.aspx" Title="SP Portal Showcase" />
@@ -30,11 +18,6 @@
           <pnp:User Name="bert@officedevpnp.onmicrosoft.com"/>
         </pnp:AdditionalAdministrators>
       </pnp:Security>
-      <pnp:ApplicationLifecycleManagement>
-        <pnp:Apps>
-          <pnp:App AppId="{AppPackageId:sharepoint-portal-showcase.sppkg}" Action="Install" />
-        </pnp:Apps>
-      </pnp:ApplicationLifecycleManagement>
       <pnp:ClientSidePages>
         <pnp:ClientSidePage PageName="Home.aspx" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
           <pnp:Sections>
@@ -50,8 +33,8 @@
                 <pnp:CanvasControl WebPartType="Custom" ControlId="92d5cc6c-fae5-4e91-9583-ab33950f5a8d" Order="1" Column="1" />
                 <!-- Links -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="e2365185-558d-4b6d-bee8-3490cf04a0a6" Order="1" Column="2" />
-                <!-- lobIntegration -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="3228280d-0776-432e-a957-5fb31edf8e00" Order="1" Column="3" />
+                 <!-- weatherInformation -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9" Order="1" Column="3" JsonControlData="{&quot;id&quot;:&quot;0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9&quot;,&quot;instanceId&quot;:&quot;21e23e1d-69d7-4aed-8fca-1599d2440477&quot;,&quot;title&quot;:&quot;Weather&quot;,&quot;description&quot;:&quot;Shows weather information for the specified location&quot;,&quot;serverProcessedContent&quot;:{&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}},&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;location&quot;:&quot;{parameter:WeatherCity}&quot;,&quot;unit&quot;:&quot;c&quot;}}" />
               </pnp:Controls>
             </pnp:Section>
             <pnp:Section Order="3" Type="ThreeColumn">
@@ -92,8 +75,8 @@
                 <pnp:CanvasControl WebPartType="Custom" ControlId="4f87b698-f910-451f-b4ea-7848a472af0f" Order="2" Column="1" />
                 <!-- tiles -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="26cb4af3-7f48-4737-b82a-4e24167c2d07" Order="1" Column="2" />
-                <!-- weatherInformation -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9" Order="1" Column="3" JsonControlData="{&quot;id&quot;:&quot;0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9&quot;,&quot;instanceId&quot;:&quot;21e23e1d-69d7-4aed-8fca-1599d2440477&quot;,&quot;title&quot;:&quot;Weather&quot;,&quot;description&quot;:&quot;Shows weather information for the specified location&quot;,&quot;serverProcessedContent&quot;:{&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}},&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;location&quot;:&quot;{parameter:WeatherCity}&quot;,&quot;unit&quot;:&quot;c&quot;}}" />
+                <!-- lobIntegration -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="3228280d-0776-432e-a957-5fb31edf8e00" Order="1" Column="3" />   
               </pnp:Controls>
             </pnp:Section>
           </pnp:Sections>
@@ -134,6 +117,22 @@
           </pnp:FieldRefs>
         </pnp:ListInstance>
       </pnp:Lists>
+      <pnp:CustomActions>
+        <pnp:WebCustomActions>
+          <!-- alertNotification -->
+          <pnp:CustomAction Name="AlertNotification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="aa8dd198-e2ee-45c5-b746-821d001bb0e1" RegistrationType="None" />
+          <!-- collabFooter -->
+          <pnp:CustomAction Name="CollabFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="c0ab3b94-8609-40cf-861e-2a1759170b43" RegistrationType="None" />
+          <!-- portalFooter -->
+          <pnp:CustomAction Name="PortalFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="b8eb4ec9-934a-4248-a15f-863d27f94f60" RegistrationType="None" />
+          <!-- redirect -->
+          <pnp:CustomAction Name="Redirect" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="f5771a9e-283e-4525-a599-554e8b9e48c2" RegistrationType="None" />
+          <!-- siteClassification -->
+          <pnp:CustomAction Name="SiteClassification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="7f69d5cb-5aeb-4bc6-9f77-146aebfd9a8e" RegistrationType="None" />
+          <!-- tabPage -->
+          <pnp:CustomAction Name="TabPage" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="14a8a106-d508-44d0-8fa6-f2f9ed8f571d" RegistrationType="None" />
+        </pnp:WebCustomActions>
+      </pnp:CustomActions>
       <pnp:Files>
         <pnp:File Src="..\Assets\images\hel2.jpg" Overwrite="true" Folder="Assets"></pnp:File>
       </pnp:Files>
