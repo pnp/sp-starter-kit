@@ -64,11 +64,11 @@ if (Test-Url -Url $SiteUrl) {
         Set-Location $CurrentFolder
         # does not exist. Build and Package
         Write-Host "Building solution" -ForegroundColor Cyan
-        gulp -f "$CurrentFolder\..\solution\gulpfile.js" build #2>&1 | Out-Null
+        gulp build #2>&1 | Out-Null
         Write-Host "Bundling solution" -ForegroundColor Cyan
-        gulp -f "$CurrentFolder\..\solution\gulpfile.js" bundle --ship #2>&1 | Out-Null
+        gulp bundle --ship #2>&1 | Out-Null
         Write-Host "Packaging solution" -ForegroundColor Cyan 
-        gulp -f "$CurrentFolder\..\solution\gulpfile.js" package-solution --ship #2>&1 | Out-Null
+        gulp package-solution --ship #2>&1 | Out-Null
     }
     $connection = Connect-PnPOnline -Url $SiteUrl -Credentials $Credentials -ReturnConnection
   
