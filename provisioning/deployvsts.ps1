@@ -6,12 +6,9 @@ Param(
     [string]$Username,
 
     [Parameter(Mandatory = $true, Position = 3)]
-    [string]$Password,
-
-    [Parameter(Mandatory = $false)]
-    [string]$CurrentFolder
+    [string]$Password
 )    
 
 $secPassword = ConvertTo-SecureString -String $Password -AsPlainText -Force
 $creds = New-Object System.Management.Automation.PSCredential ($Username, $secPassword)
-&"$CurrentFolder\deploy.ps1" -Build -SiteUrl $SiteUrl -Credentials $creds -CurrentFolder $CurrentFolder
+.\deploy.ps1 -SiteUrl $SiteUrl -Credentials $creds
