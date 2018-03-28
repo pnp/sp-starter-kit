@@ -1,8 +1,6 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
-    "DescriptionFieldLabel": "Description Field",
+    "PropertyPaneDescription": "Web part configuration",
 
     "NrOfFollowedItemsLabel": "Number of followed sites to retrieve",
     "SortOrderFollowedItemsLabel": "Specify the sort order of the retrieved sites",

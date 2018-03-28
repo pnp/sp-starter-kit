@@ -77,6 +77,11 @@ export default class Paging extends React.Component<IPagingProps, IPagingState> 
                          disabled={this.state.crntPage <= 0}>
             <Icon iconName="ChevronLeft" />
           </DefaultButton>
+
+          <span className={styles.pagingNrLabels}>
+            {this.state.crntPage + 1}/{Math.ceil(this.props.allItems.length/this.props.nrOfItems)}
+          </span>
+
           <DefaultButton onClick={this._nextPage}
                          disabled={(this.props.nrOfItems*(this.state.crntPage+1)) >= this.props.allItems.length}>
             <Icon iconName="ChevronRight" />

@@ -5,7 +5,13 @@
     "id": "3624777a-337d-4b34-8384-5ab774c069aa",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/sharepoint-portal-showcase.sppkg"

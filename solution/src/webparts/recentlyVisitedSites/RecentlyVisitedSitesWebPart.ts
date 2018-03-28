@@ -3,8 +3,7 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  IPropertyPaneConfiguration
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'RecentlyVisitedSitesWebPartStrings';
@@ -12,16 +11,21 @@ import RecentlyVisitedSites from './components/RecentlyVisitedSites';
 import { IRecentlyVisitedSitesProps } from './components/IRecentlyVisitedSitesProps';
 
 export interface IRecentlyVisitedSitesWebPartProps {
-  description: string;
+  title: string;
 }
 
 export default class RecentlyVisitedSitesWebPart extends BaseClientSideWebPart<IRecentlyVisitedSitesWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IRecentlyVisitedSitesProps > = React.createElement(
+    const element: React.ReactElement<IRecentlyVisitedSitesProps> = React.createElement(
       RecentlyVisitedSites,
       {
-        description: this.properties.description
+        title: this.properties.title,
+        context: this.context,
+        displayMode: this.displayMode,
+        updateProperty: (value: string) => {
+          this.properties.title = value;
+        }
       }
     );
 
@@ -34,23 +38,7 @@ export default class RecentlyVisitedSitesWebPart extends BaseClientSideWebPart<I
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
-      pages: [
-        {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
-        }
-      ]
+      pages: []
     };
   }
 }

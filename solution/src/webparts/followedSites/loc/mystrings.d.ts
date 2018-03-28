@@ -1,7 +1,5 @@
 declare interface IFollowedSitesWebPartStrings {
   PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
 
   // Web part properties
   NrOfFollowedItemsLabel: string;

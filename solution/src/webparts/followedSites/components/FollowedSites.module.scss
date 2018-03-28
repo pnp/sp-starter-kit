@@ -44,4 +44,11 @@
       min-width: auto;
     }
   }
+
+  .pagingNrLabels {
+    display: inline-block;
+    line-height: 32px;
+    margin: 15px 5px;
+    padding: 0 5px;
+  }
 }

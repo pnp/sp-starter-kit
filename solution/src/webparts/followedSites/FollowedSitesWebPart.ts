@@ -65,6 +65,7 @@ export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowe
                 }),
                 PropertyPaneDropdown('sortOrder', {
                   label: strings.SortOrderFollowedItemsLabel,
+                  selectedKey: this.properties.sortOrder,
                   options: [
                     {
                       key: SortOrder.default,
