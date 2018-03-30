@@ -128,9 +128,9 @@
           <!-- redirect -->
           <pnp:CustomAction Name="Redirect" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="f5771a9e-283e-4525-a599-554e8b9e48c2" RegistrationType="None" />
           <!-- siteClassification -->
-          <pnp:CustomAction Name="SiteClassification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="7f69d5cb-5aeb-4bc6-9f77-146aebfd9a8e" RegistrationType="None" />
+          <pnp:CustomAction Name="SiteClassification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="7f69d5cb-5aeb-4bc6-9f77-146aebfd9a8e" Sequence="1" RegistrationType="None" />
           <!-- tabPage -->
-          <pnp:CustomAction Name="TabPage" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="14a8a106-d508-44d0-8fa6-f2f9ed8f571d" RegistrationType="None" />
+          <pnp:CustomAction Name="TabPage" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="14a8a106-d508-44d0-8fa6-f2f9ed8f571d" Sequence="2" RegistrationType="None" />
         </pnp:WebCustomActions>
       </pnp:CustomActions>
       <pnp:Files>

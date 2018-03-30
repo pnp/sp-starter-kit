@@ -73,7 +73,7 @@ if (Test-Url -Url $SiteUrl) {
     {
         # Temporary until schema change is present
         Write-Host "Provisioning solution" -ForegroundColor Cyan
-        $existingApp = Get-PnPApp -Identity "sharepoint-portal-showcase-client-side-solution"
+        $existingApp = Get-PnPApp -Identity "sharepoint-portal-showcase-client-side-solution" -ErrorAction SilentlyContinue
         if($existingApp -ne $null)
         {
             Remove-PnPApp -Identity $existingApp
