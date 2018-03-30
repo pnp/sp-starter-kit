@@ -4,24 +4,56 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneCheckbox
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'StockInformationWebPartStrings';
+
+// import supporting types
 import StockInformation from './components/StockInformation';
 import { IStockInformationProps } from './components/IStockInformationProps';
+import { IStockInformationWebPartProps } from './IStockInformationWebPartProps';
+import { sp } from "@pnp/sp";
 
-export interface IStockInformationWebPartProps {
-  description: string;
-}
-
+// import additional controls/components
 export default class StockInformationWebPart extends BaseClientSideWebPart<IStockInformationWebPartProps> {
 
+  // private member to hold the API Key value
+  private apiKey: string;
+
+  public async onInit(): Promise<void> {
+
+    // get the tenant property for the API Key
+    var storageEntity : any = await sp.web.getStorageEntity("PnP-Portal-AlphaVantage-API-Key");
+    this.apiKey = storageEntity.Value;
+
+    return super.onInit().then(_ => {
+
+      // init sp pnpjs library
+      sp.setup({
+        spfxContext: this.context
+      });
+
+    });
+  }
+
   public render(): void {
+
     const element: React.ReactElement<IStockInformationProps > = React.createElement(
       StockInformation,
       {
-        description: this.properties.description
+        stockSymbol: this.properties.stockSymbol,
+        autoRefresh: this.properties.autoRefresh,
+        apiKey: this.apiKey,
+        needsConfiguration: this.needsConfiguration(),
+        httpClient: this.context.httpClient,
+        configureHandler: () => {
+          this.context.propertyPane.open();
+        },
+        errorHandler: (errorMessage: string) => {
+          this.context.statusRenderer.renderError(this.domElement, errorMessage);
+        }
       }
     );
 
@@ -43,8 +75,11 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('stockSymbol', {
+                  label: strings.StockSymbolFieldLabel
+                }),
+                PropertyPaneCheckbox('autoRefresh', {
+                  text: strings.AutoRefreshFieldLabel
                 })
               ]
             }
@@ -53,4 +88,17 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
       ]
     };
   }
-}
+
+  protected get disableReactivePropertyChanges(): boolean {
+    return true;
+  }
+
+  protected onAfterPropertyPaneChangesApplied(): void {
+    this.context.statusRenderer.clearError(this.domElement);
+  }
+
+  private needsConfiguration(): boolean {
+    // as long as we don't have the stock symbol, we need configuration
+    return !this.properties.stockSymbol ||
+      this.properties.stockSymbol.length === 0;
+  }}
