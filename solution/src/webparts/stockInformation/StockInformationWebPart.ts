@@ -19,14 +19,7 @@ import { sp } from "@pnp/sp";
 // import additional controls/components
 export default class StockInformationWebPart extends BaseClientSideWebPart<IStockInformationWebPartProps> {
 
-  // private member to hold the API Key value
-  private apiKey: string;
-
   public async onInit(): Promise<void> {
-
-    // get the tenant property for the API Key
-    var storageEntity : any = await sp.web.getStorageEntity("PnP-Portal-AlphaVantage-API-Key");
-    this.apiKey = storageEntity.Value;
 
     return super.onInit().then(_ => {
 
@@ -38,14 +31,20 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
     });
   }
 
-  public render(): void {
+  public async render(): Promise<void> {
+
+    // get the tenant property for the API Key
+    const storageEntity : any = await sp.web.getStorageEntity("PnP-Portal-AlphaVantage-API-Key");
+
+    // variable to hold the API Key value
+    const apiKey: string = storageEntity.Value;
 
     const element: React.ReactElement<IStockInformationProps > = React.createElement(
       StockInformation,
       {
         stockSymbol: this.properties.stockSymbol,
         autoRefresh: this.properties.autoRefresh,
-        apiKey: this.apiKey,
+        apiKey: apiKey,
         needsConfiguration: this.needsConfiguration(),
         httpClient: this.context.httpClient,
         configureHandler: () => {
