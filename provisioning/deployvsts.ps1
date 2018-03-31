@@ -6,9 +6,12 @@ Param(
     [string]$Username,
 
     [Parameter(Mandatory = $true, Position = 3)]
-    [string]$Password
+    [string]$Password,
+
+    [Parameter(Mandatory = $false, Position = 4)]
+    [string]$StockAPIKey = ""
 )    
 
 $secPassword = ConvertTo-SecureString -String $Password -AsPlainText -Force
 $creds = New-Object System.Management.Automation.PSCredential ($Username, $secPassword)
-.\deploy.ps1 -SiteUrl $SiteUrl -Credentials $creds
+.\deploy.ps1 -SiteUrl $SiteUrl -Credentials $creds -StockAPIKey $StockAPIKey

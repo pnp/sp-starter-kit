@@ -14,7 +14,7 @@ import * as strings from 'StockInformationWebPartStrings';
 import StockInformation from './components/StockInformation';
 import { IStockInformationProps } from './components/IStockInformationProps';
 import { IStockInformationWebPartProps } from './IStockInformationWebPartProps';
-import { sp } from "@pnp/sp";
+import { sp, StorageEntity } from "@pnp/sp";
 
 // import additional controls/components
 export default class StockInformationWebPart extends BaseClientSideWebPart<IStockInformationWebPartProps> {
@@ -33,11 +33,8 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
 
   public async render(): Promise<void> {
 
-    // get the tenant property for the API Key
-    const storageEntity : any = await sp.web.getStorageEntity("PnP-Portal-AlphaVantage-API-Key");
-
-    // variable to hold the API Key value
-    const apiKey: string = storageEntity.Value;
+    // get the API Key value
+    const apiKey: string = await this.getApiKey();
 
     const element: React.ReactElement<IStockInformationProps > = React.createElement(
       StockInformation,
@@ -88,16 +85,42 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
     };
   }
 
+  // method to disable reactive properties in the property pane
   protected get disableReactivePropertyChanges(): boolean {
     return true;
   }
 
+  // method to refresh any error after properties configuration
   protected onAfterPropertyPaneChangesApplied(): void {
     this.context.statusRenderer.clearError(this.domElement);
   }
 
+  // method to determine if the web part has to be configured
   private needsConfiguration(): boolean {
     // as long as we don't have the stock symbol, we need configuration
     return !this.properties.stockSymbol ||
       this.properties.stockSymbol.length === 0;
-  }}
+  }
+
+  // method to retrieve the API Key for Alpha Vantage
+  private async getApiKey(): Promise<string> {
+
+    const apiKeyName: string = "PnP-Portal-AlphaVantage-API-Key";
+
+    // try to get the API Key from the local session storage
+    let apiKey: string = sessionStorage.getItem(apiKeyName);
+
+    // if it is not there, load it from the tenant properties 
+    // and store its value in the session storage
+    if (!apiKey) {
+      const storageEntity: StorageEntity = await sp.web.getStorageEntity(apiKeyName);
+      if (storageEntity) {
+        apiKey = storageEntity.Value;
+        sessionStorage.setItem(apiKeyName, apiKey);
+      }
+    }
+
+    // return the API Key value
+    return(apiKey);
+  }
+}

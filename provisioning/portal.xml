@@ -3,6 +3,7 @@
     <pnp:Parameters>
       <pnp:Parameter Key="WeatherCity">Helsinki</pnp:Parameter>
       <pnp:Parameter Key="PortalTitle">SP Portal Showcase - Helsinki Style</pnp:Parameter>
+      <pnp:Parameter Key="StockSymbol">MSFT</pnp:Parameter>
     </pnp:Parameters>
   </pnp:Preferences>
   <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
@@ -70,7 +71,7 @@
             <pnp:Section Order="5" Type="ThreeColumn">
               <pnp:Controls>
                 <!-- stockInformation -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="50256fc2-a28f-4544-900e-32724d32bc7f" Order="1" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="50256fc2-a28f-4544-900e-32724d32bc7f" Order="1" Column="1" JsonControlData="{&quot;id&quot;:&quot;50256fc2-a28f-4544-900e-32724d32bc7f&quot;,&quot;instanceId&quot;:&quot;853ce5f5-c750-42d1-badb-78d4781b1f1f&quot;,&quot;title&quot;:&quot;Stock Information&quot;,&quot;description&quot;:&quot;Shows stock information for the specified symbol&quot;,&quot;serverProcessedContent&quot;:{&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}},&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;stockSymbol&quot;:&quot;{parameter:StockSymbol}&quot;,&quot;autoRefresh&quot;:&quot;true&quot;}}" />
                 <!-- worldTime -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="4f87b698-f910-451f-b4ea-7848a472af0f" Order="2" Column="1" />
                 <!-- tiles -->

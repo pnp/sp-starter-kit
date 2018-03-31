@@ -16,6 +16,12 @@ Param(
     [string]$WeatherCity = "Helsinki",
 
     [Parameter(Mandatory = $false)]
+    [string]$StockSymbol = "MSFT",
+
+    [Parameter(Mandatory = $false)]
+    [string]$StockAPIKey = "",
+
+    [Parameter(Mandatory = $false)]
     [string]$PortalTitle = "SP Portal Showcase - Helsinki Style",
 
     [Parameter(Mandatory = $false)]
@@ -93,8 +99,11 @@ if (Test-Url -Url $SiteUrl) {
         Register-PnPHubSite -Site $siteUrl -Connection $connection 2>&1 | Out-Null
     }
 
+    Write-Host "Storing Stock API Key in tenant properties"
+    Set-PnPStorageEntity -Key "PnP-Portal-AlphaVantage-API-Key" -Value $StockAPIKey -Comment "API Key for Alpha Advantage REST Stock service" -Description "API Key for Alpha Advantage REST Stock service" -Connection $connection
+
     Write-Host "Applying template to portal" -ForegroundColor Cyan
-    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle} -Connection $connection
+    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle;"StockSymbol"=$StockSymbol} -Connection $connection
 }
 else {
     Write-Error -Message "Url is of incorrect format"
