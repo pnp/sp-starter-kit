@@ -20,7 +20,8 @@
     "description": { "default": "Stock information" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "StockInformation"
+      "stockSymbol": "",
+      "autoRefresh": false
     }
   }]
 }
