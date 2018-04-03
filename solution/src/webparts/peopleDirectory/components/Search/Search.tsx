@@ -11,8 +11,8 @@ export class Search extends React.Component<SearchProps, {}> {
       <div className={styles.search}>
         <SearchBox
           placeholder='Search'
-          onSearch={this.handleSearch.bind(this)}
-          onClear={this.handleClear.bind(this)}
+          onSearch={this.handleSearch}
+          onClear={this.handleClear}
           value={this.props.searchQuery}
           className={styles.searchBox}
         />
@@ -20,11 +20,11 @@ export class Search extends React.Component<SearchProps, {}> {
     );
   }
 
-  private handleSearch(searchQuery: string): void {
+  private handleSearch = (searchQuery: string): void => {
     this.props.onSearch(searchQuery);
   }
 
-  private handleClear(): void {
+  private handleClear = (): void => {
     this.props.onClear();
   }
 }

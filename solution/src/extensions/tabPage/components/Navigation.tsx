@@ -34,13 +34,13 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
           iconProps={{iconName: this.state.homeButtonIcon}}
           title='Set this page as your home page'
           className={styles.buttonIcon}
-          onClick={this.handleHomePageSet.bind(this)}
+          onClick={this.handleHomePageSet}
         />
       </div>
     );
   }
 
-  private handleHomePageSet(): void {
+  private handleHomePageSet = (): void => {
     this.props.onHomePageSet();
     this.setState({
       homeButtonIcon: 'CheckMark'
