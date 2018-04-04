@@ -1,3 +1,3 @@
-export * from './NavigationProps';
-export * from './NavigationState';
+export * from './INavigationProps';
+export * from './INavigationState';
 export * from './Navigation';

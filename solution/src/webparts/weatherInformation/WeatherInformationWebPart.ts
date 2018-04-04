@@ -22,12 +22,12 @@ export default class WeatherInformationWebPart extends BaseClientSideWebPart<IWe
     const element: React.ReactElement<IWeatherInformationProps> = React.createElement(
       WeatherInformation,
       {
-        needsConfiguration: this.needsConfiguration(),
+        needsConfiguration: this._needsConfiguration(),
         location: this.properties.location,
         unit: this.properties.unit,
         httpClient: this.context.httpClient,
-        configureHandler: this.onConfigure.bind(this),
-        errorHandler: this.onError.bind(this)
+        configureHandler: this._onConfigure,
+        errorHandler: this._onError
       }
     );
 
@@ -51,7 +51,7 @@ export default class WeatherInformationWebPart extends BaseClientSideWebPart<IWe
               groupFields: [
                 PropertyPaneTextField('location', {
                   label: strings.LocationFieldLabel,
-                  onGetErrorMessage: this.validateLocation.bind(this)
+                  onGetErrorMessage: this._validateLocation.bind(this)
                 }),
                 PropertyPaneChoiceGroup('unit', {
                   label: strings.UnitFieldLabel,
@@ -74,36 +74,58 @@ export default class WeatherInformationWebPart extends BaseClientSideWebPart<IWe
     };
   }
 
+  /**
+   * Set the web part property pane to non-reactive, to avoid excessive retrieval
+   * of data from the third party API when typing the name of the location for
+   * which to retrieve weather information
+   */
   protected get disableReactivePropertyChanges(): boolean {
     return true;
   }
 
   protected onAfterPropertyPaneChangesApplied(): void {
+    // after one or more web part properties have been changed
+    // clear any error messages displayed in the web part
     this.context.statusRenderer.clearError(this.domElement);
   }
 
-  private onConfigure(): void {
+  /**
+   * Handles clicking the Configure button in the placeholder
+   */
+  private _onConfigure = (): void => {
+    // open the property pane to let the user configure the web part
     this.context.propertyPane.open();
   }
 
-  private onError(errorMessage: string): void {
+  /**
+   * Handles any error that occurred in the component
+   */
+  private _onError = (errorMessage: string): void => {
+    // render the message for the error that occurred in the web part
     this.context.statusRenderer.renderError(this.domElement, errorMessage);
   }
 
-  private validateLocation(value: string): string {
+  /**
+   * Verify if the specified location is valid
+   * @param value Location specified in the web part properties
+   */
+  private _validateLocation(value: string): string {
     if (value === null ||
       value.trim().length === 0) {
-      return 'Specify a location';
+      return strings.LocationNotSpecifiedError;
     }
 
     if (value.indexOf('"') > -1) {
-      return '" (double quote) is not allowed in the location name';
+      return strings.LocationDoubleQuoteNotAllowed;
     }
 
     return '';
   }
 
-  private needsConfiguration(): boolean {
+  /**
+   * Check if the web part has been configured
+   */
+  private _needsConfiguration(): boolean {
     return !this.properties.location ||
       this.properties.location.length === 0 ||
       !this.properties.unit ||

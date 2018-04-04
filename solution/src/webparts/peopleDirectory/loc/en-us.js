@@ -1,7 +1,9 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
-    "DescriptionFieldLabel": "Description Field"
+    "SearchButtonText": "Search",
+    "LoadingSpinnerLabel": "Loading people directory...",
+    "NoPeopleFoundLabel": "No people found",
+    "SearchBoxPlaceholder": "Search",
+    "Error": "Error"
   }
 });

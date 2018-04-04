@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { NavigationProps, NavigationState } from '.';
+import { INavigationProps, INavigationState } from '.';
 import styles from './Navigation.module.scss';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import * as strings from 'TabPageApplicationCustomizerStrings';
 
-export class Navigation extends React.Component<NavigationProps, NavigationState> {
-  constructor(props: NavigationProps) {
+export class Navigation extends React.Component<INavigationProps, INavigationState> {
+  constructor(props: INavigationProps) {
     super(props);
 
     this.state = {
@@ -14,7 +15,26 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
     };
   }
 
-  public render(): React.ReactElement<NavigationProps> {
+  private _handleHomePageSet = (): void => {
+    // set the current home page as the preferred home page for the current user
+    this.props.onHomePageSet();
+    // update button icon to check mark as feedback to the click
+    this.setState({
+      homeButtonIcon: 'CheckMark'
+    });
+  }
+
+  /**
+   * Set as home page button is enabled only when user is on the Personal
+   * or Organization page. If the user is on a page different than the
+   * Personal or Organization page, the value of the this.props.currentPage
+   * property is empty.
+   */
+  private _canSetHomePage(): boolean {
+    return this.props.currentPage !== '';
+  }
+
+  public render(): React.ReactElement<INavigationProps> {
     return (
       <div className={styles.navigation}>
         <DefaultButton
@@ -30,28 +50,15 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
           data-link={this.props.organizationLabel}
         />
         <DefaultButton
-          disabled={!this.canSetHomePage()}
+          // only the personal or the organization home page can be set
+          // as home page
+          disabled={!this._canSetHomePage()}
           iconProps={{iconName: this.state.homeButtonIcon}}
-          title='Set this page as your home page'
+          title={strings.SetPageAsHomePageTitle}
           className={styles.buttonIcon}
-          onClick={this.handleHomePageSet}
+          onClick={this._handleHomePageSet}
         />
       </div>
     );
-  }
-
-  private handleHomePageSet = (): void => {
-    this.props.onHomePageSet();
-    this.setState({
-      homeButtonIcon: 'CheckMark'
-    });
-  }
-
-  /**
-   * Set as home page button is enabled only when user is on the Personal
-   * or Organization page.
-   */
-  private canSetHomePage(): boolean {
-    return this.props.currentPage !== '';
   }
 }
