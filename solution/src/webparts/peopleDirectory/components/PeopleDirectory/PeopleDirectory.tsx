@@ -55,9 +55,9 @@ export class PeopleDirectory extends React.Component<PeopleDirectoryProps, Peopl
         <IndexNavigation
           selectedIndex={selectedIndex}
           searchQuery={searchQuery}
-          onIndexSelect={this.handleIndexSelect.bind(this)}
-          onSearch={this.handleSearch.bind(this)}
-          onSearchClear={this.handleSearchClear.bind(this)} />
+          onIndexSelect={this.handleIndexSelect}
+          onSearch={this.handleSearch}
+          onSearchClear={this.handleSearchClear} />
         {loading &&
           <Spinner size={SpinnerSize.large} label='Loading people directory...' />
         }
@@ -72,7 +72,7 @@ export class PeopleDirectory extends React.Component<PeopleDirectoryProps, Peopl
     );
   }
 
-  private handleIndexSelect(index: string): void {
+  private handleIndexSelect = (index: string): void => {
     this.setState({
       selectedIndex: index,
       searchQuery: ''
@@ -80,7 +80,7 @@ export class PeopleDirectory extends React.Component<PeopleDirectoryProps, Peopl
     this.loadPeopleInfo(index, null);
   }
 
-  private handleSearch(searchQuery: string): void {
+  private handleSearch = (searchQuery: string): void => {
     this.setState({
       selectedIndex: 'Search',
       searchQuery: searchQuery
@@ -88,7 +88,7 @@ export class PeopleDirectory extends React.Component<PeopleDirectoryProps, Peopl
     this.loadPeopleInfo(null, searchQuery);
   }
 
-  private handleSearchClear(): void {
+  private handleSearchClear = (): void => {
     this.setState({
       selectedIndex: 'A',
       searchQuery: ''

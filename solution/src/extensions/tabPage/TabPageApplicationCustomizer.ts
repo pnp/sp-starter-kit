@@ -46,7 +46,7 @@ export default class TabPageApplicationCustomizer extends BaseApplicationCustomi
         organizationLabel: strings.Organization,
         personalPageName: this.properties.personalPageName,
         organizationPageName: this.properties.organizationPageName,
-        onHomePageSet: this.handleHomePageSet.bind(this)
+        onHomePageSet: this.handleHomePageSet
       }
     );
 
@@ -99,7 +99,7 @@ export default class TabPageApplicationCustomizer extends BaseApplicationCustomi
   /**
    * Stores the current page as the default home page for the user.
    */
-  private handleHomePageSet(): void {
+  private handleHomePageSet = (): void => {
     const newHomePage: string = this.getHomePageType();
     localStorage.setItem(TabPageApplicationCustomizer.storageKey, newHomePage);
   }

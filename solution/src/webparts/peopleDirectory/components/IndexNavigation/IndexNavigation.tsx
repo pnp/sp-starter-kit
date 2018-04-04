@@ -5,6 +5,10 @@ import { Search } from '../Search';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 
 export class IndexNavigation extends React.Component<IndexNavigationProps, {}> {
+  public shouldComponentUpdate(nextProps: IndexNavigationProps, nextState: {}, nextContext: any): boolean {
+    return this.props.selectedIndex !== nextProps.selectedIndex;
+  }
+
   public render(): React.ReactElement<IndexNavigationProps> {
     const az = Array.apply(null, { length: 26 }).map((x: string, i: number): string => { return String.fromCharCode(65 + i); });
     const indexes: JSX.Element[] = az.map(index => <PivotItem linkText={index} itemKey={index} key={index} />);
@@ -17,14 +21,14 @@ export class IndexNavigation extends React.Component<IndexNavigationProps, {}> {
 
     return (
       <div className={styles.indexNavigation}>
-        <Pivot onLinkClick={this.handleIndexSelect.bind(this)} selectedKey={this.props.selectedIndex}>
+        <Pivot onLinkClick={this.handleIndexSelect} selectedKey={this.props.selectedIndex}>
           {indexes}
         </Pivot>
       </div>
     );
   }
 
-  private handleIndexSelect(item?: PivotItem, ev?: React.MouseEvent<HTMLElement>): void {
+  private handleIndexSelect = (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>): void => {
     this.props.onIndexSelect(item.props.linkText);
   }
 }

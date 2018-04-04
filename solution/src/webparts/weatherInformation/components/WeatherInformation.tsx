@@ -39,8 +39,6 @@ export default class WeatherInformation extends React.Component<IWeatherInformat
 
     let weatherInfo: WeatherInformationQueryResults;
 
-    console.log(`https://query.yahooapis.com/v1/public/yql?q=select location, item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text='${escape(location)}') and u='${unit}'&format=json`);
-
     this.props.httpClient
       .get(`https://query.yahooapis.com/v1/public/yql?q=select location, item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text="${location}") and u='${unit}'&format=json`, HttpClient.configurations.v1)
       .then((response: HttpClientResponse): Promise<WeatherInformationData> => {

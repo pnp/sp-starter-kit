@@ -19,10 +19,4 @@ export class PeopleList extends React.Component<PeopleListProps, {}> {
       </div>
     );
   }
-
-  private handleIndexSelect(index: string): void {
-    this.setState({
-      selectedIndex: index
-    });
-  }
 }
