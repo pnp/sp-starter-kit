@@ -1,30 +1,31 @@
 import * as React from 'react';
 import styles from './Search.module.scss';
-import { SearchProps } from '.';
+import { ISearchProps } from '.';
 import {
   SearchBox
 } from 'office-ui-fabric-react/lib/SearchBox';
+import * as strings from 'PeopleDirectoryWebPartStrings';
 
-export class Search extends React.Component<SearchProps, {}> {
-  public render(): React.ReactElement<SearchProps> {
+export class Search extends React.Component<ISearchProps, {}> {
+  private _handleSearch = (searchQuery: string): void => {
+    this.props.onSearch(searchQuery);
+  }
+
+  private _handleClear = (): void => {
+    this.props.onClear();
+  }
+
+  public render(): React.ReactElement<ISearchProps> {
     return (
       <div className={styles.search}>
         <SearchBox
-          placeholder='Search'
-          onSearch={this.handleSearch}
-          onClear={this.handleClear}
+          placeholder={strings.SearchBoxPlaceholder}
+          onSearch={this._handleSearch}
+          onClear={this._handleClear}
           value={this.props.searchQuery}
           className={styles.searchBox}
         />
       </div>
     );
-  }
-
-  private handleSearch = (searchQuery: string): void => {
-    this.props.onSearch(searchQuery);
-  }
-
-  private handleClear = (): void => {
-    this.props.onClear();
   }
 }

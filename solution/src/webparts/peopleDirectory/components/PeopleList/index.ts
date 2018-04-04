@@ -1,2 +1,2 @@
-export * from './PeopleListProps';
+export * from './IPeopleListProps';
 export * from './PeopleList';

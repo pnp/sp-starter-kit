@@ -1,10 +1,13 @@
-export interface PeopleSearchResults {
+/**
+ * Interface describing people search results coming from SharePoint Search
+ */
+export interface IPeopleSearchResults {
   PrimaryQueryResult: {
     RelevantResults: {
       RowCount: number;
       Table: {
         Rows: {
-          Cells: Cell[];
+          Cells: ICell[];
         }[];
       };
       TotalRows: number;
@@ -16,7 +19,7 @@ export interface PeopleSearchResults {
   };
 }
 
-export interface Cell {
+export interface ICell {
   Key: string;
   Value: string;
   ValueType: string;
