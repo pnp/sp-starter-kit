@@ -1,0 +1,11 @@
+{
+    "bindings": [
+      {
+        "name": "triggerInput",
+        "type": "queueTrigger",
+        "direction": "in",
+        "queueName": "pnpspportalshowcasequeue"
+      }
+    ],
+    "disabled": false
+  }

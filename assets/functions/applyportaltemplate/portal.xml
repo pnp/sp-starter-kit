@@ -1,0 +1,142 @@
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a">
+    <pnp:Parameters>
+      <pnp:Parameter Key="WeatherCity">Helsinki</pnp:Parameter>
+      <pnp:Parameter Key="PortalTitle">SP Portal Showcase - Helsinki Style</pnp:Parameter>
+      <pnp:Parameter Key="StockSymbol">MSFT</pnp:Parameter>
+    </pnp:Parameters>
+  </pnp:Preferences>
+  <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
+    <pnp:ProvisioningTemplate ID="PORTAL-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
+      <pnp:WebSettings WelcomePage="SitePages/Home.aspx" Title="SP Portal Showcase" />
+      <pnp:Security>
+        <pnp:AdditionalAdministrators>
+          <pnp:User Name="erwin@officedevpnp.onmicrosoft.com"/>
+          <pnp:User Name="vesaj@officedevpnp.onmicrosoft.com"/>
+          <pnp:User Name="paolo@officedevpnp.onmicrosoft.com"/>
+          <pnp:User Name="elio@officedevpnp.onmicrosoft.com"/>
+          <pnp:User Name="waldek@officedevpnp.onmicrosoft.com"/>
+          <pnp:User Name="bert@officedevpnp.onmicrosoft.com"/>
+        </pnp:AdditionalAdministrators>
+      </pnp:Security>
+      <pnp:ClientSidePages>
+        <pnp:ClientSidePage PageName="Home.aspx" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
+          <pnp:Sections>
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <!-- Banner -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="ab30ff0a-9241-4d5d-8c6f-1dc07b1d1053" Order="1" Column="1" JsonControlData="{&quot;id&quot;: &quot;ab30ff0a-9241-4d5d-8c6f-1dc07b1d1053&quot;,&quot;instanceId&quot;: &quot;32fc5185-cc86-4010-939c-50e4156026f9&quot;,&quot;title&quot;: &quot;Banner&quot;,&quot;description&quot;: &quot;Renders a banner style presentation with text and image&quot;,&quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;: {},&quot;searchablePlainTexts&quot;: {&quot;bannerText&quot;: &quot;{parameter:PortalTitle}&quot;},&quot;imageSources&quot;: {&quot;bannerImage&quot;: &quot;{site}/assets/hel2.jpg&quot;},&quot;links&quot;: {                &quot;bannerLink&quot;: &quot;&quot;}}, &quot;dataVersion&quot;: &quot;1.0&quot;,&quot;properties&quot;: {&quot;bannerHeight&quot;: 280,&quot;useParallax&quot;: true}}" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="2" Type="ThreeColumn">
+              <pnp:Controls>
+                <!-- Followed Sites -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="92d5cc6c-fae5-4e91-9583-ab33950f5a8d" Order="1" Column="1" />
+                <!-- Links -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="e2365185-558d-4b6d-bee8-3490cf04a0a6" Order="1" Column="2" />
+                 <!-- weatherInformation -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9" Order="1" Column="3" JsonControlData="{&quot;id&quot;:&quot;0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9&quot;,&quot;instanceId&quot;:&quot;21e23e1d-69d7-4aed-8fca-1599d2440477&quot;,&quot;title&quot;:&quot;Weather&quot;,&quot;description&quot;:&quot;Shows weather information for the specified location&quot;,&quot;serverProcessedContent&quot;:{&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}},&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;location&quot;:&quot;{parameter:WeatherCity}&quot;,&quot;unit&quot;:&quot;c&quot;}}" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="3" Type="ThreeColumn">
+              <pnp:Controls>
+                  <!-- peopleDirectory -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="d9d6f014-3fd9-4fb9-af54-044c7c43e081" Order="1" Column="1" />
+                <!-- personalCalendar -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="bbcd646e-6b86-4480-a68a-850c98f94519" Order="1" Column="2" />
+                <!-- personalContacts -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="a95742b9-5e67-4a11-8e51-7a76812a9d60" Order="1" Column="3" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="4" Type="ThreeColumn">
+              <pnp:Controls>
+                <!-- personalEmail -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="ac41debd-d92c-4de0-9d67-e7bc191030ee" Order="1" Column="1" />
+                <!-- personalTasks -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="ee972022-9937-4b69-9c25-eaf77003f4f9" Order="1" Column="2" />
+                <!-- recentContacts -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="9a151252-c744-4dc6-94f7-a574dda413d6" Order="1" Column="3" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="4" Type="ThreeColumn">
+              <pnp:Controls>
+                <!-- recentlyUsedDocuments -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="596e3e97-f3ca-4cf9-9b8e-cb852f063356" Order="1" Column="1" />
+                <!-- recentlyVisitedSites -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="277282d0-debb-42d6-b4b3-30ec543964fd" Order="1" Column="2" />
+                <!-- siteInformation -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="e2aa860d-ac7b-4a7f-b590-073e62dc9bc0" Order="1" Column="3" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="5" Type="ThreeColumn">
+              <pnp:Controls>
+                <!-- stockInformation -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="50256fc2-a28f-4544-900e-32724d32bc7f" Order="1" Column="1" JsonControlData="{&quot;id&quot;:&quot;50256fc2-a28f-4544-900e-32724d32bc7f&quot;,&quot;instanceId&quot;:&quot;853ce5f5-c750-42d1-badb-78d4781b1f1f&quot;,&quot;title&quot;:&quot;Stock Information&quot;,&quot;description&quot;:&quot;Shows stock information for the specified symbol&quot;,&quot;serverProcessedContent&quot;:{&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}},&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;stockSymbol&quot;:&quot;{parameter:StockSymbol}&quot;,&quot;autoRefresh&quot;:true}}" />
+                <!-- worldTime -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="4f87b698-f910-451f-b4ea-7848a472af0f" Order="2" Column="1" />
+                <!-- tiles -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="26cb4af3-7f48-4737-b82a-4e24167c2d07" Order="1" Column="2" />
+                <!-- lobIntegration -->
+                <pnp:CanvasControl WebPartType="Custom" ControlId="3228280d-0776-432e-a957-5fb31edf8e00" Order="1" Column="3" />   
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+      </pnp:ClientSidePages>
+      <pnp:Lists>
+        <pnp:ListInstance Title="Assets" Description="" DocumentTemplate="{site}/Assets/Forms/template.dotx" TemplateType="101" Url="Assets" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" DefaultDisplayFormUrl="{site}/Assets/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/Assets/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/Assets/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itdl.png?rev=44" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x0101" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{7744FFA9-FE4E-4F5F-874B-4D693CC3672F}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Documents" Url="{site}/Assets/Forms/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=44">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="FileLeafRef" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="DocIcon" />
+                <FieldRef Name="LinkFilename" />
+                <FieldRef Name="Modified" />
+                <FieldRef Name="Editor" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="ccc1037f-f65e-434a-868e-8c98af31fe29" Name="_ComplianceFlags" DisplayName="Label setting" />
+            <pnp:FieldRef ID="d4b6480a-4bed-4094-9a52-30181ea38f1d" Name="_ComplianceTag" DisplayName="Labels" />
+            <pnp:FieldRef ID="92be610e-ddbb-49f4-b3b1-5c2bc768df8f" Name="_ComplianceTagWrittenTime" DisplayName="Label Applied" />
+            <pnp:FieldRef ID="418d7676-2d6f-42cf-a16a-e43d2971252a" Name="_ComplianceTagUserId" DisplayName="Label applied by" />
+            <pnp:FieldRef ID="8382d247-72a9-44b1-9794-7b177edc89f3" Name="_IsRecord" DisplayName="Item is a Record" />
+            <pnp:FieldRef ID="d307dff3-340f-44a2-9f4b-fbfe1ba07459" Name="_CommentCount" DisplayName="Comment count" />
+            <pnp:FieldRef ID="db8d9d6d-dc9a-4fbd-85f3-4a753bfdc58c" Name="_LikeCount" DisplayName="Like count" />
+            <pnp:FieldRef ID="3a6b296c-3f50-445c-a13f-9c679ea9dda3" Name="ComplianceAssetId" DisplayName="Compliance Asset Id" />
+          </pnp:FieldRefs>
+        </pnp:ListInstance>
+      </pnp:Lists>
+      <pnp:CustomActions>
+        <pnp:WebCustomActions>
+          <!-- alertNotification -->
+          <pnp:CustomAction Name="AlertNotification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="aa8dd198-e2ee-45c5-b746-821d001bb0e1" RegistrationType="None" />
+          <!-- collabFooter -->
+          <pnp:CustomAction Name="CollabFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="c0ab3b94-8609-40cf-861e-2a1759170b43" RegistrationType="None" />
+          <!-- portalFooter -->
+          <pnp:CustomAction Name="PortalFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="b8eb4ec9-934a-4248-a15f-863d27f94f60" RegistrationType="None" />
+          <!-- redirect -->
+          <pnp:CustomAction Name="Redirect" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="f5771a9e-283e-4525-a599-554e8b9e48c2" RegistrationType="None" />
+          <!-- siteClassification -->
+          <pnp:CustomAction Name="SiteClassification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="7f69d5cb-5aeb-4bc6-9f77-146aebfd9a8e" Sequence="1" RegistrationType="None" />
+          <!-- tabPage -->
+          <pnp:CustomAction Name="TabPage" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="14a8a106-d508-44d0-8fa6-f2f9ed8f571d" Sequence="2" RegistrationType="None" />
+        </pnp:WebCustomActions>
+      </pnp:CustomActions>
+      <pnp:Files>
+        <pnp:File Src="..\Assets\images\hel2.jpg" Overwrite="true" Folder="Assets"></pnp:File>
+      </pnp:Files>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

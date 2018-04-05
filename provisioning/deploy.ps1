@@ -38,7 +38,7 @@ Param(
 $modules = Get-Module -Name SharePointPnPPowerShellOnline -ListAvailable
 if ($modules -eq $null) {
     # Not installed.
-    Install-Module -Name SharePointPnPPowerShellOnline -Scope CurrentUser
+    Install-Module -Name SharePointPnPPowerShellOnline -Scope CurrentUser -Force
     Import-Module -Name SharePointPnPPowerShellOnline -DisableNameChecking
 }
 
