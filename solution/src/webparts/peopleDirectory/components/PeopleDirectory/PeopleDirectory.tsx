@@ -11,17 +11,18 @@ import {
 } from 'office-ui-fabric-react/lib/MessageBar';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import {
-  PeopleDirectoryProps,
-  PeopleDirectoryState,
-  PeopleSearchResults,
-  Person,
-  Cell
+  IPeopleDirectoryProps,
+  IPeopleDirectoryState,
+  IPeopleSearchResults,
+  IPerson,
+  ICell
 } from '.';
 import { IndexNavigation } from '../IndexNavigation';
 import { PeopleList } from '../PeopleList';
+import * as strings from 'PeopleDirectoryWebPartStrings';
 
-export class PeopleDirectory extends React.Component<PeopleDirectoryProps, PeopleDirectoryState> {
-  constructor(props: PeopleDirectoryProps) {
+export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeopleDirectoryState> {
+  constructor(props: IPeopleDirectoryProps) {
     super(props);
 
     this.state = {
@@ -33,70 +34,46 @@ export class PeopleDirectory extends React.Component<PeopleDirectoryProps, Peopl
     };
   }
 
-  public componentDidMount(): void {
-    this.loadPeopleInfo(this.state.selectedIndex, null);
-  }
-
-  public render(): React.ReactElement<PeopleDirectoryProps> {
-    const { loading, errorMessage, selectedIndex, searchQuery, people } = this.state;
-
-    return (
-      <div className={styles.peopleDirectory}>
-        {!loading &&
-          errorMessage &&
-          <MessageBar
-            messageBarType={MessageBarType.error}
-            isMultiline={false}>Error: {errorMessage}</MessageBar>
-        }
-        <WebPartTitle
-          displayMode={this.props.displayMode}
-          title={this.props.title}
-          updateProperty={this.props.onTitleUpdate} />
-        <IndexNavigation
-          selectedIndex={selectedIndex}
-          searchQuery={searchQuery}
-          onIndexSelect={this.handleIndexSelect}
-          onSearch={this.handleSearch}
-          onSearchClear={this.handleSearchClear} />
-        {loading &&
-          <Spinner size={SpinnerSize.large} label='Loading people directory...' />
-        }
-        {!loading &&
-          !errorMessage &&
-          <PeopleList
-            selectedIndex={selectedIndex}
-            hasSearchQuery={searchQuery !== ''}
-            people={people} />
-        }
-      </div>
-    );
-  }
-
-  private handleIndexSelect = (index: string): void => {
+  private _handleIndexSelect = (index: string): void => {
+    // switch the current tab to the tab selected in the navigation
+    // and reset the search query
     this.setState({
       selectedIndex: index,
       searchQuery: ''
     });
-    this.loadPeopleInfo(index, null);
+    // load information about people matching the selected tab
+    this._loadPeopleInfo(index, null);
   }
 
-  private handleSearch = (searchQuery: string): void => {
+  private _handleSearch = (searchQuery: string): void => {
+    // activate the Search tab in the navigation and set the
+    // specified text as the current search query
     this.setState({
       selectedIndex: 'Search',
       searchQuery: searchQuery
     });
-    this.loadPeopleInfo(null, searchQuery);
+    // load information about people matching the specified search query
+    this._loadPeopleInfo(null, searchQuery);
   }
 
-  private handleSearchClear = (): void => {
+  private _handleSearchClear = (): void => {
+    // activate the A tab in the navigation and clear the previous search query
     this.setState({
       selectedIndex: 'A',
       searchQuery: ''
     });
-    this.loadPeopleInfo('A', null);
+    // load information about people whose last name begins with A
+    this._loadPeopleInfo('A', null);
   }
 
-  private loadPeopleInfo(index: string, searchQuery: string): void {
+  /**
+   * Loads information about people using SharePoint Search
+   * @param index Selected tab in the index navigation or 'Search', if the user is searching
+   * @param searchQuery Current search query or empty string if not searching
+   */
+  private _loadPeopleInfo(index: string, searchQuery: string): void {
+    // update the UI notifying the user that the component will now load its data
+    // clear any previously set error message and retrieved list of people
     this.setState({
       loading: true,
       errorMessage: null,
@@ -104,19 +81,28 @@ export class PeopleDirectory extends React.Component<PeopleDirectoryProps, Peopl
     });
 
     const headers: HeadersInit = new Headers();
+    // suppress metadata to minimize the amount of data loaded from SharePoint
     headers.append("accept", "application/json;odata.metadata=none");
 
+    // if no search query has been specified, retrieve people whose last name begins with the
+    // specified letter. if a search query has been specified, escape any ' (single quotes)
+    // by replacing them with two '' (single quotes). Without this, the search query would fail
     const query: string = searchQuery === null ? `LastName:${index}*` : searchQuery.replace(/'/g, `''`);
 
+    // retrieve information about people using SharePoint People Search
+    // sort results ascending by the last name
     this.props.spHttpClient
       .get(`${this.props.webUrl}/_api/search/query?querytext='${query}'&selectproperties='PreferredName,WorkEmail,PictureURL,WorkPhone'&sortlist='LastName:ascending'&sourceid='b09a7990-05ea-4af9-81ef-edfab16c4e31'&rowlimit=500`, SPHttpClient.configurations.v1, {
         headers: headers
       })
-      .then((res: SPHttpClientResponse): Promise<PeopleSearchResults> => {
+      .then((res: SPHttpClientResponse): Promise<IPeopleSearchResults> => {
         return res.json();
       })
-      .then((res: PeopleSearchResults): void => {
+      .then((res: IPeopleSearchResults): void => {
         if (res.error) {
+          // There was an error loading information about people.
+          // Notify the user that loading data is finished and return the
+          // error message that occurred
           this.setState({
             loading: false,
             errorMessage: res.error.message
@@ -125,31 +111,38 @@ export class PeopleDirectory extends React.Component<PeopleDirectoryProps, Peopl
         }
 
         if (res.PrimaryQueryResult.RelevantResults.TotalRows == 0) {
+          // No results were found. Notify the user that loading data is finished
           this.setState({
             loading: false
           });
           return;
         }
 
-        const people: Person[] = res.PrimaryQueryResult.RelevantResults.Table.Rows.map(r => {
+        // convert the SharePoint People Search results to an array of people
+        const people: IPerson[] = res.PrimaryQueryResult.RelevantResults.Table.Rows.map(r => {
           return {
-            name: this.getValueFromSearchResult('PreferredName', r.Cells),
-            phone: this.getValueFromSearchResult('WorkPhone', r.Cells),
-            email: this.getValueFromSearchResult('WorkEmail', r.Cells),
-            photoUrl: this.getValueFromSearchResult('PictureURL', r.Cells)
+            name: this._getValueFromSearchResult('PreferredName', r.Cells),
+            phone: this._getValueFromSearchResult('WorkPhone', r.Cells),
+            email: this._getValueFromSearchResult('WorkEmail', r.Cells),
+            photoUrl: this._getValueFromSearchResult('PictureURL', r.Cells)
           };
         });
+        // notify the user that loading the data is finished and return the loaded information
         this.setState({
           loading: false,
           people: people
         });
       }, (error: any): void => {
+        // An error has occurred while loading the data. Notify the user
+        // that loading data is finished and return the error message.
         this.setState({
           loading: false,
           errorMessage: error
         });
       })
       .catch((error: any): void => {
+        // An exception has occurred while loading the data. Notify the user
+        // that loading data is finished and return the exception.
         this.setState({
           loading: false,
           errorMessage: error
@@ -157,7 +150,13 @@ export class PeopleDirectory extends React.Component<PeopleDirectoryProps, Peopl
       });
   }
 
-  private getValueFromSearchResult(key: string, cells: Cell[]): string {
+  /**
+   * Retrieves the value of the particular managed property for the current search result.
+   * If the property is not found, returns an empty string.
+   * @param key Name of the managed property to retrieve from the search result
+   * @param cells The array of cells for the current search result
+   */
+  private _getValueFromSearchResult(key: string, cells: ICell[]): string {
     for (let i: number = 0; i < cells.length; i++) {
       if (cells[i].Key === key) {
         return cells[i].Value;
@@ -165,5 +164,51 @@ export class PeopleDirectory extends React.Component<PeopleDirectoryProps, Peopl
     }
 
     return '';
+  }
+
+  public componentDidMount(): void {
+    // load information about people after the component has been
+    // initiated on the page
+    this._loadPeopleInfo(this.state.selectedIndex, null);
+  }
+
+  public render(): React.ReactElement<IPeopleDirectoryProps> {
+    const { loading, errorMessage, selectedIndex, searchQuery, people } = this.state;
+
+    return (
+      <div className={styles.peopleDirectory}>
+        {!loading &&
+          errorMessage &&
+          // if the component is not loading data anymore and an error message
+          // has been returned, display the error message to the user
+          <MessageBar
+            messageBarType={MessageBarType.error}
+            isMultiline={false}>{strings.ErrorLabel}: {errorMessage}</MessageBar>
+        }
+        <WebPartTitle
+          displayMode={this.props.displayMode}
+          title={this.props.title}
+          updateProperty={this.props.onTitleUpdate} />
+        <IndexNavigation
+          selectedIndex={selectedIndex}
+          searchQuery={searchQuery}
+          onIndexSelect={this._handleIndexSelect}
+          onSearch={this._handleSearch}
+          onSearchClear={this._handleSearchClear} />
+        {loading &&
+          // if the component is loading its data, show the spinner
+          <Spinner size={SpinnerSize.large} label={strings.LoadingSpinnerLabel} />
+        }
+        {!loading &&
+          !errorMessage &&
+          // if the component is not loading data anymore and no errors have occurred
+          // render the list of retrieved people
+          <PeopleList
+            selectedIndex={selectedIndex}
+            hasSearchQuery={searchQuery !== ''}
+            people={people} />
+        }
+      </div>
+    );
   }
 }

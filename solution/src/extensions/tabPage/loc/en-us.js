@@ -1,6 +1,7 @@
 define([], function () {
   return {
     "Personal": "Personal",
-    "Organization": "Organization"
+    "Organization": "Organization",
+    "SetPageAsHomePageTitle": "Set this page as your home page"
   }
 });

@@ -8,7 +8,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'PeopleDirectoryWebPartStrings';
-import { PeopleDirectory, PeopleDirectoryProps } from './components/PeopleDirectory/';
+import { PeopleDirectory, IPeopleDirectoryProps } from './components/PeopleDirectory/';
 
 export interface IPeopleDirectoryWebPartProps {
   title: string;
@@ -16,7 +16,7 @@ export interface IPeopleDirectoryWebPartProps {
 
 export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopleDirectoryWebPartProps> {
   public render(): void {
-    const element: React.ReactElement<PeopleDirectoryProps> = React.createElement(
+    const element: React.ReactElement<IPeopleDirectoryProps> = React.createElement(
       PeopleDirectory,
       {
         webUrl: this.context.pageContext.web.absoluteUrl,
@@ -24,6 +24,8 @@ export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopl
         title: this.properties.title,
         displayMode: this.displayMode,
         onTitleUpdate: (newTitle: string) => {
+          // after updating the web part title in the component
+          // persist it in web part properties
           this.properties.title = newTitle;
         }
       }
