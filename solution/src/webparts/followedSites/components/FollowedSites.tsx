@@ -30,7 +30,8 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
    */
   private _fetchFollowedSites(): void {
     this.setState({
-      loading: true
+      loading: true,
+      error: null
     });
 
     // Types 4 === sites

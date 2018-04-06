@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styles from './RecentlyUsedDocuments.module.scss';
-import { IRecentlyUsedDocumentsProps, IRecentlyUsedDocumentsState, IRecentDocuments, IRecentDocument, BrandIcons } from './IRecentlyUsedDocumentsProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { MSGraphClient } from "@microsoft/sp-client-preview";
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
@@ -9,6 +8,8 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import { DocumentCard, DocumentCardActivity, DocumentCardPreview, DocumentCardTitle, IDocumentCardPreviewProps } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { DocumentCardType } from 'office-ui-fabric-react/lib/components/DocumentCard';
+import { IRecentlyUsedDocumentsProps, IRecentlyUsedDocumentsState, IRecentDocuments, IRecentDocument, BrandIcons } from '.';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 
 export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsedDocumentsProps, IRecentlyUsedDocumentsState> {
   private _graphClient: MSGraphClient = null;
@@ -25,19 +26,6 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
       recentDocs: [],
       loading: true
     };
-  }
-
-  /**
-   * componentDidMount lifecycle hook
-   */
-  public componentDidMount(): void {
-    this._fetchRecentDocuments();
-  }
-
-  public componentDidUpdate(prevProps: IRecentlyUsedDocumentsProps, prevState: IRecentlyUsedDocumentsState): void {
-    if (prevProps.nrOfItems !== this.props.nrOfItems) {
-      this._fetchRecentDocuments();
-    }
   }
 
   /**
@@ -59,6 +47,12 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
         // Check if a response was retrieved
         if (res && res.value && res.value.length > 0) {
           this._processRecentDocuments(res.value);
+        } else {
+          // No documents retrieved
+          this.setState({
+            recentDocs: [],
+            loading: false
+          });
         }
       });
     }
@@ -71,7 +65,8 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
   private _processRecentDocuments(recentDocs: IRecentDocument[]): void {
     // Return the sorted and sliced array
     this.setState({
-      recentDocs: recentDocs.sort(this._sortByDate).slice(0, this.props.nrOfItems ? this.props.nrOfItems : 10)
+      recentDocs: recentDocs.sort(this._sortByDate).slice(0, this.props.nrOfItems ? this.props.nrOfItems : 10),
+      loading: false
     });
   }
 
@@ -157,6 +152,22 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
   }
 
   /**
+   * componentDidMount lifecycle hook
+   */
+  public componentDidMount(): void {
+    this._fetchRecentDocuments();
+  }
+
+  /**
+   * componentDidUpdate lifecycle hook
+   */
+  public componentDidUpdate(prevProps: IRecentlyUsedDocumentsProps, prevState: IRecentlyUsedDocumentsState): void {
+    if (prevProps.nrOfItems !== this.props.nrOfItems) {
+      this._fetchRecentDocuments();
+    }
+  }
+
+  /**
    * Default React render method
    */
   public render(): React.ReactElement<IRecentlyUsedDocumentsProps> {
@@ -165,6 +176,10 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
         <WebPartTitle displayMode={this.props.displayMode}
                       title={this.props.title}
                       updateProperty={this.props.updateProperty} />
+
+        {
+          this.state.loading && <Spinner label={strings.Loading} size={SpinnerSize.large} />
+        }
 
         {
           this.state.recentDocs && this.state.recentDocs.length > 0 ? (
