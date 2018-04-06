@@ -1,11 +1,11 @@
 import * as React from 'react';
 import styles from './Banner.module.scss';
-import { IBannerProps } from './IBannerProps';
+import { IBannerProps } from '.';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import * as strings from 'BannerWebPartStrings';
 
-export default class Banner extends React.Component<IBannerProps, {}> {
+export class Banner extends React.Component<IBannerProps, {}> {
   private _scrollElm: HTMLElement = null;
   private _scrollElmRect: ClientRect = null;
   private _parallaxElm: HTMLElement = null;

@@ -10,8 +10,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'BannerWebPartStrings';
-import Banner from './components/Banner';
-import { IBannerProps } from './components/IBannerProps';
+import { Banner, IBannerProps } from './components';
 import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
 
 export interface IBannerWebPartProps {
