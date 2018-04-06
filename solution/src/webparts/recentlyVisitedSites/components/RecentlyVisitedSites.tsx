@@ -1,13 +1,14 @@
 import * as React from 'react';
 import styles from './RecentlyVisitedSites.module.scss';
-import { IRecentlyVisitedSitesProps, IRecentlyVisitedSitesState, IRecentWebs, IRecentWeb, IWebs } from './IRecentlyVisitedSitesProps';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { escape, uniqBy } from '@microsoft/sp-lodash-subset';
 import { MSGraphClient } from "@microsoft/sp-client-preview";
 import * as strings from 'RecentlyVisitedSitesWebPartStrings';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import { IRecentlyVisitedSitesProps, IRecentlyVisitedSitesState, IRecentWebs, IRecentWeb, IWebs } from '.';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 
-export default class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesProps, IRecentlyVisitedSitesState> {
+export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesProps, IRecentlyVisitedSitesState> {
   private _graphClient: MSGraphClient = null;
 
   /**
@@ -28,13 +29,6 @@ export default class RecentlyVisitedSites extends React.Component<IRecentlyVisit
   }
 
   /**
-   * componentDidMount lifecycle hook
-   */
-  public componentDidMount(): void {
-    this._fetchRecentSites();
-  }
-
-  /**
    * Fetch the recent sites via the Microsoft Graph client
    */
   private _fetchRecentSites() {
@@ -52,6 +46,12 @@ export default class RecentlyVisitedSites extends React.Component<IRecentlyVisit
         // Check if a response was retrieved
         if (res && res.value && res.value.length > 0) {
           this._processRecentSites(res.value);
+        } else {
+          // No sites retrieved
+          this.setState({
+            loading: false,
+            usedSites: []
+          });
         }
       });
     }
@@ -105,6 +105,13 @@ export default class RecentlyVisitedSites extends React.Component<IRecentlyVisit
   }
 
   /**
+   * componentDidMount lifecycle hook
+   */
+  public componentDidMount(): void {
+    this._fetchRecentSites();
+  }
+
+  /**
    * Default React render method
    */
   public render(): React.ReactElement<IRecentlyVisitedSitesProps> {
@@ -113,6 +120,11 @@ export default class RecentlyVisitedSites extends React.Component<IRecentlyVisit
         <WebPartTitle displayMode={this.props.displayMode}
                       title={this.props.title}
                       updateProperty={this.props.updateProperty} />
+
+        {
+          this.state.loading && <Spinner label={strings.Loading} size={SpinnerSize.large} />
+        }
+
         {
           this.state.usedSites && this.state.usedSites.length > 0 ? (
             <div className={styles.list}>

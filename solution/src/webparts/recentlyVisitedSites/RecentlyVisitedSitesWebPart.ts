@@ -7,8 +7,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'RecentlyVisitedSitesWebPartStrings';
-import RecentlyVisitedSites from './components/RecentlyVisitedSites';
-import { IRecentlyVisitedSitesProps } from './components/IRecentlyVisitedSitesProps';
+import { RecentlyVisitedSites, IRecentlyVisitedSitesProps } from './components';
 
 export interface IRecentlyVisitedSitesWebPartProps {
   title: string;
