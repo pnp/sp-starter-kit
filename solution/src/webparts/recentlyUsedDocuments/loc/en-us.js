@@ -3,7 +3,7 @@ define([], function() {
     "PropertyPaneDescription": "Web part configuration",
     "NrOfDocumentsToShow": "Specify the number of documents to show",
 
-    "NoRecentDocuments": "Sorry, we did not find any documents.",
+    "NoRecentDocuments": "We did not find any documents.",
     "LastUsedMsg": "Last accessed:",
     "Loading": "Retrieving your recently used documents",
     "Error": "Sorry, something failed when retrieving your recently used documents.",
