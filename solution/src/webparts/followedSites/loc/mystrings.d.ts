@@ -11,6 +11,8 @@ declare interface IFollowedSitesWebPartStrings {
   NoFollowedSitesMsg: string;
   SitesFilterLabel: string;
   NoFollowSitesFoundMsg: string;
+  loading: string;
+  error: string;
 }
 
 declare module 'FollowedSitesWebPartStrings' {

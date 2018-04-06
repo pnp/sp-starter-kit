@@ -35,21 +35,8 @@
     @include ms-font-m;
   }
 
-  .paging {
-    text-align: center;
-
-    button {
-      padding: 0 5px;
-      margin: 15px 5px;
-      min-width: auto;
-    }
-  }
-
-  .pagingNrLabels {
-    display: inline-block;
-    line-height: 32px;
-    margin: 15px 5px;
-    text-align: center;
-    min-width: 55px;
+  .error {
+    @include ms-font-m;
+    color: $ms-color-alert;
   }
 }

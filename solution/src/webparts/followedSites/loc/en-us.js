@@ -9,6 +9,8 @@ define([], function() {
 
     "NoFollowedSitesMsg": "You are not following any sites",
     "SitesFilterLabel": "Filter sites by their name",
-    "NoFollowSitesFoundMsg": "No corresponding sites found"
+    "NoFollowSitesFoundMsg": "No corresponding sites found",
+    "loading": "Loading followed sites",
+    "error": "Sorry, something went wrong retrieving your followed sites."
   }
 });

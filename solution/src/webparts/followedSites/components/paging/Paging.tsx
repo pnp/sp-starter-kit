@@ -1,40 +1,16 @@
 import * as React from 'react';
-import styles from './FollowedSites.module.scss';
-import { IFollowedResult } from './IFollowedSitesProps';
+import styles from './Paging.module.scss';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { IPagingProps, IPagingState } from '.';
 
-export interface IPagingProps {
-  allItems: IFollowedResult[];
-  nrOfItems: number;
-
-  fUpdateItems: (pagedItems: IFollowedResult[]) => void;
-}
-
-export interface IPagingState {
-  crntPage: number;
-}
-
-export default class Paging extends React.Component<IPagingProps, IPagingState> {
+export class Paging extends React.Component<IPagingProps, IPagingState> {
   constructor(props: IPagingProps) {
     super(props);
 
     this.state = {
       crntPage: 0
     };
-  }
-
-  /**
-   * componentWillReceiveProps lifecycle hook
-   * @param nextProps
-   */
-  public componentWillReceiveProps(nextProps: IPagingProps): void {
-    // Check if items were filtered
-    if (this.props.allItems.length !== nextProps.allItems.length) {
-      this.setState({
-        crntPage: 0
-      });
-    }
   }
 
   /**
@@ -79,6 +55,19 @@ export default class Paging extends React.Component<IPagingProps, IPagingState> 
   }
 
   /**
+   * componentWillReceiveProps lifecycle hook
+   * @param nextProps
+   */
+  public componentWillReceiveProps(nextProps: IPagingProps): void {
+    // Check if items were filtered
+    if (this.props.allItems.length !== nextProps.allItems.length) {
+      this.setState({
+        crntPage: 0
+      });
+    }
+  }
+
+  /**
    * Default React render method
    */
   public render(): React.ReactElement<IPagingProps> {
@@ -86,8 +75,7 @@ export default class Paging extends React.Component<IPagingProps, IPagingState> 
     if (this.props.nrOfItems && this.props.allItems && this.props.allItems.length > this.props.nrOfItems) {
       return (
         <div className={styles.paging}>
-          <DefaultButton label="Previous"
-                         onClick={this._prevPage}
+          <DefaultButton onClick={this._prevPage}
                          disabled={this.state.crntPage <= 0}>
             <Icon iconName="ChevronLeft" />
           </DefaultButton>

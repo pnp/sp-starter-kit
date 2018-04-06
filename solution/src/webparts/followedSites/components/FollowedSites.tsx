@@ -1,14 +1,15 @@
 import * as React from 'react';
 import styles from './FollowedSites.module.scss';
-import { IFollowedSitesProps, IFollowedSitesState, IFollowed } from './IFollowedSitesProps';
 import { SPHttpClientResponse, SPHttpClient } from '@microsoft/sp-http';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { SortOrder } from '../FollowedSitesWebPart';
-import { IFollowedResult } from './IFollowedSitesProps';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { TextField } from 'office-ui-fabric-react/lib/components/TextField';
 import * as strings from 'FollowedSitesWebPartStrings';
-import Paging from './Paging';
+import { IFollowedSitesProps, IFollowedSitesState, IFollowedResult, IFollowed } from '.';
+import { Paging } from './paging';
+import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
+import { SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 
 export default class FollowedSites extends React.Component<IFollowedSitesProps, IFollowedSitesState> {
   private _allFollowing: IFollowedResult[] = [];
@@ -19,27 +20,9 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
     this.state = {
       following: null,
       allFollowing: [],
-      loading: true
+      loading: true,
+      error: null
     };
-  }
-
-  /**
-   * componentDidMount lifecycle hook
-   */
-  public componentDidMount(): void {
-    this._fetchFollowedSites();
-  }
-
-  /**
-   * componentDidUpdate lifecycle hook
-   * @param prevProps
-   * @param prevState
-   */
-  public componentDidUpdate(prevProps: IFollowedSitesProps, prevState: IFollowedSitesState): void {
-    if (this.props.nrOfItems !== prevProps.nrOfItems ||
-        this.props.sortOrder !== prevProps.sortOrder) {
-      this._fetchFollowedSites();
-    }
   }
 
   /**
@@ -49,6 +32,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
     this.setState({
       loading: true
     });
+
     // Types 4 === sites
     const apiUrl = `${this.props.context.pageContext.web.absoluteUrl}/_api/social.following/my/followed(types=4)`;
     this.props.context.spHttpClient.fetch(apiUrl, SPHttpClient.configurations.v1, {
@@ -73,6 +57,21 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
         // Pass sites to trigger state update
         this._updateFollowingSites(fSites);
       }
+
+      // Check if an error occured
+      if (data && data.error) {
+        // Error occured while fetching personal sites
+        this.setState({
+          loading: false,
+          error: strings.error
+        });
+      }
+    })
+    .catch((err) => {
+      this.setState({
+        loading: false,
+        error: strings.error
+      });
     });
   }
 
@@ -127,6 +126,25 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
   }
 
   /**
+   * componentDidMount lifecycle hook
+   */
+  public componentDidMount(): void {
+    this._fetchFollowedSites();
+  }
+
+  /**
+   * componentDidUpdate lifecycle hook
+   * @param prevProps
+   * @param prevState
+   */
+  public componentDidUpdate(prevProps: IFollowedSitesProps, prevState: IFollowedSitesState): void {
+    if (this.props.nrOfItems !== prevProps.nrOfItems ||
+        this.props.sortOrder !== prevProps.sortOrder) {
+      this._fetchFollowedSites();
+    }
+  }
+
+  /**
    * Default React render method
    */
   public render(): React.ReactElement<IFollowedSitesProps> {
@@ -136,6 +154,11 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
                       title={this.props.title}
                       updateProperty={this.props.updateProperty} />
 
+        {
+          this.state.loading && (
+            <Spinner label={strings.loading} size={SpinnerSize.large} />
+          )
+        }
 
         {
           this.state.following ? (
@@ -166,7 +189,11 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
                       fUpdateItems={this._updatePagedItems} />
             </div>
           ) : (
-            !this.state.loading && <span className={styles.noSites}>{strings.NoFollowedSitesMsg}</span>
+            !this.state.loading && (
+              this.state.error ?
+                <span className={styles.error}>{this.state.error}</span> :
+                <span className={styles.noSites}>{strings.NoFollowedSitesMsg}</span>
+            )
           )
         }
       </div>
