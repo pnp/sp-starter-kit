@@ -7,6 +7,7 @@ import {
   PropertyPaneTextField,
   PropertyPaneCheckbox
 } from '@microsoft/sp-webpart-base';
+import { DisplayMode } from '@microsoft/sp-core-library';
 
 import * as strings from 'StockInformationWebPartStrings';
 
@@ -48,7 +49,11 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
           this.context.propertyPane.open();
         },
         errorHandler: (errorMessage: string) => {
-          this.context.statusRenderer.renderError(this.domElement, errorMessage);
+          if (this.displayMode === DisplayMode.Edit) {
+            this.context.statusRenderer.renderError(this.domElement, errorMessage);
+          } else {
+            // nothing to do, if we are not in edit Mode
+          }
         }
       }
     );

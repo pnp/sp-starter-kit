@@ -2,7 +2,7 @@ export interface IStockInformationData {
     symbol: string;
     lastRefreshed: Date;
     lastData: IStockData;
-    previousData: IStockData;
+    previousClose: number;
 }
 
 export interface IStockData {

@@ -67,12 +67,57 @@ export default class StockInformation extends React.Component<IStockInformationP
         loading: true
       });
 
-      const serviceEndpoint: string =
-        `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${escape(stockSymbol)}&interval=1min&apikey=${this.props.apiKey}`;
+      // get the current date and time
+      const now: Date = new Date();
+
+      // determine the date of yesterday
+      const yesterday: Date = new Date(now.getTime() - 24 * 60 * 60000);
+      const yesterdayName: string = yesterday.toISOString().substring(0, 10);
+
+      // get yesterday's closing price if it is not already in the local storage cache
+      const dailyCloseKeyName: string = `PnP-Portal-AlphaVantage-Close-${escape(stockSymbol)}-${yesterdayName}`;
+
+      // try to get the close price from the local session storage
+      let closeValue: number = Number(sessionStorage.getItem(dailyCloseKeyName));
+
+      // if it is not there, load it from the API
+      // and store its value in the session storage
+      if (!closeValue) {
+
+        const serviceDailyEndpoint: string =
+          `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${escape(stockSymbol)}&apikey=${this.props.apiKey}`;
+
+        // request stock information to the REST API
+        this.props.httpClient
+        .get(serviceDailyEndpoint, HttpClient.configurations.v1)
+        .then((response: HttpClientResponse): Promise<IAVResults> => {
+          return response.json();
+        })
+        .then((data: IAVResults): void => {
+
+          // if there are no errors and we have data
+          if (!data["Error Message"] && data["Meta Data"] && data["Time Series (Daily)"]) {
+
+            // get the current date and time
+            const now: Date = new Date();
+
+            // get yesterday date and time
+            const yesterdayData: IAVResultsSeries = data["Time Series (Daily)"][yesterdayName];
+            closeValue = yesterdayData["4. close"];
+
+            if (closeValue > 0) {
+              sessionStorage.setItem(dailyCloseKeyName, closeValue.toString());
+            }
+          }
+        });
+      }
+
+      const serviceIntradayEndpoint: string =
+       `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${escape(stockSymbol)}&interval=1min&apikey=${this.props.apiKey}`;
 
       // request stock information to the REST API
       this.props.httpClient
-        .get(serviceEndpoint, HttpClient.configurations.v1)
+        .get(serviceIntradayEndpoint, HttpClient.configurations.v1)
         .then((response: HttpClientResponse): Promise<IAVResults> => {
           return response.json();
         })
@@ -91,12 +136,6 @@ export default class StockInformation extends React.Component<IStockInformationP
             // get the last data series from the AV service
             const lastAVDataSeries: IAVResultsSeries = timeSeries[0];
 
-            // get the previous last data series from the AV service
-            const previousAVDataSeries: IAVResultsSeries = timeSeries[1];
-
-            // get the current date and time
-            const now: Date = new Date();
-
             // build the state variable to render the stock information
             const stockInfo: IStockInformationData = {
               symbol: data["Meta Data"]["2. Symbol"],
@@ -108,13 +147,7 @@ export default class StockInformation extends React.Component<IStockInformationP
                 close: lastAVDataSeries["4. close"],
                 volume: lastAVDataSeries["5. volume"]
               },
-              previousData: {
-                open: previousAVDataSeries["1. open"],
-                high: previousAVDataSeries["2. high"],
-                low: previousAVDataSeries["3. low"],
-                close: previousAVDataSeries["4. close"],
-                volume: previousAVDataSeries["5. volume"]
-              }
+              previousClose: closeValue
             };
 
             // set the state with the new stock information and stop the Spinner
@@ -123,28 +156,25 @@ export default class StockInformation extends React.Component<IStockInformationP
               stockInfo: stockInfo
             });
           } else {
-            // if we don't have data in the response, stop the Spinner
+            // if we don't have data in the response, stop the Spinner and show previous data
             this.setState({
-              loading: false,
-              stockInfo: null
+              loading: false
             });
             // and show a specific error
             this.props.errorHandler(`${strings.NoDataForStockSymbol}${escape(stockSymbol)}`);
           }
         }, (error: any): void => {
-          // in case of any other generic error, stop the Spinner
+          // in case of any other generic error, stop the Spinner and show previous data
           this.setState({
-            loading: false,
-            stockInfo: null
+            loading: false
           });
           // and show the error
           this.props.errorHandler(error);
         })
         .catch((error: any): void => {
-          // in case of any other error, stop the Spinner
+          // in case of any other error, stop the Spinner and show previous data
           this.setState({
-            loading: false,
-            stockInfo: null
+            loading: false
           });
           // and show the error
           this.props.errorHandler(error);
@@ -171,17 +201,17 @@ export default class StockInformation extends React.Component<IStockInformationP
       } else {
         // show the Stock information, if we already have it
         const lastStockData: IStockData = this.state.stockInfo != null ? this.state.stockInfo.lastData : null;
-        const previousStockData: IStockData = this.state.stockInfo != null ? this.state.stockInfo.previousData : null;
+        const previousClose: number = this.state.stockInfo != null ? this.state.stockInfo.previousClose : 0;
         contents = (
           <div className={styles.stock}>
             <div className={styles.stockSymbol}>{this.state.stockInfo.symbol}</div>
             <div>
-              { lastStockData.close > previousStockData.close ?
+              { lastStockData.close > previousClose ?
               <Icon iconName='TriangleSolidUp12' className={styles.iconTrendGreen} /> :
-              lastStockData.close < previousStockData.close ?
+              lastStockData.close < previousClose ?
               <Icon iconName='TriangleSolidDown12' className={styles.iconTrendRed} /> :
-              <Icon iconName='CalculatorEqualTo' className={styles.iconTrendNeutral} />}
-              { lastStockData.close }
+              <Icon iconName='CircleFill' className={styles.iconTrendNeutral} />}
+              <span className={styles.stockValue}>{ lastStockData.close }</span>
             </div>
           </div>
         );
