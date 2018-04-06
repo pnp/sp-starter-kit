@@ -10,6 +10,10 @@
       {
         "resource": "Microsoft Graph",
         "scope": "Sites.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Contacts.Read"
       }
     ]
   },

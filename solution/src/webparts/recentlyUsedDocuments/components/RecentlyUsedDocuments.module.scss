@@ -19,4 +19,9 @@
   .noDocs {
     @include ms-font-m;
   }
+
+  .error {
+    @include ms-font-m;
+    color: $ms-color-alert;
+  }
 }

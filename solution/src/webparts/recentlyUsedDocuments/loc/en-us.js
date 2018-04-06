@@ -6,6 +6,7 @@ define([], function() {
     "NoRecentDocuments": "Sorry, we did not find any documents.",
     "LastUsedMsg": "Last accessed:",
     "Loading": "Retrieving your recently used documents",
+    "Error": "Sorry, something failed when retrieving your recently used documents.",
 
     "DateJustNow": "just now",
     "DateMinute": "1 minute ago",

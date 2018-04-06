@@ -24,6 +24,7 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
 
     this.state = {
       recentDocs: [],
+      error: null,
       loading: true
     };
   }
@@ -34,7 +35,8 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
   private _fetchRecentDocuments() {
     if (this._graphClient) {
       this.setState({
-        loading: true
+        loading: true,
+        error: null
       });
 
       const filter = this._excludeTypes.map(type => `resourceVisualization/type ne '${type}'`).join(' and ');
@@ -44,6 +46,16 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
       .version("beta") // API is currently only available in BETA
       .filter(`resourceVisualization/containerType eq 'Site' and ${filter}`)
       .get((err, res: IRecentDocuments) => {
+        if (err) {
+          // Something failed calling the MS Graph
+          this.setState({
+            error: err.message ? err.message : strings.Error,
+            recentDocs: [],
+            loading: false
+          });
+          return;
+        }
+
         // Check if a response was retrieved
         if (res && res.value && res.value.length > 0) {
           this._processRecentDocuments(res.value);
@@ -187,7 +199,11 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
                   renderedWindowsAhead={4}
                   onRenderCell={this._onRenderCell} />
           ) : (
-            !this.state.loading && <span className={styles.noDocs}>{strings.NoRecentDocuments}</span>
+            !this.state.loading && (
+              this.state.error ?
+                <span className={styles.error}>{this.state.error}</span> :
+                <span className={styles.noDocs}>{strings.NoRecentDocuments}</span>
+            )
           )
         }
       </div>

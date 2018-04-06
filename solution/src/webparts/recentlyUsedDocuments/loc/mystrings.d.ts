@@ -6,6 +6,7 @@ declare interface IRecentlyUsedDocumentsWebPartStrings {
   NoRecentDocuments: string;
   LastUsedMsg: string;
   Loading: string;
+  Error: string;
 
   // Relative date strings
   DateJustNow: string;

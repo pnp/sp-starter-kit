@@ -1,7 +1,11 @@
 declare interface IRecentContactsWebPartStrings {
   PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+
+  NrOfContactsToShow: string;
+
+  NoContacts: string;
+  Loading: string;
+  Error: string;
 }
 
 declare module 'RecentContactsWebPartStrings' {

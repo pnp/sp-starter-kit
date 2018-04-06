@@ -24,6 +24,7 @@ export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesP
 
     this.state = {
       usedSites: [],
+      error: null,
       loading: true
     };
   }
@@ -43,6 +44,16 @@ export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesP
       .filter(`ResourceVisualization/Type eq 'Web'`)
       .top(30)
       .get((err, res: IRecentWebs) => {
+        if (err) {
+          // Something failed calling the MS Graph
+          this.setState({
+            error: err.message ? err.message : strings.Error,
+            usedSites: [],
+            loading: false
+          });
+          return;
+        }
+
         // Check if a response was retrieved
         if (res && res.value && res.value.length > 0) {
           this._processRecentSites(res.value);
@@ -139,7 +150,11 @@ export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesP
               </ul>
             </div>
           ) : (
-            !this.state.loading && <span className={styles.noSites}>{strings.NoRecentSitesMsg}</span>
+            !this.state.loading && (
+              this.state.error ?
+                <span className={styles.error}>{this.state.error}</span> :
+                <span className={styles.noSites}>{strings.NoRecentSitesMsg}</span>
+            )
           )
         }
       </div>

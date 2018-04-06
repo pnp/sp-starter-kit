@@ -6,13 +6,13 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-
 import * as strings from 'RecentContactsWebPartStrings';
-import RecentContacts from './components/RecentContacts';
-import { IRecentContactsProps } from './components/IRecentContactsProps';
+import { RecentContacts, IRecentContactsProps } from './components';
+import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/propertyFields/number';
 
 export interface IRecentContactsWebPartProps {
-  description: string;
+  title: string;
+  nrOfContacts: number;
 }
 
 export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecentContactsWebPartProps> {
@@ -21,7 +21,13 @@ export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecent
     const element: React.ReactElement<IRecentContactsProps > = React.createElement(
       RecentContacts,
       {
-        description: this.properties.description
+        title: this.properties.title,
+        nrOfContacts: this.properties.nrOfContacts,
+        context: this.context,
+        displayMode: this.displayMode,
+        updateProperty: (value: string) => {
+          this.properties.title = value;
+        }
       }
     );
 
@@ -41,10 +47,13 @@ export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecent
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyFieldNumber("nrOfContacts", {
+                  key: "nrOfContacts",
+                  label: strings.NrOfContactsToShow,
+                  value: this.properties.nrOfContacts,
+                  minValue: 1,
+                  maxValue: 10
                 })
               ]
             }
