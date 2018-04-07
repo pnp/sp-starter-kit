@@ -13,6 +13,7 @@ import * as strings from 'WorldTimeWebPartStrings';
 import WorldTime from './components/WorldTime';
 import { IWorldTimeProps } from './components/IWorldTimeProps';
 
+// import additional controls/components
 import { IWorldTimeWebPartProps } from './IWorldTimeWebPartProps';
 import * as timeZones from './components/Timezones';
 

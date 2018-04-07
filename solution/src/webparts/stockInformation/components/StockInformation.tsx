@@ -85,7 +85,7 @@ export default class StockInformation extends React.Component<IStockInformationP
       if (!closeValue) {
 
         const serviceDailyEndpoint: string =
-          `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${escape(stockSymbol)}&apikey=${this.props.apiKey}`;
+          `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${escape(stockSymbol)}&apikey=${this.props.apiKey}`;
 
         // request stock information to the REST API
         this.props.httpClient
@@ -97,9 +97,6 @@ export default class StockInformation extends React.Component<IStockInformationP
 
           // if there are no errors and we have data
           if (!data["Error Message"] && data["Meta Data"] && data["Time Series (Daily)"]) {
-
-            // get the current date and time
-            const now: Date = new Date();
 
             // get yesterday date and time
             const yesterdayData: IAVResultsSeries = data["Time Series (Daily)"][yesterdayName];
