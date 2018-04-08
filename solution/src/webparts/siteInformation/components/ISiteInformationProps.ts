@@ -7,6 +7,8 @@ export interface ISiteInformationProps {
   siteContactEmail?: string;
   // used to represent the site's contact fullname
   siteContactFullName?: string;
+  // used to represent the site's contact image URL
+  siteContactImageUrl?: string;
   // used to represent the site's organization, based on a taxonomy termset
   siteOrganization: any;
   // used to declare if the web part still needs to be configured

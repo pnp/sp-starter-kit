@@ -9,25 +9,7 @@
   .siteTitle {
     @include ms-font-xl;
     @include ms-fontColor-black;
-  }
-
-  .siteTitleCaption {
-    @include ms-font-xl;
-    @include ms-fontColor-black;
     font-weight: bold;
-    margin-right: 3px;
-  }
-
-  .siteContact {
-    @include ms-font-l;
-    @include ms-fontColor-black;
-  }
-
-  .siteContactCaption {
-    @include ms-font-l;
-    @include ms-fontColor-black;
-    font-weight: bold;
-    margin-right: 3px;
   }
 
   .siteOrganization {
@@ -35,10 +17,9 @@
     @include ms-fontColor-black;
   }
 
-  .siteOrganizationCaption {
+  .siteContact {
     @include ms-font-l;
     @include ms-fontColor-black;
-    font-weight: bold;
-    margin-right: 3px;
+    margin-top: 5px;
   }
 }

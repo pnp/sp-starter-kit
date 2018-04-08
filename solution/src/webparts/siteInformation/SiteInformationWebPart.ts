@@ -60,6 +60,8 @@ export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteI
           this.properties.siteContact[0].email: null,
         siteContactFullName: (this.properties.siteContact && this.properties.siteContact.length > 0) ?
           this.properties.siteContact[0].fullName: null,
+        siteContactImageUrl: (this.properties.siteContact && this.properties.siteContact.length > 0) ?
+          this.properties.siteContact[0].imageUrl: null,
         siteOrganization: (this.properties.siteOrganization && this.properties.siteOrganization.length > 0) ?
           this.properties.siteOrganization[0].name : "",
         needsConfiguration: this.needsConfiguration(),

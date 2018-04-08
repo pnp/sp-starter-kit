@@ -9,11 +9,33 @@ import * as strings from 'SiteInformationWebPartStrings';
 // import additional controls/components
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import {
+  Persona,
+  PersonaSize,
+  PersonaPresence
+} from 'office-ui-fabric-react/lib/Persona';
 
 export default class SiteInformation extends React.Component<ISiteInformationProps, {}> {
 
   constructor(props: ISiteInformationProps) {
     super(props);
+  }
+
+  private getInitials(fullName: string): string {
+    if (!fullName) {
+      return (null);
+    }
+
+    let parts: string[] = fullName.split(' ');
+
+    let initials: string = "";
+    parts.forEach(p => {
+      if (p.length > 0) {
+          initials = initials.concat(p.substring(0, 1).toUpperCase());
+      }
+    });
+
+    return (initials);
   }
 
   public render(): React.ReactElement<ISiteInformationProps> {
@@ -35,18 +57,22 @@ export default class SiteInformation extends React.Component<ISiteInformationPro
             onConfigure={this.props.configureHandler} /> :
           <div className={styles.siteInformationContent}>
             <div className={styles.siteTitle}>
-              <span className={styles.siteTitleCaption}>{strings.SiteTitleCaption}</span>
-              {this.props.siteTitle}</div>
-            <div className={styles.siteContact}>
-              <span className={styles.siteContactCaption}>{strings.SiteContactCaption}</span>
-              { this.props.siteContactEmail ?
-                <a href={`mailto:${this.props.siteContactEmail}`}>{this.props.siteContactFullName}</a> :
-                <span>{this.props.siteContactFullName}</span>
-              }
-              </div>
+              {this.props.siteTitle}
+            </div>
             <div className={styles.siteOrganization}>
-              <span className={styles.siteOrganizationCaption}>{strings.SiteOrganizationCaption}</span>
-              {this.props.siteOrganization}</div>
+              [{this.props.siteOrganization}]
+            </div>
+            <div className={styles.siteContact}>
+              <Persona
+                imageUrl={this.props.siteContactImageUrl}
+                imageInitials={this.getInitials(this.props.siteContactEmail)}
+                primaryText={this.props.siteContactFullName}
+                secondaryText={this.props.siteContactEmail}
+                showSecondaryText={((this.props.siteContactEmail !== null) && (this.props.siteContactEmail.length > 0))}
+                size={ PersonaSize.size24 }
+                presence={ PersonaPresence.none }
+                />
+            </div>
           </div>
         }
       </div>);
