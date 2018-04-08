@@ -13,6 +13,7 @@
     "description": { "default": "Lists recent contacts for user" },
     "officeFabricIconFontName": "Contact",
     "properties": {
+      "title": "Recent contacts",
       "nrOfContacts": 5
     }
   }]
