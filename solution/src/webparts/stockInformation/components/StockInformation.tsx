@@ -70,12 +70,12 @@ export default class StockInformation extends React.Component<IStockInformationP
       // get the current date and time
       const now: Date = new Date();
 
-      // determine the date of yesterday
-      const yesterday: Date = new Date(now.getTime() - 24 * 60 * 60000);
-      const yesterdayName: string = yesterday.toISOString().substring(0, 10);
+      // determine the date of the last work day
+      const lastDay: Date = new Date(now.getTime() - (24 * ((now.getDay() === 0) ? 2 : (now.getDay() === 1) ? 3 : 1)) * 60 * 60000);
+      const lastDayName: string = lastDay.toISOString().substring(0, 10);
 
       // get yesterday's closing price if it is not already in the local storage cache
-      const dailyCloseKeyName: string = `PnP-Portal-AlphaVantage-Close-${escape(stockSymbol)}-${yesterdayName}`;
+      const dailyCloseKeyName: string = `PnP-Portal-AlphaVantage-Close-${escape(stockSymbol)}-${lastDayName}`;
 
       // try to get the close price from the local session storage
       let closeValue: number = Number(sessionStorage.getItem(dailyCloseKeyName));
@@ -99,7 +99,7 @@ export default class StockInformation extends React.Component<IStockInformationP
           if (!data["Error Message"] && data["Meta Data"] && data["Time Series (Daily)"]) {
 
             // get yesterday date and time
-            const yesterdayData: IAVResultsSeries = data["Time Series (Daily)"][yesterdayName];
+            const yesterdayData: IAVResultsSeries = data["Time Series (Daily)"][lastDayName];
             closeValue = yesterdayData["4. close"];
 
             if (closeValue > 0) {
