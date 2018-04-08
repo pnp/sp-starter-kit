@@ -11,7 +11,7 @@
         margin-left: 5px;
     }
 
-    .classification {
+    .classification, .classificationCaption {
         @include ms-font-m;
         margin-left: 5px;
         margin-top: 2x;

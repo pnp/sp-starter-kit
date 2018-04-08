@@ -68,6 +68,7 @@ export default class SiteClassificationApplicationCustomizer
       sp.site.select("Classification").get().then((r: any) => {
 
         if (r.Classification) {
+
           let classification: string = r.Classification;
 
           const element: React.ReactElement<ISiteClassificationHeaderProps> = React.createElement(

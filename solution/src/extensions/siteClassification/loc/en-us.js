@@ -1,5 +1,6 @@
 define([], function() {
   return {
-    "Title": "SiteClassificationApplicationCustomizer"
+    "Title": "SiteClassificationApplicationCustomizer",
+    "ClassificationCaption":"Classification:"
   }
 });
