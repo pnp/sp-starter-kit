@@ -1,0 +1,20 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.classificationHeader {
+
+    .classificationContainer {
+        @include ms-fontColor-black;
+        background-color: lightgray;
+    }
+
+    .classificationIcon {
+        margin-left: 5px;
+    }
+
+    .classification {
+        @include ms-font-m;
+        margin-left: 5px;
+        margin-top: 2x;
+        margin-bottom: 2px;
+    }
+}

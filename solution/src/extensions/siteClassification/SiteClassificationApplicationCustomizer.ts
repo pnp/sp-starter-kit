@@ -15,6 +15,9 @@ import * as strings from 'SiteClassificationApplicationCustomizerStrings';
 import SiteClassificationHeader from './components/SiteClassificationHeader';
 import { ISiteClassificationHeaderProps } from './components/ISiteClassificationHeaderProps';
 
+// import additional controls/components
+import { sp } from "@pnp/sp";
+
 const LOG_SOURCE: string = 'SiteClassificationApplicationCustomizer';
 
 /**
@@ -23,8 +26,6 @@ const LOG_SOURCE: string = 'SiteClassificationApplicationCustomizer';
  * You can define an interface to describe it.
  */
 export interface ISiteClassificationApplicationCustomizerProperties {
-  // This is an example; replace with your own property
-  testMessage: string;
 }
 
 /** A Custom Action which can be run during execution of a Client Side Application */
@@ -37,12 +38,12 @@ export default class SiteClassificationApplicationCustomizer
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
-    let message: string = this.properties.testMessage;
-    if (!message) {
-      message = '(No properties were provided.)';
-    }
+    // initialize the PnP JS library
+    sp.setup({
+      spfxContext: this.context
+    });
 
-    // Call render method for generating the needed html elements
+    // call render method for generating the needed html elements
     this._renderPlaceHolders();
 
     return Promise.resolve();
@@ -50,26 +51,35 @@ export default class SiteClassificationApplicationCustomizer
 
   private _renderPlaceHolders(): void {
 
-    // Handling the header placeholder
+    // handling the header placeholder
     if (!this._headerPlaceholder) {
       this._headerPlaceholder =
         this.context.placeholderProvider.tryCreateContent(
           PlaceholderName.Top,
           { onDispose: this._onDispose });
 
-      // The extension should not assume that the expected placeholder is available.
+      // the extension should not assume that the expected placeholder is available.
       if (!this._headerPlaceholder) {
         console.error('The expected placeholder (Top) was not found.');
         return;
       }
 
-      const element: React.ReactElement<ISiteClassificationHeaderProps> = React.createElement(
-        SiteClassificationHeader,
-        {
-        }
-      );
+      // initialize the Site Title property reading the current site title via PnP JS
+      sp.site.select("Classification").get().then((r: any) => {
 
-      ReactDom.render(element, this._headerPlaceholder.domElement);
+        if (r.Classification) {
+          let classification: string = r.Classification;
+
+          const element: React.ReactElement<ISiteClassificationHeaderProps> = React.createElement(
+            SiteClassificationHeader,
+            {
+              classification: classification
+            }
+          );
+
+          ReactDom.render(element, this._headerPlaceholder.domElement);
+          }
+      });
     }
 
   }

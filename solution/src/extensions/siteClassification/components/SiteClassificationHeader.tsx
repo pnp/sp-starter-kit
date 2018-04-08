@@ -1,23 +1,23 @@
 import * as React from 'react';
+import styles from './SiteClassificationHeader.module.scss';
 import { ISiteClassificationHeaderProps } from './ISiteClassificationHeaderProps';
-import { ISiteClassificationHeaderState } from './ISiteClassificationHeaderState';
 
-export default class SiteClassificationHeader extends React.Component<ISiteClassificationHeaderProps, ISiteClassificationHeaderState> {
+// import additional controls/components
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
-   /**
-   * Main constructor for the component
-   */
+export default class SiteClassificationHeader extends React.Component<ISiteClassificationHeaderProps, {}> {
+
+  // main constructor for the component
   constructor() {
     super();
-    this.state = {
-    };
   }
 
   public render(): React.ReactElement<ISiteClassificationHeaderProps> {
     return (
-      <div className={`ms-bgColor-blue ms-fontColor-white`}>
-        <div className={`ms-bgColor-blue ms-fontColor-white`}>
-        This will be the 'Classification header for collaboration' extension
+      <div className={styles.classificationHeader}>
+        <div className={styles.classificationContainer}>
+          <Icon iconName='ProtectionCenterLogo32' className={styles.classificationIcon} />
+          <span className={styles.classification}>{this.props.classification}</span>
         </div>
       </div>
     );
