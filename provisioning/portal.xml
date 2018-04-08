@@ -65,7 +65,7 @@
                 <!-- recentlyVisitedSites -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="277282d0-debb-42d6-b4b3-30ec543964fd" Order="1" Column="2" />
                 <!-- siteInformation -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="e2aa860d-ac7b-4a7f-b590-073e62dc9bc0" Order="1" Column="3" />
+                <pnp:CanvasControl WebPartType="Custom" ControlId="e2aa860d-ac7b-4a7f-b590-073e62dc9bc0" Order="1" Column="3" JsonControlData="{ &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;siteTitle&quot;:&quot;SP Portal Showcase&quot;},&quot;imageSources&quot;:{},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;description&quot;:&quot;SiteInformation&quot;,&quot;siteContact&quot;:[{&quot;fullName&quot;:&quot;Paolo Pialorsi&quot;,&quot;login&quot;:&quot;paolo@officedevpnp.onmicrosoft.com&quot;,&quot;email&quot;:&quot;paolo@officedevpnp.onmicrosoft.com&quot;,&quot;jobTitle&quot;:&quot;&quot;,&quot;initials&quot;:&quot;PP&quot;,&quot;imageUrl&quot;:&quot;{hosturl}{site}/_layouts/15/userphoto.aspx?size=S&amp;accountname=paolo@officedevpnp.onmicrosoft.com&quot;}],&quot;siteOrganization&quot;:[{&quot;name&quot;:&quot;Information Technology&quot;,&quot;id&quot;:&quot;b128e0cd-7be9-48d4-83b4-2bf15e224352&quot;,&quot;path&quot;:&quot;Information Technology&quot;,&quot;termSet&quot;:&quot;/Guid(5add48fb-eccb-48e6-ba2f-dee33138892d)/&quot;}]}}" />
               </pnp:Controls>
             </pnp:Section>
             <pnp:Section Order="5" Type="ThreeColumn">
