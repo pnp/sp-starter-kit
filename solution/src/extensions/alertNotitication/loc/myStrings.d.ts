@@ -1,5 +1,5 @@
 declare interface IAlertNotiticationApplicationCustomizerStrings {
-  Title: string;
+  MoreInformation: string;
 }
 
 declare module 'AlertNotiticationApplicationCustomizerStrings' {

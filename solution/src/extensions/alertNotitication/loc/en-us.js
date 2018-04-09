@@ -1,5 +1,5 @@
 define([], function() {
   return {
-    "Title": "AlertNotiticationApplicationCustomizer"
+    "MoreInformation": "More information"
   }
 });
