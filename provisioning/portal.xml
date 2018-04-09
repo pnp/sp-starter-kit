@@ -19,6 +19,38 @@
           <pnp:User Name="bert@officedevpnp.onmicrosoft.com"/>
         </pnp:AdditionalAdministrators>
       </pnp:Security>
+      <pnp:SiteFields>
+        <Field Type="DateTime" DisplayName="Start date-time" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="PnP Columns" FriendlyDisplayFormat="Disabled" ID="{5ee2dd25-d941-455a-9bdb-7f2c54aed11b}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertStartDateTime" Name="PnPAlertStartDateTime">
+          <Default>[today]</Default>
+        </Field>
+        <Field Type="URL" DisplayName="More information link" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Hyperlink" Group="PnP Columns" ID="{6085e32a-339b-4da7-ab6d-c1e013e5ab27}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertMoreInformation" Name="PnPAlertMoreInformation">
+        </Field>
+        <Field Type="Note" DisplayName="Alert message" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="PnP Columns" ID="{f056406b-b46b-4a94-8503-361de4ca2752}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertMessage" Name="PnPAlertMessage">
+        </Field>
+        <Field Type="Choice" DisplayName="Alert type" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="RadioButtons" FillInChoice="FALSE" Group="PnP Columns" ID="{ebe7e498-44ff-43da-a7e5-99b444f656a5}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertType" Name="PnPAlertType">
+          <Default>Information</Default>
+          <CHOICES>
+            <CHOICE>Information</CHOICE>
+            <CHOICE>Urgent</CHOICE>
+          </CHOICES>
+        </Field>
+        <Field Type="DateTime" DisplayName="End date-time" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="PnP Columns" FriendlyDisplayFormat="Disabled" ID="{b0d8c6ed-2487-43e7-a716-bf274f0d5e09}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertEndDateTime" Name="PnPAlertEndDateTime">
+          <Default>[today]</Default>
+        </Field>
+      </pnp:SiteFields>
+      <pnp:ContentTypes>
+        <pnp:ContentType ID="0x01007926A45D687BA842B947286090B8F67D" Name="PnP Alert" Description="" Group="PnP Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" />
+            <pnp:FieldRef ID="ebe7e498-44ff-43da-a7e5-99b444f656a5" Name="PnPAlertType" Required="true" />
+            <pnp:FieldRef ID="f056406b-b46b-4a94-8503-361de4ca2752" Name="PnPAlertMessage" Required="true" />
+            <pnp:FieldRef ID="5ee2dd25-d941-455a-9bdb-7f2c54aed11b" Name="PnPAlertStartDateTime" Required="true" />
+            <pnp:FieldRef ID="b0d8c6ed-2487-43e7-a716-bf274f0d5e09" Name="PnPAlertEndDateTime" Required="true" />
+            <pnp:FieldRef ID="6085e32a-339b-4da7-ab6d-c1e013e5ab27" Name="PnPAlertMoreInformation" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+      </pnp:ContentTypes>
       <pnp:ClientSidePages>
         <pnp:ClientSidePage PageName="Home.aspx" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
           <pnp:Sections>
@@ -84,6 +116,38 @@
         </pnp:ClientSidePage>
       </pnp:ClientSidePages>
       <pnp:Lists>
+        <pnp:ListInstance Title="Alerts" Description="" DocumentTemplate="" TemplateType="100" Url="Lists/Alerts" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Alerts/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Alerts/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Alerts/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=44" IsApplicationList="false" ValidationFormula="" ValidationMessage="" RemoveExistingContentTypes="true">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01007926A45D687BA842B947286090B8F67D" Default="true" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{B58003B2-BEEC-464E-AD61-ADE2231CF36D}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="/sites/marketing/Lists/Alerts/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="PnPAlertType" />
+                <FieldRef Name="PnPAlertMessage" />
+                <FieldRef Name="PnPAlertStartDateTime" />
+                <FieldRef Name="PnPAlertEndDateTime" />
+                <FieldRef Name="PnPAlertMoreInformation" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="ebe7e498-44ff-43da-a7e5-99b444f656a5" Name="PnPAlertType" DisplayName="Alert type" />
+            <pnp:FieldRef ID="f056406b-b46b-4a94-8503-361de4ca2752" Name="PnPAlertMessage" DisplayName="Alert message" />
+            <pnp:FieldRef ID="5ee2dd25-d941-455a-9bdb-7f2c54aed11b" Name="PnPAlertStartDateTime" DisplayName="Start date-time" />
+            <pnp:FieldRef ID="b0d8c6ed-2487-43e7-a716-bf274f0d5e09" Name="PnPAlertEndDateTime" DisplayName="End date-time" />
+            <pnp:FieldRef ID="6085e32a-339b-4da7-ab6d-c1e013e5ab27" Name="PnPAlertMoreInformation" DisplayName="More information link" />
+          </pnp:FieldRefs>
+        </pnp:ListInstance>
         <pnp:ListInstance Title="Assets" Description="" DocumentTemplate="{site}/Assets/Forms/template.dotx" TemplateType="101" Url="Assets" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" DefaultDisplayFormUrl="{site}/Assets/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/Assets/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/Assets/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itdl.png?rev=44" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
           <pnp:ContentTypeBindings>
             <pnp:ContentTypeBinding ContentTypeID="0x0101" Default="true" />
