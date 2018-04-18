@@ -102,6 +102,11 @@ export class Tiles extends React.Component<ITilesProps, ITilesState> {
   public componentDidMount(): void {
     if (this.props.listUrl) {
       this._fetchTileItems();
+    } else {
+      this.setState({
+        tiles: [],
+        loading: false
+      });
     }
   }
 
@@ -136,7 +141,7 @@ export class Tiles extends React.Component<ITilesProps, ITilesState> {
               }
             </div>
           ) : (
-            !this.state.loading && (
+            (!this.state.loading && this.props.listUrl) && (
               this.state.error ?
                 <span className={styles.error}>{this.state.error}</span> :
                 <span className={styles.message}>{strings.NoTilesFound}</span>
