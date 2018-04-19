@@ -1,0 +1,54 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.links {
+  background-color: $ms-color-neutralLighter;
+  color: $ms-color-neutralPrimary;
+  transition: height 1s;
+  overflow: hidden;
+  position: relative;
+  height: 0;
+
+  .content {
+    padding: 25px;
+  }
+
+  &.visible {
+    height: 190px;
+  }
+
+  &.hidden {
+    height: 0;
+  }
+
+  .linksGroupTitle {
+    color: inherit;
+    font-weight: bold;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin: 0.2em 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: $ms-color-neutralSecondary;
+    }
+  }
+
+  .editButton {
+    color: inherit;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    padding: 0.5em;
+    min-width: 0;
+  }   
+}
