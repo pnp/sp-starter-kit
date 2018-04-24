@@ -1,5 +1,3 @@
-import { Item } from "@pnp/sp";
-
 /**
  * Defines the SP.Taxonomy.TermSetCollection type
  */

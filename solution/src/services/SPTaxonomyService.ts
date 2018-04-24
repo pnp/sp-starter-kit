@@ -21,7 +21,6 @@ export default class SPTaxonomyService {
   // private member to hold the FormDigest for SPO
   private formDigest: string;
 
-
   /**
    * Main constructor for the Taxonomy Service
    */
@@ -34,7 +33,7 @@ export default class SPTaxonomyService {
    * @function
    * Retrieves a new value for the Form Digest for SPO
    */
-  public async getFormDigest(): Promise<string> {
+  private async getFormDigest(): Promise<string> {
 
     let httpPostOptions: ISPHttpClientOptions = {
       headers: {
@@ -55,7 +54,7 @@ export default class SPTaxonomyService {
    * @function
    * Retrieves the collection of terms for a term set stored in the current SharePoint env
    */
-  public async getTermsFromTermSetAsync(termSetName: string, locale: number = 1033): Promise<ITerm[]> {
+  public async getTermsFromTermSet(termSetName: string, locale: number = 1033): Promise<ITerm[]> {
 
     // if we are in a real SharePoint environment
     if (Environment.type === EnvironmentType.SharePoint ||
@@ -104,7 +103,7 @@ export default class SPTaxonomyService {
       let httpPostOptions: ISPHttpClientOptions = {
         headers: {
           'accept': 'application/json',
-          'content-type': 'application/json',
+          'content-type': 'text/xml',
           "X-RequestDigest": this.formDigest
         },
         body: data
@@ -140,7 +139,7 @@ export default class SPTaxonomyService {
           let childItems: ITerm[] = termSet.Terms._Child_Items_;
 
           return(await Promise.all<ITerm>(childItems.map(async (t: any): Promise<ITerm> => {
-            return await this.expandTermAsync(t);
+            return await this.expandTerm(t);
           })));
         }
       }
@@ -157,7 +156,7 @@ export default class SPTaxonomyService {
    * @function
    * Gets the child terms of another term of the Term Store in the current SharePoint env
    */
-  private async getChildTermsAsync(term: ITerm): Promise<ITerm[]> {
+  private async getChildTerms(term: ITerm): Promise<ITerm[]> {
 
     // check if there are child terms to search for
     if (Number(term.TermsCount) > 0) {
@@ -191,7 +190,7 @@ export default class SPTaxonomyService {
       let httpPostOptions: ISPHttpClientOptions = {
         headers: {
           'accept': 'application/json',
-          'content-type': 'application/json',
+          'content-type': 'text/xml',
           "X-RequestDigest": this.formDigest
         },
         body: data
@@ -215,7 +214,7 @@ export default class SPTaxonomyService {
         let childItems: Array<ITerm> = termsCollection._Child_Items_;
 
         return(await Promise.all<ITerm>(childItems.map(async (t: ITerm): Promise<ITerm> => {
-          return await this.expandTermAsync(t);
+          return await this.expandTerm(t);
         })));
       }
     }
@@ -231,9 +230,9 @@ export default class SPTaxonomyService {
    * Expands a Term object of type ITerm, including child terms
    * @param guid
    */
-  private async expandTermAsync(term: ITerm): Promise<ITerm> {
+  private async expandTerm(term: ITerm): Promise<ITerm> {
 
-    let childTerms: ITerm[] = await this.getChildTermsAsync(term);
+    let childTerms: ITerm[] = await this.getChildTerms(term);
     term.CustomProperties = term.CustomProperties !== undefined ? term.CustomProperties : null;
     term.Id = term.Id !== undefined ? this.cleanGuid(term.Id) : "";
     term.LocalCustomProperties = term.LocalCustomProperties !== undefined ? term.LocalCustomProperties : null;
