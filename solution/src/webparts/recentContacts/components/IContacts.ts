@@ -7,13 +7,23 @@ export interface IContact {
   '@odata.etag': string;
   id: string;
   displayName: string;
-  homePhones: string[];
-  mobilePhone?: string;
-  businessPhones: string[];
-  emailAddresses: EmailAddress[];
+  phones: Phone[];
+  scoredEmailAddresses: ScoredEmailAddress[];
+  personType: PersonType;
 }
 
-export interface EmailAddress {
-  name: string;
+export interface ScoredEmailAddress {
   address: string;
+  relevanceScore: number;
+  selectionLikelihood: string;
+}
+
+export interface Phone {
+  type: string;
+  number: string;
+}
+
+export interface PersonType {
+  class: string;
+  subclass: string;
 }
