@@ -6,22 +6,30 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-
 import * as strings from 'PersonalContactsWebPartStrings';
-import PersonalContacts from './components/PersonalContacts';
-import { IPersonalContactsProps } from './components/IPersonalContactsProps';
+import { PersonalContacts, IPersonalContactsProps } from './components/PersonalContacts';
+import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
+import { MSGraphClient } from '@microsoft/sp-client-preview';
 
 export interface IPersonalContactsWebPartProps {
-  description: string;
+  title: string;
+  nrOfContacts: number;
 }
 
 export default class PersonalContactsWebPart extends BaseClientSideWebPart<IPersonalContactsWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IPersonalContactsProps > = React.createElement(
+    const element: React.ReactElement<IPersonalContactsProps> = React.createElement(
       PersonalContacts,
       {
-        description: this.properties.description
+        context: this.context,
+        title: this.properties.title,
+        nrOfContacts: this.properties.nrOfContacts,
+        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey),
+        displayMode: this.displayMode,
+        updateProperty: (value: string): void => {
+          this.properties.title = value;
+        }
       }
     );
 
@@ -41,10 +49,13 @@ export default class PersonalContactsWebPart extends BaseClientSideWebPart<IPers
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyFieldNumber("nrOfContacts", {
+                  key: "nrOfContacts",
+                  label: strings.NrOfContactsToShow,
+                  value: this.properties.nrOfContacts,
+                  minValue: 1,
+                  maxValue: 10
                 })
               ]
             }

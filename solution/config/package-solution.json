@@ -28,6 +28,10 @@
       {
         "resource": "Microsoft Graph",
         "scope": "Contacts.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read.All"
       }
     ]
   },
