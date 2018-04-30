@@ -36,6 +36,10 @@
       {
         "resource": "Microsoft Graph",
         "scope": "Mail.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.Read"
       }
     ]
   },

@@ -16,11 +16,12 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "PersonalCalendar" },
-    "description": { "default": "Shows upcoming meetings for a person" },
-    "officeFabricIconFontName": "Page",
+    "title": { "default": "Personal calendar" },
+    "description": { "default": "Shows upcoming meetings for the current user" },
+    "officeFabricIconFontName": "Calendar",
     "properties": {
-      "description": "PersonalCalendar"
+      "title": "Upcoming meetings",
+      "refreshInterval": 5
     }
   }]
 }
