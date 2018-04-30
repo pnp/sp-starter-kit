@@ -56,7 +56,7 @@ export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersona
             {
               groupFields: [
                 PropertyFieldNumber("nrOfMessages", {
-                  key: "nrOfContacts",
+                  key: "nrOfMessages",
                   label: strings.NrOfMessagesToShow,
                   value: this.properties.nrOfMessages,
                   minValue: 1,
