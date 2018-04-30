@@ -33,20 +33,19 @@ export class PersonalContacts extends React.Component<IPersonalContactsProps, IP
       return;
     }
 
+    // update state to indicate loading and remove any previously loaded
+    // messages
     this.setState({
       error: null,
       loading: true,
       contacts: []
     });
 
-    const graphClient = this.props.context.serviceScope.consume(MSGraphClient.serviceKey);
-
-    graphClient
+    this.props.graphClient
       .api("me/contacts")
       .version("v1.0")
       .select("id,displayName,emailAddresses,businessPhones,mobilePhone,homePhones")
       .top(this.props.nrOfContacts || 5)
-      // .orderby("lastModifiedDateTime desc")
       .get((err: any, res: IContacts): void => {
         if (err) {
           // Something failed calling the MS Graph
@@ -102,17 +101,14 @@ export class PersonalContacts extends React.Component<IPersonalContactsProps, IP
     return <div />;
   }
 
-  /**
-   * componentDidMount lifecycle hook
-   */
   public componentDidMount(): void {
+    // load data initially after the component has been instantiated
     this._loadContacts();
   }
 
-  /**
-   * componentDidUpdate lifecycle hook
-   */
   public componentDidUpdate(prevProps: IPersonalContactsProps, prevState: IPersonalContactsState): void {
+    // verify if the component should update. Helps avoid unnecessary re-renders
+    // when the parent has changed but this component hasn't
     if (prevProps.nrOfContacts !== this.props.nrOfContacts) {
       this._loadContacts();
     }
