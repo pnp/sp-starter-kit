@@ -9,6 +9,9 @@ Param(
     [Parameter(Mandatory = $false, Position = 3)]
     [switch]$Build,
 
+    [Parameter(Mandatory = $false, Position = 3)]
+    [switch]$SkipInstall = $false,
+
     [Parameter(Mandatory = $false)]
     [switch]$SkipSolutionDeployment = $false,
 
@@ -35,11 +38,13 @@ Param(
 . "$PSScriptRoot\functions.ps1"
 
 # Check if PnP PowerShell is installed
-$modules = Get-Module -Name SharePointPnPPowerShellOnline -ListAvailable
-if ($modules -eq $null) {
-    # Not installed.
-    Install-Module -Name SharePointPnPPowerShellOnline -Scope CurrentUser -Force
-    Import-Module -Name SharePointPnPPowerShellOnline -DisableNameChecking
+if (!$SkipInstall) {
+    $modules = Get-Module -Name SharePointPnPPowerShellOnline -ListAvailable
+    if ($modules -eq $null) {
+        # Not installed.
+        Install-Module -Name SharePointPnPPowerShellOnline -Scope CurrentUser -Force
+        Import-Module -Name SharePointPnPPowerShellOnline -DisableNameChecking
+    }
 }
 
 if ($SiteUrl -eq "") {

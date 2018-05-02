@@ -1,7 +1,12 @@
 declare interface ITilesWebPartStrings {
   PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  TilesListDescription: string;
+
+  // Component
+  NoListConnection: string;
+  NoTilesFound: string;
+  Loading: string;
+  Error: string;
 }
 
 declare module 'TilesWebPartStrings' {

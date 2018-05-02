@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+    <Field ID="{B3A587C4-BD69-4C7D-B66E-1D73BD33E2B0}"
+            Name="PnPSourceUrl"
+            DisplayName="Source URL"
+            Type="URL"
+            Format="Hyperlink"
+            Required="TRUE"
+            Group="PnP Columns" />
+    <Field ID="{952AC133-D982-4EAC-B439-0FB65CBAB6B8}"
+            Name="PnPDestinationUrl"
+            DisplayName="Destination URL"
+            Type="URL"
+            Format="Hyperlink"
+            Required="TRUE"
+            Group="PnP Columns" />
+    <Field ID="{8298A9E1-8B2F-4550-8221-17918A386520}"
+            Name="PnPRedirectionEnabled"
+            DisplayName="Redirection Enabled"
+            Type="Boolean"
+            Required="TRUE"
+            Group="PnP Columns">
+        <Default>TRUE</Default>
+    </Field>
+
+    <ContentType ID="0x0100DD4B1A3F95074CFAB53B1981F4414566" 
+            Name="PnPRedirectionItem" 
+            Group="PnP Content Types" 
+            Description="Redirection Item">
+        <FieldRefs>
+            <FieldRef ID="{B3A587C4-BD69-4C7D-B66E-1D73BD33E2B0}" /> 
+            <FieldRef ID="{952AC133-D982-4EAC-B439-0FB65CBAB6B8}" />
+            <FieldRef ID="{8298A9E1-8B2F-4550-8221-17918A386520}" />
+        </FieldRefs>
+    </ContentType> 
+
+    <ListInstance 
+            CustomSchema="schema.xml"
+            FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+            Title="Redirections" 
+            Description="Redirections"
+            TemplateType="100"
+            Url="Lists/PnPRedirections">
+    </ListInstance>
+
+</Elements>

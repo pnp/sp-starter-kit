@@ -16,11 +16,12 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "PersonalContacts" },
-    "description": { "default": "Personal contacts" },
-    "officeFabricIconFontName": "Page",
+    "title": { "default": "Personal contacts" },
+    "description": { "default": "Lists user's personal contacts" },
+    "officeFabricIconFontName": "Contact",
     "properties": {
-      "description": "PersonalContacts"
+      "title": "Personal contacts",
+      "nrOfContacts": 5
     }
   }]
 }

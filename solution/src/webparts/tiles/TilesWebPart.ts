@@ -4,16 +4,20 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneLabel,
+  PropertyPaneLink
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'TilesWebPartStrings';
-import Tiles from './components/Tiles';
-import { ITilesProps } from './components/ITilesProps';
+import { Tiles, ITilesProps } from './components';
+import { TenantPropertyHelper } from './helpers';
 
 export interface ITilesWebPartProps {
-  description: string;
+  title: string;
+  listUrl: string;
 }
+
+const PROPERTY_NAME_PREFIX = "PnPTilesList";
 
 export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartProps> {
 
@@ -21,11 +25,22 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
     const element: React.ReactElement<ITilesProps > = React.createElement(
       Tiles,
       {
-        description: this.properties.description
+        title: this.properties.title,
+        listUrl: this.properties.listUrl,
+        context: this.context,
+        displayMode: this.displayMode,
+        updateProperty: (value: string) => {
+          this.properties.title = value;
+        }
       }
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  protected async onInit(): Promise<void> {
+    // Fetch the list location
+    this.properties.listUrl = await TenantPropertyHelper.getPropertyValue(this.context, `${PROPERTY_NAME_PREFIX}-${this.context.pageContext.legacyPageContext.departmentId}`);
   }
 
   protected get dataVersion(): Version {
@@ -41,10 +56,14 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneLabel('', {
+                  text: strings.TilesListDescription
+                }),
+                PropertyPaneLink('', {
+                  text: this.properties.listUrl,
+                  target: "_blank",
+                  href: this.properties.listUrl
                 })
               ]
             }
