@@ -1,4 +1,5 @@
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+<pnp:Provisioning
+  xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a">
     <pnp:Parameters>
       <pnp:Parameter Key="WeatherCity">Helsinki</pnp:Parameter>
@@ -6,9 +7,14 @@
       <pnp:Parameter Key="StockSymbol">MSFT</pnp:Parameter>
     </pnp:Parameters>
   </pnp:Preferences>
+  <pnp:Tenant>
+    <pnp:StorageEntities>
+      <pnp:StorageEntity Key="PnPTilesList-{sitecollectionid}" Value="{hosturl}{site}/{listurl:PnPTiles}" />
+    </pnp:StorageEntities>
+  </pnp:Tenant>
   <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
     <pnp:ProvisioningTemplate ID="PORTAL-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
-      <pnp:WebSettings WelcomePage="SitePages/Home.aspx" Title="SP Portal Showcase" />
+      <pnp:WebSettings WelcomePage="SitePages/PortalHome.aspx" Title="SP Portal Showcase" />
       <pnp:Security>
         <pnp:AdditionalAdministrators>
           <pnp:User Name="erwin@officedevpnp.onmicrosoft.com"/>
@@ -23,10 +29,8 @@
         <Field Type="DateTime" DisplayName="Start date-time" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="PnP Columns" FriendlyDisplayFormat="Disabled" ID="{5ee2dd25-d941-455a-9bdb-7f2c54aed11b}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertStartDateTime" Name="PnPAlertStartDateTime">
           <Default>[today]</Default>
         </Field>
-        <Field Type="URL" DisplayName="More information link" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Hyperlink" Group="PnP Columns" ID="{6085e32a-339b-4da7-ab6d-c1e013e5ab27}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertMoreInformation" Name="PnPAlertMoreInformation">
-        </Field>
-        <Field Type="Note" DisplayName="Alert message" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="PnP Columns" ID="{f056406b-b46b-4a94-8503-361de4ca2752}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertMessage" Name="PnPAlertMessage">
-        </Field>
+        <Field Type="URL" DisplayName="More information link" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Hyperlink" Group="PnP Columns" ID="{6085e32a-339b-4da7-ab6d-c1e013e5ab27}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertMoreInformation" Name="PnPAlertMoreInformation"></Field>
+        <Field Type="Note" DisplayName="Alert message" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="PnP Columns" ID="{f056406b-b46b-4a94-8503-361de4ca2752}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertMessage" Name="PnPAlertMessage"></Field>
         <Field Type="Choice" DisplayName="Alert type" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="RadioButtons" FillInChoice="FALSE" Group="PnP Columns" ID="{ebe7e498-44ff-43da-a7e5-99b444f656a5}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertType" Name="PnPAlertType">
           <Default>Information</Default>
           <CHOICES>
@@ -36,6 +40,25 @@
         </Field>
         <Field Type="DateTime" DisplayName="End date-time" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="PnP Columns" FriendlyDisplayFormat="Disabled" ID="{b0d8c6ed-2487-43e7-a716-bf274f0d5e09}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertEndDateTime" Name="PnPAlertEndDateTime">
           <Default>[today]</Default>
+        </Field>
+        <Field Type="Choice" DisplayName="PnP Url Target" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="PnP Columns" ID="{4ad64f28-1772-492d-bde4-998a08f8a7ae}" SourceID="{2765be97-bf5e-434d-b563-9f1b907b5397}" StaticName="PnPUrlTarget" Name="PnPUrlTarget">
+          <CHOICES>
+            <CHOICE>Current window</CHOICE>
+            <CHOICE>New window</CHOICE>
+          </CHOICES>
+        </Field>
+        <Field Type="Choice" DisplayName="PnP Icon Name" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="TRUE" Group="PnP Columns" ID="{a374d13d-040b-4104-9973-edfdca1e3fc1}" SourceID="{2765be97-bf5e-434d-b563-9f1b907b5397}" StaticName="PnPIconName" Name="PnPIconName">
+          <CHOICES>
+            <CHOICE>12PointStar</CHOICE>
+            <CHOICE>6PointStar</CHOICE>
+            <CHOICE>AADLogo</CHOICE>
+            <CHOICE>Accept</CHOICE>
+            <CHOICE>Accounts</CHOICE>
+          </CHOICES>
+        </Field>
+        <Field Type="Text" DisplayName="PnP Url" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="PnP Fields" ID="{9913d58a-9a75-41fc-86aa-f6de1d9328ba}" SourceID="{2765be97-bf5e-434d-b563-9f1b907b5397}" StaticName="PnPUrl" Name="PnPUrl">
+        </Field>
+        <Field Type="Note" DisplayName="PnP Description" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" Group="PnP Columns" ID="{a67b73bf-acb0-4517-93e6-91585316ec49}" SourceID="{2765be97-bf5e-434d-b563-9f1b907b5397}" StaticName="PnPDescription" Name="PnPDescription">
         </Field>
       </pnp:SiteFields>
       <pnp:ContentTypes>
@@ -50,29 +73,42 @@
             <pnp:FieldRef ID="6085e32a-339b-4da7-ab6d-c1e013e5ab27" Name="PnPAlertMoreInformation" />
           </pnp:FieldRefs>
         </pnp:ContentType>
+        <pnp:ContentType ID="0x0100FF0B2E33A3718B46A3909298D240FD92" Name="PnPTile" Description="" Group="PnP Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" />
+            <pnp:FieldRef ID="a67b73bf-acb0-4517-93e6-91585316ec49" Name="PnPDescription" />
+            <pnp:FieldRef ID="a374d13d-040b-4104-9973-edfdca1e3fc1" Name="PnPIconName" />
+            <pnp:FieldRef ID="9913d58a-9a75-41fc-86aa-f6de1d9328ba" Name="PnPUrl" />
+            <pnp:FieldRef ID="4ad64f28-1772-492d-bde4-998a08f8a7ae" Name="PnPUrlTarget" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
       </pnp:ContentTypes>
       <pnp:ClientSidePages>
-        <pnp:ClientSidePage PageName="Home.aspx" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
+        <pnp:ClientSidePage PageName="PortalHome.aspx" Title="Welcome to Helsinki" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
+          <pnp:Header Type="Custom" ServerRelativeImageUrl="{site}/assets/hel2.jpg" />
           <pnp:Sections>
-            <pnp:Section Order="1" Type="OneColumnFullWidth">
+            <!--<pnp:Section Order="1" Type="OneColumnFullWidth">
               <pnp:Controls>
-                <!-- Banner -->
+                -->
+            <!-- Banner -->
+            <!--
                 <pnp:CanvasControl WebPartType="Custom" ControlId="ab30ff0a-9241-4d5d-8c6f-1dc07b1d1053" Order="1" Column="1" JsonControlData="{&quot;id&quot;: &quot;ab30ff0a-9241-4d5d-8c6f-1dc07b1d1053&quot;,&quot;instanceId&quot;: &quot;32fc5185-cc86-4010-939c-50e4156026f9&quot;,&quot;title&quot;: &quot;Banner&quot;,&quot;description&quot;: &quot;Renders a banner style presentation with text and image&quot;,&quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;: {},&quot;searchablePlainTexts&quot;: {&quot;bannerText&quot;: &quot;{parameter:PortalTitle}&quot;},&quot;imageSources&quot;: {&quot;bannerImage&quot;: &quot;{site}/assets/hel2.jpg&quot;},&quot;links&quot;: {                &quot;bannerLink&quot;: &quot;&quot;}}, &quot;dataVersion&quot;: &quot;1.0&quot;,&quot;properties&quot;: {&quot;bannerHeight&quot;: 280,&quot;useParallax&quot;: true}}" />
               </pnp:Controls>
-            </pnp:Section>
+            </pnp:Section>-->
             <pnp:Section Order="2" Type="ThreeColumn">
               <pnp:Controls>
                 <!-- Followed Sites -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="92d5cc6c-fae5-4e91-9583-ab33950f5a8d" Order="1" Column="1" />
                 <!-- Links -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="e2365185-558d-4b6d-bee8-3490cf04a0a6" Order="1" Column="2" />
-                 <!-- weatherInformation -->
+                <!-- weatherInformation -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9" Order="1" Column="3" JsonControlData="{&quot;id&quot;:&quot;0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9&quot;,&quot;instanceId&quot;:&quot;21e23e1d-69d7-4aed-8fca-1599d2440477&quot;,&quot;title&quot;:&quot;Weather&quot;,&quot;description&quot;:&quot;Shows weather information for the specified location&quot;,&quot;serverProcessedContent&quot;:{&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}},&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;location&quot;:&quot;{parameter:WeatherCity}&quot;,&quot;unit&quot;:&quot;c&quot;}}" />
               </pnp:Controls>
             </pnp:Section>
             <pnp:Section Order="3" Type="ThreeColumn">
               <pnp:Controls>
-                  <!-- peopleDirectory -->
+                <!-- peopleDirectory -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="d9d6f014-3fd9-4fb9-af54-044c7c43e081" Order="1" Column="1" />
                 <!-- personalCalendar -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="bbcd646e-6b86-4480-a68a-850c98f94519" Order="1" Column="2" />
@@ -109,13 +145,45 @@
                 <!-- tiles -->
                 <pnp:CanvasControl WebPartType="Custom" ControlId="26cb4af3-7f48-4737-b82a-4e24167c2d07" Order="1" Column="2" />
                 <!-- lobIntegration -->
-                <pnp:CanvasControl WebPartType="Custom" ControlId="3228280d-0776-432e-a957-5fb31edf8e00" Order="1" Column="3" />   
+                <pnp:CanvasControl WebPartType="Custom" ControlId="3228280d-0776-432e-a957-5fb31edf8e00" Order="1" Column="3" />
               </pnp:Controls>
             </pnp:Section>
           </pnp:Sections>
         </pnp:ClientSidePage>
       </pnp:ClientSidePages>
       <pnp:Lists>
+        <pnp:ListInstance Title="PnPTiles" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/PnPTiles" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/PnPTiles/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/PnPTiles/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/PnPTiles/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=44" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x0100FF0B2E33A3718B46A3909298D240FD92" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Remove="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" Remove="true" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{EB00BD40-FD48-49E4-BEC3-A0CD2F44FAE3}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="/sites/PnPShowcase/Lists/PnPTiles/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="PnPDescription" />
+                <FieldRef Name="PnPIconName" />
+                <FieldRef Name="PnPUrl" />
+                <FieldRef Name="PnPUrlTarget" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="a67b73bf-acb0-4517-93e6-91585316ec49" Name="PnPDescription" DisplayName="PnPDescription" />
+            <pnp:FieldRef ID="a374d13d-040b-4104-9973-edfdca1e3fc1" Name="PnPIconName" DisplayName="PnPIconName" />
+            <pnp:FieldRef ID="9913d58a-9a75-41fc-86aa-f6de1d9328ba" Name="PnPUrl" DisplayName="PnPUrl" />
+            <pnp:FieldRef ID="4ad64f28-1772-492d-bde4-998a08f8a7ae" Name="PnPUrlTarget" DisplayName="PnPUrlTarget" />
+          </pnp:FieldRefs>
+        </pnp:ListInstance>
         <pnp:ListInstance Title="Alerts" Description="" DocumentTemplate="" TemplateType="100" Url="Lists/Alerts" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Alerts/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Alerts/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Alerts/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=44" IsApplicationList="false" ValidationFormula="" ValidationMessage="" RemoveExistingContentTypes="true">
           <pnp:ContentTypeBindings>
             <pnp:ContentTypeBinding ContentTypeID="0x01007926A45D687BA842B947286090B8F67D" Default="true" />
