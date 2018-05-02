@@ -12,10 +12,10 @@ import { IPersonProperties, ISetPropertyResponse } from './SPUserProfileTypes';
 
 export default class SPUserProfileService {
 
-  // private member to hold the URL of the client.svc/ProcessQuery endpoint
+  // private member to hold the URL of the /_vti_bin/client.svc/ProcessQuery endpoint
   private clientServiceUrl: string;
 
-  // private member to hold the URL of the client.svc/ProcessQuery endpoint
+  // private member to hold the URL of the /_api/contextinfo endpoint
   private contextInfoUrl: string;
 
   // private member to hold the FormDigest for SPO
