@@ -22,12 +22,16 @@ export default class PersonalContactsWebPart extends BaseClientSideWebPart<IPers
     const element: React.ReactElement<IPersonalContactsProps> = React.createElement(
       PersonalContacts,
       {
-        context: this.context,
         title: this.properties.title,
         nrOfContacts: this.properties.nrOfContacts,
+        // pass the reference to the MSGraphClient
         graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey),
+        // pass the current display mode to determine if the title should be
+        // editable or not
         displayMode: this.displayMode,
+        // handle updated web part title
         updateProperty: (value: string): void => {
+          // store the new title in the title web part property
           this.properties.title = value;
         }
       }

@@ -8,20 +8,33 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'PersonalEmailWebPartStrings';
-import PersonalEmail from './components/PersonalEmail';
-import { IPersonalEmailProps } from './components/IPersonalEmailProps';
+import { PersonalEmail, IPersonalEmailProps } from './components';
+import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
+import { MSGraphClient } from '@microsoft/sp-client-preview';
 
 export interface IPersonalEmailWebPartProps {
-  description: string;
+  title: string;
+  nrOfMessages: number;
 }
 
 export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersonalEmailWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IPersonalEmailProps > = React.createElement(
+    const element: React.ReactElement<IPersonalEmailProps> = React.createElement(
       PersonalEmail,
       {
-        description: this.properties.description
+        title: this.properties.title,
+        nrOfMessages: this.properties.nrOfMessages,
+        // pass the current display mode to determine if the title should be
+        // editable or not
+        displayMode: this.displayMode,
+        // pass the reference to the MSGraphClient
+        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey),
+        // handle updated web part title
+        updateProperty: (value: string): void => {
+          // store the new title in the title web part property
+          this.properties.title = value;
+        }
       }
     );
 
@@ -41,10 +54,13 @@ export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersona
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyFieldNumber("nrOfMessages", {
+                  key: "nrOfMessages",
+                  label: strings.NrOfMessagesToShow,
+                  value: this.properties.nrOfMessages,
+                  minValue: 1,
+                  maxValue: 10
                 })
               ]
             }

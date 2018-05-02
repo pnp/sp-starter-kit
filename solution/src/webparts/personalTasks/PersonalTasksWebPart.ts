@@ -4,24 +4,37 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneToggle
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'PersonalTasksWebPartStrings';
-import PersonalTasks from './components/PersonalTasks';
-import { IPersonalTasksProps } from './components/IPersonalTasksProps';
+import { PersonalTasks, IPersonalTasksProps } from './components';
+import { MSGraphClient } from '@microsoft/sp-client-preview';
 
 export interface IPersonalTasksWebPartProps {
-  description: string;
+  title: string;
+  showCompleted: boolean;
 }
 
 export default class PersonalTasksWebPart extends BaseClientSideWebPart<IPersonalTasksWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IPersonalTasksProps > = React.createElement(
+    const element: React.ReactElement<IPersonalTasksProps> = React.createElement(
       PersonalTasks,
       {
-        description: this.properties.description
+        title: this.properties.title,
+        showCompleted: this.properties.showCompleted,
+        // pass the current display mode to determine if the title should be
+        // editable or not
+        displayMode: this.displayMode,
+        // pass the reference to the MSGraphClient
+        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey),
+        // handle updated web part title
+        updateProperty: (value: string): void => {
+          // store the new title in the title web part property
+          this.properties.title = value;
+        },
+        userName: this.context.pageContext.user.loginName
       }
     );
 
@@ -41,10 +54,9 @@ export default class PersonalTasksWebPart extends BaseClientSideWebPart<IPersona
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneToggle('showCompleted', {
+                  label: strings.ShowCompleted
                 })
               ]
             }
