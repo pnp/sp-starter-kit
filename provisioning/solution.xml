@@ -1,4 +1,4 @@
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema">
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a">
   </pnp:Preferences>
   <pnp:Tenant>
@@ -12,6 +12,9 @@
         </pnp:Origins>
       </pnp:Public>
     </pnp:ContentDeliveryNetwork>
+    <pnp:WebApiPermissions>
+      <pnp:WebApiPermission Scope="Sites.Read.All" Resource="Microsoft Graph"></pnp:WebApiPermission>
+    </pnp:WebApiPermissions>
   </pnp:Tenant>
   <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
     <pnp:ProvisioningTemplate ID="PORTAL-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
