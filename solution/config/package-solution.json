@@ -40,6 +40,10 @@
       {
         "resource": "Microsoft Graph",
         "scope": "Calendars.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Group.Read.All"
       }
     ]
   },
