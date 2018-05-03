@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 // import supporting types
-import { IMyLink } from './IMyLink';
+import IMyLink from './IMyLink';
 import styles from './MyLinks.module.scss';
 import * as strings from 'MyLinksStrings';
 
@@ -348,7 +348,7 @@ export default class MyLinksDialog extends BaseDialog {
     super();
 
     // clone the initial list of links we've got
-    this.initialLinks = this.links.concat([]);
+    this.initialLinks = (this.links != null) ? this.links.concat([]) : [];
   }
 
   public render(): void {

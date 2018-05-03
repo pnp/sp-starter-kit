@@ -6,6 +6,7 @@
  */
 
 import { IWebPartContext} from '@microsoft/sp-webpart-base';
+import { ExtensionContext } from '@microsoft/sp-extension-base';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { IPersonProperties, ISetPropertyResponse } from './SPUserProfileTypes';
@@ -24,7 +25,7 @@ export default class SPUserProfileService {
   /**
    * Main constructor for the Taxonomy Service
    */
-  constructor(private context: IWebPartContext) {
+  constructor(private context: IWebPartContext | ExtensionContext) {
     this.clientServiceUrl = this.context.pageContext.web.absoluteUrl + '/_vti_bin/client.svc/ProcessQuery';
     this.contextInfoUrl = this.context.pageContext.web.absoluteUrl + '/_api/contextinfo';
   }

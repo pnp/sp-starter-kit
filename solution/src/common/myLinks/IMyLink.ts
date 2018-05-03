@@ -1,7 +1,7 @@
 /**
  * Interface to define a single URL item for My Links
  */
-export interface IMyLink {
+export default interface IMyLink {
     // the Title of the Link
     title: string;
     // the URL of theLink
