@@ -117,7 +117,7 @@ class MyLinksDialogContent extends
         title={ strings.MyLinksDialogTitle }
         subText={ strings.MyLinksDialogDescription }
         onDismiss={ this.props.cancel }
-        showCloseButton={ true }>
+        showCloseButton={ !this.state.showDetailPanel }>
 
         <div className={ styles.myLinksDialogContent }>
           <div className="ms-Grid">
@@ -132,6 +132,7 @@ class MyLinksDialogContent extends
                           required={ true }
                           value={ this.state.title }
                           minLength={ 150 }
+                          className={ styles.textField }
                           onChanged={ this._onChangedTitle }
                         />
                       </div>
@@ -143,6 +144,7 @@ class MyLinksDialogContent extends
                           required={ true }
                           value={ this.state.url }
                           minLength={ 150 }
+                          className={ styles.textField }
                           onChanged={ this._onChangedUrl }
                           onGetErrorMessage={ this._getErrorMessageUrl }
                         />
@@ -162,54 +164,60 @@ class MyLinksDialogContent extends
                 </div>
               </div>
             : null }
-            <div className="ms-Grid-row">
-              <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
-                <CommandBar items={ [
-                  {
-                    key: 'addRow',
-                    name: strings.AddLinkCommand,
-                    icon: 'Add',
-                    onClick: this.addLink,
-                  },
-                  {
-                    key: 'editRow',
-                    name: strings.EditLinkCommand,
-                    icon: 'Edit',
-                    onClick: this.editLink,
-                    disabled: (this.state.selectedLink == null),
-                  },
-                  {
-                    key: 'deleteRow',
-                    name: strings.DeleteLinkCommand,
-                    icon: 'Delete',
-                    onClick: this.deleteLink,
-                    disabled: (this.state.selectedLink == null),
-                  },
-                ] } />
+            { !this.state.showDetailPanel ?
+              <div className="ms-Grid-row">
+                <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+                  <CommandBar items={ [
+                    {
+                      key: 'addRow',
+                      name: strings.AddLinkCommand,
+                      icon: 'Add',
+                      onClick: this.addLink,
+                    },
+                    {
+                      key: 'editRow',
+                      name: strings.EditLinkCommand,
+                      icon: 'Edit',
+                      onClick: this.editLink,
+                      disabled: (this.state.selectedLink == null),
+                    },
+                    {
+                      key: 'deleteRow',
+                      name: strings.DeleteLinkCommand,
+                      icon: 'Delete',
+                      onClick: this.deleteLink,
+                      disabled: (this.state.selectedLink == null),
+                    },
+                  ] } />
+                </div>
               </div>
-            </div>
-            <div className="ms-Grid-row">
-              <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
-                <DetailsList
-                  items={ this.state.links }
-                  columns={ _linksColumns }
-                  layoutMode={ DetailsListLayoutMode.justified }
-                  selection={ this._selection }
-                  selectionMode={ SelectionMode.single }
-                  selectionPreservedOnEmptyClick={ true }
-                  ariaLabelForSelectionColumn={ strings.SelectionColumnAriaLabel }
-                  ariaLabelForSelectAllCheckbox={ strings.SelectionAllColumnAriaLabel }
-                />
+            : null}
+            { !this.state.showDetailPanel ?
+              <div className="ms-Grid-row">
+                <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+                  <DetailsList
+                    items={ this.state.links }
+                    columns={ _linksColumns }
+                    layoutMode={ DetailsListLayoutMode.justified }
+                    selection={ this._selection }
+                    selectionMode={ SelectionMode.single }
+                    selectionPreservedOnEmptyClick={ true }
+                    ariaLabelForSelectionColumn={ strings.SelectionColumnAriaLabel }
+                    ariaLabelForSelectAllCheckbox={ strings.SelectionAllColumnAriaLabel }
+                  />
+                </div>
               </div>
-            </div>
+            : null}
           </div>
         </div>
-        <DialogFooter>
-            <DefaultButton text={ strings.DialogCancelButton }
-              title={ strings.DialogCancelButton } onClick={ this.props.cancel } />
-            <DefaultButton text={ strings.DialogSaveButton } primary={ true }
-              title={ strings.DialogSaveButton } onClick={() => { this.props.save(this.state.links); }} />
-        </DialogFooter>
+        { !this.state.showDetailPanel ?
+          <DialogFooter>
+              <DefaultButton text={ strings.DialogCancelButton }
+                title={ strings.DialogCancelButton } onClick={ this.props.cancel } />
+              <DefaultButton text={ strings.DialogSaveButton } primary={ true }
+                title={ strings.DialogSaveButton } onClick={() => { this.props.save(this.state.links); }} />
+          </DialogFooter>
+          : null}
       </DialogContent>
     </div>);
   }
