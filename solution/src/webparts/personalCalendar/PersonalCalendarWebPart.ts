@@ -10,18 +10,32 @@ import {
 import * as strings from 'PersonalCalendarWebPartStrings';
 import PersonalCalendar from './components/PersonalCalendar';
 import { IPersonalCalendarProps } from './components/IPersonalCalendarProps';
+import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
+import { MSGraphClient } from '@microsoft/sp-client-preview';
 
 export interface IPersonalCalendarWebPartProps {
-  description: string;
+  title: string;
+  refreshInterval: number;
 }
 
 export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPersonalCalendarWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IPersonalCalendarProps > = React.createElement(
+    const element: React.ReactElement<IPersonalCalendarProps> = React.createElement(
       PersonalCalendar,
       {
-        description: this.properties.description
+        title: this.properties.title,
+        refreshInterval: this.properties.refreshInterval,
+        // pass the current display mode to determine if the title should be
+        // editable or not
+        displayMode: this.displayMode,
+        // pass the reference to the MSGraphClient
+        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey),
+        // handle updated web part title
+        updateProperty: (value: string): void => {
+          // store the new title in the title web part property
+          this.properties.title = value;
+        }
       }
     );
 
@@ -41,10 +55,13 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyFieldNumber("refreshInterval", {
+                  key: "refreshInterval",
+                  label: strings.RefreshInterval,
+                  value: this.properties.refreshInterval,
+                  minValue: 1,
+                  maxValue: 60
                 })
               ]
             }

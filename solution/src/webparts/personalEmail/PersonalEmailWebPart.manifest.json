@@ -16,11 +16,12 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "PersonalEmail" },
+    "title": { "default": "Personal e-mail" },
     "description": { "default": "Shows email of a user" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "Mail",
     "properties": {
-      "description": "PersonalEmail"
+      "title": "Personal e-mail",
+      "nrOfMessages": 5
     }
   }]
 }

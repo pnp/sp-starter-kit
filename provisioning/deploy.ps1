@@ -9,6 +9,9 @@ Param(
     [Parameter(Mandatory = $false, Position = 3)]
     [switch]$Build,
 
+    [Parameter(Mandatory = $false, Position = 3)]
+    [switch]$SkipInstall = $false,
+
     [Parameter(Mandatory = $false)]
     [switch]$SkipSolutionDeployment = $false,
 
@@ -35,11 +38,13 @@ Param(
 . "$PSScriptRoot\functions.ps1"
 
 # Check if PnP PowerShell is installed
-$modules = Get-Module -Name SharePointPnPPowerShellOnline -ListAvailable
-if ($modules -eq $null) {
-    # Not installed.
-    Install-Module -Name SharePointPnPPowerShellOnline -Scope CurrentUser -Force
-    Import-Module -Name SharePointPnPPowerShellOnline -DisableNameChecking
+if (!$SkipInstall) {
+    $modules = Get-Module -Name SharePointPnPPowerShellOnline -ListAvailable
+    if ($modules -eq $null) {
+        # Not installed.
+        Install-Module -Name SharePointPnPPowerShellOnline -Scope CurrentUser -Force
+        Import-Module -Name SharePointPnPPowerShellOnline -DisableNameChecking
+    }
 }
 
 if ($SiteUrl -eq "") {
@@ -97,13 +102,18 @@ if (Test-Url -Url $SiteUrl) {
     {
         Write-Host "Registering site as hubsite" -ForegroundColor Cyan
         Register-PnPHubSite -Site $siteUrl -Connection $connection 2>&1 | Out-Null
+        
     }
+    $HubSiteId = (Get-PnPSite -Includes Id).Id.ToString()
 
-    Write-Host "Storing Stock API Key in tenant properties"
-    Set-PnPStorageEntity -Key "PnP-Portal-AlphaVantage-API-Key" -Value $StockAPIKey -Comment "API Key for Alpha Advantage REST Stock service" -Description "API Key for Alpha Advantage REST Stock service" -Connection $connection
-
+    if($StockAPIKey -ne $null)
+    {
+        Write-Host "Storing Stock API Key in tenant properties"
+        Set-PnPStorageEntity -Key "PnP-Portal-AlphaVantage-API-Key" -Value $StockAPIKey -Comment "API Key for Alpha Advantage REST Stock service" -Description "API Key for Alpha Advantage REST Stock service" -Connection $connection
+    }
+    
     Write-Host "Applying template to portal" -ForegroundColor Cyan
-    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle;"StockSymbol"=$StockSymbol} -Connection $connection
+    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle;"StockSymbol"=$StockSymbol;"HubSiteId"=$HubSiteId} -Connection $connection
 }
 else {
     Write-Error -Message "Url is of incorrect format"

@@ -7,9 +7,7 @@ import { MSGraphClient } from "@microsoft/sp-client-preview";
 import * as strings from 'RecentContactsWebPartStrings';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import { List } from 'office-ui-fabric-react/lib/components/List';
-import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/components/Persona';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import { Person } from './person';
 
 export class RecentContacts extends React.Component<IRecentContactsProps, IRecentContactsState> {
   private _graphClient: MSGraphClient = null;
@@ -39,11 +37,10 @@ export class RecentContacts extends React.Component<IRecentContactsProps, IRecen
       });
 
       this._graphClient
-      .api("me/contacts")
+      .api("me/people")
       .version("v1.0")
-      .select("id,displayName,emailAddresses,businessPhones,mobilePhone,homePhones")
+      .select("id,displayName,scoredEmailAddresses,phones,personType")
       .top(this.props.nrOfContacts || 5)
-      .orderby("lastModifiedDateTime desc")
       .get((err, res: IContacts) => {
         if (err) {
           // Something failed calling the MS Graph
@@ -84,44 +81,7 @@ export class RecentContacts extends React.Component<IRecentContactsProps, IRecen
    * Renders the list cell for the persona's
    */
   private _onRenderCell = (item: IContact, index: number | undefined): JSX.Element => {
-    let phoneNr: string = null;
-    if (item.businessPhones && item.businessPhones.length > 0) {
-      phoneNr = item.businessPhones[0];
-    } else if (item.mobilePhone) {
-      phoneNr = item.mobilePhone;
-    } else if (item.homePhones && item.homePhones.length > 0) {
-      phoneNr = item.homePhones[0];
-    }
-
-    return <Persona className={styles.persona}
-                    primaryText={item.displayName}
-                    secondaryText={(item.emailAddresses && item.emailAddresses.length > 0) && item.emailAddresses[0].address}
-                    onRenderSecondaryText={this._renderMail}
-                    tertiaryText={phoneNr}
-                    onRenderTertiaryText={this._renderPhone}
-                    size={PersonaSize.size72} />;
-  }
-
-  /**
-   * Renders the secondary field as mail
-   */
-  private _renderMail = (props: IPersonaProps) => {
-    if (props.secondaryText) {
-      return <Link href={`mailto:${props.secondaryText}`}>{props.secondaryText}</Link>;
-    }
-
-    return <div />;
-  }
-
-  /**
-   * Renders the tertiary field as mail
-   */
-  private _renderPhone = (props: IPersonaProps) => {
-    if (props.tertiaryText) {
-      return <Link href={`tel:${props.tertiaryText}`}>{props.tertiaryText}</Link>;
-    }
-
-    return <div />;
+    return <Person className={styles.persona} person={item} graphClient={this._graphClient} />;
   }
 
   /**

@@ -71,7 +71,6 @@ export class Paging extends React.Component<IPagingProps, IPagingState> {
    * Default React render method
    */
   public render(): React.ReactElement<IPagingProps> {
-    console.log(this.props.allItems.length);
     if (this.props.nrOfItems && this.props.allItems && this.props.allItems.length > this.props.nrOfItems) {
       return (
         <div className={styles.paging}>
