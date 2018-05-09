@@ -14,6 +14,15 @@ import * as strings from 'CollabFooterApplicationCustomizerStrings';
 
 import CollabFooter from './components/CollabFooter';
 import { ICollabFooterProps } from './components/ICollabFooterProps';
+import { ICollabFooterEditResult } from './components/ICollabFooterEditResult';
+
+// import additional controls/components
+import { IContextualMenuItem, ContextualMenuItemType, autobind } from 'office-ui-fabric-react';
+import SPTaxonomyService from '../../services/SPTaxonomyService';
+import { ITermSets, ITermSet, ITerms, ITerm } from '../../services/SPTaxonomyTypes';
+import SPUserProfileService from '../../services/SPUserProfileService';
+import MyLinksDialog from '../../common/myLinks/MyLinksDialog';
+import IMyLink from '../../common/myLinks/IMyLink';
 
 const LOG_SOURCE: string = 'CollabFooterApplicationCustomizer';
 
@@ -23,8 +32,8 @@ const LOG_SOURCE: string = 'CollabFooterApplicationCustomizer';
  * You can define an interface to describe it.
  */
 export interface ICollabFooterApplicationCustomizerProperties {
-  // This is an example; replace with your own property
-  testMessage: string;
+  sourceTermSet: string;
+  personalItemsStorageProperty: string;
 }
 
 /** A Custom Action which can be run during execution of a Client Side Application */
@@ -32,23 +41,132 @@ export default class CollabFooterApplicationCustomizer
   extends BaseApplicationCustomizer<ICollabFooterApplicationCustomizerProperties> {
 
   private _footerPlaceholder: PlaceholderContent | undefined;
+  private _myLinks: IMyLink[];
+  private _myLinksMenuItems: IContextualMenuItem[];
 
   @override
-  public onInit(): Promise<void> {
+  public async onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
-    let message: string = this.properties.testMessage;
-    if (!message) {
-      message = '(No properties were provided.)';
+    let sourceTermSet: string = this.properties.sourceTermSet;
+    let personalItemsStorageProperty: string = this.properties.personalItemsStorageProperty;
+    if (!sourceTermSet || !personalItemsStorageProperty) {
+      console.log('Provide valid properties for CollabFooterApplicationCustomizer!');
     }
 
-    // Call render method for generating the needed html elements
-    this._renderPlaceHolders();
-
-    return Promise.resolve();
+    // call render method for generating the needed html elements
+    return(await this._renderPlaceHolders());
   }
 
-  private _renderPlaceHolders(): void {
+  private async getMenuItems(): Promise<IContextualMenuItem[]> {
+
+    // get the list of menu items from the Taxonomy
+    const svc: SPTaxonomyService = new SPTaxonomyService(this.context);
+    const terms: ITerm[] = await svc.getTermsFromTermSet(this.properties.sourceTermSet);
+
+    // map the taxonomy items to the menu items
+    const sharedMenuItems: IContextualMenuItem[] = terms.map((i) => {
+      return(this.projectTermToMenuItem(i, ContextualMenuItemType.Header));
+    });
+
+    // prepare the result
+    let result: IContextualMenuItem[] = sharedMenuItems;
+
+    // get the list of personal items from the User Profile Service
+    let upsService: SPUserProfileService = new SPUserProfileService(this.context);
+    let myLinksJson: any = await upsService.getUserProfileProperty(this.properties.personalItemsStorageProperty);
+
+    if (myLinksJson != null) {
+      if (myLinksJson.length > 0) {
+        this._myLinks = JSON.parse(myLinksJson) as IMyLink[];
+
+        // map the taxonomy items to the menu items
+        this._myLinksMenuItems = this._myLinks.map((i) => {
+          return(this.projectMyLinkToMenuItem(i, ContextualMenuItemType.Normal));
+        });
+      } else {
+        // if there are no personal items for my links, just provide an empty array that can be customized
+        this._myLinks = [];
+        this._myLinksMenuItems = [];
+      }
+    }
+
+    return(result);
+
+    // CACHING!!!
+  }
+
+  // projects a Taxonomy term into an object of type IContextualMenuItem for the CommandBar
+  private projectTermToMenuItem(menuItem: ITerm, itemType: ContextualMenuItemType): IContextualMenuItem {
+    return({
+      key: menuItem.Id,
+      name: menuItem.Name,
+      itemType: itemType,
+      iconProps: {
+        iconName: (menuItem.LocalCustomProperties["PnP-CollabFooter-Icon"] !== undefined ?
+          menuItem.LocalCustomProperties["PnP-CollabFooter-Icon"]
+          : null)
+      },
+      href: menuItem.Terms.length === 0 ?
+          (menuItem.LocalCustomProperties["_Sys_Nav_SimpleLinkUrl"] !== undefined ?
+              menuItem.LocalCustomProperties["_Sys_Nav_SimpleLinkUrl"]
+              : null)
+          : null,
+      subMenuProps: menuItem.Terms.length > 0 ?
+          { items : menuItem.Terms.map((i) => { return(this.projectTermToMenuItem(i, ContextualMenuItemType.Normal)); }) }
+          : null,
+      isSubMenu: itemType !== ContextualMenuItemType.Header,
+    });
+  }
+
+  // projects a personal link item into an object of type IContextualMenuItem for the CommandBar
+  private projectMyLinkToMenuItem(menuItem: IMyLink, itemType: ContextualMenuItemType): IContextualMenuItem {
+    return({
+      key: menuItem.title,
+      name: menuItem.title,
+      itemType: itemType,
+      href: menuItem.url,
+      subMenuProps: null,
+      isSubMenu: itemType !== ContextualMenuItemType.Header,
+    });
+  }
+
+  @autobind
+  private async _editMyLinks(): Promise<ICollabFooterEditResult> {
+
+    let result: ICollabFooterEditResult = {
+      editResult: null,
+      myLinks: null,
+    };
+
+    const myLinksDialog: MyLinksDialog = new MyLinksDialog(this._myLinks);
+    await myLinksDialog.show();
+
+    // update the local list of links
+    let resultingLinks: IMyLink[] = myLinksDialog.links;
+
+    if (this._myLinks !== resultingLinks) {
+      this._myLinks = resultingLinks;
+
+      // map the taxonomy items to the menu items
+      this._myLinksMenuItems = this._myLinks.map((i) => {
+        return(this.projectMyLinkToMenuItem(i, ContextualMenuItemType.Normal));
+      });
+
+      // update the result
+      result.myLinks = this._myLinksMenuItems;
+
+      // save the personal links in the UPS, if there are any updates
+      let upsService: SPUserProfileService = new SPUserProfileService(this.context);
+      result.editResult = await upsService.setUserProfileProperty(this.properties.personalItemsStorageProperty,
+        'String',
+        JSON.stringify(this._myLinks));
+    }
+
+    return (result);
+  }
+
+  private async _renderPlaceHolders(): Promise<void> {
 
     // Handling the header placeholder
     if (!this._footerPlaceholder) {
@@ -63,15 +181,19 @@ export default class CollabFooterApplicationCustomizer
         return;
       }
 
+      const menuItems: IContextualMenuItem[] = await this.getMenuItems();
+
       const element: React.ReactElement<ICollabFooterProps> = React.createElement(
         CollabFooter,
         {
+          sharedLinks: menuItems,
+          myLinks: this._myLinksMenuItems,
+          editMyLinks: this._editMyLinks
         }
       );
 
       ReactDom.render(element, this._footerPlaceholder.domElement);
     }
-
   }
 
   private _onDispose(): void {
