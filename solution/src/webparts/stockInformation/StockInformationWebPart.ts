@@ -115,7 +115,7 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
     // try to get the API Key from the local session storage
     let apiKey: string = sessionStorage.getItem(apiKeyName);
 
-    // if it is not there, load it from the tenant properties 
+    // if it is not there, load it from the tenant properties
     // and store its value in the session storage
     if (!apiKey) {
       const storageEntity: StorageEntity = await sp.web.getStorageEntity(apiKeyName);
