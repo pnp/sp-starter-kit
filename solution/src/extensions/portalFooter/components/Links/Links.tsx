@@ -1,19 +1,13 @@
 import * as React from 'react';
 import styles from './Links.module.scss';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { BaseDialog, IDialogConfiguration } from '@microsoft/sp-dialog';
-import { ILinksProps, LinksEditDialog } from '.';
+import { ILinksProps } from '.';
 
 export class Links extends React.Component<ILinksProps, {}> {
   private _handleEdit = () => {
-    const dialog: LinksEditDialog = new LinksEditDialog();
-    dialog.selectedLinks = this.props.links;
-    dialog.show().then(() => {
-      this.props.onLinksEdit(dialog.selectedLinks);
-    });
-  }
+    alert('Edit!');
+    }
 
   public render(): React.ReactElement<ILinksProps> {
     return (

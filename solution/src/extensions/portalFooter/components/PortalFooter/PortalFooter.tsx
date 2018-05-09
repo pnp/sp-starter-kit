@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { IPortalFooterProps, IPortalFooterState } from '.';
 import styles from './PortalFooter.module.scss';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { DefaultButton, ActionButton } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Links } from '../Links';
+import { CommandBar,
+  IContextualMenuItem,
+  DefaultButton,
+  ActionButton,
+  Label } from 'office-ui-fabric-react';
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
-import { ILinkGroup } from '../../../../../lib/extensions/portalFooter/components/PortalFooter';
+import { ILinkGroup } from './ILinkGroup';
+import { Links } from '../Links';
 
 export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFooterState> {
   constructor(props: IPortalFooterProps) {
@@ -92,6 +93,31 @@ export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFoo
               url: '#'
             }
           ]
+        },
+        {
+          title: 'Lorem ipsum 4',
+          links: [
+            {
+              title: 'Lorem ipsum',
+              url: '#'
+            },
+            {
+              title: 'Lorem ipsum dolor sit amet',
+              url: '#'
+            },
+            {
+              title: 'Lorem',
+              url: '#'
+            },
+            {
+              title: 'Lorem ipsum dolor',
+              url: '#'
+            },
+            {
+              title: 'Lorem ipsum',
+              url: '#'
+            }
+          ]
         }
       ]
     };
@@ -117,19 +143,22 @@ export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFoo
   public render(): React.ReactElement<IPortalFooterProps> {
     return (
       <div className={styles.portalFooter}>
-        <Links links={this.state.links} loadingLinks={this.state.loadingLinks} visible={this.state.expanded} onLinksEdit={this._handleLinksEdit} />
+        <Links links={this.state.links}
+          loadingLinks={this.state.loadingLinks}
+          visible={this.state.expanded}
+          onLinksEdit={this._handleLinksEdit} />
         <div className={styles.main}>
           <div className="ms-Grid">
             <div className="ms-Grid-row">
               <div className="ms-Grid-col ms-sm3">
-                <Label className={styles.copyright}>{strings.Copyright}</Label>
+                <Label className={styles.copyright}>{this.props.copyright}</Label>
               </div>
               <div className="ms-Grid-col ms-sm2">
                 <ActionButton
                   iconProps={{ iconName: 'Headset' }}
                   className={styles.supportButton}
                   href='/'>
-                  {strings.Support}
+                  {this.props.support}
                 </ActionButton>
               </div>
               <div className="ms-Grid-col ms-sm6"></div>

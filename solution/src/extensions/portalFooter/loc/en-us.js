@@ -1,10 +1,9 @@
 define([], function () {
   return {
+    "Title": "PortalFooterApplicationCustomizer",
     "ToggleButtonOpen": "Open",
     "ToggleButtonClose": "Close",
     "Edit": "Edit",
-    "EditTitle": "Select footer links",
-    "Support": "Support",
-    "Copyright": "Copyright © 2018 Contoso"
+    "EditTitle": "Select footer links"
   }
 });

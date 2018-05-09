@@ -1,10 +1,9 @@
 declare interface IPortalFooterApplicationCustomizerStrings {
+  Title: string;
   ToggleButtonOpen: string;
   ToggleButtonClose: string;
   Edit: string;
   EditTitle: string;
-  Support: string;
-  Copyright: string;
 }
 
 declare module 'PortalFooterApplicationCustomizerStrings' {
