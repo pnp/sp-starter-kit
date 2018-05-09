@@ -111,3 +111,69 @@ Function Test-SiteExists {
         }
     }
 }
+
+Function New-SiteHierarchy {
+    [CmdletBinding()]
+
+    param (
+        [Parameter(Mandatory = $true)]
+        [String] $TenantUrl,
+        [Parameter(Mandatory = $false)]
+        [String] $Prefix = "DEMO_",
+        [Parameter(Mandatory = $true)]
+        [String] $ConfigurationFilePath,
+        [Parameter(Mandatory = $true)]
+        [PSCredential] $Credentials
+    )
+
+    Process {
+        Write-Host "Creating Site Hierarchy from $ConfigurationFilePath" -ForegroundColor Cyan
+
+        $hierarchy = ConvertFrom-Json -InputObject (Get-Content $ConfigurationFilePath -Raw)
+
+        $hubParams = @{
+            Type = "CommunicationSite";
+            Url = "$TenantUrl/sites/$Prefix$($hierarchy.url)";
+            Title = $hierarchy.title;
+            Description = $hierarchy.description;
+        }
+        
+        $site = $null
+        try {
+            $connection = Connect-PnPOnline -Url $hubParams.Url -Credentials $Credentials -ErrorAction SilentlyContinue -ReturnConnection
+            $site = Get-PnPSite -ErrorAction SilentlyContinue -Connection $connection
+        } catch {}
+        if($site -eq $null)
+        {
+            # Site does not exist
+            Write-Host "Creating $($hubParams.Url)" -ForegroundColor Cyan
+            $connection = Connect-PnPOnline -Url $TenantUrl -Credentials $Credentials -ReturnConnection
+            $hubParams.Connection = $connection
+            New-PnPSite @hubParams
+        }
+        # Check if root site is hubsite
+        $hubsites = Get-PnPHubSite -Identity $hubParams.Url -Connection $connection
+        if($hubsites[0].Id -eq $null)
+        {
+            # not a hub site, register it as one
+            Register-PnPHubSite -Site $hubParams.Url -Connection $connection
+        }
+
+        # Create the other sites
+        foreach($child in $hierarchy.children)
+        {
+            $childParams = @{
+                Type = "TeamSite";
+                Alias = "$Prefix$($child.url)";
+                Title = $child.title;
+                Description = $child.description;
+                Connection = $connection;
+            }
+            Write-Host "Creating $($child.url)" -ForegroundColor Cyan
+            $siteUrl = New-PnPSite @childParams
+            Add-PnPHubSiteAssociation -Site $siteUrl -HubSite $hubParams.Url -Connection $connection
+        }
+
+        $rootUrl
+    }
+}
