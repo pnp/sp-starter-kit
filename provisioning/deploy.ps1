@@ -1,7 +1,10 @@
 
 Param(
+    [Parameter(Mandatory = $true, Position = 1)]
+    [string]$TenantUrl,
+
     [Parameter(Mandatory = $false, Position = 1)]
-    [string]$SiteUrl,
+    [string]$SitePrefix = "DEMO_",
 
     [Parameter(Mandatory = $false, Position = 2)]
     [PSCredential]$Credentials,
@@ -11,6 +14,9 @@ Param(
 
     [Parameter(Mandatory = $false, Position = 3)]
     [switch]$SkipInstall = $false,
+
+    [Parameter(Mandatory = $false, Position = 3)]
+    [switch]$SkipSiteCreation = $false,
 
     [Parameter(Mandatory = $false)]
     [switch]$SkipSolutionDeployment = $false,
@@ -47,74 +53,67 @@ if (!$SkipInstall) {
     }
 }
 
-if ($SiteUrl -eq "") {
-    $SiteUrl = Read-Host -Prompt "Enter full URL of the site"
-}
 if ($Credentials -eq $null) {
     $Credentials = Get-Credential -Message "Enter credentials to connect to $siteUrl"
 }
-# check if URL is valid
-if (Test-Url -Url $SiteUrl) {
-    if(-not (Test-SiteExists -Url $SiteUrl -Credentials $Credentials))
-    {
-        Write-Information "Site does not exist. Creating new communications site."
-        $uri = [System.Uri]$SiteUrl
-        # Connect to root site with same credentials
-        $rootSiteConnection = Connect-PnPOnline -Url "$($uri.Scheme)://$($uri.Host)" -Credentials $Credentials -ReturnConnection
-        New-PnPSite -Type CommunicationSite -Title "SP Portal Showcase" -Url $SiteUrl -Connection $rootSiteConnection
-    } 
-
-    # Check if package exists
-    if((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg") -eq $false -or $Build)
-    {
-        Set-Location $PSScriptRoot\..\solution
-        npm install
-        Set-Location $PSScriptRoot
-        # does not exist. Build and Package
-        Write-Host "Building solution" -ForegroundColor Cyan
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build 2>&1 | Out-Null
-        Write-Host "Bundling solution" -ForegroundColor Cyan
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" bundle --ship 2>&1 | Out-Null
-        Write-Host "Packaging solution" -ForegroundColor Cyan 
-        gulp -f "$PSScriptRoot\..\solution\gulpfile.js" package-solution --ship 2>&1 | Out-Null
-    }
-    $connection = Connect-PnPOnline -Url $SiteUrl -Credentials $Credentials -ReturnConnection
-  
-    if($SkipSolutionDeployment -ne $true)
-    {
-        # Temporary until schema change is present
-        Write-Host "Provisioning solution" -ForegroundColor Cyan
-        $existingApp = Get-PnPApp -Identity "sharepoint-portal-showcase-client-side-solution" -ErrorAction SilentlyContinue
-        if($existingApp -ne $null)
-        {
-            Remove-PnPApp -Identity $existingApp
-        }
-        Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\solution.xml" -Connection $connection
-        Update-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
-    }
-
-    # Create and Set theme if needed
-    Set-ThemeIfNotSet -ThemeName $ThemeName -ThemePath $ThemePath -Connection $connection
-
-    # Register the site as the hubsite
-    $isHub = Get-PnPHubSite -Identity $siteUrl -ErrorAction SilentlyContinue -Connection $connection
-    if($isHub -eq $null)
-    {
-        Write-Host "Registering site as hubsite" -ForegroundColor Cyan
-        Register-PnPHubSite -Site $siteUrl -Connection $connection 2>&1 | Out-Null
-        
-    }
-    $HubSiteId = (Get-PnPSite -Includes Id).Id.ToString()
-
-    if($StockAPIKey -ne $null)
-    {
-        Write-Host "Storing Stock API Key in tenant properties"
-        Set-PnPStorageEntity -Key "PnP-Portal-AlphaVantage-API-Key" -Value $StockAPIKey -Comment "API Key for Alpha Advantage REST Stock service" -Description "API Key for Alpha Advantage REST Stock service" -Connection $connection
-    }
-    
-    Write-Host "Applying template to portal" -ForegroundColor Cyan
-    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity"=$WeatherCity;"PortalTitle"=$PortalTitle;"StockSymbol"=$StockSymbol;"HubSiteId"=$HubSiteId} -Connection $connection
+if ($SkipSiteCreation -eq $false) {
+    # check if URL is valid
+    $SiteUrl = New-SiteHierarchy -TenantUrl $TenantUrl -Prefix $SitePrefix -ConfigurationFilePath ./hierarchy.json -Credentials $Credentials
 }
 else {
-    Write-Error -Message "Url is of incorrect format"
+    $hierarchy = ConvertFrom-Json (Get-Content -Path ./hierarchy.json -Raw)
+    $SiteUrl = @("$TenantUrl/sites/$SitePrefix$($hierarchy.url)")
+}
+
+# Check if package existsd
+if ((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg") -eq $false -or $Build) {
+    Set-Location $PSScriptRoot\..\solution
+    npm install
+    Set-Location $PSScriptRoot
+    # does not exist. Build and Package
+    Write-Host "Building solution" -ForegroundColor Cyan
+    gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build 2>&1 | Out-Null
+    Write-Host "Bundling solution" -ForegroundColor Cyan
+    gulp -f "$PSScriptRoot\..\solution\gulpfile.js" bundle --ship 2>&1 | Out-Null
+    Write-Host "Packaging solution" -ForegroundColor Cyan 
+    gulp -f "$PSScriptRoot\..\solution\gulpfile.js" package-solution --ship 2>&1 | Out-Null
+}
+$connection = Connect-PnPOnline -Url $SiteUrl[0] -Credentials $Credentials -ReturnConnection
+
+if ($SkipSolutionDeployment -ne $true) {
+    # Temporary until schema change is present
+    Write-Host "Provisioning solution" -ForegroundColor Cyan
+    $existingApp = Get-PnPApp -Identity "sharepoint-portal-showcase-client-side-solution" -ErrorAction SilentlyContinue
+    if ($existingApp -ne $null) {
+        Remove-PnPApp -Identity $existingApp
+    }
+    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\solution.xml" -Connection $connection
+    Update-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
+}
+
+# Create and Set theme if needed
+Set-ThemeIfNotSet -ThemeName $ThemeName -ThemePath $ThemePath -Connection $connection
+
+# Register the site as the hubsite
+$isHub = Get-PnPHubSite -Identity $siteUrl[0] -ErrorAction SilentlyContinue -Connection $connection
+if ($isHub -eq $null) {
+    Write-Host "Registering site as hubsite" -ForegroundColor Cyan
+    Register-PnPHubSite -Site $siteUrl -Connection $connection 2>&1 | Out-Null
+    
+}
+$HubSiteId = (Get-PnPSite -Includes Id).Id.ToString()
+
+if ($StockAPIKey -ne $null -and $StockAPIKey -ne "") {
+    Write-Host "Storing Stock API Key in tenant properties"
+    Set-PnPStorageEntity -Key "PnP-Portal-AlphaVantage-API-Key" -Value $StockAPIKey -Comment "API Key for Alpha Advantage REST Stock service" -Description "API Key for Alpha Advantage REST Stock service" -Connection $connection
+}
+
+Write-Host "Applying template to portal" -ForegroundColor Cyan
+Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity" = $WeatherCity; "PortalTitle" = $PortalTitle; "StockSymbol" = $StockSymbol; "HubSiteId" = $HubSiteId} -Connection $connection
+
+Write-Host "Updating navigation"
+$departmentNode = Get-PnPNavigationNode -Location TopNavigationBar -Connection $connection | Where-Object {$_.Title -eq "Departments"} 
+$hierarchy = ConvertFrom-Json (Get-Content -Path ./hierarchy.json -Raw)
+foreach ($child in $hierarchy.children) {
+    Add-PnPNavigationNode -Location TopNavigationBar -Parent $departmentNode[0].Id -Title $child.title -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -Connection $connection
 }

@@ -2,6 +2,7 @@
   xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a">
     <pnp:Parameters>
+      <pnp:Parameter Key="PortalUrl">/</pnp:Parameter>
       <pnp:Parameter Key="WeatherCity">Helsinki</pnp:Parameter>
       <pnp:Parameter Key="PortalTitle">SP Portal Showcase - Helsinki Style</pnp:Parameter>
       <pnp:Parameter Key="StockSymbol">MSFT</pnp:Parameter>
@@ -20,6 +21,7 @@
           <pnp:StructuralNavigation RemoveExistingNodes="true">
             <pnp:NavigationNode Title="Personal" Url="SitePages/Personal.aspx"/>
             <pnp:NavigationNode Title="Organization" Url="SitePages/PortalHome.aspx"/>
+            <pnp:NavigationNode Title="Departments" Url="" />
           </pnp:StructuralNavigation>
         </pnp:GlobalNavigation>
       </pnp:Navigation>
@@ -93,7 +95,7 @@
         </pnp:ContentType>
       </pnp:ContentTypes>
       <pnp:ClientSidePages>
-        <pnp:ClientSidePage PageName="PortalHome.aspx" Title="Welcome to Helsinki" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
+        <pnp:ClientSidePage PageName="PortalHome.aspx" Title="Welcome to Contoso" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
           <pnp:Header Type="Custom" ServerRelativeImageUrl="{site}/assets/hel2.jpg" />
           <pnp:Sections>
             <!--<pnp:Section Order="1" Type="OneColumnFullWidth">
@@ -282,9 +284,9 @@
           <!-- alertNotification -->
           <pnp:CustomAction Name="AlertNotification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="aa8dd198-e2ee-45c5-b746-821d001bb0e1" RegistrationType="None" />
           <!-- collabFooter -->
-          <pnp:CustomAction Name="CollabFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="c0ab3b94-8609-40cf-861e-2a1759170b43" RegistrationType="None" />
+          <pnp:CustomAction Name="CollabFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="c0ab3b94-8609-40cf-861e-2a1759170b43" RegistrationType="None" ClientSideComponentProperties="{&quot;sourceTermSet&quot;:&quot;PnP-CollabFooter-SharedLinks&quot;,&quot;personalItemsStorageProperty&quot;:&quot;PnP-CollabFooter-MyLinks&quot;}" />
           <!-- portalFooter -->
-          <pnp:CustomAction Name="PortalFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="b8eb4ec9-934a-4248-a15f-863d27f94f60" RegistrationType="None" />
+          <pnp:CustomAction Name="PortalFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="b8eb4ec9-934a-4248-a15f-863d27f94f60" RegistrationType="None" ClientSideComponentProperties="{&quot;linksListTitle&quot;:&quot;PnP-PortalFooter-Links&quot;,&quot;copyright&quot;:&quot;(C) Copyright Contoso, 2018&quot;,&quot;support&quot;:&quot;support@contoso.com&quot;}" />
           <!-- redirect -->
           <pnp:CustomAction Name="Redirect" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="f5771a9e-283e-4525-a599-554e8b9e48c2" RegistrationType="None" />
           <!-- siteClassification -->

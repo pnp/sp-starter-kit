@@ -1,0 +1,17 @@
+{
+    "url":"portal",
+    "title":"Portal",
+    "description":"Portal Hub",
+    "children":[
+        {
+            "url":"hr",
+            "title":"Human Resources",
+            "description":"Human Resources"
+        },
+        {
+            "url":"marketing",
+            "title":"Marketing",
+            "description":"Marketing"
+        }
+    ]
+}
