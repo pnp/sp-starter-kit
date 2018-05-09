@@ -1,5 +1,9 @@
-define([], function() {
+define([], function () {
   return {
-    "Title": "PortalFooterApplicationCustomizer"
+    "Title": "PortalFooterApplicationCustomizer",
+    "ToggleButtonOpen": "Open",
+    "ToggleButtonClose": "Close",
+    "Edit": "Edit",
+    "EditTitle": "Select footer links"
   }
 });
