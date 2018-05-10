@@ -32,7 +32,9 @@ const LOG_SOURCE: string = 'CollabFooterApplicationCustomizer';
  * You can define an interface to describe it.
  */
 export interface ICollabFooterApplicationCustomizerProperties {
+  // the Taxonomy Term Set that stores the shared menu items
   sourceTermSet: string;
+  // the UPS property to store the MyLinks items
   personalItemsStorageProperty: string;
 }
 
