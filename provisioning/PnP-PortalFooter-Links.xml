@@ -25,7 +25,7 @@
         </pnp:ContentType>
       </pnp:ContentTypes>
       <pnp:Lists>
-        <pnp:ListInstance Title="PnP-PortalFooter-Links" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/PnPPortalFooterLinks" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/PnPPortalFooterLinks/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/PnPPortalFooterLinks/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/PnPPortalFooterLinks/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=44" IsApplicationList="false" WriteSecurity="0" ValidationFormula="" ValidationMessage="">
+        <pnp:ListInstance Title="PnP-PortalFooter-Links" Description="" DocumentTemplate="" OnQuickLaunch="false" TemplateType="100" Url="Lists/PnPPortalFooterLinks" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/PnPPortalFooterLinks/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/PnPPortalFooterLinks/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/PnPPortalFooterLinks/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=44" IsApplicationList="false" WriteSecurity="0" ValidationFormula="" ValidationMessage="">
           <pnp:ContentTypeBindings>
             <pnp:ContentTypeBinding ContentTypeID="0x0100580DB2292968A34EA3748511017A6DD2" Default="true" />
             <pnp:ContentTypeBinding ContentTypeID="0x0120" />
