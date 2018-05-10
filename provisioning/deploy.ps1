@@ -110,6 +110,7 @@ if ($StockAPIKey -ne $null -and $StockAPIKey -ne "") {
 
 Write-Host "Applying template to portal" -ForegroundColor Cyan
 Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity" = $WeatherCity; "PortalTitle" = $PortalTitle; "StockSymbol" = $StockSymbol; "HubSiteId" = $HubSiteId} -Connection $connection
+Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\PnP-PortalFooter-Links.xml" -Connection $connection
 
 Write-Host "Updating navigation"
 $departmentNode = Get-PnPNavigationNode -Location TopNavigationBar -Connection $connection | Where-Object {$_.Title -eq "Departments"} 
