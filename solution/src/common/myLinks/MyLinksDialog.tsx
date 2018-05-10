@@ -302,7 +302,11 @@ class MyLinksDialogContent extends
   @autobind
   private async addLink(): Promise<void> {
 
-    this._selection.toggleIndexSelected(this.state.links.indexOf(this.state.selectedLink));
+    if (this.state.selectedLink != null &&
+      this.state.links != null &&
+      this.state.links.length > 0) {
+        this._selection.toggleIndexSelected(this.state.links.indexOf(this.state.selectedLink));
+    }
 
     // enable the detail panel
     this.setState({

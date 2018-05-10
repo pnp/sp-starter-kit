@@ -5,10 +5,14 @@ import { CommandBar,
   IContextualMenuItem,
   DefaultButton,
   ActionButton,
-  Label } from 'office-ui-fabric-react';
+  Label, 
+  MessageBar,
+  MessageBarType,
+  autobind} from 'office-ui-fabric-react';
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
 import { ILinkGroup } from './ILinkGroup';
 import { Links } from '../Links';
+import { IPortalFooterEditResult } from '../PortalFooter/IPortalFooterEditResult';
 
 export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFooterState> {
   constructor(props: IPortalFooterProps) {
@@ -18,108 +22,7 @@ export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFoo
       expanded: false,
       toggleButtonIconName: 'DoubleChevronUp',
       loadingLinks: false,
-      links: [
-        {
-          title: 'Lorem ipsum 1',
-          links: [
-            {
-              title: 'Lorem ipsum',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum dolor sit amet',
-              url: '#'
-            },
-            {
-              title: 'Lorem',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum dolor',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum',
-              url: '#'
-            }
-          ]
-        },
-        {
-          title: 'Lorem ipsum 2',
-          links: [
-            {
-              title: 'Lorem ipsum',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum dolor sit amet',
-              url: '#'
-            },
-            {
-              title: 'Lorem',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum dolor',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum',
-              url: '#'
-            }
-          ]
-        },
-        {
-          title: 'Lorem ipsum 3',
-          links: [
-            {
-              title: 'Lorem ipsum',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum dolor sit amet',
-              url: '#'
-            },
-            {
-              title: 'Lorem',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum dolor',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum',
-              url: '#'
-            }
-          ]
-        },
-        {
-          title: 'Lorem ipsum 4',
-          links: [
-            {
-              title: 'Lorem ipsum',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum dolor sit amet',
-              url: '#'
-            },
-            {
-              title: 'Lorem',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum dolor',
-              url: '#'
-            },
-            {
-              title: 'Lorem ipsum',
-              url: '#'
-            }
-          ]
-        }
-      ]
+      links: props.links,
     };
   }
 
@@ -132,37 +35,62 @@ export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFoo
     });
   }
 
-  private _handleLinksEdit = (selectedLinks: ILinkGroup[]): void => {
-    // todo: save links in the user profile
-    // todo: update cache
-    this.setState({
-      links: selectedLinks
-    });
+  @autobind
+  private _handleSupport(): void {
+    const supportUrl: string = `mailto:${this.props.support}`;
+    location.href = supportUrl;
+    console.log(supportUrl);
+  }
+
+  @autobind
+  private async _handleLinksEdit(): Promise<void> {
+
+    let editResult: IPortalFooterEditResult = await this.props.onLinksEdit();
+    if (editResult != null) {
+      this.setState({
+        myLinksSaved: editResult.editResult,
+        links: editResult.links
+      });
+
+      // hide the message after 2 sec
+      window.setTimeout(() => {
+        this.setState({
+          myLinksSaved: null,
+          });
+        }, 2000);
+    }
   }
 
   public render(): React.ReactElement<IPortalFooterProps> {
     return (
       <div className={styles.portalFooter}>
+        { this.state.myLinksSaved != null ? (this.state.myLinksSaved ?
+            <MessageBar
+              messageBarType={ MessageBarType.success }>{ strings.MyLinksSaveSuccess }</MessageBar> :
+            <MessageBar
+              messageBarType={ MessageBarType.error }>{ strings.MyLinksSaveFailed }</MessageBar>) : null }
         <Links links={this.state.links}
           loadingLinks={this.state.loadingLinks}
           visible={this.state.expanded}
-          onLinksEdit={this._handleLinksEdit} />
+          onMyLinksEdit={this._handleLinksEdit} />
         <div className={styles.main}>
           <div className="ms-Grid">
             <div className="ms-Grid-row">
-              <div className="ms-Grid-col ms-sm3">
+              <div className="ms-Grid-col ms-sm3" onClick={ this._handleToggle }>
                 <Label className={styles.copyright}>{this.props.copyright}</Label>
               </div>
               <div className="ms-Grid-col ms-sm2">
                 <ActionButton
                   iconProps={{ iconName: 'Headset' }}
                   className={styles.supportButton}
-                  href='/'>
+                  onClick={ this._handleSupport }>
                   {this.props.support}
                 </ActionButton>
               </div>
-              <div className="ms-Grid-col ms-sm6"></div>
-              <div className="ms-Grid-col ms-sm1">
+              <div className="ms-Grid-col ms-sm6" onClick={ this._handleToggle }>
+                <Label className={styles.filler}>&nbsp;</Label>
+              </div>
+              <div className="ms-Grid-col ms-sm1" onClick={ this._handleToggle }>
                 <div className={styles.toggleControl}>
                   <DefaultButton
                     iconProps={{ iconName: this.state.toggleButtonIconName }}

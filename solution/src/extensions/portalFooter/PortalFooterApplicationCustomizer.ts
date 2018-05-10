@@ -8,6 +8,20 @@ import {
 
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
 import { IPortalFooterProps, PortalFooter } from './components/PortalFooter';
+import { ILinkGroup } from './components/PortalFooter/ILinkGroup';
+
+// import additional controls/components
+import { sp, CamlQuery } from "@pnp/sp";
+import { SPHttpClient, SPHttpClientResponse, SPHttpClientConfiguration } from '@microsoft/sp-http';
+import { IHubSiteData, IHubSiteDataResponse } from './IHubSiteData';
+import { ILinkListItem } from './ILinkListItem';
+import SPTaxonomyService from '../../services/SPTaxonomyService';
+import { ITermSets, ITermSet, ITerms, ITerm } from '../../services/SPTaxonomyTypes';
+import SPUserProfileService from '../../services/SPUserProfileService';
+import MyLinksDialog from '../../common/myLinks/MyLinksDialog';
+import IMyLink from '../../common/myLinks/IMyLink';
+import { autobind } from '@uifabric/utilities';
+import { IPortalFooterEditResult } from './components/PortalFooter/IPortalFooterEditResult';
 
 const LOG_SOURCE: string = 'PortalFooterApplicationCustomizer';
 
@@ -23,6 +37,8 @@ export interface IPortalFooterApplicationCustomizerProperties {
   copyright?: string;
   // support text for the footer
   support?: string;
+  // the UPS property to store the MyLinks items
+  personalItemsStorageProperty: string;
 }
 
 /** A Custom Action which can be run during execution of a Client Side Application */
@@ -30,6 +46,7 @@ export default class PortalFooterApplicationCustomizer
   extends BaseApplicationCustomizer<IPortalFooterApplicationCustomizerProperties> {
 
   private static _bottomPlaceholder?: PlaceholderContent;
+  private _myLinks: IMyLink[];
 
   private _handleDispose(): void {
     console.log('[PortalFooterApplicationCustomizer._onDispose] Disposed custom bottom placeholder.');
@@ -37,17 +54,148 @@ export default class PortalFooterApplicationCustomizer
 
   @override
   public async onInit(): Promise<void> {
+
+    // get the hub site URL
+    let hubSiteUrl: string = await this.getHubSiteUrl();
+
+    if (!hubSiteUrl) {
+      console.log('Current site is not part of an hub and the footer will fallback to local list of links.');
+      hubSiteUrl = this.context.pageContext.web.absoluteUrl;
+    }
+
+    // initialize PnP JS library to play with SPFx contenxt
+    sp.setup({
+      spfxContext: this.context,
+      sp: {
+        baseUrl: hubSiteUrl,
+      },
+    });
+
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
     let linksListTitle: string = this.properties.linksListTitle;
     let copyright: string = this.properties.copyright;
     let support: string = this.properties.support;
-    if (!linksListTitle || !copyright || !support) {
+    let personalItemsStorageProperty: string = this.properties.personalItemsStorageProperty;
+    if (!linksListTitle || !copyright || !support || !personalItemsStorageProperty) {
       console.log('Provide valid properties for PortalFooterApplicationCustomizer!');
     }
 
     // call render method for generating the needed html elements
     return(await this._renderPlaceHolders());
+  }
+
+  @autobind
+  private async _editLinks(): Promise<IPortalFooterEditResult> {
+
+    let result: IPortalFooterEditResult = {
+      editResult: null,
+      links: null,
+    };
+
+    const myLinksDialog: MyLinksDialog = new MyLinksDialog(this._myLinks);
+    await myLinksDialog.show();
+
+    // update the local list of links
+    let resultingLinks: IMyLink[] = myLinksDialog.links;
+
+    if (this._myLinks !== resultingLinks) {
+      this._myLinks = resultingLinks;
+
+      // save the personal links in the UPS, if there are any updates
+      let upsService: SPUserProfileService = new SPUserProfileService(this.context);
+      result.editResult = await upsService.setUserProfileProperty(this.properties.personalItemsStorageProperty,
+        'String',
+        JSON.stringify(this._myLinks));
+
+      result.links = await this.loadLinks();
+    }
+
+    return (result);
+  }
+
+  // retrieves the URL of the hub site for the current site
+  private async getHubSiteUrl(): Promise<string> {
+
+    let result: string = null;
+
+    try {
+      // get the hub site data via REST API
+      let response: SPHttpClientResponse = await this.context.spHttpClient
+        .get(`${this.context.pageContext.web.absoluteUrl}/_api/web/hubsitedata`,
+        SPHttpClient.configurations.v1);
+
+      // deserialize JSON response and, if any, get the URL of the hub site
+      const hubSiteDataResponse: IHubSiteDataResponse = await response.json();
+      if (hubSiteDataResponse) {
+        let hubSiteData: IHubSiteData = JSON.parse(hubSiteDataResponse.value);
+        if (hubSiteData) {
+          result = hubSiteData.url;
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    return(result);
+  }
+
+  // loads the groups of links from the hub site reference list
+  private async loadLinks(): Promise<ILinkGroup[]> {
+
+    // prepare the result variable
+    let result: ILinkGroup[] = [];
+
+    // get the links from the source list
+    let items: ILinkListItem[] = await sp.web
+      .lists.getByTitle(this.properties.linksListTitle)
+      .items.select("Title","PnPPortalLinkGroup","PnPPortalLinkUrl").top(100)
+      .orderBy("PnPPortalLinkGroup", true)
+      .orderBy("Title", true)
+      .usingCaching({key: "PnP-PortalFooter-Links"})
+      .get();
+
+    // map the list items to the results
+    items.map((v, i, a) => {
+      // in case we have a new group title
+      if (result.length === 0 || v.PnPPortalLinkGroup !== result[result.length - 1].title) {
+        // create the new group and add the current item
+        result.push({
+          title: v.PnPPortalLinkGroup,
+          links: [{
+            title: v.Title,
+            url: v.PnPPortalLinkUrl.Url,
+          }],
+        });
+      } else {
+        // or add the current item to the already existing group
+        result[result.length - 1].links.push({
+          title: v.Title,
+          url: v.PnPPortalLinkUrl.Url,
+        });
+      }
+    });
+
+    // get the list of personal items from the User Profile Service
+    let upsService: SPUserProfileService = new SPUserProfileService(this.context);
+    let myLinksJson: any = await upsService.getUserProfileProperty(this.properties.personalItemsStorageProperty);
+
+    // if we have personalizes links
+    if (myLinksJson != null) {
+      if (myLinksJson.length > 0) {
+        this._myLinks = JSON.parse(myLinksJson) as IMyLink[];
+
+        // add all of them to the "My Links" group
+        if (this._myLinks.length > 0) {
+          result.push({
+            title: strings.MyLinks,
+            links: this._myLinks,
+          });
+        }
+      }
+    }
+
+    return(result);
   }
 
   private async _renderPlaceHolders(): Promise<void> {
@@ -65,11 +213,15 @@ export default class PortalFooterApplicationCustomizer
       return;
     }
 
+    const links: ILinkGroup[] = await this.loadLinks();
+
     const element: React.ReactElement<IPortalFooterProps> = React.createElement(
       PortalFooter,
       {
+        links: links,
         copyright: this.properties.copyright,
-        support: this.properties.support
+        support: this.properties.support,
+        onLinksEdit: this._editLinks,
       }
     );
 

@@ -1,11 +1,11 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
 .portalFooter {
-  // inherit theme colors
-  background-color: $ms-color-themePrimary;
-  @include ms-fontColor-white;
 
   .main {
+    // inherit theme colors
+    background-color: $ms-color-themePrimary;
+    @include ms-fontColor-white;
     padding-left: 10px;
   }
 
@@ -22,6 +22,11 @@
   }
 
   .copyright {
+    color: inherit;
+    line-height: 30px;
+  }
+
+  .filler {
     color: inherit;
     line-height: 30px;
   }
