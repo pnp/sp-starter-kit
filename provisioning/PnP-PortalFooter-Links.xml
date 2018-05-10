@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema https://raw.githubusercontent.com/OfficeDev/PnP-Provisioning-Schema/master/OfficeDevPnP.ProvisioningSchema/ProvisioningSchema-2018-05.xsd">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.26.1805.0, Culture=neutral, PublicKeyToken=null" />
   <pnp:Templates ID="CONTAINER-TEMPLATE-PnP-PortalFooter-Links">
-    <pnp:ProvisioningTemplate ID="TEMPLATE-PnP-PortalFooter-Links" Version="1" BaseSiteTemplate="GROUP#0" Scope="RootSite">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-PnP-PortalFooter-Links" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
       <pnp:SiteFields>
         <Field Type="Choice" DisplayName="Link Group" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="TRUE" Group="PnP Columns" ID="{f5b23751-56d4-4ec3-adf2-7b080d834f74}" SourceID="{88a250c5-31b2-4d64-b047-482e2a6e5e7a}" StaticName="PnPPortalLinkGroup" Name="PnPPortalLinkGroup" CustomFormatter="">
           <CHOICES>
