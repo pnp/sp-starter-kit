@@ -65,8 +65,7 @@ if ($Credentials -eq $null) {
 if ($SkipSiteCreation -eq $false) {
     # check if URL is valid
     $SiteUrl = New-SiteHierarchy -TenantUrl $TenantUrl -Prefix $SitePrefix -ConfigurationFilePath ./hierarchy.json -Credentials $Credentials
-    if($SiteUrl -isnot [array])
-    {
+    if ($SiteUrl -isnot [array]) {
         $SiteUrl = @($SiteUrl)
     }
 }
@@ -130,10 +129,15 @@ Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\PnP-PortalFooter-Links.xml" -
 
 Write-Host "Updating navigation and applying collab templates"
 $departmentNode = Get-PnPNavigationNode -Location TopNavigationBar -Connection $connection | Where-Object {$_.Title -eq "Departments"} 
+$children = Get-PnPProperty -ClientObject $departmentNode -Property Children
 $hierarchy = ConvertFrom-Json (Get-Content -Path "$PSScriptRoot\hierarchy.json" -Raw)
 foreach ($child in $hierarchy.children) {
-    $node = Add-PnPNavigationNode -Location TopNavigationBar -Parent $departmentNode[0].Id -Title $child.title -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -Connection $connection
-    $childConnection = Connect-PnPOnline -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -ReturnConnection
+    if (($children | Where-Object {$_.Title -eq $child.title}) -eq $null) {
+        $node = Add-PnPNavigationNode -Location TopNavigationBar -Parent $departmentNode[0].Id -Title $child.title -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -Connection $connection
+        $childConnection = Connect-PnPOnline -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -ReturnConnection
+    }
     Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\collab.xml" -Connection $childConnection
 }
+
+Write-Host "Done." -ForegroundColor Green
 
