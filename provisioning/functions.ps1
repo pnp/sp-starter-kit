@@ -127,7 +127,7 @@ Function New-SiteHierarchy {
     )
 
     Process {
-        Write-Host "Creating Site Hierarchy from $ConfigurationFilePath" -ForegroundColor Cyan
+        Write-Host "Reading Site Hierarchy from $ConfigurationFilePath" -ForegroundColor Cyan
 
         $hierarchy = ConvertFrom-Json -InputObject (Get-Content $ConfigurationFilePath -Raw)
 

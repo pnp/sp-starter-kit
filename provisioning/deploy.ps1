@@ -1,4 +1,10 @@
-
+#
+# Notice the use of -ReturnConnection on Connect-PnPOnline and -Connection parameter on the majority
+# of the PnP Cmdlets. We do this specifically because we do some so-called 'context switching' behind
+# the scenes. In a normal case it is -not- needed to specifically specify the connection when using 
+# a PnP Cmdlet. The moment you run Connect-PnPOnline (without -ReturnConnection) the cmdlets will work
+# with the current connected context.
+#
 Param(
     [Parameter(Mandatory = $true, Position = 1)]
     [string]$TenantUrl,
@@ -94,6 +100,12 @@ if ($SkipSolutionDeployment -ne $true) {
     Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\solution.xml" -Connection $connection
     Update-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
 }
+
+# Disable Quicklaunch for Portal
+$web = Get-PnPWeb -Connection $connection
+$web.QuicklaunchEnabled = $false
+$web.Update()
+Invoke-PnPQuery -Connection $connection
 
 # Create and Set theme if needed
 Set-ThemeIfNotSet -ThemeName $ThemeName -ThemePath $ThemePath -Connection $connection
