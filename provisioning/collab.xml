@@ -1,0 +1,42 @@
+<pnp:Provisioning 
+  xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a"></pnp:Preferences>
+  <pnp:Tenant>
+    <pnp:StorageEntities>
+      <pnp:StorageEntity Key="PnPTilesList-{sitecollectionid}" Value="{hosturl}{site}/{listurl:PnPTiles}" />
+    </pnp:StorageEntities>
+  </pnp:Tenant>
+  <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
+    <pnp:ProvisioningTemplate ID="COLLAB-TEMPLATE" Version="1.0" BaseSiteTemplate="GROUP#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
+      <pnp:Security>
+        <pnp:AdditionalAdministrators>
+          <pnp:User Name="erwin@officedevpnp.onmicrosoft.com"/>
+          <pnp:User Name="vesaj@officedevpnp.onmicrosoft.com"/>
+          <pnp:User Name="paolo@officedevpnp.onmicrosoft.com"/>
+          <pnp:User Name="elio@officedevpnp.onmicrosoft.com"/>
+          <pnp:User Name="waldek@officedevpnp.onmicrosoft.com"/>
+          <pnp:User Name="bert@officedevpnp.onmicrosoft.com"/>
+        </pnp:AdditionalAdministrators>
+      </pnp:Security>
+      <pnp:CustomActions>
+        <pnp:WebCustomActions>
+          <!-- alertNotification -->
+          <pnp:CustomAction Name="AlertNotification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="aa8dd198-e2ee-45c5-b746-821d001bb0e1" RegistrationType="None" />
+          <!-- collabFooter -->
+          <pnp:CustomAction Name="CollabFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="c0ab3b94-8609-40cf-861e-2a1759170b43" RegistrationType="None" ClientSideComponentProperties="{&quot;sourceTermSet&quot;:&quot;PnP-CollabFooter-SharedLinks&quot;,&quot;personalItemsStorageProperty&quot;:&quot;PnP-CollabFooter-MyLinks&quot;}" />
+          <!-- redirect -->
+          <pnp:CustomAction Name="Redirect" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="f5771a9e-283e-4525-a599-554e8b9e48c2" RegistrationType="None" />
+          <!-- siteClassification -->
+          <pnp:CustomAction Name="SiteClassification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="7f69d5cb-5aeb-4bc6-9f77-146aebfd9a8e" Sequence="1" RegistrationType="None" />
+          <!-- tabPage -->
+          <!-- <pnp:CustomAction Name="TabPage" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="14a8a106-d508-44d0-8fa6-f2f9ed8f571d" Sequence="2" RegistrationType="None" /> -->
+        </pnp:WebCustomActions>
+      </pnp:CustomActions>
+      <pnp:ApplicationLifecycleManagement>
+        <pnp:Apps>
+          <pnp:App AppId="{AppPackageId:sharepoint-portal-showcase-client-side-solution}" Action="Install" />
+        </pnp:Apps>
+      </pnp:ApplicationLifecycleManagement>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

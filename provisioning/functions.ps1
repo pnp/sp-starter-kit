@@ -150,6 +150,8 @@ Function New-SiteHierarchy {
             $connection = Connect-PnPOnline -Url $TenantUrl -Credentials $Credentials -ReturnConnection
             $hubParams.Connection = $connection
             New-PnPSite @hubParams
+        } else {
+            $connection = Connect-PnPOnline -Url $TenantUrl -Credentials $Credentials -ReturnConnection
         }
         # Check if root site is hubsite
         $hubsites = Get-PnPHubSite -Identity $hubParams.Url -Connection $connection
@@ -169,11 +171,21 @@ Function New-SiteHierarchy {
                 Description = $child.description;
                 Connection = $connection;
             }
-            Write-Host "Creating $($child.url)" -ForegroundColor Cyan
-            $siteUrl = New-PnPSite @childParams
+            $childSite = $null
+            try {
+                $connection = Connect-PnPOnline -Url "$TenantUrl/sites/$Prefix$($child.url)" -Credentials $Credentials -ErrorAction SilentlyContinue -ReturnConnection
+                $childSite = Get-PnPSite -ErrorAction SilentlyContinue -Connection $connection
+            } catch {}
+            if($childSite -eq $null)
+            {
+                Write-Host "Creating $($child.url)" -ForegroundColor Cyan
+                $siteUrl = New-PnPSite @childParams
+            } else {
+                $siteUrl = "$TenantUrl/sites/$Prefix$($child.url)";
+            }
             Add-PnPHubSiteAssociation -Site $siteUrl -HubSite $hubParams.Url -Connection $connection
         }
 
-        $rootUrl
+        $hubParams.Url
     }
 }

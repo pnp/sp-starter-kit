@@ -18,11 +18,11 @@
   </pnp:Tenant>
   <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
     <pnp:ProvisioningTemplate ID="PORTAL-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
-      <pnp:ApplicationLifecycleManagement>
+      <!-- <pnp:ApplicationLifecycleManagement>
         <pnp:Apps>
           <pnp:App AppId="{AppPackageId:sharepoint-portal-showcase.sppkg}" Action="Install" />
         </pnp:Apps>
-      </pnp:ApplicationLifecycleManagement>
+      </pnp:ApplicationLifecycleManagement> -->
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
 </pnp:Provisioning>
