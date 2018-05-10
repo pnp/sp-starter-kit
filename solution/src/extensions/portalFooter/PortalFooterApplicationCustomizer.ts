@@ -8,12 +8,12 @@ import {
 
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
 import { IPortalFooterProps, PortalFooter } from './components/PortalFooter';
-import { ILinkGroup } from '../../../lib/extensions/portalFooter/components/PortalFooter';
+import { ILinkGroup } from './components/PortalFooter/ILinkGroup';
 
 // import additional controls/components
 import { sp, CamlQuery } from "@pnp/sp";
 import { SPHttpClient, SPHttpClientResponse, SPHttpClientConfiguration } from '@microsoft/sp-http';
-import { IHubSiteData, IHubSiteDataResponse } from '../../../lib/extensions/alertNotitication/IHubSiteData';
+import { IHubSiteData, IHubSiteDataResponse } from './IHubSiteData';
 import { ILinkListItem } from './ILinkListItem';
 import SPTaxonomyService from '../../services/SPTaxonomyService';
 import { ITermSets, ITermSet, ITerms, ITerm } from '../../services/SPTaxonomyTypes';

@@ -12,7 +12,7 @@ import { CommandBar,
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
 import { ILinkGroup } from './ILinkGroup';
 import { Links } from '../Links';
-import { IPortalFooterEditResult } from '../../../../../lib/extensions/portalFooter/components/PortalFooter/IPortalFooterEditResult';
+import { IPortalFooterEditResult } from '../PortalFooter/IPortalFooterEditResult';
 
 export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFooterState> {
   constructor(props: IPortalFooterProps) {
