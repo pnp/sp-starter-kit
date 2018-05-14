@@ -43,6 +43,7 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
     date.setUTCHours(23);
     date.setUTCMinutes(59);
     date.setUTCSeconds(0);
+    date.setDate(date.getDate() + (this.props.daysInAdvance || 0));
     const midnight: string = date.toISOString();
 
     this.props.graphClient
@@ -50,6 +51,7 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
       .api(`me/calendar/calendarView?startDateTime=${now}&endDateTime=${midnight}`)
       .version("v1.0")
       .select('subject,start,end,showAs,webLink,location,isAllDay')
+      .top(this.props.numMeetings > 0 ? this.props.numMeetings : 100)
       // sort ascending by start time
       .orderby("start/dateTime")
       .get((err: any, res: IMeetings): void => {

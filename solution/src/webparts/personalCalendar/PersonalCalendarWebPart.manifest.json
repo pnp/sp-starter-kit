@@ -21,7 +21,9 @@
     "officeFabricIconFontName": "Calendar",
     "properties": {
       "title": "Upcoming meetings",
-      "refreshInterval": 5
+      "refreshInterval": 5,
+      "daysInAdvance": 0,
+      "numMeetings": 0
     }
   }]
 }
