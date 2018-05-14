@@ -30,7 +30,7 @@
         <pnp:GlobalNavigation NavigationType="Structural">
           <pnp:StructuralNavigation RemoveExistingNodes="true">
             <pnp:NavigationNode Title="Personal" Url="SitePages/Personal.aspx"/>
-            <pnp:NavigationNode Title="Organization" Url="SitePages/PortalHome.aspx"/>
+            <pnp:NavigationNode Title="Organization" Url="SitePages/Home.aspx"/>
             <pnp:NavigationNode Title="Departments" Url="" />
           </pnp:StructuralNavigation>
         </pnp:GlobalNavigation>
