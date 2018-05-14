@@ -37,13 +37,7 @@ Param(
     [string]$StockAPIKey = "",
 
     [Parameter(Mandatory = $false)]
-    [string]$PortalTitle = "SP Portal Showcase - Helsinki Style",
-
-    [Parameter(Mandatory = $false)]
-    [string]$ThemeName = "Portal Showcase",
-
-    [Parameter(Mandatory = $false)]
-    [string]$ThemePath = "$PSScriptRoot\..\Assets\designs\portaltheme.xml"
+    [string]$PortalTitle = "SP Portal Showcase - Helsinki Style"
 )    
 
 # Load helper functions
@@ -62,6 +56,7 @@ if (!$SkipInstall) {
 if ($Credentials -eq $null) {
     $Credentials = Get-Credential -Message "Enter credentials to connect to $siteUrl"
 }
+
 if ($SkipSiteCreation -eq $false) {
     # check if URL is valid
     $SiteUrl = New-SiteHierarchy -TenantUrl $TenantUrl -Prefix $SitePrefix -ConfigurationFilePath ./hierarchy.json -Credentials $Credentials
@@ -107,7 +102,7 @@ $web.Update()
 Invoke-PnPQuery -Connection $connection
 
 # Create and Set theme if needed
-Set-ThemeIfNotSet -ThemeName $ThemeName -ThemePath $ThemePath -Connection $connection
+Set-ThemeIfNotSet -Connection $connection
 
 # Register the site as the hubsite
 $isHub = Get-PnPHubSite -Identity $siteUrl[0] -ErrorAction SilentlyContinue -Connection $connection

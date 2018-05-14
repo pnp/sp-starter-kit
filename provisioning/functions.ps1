@@ -60,32 +60,54 @@ Function Set-ThemeIfNotSet {
 
     Param (
         [Parameter(Mandatory = $true)]
-        [string]$ThemeName,
-
-        [Parameter(Mandatory = $true)]
-        [string]$ThemePath,
-
-        [Parameter(Mandatory = $true)]
         [SharePointPnP.PowerShell.Commands.Base.SPOnlineConnection]$Connection
     )
 
     Process {
+
+        $palette = @{
+            "themePrimary" = "#fd6a02";
+            "themeLighterAlt" = "#fff9f5";
+            "themeLighter" = "#ffe7d6";
+            "themeLight" = "#fed2b3";
+            "themeTertiary" = "#fda667";
+            "themeSecondary" = "#fd7c21";
+            "themeDarkAlt" = "#e36002";
+            "themeDark" = "#c05102";
+            "themeDarker" = "#8d3c01";
+            "neutralLighterAlt" = "#e4e4e4";
+            "neutralLighter" = "#e1e1e1";
+            "neutralLight" = "#d7d7d7";
+            "neutralQuaternaryAlt" = "#c9c9c9";
+            "neutralQuaternary" = "#bfbfbf";
+            "neutralTertiaryAlt" = "#b8b8b8";
+            "neutralTertiary" = "#c2c2c2";
+            "neutralSecondary" = "#858585";
+            "neutralPrimaryAlt" = "#4b4b4b";
+            "neutralPrimary" = "#333333";
+            "neutralDark" = "#272727";
+            "black" = "#1d1d1d";
+            "white" = "#eaeaea";
+            "primaryBackground" = "#eaeaea";
+            "primaryText" = "#333333";
+            "bodyBackground" = "#eaeaea";
+            "bodyText" = "#333333";
+            "disabledBackground" = "#e1e1e1";
+            "disabledText" = "#b8b8b8";
+            }
+        
         $currentTheme = Get-PnPPropertyBag -Key "ThemePrimary" -Connection $Connection
 
         # deserialize theme in variable
-        $theme = Import-CliXml -Path $ThemePath
-        if($theme.themePrimary -ne $currentTheme)
+        if($palette.themePrimary -ne $currentTheme)
         {
             # The theme 'seems' to not be set. This check is flawed and based only on the primary theme color for now
-            $existingTheme = Get-PnPTenantTheme -Name $ThemeName -ErrorAction SilentlyContinue
-            if($existingTheme -eq $null)
-            {
-                Add-PnPTenantTheme -Identity $ThemeName -Overwrite -Palette $theme -IsInverted $false -Connection $Connection
-            }
-            Set-PnPWebTheme -Theme $ThemeName -Connection $Connection
+            Add-PnPTenantTheme -Identity "Contoso Portal" -Overwrite -Palette $palette -IsInverted $false -Connection $Connection
+            Set-PnPWebTheme -Theme "Contoso Portal" -Connection $Connection
         }
     }
 }
+
 Function Test-SiteExists {
     [CmdletBinding()]
 
