@@ -2,25 +2,21 @@
 
 .stockInformation {
   .stock {
+    font-size: 40px;
+    text-align: center;
+    vertical-align: -webkit-baseline-middle;
+
     .stockSymbol {
-      font-size: 2em;
+      font-size: 0.5em;
       padding-bottom: 0.2em;
     }
 
-    .iconTrendGreen {
-      color: green;
-    }
-
-    .iconTrendRed {
-      color: red;
-    }
-
-    .iconTrendNeutral {
-      color: blue;
+    .stockTrend {
+      margin-top: 0.2em;
     }
 
     .stockValue {
-      margin-left: 5px;
+      padding-left: 0.2em;
     }
   }
 }

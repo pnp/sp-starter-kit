@@ -201,15 +201,17 @@ export default class StockInformation extends React.Component<IStockInformationP
         const previousClose: number = this.state.stockInfo != null ? this.state.stockInfo.previousClose : 0;
         contents = (
           <div className={styles.stock}>
-            <div className={styles.stockSymbol}>{this.state.stockInfo.symbol}</div>
             <div>
-              { lastStockData.close > previousClose ?
-              <Icon iconName='TriangleSolidUp12' className={styles.iconTrendGreen} /> :
-              lastStockData.close < previousClose ?
-              <Icon iconName='TriangleSolidDown12' className={styles.iconTrendRed} /> :
-              <Icon iconName='CircleFill' className={styles.iconTrendNeutral} />}
-              <span className={styles.stockValue}>{ lastStockData.close }</span>
+              <span>
+                { lastStockData.close > previousClose ?
+                <Icon iconName='ArrowUpRight8' /> :
+                lastStockData.close < previousClose ?
+                <Icon iconName='ArrowDownRight8' /> :
+                <Icon iconName='CalculatorSubtract' className={styles.stockTrend} />}
+              </span>
+              <span className={styles.stockValue}>{ parseFloat(lastStockData.close.toString()).toFixed(2) }</span>
             </div>
+            <div className={styles.stockSymbol}>{this.state.stockInfo.symbol}</div>
           </div>
         );
       }
