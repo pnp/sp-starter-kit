@@ -8,8 +8,7 @@ import { TextField } from 'office-ui-fabric-react/lib/components/TextField';
 import * as strings from 'FollowedSitesWebPartStrings';
 import { IFollowedSitesProps, IFollowedSitesState, IFollowedResult, IFollowed } from '.';
 import { Paging } from './paging';
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 
 export default class FollowedSites extends React.Component<IFollowedSitesProps, IFollowedSitesState> {
   private _allFollowing: IFollowedResult[] = [];
