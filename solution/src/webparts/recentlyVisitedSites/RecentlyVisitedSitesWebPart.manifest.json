@@ -11,7 +11,7 @@
     "group": { "default": "Other" },
     "title": { "default": "Recently Visited Sites" },
     "description": { "default": "Recently visited sites for user" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "SearchAndApps",
     "properties": {
       "title": "Recent Sites"
     }
