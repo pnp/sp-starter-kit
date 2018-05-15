@@ -18,7 +18,7 @@
     "group": { "default": "Other" },
     "title": { "default": "Links" },
     "description": { "default": "Lists links as configured for the end users" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "List",
     "properties": {
       "description": "Links"
     }
