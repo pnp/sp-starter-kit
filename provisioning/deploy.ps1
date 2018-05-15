@@ -1,4 +1,10 @@
-
+#
+# Notice the use of -ReturnConnection on Connect-PnPOnline and -Connection parameter on the majority
+# of the PnP Cmdlets. We do this specifically because we do some so-called 'context switching' behind
+# the scenes. In a normal case it is -not- needed to specifically specify the connection when using 
+# a PnP Cmdlet. The moment you run Connect-PnPOnline (without -ReturnConnection) the cmdlets will work
+# with the current connected context.
+#
 Param(
     [Parameter(Mandatory = $true, Position = 1)]
     [string]$TenantUrl,
@@ -31,13 +37,7 @@ Param(
     [string]$StockAPIKey = "",
 
     [Parameter(Mandatory = $false)]
-    [string]$PortalTitle = "SP Portal Showcase - Helsinki Style",
-
-    [Parameter(Mandatory = $false)]
-    [string]$ThemeName = "Portal Showcase",
-
-    [Parameter(Mandatory = $false)]
-    [string]$ThemePath = "$PSScriptRoot\..\Assets\designs\portaltheme.xml"
+    [string]$PortalTitle = "SP Portal Showcase - Helsinki Style"
 )    
 
 # Load helper functions
@@ -56,11 +56,11 @@ if (!$SkipInstall) {
 if ($Credentials -eq $null) {
     $Credentials = Get-Credential -Message "Enter credentials to connect to $siteUrl"
 }
+
 if ($SkipSiteCreation -eq $false) {
     # check if URL is valid
     $SiteUrl = New-SiteHierarchy -TenantUrl $TenantUrl -Prefix $SitePrefix -ConfigurationFilePath ./hierarchy.json -Credentials $Credentials
-    if($SiteUrl -isnot [array])
-    {
+    if ($SiteUrl -isnot [array]) {
         $SiteUrl = @($SiteUrl)
     }
 }
@@ -95,8 +95,14 @@ if ($SkipSolutionDeployment -ne $true) {
     Update-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
 }
 
+# Disable Quicklaunch for Portal
+$web = Get-PnPWeb -Connection $connection
+$web.QuicklaunchEnabled = $false
+$web.Update()
+Invoke-PnPQuery -Connection $connection
+
 # Create and Set theme if needed
-Set-ThemeIfNotSet -ThemeName $ThemeName -ThemePath $ThemePath -Connection $connection
+Set-ThemeIfNotSet -Connection $connection
 
 # Register the site as the hubsite
 $isHub = Get-PnPHubSite -Identity $siteUrl[0] -ErrorAction SilentlyContinue -Connection $connection
@@ -118,10 +124,15 @@ Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\PnP-PortalFooter-Links.xml" -
 
 Write-Host "Updating navigation and applying collab templates"
 $departmentNode = Get-PnPNavigationNode -Location TopNavigationBar -Connection $connection | Where-Object {$_.Title -eq "Departments"} 
+$children = Get-PnPProperty -ClientObject $departmentNode -Property Children
 $hierarchy = ConvertFrom-Json (Get-Content -Path "$PSScriptRoot\hierarchy.json" -Raw)
 foreach ($child in $hierarchy.children) {
-    Add-PnPNavigationNode -Location TopNavigationBar -Parent $departmentNode[0].Id -Title $child.title -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -Connection $connection
-    $childConnection = Connect-PnPOnline -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -ReturnConnection
+    if (($children | Where-Object {$_.Title -eq $child.title}) -eq $null) {
+        $node = Add-PnPNavigationNode -Location TopNavigationBar -Parent $departmentNode[0].Id -Title $child.title -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -Connection $connection
+        $childConnection = Connect-PnPOnline -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -ReturnConnection
+    }
     Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\collab.xml" -Connection $childConnection
 }
+
+Write-Host "Done." -ForegroundColor Green
 

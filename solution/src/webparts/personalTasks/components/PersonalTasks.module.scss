@@ -29,7 +29,7 @@
     .dueDateWrapper {
       display: flex;
     }
-  
+
     .dueDateTime {
       display: inline;
       @include ms-font-s-plus;
@@ -69,10 +69,12 @@
 
   .noTasks {
     @include ms-font-m;
+    padding-left: 10px;
   }
 
   .error {
     @include ms-font-m;
     color: $ms-color-alert;
+    padding-left: 10px;
   }
 }

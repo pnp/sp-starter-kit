@@ -5,8 +5,6 @@
     <pnp:StorageEntities>
       <pnp:StorageEntity Key="PnPTilesList-{sitecollectionid}" Value="{hosturl}{site}/{listurl:PnPTiles}" />
     </pnp:StorageEntities>
-    <pnp:SiteDesigns>
-    </pnp>
   </pnp:Tenant>
   <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
     <pnp:ProvisioningTemplate ID="COLLAB-TEMPLATE" Version="1.0" BaseSiteTemplate="GROUP#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
