@@ -16,10 +16,6 @@
 
   .column {
     @include ms-Grid-col;
-    @include ms-lg10;
-    @include ms-xl8;
-    @include ms-xlPush2;
-    @include ms-lgPush1;
   }
 
   .title {
@@ -27,14 +23,24 @@
     @include ms-fontColor-white;
   }
 
-  .subTitle {
+  .form {
     @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  label {
     @include ms-fontColor-white;
   }
 
   .description {
     @include ms-font-l;
     @include ms-fontColor-white;
+  }
+
+  .spinner {
+    .ms-Spinner-label {
+      @include ms-fontColor-white;
+    }
   }
 
   .button {

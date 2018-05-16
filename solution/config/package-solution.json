@@ -44,6 +44,14 @@
       {
         "resource": "Microsoft Graph",
         "scope": "Group.Read.All"
+      },
+      {
+        "resource": "SPFx-LOB-Function",
+        "scope": "user_impersonation"
+      },
+      {
+        "resource": "SPFx-LOB-WebAPI",
+        "scope": "Customers.Read"
       }
     ]
   },
