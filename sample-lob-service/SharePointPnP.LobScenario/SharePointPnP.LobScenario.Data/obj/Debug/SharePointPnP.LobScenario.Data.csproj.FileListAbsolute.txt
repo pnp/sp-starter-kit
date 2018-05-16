@@ -1,0 +1,11 @@
+C:\github\sp-portal-showcase\sample-lob-service\SharePointPnP.LobScenario\SharePointPnP.LobScenario.Data\bin\Debug\SharePointPnP.LobScenario.Data.dll.config
+C:\github\sp-portal-showcase\sample-lob-service\SharePointPnP.LobScenario\SharePointPnP.LobScenario.Data\bin\Debug\SharePointPnP.LobScenario.Data.dll
+C:\github\sp-portal-showcase\sample-lob-service\SharePointPnP.LobScenario\SharePointPnP.LobScenario.Data\bin\Debug\SharePointPnP.LobScenario.Data.pdb
+C:\github\sp-portal-showcase\sample-lob-service\SharePointPnP.LobScenario\SharePointPnP.LobScenario.Data\bin\Debug\EntityFramework.dll
+C:\github\sp-portal-showcase\sample-lob-service\SharePointPnP.LobScenario\SharePointPnP.LobScenario.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\github\sp-portal-showcase\sample-lob-service\SharePointPnP.LobScenario\SharePointPnP.LobScenario.Data\bin\Debug\EntityFramework.xml
+C:\github\sp-portal-showcase\sample-lob-service\SharePointPnP.LobScenario\SharePointPnP.LobScenario.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\github\sp-portal-showcase\sample-lob-service\SharePointPnP.LobScenario\SharePointPnP.LobScenario.Data\obj\Debug\SharePointPnP.LobScenario.Data.csprojResolveAssemblyReference.cache
+C:\github\sp-portal-showcase\sample-lob-service\SharePointPnP.LobScenario\SharePointPnP.LobScenario.Data\obj\Debug\SharePointPnP.LobScenario.Data.csproj.CoreCompileInputs.cache
+C:\github\sp-portal-showcase\sample-lob-service\SharePointPnP.LobScenario\SharePointPnP.LobScenario.Data\obj\Debug\SharePointPnP.LobScenario.Data.dll
+C:\github\sp-portal-showcase\sample-lob-service\SharePointPnP.LobScenario\SharePointPnP.LobScenario.Data\obj\Debug\SharePointPnP.LobScenario.Data.pdb
