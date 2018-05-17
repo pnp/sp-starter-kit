@@ -1,0 +1,19 @@
+{
+    "$schema": "schema.json",
+    "actions": [
+        {
+            "verb": "joinHubSite",
+            "hubSiteId": "{SiteCollectionId}"
+        },
+        {
+            "verb": "associateExtension",
+            "title": "Portal Footer",
+            "location": "ClientSideExtension.ApplicationCustomizer",
+            "clientSideComponentId": "b8eb4ec9-934a-4248-a15f-863d27f94f60",
+            "clientSideComponentProperties": "{\"linksListTitle\": \"PnP-PortalFooter-Links\", \"copyright\": \"(c) Copyright {parameter:Company}, 2018\", \"support\": \"support@contoso.com\", \"personalItemsStorageProperty\": \"PnP-CollabFooter-MyLinks\"}",
+            "scope": "Site"
+        }
+    ],
+    "bindata": {},
+    "version": 1
+}

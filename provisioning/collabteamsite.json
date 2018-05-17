@@ -4,6 +4,14 @@
         {
             "verb": "joinHubSite",
             "hubSiteId": "{SiteCollectionId}"
+        },
+        {
+            "verb": "associateExtension",
+            "title": "Collab Footer",
+            "location": "ClientSideExtension.ApplicationCustomizer",
+            "clientSideComponentId": "c0ab3b94-8609-40cf-861e-2a1759170b43",
+            "clientSideComponentProperties": "{\"sourceTermSet\":\"PnP-CollabFooter-SharedLinks\",\"personalItemsStorageProperty\":\"PnP-CollabFooter-MyLinks\"}",
+            "scope": "Site"
         }
     ],
     "bindata": {},

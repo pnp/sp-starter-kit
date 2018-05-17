@@ -137,7 +137,7 @@ export class Tiles extends React.Component<ITilesProps, ITilesState> {
           this.state.tiles && this.state.tiles.length > 0 ? (
             <div className={styles.tilesList}>
               {
-                this.state.tiles.map(tile => <Tile key={tile.ID} item={tile} />)
+                this.state.tiles.map(tile => <Tile key={tile.ID} item={tile} height={this.props.tileHeight} />)
               }
             </div>
           ) : (

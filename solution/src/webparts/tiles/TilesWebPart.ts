@@ -1,3 +1,4 @@
+import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/propertyFields/number';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
@@ -5,7 +6,8 @@ import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneLabel,
-  PropertyPaneLink
+  PropertyPaneLink,
+  PropertyPaneHorizontalRule
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'TilesWebPartStrings';
@@ -15,6 +17,7 @@ import { TenantPropertyHelper } from './helpers';
 export interface ITilesWebPartProps {
   title: string;
   listUrl: string;
+  tileHeight: number;
 }
 
 const PROPERTY_NAME_PREFIX = "PnPTilesList";
@@ -22,11 +25,12 @@ const PROPERTY_NAME_PREFIX = "PnPTilesList";
 export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<ITilesProps > = React.createElement(
+    const element: React.ReactElement<ITilesProps> = React.createElement(
       Tiles,
       {
         title: this.properties.title,
         listUrl: this.properties.listUrl,
+        tileHeight: this.properties.tileHeight,
         context: this.context,
         displayMode: this.displayMode,
         updateProperty: (value: string) => {
@@ -64,6 +68,12 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
                   text: this.properties.listUrl,
                   target: "_blank",
                   href: this.properties.listUrl
+                }),
+                PropertyPaneHorizontalRule(),
+                PropertyFieldNumber('tileHeight', {
+                  key: "tileHeight",
+                  label: strings.TileHeight,
+                  value: this.properties.tileHeight
                 })
               ]
             }
