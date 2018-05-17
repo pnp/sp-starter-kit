@@ -17,12 +17,12 @@
       <pnp:SiteScript JsonFilePath="collabcommunicationsite.json" Overwrite="true" Title="{parameter:Company} Communication Site" Description=""/>
     </pnp:SiteScripts>
     <pnp:SiteDesigns>
-      <pnp:SiteDesign Title="{parameter:Company} Portal Team Site" WebTemplate="TeamSite">
+      <pnp:SiteDesign Title="{parameter:Company} Team Site" WebTemplate="TeamSite">
         <pnp:SiteScripts>
           <pnp:SiteScriptRef ID="{SiteScriptId:{parameter:Company} Team Site}" />
         </pnp:SiteScripts>
       </pnp:SiteDesign>
-      <pnp:SiteDesign Title="{parameter:Company} Portal Communication Site" WebTemplate="CommunicationSite">
+      <pnp:SiteDesign Title="{parameter:Company} Communication Site" WebTemplate="CommunicationSite">
         <pnp:SiteScripts>
           <pnp:SiteScriptRef ID="{SiteScriptId:{parameter:Company} Communication Site}" />
         </pnp:SiteScripts>
