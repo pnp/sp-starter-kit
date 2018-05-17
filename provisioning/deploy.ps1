@@ -28,7 +28,10 @@ Param(
     [switch]$SkipSolutionDeployment = $false,
 
     [Parameter(Mandatory = $false)]
-    [string]$WeatherCity = "Helsinki",
+    [string]$Company = "Contoso",
+
+    [Parameter(Mandatory = $false)]
+    [string]$WeatherCity = "Seattle",
 
     [Parameter(Mandatory = $false)]
     [string]$StockSymbol = "MSFT",
@@ -37,8 +40,9 @@ Param(
     [string]$StockAPIKey = "",
 
     [Parameter(Mandatory = $false)]
-    [string]$PortalTitle = "SP Portal Showcase - Helsinki Style"
+    [string]$PortalTitle = "SP Portal Showcase"
 )    
+
 
 # Load helper functions
 . "$PSScriptRoot\functions.ps1"
@@ -75,6 +79,7 @@ if ((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-portal-
     npm install
     Set-Location $PSScriptRoot
     # does not exist. Build and Package
+    gulp clean
     Write-Host "Building solution" -ForegroundColor Cyan
     gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build 2>&1 | Out-Null
     Write-Host "Bundling solution" -ForegroundColor Cyan
@@ -119,8 +124,14 @@ if ($StockAPIKey -ne $null -and $StockAPIKey -ne "") {
 }
 
 Write-Host "Applying template to portal" -ForegroundColor Cyan
-Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity" = $WeatherCity; "PortalTitle" = $PortalTitle; "StockSymbol" = $StockSymbol; "HubSiteId" = $HubSiteId} -Connection $connection
+Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity" = $WeatherCity; "PortalTitle" = $PortalTitle; "StockSymbol" = $StockSymbol; "HubSiteId" = $HubSiteId; "Company" = $Company} -Connection $connection
 Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\PnP-PortalFooter-Links.xml" -Connection $connection
+
+# Due to bug in the provisioning engine reassociate the designs to the correct templates
+$teamsitedesign = Get-PnPSiteDesign | Where-Object{$_.Title -eq "$Company Team Site"}
+Set-PnPSiteDesign -Identity $teamsitedesign -WebTemplate TeamSite
+$communicationsitedesign = Get-PnPSiteDesign | Where-Object{$_.Title -eq "$Company Communication Site"}
+Set-PnPSiteDesign -Identity $communicationsitedesign -WebTemplate CommunicationSite
 
 Write-Host "Updating navigation and applying collab templates"
 $departmentNode = Get-PnPNavigationNode -Location TopNavigationBar -Connection $connection | Where-Object {$_.Title -eq "Departments"} 

@@ -2,9 +2,9 @@
   xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a">
     <pnp:Parameters>
-      <pnp:Parameter Key="PortalUrl">/</pnp:Parameter>
-      <pnp:Parameter Key="WeatherCity">Helsinki</pnp:Parameter>
-      <pnp:Parameter Key="PortalTitle">SP Portal Showcase - Helsinki Style</pnp:Parameter>
+      <pnp:Parameter Key="Company">Contoso</pnp:Parameter>
+      <pnp:Parameter Key="WeatherCity">Seattle</pnp:Parameter>
+      <pnp:Parameter Key="PortalTitle">Contoso Portal Showcase</pnp:Parameter>
       <pnp:Parameter Key="StockSymbol">MSFT</pnp:Parameter>
     </pnp:Parameters>
   </pnp:Preferences>
@@ -13,19 +13,25 @@
       <pnp:StorageEntity Key="PnPTilesList-{sitecollectionid}" Value="{hosturl}{site}/{listurl:PnPTiles}" />
     </pnp:StorageEntities>
     <pnp:SiteScripts>
-      <pnp:SiteScript JsonFilePath="collabteamsite.json" Overwrite="true" Title="Contoso Collab Team Site" Description=""/>
+      <pnp:SiteScript JsonFilePath="collabteamsite.json" Overwrite="true" Title="{parameter:Company} Team Site" Description=""/>
+      <pnp:SiteScript JsonFilePath="collabcommunicationsite.json" Overwrite="true" Title="{parameter:Company} Communication Site" Description=""/>
     </pnp:SiteScripts>
     <pnp:SiteDesigns>
-      <pnp:SiteDesign Title="Contoso Portal Collaboration Site" WebTemplate="TeamSite">
+      <pnp:SiteDesign Title="{parameter:Company} Portal Team Site" WebTemplate="TeamSite">
         <pnp:SiteScripts>
-          <pnp:SiteScriptRef ID="{SiteScriptId:Contoso Collab Team Site}" />
+          <pnp:SiteScriptRef ID="{SiteScriptId:{parameter:Company} Team Site}" />
+        </pnp:SiteScripts>
+      </pnp:SiteDesign>
+      <pnp:SiteDesign Title="{parameter:Company} Portal Communication Site" WebTemplate="CommunicationSite">
+        <pnp:SiteScripts>
+          <pnp:SiteScriptRef ID="{SiteScriptId:{parameter:Company} Communication Site}" />
         </pnp:SiteScripts>
       </pnp:SiteDesign>
     </pnp:SiteDesigns>
   </pnp:Tenant>
   <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
     <pnp:ProvisioningTemplate ID="PORTAL-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
-      <pnp:WebSettings WelcomePage="SitePages/Home.aspx" Title="Contoso Inc." />
+      <pnp:WebSettings WelcomePage="SitePages/Home.aspx" Title="{parameter:PortalTitle}" />
       <pnp:Navigation>
         <pnp:GlobalNavigation NavigationType="Structural">
           <pnp:StructuralNavigation RemoveExistingNodes="true">
@@ -117,7 +123,7 @@
                 <pnp:CanvasControl WebPartType="DocumentEmbed" JsonControlData="{ &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;annotation&quot;:&quot;Latest quarterly company presentation&quot;,&quot;title&quot;:&quot;PowerPoint Presentation&quot;},&quot;imageSources&quot;:{},&quot;links&quot;:{&quot;serverRelativeUrl&quot;:&quot;{site}/Shared Documents/Contoso_Report.pptx&quot;,&quot;wopiurl&quot;:&quot;{hosturl}{site}/_layouts/15/WopiFrame.aspx?sourcedoc={{fileuniqueid:Shared Documents/contoso_report.pptx}}&amp;action=interactivepreview&quot;}}, &quot;properties&quot;: {&quot;authorName&quot;:&quot;Vesa Juvonen&quot;,&quot;chartitem&quot;:&quot;&quot;,&quot;endrange&quot;:&quot;&quot;,&quot;excelSettingsType&quot;:&quot;&quot;,&quot;file&quot;:&quot;{hosturl}{site}/Shared Documents/Contoso_Report.pptx&quot;,&quot;listId&quot;:&quot;{listid:Documents}&quot;,&quot;modifiedAt&quot;:&quot;2018-05-14T13:40:02+02:00&quot;,&quot;photoUrl&quot;:&quot;/_layouts/15/userphoto.aspx?size=S&amp;accountname=vesaj%40officedevpnp.onmicrosoft.com&quot;,&quot;rangeitem&quot;:&quot;&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;startPage&quot;:1,&quot;startrange&quot;:&quot;&quot;,&quot;tableitem&quot;:&quot;&quot;,&quot;uniqueId&quot;:&quot;{fileuniqueid:/shared documents/contoso_report.pptx}&quot;,&quot;wdallowinteractivity&quot;:true,&quot;wdhidegridlines&quot;:true,&quot;wdhideheaders&quot;:true,&quot;webId&quot;:&quot;{siteid}&quot;}}" ControlId="b7dd04e1-19ce-4b24-9132-b60a1c2b910d" Order="2" Column="1" />
                 <pnp:CanvasControl WebPartType="Events" JsonControlData="{ &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;title&quot;:&quot;Company Events&quot;},&quot;imageSources&quot;:{},&quot;links&quot;:{&quot;baseUrl&quot;:&quot;{hosturl}{site}&quot;},&quot;componentDependencies&quot;:{&quot;layoutComponentId&quot;:&quot;0447e11d-bed9-4898-b600-8dbcd95e9cc2&quot;}}, &quot;properties&quot;: {&quot;selectedListId&quot;:&quot;{listid:Events}&quot;,&quot;selectedCategory&quot;:&quot;&quot;,&quot;dateRangeOption&quot;:0,&quot;startDate&quot;:&quot;&quot;,&quot;endDate&quot;:&quot;&quot;,&quot;isOnSeeAllPage&quot;:false,&quot;layoutId&quot;:&quot;Flex&quot;,&quot;dataProviderId&quot;:&quot;Event&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;}}" ControlId="20745d7d-8581-4a6c-bf26-68279bc123fc" Order="1" Column="2" />
                 <pnp:CanvasControl WebPartType="Spacer" JsonControlData="{ &quot;autoHide&quot;:true,&quot;height&quot;:56}" Order="2" Column="2" />
-                <pnp:CanvasControl WebPartType="Custom" JsonControlData="{ &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;location&quot;:&quot;Seattle&quot;,&quot;unit&quot;:&quot;c&quot;}}" ControlId="0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9" Order="3" Column="2" />
+                <pnp:CanvasControl WebPartType="Custom" JsonControlData="{ &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;location&quot;:&quot;{parameter:WeatherCity}&quot;,&quot;unit&quot;:&quot;c&quot;}}" ControlId="0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9" Order="3" Column="2" />
                 <pnp:CanvasControl WebPartType="Custom" JsonControlData="{ &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;stockSymbol&quot;:&quot;MSFT&quot;,&quot;autoRefresh&quot;:false}}" ControlId="50256fc2-a28f-4544-900e-32724d32bc7f" Order="4" Column="2" />
               </pnp:Controls>
             </pnp:Section>
