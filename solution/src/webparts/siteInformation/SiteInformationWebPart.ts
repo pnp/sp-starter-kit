@@ -18,7 +18,7 @@ import { ISiteInformationWebPartProps } from './ISiteInformationWebPartProps';
 import { PropertyFieldPeoplePicker, PrincipalType } from '@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker';
 import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
 import { PropertyFieldTermPicker } from '@pnp/spfx-property-controls/lib/PropertyFieldTermPicker';
-import { ICheckedTerms } from "@pnp/spfx-property-controls/lib/PropertyFieldTermPicker";
+import { IPickerTerms } from "@pnp/spfx-property-controls/lib/PropertyFieldTermPicker";
 import { sp } from "@pnp/sp";
 
 export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteInformationWebPartProps> {

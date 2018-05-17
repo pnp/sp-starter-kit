@@ -1,5 +1,5 @@
 import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
-import { ICheckedTerms } from "@pnp/spfx-property-controls/lib/PropertyFieldTermPicker";
+import { IPickerTerms } from "@pnp/spfx-property-controls/lib/PropertyFieldTermPicker";
 
 export interface ISiteInformationWebPartProps {
     // used to represent the site's title
@@ -7,5 +7,5 @@ export interface ISiteInformationWebPartProps {
     // used to represent the site's contact
     siteContact: IPropertyFieldGroupOrPerson[];
     // used to represent the site's organization, based on a taxonomy termset
-    siteOrganization: ICheckedTerms;
+    siteOrganization: IPickerTerms;
 }
