@@ -1,6 +1,7 @@
 declare interface ITilesWebPartStrings {
   PropertyPaneDescription: string;
   TilesListDescription: string;
+  TileHeight: string;
 
   // Component
   NoListConnection: string;

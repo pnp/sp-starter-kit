@@ -5,8 +5,13 @@ import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 
 export class Tile extends React.Component<ITileProps, {}> {
   public render(): React.ReactElement<ITileProps> {
+    const tileStyle: React.CSSProperties = {};
+    if (this.props.height) {
+      tileStyle.height = `${this.props.height}px`;
+    }
+
     return (
-      <div className={styles.tile}>
+      <div className={styles.tile} style={tileStyle}>
         <a href={this.props.item.PnPUrl}
           target={this.props.item.PnPUrlTarget && this.props.item.PnPUrlTarget.toLowerCase().indexOf("new") !== -1 ? "_blank" : null}
           title={this.props.item.Title}>
