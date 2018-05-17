@@ -207,7 +207,7 @@ export default class StockInformation extends React.Component<IStockInformationP
                 <Icon iconName='ArrowUpRight8' /> :
                 lastStockData.close < previousClose ?
                 <Icon iconName='ArrowDownRight8' /> :
-                <Icon iconName='CalculatorSubtract' className={styles.stockTrend} />}
+                null }
               </span>
               <span className={styles.stockValue}>{ parseFloat(lastStockData.close.toString()).toFixed(2) }</span>
             </div>
