@@ -200,7 +200,7 @@ Function New-SiteHierarchy {
             } catch {}
             if($childSite -eq $null)
             {
-                Write-Host "Creating $($child.url)" -ForegroundColor Cyan
+                Write-Host "Creating $Prefix$($child.url)" -ForegroundColor Cyan
                 $siteUrl = New-PnPSite @childParams
             } else {
                 $siteUrl = "$TenantUrl/sites/$Prefix$($child.url)";

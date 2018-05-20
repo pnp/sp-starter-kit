@@ -19,7 +19,7 @@ Param(
     [switch]$Build,
 
     [Parameter(Mandatory = $false, Position = 3)]
-    [switch]$SkipInstall = $false,
+    [switch]$SkipPowerShellInstall = $false,
 
     [Parameter(Mandatory = $false, Position = 3)]
     [switch]$SkipSiteCreation = $false,
@@ -37,10 +37,7 @@ Param(
     [string]$StockSymbol = "MSFT",
 
     [Parameter(Mandatory = $false)]
-    [string]$StockAPIKey = "",
-
-    [Parameter(Mandatory = $false)]
-    [string]$PortalTitle = "SP Portal Showcase"
+    [string]$StockAPIKey = ""
 )    
 
 
@@ -48,7 +45,7 @@ Param(
 . "$PSScriptRoot\functions.ps1"
 
 # Check if PnP PowerShell is installed
-if (!$SkipInstall) {
+if (!$SkipPowershellInstall) {
     $modules = Get-Module -Name SharePointPnPPowerShellOnline -ListAvailable
     if ($modules -eq $null) {
         # Not installed.
@@ -58,7 +55,7 @@ if (!$SkipInstall) {
 }
 
 if ($Credentials -eq $null) {
-    $Credentials = Get-Credential -Message "Enter credentials to connect to $siteUrl"
+    $Credentials = Get-Credential -Message "Enter credentials to connect to $TenantUrl"
 }
 
 if ($SkipSiteCreation -eq $false) {
@@ -79,7 +76,7 @@ if ((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-portal-
     npm install
     Set-Location $PSScriptRoot
     # does not exist. Build and Package
-    gulp clean
+    gulp -f "$PSScriptRoot\..\solution\gulpfile.js" clean 2>&1 | Out-Null
     Write-Host "Building solution" -ForegroundColor Cyan
     gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build 2>&1 | Out-Null
     Write-Host "Bundling solution" -ForegroundColor Cyan
@@ -124,7 +121,7 @@ if ($StockAPIKey -ne $null -and $StockAPIKey -ne "") {
 }
 
 Write-Host "Applying template to portal" -ForegroundColor Cyan
-Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity" = $WeatherCity; "PortalTitle" = $PortalTitle; "StockSymbol" = $StockSymbol; "HubSiteId" = $HubSiteId; "Company" = $Company} -Connection $connection
+Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity" = $WeatherCity; "PortalTitle" = "$Company Portal"; "StockSymbol" = $StockSymbol; "HubSiteId" = $HubSiteId; "Company" = $Company} -Connection $connection
 Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\PnP-PortalFooter-Links.xml" -Connection $connection
 
 # Due to bug in the provisioning engine reassociate the designs to the correct templates
