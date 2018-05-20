@@ -26,8 +26,10 @@ export class Clock extends React.Component<IClockProps, IClockState> {
     private getDateTimeWithOffset(): Date {
 
         const now: Date = new Date();
+
         // on Jan 01 of the current year there is no DST
         const withoutDSTDate: Date = new Date(now.getFullYear(), 0, 1);
+
         // on Jul 01 of the current year there is DST
         const withDSTDate: Date = new Date(now.getFullYear(), 6, 1);
 
@@ -38,7 +40,7 @@ export class Clock extends React.Component<IClockProps, IClockState> {
         const utcNow: Date = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
 
         // determine the final date and time, considering DST, too
-        const dateTimeWithOffset: Date = new Date(now.getTime() + this.props.timeZoneOffset * 60000 - (isDST ? 60 * 60000 : 0));
+        const dateTimeWithOffset: Date = new Date(utcNow.getTime() + (this.props.timeZoneOffset * 60000) + (isDST ? 60 * 60000 : 0));
 
         return(dateTimeWithOffset);
     }
