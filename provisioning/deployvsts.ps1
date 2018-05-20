@@ -15,4 +15,4 @@ Param(
 $secPassword = ConvertTo-SecureString -String $Password -AsPlainText -Force
 $creds = New-Object System.Management.Automation.PSCredential ($Username, $secPassword)
 # Import-Module .\PnPPowerShell\SharePointPnPPowerShellOnline\SharePointPnPPowerShellOnline.psd1
-.\deploy.ps1 -TenantUrl $TenantUrl -SitePrefix "" -Credentials $creds -StockAPIKey $StockAPIKey -SkipInstall -SkipSiteCreation
+.\deploy.ps1 -TenantUrl $TenantUrl -SitePrefix "" -Credentials $creds -StockAPIKey $StockAPIKey -SkipPowerShellInstall -SkipSiteCreation
