@@ -37,7 +37,7 @@
 #### Submission Guidelines
 
 > - All suggestions or bugs are welcome, please let us know what's on your mind.
-> - If you are reporting an issue around any of the documents or articles, please ensure that you have clear > reference on the specific file or URL, which should be fixed.
+> - If you are reporting an issue on generic SharePoint topic or dev documentation, please use the (sp-dev-docs Issue list)[http://aka.ms/spdev-issues]
 > - If you have technical questions about the framework, we’ll be monitoring #spfx, #spfx-webparts, and > #spfx-tooling on (SharePoint StackExchange)[http://sharepoint.stackexchange.com/]. You can also > alternatively submit your question to (SharePoint Developer group)> [https://network.office.com/t5/SharePoint-Developer/bd-p/SharePointDev] at Office Network.
 > - Remember to include sufficient details and context.
 > - If you have multiple suggestions or bugs please submit them in separate bugs so we can track resolution.
