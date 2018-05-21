@@ -1,12 +1,12 @@
 
-# PnP SharePoint Portal solution
+# PnP SharePoint Starter Kit
 
 This is a solution designed for the SharePoint Online which will provide numerous web parts, extensions and other components which you can use as an example and innovation for your own customizations.
 
 > Notice that **documentation work is still in progress** and there will be updated material for this solution starting from early June. We do apology for the delay around detailed setup guidance.
 
 Objectives of this solution
-- SharePoint Community Sites have great out-of-the-box capabilities, but you can absolutely introduce customizations if out-of-the-box capabilities are not sufficient for your scenarios
+- SharePoint Communication Sites have great out-of-the-box capabilities, but you can absolutely introduce customizations if out-of-the-box capabilities are not sufficient for your scenarios
 - Automatic provisioning on simple demo content in communication site
 - Automated provisioning of the whole solution to any tenant within minutes
 - Automated configuration of Site Scripts and Site Designs to the tenant level using PnP Remove Provisioning engine
