@@ -1,7 +1,7 @@
 
 # PnP SharePoint Starter Kit
 
-This is a solution designed for the SharePoint Online which will provide numerous web parts, extensions and other components which you can use as an example and innovation for your own customizations.
+This is a solution designed for the SharePoint Online which will provide numerous web parts, extensions and other components which you can use as an example and innovation for your own customizations. 
 
 > Notice that **documentation work is still in progress** and there will be updated material for this solution starting from early June. We do apology for the delay around detailed setup guidance.
 
