@@ -15,6 +15,8 @@ Objectives of this solution
 
 ![image](./assets/images/default-front-page.png)
 
+> There is always two high res pictures available: [front page](./assets/images/hihg-res-default-home-page.png) and [front page with extended footer](./assets/images/hihg-res-default-home-page-extended-footer.png).
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
