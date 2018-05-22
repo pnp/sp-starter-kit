@@ -4,7 +4,7 @@
     <pnp:Parameters>
       <pnp:Parameter Key="Company">Contoso</pnp:Parameter>
       <pnp:Parameter Key="WeatherCity">Seattle</pnp:Parameter>
-      <pnp:Parameter Key="PortalTitle">Contoso Portal Showcase</pnp:Parameter>
+      <pnp:Parameter Key="PortalTitle">PnP SP Starter Kit</pnp:Parameter>
       <pnp:Parameter Key="StockSymbol">MSFT</pnp:Parameter>
     </pnp:Parameters>
   </pnp:Preferences>
