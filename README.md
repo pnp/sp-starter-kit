@@ -15,7 +15,7 @@ Objectives of this solution
 
 ![image](./assets/images/default-front-page.png)
 
-> There is always two high res pictures available: [front page](./assets/images/hihg-res-default-home-page.png) and [front page with extended footer](./assets/images/hihg-res-default-home-page-extended-footer.png).
+> There is also two high res pictures available: [front page](./assets/images/hihg-res-default-home-page.png) and [front page with extended footer](./assets/images/hihg-res-default-home-page-extended-footer.png).
 
 # Contributing
 
