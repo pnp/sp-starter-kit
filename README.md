@@ -15,7 +15,23 @@ Objectives of this solution
 
 ![image](./assets/images/default-front-page.png)
 
-> There is also two high res pictures available: [front page](./assets/images/hihg-res-default-home-page.png) and [front page with extended footer](./assets/images/hihg-res-default-home-page-extended-footer.png).
+> There is always two high res pictures available: [front page](./assets/images/hihg-res-default-home-page.png) and [front page with extended footer](./assets/images/hihg-res-default-home-page-extended-footer.png).
+
+
+# Getting started
+
+Here's the steps to get started in any tenant as fast as possible.
+
+> You will need to be a tenant administrator to be able to deploy this solution properly to your tenant.
+
+- Ensure that you have requirements for SharePoint Framework development and latest version of the PnP PowerShell
+- Upload `sharepoint-portal-showcase.sppkg` from the `/package` folder to your app catalog
+- Use PnP PowerShell to connect to any site in your tenant with ` Connect-PnPOnline` cmdlet
+- Move to `provisioning` folder and execute `.\deploy.ps1 -TenantUrl https://contosodemosk.sharepoint.com -SitePrefix demo`
+    - This will provision 3 site collection with urls of `/sites/demoportal`, `/sites/demohr` and `/sites/demomarketing`
+
+> Notice that script also adds tenant level settings like themes, site designs and other adjustments. Due this it's recommended to test the script in isolated test tenant and not immediately execute it towards production environment.
+
 
 # Contributing
 
