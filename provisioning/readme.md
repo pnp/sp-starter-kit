@@ -1,8 +1,10 @@
 Open PowerShell, run the following command:
 
 ```powershell
-.\deploy.ps1 -SiteUrl https://erwinmcm.sharepoint.com/sites/portal2
+.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com
 ```
+
+The site hierarchy will be read from the hierarchy.json file. Modify this file as appropriate.
 
 You will be asked for credentials, those need to be tenant admin. 
 
@@ -14,5 +16,5 @@ Any present instances of the solution on the server in the appcatalog and site w
 The weather webpart defaults to 'Helsinki'. You can override this as follows:
 
 ```powershell
-.\deploy.ps1 -SiteUrl https://erwinmcm.sharepoint.com/sites/portal2 -WeatherCity "Amsterdam"
+.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -WeatherCity "Amsterdam"
 ```

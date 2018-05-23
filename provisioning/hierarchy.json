@@ -1,7 +1,7 @@
 {
     "url":"portal",
-    "title":"Portal",
-    "description":"Portal Hub",
+    "title":"PnP SP Starter Kit",
+    "description":"PnP SP Starket Kit Hub",
     "children":[
         {
             "url":"hr",

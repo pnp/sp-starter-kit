@@ -4,7 +4,7 @@
     <pnp:Parameters>
       <pnp:Parameter Key="Company">Contoso</pnp:Parameter>
       <pnp:Parameter Key="WeatherCity">Seattle</pnp:Parameter>
-      <pnp:Parameter Key="PortalTitle">Contoso Portal Showcase</pnp:Parameter>
+      <pnp:Parameter Key="PortalTitle">PnP SP Starter Kit</pnp:Parameter>
       <pnp:Parameter Key="StockSymbol">MSFT</pnp:Parameter>
     </pnp:Parameters>
   </pnp:Preferences>
@@ -41,16 +41,6 @@
           </pnp:StructuralNavigation>
         </pnp:GlobalNavigation>
       </pnp:Navigation>
-      <pnp:Security>
-        <pnp:AdditionalAdministrators>
-          <pnp:User Name="erwin@officedevpnp.onmicrosoft.com"/>
-          <pnp:User Name="vesaj@officedevpnp.onmicrosoft.com"/>
-          <pnp:User Name="paolo@officedevpnp.onmicrosoft.com"/>
-          <pnp:User Name="elio@officedevpnp.onmicrosoft.com"/>
-          <pnp:User Name="waldek@officedevpnp.onmicrosoft.com"/>
-          <pnp:User Name="bert@officedevpnp.onmicrosoft.com"/>
-        </pnp:AdditionalAdministrators>
-      </pnp:Security>
       <pnp:SiteFields>
         <Field Type="DateTime" DisplayName="Start date-time" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" Group="PnP Columns" FriendlyDisplayFormat="Disabled" ID="{5ee2dd25-d941-455a-9bdb-7f2c54aed11b}" SourceID="{4f118c69-66e0-497c-96ff-d7855ce0713d}" StaticName="PnPAlertStartDateTime" Name="PnPAlertStartDateTime">
           <Default>[today]</Default>
