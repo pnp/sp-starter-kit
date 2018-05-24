@@ -12,18 +12,18 @@ export class Tile extends React.Component<ITileProps, {}> {
 
     return (
       <div className={styles.tile} style={tileStyle}>
-        <a href={this.props.item.PnPUrl}
-          target={this.props.item.PnPUrlTarget && this.props.item.PnPUrlTarget.toLowerCase().indexOf("new") !== -1 ? "_blank" : null}
-          title={this.props.item.Title}>
+        <a href={this.props.item.url}
+          target={this.props.item.target}
+          title={this.props.item.title}>
           <div className={styles.tileIcon}>
-            <Icon iconName={this.props.item.PnPIconName} />
+            <Icon iconName={this.props.item.icon} />
           </div>
           <div className={styles.tileTitle}>
-            {this.props.item.Title}
+            {this.props.item.title}
           </div>
 
           <div className={styles.overflow}>
-            {this.props.item.PnPDescription}
+            {this.props.item.description}
           </div>
         </a>
       </div>

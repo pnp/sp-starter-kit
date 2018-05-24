@@ -4,9 +4,21 @@ define([], function() {
     "TilesListDescription": "The list for configuring the tiles can be found on the following link:",
     "TileHeight": "Specify the height of the tiles",
 
-    "NoListConnection": "There is no list connection configured for this web part.",
-    "NoTilesFound": "No tiles found to show to you.",
-    "Loading": "Fetching tiles",
-    "Error": "Sorry, something went wrong fetching the tiles."
+    "tilesDataLabel": "Tile data",
+    "tilesPanelHeader": "Configure your tiles",
+    "tilesManageBtn": "Configure the tiles",
+
+    "titleField": "Title",
+    "descriptionField": "Description",
+    "urlField": "URL",
+    "iconField": "UI Fabric icon name",
+    "targetField": "Target",
+
+    "targetCurrent": "Current window",
+    "targetNew": "New tab",
+
+    "noTilesIconText": "Configure your tiles",
+    "noTilesConfigured": "Please configure the web part in order to show tiles",
+    "noTilesBtn": "Configure",
   }
 });
