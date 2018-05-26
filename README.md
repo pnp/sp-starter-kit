@@ -22,12 +22,13 @@ SharePoint Communication Sites have great out-of-the-box capabilities, but the o
 
 ## Getting started
 
+If you want to deploy only the web parts available as part of the solution, simply upload and deploy the [`sharepoint-portal-showcase.sppkg`](./package/sharepoint-portal-showcase.sppkg) from the [`/package`](./package) folder to your app catalog.
+
 The following steps will help you get started in any tenant as fast as possible:
 
 > You will need to be a tenant administrator to be able to deploy this solution to your tenant.
 
 - Ensure that you meet the [requirements for SharePoint Framework development](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) and are using the latest version of [PnP PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps)
-- Upload and deploy the [`sharepoint-portal-showcase.sppkg`](./package/sharepoint-portal-showcase.sppkg) from the [`/package`](./package) folder to your app catalog
 - Use PnP PowerShell to connect to any site in your tenant with the [`Connect-PnPOnline` cmdlet](https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/connect-pnponline?view=sharepoint-ps)
 - Move to the `provisioning` folder and execute the following command (using your own tenant url and the prefix of your choosing): `.\deploy.ps1 -TenantUrl https://contosodemosk.sharepoint.com -SitePrefix demo`
     - This will provision 3 site collections with urls of `/sites/demoportal`, `/sites/demohr`, and `/sites/demomarketing`. Your urls may vary depending on the SitePrefix you use.
