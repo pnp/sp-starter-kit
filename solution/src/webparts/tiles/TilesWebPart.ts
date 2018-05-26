@@ -2,8 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import * as strings from 'TilesWebPartStrings';
 import { Version } from '@microsoft/sp-core-library';
-import { BaseClientSideWebPart, IPropertyPaneConfiguration } from '@microsoft/sp-webpart-base';
-import { UIFabricIconOptions } from './../links/UIFabricIconOptions';
+import { BaseClientSideWebPart, IPropertyPaneConfiguration, PropertyPaneLabel, PropertyPaneLink, PropertyPaneHorizontalRule } from '@microsoft/sp-webpart-base';
 import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/propertyFields/number';
 import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 import { Tiles, ITilesProps, ITileInfo, LinkTarget } from './components';
@@ -48,6 +47,15 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
           groups: [
             {
               groupFields: [
+                PropertyPaneLabel('', {
+                  text: strings.iconInformation
+                }),
+                PropertyPaneLink('', {
+                  text: "UI Fabric Icons",
+                  href: "https://developer.microsoft.com/en-us/fabric#/styles/icons",
+                  target: "_blank"
+                }),
+                PropertyPaneHorizontalRule(),
                 PropertyFieldCollectionData("collectionData", {
                   key: "collectionData",
                   label: strings.tilesDataLabel,
@@ -76,8 +84,7 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
                     {
                       id: "icon",
                       title: strings.iconField,
-                      type: CustomCollectionFieldType.dropdown,
-                      options: UIFabricIconOptions,
+                      type: CustomCollectionFieldType.string,
                       required: true
                     },
                     {

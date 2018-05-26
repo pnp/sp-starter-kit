@@ -2,6 +2,7 @@ declare interface ILinksWebPartStrings {
   groupDataLabel: string;
   groupPanelHeader: string;
   manageGroupBtn: string;
+  iconInformation: string;
 
   linkDataLabel: string;
   linkPanelHeader: string;

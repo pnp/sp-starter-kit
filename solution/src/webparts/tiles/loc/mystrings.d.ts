@@ -2,6 +2,7 @@ declare interface ITilesWebPartStrings {
   PropertyPaneDescription: string;
   TilesListDescription: string;
   TileHeight: string;
+  iconInformation: string;
 
   // Properties
   tilesDataLabel: string;
