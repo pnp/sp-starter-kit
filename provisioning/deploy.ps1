@@ -75,7 +75,7 @@ if ((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-portal-
     Set-Location $PSScriptRoot\..\solution
     npm install
     # does not exist. Build and Package
-    gulp -f "gulpfile.js" clean 2>&1
+    gulp -f "gulpfile.js" clean 2>&1 | Out-Null
     Write-Host "Building solution" -ForegroundColor Cyan
     gulp -f "gulpfile.js" build 2>&1 | Out-Null
     Write-Host "Bundling solution" -ForegroundColor Cyan
