@@ -4,20 +4,22 @@
     "name": "sharepoint-portal-showcase-client-side-solution",
     "id": "3624777a-337d-4b34-8384-5ab774c069aa",
     "version": "1.0.0.0",
-    "features": [{
-      "title": "sharepoint-portal-showcase-client-side-solution",
-      "description": "sharepoint-portal-showcase-client-side-solution",
-      "id": "a145a397-abf0-4e4f-a6c8-9f11d2ec4273",
-      "version": "1.0.0.0",
-      "assets": {        
-        "elementManifests": [
-          "elements.xml"
-        ],
-        "elementFiles":[
-          "schema.xml"
-        ]
+    "features": [
+      {
+        "title": "sharepoint-portal-showcase-client-side-solution",
+        "description": "sharepoint-portal-showcase-client-side-solution",
+        "id": "a145a397-abf0-4e4f-a6c8-9f11d2ec4273",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml"
+          ],
+          "elementFiles": [
+            "schema.xml"
+          ]
+        }
       }
-    }],
+    ],
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "webApiPermissionRequests": [
@@ -43,7 +45,7 @@
       },
       {
         "resource": "Microsoft Graph",
-        "scope": "Group.Read.All"
+        "scope": "Group.ReadWrite.All"
       },
       {
         "resource": "SPFx-LOB-Function",

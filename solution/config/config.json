@@ -185,6 +185,14 @@
           "manifest": "./src/webparts/lobIntegration/LobIntegrationWebPart.manifest.json"
         }
       ]
+    },
+    "discuss-now-command-set": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/discussNow/DiscussNowCommandSet.js",
+          "manifest": "./src/extensions/discussNow/DiscussNowCommandSet.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -214,6 +222,7 @@
     "LobIntegrationWebPartStrings": "lib/webparts/lobIntegration/loc/{locale}.js",
     "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
-    "MyLinksStrings": "lib/common/myLinks/loc/{locale}.js"
+    "MyLinksStrings": "lib/common/myLinks/loc/{locale}.js",
+    "DiscussNowCommandSetStrings": "lib/extensions/discussNow/loc/{locale}.js"
   }
 }
