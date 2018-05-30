@@ -1,26 +1,17 @@
-import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/propertyFields/number';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneLabel,
-  PropertyPaneLink,
-  PropertyPaneHorizontalRule
-} from '@microsoft/sp-webpart-base';
-
 import * as strings from 'TilesWebPartStrings';
-import { Tiles, ITilesProps } from './components';
-import { TenantPropertyHelper } from './helpers';
+import { Version } from '@microsoft/sp-core-library';
+import { BaseClientSideWebPart, IPropertyPaneConfiguration, PropertyPaneLabel, PropertyPaneLink, PropertyPaneHorizontalRule } from '@microsoft/sp-webpart-base';
+import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/propertyFields/number';
+import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
+import { Tiles, ITilesProps, ITileInfo, LinkTarget } from './components';
 
 export interface ITilesWebPartProps {
-  title: string;
-  listUrl: string;
+  collectionData: ITileInfo[];
   tileHeight: number;
+  title: string;
 }
-
-const PROPERTY_NAME_PREFIX = "PnPTilesList";
 
 export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartProps> {
 
@@ -29,22 +20,17 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
       Tiles,
       {
         title: this.properties.title,
-        listUrl: this.properties.listUrl,
         tileHeight: this.properties.tileHeight,
-        context: this.context,
+        collectionData: this.properties.collectionData,
         displayMode: this.displayMode,
-        updateProperty: (value: string) => {
+        fUpdateProperty: (value: string) => {
           this.properties.title = value;
-        }
+        },
+        fPropertyPaneOpen: this.context.propertyPane.open
       }
     );
 
     ReactDom.render(element, this.domElement);
-  }
-
-  protected async onInit(): Promise<void> {
-    // Fetch the list location
-    this.properties.listUrl = await TenantPropertyHelper.getPropertyValue(this.context, `${PROPERTY_NAME_PREFIX}-${this.context.pageContext.legacyPageContext.departmentId}`);
   }
 
   protected get dataVersion(): Version {
@@ -62,14 +48,62 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
             {
               groupFields: [
                 PropertyPaneLabel('', {
-                  text: strings.TilesListDescription
+                  text: strings.iconInformation
                 }),
                 PropertyPaneLink('', {
-                  text: this.properties.listUrl,
-                  target: "_blank",
-                  href: this.properties.listUrl
+                  text: "UI Fabric Icons",
+                  href: "https://developer.microsoft.com/en-us/fabric#/styles/icons",
+                  target: "_blank"
                 }),
                 PropertyPaneHorizontalRule(),
+                PropertyFieldCollectionData("collectionData", {
+                  key: "collectionData",
+                  label: strings.tilesDataLabel,
+                  panelHeader: strings.tilesPanelHeader,
+                  manageBtnLabel: strings.tilesManageBtn,
+                  value: this.properties.collectionData,
+                  fields: [
+                    {
+                      id: "title",
+                      title: strings.titleField,
+                      type: CustomCollectionFieldType.string,
+                      required: true
+                    },
+                    {
+                      id: "description",
+                      title: strings.descriptionField,
+                      type: CustomCollectionFieldType.string,
+                      required: false
+                    },
+                    {
+                      id: "url",
+                      title: strings.urlField,
+                      type: CustomCollectionFieldType.string,
+                      required: true
+                    },
+                    {
+                      id: "icon",
+                      title: strings.iconField,
+                      type: CustomCollectionFieldType.string,
+                      required: true
+                    },
+                    {
+                      id: "target",
+                      title: strings.targetField,
+                      type: CustomCollectionFieldType.dropdown,
+                      options: [
+                        {
+                          key: LinkTarget.parent,
+                          text: strings.targetCurrent
+                        },
+                        {
+                          key: LinkTarget.blank,
+                          text: strings.targetNew
+                        }
+                      ]
+                    }
+                  ]
+                }),
                 PropertyFieldNumber('tileHeight', {
                   key: "tileHeight",
                   label: strings.TileHeight,

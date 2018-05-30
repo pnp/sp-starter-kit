@@ -2,12 +2,27 @@ declare interface ITilesWebPartStrings {
   PropertyPaneDescription: string;
   TilesListDescription: string;
   TileHeight: string;
+  iconInformation: string;
+
+  // Properties
+  tilesDataLabel: string;
+  tilesPanelHeader: string;
+  tilesManageBtn: string;
+
+  // Tile fields
+  titleField: string;
+  descriptionField: string;
+  urlField: string;
+  iconField: string;
+  targetField: string;
+
+  targetCurrent: string;
+  targetNew: string;
 
   // Component
-  NoListConnection: string;
-  NoTilesFound: string;
-  Loading: string;
-  Error: string;
+  noTilesIconText: string;
+  noTilesConfigured: string;
+  noTilesBtn: string;
 }
 
 declare module 'TilesWebPartStrings' {

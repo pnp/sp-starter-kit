@@ -3,6 +3,7 @@ define([], function() {
     "groupDataLabel": "Group names for the links",
     "groupPanelHeader": "Configure your group names",
     "manageGroupBtn": "Configure groups",
+    "iconInformation": "The names to specify for the icon field can be found on the following URL:",
 
     "linkDataLabel": "Link data",
     "linkPanelHeader": "Configure your links",

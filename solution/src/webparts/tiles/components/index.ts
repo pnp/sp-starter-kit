@@ -1,4 +1,3 @@
 export * from './ITilesProps';
-export * from './ITilesState';
-export * from './ITileListInfo';
+export * from './ITileInfo';
 export * from './Tiles';

@@ -1,6 +1,6 @@
-import { ITileItem } from '../';
+import { ITileInfo } from '..';
 
 export interface ITileProps {
-  item: ITileItem;
+  item: ITileInfo;
   height: number;
 }

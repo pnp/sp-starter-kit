@@ -1,6 +1,6 @@
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema">
-  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a">
-  </pnp:Preferences>
+<pnp:Provisioning
+  xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a"></pnp:Preferences>
   <pnp:Tenant>
     <pnp:AppCatalog>
       <pnp:Package Src="..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg" Action="UploadAndPublish" SkipFeatureDeployment="true" Overwrite="true" />
@@ -14,15 +14,67 @@
     </pnp:ContentDeliveryNetwork>
     <pnp:WebApiPermissions>
       <pnp:WebApiPermission Scope="Sites.Read.All" Resource="Microsoft Graph"></pnp:WebApiPermission>
+      <pnp:WebApiPermission Scope="Contacts.Read" Resource="Microsoft Graph"></pnp:WebApiPermission>
+      <pnp:WebApiPermission Scope="User.Read.All" Resource="Microsoft Graph"></pnp:WebApiPermission>
+      <pnp:WebApiPermission Scope="Mail.Read" Resource="Microsoft Graph"></pnp:WebApiPermission>
+      <pnp:WebApiPermission Scope="Calendars.Read" Resource="Microsoft Graph"></pnp:WebApiPermission>
+      <pnp:WebApiPermission Scope="Group.Read.All" Resource="Microsoft Graph"></pnp:WebApiPermission>
     </pnp:WebApiPermissions>
   </pnp:Tenant>
   <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
     <pnp:ProvisioningTemplate ID="PORTAL-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
-      <!-- <pnp:ApplicationLifecycleManagement>
-        <pnp:Apps>
-          <pnp:App AppId="{AppPackageId:sharepoint-portal-showcase.sppkg}" Action="Install" />
-        </pnp:Apps>
-      </pnp:ApplicationLifecycleManagement> -->
+      <pnp:TermGroups xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema">
+        <pnp:TermGroup Name="PnPTermSets" ID="0e8f395e-ff58-4d45-9ff7-e331ab728beb" Description="" UpdateBehavior="Overwrite">
+          <pnp:TermSets>
+            <pnp:TermSet Name="PnP-CollabFooter-SharedLinks" ID="7a167c47-2b37-41d0-94d0-e962c1a4f2ed" Description="">
+              <pnp:CustomProperties>
+                <pnp:Property Key="_Sys_Nav_IsNavigationTermSet" Value="True" />
+              </pnp:CustomProperties>
+              <pnp:Terms>
+                <pnp:Term Name="Contacts" ID="a359ee29-cf72-4235-a4ef-1ed96bf4eaea" Description="" SourceTermId="a359ee29-cf72-4235-a4ef-1ed96bf4eaea">
+                  <pnp:Terms />
+                  <pnp:LocalCustomProperties>
+                    <pnp:Property Key="_Sys_Nav_SimpleLinkUrl" Value="https://intranet.contoso.com/Contacts" />
+                    <pnp:Property Key="PnP-CollabFooter-Icon" Value="EditMail" />
+                  </pnp:LocalCustomProperties>
+                </pnp:Term>
+                <pnp:Term Name="Legal Policies" ID="60d165e6-8cb1-4c20-8fad-80067c4ca767" Description="" SourceTermId="60d165e6-8cb1-4c20-8fad-80067c4ca767">
+                  <pnp:Terms />
+                  <pnp:LocalCustomProperties>
+                    <pnp:Property Key="_Sys_Nav_SimpleLinkUrl" Value="https://intranet.contoso.com/LegalPolicies" />
+                    <pnp:Property Key="PnP-CollabFooter-Icon" Value="Lock" />
+                  </pnp:LocalCustomProperties>
+                </pnp:Term>
+                <pnp:Term Name="Tools" ID="da7bfb84-008b-48ff-b61f-bfe40da2602f" Description="" SourceTermId="da7bfb84-008b-48ff-b61f-bfe40da2602f">
+                  <pnp:Terms>
+                    <pnp:Term Name="Expense Reports" ID="30f4c129-6886-406c-911a-1395250d690f" Description="" SourceTermId="30f4c129-6886-406c-911a-1395250d690f">
+                      <pnp:Terms />
+                      <pnp:LocalCustomProperties>
+                        <pnp:Property Key="_Sys_Nav_SimpleLinkUrl" Value="https://downloads.contoso.com/ExpenseReports" />
+                      </pnp:LocalCustomProperties>
+                    </pnp:Term>
+                    <pnp:Term Name="Time Reports" ID="bef5028a-1dff-43b7-b57d-2aefd3f7b814" Description="" SourceTermId="bef5028a-1dff-43b7-b57d-2aefd3f7b814">
+                      <pnp:Terms />
+                      <pnp:LocalCustomProperties>
+                        <pnp:Property Key="_Sys_Nav_SimpleLinkUrl" Value="https://downloads.contoso.com/TimeReports" />
+                      </pnp:LocalCustomProperties>
+                    </pnp:Term>
+                    <pnp:Term Name="WebMail" ID="269c23e2-f34e-438a-adf0-22d11e064de5" Description="" SourceTermId="269c23e2-f34e-438a-adf0-22d11e064de5">
+                      <pnp:Terms />
+                      <pnp:LocalCustomProperties>
+                        <pnp:Property Key="_Sys_Nav_SimpleLinkUrl" Value="https://mail.office365.com/" />
+                      </pnp:LocalCustomProperties>
+                    </pnp:Term>
+                  </pnp:Terms>
+                  <pnp:LocalCustomProperties>
+                    <pnp:Property Key="PnP-CollabFooter-Icon" Value="DeveloperTools" />
+                  </pnp:LocalCustomProperties>
+                </pnp:Term>
+              </pnp:Terms>
+            </pnp:TermSet>
+          </pnp:TermSets>
+        </pnp:TermGroup>
+      </pnp:TermGroups>
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
 </pnp:Provisioning>

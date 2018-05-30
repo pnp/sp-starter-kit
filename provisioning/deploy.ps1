@@ -74,15 +74,14 @@ else {
 if ((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg") -eq $false -or $Build) {
     Set-Location $PSScriptRoot\..\solution
     npm install
-    Set-Location $PSScriptRoot
     # does not exist. Build and Package
-    gulp -f "$PSScriptRoot\..\solution\gulpfile.js" clean 2>&1 | Out-Null
+    gulp -f "gulpfile.js" clean 2>&1 | Out-Null
     Write-Host "Building solution" -ForegroundColor Cyan
-    gulp -f "$PSScriptRoot\..\solution\gulpfile.js" build 2>&1 | Out-Null
+    gulp -f "gulpfile.js" build 2>&1 | Out-Null
     Write-Host "Bundling solution" -ForegroundColor Cyan
-    gulp -f "$PSScriptRoot\..\solution\gulpfile.js" bundle --ship 2>&1 | Out-Null
+    gulp -f "gulpfile.js" bundle --ship 2>&1 | Out-Null
     Write-Host "Packaging solution" -ForegroundColor Cyan 
-    gulp -f "$PSScriptRoot\..\solution\gulpfile.js" package-solution --ship 2>&1 | Out-Null
+    gulp -f "gulpfile.js" package-solution --ship 2>&1 | Out-Null
 }
 $connection = Connect-PnPOnline -Url $SiteUrl[0] -Credentials $Credentials -ReturnConnection
 

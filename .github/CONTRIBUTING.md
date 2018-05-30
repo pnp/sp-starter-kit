@@ -1,72 +1,13 @@
-# Contribute to SharePoint Portal Showcase Solution
+# Contribute to SharePoint Starter Kit  Solution
 Below instructions explain how you can prepare your environment to contribute to SharePoint Portal Showcase Solution.
 
-## Portal Showcase repo structure
+## SP Starter Kit repo structure
 
-Before you decide to contribute, it is important to understand the `sp-portal-showcase` repo structure so you can decide where to add your new doc or update an existing doc.
+TBD
 
-```
-sp-dev-docs
---images
---docs
-```
+## Forking SharePoint Starter Kit repository
 
-The `docs` folder contains the key developer topics:
-
-```
-docs
---spfx
---apis
-```
-At this time, contributions are accepted for:
-
-* SharePoint Framework
-* SharePoint Webhooks
-
-### SPFx Folder
-
-The `spfx` folder contains documentation for SharePoint Framework. It is further classified into component folders, for example: `webparts`. This folder will expand with new components as they are released.
-
-```
-docs
---spfx
----webparts
------basics
------get-started
------developer-guide
-```
-
-#### Component folder
-Every component folder contains the following folders:
-* basics
-    * `basics` folder contains concept docs that are helpful in building that particular component, for example: `web parts`. 
-* get-started
-    * `get-started` folder contains walkthroughs and tutorials on how to get started building that particular component, for example: `web parts`.
-* developer-guide
-    * `developer-guide` folder contains guides, best practices and reference implementations for that particular component, for example: `web parts`.
-    * 
-Any images associated with the docs should be uploaded into the `sp-dev-docs\images` folder.
-
-### SharePoint Webhooks 
-
-The `apis\webhooks` folder contains the documentation for SharePoint webhooks. It is further classified into webhook endpoints, for example: `lists`. This folder will expand with new endpoints as they are released.
-
-```
-docs
---apis
-----webhooks
------lists
-```
-
-`webhooks` folder contains basic documentation around getting started and any other docs that cover webhooks in general.
-
-`webhooks\lists` folder contains API documentation around the list subscription service.
-
-Any images associated with the docs should be uploaded into the `sp-dev-docs\images` folder.
-
-## Forking SharePoint Developer Docs repository
-
-The first step is registering yourself on GitHub. Go to https://github.com/ and click on the "Sign up for GitHub" button. Once you're registered ensure you're logged on with your new account and navigate to the Office 365 Developer Patterns and Practices repository at https://github.com/sharepoint/sp-dev-docs. The right top side of the page contains a button called "Fork":
+The first step is registering yourself on GitHub. Go to https://github.com/ and click on the "Sign up for GitHub" button. Once you're registered ensure you're logged on with your new account and navigate to the Office 365 Developer Patterns and Practices repository at https://github.com/sharepoint/sp-starter-kit. The right top side of the page contains a button called "Fork":
 
 ![Fork the sp-dev-docs github repository](../images/contribute-fork-docs-repo.png)
 
