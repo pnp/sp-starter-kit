@@ -8,16 +8,6 @@
   </pnp:Tenant>
   <pnp:Templates ID="PORTAL-SHOWCASE-TEMPLATES">
     <pnp:ProvisioningTemplate ID="COLLAB-TEMPLATE" Version="1.0" BaseSiteTemplate="GROUP#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
-      <pnp:Security>
-        <pnp:AdditionalAdministrators>
-          <pnp:User Name="erwin@officedevpnp.onmicrosoft.com"/>
-          <pnp:User Name="vesaj@officedevpnp.onmicrosoft.com"/>
-          <pnp:User Name="paolo@officedevpnp.onmicrosoft.com"/>
-          <pnp:User Name="elio@officedevpnp.onmicrosoft.com"/>
-          <pnp:User Name="waldek@officedevpnp.onmicrosoft.com"/>
-          <pnp:User Name="bert@officedevpnp.onmicrosoft.com"/>
-        </pnp:AdditionalAdministrators>
-      </pnp:Security>
       <pnp:CustomActions>
         <pnp:WebCustomActions>
           <!-- alertNotification -->
