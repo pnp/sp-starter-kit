@@ -7,13 +7,13 @@ In fact, here is the list of requirements, which need some manual steps, to be a
 * You need to [create a custom property in the User Profile Service](#UPSCustomProperty).
 * If you want to use the StockInformation Web Part, you need to [request a custom API key to Alpha Vantage](#APIKeyAlphaVantage), which is the provider for live stocks data.
 
-In the following sections you can find details instructions about the above tasks.
+In the following sections you can find detailed instructions about the above tasks.
 
 <a name="UPSCustomProperty"></a>
 ## Create a Custom Property in the User Profile Service
 
-In order to register a custom property in the User Profile Service, you need to browse with your web browser to the SharePoint Admin Center of SharePoint Online, which is available at the URL https://<tenant-name>-admin.sharepoint.com/.
-There, you need to select the *User Profiles* menu item on the left and select *Manage User Properties* under the *People* category of links, as you can see in the following figure.
+In order to register a custom property in the User Profile Service, you need to browse with your web browser to the SharePoint Admin Center of SharePoint Online, which is available at the URL https://&lt;tenant-name&gt;-admin.sharepoint.com/.
+There, you need to select the *User Profiles* menu item on the left menu and select *Manage User Properties* under the *People* category of links, as you can see in the following figure.
 
 ![The User Profiles Admin UI](./assets/images/UPS-Custom-Property-01.png)
 
@@ -31,11 +31,11 @@ Configure the new property with the following settings:
 
 Leave all the other properties with their default values.
 
-> Note: We cannot automate this step because there is still not this capability in the Client Side Object Model, and in the REST API of SharePoint Online neither.
+> Note: We cannot automate this step because it is not yet possible to use the Client Side Object Model, or the REST API of SharePoint Online, to create a custom User Profile property.
 
 <a name="APIKeyAlphaVantage"></a>
 ## Request a custom API key to Alpha Vantage
 
-The StockInformation Web Part uses the live stocks service provided byt Alpha Advantage. However, to use it you need a software key, that you can ask for free to the API reseller. You will simply need to go to the page to [Claim your API Key](https://www.alphavantage.co/support/#api-key), fill in the form, and you are done.
+The StockInformation Web Part uses the live stocks service provided by [Alpha Advantage](https://www.alphavantage.co/). However, to use it you need a software key, that you can ask for free to the API provider. You will simply need to go to the page to [Claim your API Key](https://www.alphavantage.co/support/#api-key), fill in the form, and store the generated key in a safe place.
 
-The obtained key can be provided to the [deploy.ps1](./provisioning/deploy.ps1) PowerShell script through the StockAPIKey paramenter.
+The key can be provided to the [deploy.ps1](./provisioning/deploy.ps1) PowerShell script through the *StockAPIKey* paramenter.
