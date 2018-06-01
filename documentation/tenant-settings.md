@@ -15,11 +15,11 @@ In the following sections you can find detailed instructions about the above tas
 In order to register a custom property in the User Profile Service, you need to browse with your web browser to the SharePoint Admin Center of SharePoint Online, which is available at the URL https://&lt;tenant-name&gt;-admin.sharepoint.com/.
 There, you need to select the *User Profiles* menu item on the left menu and select *Manage User Properties* under the *People* category of links, as you can see in the following figure.
 
-![The User Profiles Admin UI](./assets/images/UPS-Custom-Property-01.png)
+![The User Profiles Admin UI](../assets/images/UPS-Custom-Property-01.png)
 
 In the *Manage User Properties* page, select to     create a *New Property* as it is illustrated in the following figure.
 
-![The add New Property button](./assets/images/UPS-Custom-Property-02.png)
+![The add New Property button](../assets/images/UPS-Custom-Property-02.png)
 
 Configure the new property with the following settings:
 * Name: PnP-CollabFooter-MyLinks
