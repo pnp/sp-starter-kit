@@ -20,11 +20,6 @@
           <pnp:CustomAction Name="SiteClassification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="7f69d5cb-5aeb-4bc6-9f77-146aebfd9a8e" Sequence="1" RegistrationType="None" />
         </pnp:WebCustomActions>
       </pnp:CustomActions>
-      <pnp:ApplicationLifecycleManagement>
-        <pnp:Apps>
-          <pnp:App AppId="{AppPackageId:sharepoint-portal-showcase-client-side-solution}" Action="Install" />
-        </pnp:Apps>
-      </pnp:ApplicationLifecycleManagement>
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
 </pnp:Provisioning>
