@@ -509,11 +509,6 @@
         <pnp:File Src="..\Assets\images\modernOffice_011.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="..\Assets\documents\contoso_report.pptx" Overwrite="true" Folder="Shared Documents"></pnp:File>
       </pnp:Files>
-      <pnp:ApplicationLifecycleManagement>
-        <pnp:Apps>
-          <pnp:App AppId="{AppPackageId:sharepoint-portal-showcase-client-side-solution}" Action="Install" />
-        </pnp:Apps>
-      </pnp:ApplicationLifecycleManagement>
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
 </pnp:Provisioning>
