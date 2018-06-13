@@ -25,7 +25,7 @@ Configure the new property with the following settings:
 * Name: PnP-CollabFooter-MyLinks
 * Display name: PnP-CollabFooter-MyLinks
 * Type: string (Single Value)
-* Lenght: 3600 (which is the maximum allowed)
+* Length: 3600 (which is the maximum allowed)
 * Policy Setting: Optional
 * Allow users to edit values for this property: Checked
 
