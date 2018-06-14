@@ -113,6 +113,7 @@ if ($isHub -eq $null) {
     
 }
 $HubSiteId = (Get-PnPSite -Includes Id).Id.ToString()
+$HubSiteLcid = (Get-PnPSite -Includes RootWeb.Language).RootWeb.Language.ToString()
 
 if ($StockAPIKey -ne $null -and $StockAPIKey -ne "") {
     Write-Host "Storing Stock API Key in tenant properties"
@@ -120,7 +121,7 @@ if ($StockAPIKey -ne $null -and $StockAPIKey -ne "") {
 }
 
 Write-Host "Applying template to portal" -ForegroundColor Cyan
-Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity" = $WeatherCity; "PortalTitle" = "$Company Portal"; "StockSymbol" = $StockSymbol; "HubSiteId" = $HubSiteId; "Company" = $Company} -Connection $connection
+Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity" = $WeatherCity; "PortalTitle" = "$Company Portal"; "StockSymbol" = $StockSymbol; "HubSiteId" = $HubSiteId; "Company" = $Company; "lcid" = $HubSiteLcid} -Connection $connection
 Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\PnP-PortalFooter-Links.xml" -Connection $connection
 
 # Due to bug in the provisioning engine reassociate the designs to the correct templates
