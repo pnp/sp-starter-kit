@@ -3,7 +3,7 @@
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a"></pnp:Preferences>
   <pnp:Tenant>
     <pnp:AppCatalog>
-      <pnp:Package Src="..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg" Action="UploadAndPublish" SkipFeatureDeployment="true" Overwrite="true" />
+      <pnp:Package Src="..\solution\sharepoint\solution\sharepoint-starter-kit.sppkg" Action="UploadAndPublish" SkipFeatureDeployment="true" Overwrite="true" />
     </pnp:AppCatalog>
     <pnp:ContentDeliveryNetwork>
       <pnp:Public Enabled="true">

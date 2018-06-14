@@ -71,7 +71,7 @@ else {
 }
 
 # Check if package existsd
-if ((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-portal-showcase.sppkg") -eq $false -or $Build) {
+if ((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-starter-kit.sppkg") -eq $false -or $Build) {
     Set-Location $PSScriptRoot\..\solution
     npm install
     # does not exist. Build and Package
@@ -88,12 +88,12 @@ $connection = Connect-PnPOnline -Url $SiteUrl[0] -Credentials $Credentials -Retu
 if ($SkipSolutionDeployment -ne $true) {
     # Temporary until schema change is present
     Write-Host "Provisioning solution" -ForegroundColor Cyan
-    $existingApp = Get-PnPApp -Identity "sharepoint-portal-showcase-client-side-solution" -ErrorAction SilentlyContinue
+    $existingApp = Get-PnPApp -Identity "sharepoint-starter-kit" -ErrorAction SilentlyContinue
     if ($existingApp -ne $null) {
         Remove-PnPApp -Identity $existingApp
     }
     Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\solution.xml" -Connection $connection
-    Update-AppIfPresent -AppName "sharepoint-portal-showcase-client-side-solution" -Connection $connection
+    Update-AppIfPresent -AppName "sharepoint-starter-kit-client-side-solution" -Connection $connection
 }
 
 # Disable Quicklaunch for Portal
