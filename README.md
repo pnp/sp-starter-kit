@@ -20,15 +20,25 @@ SharePoint Communication Sites have great out-of-the-box capabilities, but the o
 > Additional high resolution screenshots are also available: [front page](./assets/images/hihg-res-default-home-page.png) and [front page with extended footer](./assets/images/hihg-res-default-home-page-extended-footer.png).
 
 
+## Pre-requirements
+
+Here are current pre-requirements for making this solution work in your tenant.
+
+- You will need to be a tenant administrator to be able to deploy this solution
+    - Notice that you can get free developer tenant from [Office 365 developer program](https://developer.microsoft.com/en-us/office/dev-program), if needed.
+- Automatic end-to-end provisioning only works with English tenants
+    - All solutions and web parts are also English in the current implementation
+- Release preferences for your tenant will need to be set as "Targeted release for everyone" option (also known as First Release)
+- Add used tenant administrator account as Term Store Administrator in the Taxonomy Term Store 
+
+
 ## Getting started
 
 The following steps will help you get started in any tenant as fast as possible:
 
-> You will need to be a tenant administrator to be able to deploy this solution to your tenant.
-
 - Ensure that you meet the [requirements for SharePoint Framework development](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) and are using the latest version of [PnP PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps)
 - Prepare your tenant, by accomplishing the tasks highlighted in document [Preparing your tenant for the PnP SharePoint Starter Kit](./documentation/tenant-settings.md).
-- Upload and deploy the [`sharepoint-portal-showcase.sppkg`](./package/sharepoint-portal-showcase.sppkg) from the [`/package`](./package) folder to your app catalog
+- Upload and deploy the [`sharepoint-starter-kit.sppkg`](./package/sharepoint-starter-kit.sppkg) from the [`/package`](./package) folder to your app catalog
 - Use PnP PowerShell to connect to any site in your tenant with the [`Connect-PnPOnline` cmdlet](https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/connect-pnponline?view=sharepoint-ps)
 - Move to the `provisioning` folder and execute the following command (using your own tenant url and the prefix of your choosing): `.\deploy.ps1 -TenantUrl https://contosodemosk.sharepoint.com -SitePrefix demo`
     - This will provision 3 site collections with urls of `/sites/demoportal`, `/sites/demohr`, and `/sites/demomarketing`. Your urls may vary depending on the SitePrefix you use.
