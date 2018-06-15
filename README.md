@@ -45,6 +45,41 @@ The following steps will help you get started in any tenant as fast as possible:
 
 > Notice that this script also adds tenant level settings like themes, site designs, taxonomy term sets, and other adjustments. Therefore, it is recommended to test the script in an isolated test tenant and not immediately execute it within your production environment. Nevertheless, a cleanup script will come shortly.
 
+## Custom Web Parts
+
+Here are the custom web parts currently included in the solution package.
+
+Pic |  Web Part |  Description  | Code
+------------ | ----------- | ----------- | -----------
+soon | Banner | Creates a banner with an image and overlaid text | [code](solution/src/webparts/banner/bannerwebpart.ts)
+soon | Followed Sites | Shows the list of sites which particular user is following | [code](solution/src/webparts/followedSites/FollowedSitesWebPart.ts)
+soon | Links | Link list web part which is using collection data editor and stores the links in web part properties | [code](solution/src/webparts/links/LinksWebPart.ts)
+soon | LOB integration | Sample web part to surface LOB information from API hosted in Azure. | [code](solution/src/webparts/lobIntegration/LobIntegrationWebPart.ts)
+soon | People Directory | People directory web part uses people search API to get list of people to show.  | [code](solution/src/webparts/peopleDirectory/PeopleDirectoryWebPart.ts)
+soon | Personal Calendar | Shows upcoming calendar meetings for the particular user using Microsoft Graph. | [code](solution/src/webparts/personalCalendar/PersonalCalendarWebPart.ts)
+soon | Personal Contacts | Personal contacts for particular user using Microsoft Graph. | [code](solution/src/webparts/personalContacts/PersonalContactsWebPart.ts)
+soon | Personal Email | List latest personal emails for the current user using Microsoft Graph. | [code](solution/src/webparts/personalEmail/PersonalEmailWebPart.ts)
+soon | Personal Tasks | Show personal tasks for the current user using Microsoft Graph. | [code](solution/src/webparts/personalTasks/PersonalTasksWebPart.ts)
+soon | Recent Contacts | Show recent contacts for the current user using Microsoft Graph. | [code](solution/src/webparts/recentContacts/RecentContactsWebPart.ts)
+soon | Recently Used Documents | Show recently used documents for the current user using Microsoft Graph. | [code](solution/src/webparts/recentlyUsedDocuments/RecentlyUsedDocumentsWebPart.ts)
+soon | Recently Visited Sites | Show recently visited sites for current user using Microsoft Graph. | [code](solution/src/webparts/recentlyVisitedSites/RecentlyVisitedSitesWebPart.ts)
+soon | Site Information | Intended to collect and present additional metadata for group associated team sites. | [code](solution/src/webparts/siteInformation/SiteInformationWebPart.ts)
+soon | Stock Information | uses the live stocks service provided by [Alpha Advantage](https://www.alphavantage.co/). You will need to register specific key for this to work in the Alpha Advantage site and in the tenant properties.  | [code](solution/src/webparts/stockInformation/StockInformationWebPart.ts)
+soon | Tiles | Renders set of tiles. Icons are from Office UI Fabric and you can configure tiles using collection editor in web part properties. | [code](solution/src/webparts/tiles/TilesWebPart.ts)
+soon | Weather Information | Weather information web part which is using Yahoo Weather APIs to get the forecast information. | [code](solution/src/webparts/weatherInformation/WeatherInformationWebPart.ts)
+soon | World Time | Clock web part to show the time in specific time zone. | [code](solution/src/webparts/worldTime/WorldTimeWebPart.ts)
+
+## SharePoint Framework Extensions
+
+Pic |  Extension |  Description  | Code
+------------ | ----------- | ----------- | -----------
+soon | Alert Notification | Shows informational or important messages in the header section of pages based on a custom list information in the hub site. | [code](solution/src/extensions/alertNotitication/AlertNotiticationApplicationCustomizer.ts)
+soon | Collaboration Footer | Shows company wide links which are configured using Taxonomy service. Includes also  personalized links which are stored in user profile property if set. By default associated to group associated team sites when a custom Site Design is selected for new sites. | [code](solution/src/extensions/collabFooter/CollabFooterApplicationCustomizer.ts)
+soon | Discuss Now | Custom list view command set to add new custom dialog for document library. | [code](solution/src/extensions/discussNow/DiscussNowCommandSet.ts)
+soon | Portal Footer | Expanding footer for communication site. Show standard company links and also supports personalized links for the current user which are stored in User Profile. | [code](solution/src/extensions/portalFooter/PortalFooterApplicationCustomizer.ts)
+soon | Redirect | Can be used to perform automatic redirections of URLs in the site based on a custom list. | [code](solution/src/extensions/redirect/RedirectApplicationCustomizer.ts)
+soon | Site Classification | Renders a header with site classification information. | [code](solution/src/extensions/siteClassification/SiteClassificationApplicationCustomizer.ts)
+soon | Tab Page | Renders a header with links between two different pages in the site. | [code](solution/src/extensions/tabPage/TabPageApplicationCustomizer.ts)
 
 ## Contributing
 
