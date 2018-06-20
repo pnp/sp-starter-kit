@@ -82,6 +82,9 @@ if ((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-starter
     gulp -f "gulpfile.js" bundle --ship 2>&1 | Out-Null
     Write-Host "Packaging solution" -ForegroundColor Cyan 
     gulp -f "gulpfile.js" package-solution --ship 2>&1 | Out-Null
+
+    #return to provisioning folder
+    Set-Location $PSScriptRoot\..\provisioning
 }
 $connection = Connect-PnPOnline -Url $SiteUrl[0] -Credentials $Credentials -ReturnConnection
 
@@ -136,7 +139,7 @@ $hierarchy = ConvertFrom-Json (Get-Content -Path "$PSScriptRoot\hierarchy.json" 
 foreach ($child in $hierarchy.children) {
     if (($children | Where-Object {$_.Title -eq $child.title}) -eq $null) {
         $node = Add-PnPNavigationNode -Location TopNavigationBar -Parent $departmentNode[0].Id -Title $child.title -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -Connection $connection
-        $childConnection = Connect-PnPOnline -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -ReturnConnection
+        $childConnection = Connect-PnPOnline -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -Credentials $Credentials -ReturnConnection
     }
     Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\collab.xml" -Connection $childConnection
 }
