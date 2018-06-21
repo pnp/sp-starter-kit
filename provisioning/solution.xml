@@ -72,6 +72,16 @@
                 </pnp:Term>
               </pnp:Terms>
             </pnp:TermSet>
+            <pnp:TermSet Name="PnP-Organizations" ID="1479e26c-1380-41a8-9183-72bc5a9651bb" Description="">
+              <pnp:Terms>
+                <pnp:Term Name="HR" ID="02cf219e-8ce9-4e85-ac04-a913a44a5d2b" Description="" SourceTermId="02cf219e-8ce9-4e85-ac04-a913a44a5d2b">
+                </pnp:Term>
+                <pnp:Term Name="IT" ID="247543b6-45f2-4232-b9e8-66c5bf53c31e" Description="" SourceTermId="247543b6-45f2-4232-b9e8-66c5bf53c31e">
+                </pnp:Term>
+                <pnp:Term Name="Leadership" ID="ffc3608f-1250-4d28-b388-381fad8d4602" Description="" SourceTermId="ffc3608f-1250-4d28-b388-381fad8d4602">
+                </pnp:Term>
+              </pnp:Terms>
+            </pnp:TermSet>
           </pnp:TermSets>
         </pnp:TermGroup>
       </pnp:TermGroups>
