@@ -123,8 +123,8 @@ export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteI
                   context: this.context,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
-                  limitByGroupNameOrID: 'Company',
-                  limitByTermsetNameOrID: 'Organizations',
+                  limitByGroupNameOrID: 'PnPTermSets',
+                  limitByTermsetNameOrID: 'PnP-Organizations',
                   key: 'siteOrganizationId'
                 })
               ]
