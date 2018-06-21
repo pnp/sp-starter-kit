@@ -62,7 +62,6 @@ export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartPro
                   key: "groupData",
                   label: strings.groupDataLabel,
                   panelHeader: strings.groupPanelHeader,
-                  panelDescription: `${strings.iconInformation} https://developer.microsoft.com/en-us/fabric#/styles/icons`,
                   manageBtnLabel: strings.manageGroupBtn,
                   value: this.properties.groupData,
                   fields: [
@@ -78,6 +77,7 @@ export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartPro
                   key: "collectionData",
                   label: strings.linkDataLabel,
                   panelHeader: strings.linkPanelHeader,
+                  panelDescription: `${strings.iconInformation} https://developer.microsoft.com/en-us/fabric#/styles/icons`,
                   manageBtnLabel: strings.manageLinksBtn,
                   value: this.properties.collectionData,
                   fields: [
