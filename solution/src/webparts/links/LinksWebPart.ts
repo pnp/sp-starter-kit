@@ -58,19 +58,11 @@ export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartPro
           groups: [
             {
               groupFields: [
-                PropertyPaneLabel('', {
-                  text: strings.iconInformation
-                }),
-                PropertyPaneLink('', {
-                  text: "UI Fabric Icons",
-                  href: "https://developer.microsoft.com/en-us/fabric#/styles/icons",
-                  target: "_blank"
-                }),
-                PropertyPaneHorizontalRule(),
                 PropertyFieldCollectionData("groupData", {
                   key: "groupData",
                   label: strings.groupDataLabel,
                   panelHeader: strings.groupPanelHeader,
+                  panelDescription: `${strings.iconInformation} https://developer.microsoft.com/en-us/fabric#/styles/icons`,
                   manageBtnLabel: strings.manageGroupBtn,
                   value: this.properties.groupData,
                   fields: [
@@ -104,7 +96,7 @@ export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartPro
                     {
                       id: "icon",
                       title: strings.iconField,
-                      type: CustomCollectionFieldType.string
+                      type: CustomCollectionFieldType.fabricIcon
                     },
                     {
                       id: "group",
