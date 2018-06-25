@@ -13,7 +13,7 @@
   }
 
   &.visible {
-    height: 190px;
+    height: auto;
   }
 
   &.hidden {
@@ -50,5 +50,5 @@
     right: 0.5em;
     padding: 0.5em;
     min-width: 0;
-  }   
+  }
 }
