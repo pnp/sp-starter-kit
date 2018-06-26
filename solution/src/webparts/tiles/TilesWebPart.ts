@@ -47,19 +47,11 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
           groups: [
             {
               groupFields: [
-                PropertyPaneLabel('', {
-                  text: strings.iconInformation
-                }),
-                PropertyPaneLink('', {
-                  text: "UI Fabric Icons",
-                  href: "https://developer.microsoft.com/en-us/fabric#/styles/icons",
-                  target: "_blank"
-                }),
-                PropertyPaneHorizontalRule(),
                 PropertyFieldCollectionData("collectionData", {
                   key: "collectionData",
                   label: strings.tilesDataLabel,
                   panelHeader: strings.tilesPanelHeader,
+                  panelDescription: `${strings.iconInformation} https://developer.microsoft.com/en-us/fabric#/styles/icons`,
                   manageBtnLabel: strings.tilesManageBtn,
                   value: this.properties.collectionData,
                   fields: [
@@ -84,7 +76,7 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
                     {
                       id: "icon",
                       title: strings.iconField,
-                      type: CustomCollectionFieldType.string,
+                      type: CustomCollectionFieldType.fabricIcon,
                       required: true
                     },
                     {
