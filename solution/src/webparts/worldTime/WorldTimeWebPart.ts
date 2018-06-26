@@ -17,9 +17,16 @@ import { IWorldTimeProps } from './components/IWorldTimeProps';
 import { IWorldTimeWebPartProps } from './IWorldTimeWebPartProps';
 import * as timeZones from './components/Timezones';
 
+import MyPersonalDataService from '../../services/MyPersonalDataService';
+import { MSGraphClient } from '@microsoft/sp-client-preview';
+
 export default class WorldTimeWebPart extends BaseClientSideWebPart<IWorldTimeWebPartProps> {
 
-  public render(): void {
+  public async render(): Promise<void> {
+
+    let tmpService: MyPersonalDataService = new MyPersonalDataService(this.context.serviceScope.consume(MSGraphClient.serviceKey));
+    let tmpData: any = await tmpService.getUserData("test");
+
     const element: React.ReactElement<IWorldTimeProps> = React.createElement(
       WorldTime,
       {
