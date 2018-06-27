@@ -91,8 +91,10 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
 
     // retrieve information about people using SharePoint People Search
     // sort results ascending by the last name
+
+    //console.log(`${this.props.webUrl}/_api/search/query?querytext='${query}'&selectproperties='PreferredName,WorkEmail,PictureURL,WorkPhone'&sortlist='LastName:ascending'&sourceid='b09a7990-05ea-4af9-81ef-edfab16c4e31'&rowlimit=500&trimduplicates=false`);
     this.props.spHttpClient
-      .get(`${this.props.webUrl}/_api/search/query?querytext='${query}'&selectproperties='PreferredName,WorkEmail,PictureURL,WorkPhone'&sortlist='LastName:ascending'&sourceid='b09a7990-05ea-4af9-81ef-edfab16c4e31'&rowlimit=500`, SPHttpClient.configurations.v1, {
+      .get(`${this.props.webUrl}/_api/search/query?querytext='${query}'&selectproperties='PreferredName,WorkEmail,PictureURL,WorkPhone,LastName'&sortlist='LastName:ascending'&sourceid='b09a7990-05ea-4af9-81ef-edfab16c4e31'&rowlimit=500&trimduplicates=false`, SPHttpClient.configurations.v1, {
         headers: headers
       })
       .then((res: SPHttpClientResponse): Promise<IPeopleSearchResults> => {
@@ -119,14 +121,25 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
         }
 
         // convert the SharePoint People Search results to an array of people
-        const people: IPerson[] = res.PrimaryQueryResult.RelevantResults.Table.Rows.map(r => {
+        let people: IPerson[] = res.PrimaryQueryResult.RelevantResults.Table.Rows.map(r => {
           return {
             name: this._getValueFromSearchResult('PreferredName', r.Cells),
             phone: this._getValueFromSearchResult('WorkPhone', r.Cells),
             email: this._getValueFromSearchResult('WorkEmail', r.Cells),
-            photoUrl: this._getValueFromSearchResult('PictureURL', r.Cells)
+            photoUrl: this._getValueFromSearchResult('PictureURL', r.Cells),
+            lastname: this._getValueFromSearchResult('LastName', r.Cells)
           };
         });
+        switch (index) {
+          case 'Å': people =  people.filter(people => people.lastname.indexOf('Å',0)===0);
+          break;
+          case 'Ä': people =  people.filter(people => people.lastname.indexOf('Ä',0)===0);
+          break;
+          case 'Ö': people =  people.filter(people => people.lastname.indexOf('Ö',0)===0);
+          break;
+
+        }
+
         // notify the user that loading the data is finished and return the loaded information
         this.setState({
           loading: false,
