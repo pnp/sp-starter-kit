@@ -5,6 +5,7 @@ import {
   PersonaSize
 } from 'office-ui-fabric-react/lib/Persona';
 import * as strings from 'PeopleDirectoryWebPartStrings';
+import styles from './PeopleList.module.scss';
 
 export class PeopleList extends React.Component<IPeopleListProps, {}> {
   public render(): React.ReactElement<IPeopleListProps> {
@@ -22,7 +23,7 @@ export class PeopleList extends React.Component<IPeopleListProps, {}> {
         {this.props.people.length > 0 &&
           // for each retrieved person, create a persona card with the retrieved
           // information
-          this.props.people.map(p => <Persona primaryText={p.name} secondaryText={p.email} tertiaryText={p.phone} imageUrl={p.photoUrl} imageAlt={p.name} size={PersonaSize.size72} />)}
+          this.props.people.map(p => <Persona className={styles.peopleRow} primaryText={p.name} secondaryText={p.email} tertiaryText={p.phone} imageUrl={p.photoUrl} imageAlt={p.name} size={PersonaSize.size72} />)}
       </div>
     );
   }
