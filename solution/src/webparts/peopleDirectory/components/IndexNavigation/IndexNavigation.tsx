@@ -21,7 +21,10 @@ export class IndexNavigation extends React.Component<IIndexNavigationProps, {}> 
 
   public render(): React.ReactElement<IIndexNavigationProps> {
     // build the list of alphabet letters A..Z
-    const az = Array.apply(null, { length: 26 }).map((x: string, i: number): string => { return String.fromCharCode(65 + i); });
+    let az = Array.apply(null, { length: 26 }).map((x: string, i: number): string => { return String.fromCharCode(65 + i); });
+    // var åäö = [String.fromCharCode(143), String.fromCharCode(142), String.fromCharCode(152)];
+    az.push('Å','Ä','Ö');
+
     // for each letter, create a PivotItem component
     const indexes: JSX.Element[] = az.map(index => <PivotItem linkText={index} itemKey={index} key={index} />);
     // as the last tab in the navigation, add the Search option

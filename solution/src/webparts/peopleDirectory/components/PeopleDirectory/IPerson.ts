@@ -3,4 +3,5 @@ export interface IPerson {
   phone: string;
   email: string;
   photoUrl: string;
+  lastname: string;
 }

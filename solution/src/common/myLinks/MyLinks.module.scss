@@ -13,5 +13,22 @@
       .textField {
         width: 250px;
       }
+      .dialogActions {
+        position: relative;
+        width: 100%;
+        min-height: 24px;
+        line-height: 24px;
+        margin: 20px 0 0;
+        font-size: 0;
+      }
+      .actionsRight {
+        margin-right: -4px;
+        text-align: right;
+        font-size: 0;
+      }
+      .action{
+        margin: 0px 4px;
+      }
+
   }
 }
