@@ -4,7 +4,7 @@ The following documentation provides guidance related to the the provisioning pr
 
 The primary entry point for automatic end-to-end provisioning is the **deploy.ps1** PowerShell script found within the `provisioning` folder.
 
-##Minimal path to success
+## Minimal path to success
 
 Open PowerShell and run the following commands, changing the tenant url to your primary SharePoint tenant site. Before running deploy.ps1, use PnP PowerShell to connect to any site in your tenant with the [`Connect-PnPOnline` cmdlet](https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/connect-pnponline?view=sharepoint-ps) using your own tenant url.
 
@@ -27,7 +27,7 @@ Connect-PnPOnline https://[yourtenant].sharepoint.com
 
 - Any existing instances of the SPFx solution in the tenant or site app catalogs will be removed before deployment. Refer to (SkipSolutionDeployment parameter)[#-SkipSolutionDeployment].
 
-##Pre-providing credentials
+## Pre-providing credentials
 
 Credentials may be provided via the command line, or by using the ['Windows credential manager'](https://www.youtube.com/watch?v=w7NJ_qTK1l8).
 
@@ -39,11 +39,11 @@ Connect-PnPOnline https://[yourtenant].sharepoint.com -Credentials $creds
 .\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -Credentials $creds
 ```
 
-##Provisioning Parameters
+## Provisioning Parameters
 
 The deployment process may be configured with the following set of parameters that may be used in tandem with each other.
 
-###-TenantUrl###
+### -TenantUrl ###
 
 **required**
 
@@ -53,7 +53,7 @@ Your tenant url, such as https://contoso.sharepoint.com, or any site within your
 .\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com
 ```
 
-###-SitePrefix###
+### -SitePrefix ###
 
 **optional**
 
@@ -65,7 +65,7 @@ Override the prefix that will be prepended to all sites provided in hierarchy.js
 .\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -SitePrefix "mydemo"
 ```
 
-###-Credentials###
+### -Credentials ###
 
 **optional**
 
@@ -78,7 +78,7 @@ $creds = Get-Credential
 .\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -Credentials $creds
 ```
 
-###-Build###
+### -Build ###
 
 **optional**
 
@@ -90,7 +90,7 @@ Force the build and packaging of the SPFx solution .sppkg file
 .\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -Build
 ```
 
-###-SkipPowerShellInstall###
+### -SkipPowerShellInstall ###
 
 **optional**
 
@@ -102,7 +102,7 @@ If parameter provided, then skip validation check and possible installation of P
 .\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -SkipPowerShellInstall
 ```
 
-###-SkipSiteCreation###
+### -SkipSiteCreation ###
 
 **optional**
 
@@ -114,7 +114,7 @@ If parameter provided, then skip the creation of the sites found within hierarch
 .\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -SkipSiteCreation
 ```
 
-###-SkipSolutionDeployment###
+### -SkipSolutionDeployment ###
 
 **optional**
 
@@ -126,7 +126,7 @@ If parameter provided, then skip the deployment of the SPFx solution to the tena
 .\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -SkipSolutionDeployment
 ```
 
-###-Company###
+### -Company ###
 
 **optional**
 
@@ -138,7 +138,7 @@ Provide your company name, which is used during the site provisioning process to
 .\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -Company "SharePoint PnP"
 ```
 
-###-WeatherCity###
+### -WeatherCity ###
 
 **optional**
 
@@ -150,7 +150,7 @@ The Weather webpart defaults to 'Seattle'. You can override this during deployme
 .\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -WeatherCity "Amsterdam"
 ```
 
-###-StockSymbol###
+### -StockSymbol ###
 
 **optional**
 
@@ -162,7 +162,7 @@ The Stock Information webpart defaults to 'MSFT'. You can override this during d
 .\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -StockSymbol "GT" -StockAPIKey "your-api-key"
 ```
 
-###-StockAPIKey###
+### -StockAPIKey ###
 
 **optional**
 

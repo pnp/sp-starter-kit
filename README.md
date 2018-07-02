@@ -1,6 +1,6 @@
 # PnP SharePoint Starter Kit
 
-This is a solution designed for SharePoint Online which provides numerous web parts, extensions, and other components which you can use as an example and inspiration for your own customizations. 
+This is a solution designed for SharePoint Online which provides numerous web parts, extensions, and other components which you can use as an example and inspiration for your own customizations.
 
 > Please be aware that **documentation work is still in progress** and we will keep on provide more guidance and input around covered capabilities in this solution. In the meantime, please submit issues and questions using the [issues list](../../issues) to help us provide better documentation and guidance. Thanks for your patience!
 
@@ -36,19 +36,25 @@ Here are current pre-requirements for making this solution work in your tenant.
 
 Minimum path to success: The following steps will help you get started in any tenant as fast as possible:
 
-1. Ensure that you meet the [requirements for SharePoint Framework development](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) and are using the latest version of [PnP PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps)
-2. Prepare your tenant, by accomplishing the tasks highlighted in document [Preparing your tenant for the PnP SharePoint Starter Kit](./documentation/tenant-settings.md).
-3. Upload and deploy the [`sharepoint-starter-kit.sppkg`](./package/sharepoint-starter-kit.sppkg) from the [`/package`](./package) folder to your tenant app catalog
-4. Open PowerShell, and use PnP PowerShell to connect to any site in your tenant with the [`Connect-PnPOnline` cmdlet](https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/connect-pnponline?view=sharepoint-ps) using your own tenant url
+- Ensure that you meet the [requirements for SharePoint Framework development](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) and are using the latest version of [PnP PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps)
+- Prepare your tenant, by accomplishing the tasks highlighted in document [Preparing your tenant for the PnP SharePoint Starter Kit](./documentation/tenant-settings.md).
+- Upload and deploy the [`sharepoint-starter-kit.sppkg`](./package/sharepoint-starter-kit.sppkg) from the [`/package`](./package) folder to your tenant app catalog
+    - After deploying the .sppkg package to the tenant app catalog, approve the requested API permissions. [Approving third party API access](./documentation/api-management.md).
+- Open PowerShell, and use PnP PowerShell to connect to any site in your tenant with the [`Connect-PnPOnline` cmdlet](https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/connect-pnponline?view=sharepoint-ps) using your own tenant url
+
 ```powershell
 Connect-PnPOnline https://contosodemosk.sharepoint.com
 ```
-5. Change to the `provisioning` folder found in SP Starter Kit solution root and execute the following command (using your own tenant url and the prefix of your choosing):
+
+- Change to the `provisioning` folder found in SP Starter Kit solution root and execute the following command (using your own tenant url and the prefix of your choosing):
+    - Refer to the ['provisioning documentation'](./provisioning) for advanced provisioning options and guidance
+
 ```powershell
 .\deploy.ps1 -TenantUrl https://contosodemosk.sharepoint.com -SitePrefix demo
 ```
-    - This will provision 3 site collections with urls of `/sites/demoportal`, `/sites/demohr`, and `/sites/demomarketing`. Your urls may vary depending on the SitePrefix you use.
-    - Refer to the ['provisioning documentation'](./provisioning) for advanced provisioning options and guidance
+
+This will provision 3 site collections with urls of `/sites/demoportal`, `/sites/demohr`, and `/sites/demomarketing`. Your urls may vary depending on the SitePrefix you use.
+
 
 > Notice that this script also adds tenant level settings like themes, site designs, taxonomy term sets, and other adjustments. Therefore, it is recommended to test the script in an **isolated test tenant and not immediately execute it within your production environment**. Nevertheless, a cleanup script will come shortly.
 
