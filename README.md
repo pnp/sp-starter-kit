@@ -48,6 +48,7 @@ Connect-PnPOnline https://contosodemosk.sharepoint.com
 
 - Change to the `provisioning` folder found in SP Starter Kit solution root and execute the following command (using your own tenant url and the prefix of your choosing):
     - Refer to the ['provisioning documentation'](./provisioning) for advanced provisioning options and guidance
+    - If you run into errors during provisioning, refer to ['Common SP Starter Kit Provisioning results'](./documentation/common-provision-results.md) for additional suggestions and common mistakes
 
 ```powershell
 .\deploy.ps1 -TenantUrl https://contosodemosk.sharepoint.com -SitePrefix demo

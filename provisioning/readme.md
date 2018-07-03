@@ -27,6 +27,14 @@ Connect-PnPOnline https://[yourtenant].sharepoint.com
 
 - Any existing instances of the SPFx solution in the tenant or site app catalogs will be removed before deployment. Refer to (SkipSolutionDeployment parameter)[#-SkipSolutionDeployment].
 
+## Fixing provisioning errors
+
+- If you run into errors during provisioning, refer to ['Common SP Starter Kit Provisioning results'](./documentation/common-provision-results.md) for additional suggestions and common mistakes
+
+- Refer to the ['Issues List'](https://github.com/SharePoint/sp-starter-kit/issues) to see if anyone else has run into a similar issue, and if so posisble paths to success
+
+- ['Submit a new issue'](https://github.com/SharePoint/sp-starter-kit/issues) if you are unable to find a solution to your specific error or question
+
 ## Pre-providing credentials
 
 Credentials may be provided via the command line, or by using the ['Windows credential manager'](https://www.youtube.com/watch?v=w7NJ_qTK1l8).
