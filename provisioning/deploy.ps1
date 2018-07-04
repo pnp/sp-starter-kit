@@ -96,10 +96,12 @@ if ($SkipSolutionDeployment -ne $true) {
         Remove-PnPApp -Identity $existingApp
     }
     Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\solution.xml" -Connection $connection
+    Write-Host "Provisioning Taxonomy" -ForegroundColor Cyan
+    Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\terms.xml" -Connection $connection
     Update-AppIfPresent -AppName "sharepoint-starter-kit-client-side-solution" -Connection $connection
 }
 
-# Disable Quicklaunch for Portal
+# Disable Quicklaunch for Hubsite
 $web = Get-PnPWeb -Connection $connection
 $web.QuicklaunchEnabled = $false
 $web.Update()
@@ -124,8 +126,8 @@ if ($StockAPIKey -ne $null -and $StockAPIKey -ne "") {
     Set-PnPStorageEntity -Key "PnP-Portal-AlphaVantage-API-Key" -Value $StockAPIKey -Comment "API Key for Alpha Advantage REST Stock service" -Description "API Key for Alpha Advantage REST Stock service" -Connection $connection
 }
 
-Write-Host "Applying template to portal" -ForegroundColor Cyan
-Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\portal.xml" -Parameters @{"WeatherCity" = $WeatherCity; "PortalTitle" = "$Company Portal"; "StockSymbol" = $StockSymbol; "HubSiteId" = $HubSiteId; "Company" = $Company; "lcid" = $HubSiteLcid} -Connection $connection
+Write-Host "Applying template to hubsite" -ForegroundColor Cyan
+Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\hubsite.xml" -Parameters @{"WeatherCity" = $WeatherCity; "PortalTitle" = "$Company Portal"; "StockSymbol" = $StockSymbol; "HubSiteId" = $HubSiteId; "Company" = $Company; "lcid" = $HubSiteLcid} -Connection $connection
 Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\PnP-PortalFooter-Links.xml" -Connection $connection
 
 # Due to bug in the provisioning engine reassociate the designs to the correct templates

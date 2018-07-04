@@ -1,29 +1,9 @@
 <pnp:Provisioning
   xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.21.1712.2, Culture=neutral, PublicKeyToken=5e633289e95c321a"></pnp:Preferences>
-  <pnp:Tenant>
-    <pnp:AppCatalog>
-      <pnp:Package Src="..\solution\sharepoint\solution\sharepoint-starter-kit.sppkg" Action="UploadAndPublish" SkipFeatureDeployment="true" Overwrite="true" />
-    </pnp:AppCatalog>
-    <pnp:ContentDeliveryNetwork>
-      <pnp:Public Enabled="true">
-        <pnp:Origins>
-          <pnp:Origin Url="*/CLIENTSIDEASSETS" Action="Add"/>
-        </pnp:Origins>
-      </pnp:Public>
-    </pnp:ContentDeliveryNetwork>
-    <pnp:WebApiPermissions>
-      <pnp:WebApiPermission Scope="Sites.Read.All" Resource="Microsoft Graph"></pnp:WebApiPermission>
-      <pnp:WebApiPermission Scope="Contacts.Read" Resource="Microsoft Graph"></pnp:WebApiPermission>
-      <pnp:WebApiPermission Scope="User.Read.All" Resource="Microsoft Graph"></pnp:WebApiPermission>
-      <pnp:WebApiPermission Scope="Mail.Read" Resource="Microsoft Graph"></pnp:WebApiPermission>
-      <pnp:WebApiPermission Scope="Calendars.Read" Resource="Microsoft Graph"></pnp:WebApiPermission>
-      <pnp:WebApiPermission Scope="Group.Read.All" Resource="Microsoft Graph"></pnp:WebApiPermission>
-    </pnp:WebApiPermissions>
-  </pnp:Tenant>
-  <pnp:Templates ID="SP-STARTER-KIT-TEMPLATES">
-    <pnp:ProvisioningTemplate ID="SP-STARTER-KIT-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Starter Kit" Description="" Scope="RootSite" TemplateCultureInfo="1033">
-      <!-- <pnp:TermGroups xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema">
+  <pnp:Templates ID="SP-STARTER-KIT-TEMPLATES-TERMS">
+    <pnp:ProvisioningTemplate ID="SP-STARTER-KIT-TEMPLATE-TERMS" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
+      <pnp:TermGroups xmlns:pnp="http://schemas.dev.office.com/PnP/2018/05/ProvisioningSchema">
         <pnp:TermGroup Name="PnPTermSets" ID="0e8f395e-ff58-4d45-9ff7-e331ab728beb" Description="" UpdateBehavior="Overwrite">
           <pnp:TermSets>
             <pnp:TermSet Name="PnP-CollabFooter-SharedLinks" ID="7a167c47-2b37-41d0-94d0-e962c1a4f2ed" Description="">
@@ -84,7 +64,7 @@
             </pnp:TermSet>
           </pnp:TermSets>
         </pnp:TermGroup>
-      </pnp:TermGroups> -->
+      </pnp:TermGroups>
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
 </pnp:Provisioning>
