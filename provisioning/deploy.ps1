@@ -112,8 +112,9 @@ if ($isHub -eq $null) {
     Register-PnPHubSite -Site $SiteUrl -Connection $connection 2>&1 | Out-Null
     
 }
-$HubSiteId = (Get-PnPSite -Includes Id).Id.ToString()
-$HubSiteLcid = (Get-PnPSite -Includes RootWeb.Language).RootWeb.Language.ToString()
+$HubSiteInfo = Get-PnPSite -Includes Id, RootWeb.Language
+$HubSiteId = $HubSiteInfo.Id.ToString()
+$HubSiteLcid = $HubSiteInfo.RootWeb.Language.ToString()
 
 if ($StockAPIKey -ne $null -and $StockAPIKey -ne "") {
     Write-Host "Storing Stock API Key in tenant properties"
