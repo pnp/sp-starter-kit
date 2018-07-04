@@ -5,8 +5,17 @@
       <pnp:Parameter Key="WeatherCity">Seattle</pnp:Parameter>
       <pnp:Parameter Key="PortalTitle">PnP SP Starter Kit</pnp:Parameter>
       <pnp:Parameter Key="StockSymbol">MSFT</pnp:Parameter>
+	  <pnp:Parameter Key="lcid">1033</pnp:Parameter>
     </pnp:Parameters>
   </pnp:Preferences>
+  <pnp:Localizations>
+    <pnp:Localization LCID="1033" Name="core" ResourceFile="resources\resources-core.en-us.resx" />
+    <pnp:Localization LCID="3082" Name="core" ResourceFile="resources\resources-core.es-es.resx" />
+	<pnp:Localization LCID="1036" Name="core" ResourceFile="resources\resources-core.fr-fr.resx" />
+    <pnp:Localization LCID="1031" Name="core" ResourceFile="resources\resources-core.de-de.resx" />
+    <pnp:Localization LCID="1043" Name="core" ResourceFile="resources\resources-core.nl-nl.resx" />
+
+</pnp:Localizations>
   <pnp:Tenant>
     <pnp:SiteScripts>
       <pnp:SiteScript JsonFilePath="collabteamsite.json" Overwrite="true" Title="{parameter:Company} Team Site" Description=""/>
@@ -177,7 +186,7 @@
                 <!-- News -->
                 <pnp:CanvasControl WebPartType="NewsReel" JsonControlData="{ &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;title&quot;:&quot;Company News&quot;},&quot;imageSources&quot;:{},&quot;links&quot;:{&quot;baseUrl&quot;:&quot;{hosturl}{site}&quot;},&quot;componentDependencies&quot;:{&quot;layoutComponentId&quot;:&quot;a2752e70-c076-41bf-a42e-1d955b449fbc&quot;}}, &quot;properties&quot;: {&quot;layoutId&quot;:&quot;FeaturedNews&quot;,&quot;filters&quot;:[{&quot;filterType&quot;:1,&quot;value&quot;:&quot;&quot;,&quot;values&quot;:[]}],&quot;newsDataSourceProp&quot;:1,&quot;dataProviderId&quot;:&quot;viewCounts&quot;,&quot;newsSiteList&quot;:[],&quot;renderItemsSliderValue&quot;:4,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;templateId&quot;:&quot;FeaturedNews&quot;,&quot;propsLastEdited&quot;:&quot;2018-05-14T11:14:20.616Z&quot;}}" ControlId="8c88f208-6c77-4bdb-86a0-0c47b4316588" Order="1" Column="1" />
                 <!-- Embed -->
-                <pnp:CanvasControl WebPartType="DocumentEmbed" JsonControlData="{ &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;annotation&quot;:&quot;Latest quarterly company presentation&quot;,&quot;title&quot;:&quot;PowerPoint Presentation&quot;},&quot;imageSources&quot;:{},&quot;links&quot;:{&quot;serverRelativeUrl&quot;:&quot;{site}/Shared Documents/Contoso_Report.pptx&quot;,&quot;wopiurl&quot;:&quot;{hosturl}{site}/_layouts/15/WopiFrame.aspx?sourcedoc={{fileuniqueid:Shared Documents/contoso_report.pptx}}&amp;action=interactivepreview&quot;}}, &quot;properties&quot;: {&quot;authorName&quot;:&quot;Vesa Juvonen&quot;,&quot;chartitem&quot;:&quot;&quot;,&quot;endrange&quot;:&quot;&quot;,&quot;excelSettingsType&quot;:&quot;&quot;,&quot;file&quot;:&quot;{hosturl}{site}/Shared Documents/Contoso_Report.pptx&quot;,&quot;listId&quot;:&quot;{listid:Documents}&quot;,&quot;modifiedAt&quot;:&quot;2018-05-14T13:40:02+02:00&quot;,&quot;photoUrl&quot;:&quot;/_layouts/15/userphoto.aspx?size=S&amp;accountname=vesaj%40officedevpnp.onmicrosoft.com&quot;,&quot;rangeitem&quot;:&quot;&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;startPage&quot;:1,&quot;startrange&quot;:&quot;&quot;,&quot;tableitem&quot;:&quot;&quot;,&quot;uniqueId&quot;:&quot;{fileuniqueid:/shared documents/contoso_report.pptx}&quot;,&quot;wdallowinteractivity&quot;:true,&quot;wdhidegridlines&quot;:true,&quot;wdhideheaders&quot;:true,&quot;webId&quot;:&quot;{siteid}&quot;}}" ControlId="b7dd04e1-19ce-4b24-9132-b60a1c2b910d" Order="2" Column="1" />
+                <pnp:CanvasControl WebPartType="DocumentEmbed" JsonControlData="{ &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;annotation&quot;:&quot;Latest quarterly company presentation&quot;,&quot;title&quot;:&quot;PowerPoint Presentation&quot;},&quot;imageSources&quot;:{},&quot;links&quot;:{&quot;serverRelativeUrl&quot;:&quot;{site}/{resource:SharedDocumentsFolder}/Contoso_Report.pptx&quot;,&quot;wopiurl&quot;:&quot;{hosturl}{site}/_layouts/15/WopiFrame.aspx?sourcedoc={{fileuniqueid:{resource:SharedDocumentsFolder}/contoso_report.pptx}}&amp;action=interactivepreview&quot;}}, &quot;properties&quot;: {&quot;authorName&quot;:&quot;Vesa Juvonen&quot;,&quot;chartitem&quot;:&quot;&quot;,&quot;endrange&quot;:&quot;&quot;,&quot;excelSettingsType&quot;:&quot;&quot;,&quot;file&quot;:&quot;{hosturl}{site}/Shared Documents/Contoso_Report.pptx&quot;,&quot;listId&quot;:&quot;{listid:Documents}&quot;,&quot;modifiedAt&quot;:&quot;2018-05-14T13:40:02+02:00&quot;,&quot;photoUrl&quot;:&quot;/_layouts/15/userphoto.aspx?size=S&amp;accountname=vesaj%40officedevpnp.onmicrosoft.com&quot;,&quot;rangeitem&quot;:&quot;&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;startPage&quot;:1,&quot;startrange&quot;:&quot;&quot;,&quot;tableitem&quot;:&quot;&quot;,&quot;uniqueId&quot;:&quot;{fileuniqueid:/shared documents/contoso_report.pptx}&quot;,&quot;wdallowinteractivity&quot;:true,&quot;wdhidegridlines&quot;:true,&quot;wdhideheaders&quot;:true,&quot;webId&quot;:&quot;{siteid}&quot;}}" ControlId="b7dd04e1-19ce-4b24-9132-b60a1c2b910d" Order="2" Column="1" />
                 <!-- Events -->
                 <pnp:CanvasControl WebPartType="Events" JsonControlData="{ &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;title&quot;:&quot;Company Events&quot;},&quot;imageSources&quot;:{},&quot;links&quot;:{&quot;baseUrl&quot;:&quot;{hosturl}{site}&quot;},&quot;componentDependencies&quot;:{&quot;layoutComponentId&quot;:&quot;0447e11d-bed9-4898-b600-8dbcd95e9cc2&quot;}}, &quot;properties&quot;: {&quot;selectedListId&quot;:&quot;{listid:Events}&quot;,&quot;selectedCategory&quot;:&quot;&quot;,&quot;dateRangeOption&quot;:0,&quot;startDate&quot;:&quot;&quot;,&quot;endDate&quot;:&quot;&quot;,&quot;isOnSeeAllPage&quot;:false,&quot;layoutId&quot;:&quot;Flex&quot;,&quot;dataProviderId&quot;:&quot;Event&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;}}" ControlId="20745d7d-8581-4a6c-bf26-68279bc123fc" Order="1" Column="2" />
                 <!-- Spacer -->
@@ -298,7 +307,7 @@
         </pnp:ClientSidePage>
       </pnp:ClientSidePages>
       <pnp:Lists>
-        <pnp:ListInstance Title="Events" Description="" DocumentTemplate="" TemplateType="106" Url="Lists/Events" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-ec85-4903-972d-ebe475780106" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Events/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Events/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Events/NewForm.aspx" ImageUrl="/_layouts/15/images/itevent.png?rev=44" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+        <pnp:ListInstance Title="{resource:EventsListTitle}" Description="" DocumentTemplate="" TemplateType="106" Url="Lists/Events" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-ec85-4903-972d-ebe475780106" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Events/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Events/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Events/NewForm.aspx" ImageUrl="/_layouts/15/images/itevent.png?rev=44" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
           <pnp:ContentTypeBindings>
             <pnp:ContentTypeBinding ContentTypeID="0x0102" Default="true" />
           </pnp:ContentTypeBindings>
@@ -507,7 +516,7 @@
         <pnp:File Src="..\Assets\images\modernOffice_002.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="..\Assets\images\modernOffice_007.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="..\Assets\images\modernOffice_011.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
-        <pnp:File Src="..\Assets\documents\contoso_report.pptx" Overwrite="true" Folder="Shared Documents"></pnp:File>
+        <pnp:File Src="..\Assets\documents\contoso_report.pptx" Overwrite="true" Folder="{resource:SharedDocumentsFolder}"></pnp:File>
       </pnp:Files>
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
