@@ -38,7 +38,8 @@ export default class RedirectApplicationCustomizer
     const currentPageRelativeUrl: string = this.context.pageContext.legacyPageContext.serverRequestPath;
 
     // search for a redirection rule for the current page, if any
-    const redirection: IRedirection = await this.loadRedirectionForCurrentPage(this.properties.redirectionsListTitle, currentPageRelativeUrl);
+    const redirection: IRedirection = await this.loadRedirectionForCurrentPage(
+      this.properties.redirectionsListTitle, currentPageRelativeUrl);
 
     if (redirection != null) {
       console.log(redirection);
@@ -126,7 +127,7 @@ export default class RedirectApplicationCustomizer
           // the list is ready to be used
           result = true;
         } else {
-          // the list already exists, double check the fileds
+          // the list already exists, double check the fields
           try {
             const sourceUrlField: Field = await ensureResult.list.fields.getByInternalNameOrTitle("PnPSourceUrl").get();
             const destinationUrlField: Field = await ensureResult.list.fields.getByInternalNameOrTitle("PnPDestinationUrl").get();
