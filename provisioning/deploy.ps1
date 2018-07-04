@@ -83,7 +83,7 @@ if ((Test-Path "$PSScriptRoot\..\solution\sharepoint\solution\sharepoint-starter
     Write-Host "Packaging solution" -ForegroundColor Cyan 
     gulp -f "gulpfile.js" package-solution --ship 2>&1 | Out-Null
 }
-$connection = Connect-PnPOnline -Url ($SiteUrl | Select -First 1) -Credentials $Credentials -ReturnConnection
+$connection = Connect-PnPOnline -Url ($SiteUrl | Select-Object -First 1) -Credentials $Credentials -ReturnConnection
 
 if ($SkipSolutionDeployment -ne $true) {
     # Temporary until schema change is present
@@ -106,7 +106,7 @@ Invoke-PnPQuery -Connection $connection
 Set-ThemeIfNotSet -Connection $connection
 
 # Register the site as the hubsite
-$isHub = Get-PnPHubSite -Identity ($SiteUrl | Select -First 1) -ErrorAction SilentlyContinue -Connection $connection
+$isHub = Get-PnPHubSite -Identity ($SiteUrl | Select-Object -First 1) -ErrorAction SilentlyContinue -Connection $connection
 if ($isHub -eq $null) {
     Write-Host "Registering site as hubsite" -ForegroundColor Cyan
     Register-PnPHubSite -Site $SiteUrl -Connection $connection 2>&1 | Out-Null
