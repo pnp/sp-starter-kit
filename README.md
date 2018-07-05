@@ -65,7 +65,7 @@ Here are the custom web parts currently included in the solution package.
 
 Pic |  Web Part |  Description  | Code
 ------------ | ----------- | ----------- | -----------
-![](assets/images/components/part-banner.png) | Banner | Creates a banner with an image and overlaid text. | [code](solution/src/webparts/banner/bannerwebpart.ts)
+![](assets/images/components/part-banner.png) | [Banner](documentation/components/wp-banner.md) | Creates a banner with an image and overlaid text. | [code](solution/src/webparts/banner/bannerwebpart.ts)
 ![](assets/images/components/part-followed-sites.png) | Followed Sites | Shows the list of sites which particular user is following | [code](solution/src/webparts/followedSites/FollowedSitesWebPart.ts)
 ![](assets/images/components/part-links.png) | Links | Link list web part which is using collection data editor and stores the links in web part properties | [code](solution/src/webparts/links/LinksWebPart.ts)
 not available | LOB integration | Sample web part to surface LOB information from API hosted in Azure. | [code](solution/src/webparts/lobIntegration/LobIntegrationWebPart.ts)
