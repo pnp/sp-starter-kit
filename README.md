@@ -68,7 +68,7 @@ Pic |  Web Part |  Description  | Code
 ![](assets/images/components/part-banner.png) | [Banner](documentation/components/wp-banner.md) | Creates a banner with an image and overlaid text. | [code](solution/src/webparts/banner/bannerwebpart.ts)
 ![](assets/images/components/part-followed-sites.png) | Followed Sites | Shows the list of sites which particular user is following | [code](solution/src/webparts/followedSites/FollowedSitesWebPart.ts)
 ![](assets/images/components/part-links.png) | Links | Link list web part which is using collection data editor and stores the links in web part properties | [code](solution/src/webparts/links/LinksWebPart.ts)
-![](assets/images/components/part-LOB-integration.png) | LOB integration | Sample web part to surface LOB information from API hosted in Azure. | [code](solution/src/webparts/lobIntegration/LobIntegrationWebPart.ts)
+![](assets/images/components/part-lob-integration.png) | LOB integration | Sample web part to surface LOB information from API hosted in Azure. | [code](solution/src/webparts/lobIntegration/LobIntegrationWebPart.ts)
 ![](assets/images/components/part-people-directory.png) | People Directory | People directory web part uses people search API to get list of people to show.  | [code](solution/src/webparts/peopleDirectory/PeopleDirectoryWebPart.ts)
 ![](assets/images/components/part-personal-calendar.png) | Personal Calendar | Shows upcoming calendar meetings for the particular user using Microsoft Graph. | [code](solution/src/webparts/personalCalendar/PersonalCalendarWebPart.ts)
 ![](assets/images/components/part-personal-contacts.png) | Personal Contacts | Personal contacts for particular user using Microsoft Graph. | [code](solution/src/webparts/personalContacts/PersonalContactsWebPart.ts)
