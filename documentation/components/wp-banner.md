@@ -4,10 +4,10 @@ This webpart provides you the ability to add a variable height image banner with
 
 ![Bannner](../../assets/images/components/part-banner.gif)
 
-## How to use this webpart on your web pages
+## How to use this we bpart on your web pages
 
-1. Place the page you want to add this webpart to in edit mode.
-2. Search for and insert the **Banner** webpart.
+1. Place the page you want to add this web part to in edit mode.
+2. Search for and insert the **Banner** web part.
 3. Configure the webpart to update its properties.
 
 ## Configurable Properties

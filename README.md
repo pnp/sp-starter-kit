@@ -87,7 +87,7 @@ Pic |  Web Part |  Description  | Code
 
 Pic |  Extension |  Description  | Code
 ------------ | ----------- | ----------- | -----------
-![](assets/images/components/ext-alert.png) | Alert Notification | Shows informational or important messages in the header section of pages based on a custom list information in the hub site. | [code](solution/src/extensions/alertNotitication/AlertNotiticationApplicationCustomizer.ts)
+![](assets/images/components/ext-alert.png) | [Alert Notification](documentation/components/ext-alert.md) | Shows informational or important messages in the header section of pages based on a custom list information in the hub site. | [code](solution/src/extensions/alertNotitication/AlertNotiticationApplicationCustomizer.ts)
 ![](assets/images/components/ext-collab-footer.png) | Collaboration Footer | Shows company wide links which are configured using Taxonomy service. Includes also  personalized links which are stored in user profile property if set. By default associated to group associated team sites when a custom Site Design is selected for new sites. | [code](solution/src/extensions/collabFooter/CollabFooterApplicationCustomizer.ts)
 ![](assets/images/components/ext-collab-discussnow.png) | Discuss Now | Custom list view command set to add new custom dialog for document library. | [code](solution/src/extensions/discussNow/DiscussNowCommandSet.ts)
 ![](assets/images/components/ext-portal-footer.png) | Portal Footer | Expanding footer for communication site. Show standard company links and also supports personalized links for the current user which are stored in User Profile. | [code](solution/src/extensions/portalFooter/PortalFooterApplicationCustomizer.ts)
