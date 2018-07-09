@@ -1,6 +1,6 @@
 # Manually deploy the SP Starter Kit .sppkg SPFx solution to the tenant App Catalog
 
-The SP Started Kit [`deployment proces`](../provisiniong/readme.md) will automatically rebuild and deploy the included SPFx solution to your tenant app catalog. You can also pre-deploy [`sharepoint-starter-kit.sppkg`](../package/sharepoint-starter-kit.sppkg) from the [`/package`](../package) folder manually to the tenant app catalog, as well as ['manually approve the requested permissions`](api-management.md).
+The SP Started Kit [`deployment process`](../provisiniong/readme.md) will automatically rebuild and deploy the included SPFx solution to your tenant app catalog. You can also pre-deploy [`sharepoint-starter-kit.sppkg`](../package/sharepoint-starter-kit.sppkg) from the [`/package`](../package) folder manually to the tenant app catalog, as well as ['manually approve the requested permissions`](api-management.md).
 
 ## Pre-requirements
 
