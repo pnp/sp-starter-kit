@@ -1,12 +1,12 @@
 # Links webpart
 
-This webpart provides you the ability to add a per instance listing of links with the ability to group sets of links. Links are stored as a collection of links within the webpart's properties, removing the need for link storage within SharePoint lists, tenant properties, or other external link storage requirements.
+This web part provides you the ability to add a per instance listing of links with the ability to group sets of links. Links are stored as a collection of links within the web part's properties, removing the need for link storage within SharePoint lists, tenant properties, or other external link storage requirements.
 
 Links and groups are both customizable.
 
 ![Links](../../assets/images/components/part-links.gif)
 
-## How to use this we bpart on your web pages
+## How to use this web part on your web pages
 
 1. Place the page you want to add this web part to in edit mode.
 2. Search for and insert the **Links** web part.

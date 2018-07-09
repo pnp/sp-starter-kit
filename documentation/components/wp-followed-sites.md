@@ -1,14 +1,14 @@
 # Followed Sites webpart
 
-This webpart provides you the ability to display a list of site administrator defined number of sites that a given user is following, with paging as well as inline filtering of sites by keyword or phrase. Currently the list of followed sites includes classic as well as modern communication sites but does not include group enabled (modern) team sites.
+This web part provides you the ability to display a list of site administrator defined number of sites that a given user is following, with paging as well as inline filtering of sites by keyword or phrase. Currently the list of followed sites includes classic as well as modern communication sites but does not include group enabled (modern) team sites.
 
 ![Bannner](../../assets/images/components/part-followed-sites.gif)
 
-## How to use this webpart on your web pages
+## How to use this web part on your web pages
 
 1. Place the page you want to add this web part to in edit mode.
 2. Search for and insert the **Followed Sites** web part.
-3. Configure the webpart to update its properties.
+3. Configure the web part to update its properties.
 
 ## Configurable Properties
 
@@ -22,13 +22,13 @@ The `Followed Sites` webpart can be configured with the following properties:
 
 # Installing the web part
 
-See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit). 
+See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit).
 
 You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part utilizes the SharePoint Rest API, `/_api/social.following/my/followed(types=4)`, endpoint.
 
 # Screenshots
 
-![Bannner](../../assets/images/components/part-followed-sites.png)
+![Followed Sites](../../assets/images/components/part-followed-sites.png)
 
 # Source Code
 
