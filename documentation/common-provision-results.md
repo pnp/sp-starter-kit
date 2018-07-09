@@ -1,6 +1,6 @@
 # Common SP Starter Kit Provisioning results
 
-When provisioning SP Started Kit following the [`deployment proces`](../provisioning/readme.md), common outputs including the following.
+When provisioning SP Started Kit following the [`deployment process`](../provisioning/readme.md), common outputs including the following.
 
 All examples are based on running the following commands in PowerShell, where `[yourtenant]` is replaced with your specific tenant id.
 
