@@ -29,7 +29,7 @@ Connect-PnPOnline https://[yourtenant].sharepoint.com
 
 ## Fixing provisioning errors
 
-- If you run into errors during provisioning, refer to ['Common SP Starter Kit Provisioning results'](./documentation/common-provision-results.md) for additional suggestions and common mistakes
+- If you run into errors during provisioning, refer to ['Common SP Starter Kit Provisioning results'](../documentation/common-provision-results.md) for additional suggestions and common mistakes
 
 - Refer to the ['Issues List'](https://github.com/SharePoint/sp-starter-kit/issues) to see if anyone else has run into a similar issue, and if so posisble paths to success
 
