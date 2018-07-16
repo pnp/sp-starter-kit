@@ -17,7 +17,7 @@ The `Recently Used Documents` web part can be configured with the following prop
 | Label | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- | ---- |
 | Recent Documents | title | string | no | The web part title, editable inline with the web part itself |
-| Specify the number of documents to show | nrOfItems | number | no | Default: 5 - The number of documents to show |
+| Specify the number of documents to show | nrOfItems | number | no | Default: 3 - The number of documents to show |
 
 # Installing the web part
 
