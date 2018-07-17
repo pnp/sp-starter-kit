@@ -94,8 +94,6 @@ export default class CollabFooterApplicationCustomizer
     }
 
     return(result);
-
-    // CACHING!!!
   }
 
   // projects a Taxonomy term into an object of type IContextualMenuItem for the CommandBar
