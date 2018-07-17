@@ -6,7 +6,7 @@ The api key provided by Alpha Advantage is added as a tenant property by the Sta
 
 By default, the `Stock Information` web part will use the stock symbol set during the Starter Kit provisioning process when the [-StockSymbol](https://github.com/SharePoint/sp-starter-kit/tree/master/provisioning#-stocksymbol) parameter is provided. The default stock symbol is `MSFT`. The stock symbol may be customized per web part instance.
 
-![Stock Information](../../assets/images/components/part-stock-information.gif)
+![Stock Information](../../assets/images/components/part-stock.gif)
 
 ## How to use this web part on your web pages
 
@@ -31,7 +31,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Screenshots
 
-![Stock Information](../../assets/images/components/part-stock-information.png)
+![Stock Information](../../assets/images/components/part-stock.png)
 
 # Source Code
 
