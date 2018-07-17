@@ -66,8 +66,8 @@ Here are the custom web parts currently included in the solution package.
 Pic |  Web Part |  Description  | Code
 ------------ | ----------- | ----------- | -----------
 ![](assets/images/components/part-banner.png) | [Banner](documentation/components/wp-banner.md) | Creates a banner with an image and overlaid text. | [code](solution/src/webparts/banner/bannerwebpart.ts)
-![](assets/images/components/part-followed-sites.png) | Followed Sites | Shows the list of sites which particular user is following | [code](solution/src/webparts/followedSites/FollowedSitesWebPart.ts)
-![](assets/images/components/part-links.png) | Links | Link list web part which is using collection data editor and stores the links in web part properties | [code](solution/src/webparts/links/LinksWebPart.ts)
+![](assets/images/components/part-followed-sites.png) | [Followed Sites](documentation/components/wp-followed-sites.md) | Shows the list of sites which particular user is following | [code](solution/src/webparts/followedSites/FollowedSitesWebPart.ts)
+![](assets/images/components/part-links.png) | [Links](documentation/components/wp-links.md)  | Link list web part which is using collection data editor and stores the links in web part properties | [code](solution/src/webparts/links/LinksWebPart.ts)
 ![](assets/images/components/part-lob-integration.png) | LOB integration | Sample web part to surface LOB information from API hosted in Azure. | [code](solution/src/webparts/lobIntegration/LobIntegrationWebPart.ts)
 ![](assets/images/components/part-people-directory.png) | People Directory | People directory web part uses people search API to get list of people to show.  | [code](solution/src/webparts/peopleDirectory/PeopleDirectoryWebPart.ts)
 ![](assets/images/components/part-personal-calendar.png) | Personal Calendar | Shows upcoming calendar meetings for the particular user using Microsoft Graph. | [code](solution/src/webparts/personalCalendar/PersonalCalendarWebPart.ts)
@@ -87,7 +87,7 @@ Pic |  Web Part |  Description  | Code
 
 Pic |  Extension |  Description  | Code
 ------------ | ----------- | ----------- | -----------
-![](assets/images/components/ext-alert.png) | Alert Notification | Shows informational or important messages in the header section of pages based on a custom list information in the hub site. | [code](solution/src/extensions/alertNotitication/AlertNotiticationApplicationCustomizer.ts)
+![](assets/images/components/ext-alert.png) | [Alert Notification](documentation/components/ext-alert.md) | Shows informational or important messages in the header section of pages based on a custom list information in the hub site. | [code](solution/src/extensions/alertNotitication/AlertNotiticationApplicationCustomizer.ts)
 ![](assets/images/components/ext-collab-footer.png) | Collaboration Footer | Shows company wide links which are configured using Taxonomy service. Includes also  personalized links which are stored in user profile property if set. By default associated to group associated team sites when a custom Site Design is selected for new sites. | [code](solution/src/extensions/collabFooter/CollabFooterApplicationCustomizer.ts)
 ![](assets/images/components/ext-collab-discussnow.png) | Discuss Now | Custom list view command set to add new custom dialog for document library. | [code](solution/src/extensions/discussNow/DiscussNowCommandSet.ts)
 ![](assets/images/components/ext-portal-footer.png) | Portal Footer | Expanding footer for communication site. Show standard company links and also supports personalized links for the current user which are stored in User Profile. | [code](solution/src/extensions/portalFooter/PortalFooterApplicationCustomizer.ts)

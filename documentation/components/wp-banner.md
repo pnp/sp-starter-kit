@@ -1,14 +1,14 @@
-# Banner webpart
+# Banner web part
 
-This webpart provides you the ability to add a variable height image banner with a linkable title.
+This web part provides you the ability to add a variable height image banner with a linkable title.
 
 ![Bannner](../../assets/images/components/part-banner.gif)
 
-## How to use this webpart on your web pages
+## How to use this web part on your web pages
 
-1. Place the page you want to add this webpart to in edit mode.
-2. Search for and insert the **Banner** webpart.
-3. Configure the webpart to update its properties.
+1. Place the page you want to add this web part to in edit mode.
+2. Search for and insert the **Banner** web part.
+3. Configure the web part to update its properties.
 
 ## Configurable Properties
 
