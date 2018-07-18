@@ -81,7 +81,7 @@ Pic |  Web Part |  Description  | Code
 ![](assets/images/components/part-stock.png) | [Stock Information](documentation/components/wp-stock-information.md) | Display stock information by using the live stocks service provided by [Alpha Advantage](https://www.alphavantage.co/). You will need to register for a custom key for this to work at the Alpha Advantage site and then include the key in the tenant properties.  | [code](solution/src/webparts/stockInformation/StockInformationWebPart.ts)
 ![](assets/images/components/part-tiles.png) | [Tiles](documentation/components/wp-tiles.md) | Renders set of tiles. Icons are from Office UI Fabric and you can configure tiles using collection editor in web part properties. | [code](solution/src/webparts/tiles/TilesWebPart.ts)
 ![](assets/images/components/part-weather.png) | [Weather Information](documentation/components/wp-weather-information.md) | Weather information web part which is using Yahoo Weather APIs to get the forecast information. | [code](solution/src/webparts/weatherInformation/WeatherInformationWebPart.ts)
-![](assets/images/components/part-world-time.png) | World Time | Clock web part to show the time in specific time zone. | [code](solution/src/webparts/worldTime/WorldTimeWebPart.ts)
+![](assets/images/components/part-world-time.png) | [World Time](documentation/components/wp-world-time.md) | Clock web part to show the time in specific time zone. | [code](solution/src/webparts/worldTime/WorldTimeWebPart.ts)
 
 ## SharePoint Framework Extensions
 
