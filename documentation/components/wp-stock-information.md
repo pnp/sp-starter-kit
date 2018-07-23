@@ -21,7 +21,7 @@ The `Stock Information` web part can be configured with the following properties
 | Label | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- | ---- |
 | Stock Code | stockSymbol | string | no | Default: MSFT - overrides the default stock, MSFT, with a preferred stock symbol |
-| Show completed tasks | autoRefresh | bool | no | Default: false - If true, the web part will auto refresh every 60 seconds |
+| Automatic Refresh | autoRefresh | bool | no | Default: false - If true, the web part will auto refresh every 60 seconds |
 
 # Installing the web part
 
