@@ -1,6 +1,6 @@
 # Site Classification Application Customizer
 
-This application customizer provides you the ability to add a header with site classification information which is pulled from the Site Title property using PnP JS
+This application customizer provides you the ability to add a header with site classification information which is pulled from the Classification of modern SharePoint sites property using PnP JS. Learn more about [site classification](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/modern-experience-site-classification)
 
 ![Site Classificiation](../../assets/images/components/ext-classification.png)
 

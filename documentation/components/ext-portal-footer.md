@@ -42,7 +42,7 @@ See getting started from the [SP-Starter-Kit repository readme](https://github.c
 
 You can also download the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install the SPFx solution to your tenant. This extension depends on a SharePoint list and the user profile to store common and user specific links.
 
-> As this is a SharePoint Framework extension, you will need to explicitly enable this extension for a specific site using CSOM or REST APIs. You may also auto enable this extension with defined custom properties as a part of a site script using the `associateExtension` verb. See [collabcommunicationsite.json Site Script](../provisioning/collabcommunicationsite.json) for an example.
+> As this is a SharePoint Framework extension, you will need to explicitly enable this extension for a specific site using CSOM or REST APIs. You may also auto enable this extension with defined custom properties as a part of a site script using the `associateExtension` verb. See [collabcommunicationsite.json Site Script](../../provisioning/collabcommunicationsite.json) for an example.
 
 # Screenshots
 
