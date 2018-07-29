@@ -4,7 +4,7 @@ This application customizer provides you the ability to include a footer designe
 
 One set of links provides company wide links which are configured using a common list stored within the hub site. A second set of links are personalized links, unqiue to each user, stored within each user's user profile within a user profile property.
 
-By default, this application customizer is associated with communication sites created using the custom site design i.e. `{Company name} Communication Site`, provided in this project. The custom site design is provisioined as a part of the [deployment process](../../tree/master/provisioning) while applying the PnP Provisioning template, [hubsite.xml](../../blob/master/provisioning/hubsite.xml).
+By default, this application customizer is associated with communication sites created using the custom site design i.e. `{Company name} Communication Site`, provided in this project. The custom site design is provisioined as a part of the [deployment process](../../provisioning) while applying the PnP Provisioning template, [hubsite.xml](../../provisioning/hubsite.xml).
 
 ![Portal Footer](../../assets/images/components/ext-portal-footer.gif)
 
@@ -13,7 +13,7 @@ By default, this application customizer is associated with communication sites c
 
 ## Extension details
 
-This extension is dependent on an explicit `source` list of common links and an explicit `personalItems` user profile property for personal link storage. By default the source list is created during the Starter Kit deployment process. The User Profile property must be [manually created](../../blob/master/documentation/tenant-settings.md#create-a-custom-property-in-the-user-profile-service).
+This extension is dependent on an explicit `source` list of common links and an explicit `personalItems` user profile property for personal link storage. By default the source list is created during the Starter Kit deployment process. The User Profile property must be [manually created](../../documentation/tenant-settings.md#create-a-custom-property-in-the-user-profile-service).
 
 | Description | Name | Type | Required | Description |
 | ---- | ---- | ---- | ---- | ---- |
@@ -42,7 +42,7 @@ See getting started from the [SP-Starter-Kit repository readme](https://github.c
 
 You can also download the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install the SPFx solution to your tenant. This extension depends on a SharePoint list and the user profile to store common and user specific links.
 
-> As this is a SharePoint Framework extension, you will need to explicitly enable this extension for a specific site using CSOM or REST APIs. You may also auto enable this extension with defined custom properties as a part of a site script using the `associateExtension` verb. See [collabcommunicationsite.json Site Script](../blob/master/provisioning/collabcommunicationsite.json) for an example.
+> As this is a SharePoint Framework extension, you will need to explicitly enable this extension for a specific site using CSOM or REST APIs. You may also auto enable this extension with defined custom properties as a part of a site script using the `associateExtension` verb. See [collabcommunicationsite.json Site Script](../provisioning/collabcommunicationsite.json) for an example.
 
 # Screenshots
 

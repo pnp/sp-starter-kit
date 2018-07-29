@@ -21,7 +21,7 @@ See getting started from [SP-Starter-Kit repository readme](https://github.com/S
 
 You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This extension does not have external dependencies.
 
-> As this is a SharePoint Framework extension, you will need to explicitly enable this extension for a specific site using CSOM or REST APIs. You may also enable this extension via a PnP Provisioning template. See [hubsite.xml provisioning template](../blob/master/provisioning/hubsite.xml) for an example.
+> As this is a SharePoint Framework extension, you will need to explicitly enable this extension for a specific site using CSOM or REST APIs. You may also enable this extension via a PnP Provisioning template. See [hubsite.xml provisioning template](../../provisioning/hubsite.xml) for an example.
 
 # Screenshots
 

@@ -25,7 +25,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 > As this is a SharePoint Framework extension, you will need to explicitly enable this extension for a specific site using CSOM or REST APIs. 
 
-> You may enable this extension via a PnP Provisioning template. See [collab.xml provisioning template](../blob/master/provisioning/collab.xml) for an example.
+> You may enable this extension via a PnP Provisioning template. See [collab.xml provisioning template](../../provisioning/collab.xml) for an example.
 
 > You may enable this extension via PnP PowerShell using the `Add-PnPCustomAction` commandlet.
 
