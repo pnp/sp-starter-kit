@@ -25,7 +25,7 @@ This extension is dependent on a explicit `Alerts` list to be located in a hub s
 
 See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit).
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part does not have external dependencies.
+You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This extension does not have external dependencies.
 
 > As this is a SharePoint Framewokr extension, you will need to explicitly enable that in the site using CSOM or REST APIs. 
 
