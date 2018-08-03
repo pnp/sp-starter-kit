@@ -27,6 +27,7 @@ Here are current pre-requirements for making this solution work in your tenant.
     - Notice that you can get free developer tenant from [Office 365 developer program](https://developer.microsoft.com/en-us/office/dev-program), if needed.
 - Automatic end-to-end provisioning only works with English tenants
     - All solutions and web parts are also English in the current implementation
+    - For tenants that have English but have a different default language, the [term set provisioning may be modified to assist with installation](./documentation/term-store.md#non-english-tenants).
 - Release preferences for your tenant will need to be set as "Targeted release for everyone" option (also known as First Release)
 - Add used tenant administrator account as Term Store Administrator in the Taxonomy Term Store 
 - The tenant app catalog must have been created 
