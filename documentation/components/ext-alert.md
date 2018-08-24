@@ -35,7 +35,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/extensions/alertNotification
+https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/extensions/alertNotitication
 
 # Minimal Path to Awesome
 
