@@ -27,7 +27,7 @@ See getting started from [SP-Starter-Kit repository readme](https://github.com/S
 
 You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This extension does not have external dependencies.
 
-> As this is a SharePoint Framewokr extension, you will need to explicitly enable that in the site using CSOM or REST APIs. 
+> As this is a SharePoint Framework extension, you will need to explicitly enable that in the site using CSOM or REST APIs. 
 
 # Screenshots
 
