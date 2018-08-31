@@ -4,6 +4,11 @@ declare interface IPeopleDirectoryWebPartStrings {
   NoPeopleFoundLabel: string;
   SearchBoxPlaceholder: string;
   ErrorLabel: string;
+  SkillsLabel: string;
+  ProjectsLabel: string;
+  CopyEmailLabel: string;
+  CopyPhoneLabel: string;
+  CopyMobileLabel: string;
 }
 
 declare module 'PeopleDirectoryWebPartStrings' {
