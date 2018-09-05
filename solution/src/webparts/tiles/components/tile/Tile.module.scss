@@ -5,6 +5,7 @@
   @include ms-sm4;
   display: flex;
   margin-bottom: 16px;
+  flex-basis: 130px;
 
   a {
     background-color: $ms-color-themePrimary;

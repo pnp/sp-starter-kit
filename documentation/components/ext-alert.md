@@ -13,11 +13,11 @@ This extension is dependent on a explicit `Alerts` list to be located in a hub s
 
 | Display Name | Name | Type | Required | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| Alert type | PnPAlertType | choice | yes | The text message or title you want displayed on the banner image |
-| Alert message | PnPAlertMessage | string | yes | The url of the banner image |
-| Start date-time | PnPAlertStartDateTime | date time | yes | The hyperlink url of the bannerText link |
-| End date-time | PnPAlertEndDateTime | date time | yes | Provides the fixed height of the banner image |
-| More information link | PnPAlertMoreInformation | URL | no | Enable if you want to include parallax effect on vertical scrolling |
+| Alert type | PnPAlertType | choice | yes | Type of Alert to display. Urgent = Red. Information = Yellow. |
+| Alert message | PnPAlertMessage | string | yes | The message you want to display in the alert |
+| Start date-time | PnPAlertStartDateTime | date time | yes | The Date/Time the alert should show in the header placeholder |
+| End date-time | PnPAlertEndDateTime | date time | yes | The Date/Time the alert stops showing in the header placeholder |
+| More information link | PnPAlertMoreInformation | URL | no | Provides a clickable link at the end of the alert message |
 
 > Notice that in default SharePoint Starter Kit installation this list is automatically provisioned on the hub site.
 
@@ -27,7 +27,7 @@ See getting started from [SP-Starter-Kit repository readme](https://github.com/S
 
 You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This extension does not have external dependencies.
 
-> As this is a SharePoint Framewokr extension, you will need to explicitly enable that in the site using CSOM or REST APIs. 
+> As this is a SharePoint Framework extension, you will need to explicitly enable that in the site using CSOM or REST APIs. 
 
 # Screenshots
 
@@ -35,7 +35,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/extensions/alertNotification
+https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/extensions/alertNotitication
 
 # Minimal Path to Awesome
 
