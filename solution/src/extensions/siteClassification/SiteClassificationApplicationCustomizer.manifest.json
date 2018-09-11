@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-extension-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-extension-manifest.schema.json",
 
   "id": "7f69d5cb-5aeb-4bc6-9f77-146aebfd9a8e",
   "alias": "pnpSiteClassification",

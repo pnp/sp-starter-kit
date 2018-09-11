@@ -9,7 +9,7 @@ import {
 
 import * as strings from 'PersonalTasksWebPartStrings';
 import { PersonalTasks, IPersonalTasksProps } from './components';
-import { MSGraphClient } from '@microsoft/sp-client-preview';
+import { MSGraphClient } from '@microsoft/sp-http';
 
 export interface IPersonalTasksWebPartProps {
   title: string;
@@ -17,6 +17,18 @@ export interface IPersonalTasksWebPartProps {
 }
 
 export default class PersonalTasksWebPart extends BaseClientSideWebPart<IPersonalTasksWebPartProps> {
+  private graphClient: MSGraphClient;
+
+  public onInit(): Promise<void> {
+    return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
+      this.context.msGraphClientFactory
+        .getClient()
+        .then((client: MSGraphClient): void => {
+          this.graphClient = client;
+          resolve();
+        }, err => reject(err));
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IPersonalTasksProps> = React.createElement(
@@ -28,7 +40,7 @@ export default class PersonalTasksWebPart extends BaseClientSideWebPart<IPersona
         // editable or not
         displayMode: this.displayMode,
         // pass the reference to the MSGraphClient
-        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey),
+        graphClient: this.graphClient,
         // handle updated web part title
         updateProperty: (value: string): void => {
           // store the new title in the title web part property

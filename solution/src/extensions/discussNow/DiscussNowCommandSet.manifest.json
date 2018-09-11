@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/command-set-extension-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/command-set-extension-manifest.schema.json",
 
   "id": "130b279d-a5d1-41b9-9fd1-4a274169b117",
   "alias": "DiscussNowCommandSet",

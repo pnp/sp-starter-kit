@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-extension-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-extension-manifest.schema.json",
 
   "id": "aa8dd198-e2ee-45c5-b746-821d001bb0e1",
   "alias": "pnpAlertNotitication",

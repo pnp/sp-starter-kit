@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "596e3e97-f3ca-4cf9-9b8e-cb852f063356",
   "alias": "pnpRecentlyUsedDocuments",
   "componentType": "WebPart",

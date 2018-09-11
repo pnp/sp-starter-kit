@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9",
   "alias": "pnpWeatherInformation",
   "componentType": "WebPart",

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "ac41debd-d92c-4de0-9d67-e7bc191030ee",
   "alias": "pnpPersonalEmail",
   "componentType": "WebPart",

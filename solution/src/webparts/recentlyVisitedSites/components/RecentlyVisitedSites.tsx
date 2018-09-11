@@ -2,25 +2,18 @@ import * as React from 'react';
 import styles from './RecentlyVisitedSites.module.scss';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { escape, uniqBy } from '@microsoft/sp-lodash-subset';
-import { MSGraphClient } from "@microsoft/sp-client-preview";
 import * as strings from 'RecentlyVisitedSitesWebPartStrings';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { IRecentlyVisitedSitesProps, IRecentlyVisitedSitesState, IRecentWebs, IRecentWeb, IWebs } from '.';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 
 export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesProps, IRecentlyVisitedSitesState> {
-  private _graphClient: MSGraphClient = null;
-
   /**
    * Constructor
    * @param props
    */
   constructor(props: IRecentlyVisitedSitesProps) {
     super(props);
-
-    this._graphClient = this.props.context.serviceScope.consume(
-      MSGraphClient.serviceKey
-    );
 
     this.state = {
       usedSites: [],
@@ -33,12 +26,12 @@ export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesP
    * Fetch the recent sites via the Microsoft Graph client
    */
   private _fetchRecentSites() {
-    if (this._graphClient) {
+    if (this.props.graphClient) {
       this.setState({
         loading: true
       });
       // Calling: beta/me/insights/used?$filter=ResourceVisualization/Type eq 'Web'
-      this._graphClient
+      this.props.graphClient
       .api("me/insights/used")
       .version("beta") // API is currently only available in BETA
       .filter(`ResourceVisualization/Type eq 'Web'`)

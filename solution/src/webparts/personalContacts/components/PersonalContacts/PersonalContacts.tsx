@@ -8,7 +8,6 @@ import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spin
 import { List } from 'office-ui-fabric-react/lib/components/List';
 import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/components/Persona';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
-import { MSGraphClient } from '@microsoft/sp-client-preview';
 import { Person } from '../Person';
 
 export class PersonalContacts extends React.Component<IPersonalContactsProps, IPersonalContactsState> {

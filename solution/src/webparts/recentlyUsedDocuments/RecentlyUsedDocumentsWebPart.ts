@@ -10,6 +10,7 @@ import * as strings from 'RecentlyUsedDocumentsWebPartStrings';
 import RecentlyUsedDocuments from './components/RecentlyUsedDocuments';
 import { IRecentlyUsedDocumentsProps } from './components/IRecentlyUsedDocumentsProps';
 import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/propertyFields/number';
+import { MSGraphClient } from '@microsoft/sp-http';
 
 export interface IRecentlyUsedDocumentsWebPartProps {
   title: string;
@@ -17,6 +18,18 @@ export interface IRecentlyUsedDocumentsWebPartProps {
 }
 
 export default class RecentlyUsedDocumentsWebPart extends BaseClientSideWebPart<IRecentlyUsedDocumentsWebPartProps> {
+  private graphClient: MSGraphClient;
+
+  public onInit(): Promise<void> {
+    return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
+      this.context.msGraphClientFactory
+        .getClient()
+        .then((client: MSGraphClient): void => {
+          this.graphClient = client;
+          resolve();
+        }, err => reject(err));
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IRecentlyUsedDocumentsProps > = React.createElement(
@@ -25,6 +38,7 @@ export default class RecentlyUsedDocumentsWebPart extends BaseClientSideWebPart<
         title: this.properties.title,
         nrOfItems: this.properties.nrOfItems,
         context: this.context,
+        graphClient: this.graphClient,
         displayMode: this.displayMode,
         updateProperty: (value: string) => {
           this.properties.title = value;

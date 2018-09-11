@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-extension-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-extension-manifest.schema.json",
 
   "id": "f5771a9e-283e-4525-a599-554e8b9e48c2",
   "alias": "pnpRedirectApplication",

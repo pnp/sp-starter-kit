@@ -6,7 +6,6 @@ import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import { List } from 'office-ui-fabric-react/lib/components/List';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
-import { MSGraphClient } from '@microsoft/sp-client-preview';
 
 export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersonalEmailState> {
   constructor(props: IPersonalEmailProps) {

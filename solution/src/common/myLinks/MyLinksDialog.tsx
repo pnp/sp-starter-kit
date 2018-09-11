@@ -7,7 +7,7 @@ import styles from './MyLinks.module.scss';
 import * as strings from 'MyLinksStrings';
 
 // import additional controls/components
-import { BaseDialog, Dialog, IDialogConfiguration, SecondaryDialogProvider } from '@microsoft/sp-dialog';
+import { BaseDialog, Dialog, IDialogConfiguration } from '@microsoft/sp-dialog';
 import {
   autobind,
   DefaultButton,
@@ -300,8 +300,7 @@ class MyLinksDialogContent extends
   }
 
   @autobind
-  private async addLink(): Promise<void> {
-
+  private addLink(): void {
     if (this.state.selectedLink != null &&
       this.state.links != null &&
       this.state.links.length > 0) {
@@ -319,8 +318,7 @@ class MyLinksDialogContent extends
   }
 
   @autobind
-  private async editLink(): Promise<void> {
-
+  private editLink(): void {
     // enable the detail panel
     this.setState({
       showDetailPanel: true,

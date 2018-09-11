@@ -16,10 +16,9 @@ import {
 } from 'office-ui-fabric-react';
 
 import { DateTimePicker } from './DateTimePicker';
-import { ExtensionContext } from '@microsoft/sp-extension-base';
+import { ListViewCommandSetContext } from '@microsoft/sp-listview-extensibility';
 import { Dialog } from '@microsoft/sp-dialog';
-import { AadHttpClient, HttpClientConfiguration, IHttpClientOptions, HttpClientResponse } from "@microsoft/sp-http";
-import { MSGraphClient } from '@microsoft/sp-client-preview';
+import { AadHttpClient, HttpClientConfiguration, IHttpClientOptions, HttpClientResponse, MSGraphClient } from "@microsoft/sp-http";
 
 import styles from './ScheduleMeetingDialog.module.scss';
 import * as strings from 'DiscussNowCommandSetStrings';
@@ -147,7 +146,7 @@ class ScheduleMeetingDialogContent extends
 export default class ScheduleMeetingDialog extends BaseDialog {
     public fileName: string;
     public filePath: string;
-    public context: ExtensionContext;
+    public context: ListViewCommandSetContext;
 
     public render(): void {
       ReactDOM.render(<ScheduleMeetingDialogContent
@@ -220,8 +219,7 @@ export default class ScheduleMeetingDialog extends BaseDialog {
           }
         };
 
-        const graphClient: MSGraphClient = this.context.serviceScope.consume(MSGraphClient.serviceKey);
-
+        const graphClient: MSGraphClient = await this.context.msGraphClientFactory.getClient();
         response = await graphClient
           .api(`groups/${groupId}/calendar/events`)
           .version("v1.0")
