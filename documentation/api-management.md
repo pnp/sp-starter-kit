@@ -26,6 +26,6 @@ The pending permissions should now be approved.
 
 ![APIs Approved](../assets/images/API-Approval-05.png)
 
-**Note** currently the sample LOB service sample is in development and will utilie the SPFx-LOB-*** API permission requests. These requests can be ignored at this time. 
+**Note** currently the sample LOB service sample is in development and will utilize the SPFx-LOB-*** API permission requests. These requests can be ignored at this time. 
 
 **Note** if you receive an error when approving a Microsoft Graph permission request, try to approve it again. In batch approvals, some requests may fail the first time.
