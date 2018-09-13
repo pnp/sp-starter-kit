@@ -9,6 +9,7 @@ import {
 import * as strings from 'RecentContactsWebPartStrings';
 import { RecentContacts, IRecentContactsProps } from './components';
 import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/propertyFields/number';
+import { MSGraphClient } from '@microsoft/sp-http';
 
 export interface IRecentContactsWebPartProps {
   title: string;
@@ -16,6 +17,18 @@ export interface IRecentContactsWebPartProps {
 }
 
 export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecentContactsWebPartProps> {
+  private graphClient: MSGraphClient;
+
+  public onInit(): Promise<void> {
+    return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
+      this.context.msGraphClientFactory
+        .getClient()
+        .then((client: MSGraphClient): void => {
+          this.graphClient = client;
+          resolve();
+        }, err => reject(err));
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IRecentContactsProps > = React.createElement(
@@ -23,7 +36,7 @@ export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecent
       {
         title: this.properties.title,
         nrOfContacts: this.properties.nrOfContacts,
-        context: this.context,
+        graphClient: this.graphClient,
         displayMode: this.displayMode,
         updateProperty: (value: string) => {
           this.properties.title = value;

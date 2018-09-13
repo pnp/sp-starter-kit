@@ -96,10 +96,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
     });
 
     // create an AadHttpClient object to consume the 3rd party API
-    const aadClient: AadHttpClient = new AadHttpClient(
-      this.props.context.serviceScope,
-      "https://officedevpnp.onmicrosoft.com/spfx-lob-function"
-    );
+    const aadClient: AadHttpClient = await this.props.context.aadHttpClientFactory.getClient("https://officedevpnp.onmicrosoft.com/spfx-lob-function");
 
     console.log("Created aadClient");
 
@@ -145,10 +142,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
     });
 
     // create an AadHttpClient object to consume the 3rd party API
-    const aadClient: AadHttpClient = new AadHttpClient(
-      this.props.context.serviceScope,
-      "https://officedevpnp.onmicrosoft.com/spfx-lob-webapi"
-    );
+    const aadClient: AadHttpClient = await this.props.context.aadHttpClientFactory.getClient("https://officedevpnp.onmicrosoft.com/spfx-lob-webapi");
 
     console.log("Created aadClient");
 

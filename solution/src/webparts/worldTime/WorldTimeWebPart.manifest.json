@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "4f87b698-f910-451f-b4ea-7848a472af0f",
   "alias": "pnpWorldTime",
   "componentType": "WebPart",

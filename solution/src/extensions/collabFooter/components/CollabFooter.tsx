@@ -85,23 +85,23 @@ export default class CollabFooter extends React.Component<ICollabFooterProps, IC
 
   // method used to edit and save personal items
   @autobind
-  private async _editMyLinks(): Promise<void> {
-
-    let editResult: ICollabFooterEditResult = await this.props.editMyLinks();
-
-    // show result message
-    this.setState({
-      myLinksSaved: editResult.editResult,
-      myLinks: editResult.myLinks,
-    });
-
-    if (editResult != null) {
-      // hide the message after 2 sec
-      window.setTimeout(() => {
+  private _editMyLinks(): void {
+    this.props.editMyLinks()
+      .then((editResult: ICollabFooterEditResult): void => {
+        // show result message
         this.setState({
-          myLinksSaved: null,
-          });
-        }, 2000);
-    }
+          myLinksSaved: editResult.editResult,
+          myLinks: editResult.myLinks,
+        });
+
+        if (editResult != null) {
+          // hide the message after 2 sec
+          window.setTimeout(() => {
+            this.setState({
+              myLinksSaved: null,
+              });
+            }, 2000);
+        }
+      });
   }
 }

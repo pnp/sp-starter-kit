@@ -9,7 +9,7 @@ import {
 import * as strings from 'PersonalContactsWebPartStrings';
 import { PersonalContacts, IPersonalContactsProps } from './components/PersonalContacts';
 import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
-import { MSGraphClient } from '@microsoft/sp-client-preview';
+import { MSGraphClient } from '@microsoft/sp-http';
 
 export interface IPersonalContactsWebPartProps {
   title: string;
@@ -17,6 +17,18 @@ export interface IPersonalContactsWebPartProps {
 }
 
 export default class PersonalContactsWebPart extends BaseClientSideWebPart<IPersonalContactsWebPartProps> {
+  private graphClient: MSGraphClient;
+
+  public onInit(): Promise<void> {
+    return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
+      this.context.msGraphClientFactory
+        .getClient()
+        .then((client: MSGraphClient): void => {
+          this.graphClient = client;
+          resolve();
+        }, err => reject(err));
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IPersonalContactsProps> = React.createElement(
@@ -25,7 +37,7 @@ export default class PersonalContactsWebPart extends BaseClientSideWebPart<IPers
         title: this.properties.title,
         nrOfContacts: this.properties.nrOfContacts,
         // pass the reference to the MSGraphClient
-        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey),
+        graphClient: this.graphClient,
         // pass the current display mode to determine if the title should be
         // editable or not
         displayMode: this.displayMode,

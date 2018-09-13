@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "ee972022-9937-4b69-9c25-eaf77003f4f9",
   "alias": "pnpPersonalTasks",
   "componentType": "WebPart",

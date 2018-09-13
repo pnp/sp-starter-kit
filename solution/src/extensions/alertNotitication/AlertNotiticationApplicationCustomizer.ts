@@ -5,7 +5,7 @@ import {
 import { Dialog } from '@microsoft/sp-dialog';
 
 import * as strings from 'AlertNotiticationApplicationCustomizerStrings';
-import { SPHttpClientConfiguration, SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
+import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { IHubSiteDataResponse, IHubSiteData } from './IHubSiteData';
 import { IAlert, IAlertItem, AlertType } from './IAlert';
 import { IAlertNotificationsProps, AlertNotifications } from './components';

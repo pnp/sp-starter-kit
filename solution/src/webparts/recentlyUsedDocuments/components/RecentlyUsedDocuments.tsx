@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styles from './RecentlyUsedDocuments.module.scss';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { MSGraphClient } from "@microsoft/sp-client-preview";
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import * as strings from 'RecentlyUsedDocumentsWebPartStrings';
 import { List } from 'office-ui-fabric-react/lib/List';
@@ -12,15 +11,10 @@ import { IRecentlyUsedDocumentsProps, IRecentlyUsedDocumentsState, IRecentDocume
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 
 export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsedDocumentsProps, IRecentlyUsedDocumentsState> {
-  private _graphClient: MSGraphClient = null;
   private _excludeTypes: string[] = ["Web", "spsite", "Folder", "Archive", "Image", "Other"];
 
   constructor(props: IRecentlyUsedDocumentsProps) {
     super(props);
-
-    this._graphClient = this.props.context.serviceScope.consume(
-      MSGraphClient.serviceKey
-    );
 
     this.state = {
       recentDocs: [],
@@ -33,7 +27,7 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
    * Fetch the recent documents via the Microsoft Graph client
    */
   private _fetchRecentDocuments() {
-    if (this._graphClient) {
+    if (this.props.graphClient) {
       this.setState({
         loading: true,
         error: null
@@ -41,7 +35,7 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
 
       const filter = this._excludeTypes.map(type => `resourceVisualization/type ne '${type}'`).join(' and ');
 
-      this._graphClient
+      this.props.graphClient
       .api("me/insights/used")
       .version("beta") // API is currently only available in BETA
       .filter(`resourceVisualization/containerType eq 'Site' and ${filter}`)
