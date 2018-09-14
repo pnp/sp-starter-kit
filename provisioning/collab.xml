@@ -10,7 +10,7 @@
     <pnp:ProvisioningTemplate ID="COLLAB-TEMPLATE" Version="1.0" BaseSiteTemplate="GROUP#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
       <pnp:CustomActions>
         <pnp:WebCustomActions>
-          <pnp:CustomAction Name="DiscussNow" RegistrationType="List" RegistrationId="101" Location="ClientSideExtension.ListViewCommandSet" ClientSideComponentId="130b279d-a5d1-41b9-9fd1-4a274169b117" />
+          <pnp:CustomAction Title="DiscussNow" Name="DiscussNow" RegistrationType="List" RegistrationId="101" Location="ClientSideExtension.ListViewCommandSet" Sequence="1" ClientSideComponentId="130b279d-a5d1-41b9-9fd1-4a274169b117" />
           <!-- alertNotification -->
           <pnp:CustomAction Name="AlertNotification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="aa8dd198-e2ee-45c5-b746-821d001bb0e1" RegistrationType="None" />
           <!-- collabFooter -->
