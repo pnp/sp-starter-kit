@@ -92,7 +92,7 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
     // retrieve information about people using SharePoint People Search
     // sort results ascending by the last name
     this.props.spHttpClient
-      .get(`${this.props.webUrl}/_api/search/query?querytext='${query}'&selectproperties='PreferredName,WorkEmail,PictureURL,WorkPhone'&sortlist='LastName:ascending'&sourceid='b09a7990-05ea-4af9-81ef-edfab16c4e31'&rowlimit=500`, SPHttpClient.configurations.v1, {
+      .get(`${this.props.webUrl}/_api/search/query?querytext='${query}'&selectproperties='FirstName,LastName,PreferredName,WorkEmail,PictureURL,WorkPhone,MobilePhone,JobTitle,Department,Skills,PastProjects'&sortlist='LastName:ascending'&sourceid='b09a7990-05ea-4af9-81ef-edfab16c4e31'&rowlimit=500`, SPHttpClient.configurations.v1, {
         headers: headers
       })
       .then((res: SPHttpClientResponse): Promise<IPeopleSearchResults> => {
@@ -119,19 +119,49 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
         }
 
         // convert the SharePoint People Search results to an array of people
-        const people: IPerson[] = res.PrimaryQueryResult.RelevantResults.Table.Rows.map(r => {
+        let people: IPerson[] = res.PrimaryQueryResult.RelevantResults.Table.Rows.map(r => {
           return {
             name: this._getValueFromSearchResult('PreferredName', r.Cells),
+            firstName: this._getValueFromSearchResult('FirstName', r.Cells),
+            lastName: this._getValueFromSearchResult('LastName', r.Cells),
             phone: this._getValueFromSearchResult('WorkPhone', r.Cells),
+            mobile: this._getValueFromSearchResult('MobilePhone', r.Cells),
             email: this._getValueFromSearchResult('WorkEmail', r.Cells),
-            photoUrl: this._getValueFromSearchResult('PictureURL', r.Cells)
+            photoUrl: this._getValueFromSearchResult('PictureURL', r.Cells),
+            function: this._getValueFromSearchResult('JobTitle', r.Cells),
+            department: this._getValueFromSearchResult('Department', r.Cells),
+            skills: this._getValueFromSearchResult('Skills', r.Cells),
+            projects: this._getValueFromSearchResult('PastProjects', r.Cells)
           };
         });
-        // notify the user that loading the data is finished and return the loaded information
-        this.setState({
-          loading: false,
-          people: people
-        });
+        
+        const selectedIndex = this.state.selectedIndex;
+
+        if (this.state.searchQuery === '') {
+          // An Index is used to search people. 
+          //Reduce the people collection if the first letter of the lastName of the person is not equal to the selected index
+          people = people.reduce((result: IPerson[], person: IPerson) => {
+            if (person.lastName && person.lastName.indexOf(selectedIndex) === 0) {
+              result.push(person);
+            }
+            return result;
+          }, []);
+        }
+        
+        if (people.length > 0) {
+          // notify the user that loading the data is finished and return the loaded information
+          this.setState({
+            loading: false,
+            people: people
+          });
+        }
+        else {
+          // People collection could be reduced to zero, so no results
+          this.setState({
+            loading: false
+          });
+          return;
+        }
       }, (error: any): void => {
         // An error has occurred while loading the data. Notify the user
         // that loading data is finished and return the error message.
