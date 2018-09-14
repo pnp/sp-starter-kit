@@ -36,19 +36,37 @@ export default class StockInformation extends React.Component<IStockInformationP
   // on componentDidMount refresh data
   public componentDidMount(): void {
     if (!this.props.needsConfiguration) {
-      this.loadStockInformation(this.props.stockSymbol, this.props.autoRefresh);
+      this.loadStockInformation(this.props.stockSymbol, this.props.autoRefresh, this.props.demo);
     }
   }
 
   // on componentWillReceiveProps refresh data
   public componentWillReceiveProps(nextProps: IStockInformationProps): void {
-    if (nextProps.stockSymbol) {
-      this.loadStockInformation(this.props.stockSymbol, this.props.autoRefresh);
+    if (nextProps.stockSymbol || nextProps.demo) {
+      this.loadStockInformation(nextProps.stockSymbol, nextProps.autoRefresh, nextProps.demo);
     }
   }
 
   // method to load stock information from external REST API
-  private loadStockInformation(stockSymbol: string, autoRefresh: boolean): void {
+  private loadStockInformation(stockSymbol: string, autoRefresh: boolean, demo: boolean): void {
+    if (demo) {
+      this.setState({
+        loading: false,
+        stockInfo: {
+          symbol: 'Contoso Electronics',
+          lastRefreshed: new Date(),
+          lastData: {
+            open: 110,
+            high: 110,
+            low: 110,
+            close: 110,
+            volume: 0
+          },
+          previousClose: 109.91
+        }
+      });
+      return;
+    }
 
     // double-check to have the API Key
     if (!this.props.apiKey) {
@@ -178,9 +196,9 @@ export default class StockInformation extends React.Component<IStockInformationP
         });
 
       // handle autoRefresh logic
-      if (autoRefresh) {
+      if (!demo && autoRefresh) {
         // if autoRefresh is enabled, refresh data every 60sec
-        setTimeout(() => { this.loadStockInformation(stockSymbol, autoRefresh); }, 60000);
+        setTimeout(() => { this.loadStockInformation(stockSymbol, autoRefresh, demo); }, 60000);
       }
     }
   }
@@ -199,19 +217,27 @@ export default class StockInformation extends React.Component<IStockInformationP
         // show the Stock information, if we already have it
         const lastStockData: IStockData = this.state.stockInfo != null ? this.state.stockInfo.lastData : null;
         const previousClose: number = this.state.stockInfo != null ? this.state.stockInfo.previousClose : 0;
+        const difference: number = lastStockData.close - previousClose;
+        const differencePercent: number = (difference / previousClose) * 100;
         contents = (
           <div className={styles.stock}>
+            <div className={styles.stockSymbol}>{this.state.stockInfo.symbol}</div>
             <div>
-              <span>
+              <span className={styles.stockTrend}>
                 { lastStockData.close > previousClose ?
-                <Icon iconName='ArrowUpRight8' /> :
+                <Icon iconName='Up' /> :
                 lastStockData.close < previousClose ?
-                <Icon iconName='ArrowDownRight8' /> :
+                <Icon iconName='Down' /> :
                 null }
               </span>
-              <span className={styles.stockValue}>{ parseFloat(lastStockData.close.toString()).toFixed(2) }</span>
+              <span className={styles.stockValue}>{ parseFloat(lastStockData.close.toString()).toFixed(2) } USD</span>
             </div>
-            <div className={styles.stockSymbol}>{this.state.stockInfo.symbol}</div>
+            <div className={styles.stockInfo}>
+              <span>{(difference >= 0 ? '+' : '-')}{ parseFloat(difference.toString()).toFixed(2) }</span>
+              <span>({differencePercent >= 0 ? '+' : '-'}{ parseFloat(differencePercent.toString()).toFixed(2) }%)</span>
+              <span>{this.state.stockInfo.lastRefreshed.toLocaleTimeString()}</span>
+            </div>
+            <a href={`https://www.msn.com/en-us/money/stockdetails/fi-126.1.${this.state.stockInfo.symbol}.NAS?symbol=${this.state.stockInfo.symbol}&form=PRFIHQ`} className={styles.more} target='_blank'><Icon iconName='NavigateExternalInline'/></a>
           </div>
         );
       }
