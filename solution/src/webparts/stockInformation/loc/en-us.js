@@ -4,6 +4,7 @@ define([], function() {
     "BasicGroupName": "General Settings",
     "StockSymbolFieldLabel": "Stock Code",
     "AutoRefreshFieldLabel": "Automatic Refresh",
+    "DemoFieldLabel": "Show demo values",
     
     "PlaceholderIconName":"Edit",
     "PlaceholderIconText":"Configure your web part",

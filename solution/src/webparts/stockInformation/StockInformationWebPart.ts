@@ -5,7 +5,8 @@ import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneCheckbox
+  PropertyPaneCheckbox,
+  PropertyPaneToggle
 } from '@microsoft/sp-webpart-base';
 import { DisplayMode } from '@microsoft/sp-core-library';
 
@@ -40,6 +41,7 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
     const element: React.ReactElement<IStockInformationProps > = React.createElement(
       StockInformation,
       {
+        demo: this.properties.demo,
         stockSymbol: this.properties.stockSymbol,
         autoRefresh: this.properties.autoRefresh,
         apiKey: apiKey,
@@ -76,6 +78,9 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
             {
               groupName: strings.BasicGroupName,
               groupFields: [
+                PropertyPaneToggle('demo', {
+                  label: strings.DemoFieldLabel
+                }),
                 PropertyPaneTextField('stockSymbol', {
                   label: strings.StockSymbolFieldLabel
                 }),
@@ -103,8 +108,8 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
   // method to determine if the web part has to be configured
   private needsConfiguration(): boolean {
     // as long as we don't have the stock symbol, we need configuration
-    return !this.properties.stockSymbol ||
-      this.properties.stockSymbol.length === 0;
+    return !this.properties.demo && (!this.properties.stockSymbol ||
+      this.properties.stockSymbol.length === 0);
   }
 
   // method to retrieve the API Key for Alpha Vantage
@@ -119,7 +124,7 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
     // and store its value in the session storage
     if (!apiKey) {
       const storageEntity: StorageEntity = await sp.web.getStorageEntity(apiKeyName);
-      if (storageEntity) {
+      if (storageEntity && !storageEntity['odata.null']) {
         apiKey = storageEntity.Value;
         sessionStorage.setItem(apiKeyName, apiKey);
       }
