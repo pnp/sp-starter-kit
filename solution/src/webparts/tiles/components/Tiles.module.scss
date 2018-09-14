@@ -12,7 +12,7 @@
 
   .tilesList {
     @include ms-Grid-row;
-    display: flex;
+    display: block;
     flex-wrap: wrap;
   }
 }
