@@ -10,15 +10,15 @@
     <pnp:ProvisioningTemplate ID="COLLAB-TEMPLATE" Version="1.0" BaseSiteTemplate="GROUP#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
       <pnp:CustomActions>
         <pnp:WebCustomActions>
-          <pnp:CustomAction Name="DiscussNow" RegistrationType="List" RegistrationId="101" Location="ClientSideExtension.ListViewCommandSet" ClientSideComponentId="130b279d-a5d1-41b9-9fd1-4a274169b117" />
+          <pnp:CustomAction Title="DiscussNow" Name="DiscussNow" RegistrationType="List" RegistrationId="101" Location="ClientSideExtension.ListViewCommandSet" ClientSideComponentId="130b279d-a5d1-41b9-9fd1-4a274169b117" />
           <!-- alertNotification -->
-          <pnp:CustomAction Name="AlertNotification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="aa8dd198-e2ee-45c5-b746-821d001bb0e1" RegistrationType="None" />
+          <pnp:CustomAction Title="AlertNotification" Name="AlertNotification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="aa8dd198-e2ee-45c5-b746-821d001bb0e1" RegistrationType="None" />
           <!-- collabFooter -->
-          <pnp:CustomAction Name="CollabFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="c0ab3b94-8609-40cf-861e-2a1759170b43" RegistrationType="None" ClientSideComponentProperties="{&quot;sourceTermSet&quot;:&quot;PnP-CollabFooter-SharedLinks&quot;,&quot;personalItemsStorageProperty&quot;:&quot;PnP-CollabFooter-MyLinks&quot;}" />
+          <pnp:CustomAction Title="CollabFooter" Name="CollabFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="c0ab3b94-8609-40cf-861e-2a1759170b43" RegistrationType="None" ClientSideComponentProperties="{&quot;sourceTermSet&quot;:&quot;PnP-CollabFooter-SharedLinks&quot;,&quot;personalItemsStorageProperty&quot;:&quot;PnP-CollabFooter-MyLinks&quot;}" />
           <!-- redirect -->
-          <pnp:CustomAction Name="Redirect" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="f5771a9e-283e-4525-a599-554e8b9e48c2" RegistrationType="None" />
+          <pnp:CustomAction Title="Redirect" Name="Redirect" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="f5771a9e-283e-4525-a599-554e8b9e48c2" RegistrationType="None" />
           <!-- siteClassification -->
-          <pnp:CustomAction Name="SiteClassification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="7f69d5cb-5aeb-4bc6-9f77-146aebfd9a8e" Sequence="1" RegistrationType="None" />
+          <pnp:CustomAction Title="SiteClassification" Name="SiteClassification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="7f69d5cb-5aeb-4bc6-9f77-146aebfd9a8e" Sequence="1" RegistrationType="None" />
         </pnp:WebCustomActions>
       </pnp:CustomActions>
     </pnp:ProvisioningTemplate>
