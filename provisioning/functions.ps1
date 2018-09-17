@@ -66,34 +66,36 @@ Function Set-ThemeIfNotSet {
     Process {
 
         $palette = @{
-            "themePrimary" = "#fd6a02";
-            "themeLighterAlt" = "#fff9f5";
-            "themeLighter" = "#ffe7d6";
-            "themeLight" = "#fed2b3";
-            "themeTertiary" = "#fda667";
-            "themeSecondary" = "#fd7c21";
-            "themeDarkAlt" = "#e36002";
-            "themeDark" = "#c05102";
-            "themeDarker" = "#8d3c01";
-            "neutralLighterAlt" = "#e4e4e4";
-            "neutralLighter" = "#e1e1e1";
-            "neutralLight" = "#d7d7d7";
-            "neutralQuaternaryAlt" = "#c9c9c9";
-            "neutralQuaternary" = "#bfbfbf";
-            "neutralTertiaryAlt" = "#b8b8b8";
+            "themePrimary" = "#017e9d";
+            "themeLighterAlt" = "#f1f9fb";
+            "themeLighter" = "#cae8ef";
+            "themeLight" = "#9fd5e2";
+            "themeTertiary" = "#50adc5";
+            "themeSecondary" = "#168caa";
+            "themeDarkAlt" = "#01728e";
+            "themeDark" = "#016078";
+            "themeDarker" = "#014759";
+            "neutralLighterAlt" = "#f8f8f8";
+            "neutralLighter" = "#f4f4f4";
+            "neutralLight" = "#eaeaea";
+            "neutralQuaternaryAlt" = "#dadada";
+            "neutralQuaternary" = "#d0d0d0";
+            "neutralTertiaryAlt" = "#c8c8c8";
             "neutralTertiary" = "#c2c2c2";
             "neutralSecondary" = "#858585";
             "neutralPrimaryAlt" = "#4b4b4b";
             "neutralPrimary" = "#333333";
             "neutralDark" = "#272727";
             "black" = "#1d1d1d";
-            "white" = "#eaeaea";
+            "white" = "#ffffff";
             "primaryBackground" = "#eaeaea";
             "primaryText" = "#333333";
-            "bodyBackground" = "#eaeaea";
+            "bodyBackground" = "#ffffff";
             "bodyText" = "#333333";
             "disabledBackground" = "#e1e1e1";
             "disabledText" = "#b8b8b8";
+            "error" = "#e93333";
+            "accent" = "#864B7A";
             }
         
         $currentTheme = Get-PnPPropertyBag -Key "ThemePrimary" -Connection $Connection
@@ -102,8 +104,8 @@ Function Set-ThemeIfNotSet {
         if($palette.themePrimary -ne $currentTheme)
         {
             # The theme 'seems' to not be set. This check is flawed and based only on the primary theme color for now
-            Add-PnPTenantTheme -Identity "Contoso Portal" -Overwrite -Palette $palette -IsInverted $false -Connection $Connection
-            Set-PnPWebTheme -Theme "Contoso Portal" -Connection $Connection
+            Add-PnPTenantTheme -Identity "Contoso Electronic HR" -Overwrite -Palette $palette -IsInverted $false -Connection $Connection
+            Set-PnPWebTheme -Theme "Contoso Electronic HR" -Connection $Connection
         }
     }
 }
