@@ -37,7 +37,10 @@ Param(
     [string]$StockSymbol = "MSFT",
 
     [Parameter(Mandatory = $false)]
-    [string]$StockAPIKey = ""
+    [string]$StockAPIKey = "",
+
+    [Parameter(Mandatory = $false)]
+    [string]$GroupsManagedPath = "sites"
 )    
 
 
@@ -60,7 +63,7 @@ if ($Credentials -eq $null) {
 
 if ($SkipSiteCreation -eq $false) {
     # check if URL is valid
-    $SiteUrl = New-SiteHierarchy -TenantUrl $TenantUrl -Prefix $SitePrefix -ConfigurationFilePath ./hierarchy.json -Credentials $Credentials
+    $SiteUrl = New-SiteHierarchy -TenantUrl $TenantUrl -Prefix $SitePrefix -ConfigurationFilePath ./hierarchy.json -Credentials $Credentials -GroupsManagedPath $GroupsManagedPath
     if ($SiteUrl -isnot [array]) {
         $SiteUrl = @($SiteUrl)
     }
@@ -142,8 +145,8 @@ $children = Get-PnPProperty -ClientObject $departmentNode -Property Children
 $hierarchy = ConvertFrom-Json (Get-Content -Path "$PSScriptRoot\hierarchy.json" -Raw)
 foreach ($child in $hierarchy.children) {
     if (($children | Where-Object {$_.Title -eq $child.title}) -eq $null) {
-        $node = Add-PnPNavigationNode -Location TopNavigationBar -Parent $departmentNode[0].Id -Title $child.title -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -Connection $connection
-        $childConnection = Connect-PnPOnline -Url "$TenantUrl/sites/$SitePrefix$($child.url)" -Credentials $Credentials -ReturnConnection
+        $node = Add-PnPNavigationNode -Location TopNavigationBar -Parent $departmentNode[0].Id -Title $child.title -Url "$TenantUrl/$GroupsManagedPath/$SitePrefix$($child.url)" -Connection $connection
+        $childConnection = Connect-PnPOnline -Url "$TenantUrl/$GroupsManagedPath/$SitePrefix$($child.url)" -Credentials $Credentials -ReturnConnection
     }
     Apply-PnPProvisioningTemplate -Path "$PSScriptRoot\collab.xml" -Connection $childConnection
 }
