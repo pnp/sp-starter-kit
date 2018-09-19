@@ -1,4 +1,4 @@
-## share-point-portal-showcase
+## sp-starter-kit
 
 This is where you include your WebPart documentation.
 
