@@ -147,7 +147,9 @@ Function New-SiteHierarchy {
         [Parameter(Mandatory = $true)]
         [String] $ConfigurationFilePath,
         [Parameter(Mandatory = $true)]
-        [PSCredential] $Credentials
+        [PSCredential] $Credentials,
+        [Parameter(Mandatory = $true)]
+        [String] $GroupsManagedPath
     )
 
     Process {
@@ -197,7 +199,7 @@ Function New-SiteHierarchy {
             }
             $childSite = $null
             try {
-                $connection = Connect-PnPOnline -Url "$TenantUrl/sites/$Prefix$($child.url)" -Credentials $Credentials -ErrorAction SilentlyContinue -ReturnConnection
+                $connection = Connect-PnPOnline -Url "$TenantUrl/$GroupsManagedPath/$Prefix$($child.url)" -Credentials $Credentials -ErrorAction SilentlyContinue -ReturnConnection
                 $childSite = Get-PnPSite -ErrorAction SilentlyContinue -Connection $connection
             } catch {}
             if($childSite -eq $null)
@@ -205,7 +207,7 @@ Function New-SiteHierarchy {
                 Write-Host "Creating $Prefix$($child.url)" -ForegroundColor Cyan
                 $siteUrl = New-PnPSite @childParams
             } else {
-                $siteUrl = "$TenantUrl/sites/$Prefix$($child.url)";
+                $siteUrl = "$TenantUrl/$GroupsManagedPath/$Prefix$($child.url)";
             }
             Add-PnPHubSiteAssociation -Site $siteUrl -HubSite $hubParams.Url -Connection $connection
         }
