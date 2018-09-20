@@ -23,6 +23,14 @@
     <pnp:Localization LCID="1043" Name="core" ResourceFile="resources\resources-core.nl-nl.resx" />
   </pnp:Localizations>
   <pnp:Tenant>
+    <pnp:WebApiPermissions>
+      <pnp:WebApiPermission Resource="Microsoft Graph" Scope="Sites.Read.All"/>
+      <pnp:WebApiPermission Resource="Microsoft Graph" Scope="Contacts.Read" />
+      <pnp:WebApiPermission Resource="Microsoft Graph" Scope="User.Read.All" />
+      <pnp:WebApiPermission Resource="Microsoft Graph" Scope="Mail.Read" />
+      <pnp:WebApiPermission Resource="Microsoft Graph" Scope="Calendars.ReadWrite" />
+      <pnp:WebApiPermission Resource="Microsoft Graph" Scope="Group.ReadWrite.All"/>
+    </pnp:WebApiPermissions>
     <pnp:AppCatalog>
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="resources\sharepoint-starter-kit.sppkg" SkipFeatureDeployment="true"/>
     </pnp:AppCatalog>
@@ -171,39 +179,39 @@
   </pnp:Tenant>
   <pnp:Sequence ID="sp-starter-kit-sequence">
     <pnp:SiteCollections>
-      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:CommunicationSite" 
-                          ProvisioningId="PORTAL" 
-                          Theme="{parameter:Company} HR" 
-                          SiteDesign="Topic" 
-                          Title="{parameter:Company} Technologies" 
-                          Description="" 
-                          Url="/sites/{parameter:SiteUrlPrefix}_portal" 
-                          IsHubSite="true" 
+      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:CommunicationSite"
+                          ProvisioningId="PORTAL"
+                          Theme="{parameter:Company} HR"
+                          SiteDesign="Topic"
+                          Title="{parameter:Company}"
+                          Description=""
+                          Url="/sites/{parameter:SiteUrlPrefix}_portal"
+                          IsHubSite="true"
                           Owner="{CurrentUserLoginName}">
         <pnp:Templates>
           <pnp:ProvisioningTemplateReference ID="ROOT-TEMPLATE"/>
           <pnp:ProvisioningTemplateReference ID="PORTALFOOTERLINKS-TEMPLATE"/>
         </pnp:Templates>
       </pnp:SiteCollection>
-      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite" 
-                          Theme="{parameter:Company} HR" 
-                          ProvisioningId="HR" 
-                          Alias="{parameter:SiteUrlPrefix}_HR" 
-                          IsPublic="false" 
-                          Description="" 
-                          DisplayName ="" 
+      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite"
+                          Theme="{parameter:Company} HR"
+                          ProvisioningId="HR"
+                          Alias="{parameter:SiteUrlPrefix}_HR"
+                          IsPublic="false"
+                          Description=""
+                          DisplayName =""
                           Title ="Human Resources">
         <pnp:Templates>
           <pnp:ProvisioningTemplateReference ID="COLLAB-TEMPLATE"/>
         </pnp:Templates>
       </pnp:SiteCollection>
-      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite" 
-                          Theme="{parameter:Company} Marketing" 
-                          ProvisioningId="MARKETING" 
-                          Alias="{parameter:SiteUrlPrefix}_MARKETING" 
-                          IsPublic="false" 
-                          Description="" 
-                          DisplayName ="" 
+      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite"
+                          Theme="{parameter:Company} Marketing"
+                          ProvisioningId="MARKETING"
+                          Alias="{parameter:SiteUrlPrefix}_MARKETING"
+                          IsPublic="false"
+                          Description=""
+                          DisplayName =""
                           Title ="Marketing">
         <pnp:Templates>
           <pnp:ProvisioningTemplateReference ID="COLLAB-TEMPLATE"/>
@@ -274,7 +282,7 @@
     </pnp:TermStore>
   </pnp:Sequence>
   <pnp:Templates ID="SP-STARTER-KIT_TEMPLATES">
-  <pnp:ProvisioningTemplate ID="PORTALFOOTERLINKS-TEMPLATE" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
+    <pnp:ProvisioningTemplate ID="PORTALFOOTERLINKS-TEMPLATE" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
       <pnp:SiteFields>
         <Field Type="Choice" DisplayName="Link Group" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="TRUE" Group="PnP Columns" ID="{f5b23751-56d4-4ec3-adf2-7b080d834f74}" SourceID="{88a250c5-31b2-4d64-b047-482e2a6e5e7a}" StaticName="PnPPortalLinkGroup" Name="PnPPortalLinkGroup" CustomFormatter="">
           <CHOICES>
@@ -387,10 +395,10 @@
         </pnp:ListInstance>
       </pnp:Lists>
     </pnp:ProvisioningTemplate>
-    <pnp:ProvisioningTemplate ID="ROOT-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="{Company} Technologies" Description="" Scope="RootSite" TemplateCultureInfo="1033">
-      <pnp:WebSettings WelcomePage="SitePages/Home.aspx"/>
+    <pnp:ProvisioningTemplate ID="ROOT-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="{parameter:Company} Technologies" Description="" Scope="RootSite" TemplateCultureInfo="1033">
+      <pnp:WebSettings WelcomePage="SitePages/Home.aspx" Title="{parameter:Company}" />
       <pnp:Navigation EnableTreeView="false" CreateFriendlyUrlsForNewPages="false" AddNewPagesToNavigation="false">
-       <pnp:GlobalNavigation NavigationType="Structural">
+        <pnp:GlobalNavigation NavigationType="Structural">
           <pnp:StructuralNavigation RemoveExistingNodes="true">
             <pnp:NavigationNode Title="Personal" Url="SitePages/Personal.aspx"/>
             <pnp:NavigationNode Title="Organization" Url="SitePages/Home.aspx"/>
@@ -459,7 +467,45 @@
         </pnp:ContentType>
       </pnp:ContentTypes>
       <pnp:ClientSidePages>
-        <pnp:ClientSidePage PageName="Home.aspx" PromoteAsNewsArticle="false" Overwrite="true" Layout="Home" EnableComments="false" Publish="true">
+        <pnp:ClientSidePage PageName="Home.aspx" PromoteAsNewsArticle="false" Overwrite="true" Layout="Home" EnableComments="false" Title="Home">
+          <pnp:Sections>
+            <pnp:Section Order="1" Type="TwoColumnLeft">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="Hero" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.3&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;content[0].title&quot;:&quot;About Us&quot;,&quot;content[1].title&quot;:&quot;Human Resources&quot;,&quot;content[2].title&quot;:&quot;Mission&quot;,&quot;content[3].title&quot;:&quot;Projects\n&quot;,&quot;content[4].title&quot;:&quot;Organization&quot;,&quot;content[0].alternateText&quot;:&quot;Company default image&quot;,&quot;content[1].alternateText&quot;:&quot;&quot;,&quot;content[2].alternateText&quot;:&quot;&quot;,&quot;content[3].alternateText&quot;:&quot;&quot;,&quot;content[4].alternateText&quot;:&quot;&quot;,&quot;content[0].callToActionText&quot;:&quot;Learn more&quot;,&quot;content[1].callToActionText&quot;:&quot;Learn more&quot;,&quot;content[2].callToActionText&quot;:&quot;Learn more&quot;,&quot;content[3].callToActionText&quot;:&quot;Learn more&quot;,&quot;content[4].callToActionText&quot;:&quot;Learn more&quot;},&quot;imageSources&quot;:{&quot;content[0].image.url&quot;:&quot;{site}/SiteAssets/SitePages/Home/15107177453621321280GettyImages-538175432.jpg&quot;,&quot;content[2].image.url&quot;:&quot;{site}/SiteAssets/modernOffice_007.jpg&quot;,&quot;content[3].image.url&quot;:&quot;{site}/SiteAssets/modernOffice_011.jpg&quot;,&quot;content[0].previewImage.url&quot;:&quot;{site}/SitePages/About-Us.aspx&quot;,&quot;content[1].previewImage.url&quot;:&quot;https://www.bing.com&quot;,&quot;content[2].previewImage.url&quot;:&quot;{site}/SiteAssets/WCO18_hallwayWalk_004.jpg&quot;,&quot;content[3].previewImage.url&quot;:&quot;{site}/SiteAssets/modernOffice_011.jpg&quot;,&quot;content[4].previewImage.url&quot;:&quot;https://www.bing.com&quot;},&quot;links&quot;:{&quot;content[0].link&quot;:&quot;{site}/SitePages/About-Us.aspx&quot;,&quot;content[1].link&quot;:&quot;https://www.bing.com&quot;,&quot;content[2].link&quot;:&quot;{site}/SiteAssets/WCO18_hallwayWalk_004.jpg&quot;,&quot;content[3].link&quot;:&quot;{site}/SiteAssets/modernOffice_011.jpg&quot;,&quot;content[4].link&quot;:&quot;https://www.bing.com&quot;,&quot;content[0].callToActionLink&quot;:&quot;{site}/SiteAssets/modernOffice_002.jpg&quot;},&quot;componentDependencies&quot;:{&quot;heroLayoutComponentId&quot;:&quot;9586b262-54de-4b27-9eb9-34c671400c33&quot;,&quot;carouselLayoutComponentId&quot;:&quot;8ac0c53c-e8d0-4e3e-87d0-7449eb0d4027&quot;},&quot;customMetadata&quot;:{&quot;heroLayoutComponentId&quot;:{&quot;minCanvasWidth&quot;:640},&quot;carouselLayoutComponentId&quot;:{&quot;maxCanvasWidth&quot;:639}}}, &quot;properties&quot;: {&quot;heroLayoutThreshold&quot;:640,&quot;carouselLayoutMaxWidth&quot;:639,&quot;isFullWidth&quot;:true,&quot;layoutCategory&quot;:1,&quot;layout&quot;:1,&quot;content&quot;:[{&quot;id&quot;:&quot;9eff894c-f593-4427-a706-413b1cef88c1&quot;,&quot;type&quot;:&quot;Web Page&quot;,&quot;color&quot;:4,&quot;image&quot;:{&quot;zoomRatio&quot;:1,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;listId&quot;:&quot;{listid:Site Assets}&quot;,&quot;id&quot;:&quot;af15de77-3fd2-415d-9ab6-4f7d22ef6d2c&quot;},&quot;description&quot;:&quot;&quot;,&quot;showDescription&quot;:false,&quot;showTitle&quot;:true,&quot;imageDisplayOption&quot;:3,&quot;isDefaultImage&quot;:false,&quot;showCallToAction&quot;:true,&quot;isDefaultImageLoaded&quot;:false,&quot;isCustomImageLoaded&quot;:true,&quot;showFeatureText&quot;:false,&quot;previewImage&quot;:{&quot;zoomRatio&quot;:1,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;listId&quot;:&quot;{listid:Site Pages}&quot;}},{&quot;id&quot;:&quot;4c8a3a11-58eb-45c5-9c68-e7171a4511c5&quot;,&quot;type&quot;:&quot;UrlLink&quot;,&quot;color&quot;:5,&quot;description&quot;:&quot;&quot;,&quot;showDescription&quot;:false,&quot;showTitle&quot;:true,&quot;imageDisplayOption&quot;:2,&quot;isDefaultImage&quot;:false,&quot;showCallToAction&quot;:false,&quot;isDefaultImageLoaded&quot;:false,&quot;isCustomImageLoaded&quot;:false,&quot;showFeatureText&quot;:false,&quot;previewImage&quot;:{&quot;minCanvasWidth&quot;:32767}},{&quot;id&quot;:&quot;ffff73bd-e508-41ab-990f-ebe6c23939ba&quot;,&quot;type&quot;:&quot;Image&quot;,&quot;color&quot;:4,&quot;image&quot;:{&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;listId&quot;:&quot;{listid:Site Assets}&quot;,&quot;id&quot;:&quot;9cc876b7-fae3-42e7-97d7-1eee82eba1a4&quot;,&quot;minCanvasWidth&quot;:32767},&quot;description&quot;:&quot;&quot;,&quot;showDescription&quot;:false,&quot;showTitle&quot;:true,&quot;imageDisplayOption&quot;:1,&quot;isDefaultImage&quot;:false,&quot;showCallToAction&quot;:false,&quot;isDefaultImageLoaded&quot;:true,&quot;isCustomImageLoaded&quot;:false,&quot;showFeatureText&quot;:false,&quot;previewImage&quot;:{&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;listId&quot;:&quot;{{listid:Site Assets}}&quot;,&quot;id&quot;:&quot;7d41bad5-dc9c-4af5-925c-9cecc3909a0f&quot;,&quot;widthFactor&quot;:0.25,&quot;minCanvasWidth&quot;:640}},{&quot;id&quot;:&quot;5972b83b-7497-4d20-bd1a-8c50c96ac2fc&quot;,&quot;type&quot;:&quot;Image&quot;,&quot;color&quot;:4,&quot;image&quot;:{&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;listId&quot;:&quot;{listid:Site Assets}&quot;,&quot;id&quot;:&quot;4268e02b-14dd-485f-b672-dcaed6902117&quot;,&quot;minCanvasWidth&quot;:32767},&quot;description&quot;:&quot;&quot;,&quot;showDescription&quot;:false,&quot;showTitle&quot;:true,&quot;imageDisplayOption&quot;:1,&quot;isDefaultImage&quot;:false,&quot;showCallToAction&quot;:false,&quot;isDefaultImageLoaded&quot;:true,&quot;isCustomImageLoaded&quot;:false,&quot;showFeatureText&quot;:false,&quot;previewImage&quot;:{&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;listId&quot;:&quot;{listid:Site Assets}&quot;,&quot;id&quot;:&quot;4268e02b-14dd-485f-b672-dcaed6902117&quot;,&quot;widthFactor&quot;:0.25,&quot;minCanvasWidth&quot;:32767}},{&quot;id&quot;:&quot;f743acc1-186b-4699-be7a-6a9773ae08f7&quot;,&quot;type&quot;:&quot;UrlLink&quot;,&quot;color&quot;:5,&quot;description&quot;:&quot;&quot;,&quot;showDescription&quot;:false,&quot;showTitle&quot;:true,&quot;imageDisplayOption&quot;:2,&quot;isDefaultImage&quot;:false,&quot;showCallToAction&quot;:false,&quot;isDefaultImageLoaded&quot;:false,&quot;isCustomImageLoaded&quot;:false,&quot;showFeatureText&quot;:false,&quot;previewImage&quot;:{&quot;minCanvasWidth&quot;:32767}}]}}" ControlId="c4bd7b2f-7b6e-4599-8485-16504575f590" Order="1" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.0&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;title&quot;:&quot;&quot;,&quot;listUrl&quot;:&quot;{hosturl}{site}/Lists/PnPTiles&quot;,&quot;collectionData&quot;:[{&quot;title&quot;:&quot;Employee Directory&quot;,&quot;description&quot;:&quot;Enterprise Phone book&quot;,&quot;url&quot;:&quot;{site}/SitePages/EmployeeDirectory.aspx&quot;,&quot;icon&quot;:&quot;Group&quot;,&quot;target&quot;:&quot;&quot;},{&quot;title&quot;:&quot;HR&quot;,&quot;description&quot;:&quot;Human Resources&quot;,&quot;url&quot;:&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part&quot;,&quot;icon&quot;:&quot;managerselfservice&quot;,&quot;target&quot;:&quot;&quot;},{&quot;title&quot;:&quot;My Profile&quot;,&quot;description&quot;:&quot;My Profile&quot;,&quot;url&quot;:&quot;https://aka.ms/sppnp&quot;,&quot;icon&quot;:&quot;d365talenthrcore&quot;,&quot;target&quot;:&quot;&quot;},{&quot;title&quot;:&quot;Travel Instructions&quot;,&quot;description&quot;:&quot;Traveling?&quot;,&quot;url&quot;:&quot;https://twitter.com/officedev&quot;,&quot;icon&quot;:&quot;airplane&quot;,&quot;target&quot;:&quot;&quot;},{&quot;title&quot;:&quot;Financial Results&quot;,&quot;description&quot;:&quot;Company Results&quot;,&quot;url&quot;:&quot;https://aka.ms/spdev-videos&quot;,&quot;icon&quot;:&quot;stackedlinechart&quot;,&quot;target&quot;:&quot;&quot;},{&quot;title&quot;:&quot;FAQ&quot;,&quot;description&quot;:&quot;Frequently Asked Questions&quot;,&quot;url&quot;:&quot;https://developer.microsoft.com/en-us/SharePoint/gallery/?filterBy=SharePoint,Samples&quot;,&quot;icon&quot;:&quot;searchissue&quot;,&quot;target&quot;:&quot;&quot;},{&quot;title&quot;:&quot;Training&quot;,&quot;description&quot;:&quot;Training materials&quot;,&quot;url&quot;:&quot;https://aka.ms/spdev-uservoice&quot;,&quot;icon&quot;:&quot;d365talentlearn&quot;,&quot;target&quot;:&quot;&quot;},{&quot;title&quot;:&quot;Support&quot;,&quot;description&quot;:&quot;Support&quot;,&quot;url&quot;:&quot;https://aka.ms/spdev-issues&quot;,&quot;icon&quot;:&quot;headset&quot;,&quot;target&quot;:&quot;&quot;},{&quot;title&quot;:&quot;Feedback&quot;,&quot;description&quot;:&quot;Provide feedback on portal&quot;,&quot;url&quot;:&quot;https://aka.ms/spdev-community&quot;,&quot;icon&quot;:&quot;ChatInviteFriend&quot;,&quot;target&quot;:&quot;&quot;}]}}" ControlId="26cb4af3-7f48-4737-b82a-4e24167c2d07" Order="1" Column="2" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="2" Type="TwoColumnLeft">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="NewsReel" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.5&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;title&quot;:&quot;Company News&quot;},&quot;imageSources&quot;:{},&quot;links&quot;:{&quot;baseUrl&quot;:&quot;{hosturl}{site}&quot;},&quot;componentDependencies&quot;:{&quot;layoutComponentId&quot;:&quot;a2752e70-c076-41bf-a42e-1d955b449fbc&quot;}}, &quot;properties&quot;: {&quot;layoutId&quot;:&quot;FeaturedNews&quot;,&quot;filters&quot;:[{&quot;filterType&quot;:1,&quot;value&quot;:&quot;&quot;,&quot;values&quot;:[]}],&quot;newsDataSourceProp&quot;:1,&quot;dataProviderId&quot;:&quot;viewCounts&quot;,&quot;newsSiteList&quot;:[],&quot;renderItemsSliderValue&quot;:3,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;templateId&quot;:&quot;FeaturedNews&quot;,&quot;propsLastEdited&quot;:&quot;2018-07-09T22:55:36.594Z&quot;,&quot;showChrome&quot;:true,&quot;prefetchCount&quot;:4,&quot;compactMode&quot;:false}}" ControlId="a5df8fdf-b508-4b66-98a6-d83bc2597f63" Order="1" Column="1" />
+                <pnp:CanvasControl WebPartType="Events" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.2&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;title&quot;:&quot;Company Events&quot;},&quot;imageSources&quot;:{},&quot;links&quot;:{&quot;baseUrl&quot;:&quot;{hosturl}{site}&quot;},&quot;componentDependencies&quot;:{&quot;layoutComponentId&quot;:&quot;0447e11d-bed9-4898-b600-8dbcd95e9cc2&quot;}}, &quot;properties&quot;: {&quot;selectedListId&quot;:&quot;{listid:Events}&quot;,&quot;selectedCategory&quot;:&quot;&quot;,&quot;dateRangeOption&quot;:0,&quot;startDate&quot;:&quot;&quot;,&quot;endDate&quot;:&quot;&quot;,&quot;isOnSeeAllPage&quot;:false,&quot;layoutId&quot;:&quot;Flex&quot;,&quot;dataProviderId&quot;:&quot;Event&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;layout&quot;:&quot;Filmstrip&quot;,&quot;dataSource&quot;:7,&quot;sites&quot;:[],&quot;maxItemsPerPage&quot;:20}}" ControlId="20745d7d-8581-4a6c-bf26-68279bc123fc" Order="1" Column="2" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="3" Type="TwoColumnLeft">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="DocumentEmbed" JsonControlData="{ &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;annotation&quot;:&quot;Latest quarterly company presentation&quot;,&quot;title&quot;:&quot;PowerPoint Presentation&quot;},&quot;imageSources&quot;:{},&quot;links&quot;:{&quot;serverRelativeUrl&quot;:&quot;{site}/{resource:SharedDocumentsFolder}/Contoso_Report.pptx&quot;,&quot;wopiurl&quot;:&quot;{hosturl}{site}/_layouts/15/WopiFrame.aspx?sourcedoc={{fileuniqueid:{resource:SharedDocumentsFolder}/contoso_report.pptx}}&amp;action=interactivepreview&quot;}}, &quot;properties&quot;: {&quot;authorName&quot;:&quot;Vesa Juvonen&quot;,&quot;chartitem&quot;:&quot;&quot;,&quot;endrange&quot;:&quot;&quot;,&quot;excelSettingsType&quot;:&quot;&quot;,&quot;file&quot;:&quot;{hosturl}{site}/Shared Documents/Contoso_Report.pptx&quot;,&quot;listId&quot;:&quot;{listid:Documents}&quot;,&quot;modifiedAt&quot;:&quot;2018-05-14T13:40:02+02:00&quot;,&quot;photoUrl&quot;:&quot;/_layouts/15/userphoto.aspx?size=S&amp;accountname=vesaj%40officedevpnp.onmicrosoft.com&quot;,&quot;rangeitem&quot;:&quot;&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;startPage&quot;:1,&quot;startrange&quot;:&quot;&quot;,&quot;tableitem&quot;:&quot;&quot;,&quot;uniqueId&quot;:&quot;{fileuniqueid:/shared documents/contoso_report.pptx}&quot;,&quot;wdallowinteractivity&quot;:true,&quot;wdhidegridlines&quot;:true,&quot;wdhideheaders&quot;:true,&quot;webId&quot;:&quot;{siteid}&quot;}}" ControlId="b7dd04e1-19ce-4b24-9132-b60a1c2b910d" Order="2" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.0&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;temperatureUnit&quot;:&quot;F&quot;,&quot;location&quot;:{&quot;latitude&quot;:28.538,&quot;longitude&quot;:-81.377,&quot;name&quot;:&quot;Orlando, United States&quot;}}}" ControlId="868ac3c3-cad7-4bd6-9a1c-14dc5cc8e823" Order="1" Column="2" />
+                <pnp:CanvasControl WebPartType="Custom" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.0&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;stockSymbol&quot;:&quot;MSFT&quot;,&quot;autoRefresh&quot;:false,&quot;demo&quot;:true}}" ControlId="50256fc2-a28f-4544-900e-32724d32bc7f" Order="2" Column="2" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="4" Type="ThreeColumn">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="Image" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.8&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;captionText&quot;:&quot;&quot;},&quot;imageSources&quot;:{&quot;imageSource&quot;:&quot;{site}/SiteAssets/SitePages/Home/55057-87461-GettyImages-867431800.jpg&quot;},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;imageSourceType&quot;:2,&quot;altText&quot;:&quot;a person sitting at a table in a room&quot;,&quot;overlayText&quot;:&quot;Working methods&quot;,&quot;fileName&quot;:&quot;87461-GettyImages-867431800.jpg&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;listId&quot;:&quot;{listid:Site Assets}&quot;,&quot;uniqueId&quot;:&quot;dd4d43e7-2ac8-4d43-a1bd-dcb05672a1be&quot;,&quot;imgWidth&quot;:1500,&quot;imgHeight&quot;:1000,&quot;fixAspectRatio&quot;:false,&quot;isOverlayTextEnabled&quot;:true}}" ControlId="d1d91016-032f-456d-98a4-721247c305e8" Order="1" Column="1" />
+                <pnp:CanvasControl WebPartType="Image" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.8&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;captionText&quot;:&quot;&quot;},&quot;imageSources&quot;:{&quot;imageSource&quot;:&quot;{site}/SiteAssets/SitePages/Home/26535-4335-WCO18_slidingDoor_001.jpg&quot;},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;imageSourceType&quot;:2,&quot;altText&quot;:&quot;a flat screen tv sitting in a room&quot;,&quot;overlayText&quot;:&quot;Meeting Rooms&quot;,&quot;fileName&quot;:&quot;4335-WCO18_slidingDoor_001.jpg&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;listId&quot;:&quot;{listid:Site Assets}&quot;,&quot;uniqueId&quot;:&quot;2d8b9627-e91d-412d-aacc-3ec19f59bc1d&quot;,&quot;imgWidth&quot;:1500,&quot;imgHeight&quot;:1000,&quot;fixAspectRatio&quot;:false,&quot;isOverlayTextEnabled&quot;:true}}" ControlId="d1d91016-032f-456d-98a4-721247c305e8" Order="1" Column="2" />
+                <pnp:CanvasControl WebPartType="Image" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.8&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{&quot;captionText&quot;:&quot;&quot;},&quot;imageSources&quot;:{&quot;imageSource&quot;:&quot;{site}/SiteAssets/SitePages/Home/2233-48146-OFF12_Justice_01.png&quot;},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;imageSourceType&quot;:2,&quot;altText&quot;:&quot;a group of people on a beach&quot;,&quot;overlayText&quot;:&quot;Work life balance&quot;,&quot;fileName&quot;:&quot;48146-OFF12_Justice_01.png&quot;,&quot;siteId&quot;:&quot;{sitecollectionid}&quot;,&quot;webId&quot;:&quot;{siteid}&quot;,&quot;listId&quot;:&quot;{listid:Site Assets}&quot;,&quot;uniqueId&quot;:&quot;67664b85-067d-4be9-a7d7-89b2e804d09f&quot;,&quot;imgWidth&quot;:650,&quot;imgHeight&quot;:433,&quot;fixAspectRatio&quot;:false,&quot;isOverlayTextEnabled&quot;:true}}" ControlId="d1d91016-032f-456d-98a4-721247c305e8" Order="1" Column="3" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="5" Type="ThreeColumn">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="Custom" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.0&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;description&quot;:&quot;Singapore&quot;,&quot;timeZoneOffset&quot;:103}}" ControlId="4f87b698-f910-451f-b4ea-7848a472af0f" Order="1" Column="1" />
+                <pnp:CanvasControl WebPartType="Custom" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.0&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;description&quot;:&quot;London&quot;,&quot;timeZoneOffset&quot;:48}}" ControlId="4f87b698-f910-451f-b4ea-7848a472af0f" Order="1" Column="2" />
+                <pnp:CanvasControl WebPartType="Custom" JsonControlData="{ &quot;dataVersion&quot;: &quot;1.0&quot;, &quot;serverProcessedContent&quot;: {&quot;htmlStrings&quot;:{},&quot;searchablePlainTexts&quot;:{},&quot;imageSources&quot;:{},&quot;links&quot;:{}}, &quot;properties&quot;: {&quot;description&quot;:&quot;Seattle&quot;,&quot;timeZoneOffset&quot;:10}}" ControlId="4f87b698-f910-451f-b4ea-7848a472af0f" Order="1" Column="3" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+          <pnp:Header Type="Default" />
+        </pnp:ClientSidePage>
+        <pnp:ClientSidePage PageName="HomeOld.aspx" PromoteAsNewsArticle="false" Overwrite="true" Layout="Home" EnableComments="false" Publish="true">
           <pnp:Sections>
             <pnp:Section Order="1" Type="TwoColumnLeft">
               <pnp:Controls>
@@ -779,7 +825,7 @@
             </pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
-        <pnp:ListInstance Title="Alerts" Description="" DocumentTemplate="" TemplateType="100" Url="Lists/Alerts" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" ImageUrl="/_layouts/15/images/itgen.png?rev=44" IsApplicationList="false" ValidationFormula="" ValidationMessage="" RemoveExistingContentTypes="true">
+        <pnp:ListInstance Title="Alerts" Description="" DocumentTemplate="" TemplateType="100" Url="Lists/Alerts" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" ImageUrl="/_layouts/15/images/itgen.png?rev=44" IsApplicationList="false" ValidationFormula="" ValidationMessage="" RemoveExistingContentTypes="false">
           <pnp:ContentTypeBindings>
             <pnp:ContentTypeBinding ContentTypeID="0x01007926A45D687BA842B947286090B8F67D" Default="true" />
           </pnp:ContentTypeBindings>
@@ -871,7 +917,7 @@
         <pnp:File Src="resources\images\modernOffice_002.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="resources\images\modernOffice_007.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="resources\images\modernOffice_011.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
-        <pnp:File Src="resources\documents\contoso_report.pptx" Overwrite="true" Folder="{resource:SharedDocumentsFolder}"></pnp:File>
+        <pnp:File Src="resources\documents\Contoso_Report.pptx" Overwrite="true" Folder="{resource:SharedDocumentsFolder}"></pnp:File>
       </pnp:Files>
     </pnp:ProvisioningTemplate>
     <pnp:ProvisioningTemplate ID="COLLAB-TEMPLATE" Version="1.0" BaseSiteTemplate="GROUP#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
