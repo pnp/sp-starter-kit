@@ -8,7 +8,7 @@
                   ImagePreviewUrl="https://raw.githubusercontent.com/PiaSys/sp-dev-provisioning-templates/master/tenant/SP-Starter-Kit/sp-starter-kit-front-page-16x9.png">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.1.1809.0, Culture=neutral, PublicKeyToken=null">
     <pnp:Parameters>
-      <pnp:Parameter Key="Company">Contoso Electronic</pnp:Parameter>
+      <pnp:Parameter Key="Company">Contoso Electronics</pnp:Parameter>
       <pnp:Parameter Key="SiteUrlPrefix">Contoso</pnp:Parameter>
       <pnp:Parameter Key="WeatherCity">Seattle</pnp:Parameter>
       <pnp:Parameter Key="StockSymbol">MSFT</pnp:Parameter>
