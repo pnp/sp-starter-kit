@@ -388,7 +388,7 @@
       </pnp:Lists>
     </pnp:ProvisioningTemplate>
     <pnp:ProvisioningTemplate ID="ROOT-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="{Company} Technologies" Description="" Scope="RootSite" TemplateCultureInfo="1033">
-      <pnp:WebSettings WelcomePage="SitePages/Home.aspx" />
+      <pnp:WebSettings WelcomePage="SitePages/Home.aspx" SiteLogo="{site}/SiteAssets/contoso_sitelogo.png" />
       <pnp:Navigation EnableTreeView="false" CreateFriendlyUrlsForNewPages="false" AddNewPagesToNavigation="false">
         <pnp:GlobalNavigation NavigationType="Structural">
           <pnp:StructuralNavigation RemoveExistingNodes="true">
@@ -1002,6 +1002,7 @@
         <pnp:File Src="resources\images\WCO18_whiteboard_002.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="resources\images\Win17_15021_00_N9.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="resources\documents\contoso_report.pptx" Overwrite="true" Folder="{resource:SharedDocumentsFolder}"></pnp:File>
+        <pnp:File Src="resources\images\contoso_sitelogo.png" Overwrite="true" Folder="SiteAssets"></pnp:File>
       </pnp:Files>
     </pnp:ProvisioningTemplate>
     <pnp:ProvisioningTemplate ID="COLLAB-TEMPLATE" Version="1.0" BaseSiteTemplate="GROUP#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
