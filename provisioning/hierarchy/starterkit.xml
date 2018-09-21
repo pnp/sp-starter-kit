@@ -887,6 +887,18 @@
               <pnp:DataValue FieldName="EventDate">2018-11-26 00:00:00</pnp:DataValue>
               <pnp:DataValue FieldName="EndDate">2018-11-29 23:59:00</pnp:DataValue>
             </pnp:DataRow>
+              <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">SharePoint Conference</pnp:DataValue>
+              <pnp:DataValue FieldName="fAllDayEvent">true</pnp:DataValue>
+              <pnp:DataValue FieldName="EventDate">2019-05-21 00:00:00</pnp:DataValue>
+              <pnp:DataValue FieldName="EndDate">2010-05-23 23:59:00</pnp:DataValue>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">European Collaboration Summit</pnp:DataValue>
+              <pnp:DataValue FieldName="fAllDayEvent">true</pnp:DataValue>
+              <pnp:DataValue FieldName="EventDate">2019-05-27 00:00:00</pnp:DataValue>
+              <pnp:DataValue FieldName="EndDate">2010-05-29 23:59:00</pnp:DataValue>
+            </pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
         <pnp:ListInstance Title="Alerts" Description="" DocumentTemplate="" TemplateType="100" Url="Lists/Alerts" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" ImageUrl="/_layouts/15/images/itgen.png?rev=44" IsApplicationList="false" ValidationFormula="" ValidationMessage="" RemoveExistingContentTypes="true">
@@ -984,6 +996,11 @@
         <pnp:File Src="resources\images\working-methods.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="resources\images\meeting-rooms.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="resources\images\work-life-balance.png" Overwrite="true" Folder="SiteAssets"></pnp:File>
+        <pnp:File Src="resources\images\Commercial16_smallmeeting_02.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
+        <pnp:File Src="resources\images\MSSurface_Pro4_SMB_Seattle_0578.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
+        <pnp:File Src="resources\images\WCO18_ITHelp_004.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
+        <pnp:File Src="resources\images\WCO18_whiteboard_002.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
+        <pnp:File Src="resources\images\Win17_15021_00_N9.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="resources\documents\contoso_report.pptx" Overwrite="true" Folder="{resource:SharedDocumentsFolder}"></pnp:File>
       </pnp:Files>
     </pnp:ProvisioningTemplate>
