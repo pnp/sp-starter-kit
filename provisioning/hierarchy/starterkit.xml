@@ -177,7 +177,7 @@
                           SiteDesign="Topic"
                           Title="{parameter:Company}"
                           Description=""
-                          Url="/sites/{parameter:SiteUrlPrefix}_portal"
+                          Url="/sites/{parameter:SiteUrlPrefix}portal"
                           IsHubSite="true"
                           Owner="{CurrentUserLoginName}">
         <pnp:Templates>
@@ -188,7 +188,7 @@
       <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite"
                           Theme="{parameter:Company} HR"
                           ProvisioningId="HR"
-                          Alias="{parameter:SiteUrlPrefix}_HR"
+                          Alias="{parameter:SiteUrlPrefix}hr"
                           IsPublic="false"
                           Description=""
                           DisplayName =""
@@ -200,7 +200,7 @@
       <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite"
                           Theme="{parameter:Company} Marketing"
                           ProvisioningId="MARKETING"
-                          Alias="{parameter:SiteUrlPrefix}_MARKETING"
+                          Alias="{parameter:SiteUrlPrefix}marketing"
                           IsPublic="false"
                           Description=""
                           DisplayName =""
