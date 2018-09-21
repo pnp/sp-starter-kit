@@ -5,7 +5,7 @@
                   Version="1.0"
                   Description="SharePoint Starter Kit"
                   DisplayName="SharePoint Starter Kit"
-                  ImagePreviewUrl="https://raw.githubusercontent.com/PiaSys/sp-dev-provisioning-templates/master/tenant/SP-Starter-Kit/sp-starter-kit-front-page-16x9.png">
+                  ImagePreviewUrl="https://raw.githubusercontent.com/SharePoint/sp-dev-provisioning-templates/master/tenant/SP-Starter-Kit/sp-starter-kit-front-page-16x9.png">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.1.1809.0, Culture=neutral, PublicKeyToken=null">
     <pnp:Parameters>
       <pnp:Parameter Key="Company">Contoso Electronics</pnp:Parameter>
