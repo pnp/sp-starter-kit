@@ -4,7 +4,7 @@ This is a solution designed for SharePoint Online which provides numerous web pa
 
 > Please be aware that **documentation work is still in progress** and we will keep on provide more guidance and input around covered capabilities in this solution. In the meantime, please submit issues and questions using the [issues list](../../issues) to help us provide better documentation and guidance. Thanks for your patience!
 
-![PnP Starter Pack Front Page](./assets/images/default-front-page.png)
+![PnP Starter Pack Front Page](./assets/images/default-front-page-contoso.png)
 
 ## Objectives of this solution
 
@@ -16,7 +16,7 @@ SharePoint Communication Sites have great out-of-the-box capabilities, but the o
 - Implementation of different customizations for SharePoint Online
 - Usage of Office UI Fabric and reusable PnP SPFx controls within the customizations
 
-> Additional high resolution screenshots are also available: [front page](./assets/images/hihg-res-default-home-page.png) and [front page with extended footer](./assets/images/hihg-res-default-home-page-extended-footer.png).
+> Additional high resolution screenshots are also available: [front page](./assets/images/high-res-default-home-page-contoso.png).
 
 
 ## Pre-requirements
