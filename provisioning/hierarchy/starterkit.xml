@@ -388,7 +388,7 @@
       </pnp:Lists>
     </pnp:ProvisioningTemplate>
     <pnp:ProvisioningTemplate ID="ROOT-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="{Company} Technologies" Description="" Scope="RootSite" TemplateCultureInfo="1033">
-      <pnp:WebSettings WelcomePage="SitePages/Home.aspx" SiteLogo="{site}/SiteAssets/contoso_sitelogo.png" />
+      <pnp:WebSettings WelcomePage="SitePages/Home.aspx" Title="{parameter:Company}" SiteLogo="{site}/SiteAssets/contoso_sitelogo.png" />
       <pnp:Navigation EnableTreeView="false" CreateFriendlyUrlsForNewPages="false" AddNewPagesToNavigation="false">
         <pnp:GlobalNavigation NavigationType="Structural">
           <pnp:StructuralNavigation RemoveExistingNodes="true">
@@ -660,6 +660,9 @@
         </pnp:ClientSidePage> -->
         <pnp:ClientSidePage PageName="About-Us.aspx" Title="About Us" Layout="Article" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
           <pnp:Header Type="Custom" ServerRelativeImageUrl="{site}/SiteAssets/hero.jpg" TranslateX="42.3837520042758" TranslateY="56.4285714285714" />
+        </pnp:ClientSidePage>
+        <pnp:ClientSidePage PageName="HR.aspx" Title="About Us" Layout="Article" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
+          <pnp:Header Type="Custom" ServerRelativeImageUrl="{site}/SiteAssets/page-hr.jpg" TranslateX="44.5216461785142" TranslateY="53.9285714285714" />
         </pnp:ClientSidePage>
         <pnp:ClientSidePage PageName="People-Directory.aspx" Title="People Directory" Layout="Article" PromoteAsNewsArticle="false" Overwrite="true" EnableComments="false" Publish="true">
           <pnp:Header Type="Custom" ServerRelativeImageUrl="{site}/SiteAssets/page-people-directory.jpg" TranslateX="50.1336183858899" TranslateY="30" />
