@@ -194,6 +194,7 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
           this.state.meetings &&
             this.state.meetings.length > 0 ? (
               <div>
+                <Link href='https://outlook.office.com/owa/?#viewmodel=IComposeCalendarItemViewModelFactory' target='_blank' className={styles.newMeeting}>{strings.NewMeeting}</Link>
                 <List items={this.state.meetings}
                   onRenderCell={this._onRenderCell} className={styles.list} />
                 <Link href='https://outlook.office.com/owa/?path=/calendar/view/Day' target='_blank'>{strings.ViewAll}</Link>

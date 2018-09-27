@@ -4,7 +4,12 @@
   @include ms-font-m;
 
   .list {
+    margin-top: 1em;
     margin-bottom: 1em;
+  }
+
+  .newMeeting {
+    padding: 0.5em 10px;
   }
 
   .meetingWrapper {
