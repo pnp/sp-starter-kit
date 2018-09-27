@@ -1,11 +1,12 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
 .personalEmail {
-  .title, .viewAll {
+  .title, .viewAll, .newEmail {
     padding-left: 10px;
   }
 
   .list {
+    margin-top: 1em;
     margin-bottom: 1em;
   }
 
