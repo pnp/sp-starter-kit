@@ -6,6 +6,7 @@ declare interface IPersonalCalendarWebPartStrings {
   Hours: string;
   Loading: string;
   Minutes: string;
+  NewMeeting: string;
   NoMeetings: string;
   NumMeetings: string;
   RefreshInterval: string;
