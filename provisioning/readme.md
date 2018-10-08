@@ -2,30 +2,49 @@
 
 The following documentation provides guidance related to the the provisioning process of **SP Starter Kit**.
 
-The primary entry point for automatic end-to-end provisioning is the **deploy.ps1** PowerShell script found within the `provisioning` folder.
 
 ## Minimal path to success
 
-Open PowerShell and run the following commands, changing the tenant url to your primary SharePoint tenant site. Before running deploy.ps1, use PnP PowerShell to connect to any site in your tenant with the [`Connect-PnPOnline` cmdlet](https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/connect-pnponline?view=sharepoint-ps) using your own tenant url.
+Open PowerShell and run the following commands, changing the tenant url to your primary SharePoint tenant site.
+
+In order to succesfully install the SP Starter Kit you are required to install the latest PnP PowerShell (version 3.2.1810.0 or higher), which is done through
 
 ```powershell
-Connect-PnPOnline https://[yourtenant].sharepoint.com
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com
+Install-Module -Name SharePointPnPPowerShellOnline
+```
+
+After successfully installing PnP PowerShell you need to connect to your tenant:
+
+```powershell
+Connect-PnPOnline -Url https://[yourtenant].sharepoint.com
+```
+
+Then the easiest way to install the starter it is by entering:
+
+```powershell
+Apply-PnPProvisioningHierarchy -Path starterkit.pnp
 ```
 
 **Common notes**
 
-- The tenant site you provide is only used to create the initial connection to your tenant. SP Starter Kit will create new demo sites by default. Refer to (SkipSiteCreation parameter)[#-SkipSiteCreation].
+- By default the starter kit will create 3 site collections, using a common prefix of 'Contoso'. These sites will be called 'contosoportal' (a communications site), 'contosohr' and 'contosomarketing' (both team sites). If you want to provide a different prefix, enter the apply cmdlet as follows:
 
-- The site hierarchy of the sites created by the deployment process will be read from the hierarchy.json file. **Modify this file as appropriate** The top level site will be provisioned as a **Communication Site** while all children you provide wil be provisioned as **Modern Team Sites**.
+```powershell
+Apply-PnPProvisioningHierarchy -Path starterkit.pnp -Parameters @{"SitePrefixUrl"="contoso"}
+```
 
-- You will be asked for credentials during deployment, those need to be tenant admin credentials. Refer to (Credentials parameter)[#-Credentials].
+where you replace the 'contoso' part with your own prefix, for instance the name of your company.
 
-- If one of the required sites does not exist, the deployment process will create it.
+- The tenant site you provide is only used to create the initial connection to your tenant. SP Starter Kit will create new demo sites by default. If the site collections are in place it will reuse those site collections.
 
-- If the SPFx solution .sppkg file is not present in the **solution** folder tree, the solution will be built and packaged. Force building the solution with the (Build parameter)[#-Build].
+- The site hierarchy of the sites created by the deployment process will be read from the starterkit.pnp file. If you want to modify this hierarchy you will have to modify and repackage the starterkit.xml into a starterkit.pnp file, which you can do using
 
-- Any existing instances of the SPFx solution in the tenant or site app catalogs will be removed before deployment. Refer to (SkipSolutionDeployment parameter)[#-SkipSolutionDeployment].
+```powershell
+$kit = Read-PnPProvisioningHierarchy -Path .\starterkit.xml
+Save-PnPProvisioningHierarchy -Hierarchy $kit -Out yourstarterkit.pnp
+```
+
+- Make sure that the credentials you use towards your tenat have tenant-admin rights. We require this to provision the taxonomy parts.
 
 ## Fixing provisioning errors
 
@@ -44,140 +63,26 @@ Credentials may be provided via the command line, or by using the ['Windows cred
 ```powershell
 $creds = Get-Credential
 Connect-PnPOnline https://[yourtenant].sharepoint.com -Credentials $creds
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -Credentials $creds
+Apply-PnPProvisioningHierarchy -Path .\starterkit.pnp
 ```
 
 ## Provisioning Parameters
 
 The deployment process may be configured with the following set of parameters that may be used in tandem with each other.
 
-### -TenantUrl ###
+### -Parameters ###
 
-**required**
+**Optional**
 
-Your tenant url, such as https://contoso.sharepoint.com, or any site within your tenant. Provides context for the provisioning process.
+You can override certain parameters, being:
 
-```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com
-```
+Company - defaults to "Contoso Electronics"
+SiteUrlPrefix - defaults to "Contoso"
+WeatherCity - defaults to "Seattle"
+StockSymbol - defaults to "MSFT"
 
-### -SitePrefix ###
-
-**optional**
-
-**default value**: `DEMO_`
-
-Override the prefix that will be prepended to all sites provided in hierarchy.json.
+Override one or more settings can be done like this:
 
 ```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -SitePrefix "mydemo"
-```
-
-### -Credentials ###
-
-**optional**
-
-**default value**: `$null`
-
-Pre-provide credentials for deployment
-
-```powershell
-$creds = Get-Credential
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -Credentials $creds
-```
-
-### -Build ###
-
-**optional**
-
-**default value**: `$false`
-
-Force the build and packaging of the SPFx solution .sppkg file
-
-```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -Build
-```
-
-### -SkipPowerShellInstall ###
-
-**optional**
-
-**default value**: `$false`
-
-If parameter provided, then skip validation check and possible installation of PnP PowerShell module.
-
-```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -SkipPowerShellInstall
-```
-
-### -SkipSiteCreation ###
-
-**optional**
-
-**default value**: `$false`
-
-If parameter provided, then skip the creation of the sites found within hierarchy.json. There is an assumption then that the sites have already been created. Useful when re-running the automated end-to-end deployment process.
-
-```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -SkipSiteCreation
-```
-
-### -SkipSolutionDeployment ###
-
-**optional**
-
-**default value**: `$false`
-
-If parameter provided, then skip the deployment of the SPFx solution to the tenant app catalog.
-
-```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -SkipSolutionDeployment
-```
-
-### -Company ###
-
-**optional**
-
-**default value**: `Contoso`
-
-Provide your company name, which is used during the site provisioning process to pre-set titles.
-
-```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -Company "SharePoint PnP"
-```
-
-### -WeatherCity ###
-
-**optional**
-
-**default value**: `Seattle`
-
-The Weather webpart defaults to 'Seattle'. You can override this during deployment by utilizing the **WeatherCity** parameter as follows.
-
-```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -WeatherCity "Amsterdam"
-```
-
-### -StockSymbol ###
-
-**optional**
-
-**default value**: `MSFT`
-
-The Stock Information webpart defaults to 'MSFT'. You can override this during deployment by utilizing the "StockSymbol" parameter although you will also need to [Request a custom API key to Alpha Vantage](../documentation/tenant-settings.md#APIKeyAlphaVantage) and utilize the "StockAPIKey" parameter as follows:
-
-```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -StockSymbol "GT" -StockAPIKey "your-api-key"
-```
-
-### -StockAPIKey ###
-
-**optional**
-
-**default value**: ``
-
-Used in tandem with the **StockSymbol** parameter to configure the Stock Information webpart. [Request a custom API key to Alpha Vantage](../documentation/tenant-settings.md#APIKeyAlphaVantage).
-
-```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -StockSymbol "GT" -StockAPIKey "your-api-key"
+Apply-PnPProvisioningHierarchy -Path .\starterkit.pnp -Parameters @{"Company"="Your Company Name";"SiteUrlPrefix"="YourCompany";"WeatherCity"="Stockholm"}
 ```
