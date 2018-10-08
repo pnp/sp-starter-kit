@@ -1,6 +1,7 @@
 declare interface IPersonalEmailWebPartStrings {
   Error: string;
   Loading: string;
+  NewEmail: string;
   NoMessages: string;
   NrOfMessagesToShow: string;
   PropertyPaneDescription: string;
