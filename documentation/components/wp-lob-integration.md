@@ -8,13 +8,13 @@ It leverages two different back-end REST APIs:
 ![LOB Integration](../../assets/images/components/part-lob-integration.png)
 
 The purpose of this web part is to show how you can consume LOB (Line of Business) solutions and on-premises data within SharePoint Framework.
-In order to leverage this web part, you will need to configure a couple of applications in Azure Active Directory:
-- SPFx-LOB-WebAPI: for the .NET web application
+In order to leverage this web part, you will need to configure a couple of applications in Azure Active Directory of your target tenant:
+- **SPFx-LOB-WebAPI**: for the .NET web application
   - Publish the ASP.NET MVC application on an Azure App Service
   - Register the AAD app providing the URL of the above Azure App Service
   - Choose a valid App ID Uri for the app
-  - Configure that App ID Uri in the [LobIntegration.tsx](../../solution/src/webparts/lobIntegration/components/LobIntegration.tsx#L156) React component
-  - Update the App manifest configuring the **oauth2Permissions** property with a value like the following one:
+  - Configure that App ID Uri in the [LobIntegration.tsx](../../solution/src/webparts/lobIntegration/components/LobIntegration.tsx#L145) React component
+  - Update the App manifest of the Azure AD app configuring the **oauth2Permissions** property with a value like the following one:
 
 ```json
   "oauth2Permissions": [
@@ -30,13 +30,13 @@ In order to leverage this web part, you will need to configure a couple of appli
     }
   ],
 ```
-- SPFx-LOB-Function: for the Azure Function
+- **SPFx-LOB-Function**: for the Azure Function
   - Create an Azure Function and configure it with Azure AD Authentication, registering it in your target AAD tenant
   - Register the AAD app providing the URL of the above Azure Function
   - Choose a valid App ID Uri for the app
   - Configure that App ID Uri in the [LobIntegration.tsx](../../solution/src/webparts/lobIntegration/components/LobIntegration.tsx#L99) React component
   
-Moreover, in order to make this web part working properly, you need to grant permissions to the SharePoint Service Application Principal to access them. You can do that using the PnP PowerShell command lets (or Office 365 CLI) and the following syntax:
+Moreover, in order to make this web part working properly, you need to grant permissions to the SharePoint Service Application Principal to access them. You can do that using the PnP PowerShell command lets (or Office 365 CLI) with the following syntax:
 
 ```PowerShell
 Connect-PnPOnline "https://[your-tenant].sharepoint.com/"
@@ -74,7 +74,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/lobintegration
+https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/lobIntegration
 
 # Minimal Path to Awesome
 
