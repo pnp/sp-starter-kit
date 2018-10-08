@@ -106,6 +106,7 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
           this.state.messages &&
             this.state.messages.length > 0 ? (
               <div>
+                <Link href='https://outlook.office.com/owa/?viewmodel=IMailComposeViewModelFactory' target='_blank'>{strings.NewEmail}</Link>
                 <List items={this.state.messages}
                   onRenderCell={this._onRenderCell} className={styles.list} />
                 <Link href='https://outlook.office.com/owa/' target='_blank' className={styles.viewAll}>{strings.ViewAll}</Link>
