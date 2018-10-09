@@ -6,7 +6,7 @@ define([], function() {
       "DiscussNowDialogDescription": "Geef een onderwerp, datum en lengte van een meeting op om het geselecteerde document te bespreken",
       
       "ScheduleMeetingSubjectLabel": "Meeting onderwerp:",
-      "ScheduleMeetingSubjectValidationErrorMessage": "Geen een onderwerp tekst op van langer dan 10 tekens.",
+      "ScheduleMeetingSubjectValidationErrorMessage": "Geef een onderwerp tekst op van langer dan 10 tekens.",
       "ScheduleMeetingDateLabel": "Meeting datum:",
       "ScheduleMeetingHoursLabel": "Uur",
       "ScheduleMeetingHoursValidationError": "Geef een valide uur waarde op",
