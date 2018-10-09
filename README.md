@@ -57,7 +57,7 @@ This will provision 3 site collections with urls of `/sites/demoportal`, `/sites
 
 
 > Notice that the starter kit also adds tenant level settings like themes, site designs, taxonomy term sets, and other adjustments. Therefore, it is recommended to test the starter kit in an **isolated test tenant and not immediately execute it within your production environment**.
-
+ 
 ## Custom Web Parts
 
 Here are the custom web parts currently included in the solution package.
