@@ -9,9 +9,9 @@ define([], function() {
       "ScheduleMeetingSubjectValidationErrorMessage": "Geef een onderwerp tekst op van langer dan 10 tekens.",
       "ScheduleMeetingDateLabel": "Meeting datum:",
       "ScheduleMeetingHoursLabel": "Uur",
-      "ScheduleMeetingHoursValidationError": "Geef een valide uur waarde op",
+      "ScheduleMeetingHoursValidationError": "Geef een geldigde uur waarde op",
       "ScheduleMeetingMinutesLabel": "Minuten",
-      "ScheduleMeetingMinutesValidationError": "Geef een valide minuten waarde op",
+      "ScheduleMeetingMinutesValidationError": "Geef een geldige minuten waarde op",
       "ScheduleMeetingDurationLabel": "Meeting lengte:",
     
       "ScheduleMeetingOkButtonText": "Plan",
