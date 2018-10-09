@@ -6,7 +6,7 @@ define([], function() {
       "NoRecentDocuments": "We hebben geen documenten gevonden.",
       "LastUsedMsg": "Laatst gebruikt:",
       "Loading": "Laatst gebruikte documenten aan het ophalen",
-      "Error": "Sorry, er is iets foutgegaan bij het ophalen van de laatst gebruikte documenten.",
+      "Error": "Sorry, er is iets fout gegaan bij het ophalen van de laatst gebruikte documenten.",
   
       "DateJustNow": "zo net",
       "DateMinute": "1 minuut geleden",
