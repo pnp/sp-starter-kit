@@ -35,12 +35,10 @@ Here are current pre-requirements for making this solution work in your tenant.
 
 ## Getting started
 
-Minimum path to success: The following steps will help you get started in any tenant as fast as possible:
+Shortest path to success: The following steps will help you get started in any tenant as fast as possible:
 
 - Ensure that you meet the [requirements for SharePoint Framework development](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) and are using the latest version of [PnP PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps)
 - Prepare your tenant, by accomplishing the tasks highlighted in document [Preparing your tenant for the PnP SharePoint Starter Kit](./documentation/tenant-settings.md).
-- Upload and deploy the [`sharepoint-starter-kit.sppkg`](./package/sharepoint-starter-kit.sppkg) from the [`/package`](./package) folder to your tenant app catalog
-    - After deploying the .sppkg package to the tenant app catalog, approve the requested API permissions. [Approving third party API access](./documentation/api-management.md).
 - Open PowerShell, and use PnP PowerShell to connect to any site in your tenant with the [`Connect-PnPOnline` cmdlet](https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/connect-pnponline?view=sharepoint-ps) using your own tenant url
 
 ```powershell
@@ -52,13 +50,13 @@ Connect-PnPOnline https://contosodemosk.sharepoint.com
     - If you run into errors during provisioning, refer to ['Common SP Starter Kit Provisioning results'](./documentation/common-provision-results.md) for additional suggestions and common mistakes
 
 ```powershell
-.\deploy.ps1 -TenantUrl https://contosodemosk.sharepoint.com -SitePrefix demo
+Apply-PnPProvisioningHierarchy -Path starterkit.pnp -Parameters @{"SiteUrlPrefix"="demo"}
 ```
 
-This will provision 3 site collections with urls of `/sites/demoportal`, `/sites/demohr`, and `/sites/demomarketing`. Your urls may vary depending on the SitePrefix you use.
+This will provision 3 site collections with urls of `/sites/demoportal`, `/sites/demohr`, and `/sites/demomarketing`. Your urls may vary depending on the SitePrefix you use and the managed path you selected for team sites in your tenant administration (this defaults to 'sites').
 
 
-> Notice that this script also adds tenant level settings like themes, site designs, taxonomy term sets, and other adjustments. Therefore, it is recommended to test the script in an **isolated test tenant and not immediately execute it within your production environment**. Nevertheless, a cleanup script will come shortly.
+> Notice that the starter kit also adds tenant level settings like themes, site designs, taxonomy term sets, and other adjustments. Therefore, it is recommended to test the starter kit in an **isolated test tenant and not immediately execute it within your production environment**.
 
 ## Custom Web Parts
 
