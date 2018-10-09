@@ -6,7 +6,7 @@ define([], function() {
   
       "NoContacts": "Geen contacten gevonden.",
       "Loading": "Contacten worden opgehaald",
-      "Error": "Sorry, iets ging fout tijdens het ophalen van je contacten."
+      "Error": "Sorry, er is iets fout gegaan tijdens het ophalen van je contacten."
     }
   });
   
