@@ -4,6 +4,8 @@ declare interface IPersonalEmailWebPartStrings {
   NewEmail: string;
   NoMessages: string;
   NrOfMessagesToShow: string;
+  ShowInboxOnly: string;
+  ShowInboxOnlyCallout: string;
   PropertyPaneDescription: string;
   ViewAll: string;
 }

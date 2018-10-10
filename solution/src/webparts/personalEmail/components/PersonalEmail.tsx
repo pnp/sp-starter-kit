@@ -6,6 +6,7 @@ import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import { List } from 'office-ui-fabric-react/lib/components/List';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import { MSGraphClient } from '@microsoft/sp-client-preview';
 
 export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersonalEmailState> {
   constructor(props: IPersonalEmailProps) {
@@ -34,10 +35,16 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
       messages: []
     });
 
+    let graphURI: string = "me/messages";
+
+    if(this.props.showInboxOnly) {
+      graphURI = "me/mailFolders/Inbox/messages";
+    }
+
     this.props.graphClient
-      .api("me/messages")
+      .api(graphURI)
       .version("v1.0")
-      .select("bodyPreview,receivedDateTime,from,subject,webLink")
+      .select("bodyPreview,receivedDateTime,from,subject,webLink,isRead")
       .top(this.props.nrOfMessages || 5)
       .orderby("receivedDateTime desc")
       .get((err: any, res: IMessages): void => {
@@ -70,11 +77,25 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
    * Render message item
    */
   private _onRenderCell = (item: IMessage, index: number | undefined): JSX.Element => {
+    let fromStyle : string = "";
+    let subjectStyle : string = "";
+    let dateStyle : string = "";
+    if (item.isRead) {
+      fromStyle = styles.fromRead;
+      subjectStyle = styles.subjectRead;
+      dateStyle = styles.dateRead;
+    }
+    else {
+      fromStyle = styles.fromUnread;
+      subjectStyle = styles.subjectUnread;
+      dateStyle = styles.dateUnread;
+    }
+
     return <Link href={item.webLink} className={styles.message} target='_blank'>
-        <div className={styles.from}>{item.from.emailAddress.name || item.from.emailAddress.address}</div>
-        <div className={styles.subject}>{item.subject}</div>
-        <div className={styles.date}>{(new Date(item.receivedDateTime).toLocaleDateString())}</div>
-        <div className={styles.preview}>{item.bodyPreview}</div>
+          <div className={fromStyle}>{item.from.emailAddress.name || item.from.emailAddress.address}</div>
+          <div className={subjectStyle}>{item.subject}</div>
+          <div className={dateStyle}>{(new Date(item.receivedDateTime).toLocaleDateString())}</div>
+          <div className={styles.preview}>{item.bodyPreview}</div>
       </Link>;
   }
 
@@ -106,7 +127,7 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
           this.state.messages &&
             this.state.messages.length > 0 ? (
               <div>
-                <Link href='https://outlook.office.com/owa/?viewmodel=IMailComposeViewModelFactory' target='_blank'>{strings.NewEmail}</Link>
+                <Link href='https://outlook.office.com/owa/?viewmodel=IMailComposeViewModelFactory' target='_blank' className={styles.newEmail}>{strings.NewEmail}</Link>
                 <List items={this.state.messages}
                   onRenderCell={this._onRenderCell} className={styles.list} />
                 <Link href='https://outlook.office.com/owa/' target='_blank' className={styles.viewAll}>{strings.ViewAll}</Link>
