@@ -1,7 +1,7 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
 .personalEmail {
-  .title, .viewAll {
+  .title, .viewAll, .newEmail {
     padding-left: 10px;
   }
 
@@ -21,12 +21,28 @@
     }
   }
 
-  .from {
+  .fromRead {
     @include ms-font-l;
     @include ms-fontWeight-semilight;
   }
 
-  .subject {
+  .fromUnread {
+    @include ms-font-l;
+    @include ms-fontWeight-semibold;
+  }
+
+  .subjectRead {
+    @include ms-font-s;
+    @include ms-fontWeight-semilight;
+    color: $ms-color-themePrimary;
+    float: left;
+    width: 80%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .subjectUnread {
     @include ms-font-s;
     @include ms-fontWeight-semibold;
     color: $ms-color-themePrimary;
@@ -37,7 +53,17 @@
     white-space: nowrap;
   }
 
-  .date {
+  .dateRead {
+    @include ms-font-s;
+    @include ms-fontWeight-semilight;
+    color: $ms-color-themePrimary;
+    float: right;
+    width: 20%;
+    text-align: right;
+    word-break: keep-all;
+  }
+
+  .dateUnread {
     @include ms-font-s;
     @include ms-fontWeight-semibold;
     color: $ms-color-themePrimary;

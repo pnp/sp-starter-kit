@@ -37,7 +37,7 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
     this.props.graphClient
       .api("me/messages")
       .version("v1.0")
-      .select("bodyPreview,receivedDateTime,from,subject,webLink")
+      .select("bodyPreview,receivedDateTime,from,isRead,subject,webLink")
       .top(this.props.nrOfMessages || 5)
       .orderby("receivedDateTime desc")
       .get((err: any, res: IMessages): void => {
@@ -70,11 +70,25 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
    * Render message item
    */
   private _onRenderCell = (item: IMessage, index: number | undefined): JSX.Element => {
+    let fromStyle : string = "";
+    let subjectStyle : string = "";
+    let dateStyle : string = "";
+    if (item.isRead) {
+      fromStyle = styles.fromRead;
+      subjectStyle = styles.subjectRead;
+      dateStyle = styles.dateRead;
+    }
+    else {
+      fromStyle = styles.fromUnread;
+      subjectStyle = styles.subjectUnread;
+      dateStyle = styles.dateUnread;
+    }
+
     return <Link href={item.webLink} className={styles.message} target='_blank'>
-        <div className={styles.from}>{item.from.emailAddress.name || item.from.emailAddress.address}</div>
-        <div className={styles.subject}>{item.subject}</div>
-        <div className={styles.date}>{(new Date(item.receivedDateTime).toLocaleDateString())}</div>
-        <div className={styles.preview}>{item.bodyPreview}</div>
+          <div className={fromStyle}>{item.from.emailAddress.name || item.from.emailAddress.address}</div>
+          <div className={subjectStyle}>{item.subject}</div>
+          <div className={dateStyle}>{(new Date(item.receivedDateTime).toLocaleDateString())}</div>
+          <div className={styles.preview}>{item.bodyPreview}</div>
       </Link>;
   }
 
