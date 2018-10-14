@@ -34,8 +34,14 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
       messages: []
     });
 
+    let graphURI: string = "me/messages";
+
+    if(this.props.showInboxOnly) {
+      graphURI = "me/mailFolders/Inbox/messages";
+    }
+
     this.props.graphClient
-      .api("me/messages")
+      .api(graphURI)
       .version("v1.0")
       .select("bodyPreview,receivedDateTime,from,subject,webLink")
       .top(this.props.nrOfMessages || 5)
