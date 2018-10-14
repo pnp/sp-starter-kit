@@ -8,11 +8,14 @@ import {
 
 import * as strings from 'PersonalEmailWebPartStrings';
 import { PersonalEmail, IPersonalEmailProps } from './components';
+import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
+import { PropertyFieldToggleWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldToggleWithCallout';
 import { MSGraphClient } from '@microsoft/sp-http';
 
 export interface IPersonalEmailWebPartProps {
   title: string;
   nrOfMessages: number;
+  showInboxOnly: boolean;
 }
 
 export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersonalEmailWebPartProps> {
@@ -36,6 +39,7 @@ export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersona
       {
         title: this.properties.title,
         nrOfMessages: this.properties.nrOfMessages,
+        showInboxOnly: this.properties.showInboxOnly,
         // pass the current display mode to determine if the title should be
         // editable or not
         displayMode: this.displayMode,
@@ -84,6 +88,13 @@ export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersona
                   value: this.properties.nrOfMessages,
                   minValue: 1,
                   maxValue: 10
+                }),
+                PropertyFieldToggleWithCallout('showInboxOnly', {
+                  calloutTrigger: CalloutTriggers.Click,
+                  key: 'showInboxOnly',
+                  label: strings.ShowInboxOnly,
+                  calloutContent: React.createElement('p', {}, strings.ShowInboxOnlyCallout),
+                  checked: this.properties.showInboxOnly
                 })
               ]
             }

@@ -21,7 +21,8 @@
     "officeFabricIconFontName": "Mail",
     "properties": {
       "title": "Personal e-mail",
-      "nrOfMessages": 5
+      "nrOfMessages": 5,
+      "showInboxOnly": true
     }
   }]
 }
