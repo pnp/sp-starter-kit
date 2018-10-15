@@ -30,6 +30,10 @@
       {
         "resource": "Microsoft Graph",
         "scope": "Group.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "MailboxSettings.Read"
       }
     ]
   },
