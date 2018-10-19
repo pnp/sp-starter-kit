@@ -29,8 +29,8 @@ Here are current pre-requirements for making this solution work in your tenant.
     - All solutions and web parts are also English in the current implementation
     - For tenants that have English but have a different default language, the [term set provisioning may be modified to assist with installation](./documentation/term-store.md#non-english-tenants).
 - Release preferences for your tenant will need to be set as "Targeted release for everyone" option (also known as First Release)
-- Add used tenant administrator account as Term Store Administrator in the Taxonomy Term Store 
-- The tenant app catalog must have been created 
+- Add the used tenant administrator account as Term Store Administrator in the Taxonomy Term Store through the SharePoint Admin Center
+- A tenant 'App Catalog' must have been created within the 'Apps' option of the SharePoint Admin Center
 
 
 ## Getting started
