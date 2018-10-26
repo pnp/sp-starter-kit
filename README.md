@@ -28,7 +28,7 @@ Here are current pre-requirements for making this solution work in your tenant.
 - Automatic end-to-end provisioning only works with English tenants
     - All solutions and web parts are also English in the current implementation
     - For tenants that have English but have a different default language, the [term set provisioning may be modified to assist with installation](./documentation/term-store.md#non-english-tenants).
-- Release preferences for your tenant will need to be set as "Targeted release for everyone" option (also known as First Release)
+- Release preferences for your tenant will need to be set as "Targeted release for everyone" option (also known as First Release) within the 'Settings/Organisation Profile' option of the left navigation bar of the Microssoft 365 Admin portal.
 - Add used tenant administrator account as Term Store Administrator in the Taxonomy Term Store 
 - The tenant app catalog must have been created 
 
