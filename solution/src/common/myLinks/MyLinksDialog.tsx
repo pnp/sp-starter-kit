@@ -295,7 +295,7 @@ class MyLinksDialogContent extends
   @autobind
   private _getErrorMessageUrl(value: string): string {
     // validate the URL with a specific Regular Expression
-    const regEx: RegExp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+    const regEx: RegExp = /(https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
     return(value == null || value.length === 0 || regEx.test(value) ? "" : strings.InvalidUrlError);
   }
 
