@@ -39,8 +39,8 @@ Leave all the other properties with their default values.
 
 The StockInformation Web Part uses the live stocks service provided by [Alpha Advantage](https://www.alphavantage.co/). However, to use it you need a software key, that you can ask for free to the API provider. You will simply need to go to the page to [Claim your API Key](https://www.alphavantage.co/support/#api-key), fill in the form, and store the generated key in a safe place.
 
-The key can be provided to the [deploy.ps1](../provisioning/deploy.ps1) PowerShell script through the *StockAPIKey* paramenter.
+The key should be configured at tenant level, by creating a storage entity using the following PowerShell script:
 
 ```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -StockSymbol "GT" -StockAPIKey "your-api-key"
+Set-PnPStorageEntity -Key "PnP-Portal-AlphaVantage-API-Key" -Value "your-api-key" -Comment "API Key for Alpha Advantage REST Stock service" -Description "API Key for Alpha Advantage REST Stock service"
 ```
