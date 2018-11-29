@@ -40,8 +40,8 @@ where you replace the 'contoso' part with your own prefix, for instance the name
 - The site hierarchy of the sites created by the deployment process will be read from the starterkit.pnp file. If you want to modify this hierarchy you will have to modify and repackage the starterkit.xml into a starterkit.pnp file, which you can do using
 
 ```powershell
-$kit = Read-PnPProvisioningHierarchy -Path .\starterkit.xml
-Save-PnPProvisioningHierarchy -Hierarchy $kit -Out yourstarterkit.pnp
+$kit = Read-PnPTenantTemplate -Path .\starterkit.xml
+Save-PnPTenantTemplate -Hierarchy $kit -Out yourstarterkit.pnp
 ```
 
 - Make sure that the credentials you use towards your tenat have tenant-admin rights. We require this to provision the taxonomy parts.
