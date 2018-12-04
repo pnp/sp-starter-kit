@@ -870,6 +870,9 @@
         </pnp:WebCustomActions>
       </pnp:CustomActions>
       <pnp:Files>
+        <pnp:File Src="resources\images\modernOffice_002.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
+        <pnp:File Src="resources\images\modernOffice_007.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
+        <pnp:File Src="resources\images\modernOffice_011.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="resources\images\hero.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="resources\images\page-people-directory.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
         <pnp:File Src="resources\images\page-faq.jpg" Overwrite="true" Folder="SiteAssets"></pnp:File>
