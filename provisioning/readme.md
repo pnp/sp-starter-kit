@@ -30,7 +30,7 @@ Apply-PnPProvisioningHierarchy -Path starterkit.pnp
 - By default the starter kit will create 3 site collections, using a common prefix of 'Contoso'. These sites will be called 'contosoportal' (a communications site), 'contosohr' and 'contosomarketing' (both team sites). If you want to provide a different prefix, enter the apply cmdlet as follows:
 
 ```powershell
-Apply-PnPProvisioningHierarchy -Path starterkit.pnp -Parameters @{"SitePrefixUrl"="contoso"}
+Apply-PnPTenantTemplate -Path starterkit.pnp -Parameters @{"SitePrefixUrl"="contoso"}
 ```
 
 where you replace the 'contoso' part with your own prefix, for instance the name of your company.
