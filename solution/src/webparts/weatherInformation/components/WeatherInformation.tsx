@@ -18,8 +18,8 @@ import {
 import * as strings from 'WeatherInformationWebPartStrings';
 
 export default class WeatherInformation extends React.Component<IWeatherInformationProps, IWeatherInformationState> {
-  constructor() {
-    super();
+  constructor(props: IWeatherInformationProps) {
+    super(props);
 
     this.state = {
       loading: false

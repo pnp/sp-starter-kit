@@ -66,8 +66,8 @@ const _customersColumns: IColumn[] = [
 
 export default class LobIntegration extends React.Component<ILobIntegrationProps, ILobIntegrationState> {
 
-  constructor() {
-    super();
+  constructor(props: ILobIntegrationProps) {
+    super(props);
 
     // set initial state for the component: not loading
     this.state = {
