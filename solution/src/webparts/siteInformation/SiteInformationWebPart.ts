@@ -14,19 +14,17 @@ import SiteInformation from './components/SiteInformation';
 import { ISiteInformationProps } from './components/ISiteInformationProps';
 import { ISiteInformationWebPartProps } from './ISiteInformationWebPartProps';
 
-// import additional controls/components
-import { PropertyFieldPeoplePicker, PrincipalType } from '@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker';
-import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
-import { PropertyFieldTermPicker } from '@pnp/spfx-property-controls/lib/PropertyFieldTermPicker';
-import { IPickerTerms } from "@pnp/spfx-property-controls/lib/PropertyFieldTermPicker";
-
-
 export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteInformationWebPartProps> {
+
+  private propertyFieldTermPicker;
+  private propertyFieldPeoplePicker;
+  private principalType;
 
   public onInit(): Promise<void> {
 
     return super.onInit().then(async (_) => {
       
+      //chunk shared by all web parts
       const { sp } = await import(
         /* webpackChunkName: 'pnp-sp' */
         "@pnp/sp");
@@ -89,6 +87,24 @@ export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteI
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
+  
+  //executes before property pane is loaded.
+  protected async loadPropertyPaneResources(): Promise<void> {
+    // import additional controls/components
+
+    const { PropertyFieldTermPicker } = await import (
+      /* webpackChunkName: 'pnp-property-controls' */
+      '@pnp/spfx-property-controls/lib/PropertyFieldTermPicker'
+    );
+    const { PropertyFieldPeoplePicker, PrincipalType } = await import (
+      /* webpackChunkName: 'pnp-property-controls' */
+      '@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker'
+    );
+
+    this.propertyFieldTermPicker = PropertyFieldTermPicker;
+    this.propertyFieldPeoplePicker = PropertyFieldPeoplePicker;
+    this.principalType = PrincipalType;
+  }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
@@ -104,12 +120,12 @@ export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteI
                 PropertyPaneTextField('siteTitle', {
                   label: strings.SiteTitleFieldLabel
                 }),
-                PropertyFieldPeoplePicker('siteContact', {
+                this.propertyFieldPeoplePicker('siteContact', {
                   label: strings.SiteContactFieldLabel,
                   initialData: this.properties.siteContact,
                   allowDuplicate: false,
                   multiSelect: false,
-                  principalType: [PrincipalType.Users],
+                  principalType: [this.principalType.Users],
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   context: this.context,
                   properties: this.properties,
@@ -117,7 +133,7 @@ export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteI
                   deferredValidationTime: 0,
                   key: 'siteContactId'
                 }),
-                PropertyFieldTermPicker('siteOrganization', {
+                this.propertyFieldTermPicker('siteOrganization', {
                   label: strings.SiteOrganizationFieldLabel,
                   panelTitle: strings.SiteOrganizationPanelTitle,
                   initialValues: this.properties.siteOrganization,
