@@ -4,14 +4,12 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneDropdown,
-  IPropertyPaneDropdownOption
+  PropertyPaneDropdown
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'FollowedSitesWebPartStrings';
 import FollowedSites from './components/FollowedSites';
 import { IFollowedSitesProps } from './components/IFollowedSitesProps';
-import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
 
 export interface IFollowedSitesWebPartProps {
   title: string;
@@ -26,8 +24,10 @@ export enum SortOrder {
 
 export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowedSitesWebPartProps> {
 
+  private propertyFieldNumber;
+
   public render(): void {
-    const element: React.ReactElement<IFollowedSitesProps > = React.createElement(
+    const element: React.ReactElement<IFollowedSitesProps> = React.createElement(
       FollowedSites,
       {
         title: this.properties.title,
@@ -48,6 +48,18 @@ export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowe
     return Version.parse('1.0');
   }
 
+  //executes only before property pane is loaded.
+  protected async loadPropertyPaneResources(): Promise<void> {
+    // import additional controls/components
+
+    const { PropertyFieldNumber } = await import(
+      /* webpackChunkName: 'pnp-propcontrols-number' */
+      '@pnp/spfx-property-controls/lib/propertyFields/number'
+    );
+
+    this.propertyFieldNumber = PropertyFieldNumber;
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -58,7 +70,7 @@ export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowe
           groups: [
             {
               groupFields: [
-                PropertyFieldNumber("nrOfItems", {
+                this.propertyFieldNumber("nrOfItems", {
                   key: "nrOfItems",
                   label: strings.NrOfFollowedItemsLabel,
                   value: this.properties.nrOfItems

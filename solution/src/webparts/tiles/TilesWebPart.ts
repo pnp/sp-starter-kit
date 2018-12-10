@@ -43,11 +43,11 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
     // import additional controls/components
 
     const { PropertyFieldNumber } = await import (
-      /* webpackChunkName: 'pnp-tileswp-propcontrols' */
+      /* webpackChunkName: 'pnp-propcontrols-number' */
       '@pnp/spfx-property-controls/lib/propertyFields/number'
     );
     const { PropertyFieldCollectionData, CustomCollectionFieldType } = await import (
-      /* webpackChunkName: 'pnp-tileswp-propcontrols' */
+      /* webpackChunkName: 'pnp-propcontrols-colldata' */
       '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData'
     );
 

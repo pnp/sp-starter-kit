@@ -3,12 +3,10 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  IPropertyPaneConfiguration
 } from '@microsoft/sp-webpart-base';
 import * as strings from 'PersonalContactsWebPartStrings';
 import { PersonalContacts, IPersonalContactsProps } from './components/PersonalContacts';
-import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
 import { MSGraphClient } from '@microsoft/sp-http';
 
 export interface IPersonalContactsWebPartProps {
@@ -18,6 +16,7 @@ export interface IPersonalContactsWebPartProps {
 
 export default class PersonalContactsWebPart extends BaseClientSideWebPart<IPersonalContactsWebPartProps> {
   private graphClient: MSGraphClient;
+  private propertyFieldNumber;
 
   public onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
@@ -56,6 +55,18 @@ export default class PersonalContactsWebPart extends BaseClientSideWebPart<IPers
     return Version.parse('1.0');
   }
 
+  //executes only before property pane is loaded.
+  protected async loadPropertyPaneResources(): Promise<void> {
+    // import additional controls/components
+
+    const { PropertyFieldNumber } = await import(
+      /* webpackChunkName: 'pnp-propcontrols-number' */
+      '@pnp/spfx-property-controls/lib/propertyFields/number'
+    );
+
+    this.propertyFieldNumber = PropertyFieldNumber;
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -66,7 +77,7 @@ export default class PersonalContactsWebPart extends BaseClientSideWebPart<IPers
           groups: [
             {
               groupFields: [
-                PropertyFieldNumber("nrOfContacts", {
+                this.propertyFieldNumber("nrOfContacts", {
                   key: "nrOfContacts",
                   label: strings.NrOfContactsToShow,
                   value: this.properties.nrOfContacts,

@@ -93,11 +93,11 @@ export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteI
     // import additional controls/components
 
     const { PropertyFieldTermPicker } = await import (
-      /* webpackChunkName: 'pnp-siteinfo-propcontrols' */
+      /* webpackChunkName: 'pnp-propcontrols-termpicker' */
       '@pnp/spfx-property-controls/lib/PropertyFieldTermPicker'
     );
     const { PropertyFieldPeoplePicker, PrincipalType } = await import (
-      /* webpackChunkName: 'pnp-siteinfo-propcontrols' */
+      /* webpackChunkName: 'pnp-propcontrols-peoplepicker' */
       '@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker'
     );
 
