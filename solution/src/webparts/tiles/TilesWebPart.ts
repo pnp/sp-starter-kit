@@ -2,9 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import * as strings from 'TilesWebPartStrings';
 import { Version } from '@microsoft/sp-core-library';
-import { BaseClientSideWebPart, IPropertyPaneConfiguration, PropertyPaneLabel, PropertyPaneLink, PropertyPaneHorizontalRule } from '@microsoft/sp-webpart-base';
-import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/propertyFields/number';
-import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
+import { BaseClientSideWebPart, IPropertyPaneConfiguration } from '@microsoft/sp-webpart-base';
 import { Tiles, ITilesProps, ITileInfo, LinkTarget } from './components';
 
 export interface ITilesWebPartProps {
@@ -14,6 +12,9 @@ export interface ITilesWebPartProps {
 }
 
 export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartProps> {
+  private propertyFieldNumber;
+  private propertyFieldCollectionData;
+  private customCollectionFieldType;
 
   public render(): void {
     const element: React.ReactElement<ITilesProps> = React.createElement(
@@ -37,6 +38,24 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
     return Version.parse('1.0');
   }
 
+  //executes only before property pane is loaded.
+  protected async loadPropertyPaneResources(): Promise<void> {
+    // import additional controls/components
+
+    const { PropertyFieldNumber } = await import (
+      /* webpackChunkName: 'pnp-tileswp-propcontrols' */
+      '@pnp/spfx-property-controls/lib/propertyFields/number'
+    );
+    const { PropertyFieldCollectionData, CustomCollectionFieldType } = await import (
+      /* webpackChunkName: 'pnp-tileswp-propcontrols' */
+      '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData'
+    );
+
+    this.propertyFieldNumber = PropertyFieldNumber;
+    this.propertyFieldCollectionData = PropertyFieldCollectionData;
+    this.customCollectionFieldType = CustomCollectionFieldType;
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -47,7 +66,7 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
           groups: [
             {
               groupFields: [
-                PropertyFieldCollectionData("collectionData", {
+                this.propertyFieldCollectionData("collectionData", {
                   key: "collectionData",
                   label: strings.tilesDataLabel,
                   panelHeader: strings.tilesPanelHeader,
@@ -58,31 +77,31 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
                     {
                       id: "title",
                       title: strings.titleField,
-                      type: CustomCollectionFieldType.string,
+                      type: this.customCollectionFieldType.string,
                       required: true
                     },
                     {
                       id: "description",
                       title: strings.descriptionField,
-                      type: CustomCollectionFieldType.string,
+                      type: this.customCollectionFieldType.string,
                       required: false
                     },
                     {
                       id: "url",
                       title: strings.urlField,
-                      type: CustomCollectionFieldType.string,
+                      type: this.customCollectionFieldType.string,
                       required: true
                     },
                     {
                       id: "icon",
                       title: strings.iconField,
-                      type: CustomCollectionFieldType.fabricIcon,
+                      type: this.customCollectionFieldType.fabricIcon,
                       required: true
                     },
                     {
                       id: "target",
                       title: strings.targetField,
-                      type: CustomCollectionFieldType.dropdown,
+                      type: this.customCollectionFieldType.dropdown,
                       options: [
                         {
                           key: LinkTarget.parent,
@@ -96,7 +115,7 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
                     }
                   ]
                 }),
-                PropertyFieldNumber('tileHeight', {
+                this.propertyFieldNumber('tileHeight', {
                   key: "tileHeight",
                   label: strings.TileHeight,
                   value: this.properties.tileHeight

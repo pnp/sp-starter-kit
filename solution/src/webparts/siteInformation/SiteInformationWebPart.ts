@@ -88,16 +88,16 @@ export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteI
     return Version.parse('1.0');
   }
   
-  //executes before property pane is loaded.
+  //executes only before property pane is loaded.
   protected async loadPropertyPaneResources(): Promise<void> {
     // import additional controls/components
 
     const { PropertyFieldTermPicker } = await import (
-      /* webpackChunkName: 'pnp-property-controls' */
+      /* webpackChunkName: 'pnp-siteinfo-propcontrols' */
       '@pnp/spfx-property-controls/lib/PropertyFieldTermPicker'
     );
     const { PropertyFieldPeoplePicker, PrincipalType } = await import (
-      /* webpackChunkName: 'pnp-property-controls' */
+      /* webpackChunkName: 'pnp-siteinfo-propcontrols' */
       '@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker'
     );
 
