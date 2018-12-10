@@ -19,13 +19,18 @@ import { PropertyFieldPeoplePicker, PrincipalType } from '@pnp/spfx-property-con
 import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
 import { PropertyFieldTermPicker } from '@pnp/spfx-property-controls/lib/PropertyFieldTermPicker';
 import { IPickerTerms } from "@pnp/spfx-property-controls/lib/PropertyFieldTermPicker";
-import { sp } from "@pnp/sp";
+
 
 export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteInformationWebPartProps> {
 
   public onInit(): Promise<void> {
 
-    return super.onInit().then(_ => {
+    return super.onInit().then(async (_) => {
+      
+      const { sp } = await import(
+        /* webpackChunkName: 'pnp-sp' */
+        "@pnp/sp");
+
       // initialize the PnP JS library
       sp.setup({
         spfxContext: this.context

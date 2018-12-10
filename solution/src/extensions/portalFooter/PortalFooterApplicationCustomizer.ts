@@ -11,12 +11,11 @@ import { IPortalFooterProps, PortalFooter } from './components/PortalFooter';
 import { ILinkGroup } from './components/PortalFooter/ILinkGroup';
 
 // import additional controls/components
-import { sp, CamlQuery } from "@pnp/sp";
-import { SPHttpClient, SPHttpClientResponse, SPHttpClientConfiguration } from '@microsoft/sp-http';
+
+import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { IHubSiteData, IHubSiteDataResponse } from './IHubSiteData';
 import { ILinkListItem } from './ILinkListItem';
-import SPTaxonomyService from '../../services/SPTaxonomyService';
-import { ITermSets, ITermSet, ITerms, ITerm } from '../../services/SPTaxonomyTypes';
+
 import SPUserProfileService from '../../services/SPUserProfileService';
 import MyLinksDialog from '../../common/myLinks/MyLinksDialog';
 import IMyLink from '../../common/myLinks/IMyLink';
@@ -63,6 +62,10 @@ export default class PortalFooterApplicationCustomizer
       hubSiteUrl = this.context.pageContext.web.absoluteUrl;
     }
 
+    const { sp } = await import(
+      /* webpackChunkName: 'pnp-sp' */
+      "@pnp/sp");
+
     // initialize PnP JS library to play with SPFx contenxt
     sp.setup({
       spfxContext: this.context,
@@ -82,7 +85,7 @@ export default class PortalFooterApplicationCustomizer
     }
 
     // call render method for generating the needed html elements
-    return(await this._renderPlaceHolders());
+    return (await this._renderPlaceHolders());
   }
 
   @autobind
@@ -123,7 +126,7 @@ export default class PortalFooterApplicationCustomizer
       // get the hub site data via REST API
       let response: SPHttpClientResponse = await this.context.spHttpClient
         .get(`${this.context.pageContext.web.absoluteUrl}/_api/web/hubsitedata`,
-        SPHttpClient.configurations.v1);
+          SPHttpClient.configurations.v1);
 
       // deserialize JSON response and, if any, get the URL of the hub site
       const hubSiteDataResponse: IHubSiteDataResponse = await response.json();
@@ -137,11 +140,14 @@ export default class PortalFooterApplicationCustomizer
       console.log(error);
     }
 
-    return(result);
+    return (result);
   }
 
   // loads the groups of links from the hub site reference list
   private async loadLinks(): Promise<ILinkGroup[]> {
+    const { sp } = await import(
+      /* webpackChunkName: 'pnp-sp' */
+      "@pnp/sp");
 
     // prepare the result variable
     let result: ILinkGroup[] = [];
@@ -149,10 +155,10 @@ export default class PortalFooterApplicationCustomizer
     // get the links from the source list
     let items: ILinkListItem[] = await sp.web
       .lists.getByTitle(this.properties.linksListTitle)
-      .items.select("Title","PnPPortalLinkGroup","PnPPortalLinkUrl").top(100)
+      .items.select("Title", "PnPPortalLinkGroup", "PnPPortalLinkUrl").top(100)
       .orderBy("PnPPortalLinkGroup", true)
       .orderBy("Title", true)
-      .usingCaching({key: "PnP-PortalFooter-Links"})
+      .usingCaching({ key: "PnP-PortalFooter-Links" })
       .get();
 
     // map the list items to the results
@@ -195,7 +201,7 @@ export default class PortalFooterApplicationCustomizer
       }
     }
 
-    return(result);
+    return (result);
   }
 
   private async _renderPlaceHolders(): Promise<void> {
