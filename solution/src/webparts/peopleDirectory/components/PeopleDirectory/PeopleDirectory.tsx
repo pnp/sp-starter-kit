@@ -134,11 +134,11 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
             projects: this._getValueFromSearchResult('PastProjects', r.Cells)
           };
         });
-        
+
         const selectedIndex = this.state.selectedIndex;
 
         if (this.state.searchQuery === '') {
-          // An Index is used to search people. 
+          // An Index is used to search people.
           //Reduce the people collection if the first letter of the lastName of the person is not equal to the selected index
           people = people.reduce((result: IPerson[], person: IPerson) => {
             if (person.lastName && person.lastName.indexOf(selectedIndex) === 0) {
@@ -147,7 +147,7 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
             return result;
           }, []);
         }
-        
+
         if (people.length > 0) {
           // notify the user that loading the data is finished and return the loaded information
           this.setState({
@@ -224,7 +224,8 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
           searchQuery={searchQuery}
           onIndexSelect={this._handleIndexSelect}
           onSearch={this._handleSearch}
-          onSearchClear={this._handleSearchClear} />
+          onSearchClear={this._handleSearchClear}
+          locale={this.props.locale} />
         {loading &&
           // if the component is loading its data, show the spinner
           <Spinner size={SpinnerSize.large} label={strings.LoadingSpinnerLabel} />

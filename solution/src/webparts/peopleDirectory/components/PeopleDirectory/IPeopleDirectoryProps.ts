@@ -23,6 +23,10 @@ export interface IPeopleDirectoryProps {
    * be able to edit the page title or not.
    */
   displayMode: DisplayMode;
+   /**
+   * Current locale
+   */
+  locale: string;
   /**
    * Event handler for changing the web part title
    */
