@@ -40,9 +40,12 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
     this.setState({
       selectedIndex: index,
       searchQuery: ''
+    },
+    function() {
+      // load information about people matching the selected tab
+      this._loadPeopleInfo(index, null);
     });
-    // load information about people matching the selected tab
-    this._loadPeopleInfo(index, null);
+
   }
 
   private _handleSearch = (searchQuery: string): void => {
@@ -51,9 +54,12 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
     this.setState({
       selectedIndex: 'Search',
       searchQuery: searchQuery
+    },
+    function() {
+      // load information about people matching the specified search query
+      this._loadPeopleInfo(null, searchQuery);
     });
-    // load information about people matching the specified search query
-    this._loadPeopleInfo(null, searchQuery);
+
   }
 
   private _handleSearchClear = (): void => {
@@ -61,9 +67,11 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
     this.setState({
       selectedIndex: 'A',
       searchQuery: ''
+    },
+    function() {
+      // load information about people whose last name begins with A
+      this._loadPeopleInfo('A', null);
     });
-    // load information about people whose last name begins with A
-    this._loadPeopleInfo('A', null);
   }
 
   /**
@@ -134,11 +142,11 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
             projects: this._getValueFromSearchResult('PastProjects', r.Cells)
           };
         });
-        
+
         const selectedIndex = this.state.selectedIndex;
 
         if (this.state.searchQuery === '') {
-          // An Index is used to search people. 
+          // An Index is used to search people.
           //Reduce the people collection if the first letter of the lastName of the person is not equal to the selected index
           people = people.reduce((result: IPerson[], person: IPerson) => {
             if (person.lastName && person.lastName.indexOf(selectedIndex) === 0) {
@@ -147,7 +155,7 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
             return result;
           }, []);
         }
-        
+
         if (people.length > 0) {
           // notify the user that loading the data is finished and return the loaded information
           this.setState({
