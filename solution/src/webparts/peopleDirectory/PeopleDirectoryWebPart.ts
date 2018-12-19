@@ -23,6 +23,7 @@ export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopl
         spHttpClient: this.context.spHttpClient,
         title: this.properties.title,
         displayMode: this.displayMode,
+        locale: this.getLocaleId(),
         onTitleUpdate: (newTitle: string) => {
           // after updating the web part title in the component
           // persist it in web part properties
@@ -37,7 +38,9 @@ export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopl
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
-
+  protected getLocaleId() : string {
+    return this.context.pageContext.cultureInfo.currentUICultureName;
+  }
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: []

@@ -10,6 +10,10 @@ export interface IIndexNavigationProps {
    * Current search query. Empty, if not searching.
    */
   searchQuery: string;
+    /**
+   * Current locale
+   */
+  locale: string;
   /**
    * Event handler for selecting a tab
    */

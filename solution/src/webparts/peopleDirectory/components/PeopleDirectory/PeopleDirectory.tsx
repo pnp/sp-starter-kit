@@ -232,7 +232,8 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
           searchQuery={searchQuery}
           onIndexSelect={this._handleIndexSelect}
           onSearch={this._handleSearch}
-          onSearchClear={this._handleSearchClear} />
+          onSearchClear={this._handleSearchClear}
+          locale={this.props.locale} />
         {loading &&
           // if the component is loading its data, show the spinner
           <Spinner size={SpinnerSize.large} label={strings.LoadingSpinnerLabel} />
