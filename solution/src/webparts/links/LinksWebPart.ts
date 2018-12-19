@@ -3,11 +3,7 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneLabel,
-  PropertyPaneLink,
-  PropertyPaneHorizontalRule
+  IPropertyPaneConfiguration
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'LinksWebPartStrings';
@@ -15,7 +11,6 @@ import Links from './components/Links';
 import { ILinksProps } from './components/ILinksProps';
 import { ILink, LinkTarget } from './components/ILink';
 
-import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 
 export interface ILinksWebPartProps {
   collectionData: ILink[];
@@ -24,6 +19,8 @@ export interface ILinksWebPartProps {
 }
 
 export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartProps> {
+  private propertyFieldCollectionData;
+  private customCollectionFieldType;
 
   public render(): void {
     const element: React.ReactElement<ILinksProps> = React.createElement(
@@ -46,6 +43,18 @@ export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartPro
     return Version.parse('1.0');
   }
 
+  //executes only before property pane is loaded.
+  protected async loadPropertyPaneResources(): Promise<void> {
+    // import additional controls/components
+    const { PropertyFieldCollectionData, CustomCollectionFieldType } = await import (
+      /* webpackChunkName: 'pnp-propcontrols-colldata' */
+      '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData'
+    );
+
+    this.propertyFieldCollectionData = PropertyFieldCollectionData;
+    this.customCollectionFieldType = CustomCollectionFieldType;
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     let groups = [];
     if (this.properties.groupData && this.properties.groupData.length > 0) {
@@ -58,7 +67,7 @@ export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartPro
           groups: [
             {
               groupFields: [
-                PropertyFieldCollectionData("groupData", {
+                this.propertyFieldCollectionData("groupData", {
                   key: "groupData",
                   label: strings.groupDataLabel,
                   panelHeader: strings.groupPanelHeader,
@@ -68,12 +77,12 @@ export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartPro
                     {
                       id: "title",
                       title: strings.titleField,
-                      type: CustomCollectionFieldType.string,
+                      type: this.customCollectionFieldType.string,
                       required: true
                     }
                   ]
                 }),
-                PropertyFieldCollectionData("collectionData", {
+                this.propertyFieldCollectionData("collectionData", {
                   key: "collectionData",
                   label: strings.linkDataLabel,
                   panelHeader: strings.linkPanelHeader,
@@ -84,24 +93,24 @@ export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartPro
                     {
                       id: "title",
                       title: strings.titleField,
-                      type: CustomCollectionFieldType.string,
+                      type: this.customCollectionFieldType.string,
                       required: true
                     },
                     {
                       id: "url",
                       title: strings.urlField,
-                      type: CustomCollectionFieldType.string,
+                      type: this.customCollectionFieldType.string,
                       required: true
                     },
                     {
                       id: "icon",
                       title: strings.iconField,
-                      type: CustomCollectionFieldType.fabricIcon
+                      type: this.customCollectionFieldType.fabricIcon
                     },
                     {
                       id: "group",
                       title: strings.groupField,
-                      type: CustomCollectionFieldType.dropdown,
+                      type: this.customCollectionFieldType.dropdown,
                       options: [
                         {
                           key: null,
@@ -113,7 +122,7 @@ export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartPro
                     {
                       id: "target",
                       title: strings.targetField,
-                      type: CustomCollectionFieldType.dropdown,
+                      type: this.customCollectionFieldType.dropdown,
                       options: [
                         {
                           key: LinkTarget.parent,

@@ -3,13 +3,10 @@ import * as ReactDOM from 'react-dom';
 import { BaseDialog, IDialogConfiguration } from '@microsoft/sp-dialog';
 import {
   autobind,
-  DatePicker,
   PrimaryButton,
   CommandButton,
   TextField,
-  Label,
   Dropdown,
-  DropdownMenuItemType,
   IDropdownOption,
   DialogFooter,
   DialogContent
@@ -18,7 +15,7 @@ import {
 import { DateTimePicker } from './DateTimePicker';
 import { ListViewCommandSetContext } from '@microsoft/sp-listview-extensibility';
 import { Dialog } from '@microsoft/sp-dialog';
-import { AadHttpClient, HttpClientConfiguration, IHttpClientOptions, HttpClientResponse, MSGraphClient } from "@microsoft/sp-http";
+import { MSGraphClient } from "@microsoft/sp-http";
 
 import styles from './ScheduleMeetingDialog.module.scss';
 import * as strings from 'DiscussNowCommandSetStrings';

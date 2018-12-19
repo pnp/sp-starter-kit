@@ -23,8 +23,8 @@ import * as lodash from '@microsoft/sp-lodash-subset';
 
 export default class StockInformation extends React.Component<IStockInformationProps, IStockInformationState> {
 
-  constructor() {
-    super();
+  constructor(props: IStockInformationProps) {
+    super(props);
 
     // set initial state for the component: not loading, no stock information
     this.state = {

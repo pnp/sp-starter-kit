@@ -8,18 +8,18 @@
 
   .siteTitle {
     @include ms-font-xl;
-    @include ms-fontColor-black;
+    color: $ms-color-black;
     font-weight: bold;
   }
 
   .siteOrganization {
     @include ms-font-l;
-    @include ms-fontColor-black;
+    color: $ms-color-black;
   }
 
   .siteContact {
     @include ms-font-l;
-    @include ms-fontColor-black;
+    color: $ms-color-black;
     margin-top: 5px;
   }
 }
