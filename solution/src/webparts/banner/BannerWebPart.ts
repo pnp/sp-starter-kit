@@ -11,7 +11,6 @@ import {
 
 import * as strings from 'BannerWebPartStrings';
 import { Banner, IBannerProps } from './components';
-import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
 
 export interface IBannerWebPartProps {
   bannerText: string;
@@ -24,6 +23,8 @@ export interface IBannerWebPartProps {
 }
 
 export default class BannerWebPart extends BaseClientSideWebPart<IBannerWebPartProps> {
+
+  private propertyFieldNumber;
 
   public render(): void {
     const element: React.ReactElement<IBannerProps> = React.createElement(
@@ -70,6 +71,18 @@ export default class BannerWebPart extends BaseClientSideWebPart<IBannerWebPartP
     return "";
   }
 
+  //executes only before property pane is loaded.
+  protected async loadPropertyPaneResources(): Promise<void> {
+    // import additional controls/components
+
+    const { PropertyFieldNumber } = await import(
+      /* webpackChunkName: 'pnp-propcontrols-number' */
+      '@pnp/spfx-property-controls/lib/propertyFields/number'
+    );
+
+    this.propertyFieldNumber = PropertyFieldNumber;
+  }
+
   /**
    * Property pane configuration
    */
@@ -96,7 +109,7 @@ export default class BannerWebPart extends BaseClientSideWebPart<IBannerWebPartP
                   label: strings.BannerLinkField,
                   value: this.properties.bannerLink
                 }),
-                PropertyFieldNumber('bannerHeight', {
+                this.propertyFieldNumber('bannerHeight', {
                   key: "bannerHeight",
                   label: strings.BannerNumberField,
                   value: this.properties.bannerHeight,

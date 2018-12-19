@@ -1,9 +1,10 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
+
 .classificationHeader {
 
     .classificationContainer {
-        @include ms-fontColor-black;
+        color: $ms-color-black;
         background-color: lightgray;
     }
 

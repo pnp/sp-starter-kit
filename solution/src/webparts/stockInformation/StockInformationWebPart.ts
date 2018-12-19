@@ -16,14 +16,18 @@ import * as strings from 'StockInformationWebPartStrings';
 import StockInformation from './components/StockInformation';
 import { IStockInformationProps } from './components/IStockInformationProps';
 import { IStockInformationWebPartProps } from './IStockInformationWebPartProps';
-import { sp, StorageEntity } from "@pnp/sp";
+import { StorageEntity } from "@pnp/sp";
 
 // import additional controls/components
 export default class StockInformationWebPart extends BaseClientSideWebPart<IStockInformationWebPartProps> {
 
   public async onInit(): Promise<void> {
 
-    return super.onInit().then(_ => {
+    return super.onInit().then(async (_) => {
+
+      const { sp } = await import(
+        /* webpackChunkName: 'pnp-sp' */
+        "@pnp/sp");
 
       // init sp pnpjs library
       sp.setup({
@@ -38,7 +42,7 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
     // get the API Key value
     const apiKey: string = await this.getApiKey();
 
-    const element: React.ReactElement<IStockInformationProps > = React.createElement(
+    const element: React.ReactElement<IStockInformationProps> = React.createElement(
       StockInformation,
       {
         demo: this.properties.demo,
@@ -123,6 +127,10 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
     // if it is not there, load it from the tenant properties
     // and store its value in the session storage
     if (!apiKey) {
+      const { sp } = await import(
+        /* webpackChunkName: 'pnp-sp' */
+        "@pnp/sp");
+
       const storageEntity: StorageEntity = await sp.web.getStorageEntity(apiKeyName);
       if (storageEntity && !storageEntity['odata.null']) {
         apiKey = storageEntity.Value;
@@ -131,6 +139,6 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
     }
 
     // return the API Key value
-    return(apiKey);
+    return (apiKey);
   }
 }

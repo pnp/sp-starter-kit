@@ -8,7 +8,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 import * as strings from 'RecentContactsWebPartStrings';
 import { RecentContacts, IRecentContactsProps } from './components';
-import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/propertyFields/number';
+
 import { MSGraphClient } from '@microsoft/sp-http';
 
 export interface IRecentContactsWebPartProps {
@@ -18,7 +18,8 @@ export interface IRecentContactsWebPartProps {
 
 export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecentContactsWebPartProps> {
   private graphClient: MSGraphClient;
-
+  private propertyFieldNumber;
+  
   public onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
@@ -31,7 +32,7 @@ export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecent
   }
 
   public render(): void {
-    const element: React.ReactElement<IRecentContactsProps > = React.createElement(
+    const element: React.ReactElement<IRecentContactsProps> = React.createElement(
       RecentContacts,
       {
         title: this.properties.title,
@@ -51,6 +52,18 @@ export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecent
     return Version.parse('1.0');
   }
 
+  //executes only before property pane is loaded.
+  protected async loadPropertyPaneResources(): Promise<void> {
+    // import additional controls/components
+
+    const { PropertyFieldNumber } = await import(
+      /* webpackChunkName: 'pnp-propcontrols-number' */
+      '@pnp/spfx-property-controls/lib/propertyFields/number'
+    );
+
+    this.propertyFieldNumber = PropertyFieldNumber;
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -61,7 +74,7 @@ export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecent
           groups: [
             {
               groupFields: [
-                PropertyFieldNumber("nrOfContacts", {
+                this.propertyFieldNumber("nrOfContacts", {
                   key: "nrOfContacts",
                   label: strings.NrOfContactsToShow,
                   value: this.properties.nrOfContacts,

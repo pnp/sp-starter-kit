@@ -1,14 +1,13 @@
 import * as React from 'react';
 import styles from './SiteInformation.module.scss';
 import { ISiteInformationProps } from './ISiteInformationProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 
 // import strings from localized resources
 import * as strings from 'SiteInformationWebPartStrings';
 
 // import additional controls/components
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+
 import {
   Persona,
   PersonaSize,

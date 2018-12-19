@@ -10,8 +10,8 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 export default class SiteClassificationHeader extends React.Component<ISiteClassificationHeaderProps, {}> {
 
   // main constructor for the component
-  constructor() {
-    super();
+  constructor(props: ISiteClassificationHeaderProps) {
+    super(props);
   }
 
   public render(): React.ReactElement<ISiteClassificationHeaderProps> {
