@@ -15,6 +15,8 @@
     <pnp:Localization LCID="1036" Name="core" ResourceFile="resources\resources-core.fr-fr.resx" />
     <pnp:Localization LCID="1031" Name="core" ResourceFile="resources\resources-core.de-de.resx" />
     <pnp:Localization LCID="1043" Name="core" ResourceFile="resources\resources-core.nl-nl.resx" />
+    <pnp:Localization LCID="1044" Name="core" ResourceFile="resources\resources-core.nb-no.resx" />
+    <pnp:Localization LCID="1053" Name="core" ResourceFile="resources\resources-core.sv-se.resx" />
   </pnp:Localizations>
   <pnp:Tenant>
     <pnp:WebApiPermissions>
