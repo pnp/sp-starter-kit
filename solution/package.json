@@ -19,7 +19,6 @@
     "@microsoft/sp-dialog": "1.7.0",
     "@microsoft/sp-listview-extensibility": "1.7.0",
     "@microsoft/sp-lodash-subset": "1.7.0",
-    "@microsoft/sp-office-ui-fabric-core": "1.7.0",
     "@microsoft/sp-webpart-base": "1.7.0",
     "@pnp/common": "^1.0.4-4",
     "@pnp/logging": "^1.0.4-4",
