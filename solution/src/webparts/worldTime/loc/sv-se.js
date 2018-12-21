@@ -8,7 +8,7 @@ define([], function() {
     "PlaceholderIconName":"Redigera",
     "PlaceholderIconText":"Konfigurera din webbdel",
     "PlaceholderDescription":"Var god konfigurera din webbdel.",
-    "PlaceholderButtonLabel":"Konfiguera",
+    "PlaceholderButtonLabel":"Konfigurera",
 
     "LocalTimeDescription": "UTC Tid"
   }
