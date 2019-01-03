@@ -1,7 +1,7 @@
 define([], function() {
   return {
-    "AllDay": "All day",
-    "DaysInAdvance": "Antal dager i forveien å hente møter for? 0 - kun dagen i dag",
+    "AllDay": "Hele dagen",
+    "DaysInAdvance": "Antall dager i forveien å hente møter for? 0 - kun dagen i dag",
     "Error": "Det har oppstått en feil mens vi hentet de kommende møtene dine",
     "Hour": "time",
     "Hours": "timer",
