@@ -7,7 +7,7 @@ define([], function() {
 
     "PlaceholderIconName":"Rediger",
     "PlaceholderIconText":"Konfigurer webdelen",
-    "PlaceholderDescription":"Ver grei å konfigurere webdelen.",
+    "PlaceholderDescription":"Vennligst konfigurer webdelen.",
     "PlaceholderButtonLabel":"Konfigurer",
 
     "LoadingDataLabel": "Laster data ...",
