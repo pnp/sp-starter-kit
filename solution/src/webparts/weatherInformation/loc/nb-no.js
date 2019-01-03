@@ -9,7 +9,7 @@ define([], function () {
     "NoWeatherInformationFoundMessage": "Ingen værdata funnet for ",
     "LoadingSpinnerLabel": "Laster værdata...",
     "PlaceholderIconText": "Konfigurer webdelen",
-    "PlaceholderDescription": "Ver grei å konfigurere webdelen.",
+    "PlaceholderDescription": "Vennligst konfigurer webdelen.",
     "PlaceholderButtonLabel": "Konfigurer",
     "LocationNotSpecifiedError": "Angi en plassering",
     "LocationDoubleQuoteNotAllowed": "\" (dobbelt hermetegn) er ikke tillatt i plasseringens navn"
