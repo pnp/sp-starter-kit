@@ -6,6 +6,6 @@ define([], function() {
 
     "NoContacts": "Ingen kontakter funnet.",
     "Loading": "Henter dine kontakter",
-    "Error": "Dessverre, en feil oppstod ved henting av dine kontakter."
+    "Error": "En feil oppstod ved henting av dine kontakter."
   }
 });
