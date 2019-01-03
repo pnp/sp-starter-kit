@@ -4,7 +4,7 @@ define([], function() {
     "Loading": "Henter dine e-poster",
     "NewEmail": "Ny e-post",
     "NoMessages": "Ingen e-poster funnet",
-    "NrOfMessagesToShow": "Antal e-poster som skal vises",
+    "NrOfMessagesToShow": "Antall e-poster som skal vises",
     "PropertyPaneDescription": "Konfigurer e-post webdelen",
     "ViewAll": "Vis hele listen"
   }
