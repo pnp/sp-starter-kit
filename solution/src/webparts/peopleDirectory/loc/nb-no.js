@@ -7,8 +7,8 @@ define([], function() {
     "Error": "Feil",
     "SkillsLabel": "Kompetanser",
     "ProjectsLabel": "Prosjekter",
-    "CopyEmailLabel": "Kopier epost til utklippstavlen",
-    "CopyPhoneLabel": "Kopier telefon til utklippstavlen",
-    "CopyMobileLabel": "Kopier mobil til utklippstavlen"
+    "CopyEmailLabel": "Kopier e-post adresse til utklippstavlen",
+    "CopyPhoneLabel": "Kopier telefonnummer til utklippstavlen",
+    "CopyMobileLabel": "Kopier mobilnummer til utklippstavlen"
   }
 });
