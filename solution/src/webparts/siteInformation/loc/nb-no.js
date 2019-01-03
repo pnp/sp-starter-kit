@@ -9,7 +9,7 @@ define([], function() {
 
     "PlaceholderIconName":"Rediger",
     "PlaceholderIconText":"Konfigurer webdel",
-    "PlaceholderDescription":"Ver grei å konfigurere webdelen.",
+    "PlaceholderDescription":"Vennligst konfigurer webdelen.",
     "PlaceholderButtonLabel":"Konfigurer",
 
     "SiteTitleCaption": "Områdetittel:",
