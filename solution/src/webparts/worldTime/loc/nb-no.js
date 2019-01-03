@@ -1,15 +1,15 @@
 define([], function() {
   return {
     "PropertyPaneDescription": "Verdensklokke",
-    "BasicGroupName": "Generella instillinger",
+    "BasicGroupName": "Generelle innstillinger",
     "DescriptionFieldLabel": "Beskrivelse",
     "TimeZoneOffsetFieldLabel": "Tidssone",
 
     "PlaceholderIconName":"Rediger",
     "PlaceholderIconText":"Konfigurer webdelen",
-    "PlaceholderDescription":"Ver grei å konfigurere webdelen.",
+    "PlaceholderDescription":"Vennligst konfigurer webdelen.",
     "PlaceholderButtonLabel":"Konfigurer",
 
-    "LocalTimeDescription": "UTC Tid"
+    "LocalTimeDescription": "UTC tid"
   }
 });
