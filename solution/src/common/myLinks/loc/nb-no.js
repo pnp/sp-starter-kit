@@ -6,8 +6,8 @@ define([], function() {
     "DialogUpdateButton": "Oppdater",
 
     "MyLinksDialogTitle": "Mine lenker",
-    "MyLinksDialogDescription": "Bruk denne dialogen for å håndtere dina lenker",
-    "SingleLinkDialogTitle": "Legg til/Redigere lenke",
+    "MyLinksDialogDescription": "Bruk denne dialogen for å håndtere dine lenker",
+    "SingleLinkDialogTitle": "Legg til/redigere lenke",
     "SingleLinkDialogDescription": "Bruk denne dialogen for å håndtere (legg til/rediger) en lenke",
     "ConfirmDeleteLink": "Vil du virkelig slette den valgte lenken?",
 
@@ -19,8 +19,8 @@ define([], function() {
     "TitleColumnAriaLabel": "Tittel på URL-en",
     "UrlColumn": "URL",
     "UrlColumnAriaLabel": "URL-ens hyperlenke",
-    "SelectionColumnAriaLabel": "Bytt valg",
-    "SelectionAllColumnAriaLabel": "Bytt valg for alle objekt",
+    "SelectionColumnAriaLabel": "Endre valg",
+    "SelectionAllColumnAriaLabel": "Endre valg for alle objekt",
 
     "AddLinkCommand": "Legg til",
     "EditLinkCommand": "Rediger",
