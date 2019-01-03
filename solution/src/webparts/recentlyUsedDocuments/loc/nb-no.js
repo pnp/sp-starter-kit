@@ -3,10 +3,10 @@ define([], function() {
     "PropertyPaneDescription": "Webdel konfigurasjon",
     "NrOfDocumentsToShow": "Angi hvor mange dokument som skal vises",
 
-    "NoRecentDocuments": "Vi fant ingen dokument.",
+    "NoRecentDocuments": "Vi fant ingen dokumenter.",
     "LastUsedMsg": "Sist brukt:",
     "Loading": "Henter dine sist brukte dokumenter",
-    "Error": "Dessverre, en feil oppstod ved henting av dine sist brukte dokumenter.",
+    "Error": "En feil oppstod ved henting av dine sist brukte dokumenter.",
 
     "DateJustNow": "akkurat nå",
     "DateMinute": "1 minutt siden",
