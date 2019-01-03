@@ -1,13 +1,13 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Tiles webdel konfigurasjon",
-    "TilesListDescription": "Listen med tiles konfigurasjon finnes på følgende lenke:",
-    "TileHeight": "Angi høyden på tiles",
+    "PropertyPaneDescription": "Flis webdel konfigurasjon",
+    "TilesListDescription": "Listen med fliskonfigurasjoner finnes på følgende lenke:",
+    "TileHeight": "Angi høyden på flisene",
     "iconInformation": "Navnene som skal angis i ikonfeltet finnes på følgende URL:",
 
-    "tilesDataLabel": "Tile data",
-    "tilesPanelHeader": "Konfigurer dine tiles",
-    "tilesManageBtn": "Konfigurer tilesene",
+    "tilesDataLabel": "Flisdata",
+    "tilesPanelHeader": "Konfigurer dine fliser",
+    "tilesManageBtn": "Konfigurer flisene",
 
     "titleField": "Tittel",
     "descriptionField": "Beskrivelse",
@@ -18,8 +18,8 @@ define([], function() {
     "targetCurrent": "Gjeldende vindu",
     "targetNew": "Nytt vindu",
 
-    "noTilesIconText": "Konfigurer dine tiles",
-    "noTilesConfigured": "Ver snill å konfigurere webdelen for å vise dine tiles",
+    "noTilesIconText": "Konfigurer dine fliser",
+    "noTilesConfigured": "Vennligst konfigurer webdelen for å vise dine fliser",
     "noTilesBtn": "Konfigurer",
   }
 });
