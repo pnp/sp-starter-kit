@@ -92,7 +92,7 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
   public componentDidUpdate(prevProps: IPersonalEmailProps, prevState: IPersonalEmailState): void {
     // verify if the component should update. Helps avoid unnecessary re-renders
     // when the parent has changed but this component hasn't
-    if (prevProps.nrOfMessages !== this.props.nrOfMessages) {
+    if (prevProps.nrOfMessages !== this.props.nrOfMessages || prevProps.showInboxOnly !== this.props.showInboxOnly) {
       this._loadMessages();
     }
   }
