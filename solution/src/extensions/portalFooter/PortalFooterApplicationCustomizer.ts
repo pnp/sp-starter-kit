@@ -113,10 +113,9 @@ export default class PortalFooterApplicationCustomizer
           'String',
           JSON.stringify(this._myLinks));
 
-        result.links = await this.loadLinks();
       }
     }
-
+    result.links = await this.loadLinks();
     return (result);
   }
 
