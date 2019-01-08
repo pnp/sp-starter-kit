@@ -45,11 +45,12 @@ export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFoo
   @autobind
   private async _handleLinksEdit(): Promise<void> {
 
-    let editResult: IPortalFooterEditResult = await this.props.onLinksEdit();
-    if (editResult != null) {
+    // Only if a editResult is provided in the result
+    let result: IPortalFooterEditResult = await this.props.onLinksEdit();
+    if (result.editResult != null) {
       this.setState({
-        myLinksSaved: editResult.editResult,
-        links: editResult.links
+        myLinksSaved: result.editResult,
+        links: result.links
       });
 
       // hide the message after 2 sec

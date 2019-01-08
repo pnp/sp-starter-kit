@@ -102,16 +102,19 @@ export default class PortalFooterApplicationCustomizer
     // update the local list of links
     let resultingLinks: IMyLink[] = myLinksDialog.links;
 
-    if (this._myLinks !== resultingLinks) {
-      this._myLinks = resultingLinks;
+    // Do not save if the dialog was cancelled
+    if (myLinksDialog.isSave) {
+      if (this._myLinks !== resultingLinks) {
+        this._myLinks = resultingLinks;
 
-      // save the personal links in the UPS, if there are any updates
-      let upsService: SPUserProfileService = new SPUserProfileService(this.context);
-      result.editResult = await upsService.setUserProfileProperty(this.properties.personalItemsStorageProperty,
-        'String',
-        JSON.stringify(this._myLinks));
+        // save the personal links in the UPS, if there are any updates
+        let upsService: SPUserProfileService = new SPUserProfileService(this.context);
+        result.editResult = await upsService.setUserProfileProperty(this.properties.personalItemsStorageProperty,
+          'String',
+          JSON.stringify(this._myLinks));
 
-      result.links = await this.loadLinks();
+        result.links = await this.loadLinks();
+      }
     }
 
     return (result);
