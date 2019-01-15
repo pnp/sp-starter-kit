@@ -376,6 +376,13 @@ export default class MyLinksDialog extends BaseDialog {
     };
   }
 
+  protected onAfterClose(): void {
+    super.onAfterClose();
+
+    // Clean up the element for the next dialog
+    ReactDOM.unmountComponentAtNode(this.domElement);
+  }
+
   @autobind
   private _cancel(): void {
     this.links = this.initialLinks;
