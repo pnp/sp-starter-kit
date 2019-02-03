@@ -21,28 +21,12 @@
     }
   }
 
-  .fromRead {
-    @include ms-font-l;
-    @include ms-fontWeight-semilight;
-  }
-
-  .fromUnread {
+  .from {
     @include ms-font-l;
     @include ms-fontWeight-semibold;
   }
 
-  .subjectRead {
-    @include ms-font-s;
-    @include ms-fontWeight-semilight;
-    color: $ms-color-themePrimary;
-    float: left;
-    width: 80%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .subjectUnread {
+  .subject {
     @include ms-font-s;
     @include ms-fontWeight-semibold;
     color: $ms-color-themePrimary;
@@ -53,17 +37,7 @@
     white-space: nowrap;
   }
 
-  .dateRead {
-    @include ms-font-s;
-    @include ms-fontWeight-semilight;
-    color: $ms-color-themePrimary;
-    float: right;
-    width: 20%;
-    text-align: right;
-    word-break: keep-all;
-  }
-
-  .dateUnread {
+  .date {
     @include ms-font-s;
     @include ms-fontWeight-semibold;
     color: $ms-color-themePrimary;
@@ -80,6 +54,24 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+  }
+
+  .isRead{
+    .from {
+      @include ms-fontWeight-semilight;
+    }   
+
+    .subject {
+      @include ms-fontWeight-semilight;
+    }
+    
+    .date {
+      @include ms-fontWeight-semilight;
+    }
+    
+    .preview {
+      @include ms-fontWeight-light;
+    }
   }
 
   .noMessages {
