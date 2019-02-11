@@ -34,8 +34,14 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
       messages: []
     });
 
+    let graphURI: string = "me/messages";
+
+    if(this.props.showInboxOnly) {
+      graphURI = "me/mailFolders/Inbox/messages";
+    }
+
     this.props.graphClient
-      .api("me/messages")
+      .api(graphURI)
       .version("v1.0")
       .select("bodyPreview,receivedDateTime,from,isRead,subject,webLink")
       .top(this.props.nrOfMessages || 5)
@@ -90,7 +96,7 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
   public componentDidUpdate(prevProps: IPersonalEmailProps, prevState: IPersonalEmailState): void {
     // verify if the component should update. Helps avoid unnecessary re-renders
     // when the parent has changed but this component hasn't
-    if (prevProps.nrOfMessages !== this.props.nrOfMessages) {
+    if (prevProps.nrOfMessages !== this.props.nrOfMessages || prevProps.showInboxOnly !== this.props.showInboxOnly) {
       this._loadMessages();
     }
   }

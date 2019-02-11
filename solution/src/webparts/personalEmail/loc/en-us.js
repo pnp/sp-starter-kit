@@ -6,6 +6,8 @@ define([], function() {
     "NoMessages": "No messages were found",
     "NrOfMessagesToShow": "Number of messages to show",
     "PropertyPaneDescription": "Messages web part configuration",
+    "ShowInboxOnly":"Show e-mail from Inbox only",
+    "ShowInboxOnlyCallout": "When selected, only e-mails from Inbox will be shown.",
     "ViewAll": "View the full list"
   }
 });
