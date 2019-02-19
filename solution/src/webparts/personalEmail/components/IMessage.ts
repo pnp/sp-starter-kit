@@ -10,6 +10,7 @@ export interface IMessage {
       name: string;
     }
   };
+  isRead: boolean;
   receivedDateTime: string;
   subject: string;
   webLink: string;

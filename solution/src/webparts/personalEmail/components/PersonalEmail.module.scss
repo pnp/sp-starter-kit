@@ -1,7 +1,7 @@
 @import '~office-ui-fabric-react/dist/sass/_References.scss';
 
 .personalEmail {
-  .title, .viewAll {
+  .title, .viewAll, .newEmail {
     padding-left: 10px;
   }
 
@@ -23,7 +23,7 @@
 
   .from {
     @include ms-font-l;
-    @include ms-fontWeight-semilight;
+    @include ms-fontWeight-semibold;
   }
 
   .subject {
@@ -54,6 +54,24 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+  }
+
+  .isRead{
+    .from {
+      @include ms-fontWeight-semilight;
+    }   
+
+    .subject {
+      @include ms-fontWeight-semilight;
+    }
+    
+    .date {
+      @include ms-fontWeight-semilight;
+    }
+    
+    .preview {
+      @include ms-fontWeight-light;
+    }
   }
 
   .noMessages {
