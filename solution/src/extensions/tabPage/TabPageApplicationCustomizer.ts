@@ -1,6 +1,6 @@
 import { override } from '@microsoft/decorators';
-import React = require('react');
-import ReactDom = require('react-dom');
+import * as React from 'react';
+import * as ReactDom from 'react-dom';
 import {
   PlaceholderContent,
   BaseApplicationCustomizer,
