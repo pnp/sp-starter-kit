@@ -6,11 +6,11 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "build": "gulp bundle",
-    "build:dev": "gulp clean && gulp bundle && gulp package-solution",
-    "build:prod": "gulp clean && gulp bundle --ship && gulp package-solution --ship",
-    "bundle:dev": "set NODE_OPTIONS=--max_old_space_size=8192 && gulp bundle",
-    "bundle:prod": "set NODE_OPTIONS=--max_old_space_size=8192 && gulp bundle --ship",
+    "serve": "cross-env NODE_OPTIONS=--max_old_space_size=8192 gulp serve",
+    "build:dev": "gulp clean && cross-env NODE_OPTIONS=--max_old_space_size=8192 gulp bundle && gulp package-solution",
+    "build:prod": "gulp clean && cross-env NODE_OPTIONS=--max_old_space_size=8192 gulp bundle --ship && gulp package-solution --ship",
+    "bundle:dev": "cross-env NODE_OPTIONS=--max_old_space_size=8192 gulp bundle",
+    "bundle:prod": "cross-env NODE_OPTIONS=--max_old_space_size=8192 gulp bundle --ship",
     "clean": "gulp clean",
     "test": "gulp test"
   },
@@ -43,6 +43,7 @@
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
+    "cross-env": "^5.2.0",
     "gulp": "~3.9.1",
     "tslint-microsoft-contrib": "5.0.0"
   }
