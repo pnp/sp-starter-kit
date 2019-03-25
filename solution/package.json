@@ -21,6 +21,7 @@
     "@microsoft/sp-lodash-subset": "1.8.0",
     "@microsoft/sp-office-ui-fabric-core": "1.8.0",
     "@microsoft/sp-webpart-base": "1.8.0",
+    "@microsoft/teams-js": "^1.4.1",
     "@pnp/common": "^1.0.4-4",
     "@pnp/logging": "^1.0.4-4",
     "@pnp/odata": "^1.0.4-4",

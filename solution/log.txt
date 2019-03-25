@@ -1,0 +1,1102 @@
+Execute in command line
+-----------------------
+npm i react@16.7.0 react-dom@16.7.0 -SE
+npm i @microsoft/sp-tslint-rules@1.8.0 @microsoft/rush-stack-compiler-2.7@0.4.0 -DE
+npm un tslint-microsoft-contrib -D
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_banner
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_followedSites
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_links
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_lobIntegration
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_peopleDirectory
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalCalendar
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalContacts
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalEmail
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalTasks
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentContacts
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentlyUsedDocuments
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentlyVisitedSites
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_siteInformation
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_stockInformation
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_tiles
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_weatherInformation
+mkdir c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_worldTime
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_banner\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Banner",
+  "id": "ab30ff0a-9241-4d5d-8c6f-1dc07b1d1053",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Banner"
+  },
+  "description": {
+    "short": "Renders a banner style presentation with text and image",
+    "full": "Renders a banner style presentation with text and image"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=ab30ff0a-9241-4d5d-8c6f-1dc07b1d1053",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_followedSites\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Followed Sites",
+  "id": "92d5cc6c-fae5-4e91-9583-ab33950f5a8d",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Followed Sites"
+  },
+  "description": {
+    "short": "Followed sites for user",
+    "full": "Followed sites for user"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=92d5cc6c-fae5-4e91-9583-ab33950f5a8d",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_links\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Links",
+  "id": "e2365185-558d-4b6d-bee8-3490cf04a0a6",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Links"
+  },
+  "description": {
+    "short": "Lists links as configured for the end users",
+    "full": "Lists links as configured for the end users"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=e2365185-558d-4b6d-bee8-3490cf04a0a6",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_lobIntegration\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "LOB Integration",
+  "id": "3228280d-0776-432e-a957-5fb31edf8e00",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "LOB Integration"
+  },
+  "description": {
+    "short": "Line of Business Integration",
+    "full": "Line of Business Integration"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=3228280d-0776-432e-a957-5fb31edf8e00",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_peopleDirectory\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "People directory",
+  "id": "d9d6f014-3fd9-4fb9-af54-044c7c43e081",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "People directory"
+  },
+  "description": {
+    "short": "Shows people in your organization",
+    "full": "Shows people in your organization"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=d9d6f014-3fd9-4fb9-af54-044c7c43e081",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalCalendar\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Personal calendar",
+  "id": "bbcd646e-6b86-4480-a68a-850c98f94519",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Personal calendar"
+  },
+  "description": {
+    "short": "Shows upcoming meetings for the current user",
+    "full": "Shows upcoming meetings for the current user"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=bbcd646e-6b86-4480-a68a-850c98f94519",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalContacts\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Personal contacts",
+  "id": "a95742b9-5e67-4a11-8e51-7a76812a9d60",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Personal contacts"
+  },
+  "description": {
+    "short": "Lists user's personal contacts",
+    "full": "Lists user's personal contacts"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=a95742b9-5e67-4a11-8e51-7a76812a9d60",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalEmail\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Personal e-mail",
+  "id": "ac41debd-d92c-4de0-9d67-e7bc191030ee",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Personal e-mail"
+  },
+  "description": {
+    "short": "Shows email of a user",
+    "full": "Shows email of a user"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=ac41debd-d92c-4de0-9d67-e7bc191030ee",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalTasks\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Personal tasks",
+  "id": "ee972022-9937-4b69-9c25-eaf77003f4f9",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Personal tasks"
+  },
+  "description": {
+    "short": "Personal tasks",
+    "full": "Personal tasks"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=ee972022-9937-4b69-9c25-eaf77003f4f9",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentContacts\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Recent contacts",
+  "id": "9a151252-c744-4dc6-94f7-a574dda413d6",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Recent contacts"
+  },
+  "description": {
+    "short": "Lists recent contacts for user",
+    "full": "Lists recent contacts for user"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=9a151252-c744-4dc6-94f7-a574dda413d6",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentlyUsedDocuments\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Recently Used Documents",
+  "id": "596e3e97-f3ca-4cf9-9b8e-cb852f063356",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Recently Used Documents"
+  },
+  "description": {
+    "short": "Lists Recently Used Documents for the user",
+    "full": "Lists Recently Used Documents for the user"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=596e3e97-f3ca-4cf9-9b8e-cb852f063356",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentlyVisitedSites\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Recently Visited Sites",
+  "id": "277282d0-debb-42d6-b4b3-30ec543964fd",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Recently Visited Sites"
+  },
+  "description": {
+    "short": "Recently visited sites for user",
+    "full": "Recently visited sites for user"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=277282d0-debb-42d6-b4b3-30ec543964fd",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_siteInformation\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Site Information",
+  "id": "e2aa860d-ac7b-4a7f-b590-073e62dc9bc0",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Site Information"
+  },
+  "description": {
+    "short": "Web part collecting and presenting site metadata",
+    "full": "Web part collecting and presenting site metadata"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=e2aa860d-ac7b-4a7f-b590-073e62dc9bc0",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_stockInformation\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Stock Information",
+  "id": "50256fc2-a28f-4544-900e-32724d32bc7f",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Stock Information"
+  },
+  "description": {
+    "short": "Stock information",
+    "full": "Stock information"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=50256fc2-a28f-4544-900e-32724d32bc7f",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_tiles\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Tiles",
+  "id": "26cb4af3-7f48-4737-b82a-4e24167c2d07",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Tiles"
+  },
+  "description": {
+    "short": "Lists links in tile format",
+    "full": "Lists links in tile format"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=26cb4af3-7f48-4737-b82a-4e24167c2d07",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_weatherInformation\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "Weather",
+  "id": "0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Weather"
+  },
+  "description": {
+    "short": "Shows weather information for the specified location",
+    "full": "Shows weather information for the specified location"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=0f5615e2-b30f-4bc5-b3d7-2fe335ce13d9",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cat > c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_worldTime\manifest.json << EOF
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+  "packageName": "World Time",
+  "id": "4f87b698-f910-451f-b4ea-7848a472af0f",
+  "version": "0.1",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "World Time"
+  },
+  "description": {
+    "short": "Time across the world",
+    "full": "Time across the world"
+  },
+  "icons": {
+    "outline": "tab20x20.png",
+    "color": "tab96x96.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=4f87b698-f910-451f-b4ea-7848a472af0f",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+EOF
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_banner\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_followedSites\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_links\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_lobIntegration\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_peopleDirectory\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalCalendar\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalContacts\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalEmail\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalTasks\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentContacts\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentlyUsedDocuments\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentlyVisitedSites\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_siteInformation\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_stockInformation\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_tiles\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_weatherInformation\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab20x20.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_worldTime\tab20x20.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_banner\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_followedSites\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_links\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_lobIntegration\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_peopleDirectory\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalCalendar\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalContacts\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalEmail\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_personalTasks\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentContacts\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentlyUsedDocuments\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_recentlyVisitedSites\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_siteInformation\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_stockInformation\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_tiles\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_weatherInformation\tab96x96.png
+cp C:\Users\GuidoZambarda\AppData\Roaming\npm\node_modules\@pnp\office365-cli\dist\o365\spfx\commands\project\project-upgrade\assets\tab96x96.png c:\Sorgenti\Pnp\SP-Starter-Kit\solution\teams_worldTime\tab96x96.png
+npm dedupe
+
+./.yo-rc.json
+-------------
+Update version in .yo-rc.json:
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.8.0"
+  }
+}
+
+Update isDomainIsolated in .yo-rc.json:
+{
+  "@microsoft/generator-sharepoint": {
+    "isDomainIsolated": false
+  }
+}
+
+
+./tsconfig.json
+---------------
+Update tsconfig.json inlineSources value:
+{
+  "compilerOptions": {
+    "inlineSources": false
+  }
+}
+
+Update tsconfig.json strictNullChecks value:
+{
+  "compilerOptions": {
+    "strictNullChecks": false
+  }
+}
+
+Update tsconfig.json noUnusedLocals value:
+{
+  "compilerOptions": {
+    "noUnusedLocals": false
+  }
+}
+
+Update tsconfig.json extends property:
+{
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-2.7/includes/tsconfig-web.json"
+}
+
+
+src\webparts\banner\BannerWebPart.ts
+------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart, IWebPartPropertiesMetadata } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneToggle } from "@microsoft/sp-property-pane";
+
+
+src\webparts\followedSites\FollowedSitesWebPart.ts
+--------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneDropdown } from "@microsoft/sp-property-pane";
+
+
+src\webparts\links\LinksWebPart.ts
+----------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+
+
+src\webparts\lobIntegration\LobIntegrationWebPart.ts
+----------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneChoiceGroup, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+
+
+src\webparts\peopleDirectory\PeopleDirectoryWebPart.ts
+------------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+
+
+src\webparts\personalCalendar\PersonalCalendarWebPart.ts
+--------------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneSlider } from "@microsoft/sp-property-pane";
+
+
+src\webparts\personalContacts\PersonalContactsWebPart.ts
+--------------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+
+
+src\webparts\personalEmail\PersonalEmailWebPart.ts
+--------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+
+
+src\webparts\personalTasks\PersonalTasksWebPart.ts
+--------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneToggle } from "@microsoft/sp-property-pane";
+
+
+src\webparts\recentContacts\RecentContactsWebPart.ts
+----------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+
+
+src\webparts\recentlyUsedDocuments\RecentlyUsedDocumentsWebPart.ts
+------------------------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+
+
+src\webparts\recentlyVisitedSites\RecentlyVisitedSitesWebPart.ts
+----------------------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+
+
+src\webparts\siteInformation\SiteInformationWebPart.ts
+------------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart, IWebPartPropertiesMetadata } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+
+
+src\webparts\stockInformation\StockInformationWebPart.ts
+--------------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneCheckbox, PropertyPaneTextField, PropertyPaneToggle } from "@microsoft/sp-property-pane";
+
+
+src\webparts\tiles\TilesWebPart.ts
+----------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+
+
+src\webparts\weatherInformation\WeatherInformationWebPart.ts
+------------------------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneChoiceGroup, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+
+
+src\webparts\worldTime\WorldTimeWebPart.ts
+------------------------------------------
+Refactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package:
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, IPropertyPaneDropdownOption, PropertyPaneDropdown, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+
+
+.vscode\launch.json
+-------------------
+In the .vscode/launch.json file, for each configuration, in the sourceMapPathOverrides property, add "webpack:///.././src/*": "${webRoot}/src/*":
+{
+  "configurations": [
+    {
+      "sourceMapPathOverrides": {
+        "webpack:///.././src/*": "${webRoot}/src/*"
+      }
+    }
+  ]
+}
+
+In the .vscode/launch.json file, for each configuration, in the sourceMapPathOverrides property, add "webpack:///.././src/*": "${webRoot}/src/*":
+{
+  "configurations": [
+    {
+      "sourceMapPathOverrides": {
+        "webpack:///.././src/*": "${webRoot}/src/*"
+      }
+    }
+  ]
+}
+
+
+./config/package-solution.json
+------------------------------
+Update package-solution.json isDomainIsolated:
+{
+  "solution": {
+    "isDomainIsolated": false
+  }
+}
+
+
+./tslint.json
+-------------
+Remove rulesDirectory from tslint.json:
+{
+  "rulesDirectory": []
+}
+
+Update tslint.json extends property:
+{
+  "extends": "@microsoft/sp-tslint-rules/base-tslint.json"
+}
