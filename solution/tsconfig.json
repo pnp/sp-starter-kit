@@ -10,6 +10,9 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
+    "inlineSources": false,
+    "strictNullChecks": false,
+    "noUnusedLocals": false,
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"
