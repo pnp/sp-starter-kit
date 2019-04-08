@@ -1,5 +1,8 @@
 # SharePoint Starter Kit Changelog #
 
+**2018-04-08**
+* Upgrade solution to SharePoint Framework v1.8 with Microsoft Teams support for the web parts.
+
 **2018-09-11**
 * Upgrade solution to SharePoint Framework v1.6.0
 
