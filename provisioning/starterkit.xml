@@ -867,7 +867,7 @@
           <!-- alertNotification -->
           <pnp:CustomAction Name="AlertNotification" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="aa8dd198-e2ee-45c5-b746-821d001bb0e1" RegistrationType="None" />
           <!-- portalFooter -->
-          <pnp:CustomAction Name="PortalFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="b8eb4ec9-934a-4248-a15f-863d27f94f60" RegistrationType="None" ClientSideComponentProperties="{&quot;linksListTitle&quot;:&quot;PnP-PortalFooter-Links&quot;,&quot;copyright&quot;:&quot;Ⓒ Copyright Contoso, 2018&quot;,&quot;support&quot;:&quot;support@contoso.com&quot;,&quot;personalItemsStorageProperty&quot;:&quot;PnP-CollabFooter-MyLinks&quot;}"/>
+          <pnp:CustomAction Name="PortalFooter" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="b8eb4ec9-934a-4248-a15f-863d27f94f60" RegistrationType="None" ClientSideComponentProperties="{&quot;linksListTitle&quot;:&quot;PnP-PortalFooter-Links&quot;,&quot;copyright&quot;:&quot;Ⓒ Copyright Contoso, 2019-2020&quot;,&quot;support&quot;:&quot;support@contoso.com&quot;,&quot;personalItemsStorageProperty&quot;:&quot;PnP-CollabFooter-MyLinks&quot;}"/>
           <!-- redirect -->
           <pnp:CustomAction Name="Redirect" Location="ClientSideExtension.ApplicationCustomizer" ClientSideComponentId="f5771a9e-283e-4525-a599-554e8b9e48c2" RegistrationType="None" />
           <!-- siteClassification -->
