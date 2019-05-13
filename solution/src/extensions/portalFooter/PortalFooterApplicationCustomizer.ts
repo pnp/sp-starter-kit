@@ -44,7 +44,7 @@ export interface IPortalFooterApplicationCustomizerProperties {
 export default class PortalFooterApplicationCustomizer
   extends BaseApplicationCustomizer<IPortalFooterApplicationCustomizerProperties> {
 
-  private static _bottomPlaceholder?: PlaceholderContent;
+  private _bottomPlaceholder?: PlaceholderContent;
   private _myLinks: IMyLink[];
 
   private _handleDispose(): void {
@@ -209,15 +209,15 @@ export default class PortalFooterApplicationCustomizer
   private async _renderPlaceHolders(): Promise<void> {
 
     // check if the application customizer has already been rendered
-    if (!PortalFooterApplicationCustomizer._bottomPlaceholder) {
+    if (!this._bottomPlaceholder) {
       // create a DOM element in the bottom placeholder for the application customizer to render
-      PortalFooterApplicationCustomizer._bottomPlaceholder = this.context.placeholderProvider
+      this._bottomPlaceholder = this.context.placeholderProvider
         .tryCreateContent(PlaceholderName.Bottom, { onDispose: this._handleDispose });
     }
 
     // if the top placeholder is not available, there is no place in the UI
     // for the app customizer to render, so quit.
-    if (!PortalFooterApplicationCustomizer._bottomPlaceholder) {
+    if (!this._bottomPlaceholder) {
       return;
     }
 
@@ -234,6 +234,6 @@ export default class PortalFooterApplicationCustomizer
     );
 
     // render the UI using a React component
-    ReactDom.render(element, PortalFooterApplicationCustomizer._bottomPlaceholder.domElement);
+    ReactDom.render(element, this._bottomPlaceholder.domElement);
   }
 }
