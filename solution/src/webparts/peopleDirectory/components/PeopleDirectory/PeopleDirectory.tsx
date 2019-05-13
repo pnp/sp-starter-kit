@@ -41,10 +41,10 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
       selectedIndex: index,
       searchQuery: ''
     },
-    function() {
-      // load information about people matching the selected tab
-      this._loadPeopleInfo(index, null);
-    });
+      function () {
+        // load information about people matching the selected tab
+        this._loadPeopleInfo(index, null);
+      });
 
   }
 
@@ -55,10 +55,10 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
       selectedIndex: 'Search',
       searchQuery: searchQuery
     },
-    function() {
-      // load information about people matching the specified search query
-      this._loadPeopleInfo(null, searchQuery);
-    });
+      function () {
+        // load information about people matching the specified search query
+        this._loadPeopleInfo(null, searchQuery);
+      });
 
   }
 
@@ -68,10 +68,10 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
       selectedIndex: 'A',
       searchQuery: ''
     },
-    function() {
-      // load information about people whose last name begins with A
-      this._loadPeopleInfo('A', null);
-    });
+      function () {
+        // load information about people whose last name begins with A
+        this._loadPeopleInfo('A', null);
+      });
   }
 
   /**
@@ -135,7 +135,7 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
             phone: this._getValueFromSearchResult('WorkPhone', r.Cells),
             mobile: this._getValueFromSearchResult('MobilePhone', r.Cells),
             email: this._getValueFromSearchResult('WorkEmail', r.Cells),
-            photoUrl: this._getValueFromSearchResult('PictureURL', r.Cells),
+            photoUrl: `${this.props.webUrl}${"/_layouts/15/userphoto.aspx?size=M&accountname=" + this._getValueFromSearchResult('WorkEmail', r.Cells)}`,
             function: this._getValueFromSearchResult('JobTitle', r.Cells),
             department: this._getValueFromSearchResult('Department', r.Cells),
             skills: this._getValueFromSearchResult('Skills', r.Cells),
