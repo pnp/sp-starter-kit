@@ -1,6 +1,6 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.8.0",
+    "version": "1.8.2",
     "libraryName": "sp-starter-kit",
     "libraryId": "3624777a-337d-4b34-8384-5ab774c069aa",
     "environment": "spo",

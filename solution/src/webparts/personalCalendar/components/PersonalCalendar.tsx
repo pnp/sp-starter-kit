@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from './PersonalCalendar.module.scss';
+import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 import * as strings from 'PersonalCalendarWebPartStrings';
 import { IPersonalCalendarProps, IPersonalCalendarState, IMeeting, IMeetings } from '.';
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
@@ -19,6 +20,21 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
       error: undefined,
       renderedDateTime: new Date()
     };
+  }
+
+  /**
+   * Get timezone for logged in user
+   */
+  private _getTimeZone(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      this.props.graphClient
+        // get the mailbox settings
+        .api(`me/mailboxSettings`)
+        .version("v1.0")
+        .get((err: any, res: microsoftgraph.MailboxSettings): void => {
+          resolve(res.timeZone);
+        });
+    });
   }
 
   /**
@@ -46,38 +62,41 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
     date.setDate(date.getDate() + (this.props.daysInAdvance || 0));
     const midnight: string = date.toISOString();
 
-    this.props.graphClient
-      // get all upcoming meetings for the rest of the day today
-      .api(`me/calendar/calendarView?startDateTime=${now}&endDateTime=${midnight}`)
-      .version("v1.0")
-      .select('subject,start,end,showAs,webLink,location,isAllDay')
-      .top(this.props.numMeetings > 0 ? this.props.numMeetings : 100)
-      // sort ascending by start time
-      .orderby("start/dateTime")
-      .get((err: any, res: IMeetings): void => {
-        if (err) {
-          // Something failed calling the MS Graph
-          this.setState({
-            error: err.message ? err.message : strings.Error,
-            loading: false
-          });
-          return;
-        }
+    this._getTimeZone().then(timeZone => {
+      this.props.graphClient
+        // get all upcoming meetings for the rest of the day today
+        .api(`me/calendar/calendarView?startDateTime=${now}&endDateTime=${midnight}`)
+        .version("v1.0")
+        .select('subject,start,end,showAs,webLink,location,isAllDay')
+        .top(this.props.numMeetings > 0 ? this.props.numMeetings : 100)
+        .header("Prefer", "outlook.timezone=" + '"' + timeZone + '"')
+        // sort ascending by start time
+        .orderby("start/dateTime")
+        .get((err: any, res: IMeetings): void => {
+          if (err) {
+            // Something failed calling the MS Graph
+            this.setState({
+              error: err.message ? err.message : strings.Error,
+              loading: false
+            });
+            return;
+          }
 
-        // Check if a response was retrieved
-        if (res && res.value && res.value.length > 0) {
-          this.setState({
-            meetings: res.value,
-            loading: false
-          });
-        }
-        else {
-          // No meetings found
-          this.setState({
-            loading: false
-          });
-        }
-      });
+          // Check if a response was retrieved
+          if (res && res.value && res.value.length > 0) {
+            this.setState({
+              meetings: res.value,
+              loading: false
+            });
+          }
+          else {
+            // No meetings found
+            this.setState({
+              loading: false
+            });
+          }
+        });
+    });
   }
 
   /**

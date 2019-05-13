@@ -28,6 +28,7 @@
       <pnp:WebApiPermission Resource="Microsoft Graph" Scope="Mail.Read"/>
       <pnp:WebApiPermission Resource="Microsoft Graph" Scope="Calendars.ReadWrite"/>
       <pnp:WebApiPermission Resource="Microsoft Graph" Scope="Group.ReadWrite.All"/>
+      <pnp:WebApiPermission Resource="Microsoft Graph" Scope="MailboxSettings.Read"/>      
     </pnp:WebApiPermissions>
     <pnp:AppCatalog>
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\package\sharepoint-starter-kit.sppkg" SkipFeatureDeployment="true"/>
