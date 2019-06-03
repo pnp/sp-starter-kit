@@ -3,7 +3,7 @@
   "solution": {
     "name": "sharepoint-starter-kit-client-side-solution",
     "id": "3624777a-337d-4b34-8384-5ab774c069aa",
-    "version": "1.5.2.0",
+    "version": "1.5.3.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "webApiPermissionRequests": [
