@@ -94,6 +94,18 @@ Not available | Redirect | Can be used to perform automatic redirections of URLs
 ![](assets/images/components/ext-classification.png) | [Site Classification](documentation/components/ext-classification.md) | Renders a header with site classification information. | [code](solution/src/extensions/siteClassification/SiteClassificationApplicationCustomizer.ts)
 Not available | Tab Page | Renders a header with links between two different pages in the site. | [code](solution/src/extensions/tabPage/TabPageApplicationCustomizer.ts)
 
+## Support and SLA for this project
+
+Following statements apply across all of the PnP samples and solutions, including samples, core component(s) and solutions, like SharePoint Starter Kit.
+
+- PnP guidance and samples are created by Microsoft & by the Community
+- PnP guidance and samples are maintained by Microsoft & community
+- PnP uses supported and recommended techniques
+- PnP is an open-source initiative by the community – people who work on the initiative for the benefit of others, have their normal day job as well
+- PnP is NOT a product and therefore it’s not supported by Premier Support or other official support channels
+- PnP is supported in similar ways as other open source projects done by Microsoft with support from the community by the community
+- There are numerous partners that utilize PnP within their solutions for customers. Support for this is provided by the Partner. When PnP material is used in deployments, we recommend being clear with your customer/deployment owner on the support model
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
