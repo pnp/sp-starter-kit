@@ -27,6 +27,8 @@ If all[`pre-requirements`](../#pre-requirements) have been addressed and met, no
 
 4. Verify you have already created your `tenant app catalog`.
 
+4. Verify that the account you are using has Admin rights to the Site Collection for tenant app catalog (eg. /sites/appcatalog)
+
 5. Verify the account you are using to connect to your tenant site has already been added as a term store administrator.
 
 6. If you believe the error is new and not addressed below or in the [`issues list`](https://github.com/SharePoint/sp-starter-kit/issues), please submit a [`new issue`](https://github.com/SharePoint/sp-starter-kit/issues). If the error appears to be an error reported in PowerShell, please enable the PnP Trace Log before running the deploy.ps1 script and report those findings in your new issue.
@@ -120,6 +122,8 @@ An error may appear similar to the following:
 `Apply-PnPProvisioningHierarchy : {"error":{"code":"-2147024891, System.UnauthorizedAccessException","message":"{"lang","en-us","value":"Access denied. You do not have permissions to perform this action or access this resource."}}}`
 
 ![Targeted Release](../assets/images/provision-ps-failed-not-targeted-release.png)
+
+`This error can also appear if the login account is not an owner of the 'App Catalog' for the tenant
 
 ### Invalid App package installation - API Management missing
 
