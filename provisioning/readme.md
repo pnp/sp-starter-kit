@@ -27,15 +27,15 @@ Apply-PnPTenantTemplate -Path starterkit.pnp
 
 **Common notes**
 
-- By default the starter kit will create 3 site collections, using a common prefix of 'Contoso'. These sites will be called 'contosoportal' (a communications site), 'contosohr' and 'contosomarketing' (both team sites). If you want to provide a different prefix, enter the apply cmdlet as follows:
+- By default the starter kit will create 3 site collections, using a common prefix of 'Contoso'. These sites will be called 'contosoportal' (a communications site), 'contosohr' and 'contosomarketing' (both team sites). If you want to provide different urls, use the apply cmdlet as follows:
 
 ```powershell
-Apply-PnPTenantTemplate -Path starterkit.pnp -Parameters @{"SitePrefixUrl"="contoso"}
+Apply-PnPTenantTemplate -Path starterkit.pnp -Parameters @{"PORTALURL"="/sites/contosoportal"; "MARKETINGALIAS"="contosomarketing"; "HRALIAS"="contosohr" }
 ```
 
-where you replace the 'contoso' part with your own prefix, for instance the name of your company.
+where you replace the values with your own. The PORTALURL parameter is the tenant relative url for your main site collection. The two alias parameters are used to create modern team sites with connected Office 365 unified groups.
 
-- The tenant site you provide is only used to create the initial connection to your tenant. SP Starter Kit will create new demo sites by default. If the site collections are in place it will reuse those site collections.
+- The tenant site you provide is only used to create the initial connection to your tenant. During application of SP Starter Kit 3 demo sites will be created within the tenant. If the site collections are in place it will reuse those site collections.
 
 - The site hierarchy of the sites created by the deployment process will be read from the starterkit.pnp file. If you want to modify this hierarchy you will have to modify and repackage the starterkit.xml into a starterkit.pnp file, which you can do using
 
