@@ -50,10 +50,10 @@ Connect-PnPOnline https://contosodemosk.sharepoint.com
     - If you run into errors during provisioning, refer to ['Common SP Starter Kit Provisioning results'](./documentation/common-provision-results.md) for additional suggestions and common mistakes
 
 ```powershell
-Apply-PnPTenantTemplate -Path starterkit.pnp -Parameters @{"SiteUrlPrefix"="demo"}
+Apply-PnPTenantTemplate -Path starterkit.pnp -Parameters @{"PORTALURL"="/sites/demoportal"; "MARKETINGALIAS"="demomarketing"; "HRALIAS"="demohr" }}
 ```
 
-This will provision 3 site collections with urls of `/sites/demoportal`, `/sites/demohr`, and `/sites/demomarketing`. Your urls may vary depending on the SitePrefix you use and the managed path you selected for team sites in your tenant administration (this defaults to 'sites').
+This will provision 3 site collections with urls of `/sites/demoportal`, `/sites/demohr`, and `/sites/demomarketing`. Your urls may vary depending on the managed path you selected for team sites in your tenant administration (this defaults to 'sites').
 
 
 > Notice that the starter kit also adds tenant level settings like themes, site designs, taxonomy term sets, and other adjustments. Therefore, it is recommended to test the starter kit in an **isolated test tenant and not immediately execute it within your production environment**.

@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0"?>
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2018/07/ProvisioningSchema" Author="SharePoint PnP" Generator="SharePoint PnP" Version="1.0" Description="SharePoint Starter Kit" DisplayName="SharePoint Starter Kit" ImagePreviewUrl="https://raw.githubusercontent.com/SharePoint/sp-dev-provisioning-templates/master/tenant/SP-Starter-Kit/sp-starter-kit-front-page-16x9.png">
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/03/ProvisioningSchema" Author="SharePoint PnP" Generator="SharePoint PnP" Version="1.0" Description="SharePoint Starter Kit" DisplayName="SharePoint Starter Kit" ImagePreviewUrl="https://raw.githubusercontent.com/SharePoint/sp-dev-provisioning-templates/master/tenant/SP-Starter-Kit/sp-starter-kit-front-page-16x9.png">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.1.1809.0, Culture=neutral, PublicKeyToken=null">
     <pnp:Parameters>
       <pnp:Parameter Key="Company">Contoso Electronics</pnp:Parameter>
-      <pnp:Parameter Key="SiteUrlPrefix">Contoso</pnp:Parameter>
+      <pnp:Parameter Key="PORTALURL">/sites/contosoportal</pnp:Parameter>
+      <pnp:Parameter Key="MARKETINGALIAS">contosomarketing</pnp:Parameter>
+      <pnp:Parameter Key="HRALIAS">contosohr</pnp:Parameter>
       <pnp:Parameter Key="WeatherCity">Seattle</pnp:Parameter>
       <pnp:Parameter Key="StockSymbol">MSFT</pnp:Parameter>
       <pnp:Parameter Key="lcid">1033</pnp:Parameter>
@@ -18,7 +20,6 @@
     <pnp:Localization LCID="1044" Name="core" ResourceFile="resources\resources-core.nb-no.resx" />
     <pnp:Localization LCID="1053" Name="core" ResourceFile="resources\resources-core.sv-se.resx" />
     <pnp:Localization LCID="1055" Name="core" ResourceFile="resources\resources-core.tr-tr.resx" />
-    
   </pnp:Localizations>
   <pnp:Tenant>
     <pnp:WebApiPermissions>
@@ -33,132 +34,6 @@
     <pnp:AppCatalog>
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\package\sharepoint-starter-kit.sppkg" SkipFeatureDeployment="true"/>
     </pnp:AppCatalog>
-    <pnp:Themes>
-      <pnp:Theme Name="{parameter:Company} HR" IsInverted="false">
-        {
-        "neutralQuaternaryAlt": "#dadada",
-        "themeLighterAlt": "#f1f9fb",
-        "themeSecondary": "#168caa",
-        "themePrimary": "#017e9d",
-        "bodyText": "#333333",
-        "themeDarker": "#014759",
-        "themeDark": "#016078",
-        "themeLight": "#9fd5e2",
-        "error": "#e93333",
-        "neutralLighter": "#f4f4f4",
-        "neutralLighterAlt": "#f8f8f8",
-        "themeLighter": "#cae8ef",
-        "themeDarkAlt": "#01728e",
-        "themeTertiary": "#50adc5",
-        "primaryText": "#333333",
-        "accent": "#864B7A",
-        "bodyBackground": "#ffffff",
-        "neutralSecondary": "#858585",
-        "neutralQuaternary": "#d0d0d0",
-        "neutralLight": "#eaeaea",
-        "neutralPrimaryAlt": "#4b4b4b",
-        "white": "#ffffff",
-        "neutralDark": "#272727",
-        "neutralPrimary": "#333333",
-        "neutralTertiaryAlt": "#c8c8c8",
-        "neutralTertiary": "#c2c2c2",
-        "black": "#1d1d1d"
-        }
-      </pnp:Theme>
-      <pnp:Theme Name="{parameter:Company} Marketing" IsInverted="false">
-        {
-        "neutralQuaternaryAlt": "#dadada",
-        "themeLighterAlt": "#fdf7f4",
-        "themeSecondary": "#d06228",
-        "themePrimary": "#ca5010",
-        "bodyText": "#333333",
-        "themeDarker": "#712d09",
-        "themeDark": "#993e0c",
-        "themeLight": "#efc4ad",
-        "error": "#e93333",
-        "neutralLighter": "#f4f4f4",
-        "neutralLighterAlt": "#f8f8f8",
-        "themeLighter": "#f6dfd2",
-        "themeDarkAlt": "#b5490f",
-        "themeTertiary": "#df8f64",
-        "primaryText": "#333333",
-        "accent": "#7A7574",
-        "bodyBackground": "#ffffff",
-        "neutralSecondary": "#858585",
-        "neutralQuaternary": "#d0d0d0",
-        "neutralLight": "#eaeaea",
-        "neutralPrimaryAlt": "#4b4b4b",
-        "white": "#ffffff",
-        "neutralDark": "#272727",
-        "neutralPrimary": "#333333",
-        "neutralTertiaryAlt": "#c8c8c8",
-        "neutralTertiary": "#c2c2c2",
-        "black": "#1d1d1d"
-        }
-      </pnp:Theme>
-      <pnp:Theme Name="{parameter:Company} Sales" IsInverted="false">
-        {
-        "neutralQuaternaryAlt": "#dadada",
-        "themeLighterAlt": "#f6faf7",
-        "themeSecondary": "#598f6d",
-        "themePrimary": "#487f5d",
-        "bodyText": "#333333",
-        "themeDarker": "#294734",
-        "themeDark": "#376147",
-        "themeLight": "#bdd9c8",
-        "error": "#e93333",
-        "neutralLighter": "#f4f4f4",
-        "neutralLighterAlt": "#f8f8f8",
-        "themeLighter": "#daebe1",
-        "themeDarkAlt": "#417354",
-        "themeTertiary": "#84b396",
-        "primaryText": "#333333",
-        "accent": "#4B7B91",
-        "bodyBackground": "#ffffff",
-        "neutralSecondary": "#858585",
-        "neutralQuaternary": "#d0d0d0",
-        "neutralLight": "#eaeaea",
-        "neutralPrimaryAlt": "#4b4b4b",
-        "white": "#ffffff",
-        "neutralDark": "#272727",
-        "neutralPrimary": "#333333",
-        "neutralTertiaryAlt": "#c8c8c8",
-        "neutralTertiary": "#c2c2c2",
-        "black": "#1d1d1d"
-        }
-      </pnp:Theme>
-      <pnp:Theme Name="{parameter:Company} Technologies" IsInverted="false">
-        {
-        "neutralQuaternaryAlt": "#dadada",
-        "themeLighterAlt": "#f9f8fb",
-        "themeSecondary": "#8675a5",
-        "themePrimary": "#786699",
-        "bodyText": "#333333",
-        "themeDarker": "#433956",
-        "themeDark": "#5b4e74",
-        "themeLight": "#d2cae0",
-        "error": "#e93333",
-        "neutralLighter": "#f4f4f4",
-        "neutralLighterAlt": "#f8f8f8",
-        "themeLighter": "#e6e2ef",
-        "themeDarkAlt": "#6c5c8a",
-        "themeTertiary": "#a99bc2",
-        "primaryText": "#333333",
-        "accent": "#786699",
-        "bodyBackground": "#ffffff",
-        "neutralSecondary": "#858585",
-        "neutralQuaternary": "#d0d0d0",
-        "neutralLight": "#eaeaea",
-        "neutralPrimaryAlt": "#4b4b4b",
-        "white": "#ffffff",
-        "neutralDark": "#272727",
-        "neutralPrimary": "#333333",
-        "neutralTertiaryAlt": "#c8c8c8",
-        "neutralTertiary": "#c2c2c2",
-        "black": "#1d1d1d"
-        }
-      </pnp:Theme>
-    </pnp:Themes>
     <pnp:SiteScripts>
       <pnp:SiteScript JsonFilePath="resources\collabteamsite.json" Overwrite="true" Title="{parameter:Company} Team Site" Description=""/>
       <pnp:SiteScript JsonFilePath="resources\collabcommunicationsite.json" Overwrite="true" Title="{parameter:Company} Communication Site" Description=""/>
@@ -178,26 +53,29 @@
   </pnp:Tenant>
   <pnp:Sequence ID="sp-starter-kit-sequence">
     <pnp:SiteCollections>
-      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:CommunicationSite" ProvisioningId="PORTAL" Theme="{parameter:Company} HR" SiteDesign="Topic" Title="{parameter:Company}" Description="" Url="/sites/{parameter:SiteUrlPrefix}portal" IsHubSite="true" Owner="{CurrentUserLoginName}">
+      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:CommunicationSite" ProvisioningId="PORTAL" SiteDesign="Topic" Title="{parameter:Company}" Description="" Url="{parameter:PORTALURL}" IsHubSite="true" Owner="{CurrentUserLoginName}">
         <pnp:Templates>
           <pnp:ProvisioningTemplateReference ID="ROOT-TEMPLATE"/>
           <pnp:ProvisioningTemplateReference ID="PORTALFOOTERLINKS-TEMPLATE"/>
+          <pnp:ProvisioningTemplateReference ID="STARTERKIT-THEME" />
         </pnp:Templates>
       </pnp:SiteCollection>
-      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite" Theme="{parameter:Company} HR" ProvisioningId="HR" Alias="{parameter:SiteUrlPrefix}hr" IsPublic="false" Description=""
+      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite" ProvisioningId="HR" Alias="{parameter:HRALIAS}" IsPublic="false" Description=""
                           DisplayName =""
                           Title ="Human Resources">
         <pnp:Templates>
           <pnp:ProvisioningTemplateReference ID="COLLAB-TEMPLATE"/>
           <pnp:ProvisioningTemplateReference ID="COLLAB-HR-LOGO-TEMPLATE"/>
+          <pnp:ProvisioningTemplateReference ID="STARTERKIT-THEME" />
         </pnp:Templates>
       </pnp:SiteCollection>
-      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite" Theme="{parameter:Company} Marketing" ProvisioningId="MARKETING" Alias="{parameter:SiteUrlPrefix}marketing" IsPublic="false" Description=""
+      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite" ProvisioningId="MARKETING" Alias="{parameter:MARKETINGALIAS}" IsPublic="false" Description=""
                           DisplayName =""
                           Title ="Marketing">
         <pnp:Templates>
           <pnp:ProvisioningTemplateReference ID="COLLAB-TEMPLATE"/>
           <pnp:ProvisioningTemplateReference ID="COLLAB-MARKETING-LOGO-TEMPLATE"/>
+          <pnp:ProvisioningTemplateReference ID="STARTERKIT-MARKETING-THEME" />
         </pnp:Templates>
       </pnp:SiteCollection>
     </pnp:SiteCollections>
@@ -921,6 +799,72 @@
     </pnp:ProvisioningTemplate>
     <pnp:ProvisioningTemplate ID="COLLAB-MARKETING-LOGO-TEMPLATE" Version="1.0" BaseSiteTemplate="GROUP#0" ImagePreviewUrl="https://preview.png" DisplayName="SP Portal Showcase" Description="" Scope="RootSite" TemplateCultureInfo="1033">
       <pnp:WebSettings SiteLogo="resources\images\logo_marketing.png" />
+    </pnp:ProvisioningTemplate>
+    <pnp:ProvisioningTemplate ID="STARTERKIT-THEME" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" DisplayName="StarterKit Theme" Description="" TemplateCultureInfo="1033">
+      <pnp:Theme Name="StarterKit Theme" IsInverted="false">
+        {
+        "neutralQuaternaryAlt": "#dadada",
+        "themeLighterAlt": "#f1f9fb",
+        "themeSecondary": "#168caa",
+        "themePrimary": "#017e9d",
+        "bodyText": "#333333",
+        "themeDarker": "#014759",
+        "themeDark": "#016078",
+        "themeLight": "#9fd5e2",
+        "error": "#e93333",
+        "neutralLighter": "#f4f4f4",
+        "neutralLighterAlt": "#f8f8f8",
+        "themeLighter": "#cae8ef",
+        "themeDarkAlt": "#01728e",
+        "themeTertiary": "#50adc5",
+        "primaryText": "#333333",
+        "accent": "#864B7A",
+        "bodyBackground": "#ffffff",
+        "neutralSecondary": "#858585",
+        "neutralQuaternary": "#d0d0d0",
+        "neutralLight": "#eaeaea",
+        "neutralPrimaryAlt": "#4b4b4b",
+        "white": "#ffffff",
+        "neutralDark": "#272727",
+        "neutralPrimary": "#333333",
+        "neutralTertiaryAlt": "#c8c8c8",
+        "neutralTertiary": "#c2c2c2",
+        "black": "#1d1d1d"
+        }
+      </pnp:Theme>
+    </pnp:ProvisioningTemplate>
+    <pnp:ProvisioningTemplate ID="STARTERKIT-MARKETING-THEME" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" DisplayName="StarterKit Theme" Description="" TemplateCultureInfo="1033">
+      <pnp:Theme Name="StarterKit Marketing Theme" IsInverted="false">
+        {
+        "neutralQuaternaryAlt": "#dadada",
+        "themeLighterAlt": "#fdf7f4",
+        "themeSecondary": "#d06228",
+        "themePrimary": "#ca5010",
+        "bodyText": "#333333",
+        "themeDarker": "#712d09",
+        "themeDark": "#993e0c",
+        "themeLight": "#efc4ad",
+        "error": "#e93333",
+        "neutralLighter": "#f4f4f4",
+        "neutralLighterAlt": "#f8f8f8",
+        "themeLighter": "#f6dfd2",
+        "themeDarkAlt": "#b5490f",
+        "themeTertiary": "#df8f64",
+        "primaryText": "#333333",
+        "accent": "#7A7574",
+        "bodyBackground": "#ffffff",
+        "neutralSecondary": "#858585",
+        "neutralQuaternary": "#d0d0d0",
+        "neutralLight": "#eaeaea",
+        "neutralPrimaryAlt": "#4b4b4b",
+        "white": "#ffffff",
+        "neutralDark": "#272727",
+        "neutralPrimary": "#333333",
+        "neutralTertiaryAlt": "#c8c8c8",
+        "neutralTertiary": "#c2c2c2",
+        "black": "#1d1d1d"
+        }
+      </pnp:Theme>
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
 </pnp:Provisioning>

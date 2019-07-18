@@ -1,5 +1,8 @@
 # SharePoint Starter Kit Changelog #
 
+**2019-07-18**
+* Changed handling of URLs using parameters
+
 **2018-04-08**
 * Upgrade solution to SharePoint Framework v1.8 with Microsoft Teams support for the web parts.
 
