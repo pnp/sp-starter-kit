@@ -21,15 +21,17 @@ If all[`pre-requirements`](../#pre-requirements) have been addressed and met, no
 
 1. Ensure you are connecting to your tenant site using a tenant admin account.
 
-2. Ensure that you have the latest PnP PowerShell commandlets. You might need to remove the PnP PowerShell commandlets and re-install to ensure you have the latest. [`PnP PowerShell - Recommended 3.2.1810.0 or later`](https://github.com/SharePoint/PnP-PowerShell/releases).
+1. Ensure that you have the latest PnP PowerShell commandlets. You might need to remove the PnP PowerShell commandlets and re-install to ensure you have the latest. [`PnP PowerShell - Recommended 3.2.1810.0 or later`](https://github.com/SharePoint/PnP-PowerShell/releases).
 
-3. Your tenant must be set to `targeted release` for all users, and you must wait at least 24 hours after setting targeted release for all users before running deploy.ps1.
+1. Your tenant must be set to `targeted release` for all users, and you must wait at least 24 hours after setting targeted release for all users before running deploy.ps1.
 
-4. Verify you have already created your `tenant app catalog`.
+1. Verify you have already created your `tenant app catalog`.
 
-5. Verify the account you are using to connect to your tenant site has already been added as a term store administrator.
+1. Verify that the account you are using has Admin rights to the Site Collection for tenant app catalog (eg. /sites/appcatalog)
 
-6. If you believe the error is new and not addressed below or in the [`issues list`](https://github.com/SharePoint/sp-starter-kit/issues), please submit a [`new issue`](https://github.com/SharePoint/sp-starter-kit/issues). If the error appears to be an error reported in PowerShell, please enable the PnP Trace Log before running the deploy.ps1 script and report those findings in your new issue.
+1. Verify the account you are using to connect to your tenant site has already been added as a term store administrator.
+
+1. If you believe the error is new and not addressed below or in the [`issues list`](https://github.com/SharePoint/sp-starter-kit/issues), please submit a [`new issue`](https://github.com/SharePoint/sp-starter-kit/issues). If the error appears to be an error reported in PowerShell, please enable the PnP Trace Log before running the deploy.ps1 script and report those findings in your new issue.
 
 ```powershell
 Set-PnPTraceLog -On -Level Debug
@@ -120,6 +122,8 @@ An error may appear similar to the following:
 `Apply-PnPProvisioningHierarchy : {"error":{"code":"-2147024891, System.UnauthorizedAccessException","message":"{"lang","en-us","value":"Access denied. You do not have permissions to perform this action or access this resource."}}}`
 
 ![Targeted Release](../assets/images/provision-ps-failed-not-targeted-release.png)
+
+`This error can also appear if the login account is not an owner of the 'App Catalog' for the tenant
 
 ### Invalid App package installation - API Management missing
 
