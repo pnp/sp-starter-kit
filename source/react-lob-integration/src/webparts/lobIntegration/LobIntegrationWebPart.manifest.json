@@ -19,7 +19,7 @@
     "group": { "default": "Other" },
     "title": { "default": "LOBIntegration" },
     "description": { "default": "Demonstrates Line-of-Business solution integration with SharePoint Framework" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "PlugConnected",
     "properties": {
       "description": "LOBIntegration"
     }

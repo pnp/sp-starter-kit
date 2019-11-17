@@ -18,7 +18,7 @@
     "group": { "default": "Other" },
     "title": { "default": "Links" },
     "description": { "default": "LIst of links based on collection control configured in the web part properties" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "Link",
     "properties": {
       "description": "Links"
     }

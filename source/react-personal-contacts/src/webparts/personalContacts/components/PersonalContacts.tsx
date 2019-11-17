@@ -10,7 +10,7 @@ export default class PersonalContacts extends React.Component<IPersonalContactsP
         <div className={ styles.container }>
           <div className={ styles.row }>
             <div className={ styles.column }>
-              <span className={ styles.title }>Welcome to SharePoint!</span>
+              <span className={ styles.title }>Personal Contacts</span>
               <p className={ styles.subTitle }>Customize SharePoint experiences using Web Parts.</p>
               <p className={ styles.description }>{escape(this.props.description)}</p>
               <a href="https://aka.ms/spfx" className={ styles.button }>

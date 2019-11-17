@@ -18,7 +18,7 @@
     "group": { "default": "Other" },
     "title": { "default": "SiteInformation" },
     "description": { "default": "Metadata around the site" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "OpenWith",
     "properties": {
       "description": "SiteInformation"
     }

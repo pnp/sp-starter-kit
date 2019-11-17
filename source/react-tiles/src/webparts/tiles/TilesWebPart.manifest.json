@@ -18,7 +18,7 @@
     "group": { "default": "Other" },
     "title": { "default": "Tiles" },
     "description": { "default": "Tiles layout" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "Tiles",
     "properties": {
       "description": "Tiles"
     }

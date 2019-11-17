@@ -19,7 +19,7 @@
     "group": { "default": "Other" },
     "title": { "default": "FollowedSites" },
     "description": { "default": "Followed sites of the user" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "SiteScan",
     "properties": {
       "description": "FollowedSites"
     }

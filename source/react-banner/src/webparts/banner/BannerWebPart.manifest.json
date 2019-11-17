@@ -18,7 +18,7 @@
     "group": { "default": "Other" },
     "title": { "default": "Banner" },
     "description": { "default": "Provides simple image and text combination presentation" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "PanoIndicator",
     "properties": {
       "description": "Banner"
     }
