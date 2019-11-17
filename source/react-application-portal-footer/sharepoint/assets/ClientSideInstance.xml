@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <ClientSideComponentInstance
+        Title="PortalFooter"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ComponentId="df889434-1b1c-4f5b-ada3-086d948e4270"
+        Properties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+    </ClientSideComponentInstance>
+</Elements>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <ClientSideComponentInstance
+        Title="HubOrSiteAlerts"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ComponentId="29df5d8b-1d9b-4d32-971c-d66162396ed3"
+        Properties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+    </ClientSideComponentInstance>
+</Elements>
