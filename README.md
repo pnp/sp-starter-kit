@@ -1,8 +1,16 @@
-# SharePoint Starter Kit
+# SharePoint Starter Kit v2
+
+v2 version of the SharePoint Starter Kit has following objectives:
+
+* Support web parts and extensions to be deployed one-by-one to tenants or farms
+* Version to deploy SharePoint 2019 version with web parts which are supported there
+* Provide two different solution designs - Updated for SharePoint Online and SharePoint 2019
+* Demonstrate new SharePoint Online layout capabilities for the UX design
+* Demonstrate teams tab development with SharePoint Framework for suitable web parts
+* Demonstrate Microsoft Graph API and Graph Tool Kit usage in the SharePoint Online side
+* Update used version of the Starter Kit for SharePoint Online
 
 This is a solution designed for SharePoint Online which provides numerous web parts, extensions, and other components which you can use as an example and inspiration for your own customizations. 
-
-> Please be aware that **documentation work is still in progress** and we will keep on provide more guidance and input around covered capabilities in this solution. In the meantime, please submit issues and questions using the [issues list](../../issues) to help us provide better documentation and guidance. Thanks for your patience!
 
 ![PnP Starter Pack Front Page](./assets/images/default-front-page-contoso.png)
 
