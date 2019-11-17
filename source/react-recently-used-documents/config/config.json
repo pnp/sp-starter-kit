@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "recently-used-documents-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/recentlyUsedDocuments/RecentlyUsedDocumentsWebPart.js",
+          "manifest": "./src/webparts/recentlyUsedDocuments/RecentlyUsedDocumentsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "RecentlyUsedDocumentsWebPartStrings": "lib/webparts/recentlyUsedDocuments/loc/{locale}.js"
+  }
+}

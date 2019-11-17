@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "recent-contacts-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/recentContacts/RecentContactsWebPart.js",
+          "manifest": "./src/webparts/recentContacts/RecentContactsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "RecentContactsWebPartStrings": "lib/webparts/recentContacts/loc/{locale}.js"
+  }
+}
