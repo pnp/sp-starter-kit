@@ -14,6 +14,7 @@ Short summary on functionality and used technologies.
 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint 2019](https://docs.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-2019-development-platform)
 
 > Update accordingly as needed.
 
@@ -31,8 +32,7 @@ folder name | Author details
 
 Version|Date|Comments
 -------|----|--------
-1.1|September 2, 2025|Update comment
-1.0|August 29, 2025|Initial release
+1.0|December 25, 2019|Initial release
 
 ## Disclaimer
 
@@ -43,6 +43,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 * Clone this repository
+* Move to solution folder
 * in the command line run:
   * `npm install`
   * `gulp serve`
@@ -58,4 +59,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * topic 2
 * topic 3
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/solution-name" />

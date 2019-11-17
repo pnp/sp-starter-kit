@@ -1,26 +1,76 @@
-## react-personal-tasks
+# Personal Tasks web part
 
-This is where you include your WebPart documentation.
+This web part provides you the ability to add a particular user's personal tasks on a web page. The web part may be configured to show all tasks or to exclude completed tasks. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
 
-### Building the code
+v2 web part is modified to use Graph Toolkit to expose the personal tasks, which simplifies the implementation.
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
+![Personal Tasks](../../assets/images/components/part-personal-tasks.gif)
 
-This package produces the following:
+## How to use this web part on your web pages
 
-* lib/* - intermediate-stage commonjs build artifacts
-* dist/* - the bundled script, along with other resources
-* deploy/* - all resources which should be uploaded to a CDN.
+1. Place the page you want to add this web part to in edit mode.
+2. Search for and insert the **Personal Tasks** web part.
+3. Configure the web part to update its properties.
 
-### Build options
+## Configurable Properties
 
-gulp clean - TODO
-gulp test - TODO
-gulp serve - TODO
-gulp bundle - TODO
-gulp package-solution - TODO
+The `Personal Tasks` web part can be configured with the following properties:
+
+| Label | Property | Type | Required | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| My Tasks | title | string | no | The web part title, editable inline with the web part itself |
+| Show completed tasks | showCompleted | bool | no | Default: false - If true, will show completed tasks as well |
+
+## Used SharePoint Framework Version
+
+![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+
+* Only supported in SharePoint Online due to dependency on the Microsoft Graph APIs
+
+## Applies to
+
+* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+
+## Prerequisites
+
+none
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+folder name | Author details
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|December 25, 2019|Initial release
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+* Clone this repository
+* Move to solution folder
+* in the command line run:
+  * `npm install`
+  * `gulp serve`
+
+> Include any additional steps as needed.
+
+## Features
+
+Description of the web part with possible additional details than in short summary. 
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+* Using Microsoft Graph from the web parts
+* Hosting SharePoint Framework components as Microsoft Teams tabs
+* Using app pages in SharePoint Online
+
+<img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-personal-tasks" />
