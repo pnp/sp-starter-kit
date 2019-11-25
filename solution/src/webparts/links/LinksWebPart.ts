@@ -21,7 +21,6 @@ export interface ILinksWebPartProps {
 export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartProps> {
   private propertyFieldCollectionData;
   private customCollectionFieldType;
-  private propertyFieldNumber;
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
 

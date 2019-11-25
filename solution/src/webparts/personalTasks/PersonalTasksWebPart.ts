@@ -19,7 +19,6 @@ export interface IPersonalTasksWebPartProps {
 
 export default class PersonalTasksWebPart extends BaseClientSideWebPart<IPersonalTasksWebPartProps> {
   private graphClient: MSGraphClient;
-  private propertyFieldNumber;
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
 
