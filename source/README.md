@@ -8,7 +8,7 @@ Solution |  Description  | Environment
 ----------- | ----------- | -----------
 [js-application-redirect](js-application-redirect/README.md) | Can be used to perform automatic redirections of URLs in the site based on a custom list. | SPO & SP2019
 [library-starter-kit-shared](library-starter-kit-shared/README.md) | Shows the list of sites which particular user is following | SPO
-[rest-application-alerts]rest-application-alerts/README.md) | Shows informational or important messages in the header section of pages based on a custom list information in the hub site. | SPO & SP2019
+[rest-application-alerts](rest-application-alerts/README.md) | Shows informational or important messages in the header section of pages based on a custom list information in the hub site. | SPO & SP2019
 [react-application-collab-footer](react-application-collab-footer/README.md) | Shows company wide links which are configured using Taxonomy service. Includes also personalized links which are stored in user profile property if set. | SPO & SP2019
 [react-application-portal-footer](react-application-portal-footer/README.md) | Expanding footer for communication site. Show standard company links and also supports personalized links for the current user which are stored in User Profile. | SPO & SP2019
 [react-banner](react-banner/README.md) | Creates a banner with an image and overlaid text. | SPO & SP2019
@@ -26,3 +26,5 @@ Solution |  Description  | Environment
 [react-recently-visited-sites](react-recently-visited-sites/README.md) | Show recently visited sites for current user using Microsoft Graph. | SPO
 [react-site-information](react-site-information/README.md) | Intended to collect and present additional metadata for group associated or normal team sites. | SPO & SP2019
 [react-tiles](react-tiles/README.md) | Renders set of tiles. Icons are from Office UI Fabric and you can configure tiles using collection editor in web part properties. | SPO & SP2019
+[react-weather](react-weather/README.md) | Weather web part targeted for SP2019 as SPO has out-of-the-box one. | SP2019
+[react-tiles](react-world-clock/README.md) | World clock web part targeted for SP2019 as SPO has out-of-the-box one. | SP2019
