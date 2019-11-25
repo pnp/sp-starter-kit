@@ -9,12 +9,24 @@ import {
 
 import * as strings from 'PeopleDirectoryWebPartStrings';
 import { PeopleDirectory, IPeopleDirectoryProps } from './components/PeopleDirectory/';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export interface IPeopleDirectoryWebPartProps {
   title: string;
 }
 
 export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopleDirectoryWebPartProps> {
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
+
+  protected onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
+    return super.onInit();
+  }
+
   public render(): void {
     const element: React.ReactElement<IPeopleDirectoryProps> = React.createElement(
       PeopleDirectory,
@@ -22,6 +34,7 @@ export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopl
         webUrl: this.context.pageContext.web.absoluteUrl,
         spHttpClient: this.context.spHttpClient,
         title: this.properties.title,
+        themeVariant: this._themeVariant,
         displayMode: this.displayMode,
         locale: this.getLocaleId(),
         onTitleUpdate: (newTitle: string) => {
@@ -33,6 +46,16 @@ export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopl
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

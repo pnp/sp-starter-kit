@@ -3,6 +3,7 @@
   "id": "ac41debd-d92c-4de0-9d67-e7bc191030ee",
   "alias": "pnpPersonalEmail",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
 
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",

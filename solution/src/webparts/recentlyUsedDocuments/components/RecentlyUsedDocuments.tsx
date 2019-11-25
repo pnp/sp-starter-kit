@@ -9,6 +9,7 @@ import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { DocumentCardType } from 'office-ui-fabric-react/lib/components/DocumentCard';
 import { IRecentlyUsedDocumentsProps, IRecentlyUsedDocumentsState, IRecentDocuments, IRecentDocument, BrandIcons } from '.';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsedDocumentsProps, IRecentlyUsedDocumentsState> {
   private _excludeTypes: string[] = ["Web", "spsite", "Folder", "Archive", "Image", "Other"];
@@ -177,8 +178,10 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
    * Default React render method
    */
   public render(): React.ReactElement<IRecentlyUsedDocumentsProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     return (
-      <div className={styles.recentlyUsedDocuments}>
+      <div className={styles.recentlyUsedDocuments} style={{backgroundColor: semanticColors.bodyBackground}}>
         <WebPartTitle displayMode={this.props.displayMode}
                       title={this.props.title}
                       updateProperty={this.props.updateProperty} />

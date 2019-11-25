@@ -3,6 +3,7 @@
   "id": "4f87b698-f910-451f-b4ea-7848a472af0f",
   "alias": "pnpWorldTime",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
 
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",

@@ -17,11 +17,17 @@ import StockInformation from './components/StockInformation';
 import { IStockInformationProps } from './components/IStockInformationProps';
 import { IStockInformationWebPartProps } from './IStockInformationWebPartProps';
 import { StorageEntity } from "@pnp/sp";
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 // import additional controls/components
 export default class StockInformationWebPart extends BaseClientSideWebPart<IStockInformationWebPartProps> {
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
 
   public async onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
 
     return super.onInit().then(async (_) => {
 
@@ -46,6 +52,7 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
       StockInformation,
       {
         demo: this.properties.demo,
+        themeVariant: this._themeVariant,
         stockSymbol: this.properties.stockSymbol,
         autoRefresh: this.properties.autoRefresh,
         apiKey: apiKey,
@@ -65,6 +72,16 @@ export default class StockInformationWebPart extends BaseClientSideWebPart<IStoc
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

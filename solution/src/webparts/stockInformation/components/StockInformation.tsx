@@ -20,6 +20,7 @@ import {
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { HttpClientResponse, HttpClient } from '@microsoft/sp-http';
 import * as lodash from '@microsoft/sp-lodash-subset';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export default class StockInformation extends React.Component<IStockInformationProps, IStockInformationState> {
 
@@ -204,6 +205,7 @@ export default class StockInformation extends React.Component<IStockInformationP
   }
 
   public render(): React.ReactElement<IStockInformationProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
 
     let contents: JSX.Element;
 
@@ -245,7 +247,7 @@ export default class StockInformation extends React.Component<IStockInformationP
 
     // show the Placeholder control, if we are missing the real content, otherwise show the real content
     return (
-      <div className={styles.stockInformation}>
+      <div className={styles.stockInformation} style={{backgroundColor: semanticColors.bodyBackground}}>
         {this.props.needsConfiguration &&
           <Placeholder
             iconName={strings.PlaceholderIconName}

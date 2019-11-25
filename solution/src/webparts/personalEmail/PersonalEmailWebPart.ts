@@ -11,6 +11,7 @@ import { PersonalEmail, IPersonalEmailProps } from './components';
 import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
 import { PropertyFieldToggleWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldToggleWithCallout';
 import { MSGraphClient } from '@microsoft/sp-http';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export interface IPersonalEmailWebPartProps {
   title: string;
@@ -21,8 +22,14 @@ export interface IPersonalEmailWebPartProps {
 export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersonalEmailWebPartProps> {
   private graphClient: MSGraphClient;
   private propertyFieldNumber;
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
 
   public onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
         .getClient()
@@ -38,6 +45,7 @@ export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersona
       PersonalEmail,
       {
         title: this.properties.title,
+        themeVariant: this._themeVariant,
         nrOfMessages: this.properties.nrOfMessages,
         showInboxOnly: this.properties.showInboxOnly,
         // pass the current display mode to determine if the title should be
@@ -54,6 +62,16 @@ export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersona
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

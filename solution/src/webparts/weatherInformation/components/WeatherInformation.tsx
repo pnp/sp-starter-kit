@@ -16,6 +16,7 @@ import {
   IWeatherInformationLocation
 } from '.';
 import * as strings from 'WeatherInformationWebPartStrings';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export default class WeatherInformation extends React.Component<IWeatherInformationProps, IWeatherInformationState> {
   constructor(props: IWeatherInformationProps) {
@@ -127,9 +128,10 @@ export default class WeatherInformation extends React.Component<IWeatherInformat
         );
       }
     }
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
 
     return (
-      <div className={styles.weatherInformation}>
+      <div className={styles.weatherInformation} style={{backgroundColor: semanticColors.bodyBackground}}>
         {this.props.needsConfiguration &&
           // The web part hasn't been configured yet.
           // Show a placeholder to have the user configure the web part

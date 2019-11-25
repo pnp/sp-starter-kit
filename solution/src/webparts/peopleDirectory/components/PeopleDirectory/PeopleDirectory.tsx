@@ -20,6 +20,7 @@ import {
 import { IndexNavigation } from '../IndexNavigation';
 import { PeopleList } from '../PeopleList';
 import * as strings from 'PeopleDirectoryWebPartStrings';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeopleDirectoryState> {
   constructor(props: IPeopleDirectoryProps) {
@@ -212,9 +213,10 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
 
   public render(): React.ReactElement<IPeopleDirectoryProps> {
     const { loading, errorMessage, selectedIndex, searchQuery, people } = this.state;
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
 
     return (
-      <div className={styles.peopleDirectory}>
+      <div className={styles.peopleDirectory} style={{backgroundColor: semanticColors.bodyBackground}}>
         {!loading &&
           errorMessage &&
           // if the component is not loading data anymore and an error message

@@ -3,6 +3,7 @@
   "id": "e2365185-558d-4b6d-bee8-3490cf04a0a6",
   "alias": "pnpLinks",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
   "version": "*",
   "manifestVersion": 2,
   "requiresCustomScript": false,

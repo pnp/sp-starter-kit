@@ -9,6 +9,7 @@ import { List } from 'office-ui-fabric-react/lib/components/List';
 import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/components/Persona';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { Person } from '../Person';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export class PersonalContacts extends React.Component<IPersonalContactsProps, IPersonalContactsState> {
   /**
@@ -114,8 +115,10 @@ export class PersonalContacts extends React.Component<IPersonalContactsProps, IP
   }
 
   public render(): React.ReactElement<IPersonalContactsProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     return (
-      <div className={styles.personalContacts}>
+      <div className={styles.personalContacts} style={{backgroundColor: semanticColors.bodyBackground}}>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
           updateProperty={this.props.updateProperty} />

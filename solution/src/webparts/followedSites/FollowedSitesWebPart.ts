@@ -10,6 +10,7 @@ import {
 import * as strings from 'FollowedSitesWebPartStrings';
 import FollowedSites from './components/FollowedSites';
 import { IFollowedSitesProps } from './components/IFollowedSitesProps';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export interface IFollowedSitesWebPartProps {
   title: string;
@@ -23,14 +24,24 @@ export enum SortOrder {
 }
 
 export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowedSitesWebPartProps> {
-
   private propertyFieldNumber;
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
+
+  protected onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
+    return super.onInit();
+  }
 
   public render(): void {
     const element: React.ReactElement<IFollowedSitesProps> = React.createElement(
       FollowedSites,
       {
         title: this.properties.title,
+        themeVariant: this._themeVariant,
         nrOfItems: this.properties.nrOfItems,
         sortOrder: this.properties.sortOrder,
         context: this.context,
@@ -42,6 +53,16 @@ export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowe
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

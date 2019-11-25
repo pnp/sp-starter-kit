@@ -3,6 +3,7 @@
   "id": "50256fc2-a28f-4544-900e-32724d32bc7f",
   "alias": "pnpStockInformation",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
 
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",

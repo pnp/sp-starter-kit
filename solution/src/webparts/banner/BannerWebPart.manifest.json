@@ -3,6 +3,7 @@
   "id": "ab30ff0a-9241-4d5d-8c6f-1dc07b1d1053",
   "alias": "pnpBanner",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
   "version": "*",
   "manifestVersion": 2,
   "supportsFullBleed": true,

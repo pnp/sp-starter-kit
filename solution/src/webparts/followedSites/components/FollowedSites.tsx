@@ -9,6 +9,7 @@ import * as strings from 'FollowedSitesWebPartStrings';
 import { IFollowedSitesProps, IFollowedSitesState, IFollowedResult, IFollowed } from '.';
 import { Paging } from './paging';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export default class FollowedSites extends React.Component<IFollowedSitesProps, IFollowedSitesState> {
   private _allFollowing: IFollowedResult[] = [];
@@ -148,8 +149,10 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
    * Default React render method
    */
   public render(): React.ReactElement<IFollowedSitesProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     return (
-      <div className={styles.followedSites}>
+      <div className={styles.followedSites} style={{backgroundColor: semanticColors.bodyBackground}}>
         <WebPartTitle displayMode={this.props.displayMode}
                       title={this.props.title}
                       updateProperty={this.props.updateProperty} />

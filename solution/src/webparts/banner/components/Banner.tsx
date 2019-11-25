@@ -4,6 +4,7 @@ import { IBannerProps } from '.';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import * as strings from 'BannerWebPartStrings';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export class Banner extends React.Component<IBannerProps, {}> {
   private _scrollElm: HTMLElement = null;
@@ -107,10 +108,13 @@ export class Banner extends React.Component<IBannerProps, {}> {
    * Default React render method
    */
   public render(): React.ReactElement<IBannerProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     if (this.props.bannerImage) {
       return (
         <div className={styles.banner} style={{
-          height: this.props.bannerHeight ? `${this.props.bannerHeight}px` : `280px`
+          height: this.props.bannerHeight ? `${this.props.bannerHeight}px` : `280px`,
+          backgroundColor: semanticColors.bodyBackground
         }}>
           <div className={styles.bannerImg} style={{
             backgroundImage: `url('${this.props.bannerImage}')`

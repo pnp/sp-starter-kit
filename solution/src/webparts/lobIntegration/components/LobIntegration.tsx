@@ -22,6 +22,7 @@ import { AadHttpClient, HttpClientResponse, IHttpClientOptions } from "@microsof
 import { serviceType } from '../ILobIntegrationWebPartProps';
 import { IListNorthwindCustomersResponse, IClaim } from './IListNorthwindCustomersResponse';
 import { ISearchNorthwindCustomersResponse } from './ISearchNorthwindCustomersResponse';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 /**
  * Define the columns that will be used to render the list of customers
  */
@@ -175,6 +176,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
   }
 
   public render(): React.ReactElement<ILobIntegrationProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
 
     let contents: JSX.Element = null;
 
@@ -246,7 +248,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
 
     // show the Placeholder control, if we are missing the real content, otherwise show the real content
     return (
-      <div className={styles.lobIntegration}>
+      <div className={styles.lobIntegration} style={{backgroundColor: semanticColors.bodyBackground}}>
         {this.props.needsConfiguration &&
           <Placeholder
             iconName={strings.PlaceholderIconName}

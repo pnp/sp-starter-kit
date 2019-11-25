@@ -3,6 +3,7 @@
   "id": "d9d6f014-3fd9-4fb9-af54-044c7c43e081",
   "alias": "pnpPeopleDirectory",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
 
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",

@@ -10,7 +10,7 @@ import * as strings from 'LinksWebPartStrings';
 import Links from './components/Links';
 import { ILinksProps } from './components/ILinksProps';
 import { ILink, LinkTarget } from './components/ILink';
-
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export interface ILinksWebPartProps {
   collectionData: ILink[];
@@ -21,6 +21,17 @@ export interface ILinksWebPartProps {
 export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartProps> {
   private propertyFieldCollectionData;
   private customCollectionFieldType;
+  private propertyFieldNumber;
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
+
+  protected onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
+    return super.onInit();
+  }
 
   public render(): void {
     const element: React.ReactElement<ILinksProps> = React.createElement(
@@ -28,6 +39,7 @@ export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartPro
       {
         collectionData: this.properties.collectionData,
         title: this.properties.title,
+        themeVariant: this._themeVariant,
         displayMode: this.displayMode,
         fUpdateProperty: (value: string) => {
           this.properties.title = value;
@@ -37,6 +49,16 @@ export default class LinksWebPart extends BaseClientSideWebPart<ILinksWebPartPro
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

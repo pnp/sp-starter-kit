@@ -9,6 +9,7 @@ import {
 import * as strings from 'RecentlyVisitedSitesWebPartStrings';
 import { RecentlyVisitedSites, IRecentlyVisitedSitesProps } from './components';
 import { MSGraphClient } from '@microsoft/sp-http';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export interface IRecentlyVisitedSitesWebPartProps {
   title: string;
@@ -16,8 +17,14 @@ export interface IRecentlyVisitedSitesWebPartProps {
 
 export default class RecentlyVisitedSitesWebPart extends BaseClientSideWebPart<IRecentlyVisitedSitesWebPartProps> {
   private graphClient: MSGraphClient;
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
 
   public onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
         .getClient()
@@ -33,6 +40,7 @@ export default class RecentlyVisitedSitesWebPart extends BaseClientSideWebPart<I
       RecentlyVisitedSites,
       {
         title: this.properties.title,
+        themeVariant: this._themeVariant,
         graphClient: this.graphClient,
         displayMode: this.displayMode,
         updateProperty: (value: string) => {
@@ -42,6 +50,16 @@ export default class RecentlyVisitedSitesWebPart extends BaseClientSideWebPart<I
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

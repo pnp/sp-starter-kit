@@ -1,5 +1,6 @@
 import { SPHttpClient } from "@microsoft/sp-http";
 import { DisplayMode } from "@microsoft/sp-core-library";
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 /**
  * Properties for the people directory component
@@ -18,6 +19,7 @@ export interface IPeopleDirectoryProps {
    * Web part title to be displayed in the web part
    */
   title: string;
+  themeVariant: IReadonlyTheme | undefined;
   /**
    * Current page display mode. Used to determine if the user should
    * be able to edit the page title or not.

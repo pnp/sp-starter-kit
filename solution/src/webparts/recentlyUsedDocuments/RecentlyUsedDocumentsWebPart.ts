@@ -10,6 +10,7 @@ import * as strings from 'RecentlyUsedDocumentsWebPartStrings';
 import RecentlyUsedDocuments from './components/RecentlyUsedDocuments';
 import { IRecentlyUsedDocumentsProps } from './components/IRecentlyUsedDocumentsProps';
 import { MSGraphClient } from '@microsoft/sp-http';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export interface IRecentlyUsedDocumentsWebPartProps {
   title: string;
@@ -19,8 +20,14 @@ export interface IRecentlyUsedDocumentsWebPartProps {
 export default class RecentlyUsedDocumentsWebPart extends BaseClientSideWebPart<IRecentlyUsedDocumentsWebPartProps> {
   private graphClient: MSGraphClient;
   private propertyFieldNumber;
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
 
   public onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
         .getClient()
@@ -36,6 +43,7 @@ export default class RecentlyUsedDocumentsWebPart extends BaseClientSideWebPart<
       RecentlyUsedDocuments,
       {
         title: this.properties.title,
+        themeVariant: this._themeVariant,
         nrOfItems: this.properties.nrOfItems,
         context: this.context,
         graphClient: this.graphClient,
@@ -47,6 +55,16 @@ export default class RecentlyUsedDocumentsWebPart extends BaseClientSideWebPart<
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

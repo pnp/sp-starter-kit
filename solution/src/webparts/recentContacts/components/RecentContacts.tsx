@@ -8,6 +8,7 @@ import * as strings from 'RecentContactsWebPartStrings';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import { List } from 'office-ui-fabric-react/lib/components/List';
 import { Person } from './person';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export class RecentContacts extends React.Component<IRecentContactsProps, IRecentContactsState> {
   constructor(props: IRecentContactsProps) {
@@ -98,8 +99,10 @@ export class RecentContacts extends React.Component<IRecentContactsProps, IRecen
    * Default React render method
    */
   public render(): React.ReactElement<IRecentContactsProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     return (
-      <div className={styles.recentContacts}>
+      <div className={styles.recentContacts} style={{backgroundColor: semanticColors.bodyBackground}}>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
           updateProperty={this.props.updateProperty} />

@@ -9,6 +9,7 @@ import * as strings from 'WorldTimeWebPartStrings';
 // import additional controls/components
 import { Clock } from './Clock';
 import * as timeZones from './Timezones';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export default class WorldTime extends React.Component<IWorldTimeProps, {}> {
 
@@ -29,8 +30,10 @@ export default class WorldTime extends React.Component<IWorldTimeProps, {}> {
   }
 
   public render(): React.ReactElement<IWorldTimeProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     return (
-      <div className={styles.worldTime}>
+      <div className={styles.worldTime} style={{backgroundColor: semanticColors.bodyBackground}}>
         <div className={styles.container}>
           <div className={styles.description}>{(this.props.description) ? this.props.description : strings.LocalTimeDescription}</div>
           <Clock timeZoneOffset={this.convertTimeZoneIdToOffset(this.props.timeZoneOffset)} />

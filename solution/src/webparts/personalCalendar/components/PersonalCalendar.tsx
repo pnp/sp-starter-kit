@@ -7,6 +7,7 @@ import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import { List } from 'office-ui-fabric-react/lib/components/List';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export default class PersonalCalendar extends React.Component<IPersonalCalendarProps, IPersonalCalendarState> {
   private _interval: number;
@@ -199,8 +200,10 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
   }
 
   public render(): React.ReactElement<IPersonalCalendarProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     return (
-      <div className={styles.personalCalendar}>
+      <div className={styles.personalCalendar} style={{backgroundColor: semanticColors.bodyBackground}}>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
           updateProperty={this.props.updateProperty} />

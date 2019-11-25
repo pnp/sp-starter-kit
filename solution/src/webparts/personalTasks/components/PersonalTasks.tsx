@@ -6,6 +6,7 @@ import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import { List } from 'office-ui-fabric-react/lib/components/List';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export class PersonalTasks extends React.Component<IPersonalTasksProps, IPersonalTasksState> {
   // domain name based on the login name of the current user
@@ -141,8 +142,10 @@ export class PersonalTasks extends React.Component<IPersonalTasksProps, IPersona
       }
     });
 
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     return (
-      <div className={styles.personalTasks}>
+      <div className={styles.personalTasks} style={{backgroundColor: semanticColors.bodyBackground}}>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
           updateProperty={this.props.updateProperty} className={styles.webPartTitle} />

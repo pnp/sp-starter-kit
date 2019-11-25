@@ -3,6 +3,7 @@
   "id": "596e3e97-f3ca-4cf9-9b8e-cb852f063356",
   "alias": "pnpRecentlyUsedDocuments",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
   "version": "*",
   "manifestVersion": 2,
   "requiresCustomScript": false,

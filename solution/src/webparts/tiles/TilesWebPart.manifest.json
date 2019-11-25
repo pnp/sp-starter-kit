@@ -3,6 +3,7 @@
   "id": "26cb4af3-7f48-4737-b82a-4e24167c2d07",
   "alias": "pnpTiles",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
   "version": "*",
   "manifestVersion": 2,
   "requiresCustomScript": false,

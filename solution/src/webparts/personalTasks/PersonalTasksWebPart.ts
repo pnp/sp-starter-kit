@@ -10,6 +10,7 @@ import {
 import * as strings from 'PersonalTasksWebPartStrings';
 import { PersonalTasks, IPersonalTasksProps } from './components';
 import { MSGraphClient } from '@microsoft/sp-http';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export interface IPersonalTasksWebPartProps {
   title: string;
@@ -18,8 +19,15 @@ export interface IPersonalTasksWebPartProps {
 
 export default class PersonalTasksWebPart extends BaseClientSideWebPart<IPersonalTasksWebPartProps> {
   private graphClient: MSGraphClient;
+  private propertyFieldNumber;
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
 
   public onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
         .getClient()
@@ -35,6 +43,7 @@ export default class PersonalTasksWebPart extends BaseClientSideWebPart<IPersona
       PersonalTasks,
       {
         title: this.properties.title,
+        themeVariant: this._themeVariant,
         showCompleted: this.properties.showCompleted,
         // pass the current display mode to determine if the title should be
         // editable or not
@@ -51,6 +60,16 @@ export default class PersonalTasksWebPart extends BaseClientSideWebPart<IPersona
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

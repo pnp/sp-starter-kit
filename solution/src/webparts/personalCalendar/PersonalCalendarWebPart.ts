@@ -11,6 +11,7 @@ import * as strings from 'PersonalCalendarWebPartStrings';
 import PersonalCalendar from './components/PersonalCalendar';
 import { IPersonalCalendarProps } from './components/IPersonalCalendarProps';
 import { MSGraphClient } from '@microsoft/sp-http';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export interface IPersonalCalendarWebPartProps {
   title: string;
@@ -22,8 +23,14 @@ export interface IPersonalCalendarWebPartProps {
 export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPersonalCalendarWebPartProps> {
   private graphClient: MSGraphClient;
   private propertyFieldNumber;
-
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
+  
   public onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
         .getClient()
@@ -39,6 +46,7 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
       PersonalCalendar,
       {
         title: this.properties.title,
+        themeVariant: this._themeVariant,
         refreshInterval: this.properties.refreshInterval,
         daysInAdvance: this.properties.daysInAdvance,
         numMeetings: this.properties.numMeetings,
@@ -56,6 +64,16 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

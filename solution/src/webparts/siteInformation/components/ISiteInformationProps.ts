@@ -1,3 +1,5 @@
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
+
 export interface ISiteInformationProps {
   // used to represent the site's title
   siteTitle: string;
@@ -17,4 +19,5 @@ export interface ISiteInformationProps {
   configureHandler: () => void;
   // handler to process any exception
   errorHandler: (errorMessage: string) => void;
+  themeVariant: IReadonlyTheme | undefined;
 }

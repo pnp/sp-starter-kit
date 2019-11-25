@@ -3,6 +3,7 @@
   "id": "a95742b9-5e67-4a11-8e51-7a76812a9d60",
   "alias": "pnpPersonalContacts",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
 
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",

@@ -6,6 +6,7 @@ import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import { List } from 'office-ui-fabric-react/lib/components/List';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersonalEmailState> {
   constructor(props: IPersonalEmailProps) {
@@ -102,8 +103,10 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
   }
 
   public render(): React.ReactElement<IPersonalEmailProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     return (
-      <div className={styles.personalEmail}>
+      <div className={styles.personalEmail} style={{backgroundColor: semanticColors.bodyBackground}}>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
           updateProperty={this.props.updateProperty} className={styles.title} />

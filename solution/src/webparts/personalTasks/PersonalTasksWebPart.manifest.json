@@ -3,6 +3,7 @@
   "id": "ee972022-9937-4b69-9c25-eaf77003f4f9",
   "alias": "pnpPersonalTasks",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
 
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",

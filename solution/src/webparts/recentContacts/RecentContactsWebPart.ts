@@ -10,6 +10,7 @@ import * as strings from 'RecentContactsWebPartStrings';
 import { RecentContacts, IRecentContactsProps } from './components';
 
 import { MSGraphClient } from '@microsoft/sp-http';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export interface IRecentContactsWebPartProps {
   title: string;
@@ -19,8 +20,14 @@ export interface IRecentContactsWebPartProps {
 export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecentContactsWebPartProps> {
   private graphClient: MSGraphClient;
   private propertyFieldNumber;
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
   
   public onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
         .getClient()
@@ -36,6 +43,7 @@ export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecent
       RecentContacts,
       {
         title: this.properties.title,
+        themeVariant: this._themeVariant,
         nrOfContacts: this.properties.nrOfContacts,
         graphClient: this.graphClient,
         displayMode: this.displayMode,
@@ -46,6 +54,16 @@ export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecent
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

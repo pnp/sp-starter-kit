@@ -9,6 +9,7 @@ import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ILink } from './ILink';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 const NO_GROUP_NAME = "..NOGROUPNAME..";
 
@@ -67,9 +68,11 @@ export default class Links extends React.Component<ILinksProps, ILinksState> {
   public render(): React.ReactElement<ILinksProps> {
     // Get all group names
     const groupNames = this.state.groups ? Object.keys(this.state.groups) : null;
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
 
     return (
-      <div className={styles.links}>
+      <div className={styles.links} style={{backgroundColor: semanticColors.bodyBackground}}>
         <WebPartTitle displayMode={this.props.displayMode}
                       title={this.props.title}
                       updateProperty={this.props.fUpdateProperty} />

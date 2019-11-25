@@ -3,6 +3,7 @@
   "id": "277282d0-debb-42d6-b4b3-30ec543964fd",
   "alias": "pnpRecentlyVisitedSites",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
   "version": "*",
   "manifestVersion": 2,
   "requiresCustomScript": false,

@@ -13,14 +13,20 @@ import * as strings from 'SiteInformationWebPartStrings';
 import SiteInformation from './components/SiteInformation';
 import { ISiteInformationProps } from './components/ISiteInformationProps';
 import { ISiteInformationWebPartProps } from './ISiteInformationWebPartProps';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteInformationWebPartProps> {
 
   private propertyFieldTermPicker;
   private propertyFieldPeoplePicker;
   private principalType;
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
 
   public onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
 
     return super.onInit().then(async (_) => {
       
@@ -57,6 +63,7 @@ export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteI
       SiteInformation,
       {
         siteTitle: this.properties.siteTitle,
+        themeVariant: this._themeVariant,
         siteContactLogin: (this.properties.siteContact && this.properties.siteContact.length > 0) ?
           this.properties.siteContact[0].login : "",
         siteContactEmail: (this.properties.siteContact && this.properties.siteContact.length > 0) ?
@@ -82,6 +89,16 @@ export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteI
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

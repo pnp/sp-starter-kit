@@ -1,4 +1,5 @@
 import { HttpClient } from "@microsoft/sp-http";
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 /**
  * Properties of the weather information component
@@ -31,4 +32,5 @@ export interface IWeatherInformationProps {
    * Event handler for an error that occurred while loading weather information
    */
   errorHandler: (errorMessage: string) => void;
+  themeVariant: IReadonlyTheme | undefined;
 }

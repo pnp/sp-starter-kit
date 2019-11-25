@@ -3,6 +3,7 @@
   "id": "92d5cc6c-fae5-4e91-9583-ab33950f5a8d",
   "alias": "pnpFollowedSites",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
   "version": "*",
   "manifestVersion": 2,
   "requiresCustomScript": false,

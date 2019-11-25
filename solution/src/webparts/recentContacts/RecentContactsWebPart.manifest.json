@@ -3,6 +3,7 @@
   "id": "9a151252-c744-4dc6-94f7-a574dda413d6",
   "alias": "pnpRecentContacts",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
   "version": "*",
   "manifestVersion": 2,
   "requiresCustomScript": false,

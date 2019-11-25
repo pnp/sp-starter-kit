@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from './SiteInformation.module.scss';
 import { ISiteInformationProps } from './ISiteInformationProps';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 // import strings from localized resources
 import * as strings from 'SiteInformationWebPartStrings';
@@ -38,10 +39,11 @@ export default class SiteInformation extends React.Component<ISiteInformationPro
   }
 
   public render(): React.ReactElement<ISiteInformationProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
 
     // show the Placeholder control, if we are missing the configuration, otherwise show the real content
     return (
-      <div className={styles.siteInformation}>
+      <div className={styles.siteInformation} style={{backgroundColor: semanticColors.bodyBackground}}>
         {(this.props.needsConfiguration
           || !this.props.siteTitle
           || !this.props.siteContactLogin

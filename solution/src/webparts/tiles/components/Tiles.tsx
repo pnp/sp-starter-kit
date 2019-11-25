@@ -6,6 +6,7 @@ import { Tile } from './tile';
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import { Placeholder } from '@pnp/spfx-controls-react/lib/Placeholder';
 import { List } from 'office-ui-fabric-react/lib/components/List';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export class Tiles extends React.Component<ITilesProps, {}> {
 
@@ -13,8 +14,10 @@ export class Tiles extends React.Component<ITilesProps, {}> {
    * Default React remder method
    */
   public render(): React.ReactElement<ITilesProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     return (
-      <div className={ styles.tiles }>
+      <div className={ styles.tiles } style={{backgroundColor: semanticColors.bodyBackground}}>
         <WebPartTitle displayMode={this.props.displayMode}
                       title={this.props.title}
                       updateProperty={this.props.fUpdateProperty} />

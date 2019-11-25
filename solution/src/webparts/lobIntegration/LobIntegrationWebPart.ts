@@ -13,8 +13,11 @@ import * as strings from 'LobIntegrationWebPartStrings';
 import LobIntegration from './components/LobIntegration';
 import { ILobIntegrationProps } from './components/ILobIntegrationProps';
 import { ILobIntegrationWebPartProps, serviceType } from './ILobIntegrationWebPartProps';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export default class LobIntegrationWebPart extends BaseClientSideWebPart<ILobIntegrationWebPartProps> {
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
 
   // method to determine if the web part has to be configured
   private needsConfiguration(): boolean {
@@ -23,11 +26,20 @@ export default class LobIntegrationWebPart extends BaseClientSideWebPart<ILobInt
       !this.properties.serviceType;
   }
 
+  protected onInit(): Promise<void> {
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
+    return super.onInit();
+  }
+
   public render(): void {
     const element: React.ReactElement<ILobIntegrationProps > = React.createElement(
       LobIntegration,
       {
         webapiUri: this.properties.webapiUri,
+        themeVariant: this._themeVariant,
         functionUri: this.properties.functionUri,
         serviceType: this.properties.serviceType,
         needsConfiguration: this.needsConfiguration(),
@@ -46,6 +58,16 @@ export default class LobIntegrationWebPart extends BaseClientSideWebPart<ILobInt
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 
   protected get dataVersion(): Version {

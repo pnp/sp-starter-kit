@@ -6,6 +6,7 @@ import * as strings from 'RecentlyVisitedSitesWebPartStrings';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { IRecentlyVisitedSitesProps, IRecentlyVisitedSitesState, IRecentWebs, IRecentWeb, IWebs } from '.';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesProps, IRecentlyVisitedSitesState> {
   /**
@@ -119,8 +120,10 @@ export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesP
    * Default React render method
    */
   public render(): React.ReactElement<IRecentlyVisitedSitesProps> {
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     return (
-      <div className={ styles.recentlyVisitedSites }>
+      <div className={ styles.recentlyVisitedSites } style={{backgroundColor: semanticColors.bodyBackground}}>
         <WebPartTitle displayMode={this.props.displayMode}
                       title={this.props.title}
                       updateProperty={this.props.updateProperty} />
