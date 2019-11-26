@@ -41,7 +41,7 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-personal-calendar | Beau Cameron (@beau__cameron)
 
 ## Version history
 
