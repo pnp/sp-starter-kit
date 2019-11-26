@@ -34,13 +34,13 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-followed-sites | Beau Cameron (@Beau__Cameron)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+1.0|November 26, 2019|Initial release
 
 ## Disclaimer
 
