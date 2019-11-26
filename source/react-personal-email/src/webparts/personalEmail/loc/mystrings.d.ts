@@ -1,7 +1,13 @@
 declare interface IPersonalEmailWebPartStrings {
+  Error: string;
+  Loading: string;
+  NewEmail: string;
+  NoMessages: string;
+  NrOfMessagesToShow: string;
   PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  ShowInboxOnly: string;
+  ShowInboxOnlyCallout: string;
+  ViewAll: string;
 }
 
 declare module 'PersonalEmailWebPartStrings' {
