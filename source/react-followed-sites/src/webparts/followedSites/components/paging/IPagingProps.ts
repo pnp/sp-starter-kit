@@ -1,4 +1,4 @@
-import { IFollowedResult } from ".."
+import { IFollowedResult } from "..";
 
 export interface IPagingProps {
   allItems: IFollowedResult[];
