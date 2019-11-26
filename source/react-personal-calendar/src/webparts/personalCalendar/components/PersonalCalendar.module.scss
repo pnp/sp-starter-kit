@@ -1,74 +1,76 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
 .personalCalendar {
-  .container {
-    max-width: 700px;
-    margin: 0px auto;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  @include ms-font-m;
+
+  .list {
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 
-  .row {
-    @include ms-Grid-row;
-    @include ms-fontColor-white;
-    background-color: $ms-color-themeDark;
-    padding: 20px;
-  }
+  .meetingWrapper {
+    padding-left: 7px;
 
-  .column {
-    @include ms-Grid-col;
-    @include ms-lg10;
-    @include ms-xl8;
-    @include ms-xlPush2;
-    @include ms-lgPush1;
-  }
-
-  .title {
-    @include ms-font-xl;
-    @include ms-fontColor-white;
-  }
-
-  .subTitle {
-    @include ms-font-l;
-    @include ms-fontColor-white;
-  }
-
-  .description {
-    @include ms-font-l;
-    @include ms-fontColor-white;
-  }
-
-  .button {
-    // Our button
-    text-decoration: none;
-    height: 32px;
-
-    // Primary Button
-    min-width: 80px;
-    background-color: $ms-color-themePrimary;
-    border-color: $ms-color-themePrimary;
-    color: $ms-color-white;
-
-    // Basic Button
-    outline: transparent;
-    position: relative;
-    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: $ms-font-size-m;
-    font-weight: $ms-font-weight-regular;
-    border-width: 0;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-    padding: 0 16px;
-
-    .label {
-      font-weight: $ms-font-weight-semibold;
-      font-size: $ms-font-size-m;
-      height: 32px;
-      line-height: 32px;
-      margin: 0 4px;
-      vertical-align: top;
-      display: inline-block;
+    &:global(.tentative) {
+      background: $ms-color-themePrimary url('data:image/gif;base64,R0lGODlhBwAHAIABAP///////yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpDMUQ3NUMxRTk5MDExMUUwOTI0OEIzRjU5RDg0NTg0MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpDMUQ3NUMxRjk5MDExMUUwOTI0OEIzRjU5RDg0NTg0MCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkMxRDc1QzFDOTkwMTExRTA5MjQ4QjNGNTlEODQ1ODQwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkMxRDc1QzFEOTkwMTExRTA5MjQ4QjNGNTlEODQ1ODQwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAAAQAsAAAAAAcABwAAAgyMgRYIyp6gWk1CUAAAOw==')
     }
+
+    &:global(.busy) {
+      background: $ms-color-themePrimary;
+    }
+
+    &:global(.oof) {
+      background: indigo;
+    }
+
+    &:global(.workingElsewhere) {
+      background: $ms-color-themePrimary url('data:image/gif;base64,R0lGODlhAwAEAIABAP///////yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowQTIxMjhEQkEwMkUxMUUwQURCNUFBRDk1NjM2OTRBNSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowQTIxMjhEQ0EwMkUxMUUwQURCNUFBRDk1NjM2OTRBNSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjBBMjEyOEQ5QTAyRTExRTBBREI1QUFEOTU2MzY5NEE1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjBBMjEyOERBQTAyRTExRTBBREI1QUFEOTU2MzY5NEE1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAAAQAsAAAAAAMABAAAAgQMjmBXADs=');
+    }
+
+    &:global(.free) {
+      background: white;
+    }
+  }
+
+  .meeting {
+    display: block;
+    padding: 0.5em 10px;
+    color: $ms-color-black;
+    background: $ms-color-white;
+
+    &:hover {
+      color: inherit;
+      background: $ms-color-neutralLight;
+    }
+  }
+
+  .start {
+    float: left;
+    height: 1.5em;
+    margin-right: 0.5em;
+  }
+
+  .subject {
+    @include ms-fontWeight-bold;
+  }
+
+  .duration {
+    @include ms-fontWeight-light;
+    display: inline;
+    padding-right: 1em;
+  }
+
+  .location {
+    @include ms-fontWeight-light;
+    display: inline;
+  }
+
+  .noMeetings {
+    @include ms-font-m;
+  }
+
+  .error {
+    @include ms-font-m;
+    color: $ms-color-alert;
   }
 }

@@ -1,7 +1,17 @@
 declare interface IPersonalCalendarWebPartStrings {
+  AllDay: string;
+  DaysInAdvance: string;
+  Error: string;
+  Hour: string;
+  Hours: string;
+  Loading: string;
+  Minutes: string;
+  NewMeeting: string;
+  NoMeetings: string;
+  NumMeetings: string;
+  RefreshInterval: string;
   PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  ViewAll: string;
 }
 
 declare module 'PersonalCalendarWebPartStrings' {
