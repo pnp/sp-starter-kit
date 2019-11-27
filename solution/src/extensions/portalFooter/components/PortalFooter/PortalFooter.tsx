@@ -5,7 +5,7 @@ import { CommandBar,
   IContextualMenuItem,
   DefaultButton,
   ActionButton,
-  Label, 
+  Label,
   MessageBar,
   MessageBarType,
   autobind} from 'office-ui-fabric-react';
@@ -74,12 +74,12 @@ export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFoo
           visible={this.state.expanded}
           onMyLinksEdit={this._handleLinksEdit} />
         <div className={styles.main}>
-          <div className="ms-Grid">
-            <div className="ms-Grid-row">
-              <div className="ms-Grid-col ms-sm3" onClick={ this._handleToggle }>
+          <div className={styles.linksContainer}>
+            <div className={styles.linksContainerRow}>
+              <div className={styles.copyrightContainer} onClick={ this._handleToggle }>
                 <Label className={styles.copyright}>{this.props.copyright}</Label>
               </div>
-              <div className="ms-Grid-col ms-sm2">
+              <div className={styles.supportButtonContainer}>
                 <ActionButton
                   iconProps={{ iconName: 'Headset' }}
                   className={styles.supportButton}
@@ -87,10 +87,10 @@ export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFoo
                   {this.props.support}
                 </ActionButton>
               </div>
-              <div className="ms-Grid-col ms-sm6" onClick={ this._handleToggle }>
+              <div className={styles.fillerContainer} onClick={ this._handleToggle }>
                 <Label className={styles.filler}>&nbsp;</Label>
               </div>
-              <div className="ms-Grid-col ms-sm1" onClick={ this._handleToggle }>
+              <div className={styles.toggleButtonContainer} onClick={ this._handleToggle }>
                 <div className={styles.toggleControl}>
                   <DefaultButton
                     iconProps={{ iconName: this.state.toggleButtonIconName }}

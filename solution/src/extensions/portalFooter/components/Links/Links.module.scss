@@ -51,4 +51,17 @@
     padding: 0.5em;
     min-width: 0;
   }
+
+  .linksContainer {
+    @include ms-Grid;
+
+    .linksContainerRow {
+      @include ms-Grid-row;
+
+      .linksGroupContainer {
+        @include ms-Grid-col;
+        @include ms-sm3;
+      }
+    }
+  }
 }
