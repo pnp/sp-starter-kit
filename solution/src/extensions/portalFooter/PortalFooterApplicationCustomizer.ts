@@ -189,18 +189,19 @@ export default class PortalFooterApplicationCustomizer
     let myLinksJson: any = await upsService.getUserProfileProperty(this.properties.personalItemsStorageProperty);
 
     // if we have personalizes links
-    if (myLinksJson != null) {
-      if (myLinksJson.length > 0) {
-        this._myLinks = JSON.parse(myLinksJson) as IMyLink[];
+    if (myLinksJson && (myLinksJson.length > 0)) {
+      this._myLinks = JSON.parse(myLinksJson) as IMyLink[];
 
-        // add all of them to the "My Links" group
-        if (this._myLinks.length > 0) {
-          result.push({
-            title: strings.MyLinks,
-            links: this._myLinks,
-          });
-        }
+      // add all of them to the "My Links" group
+      if (this._myLinks.length > 0) {
+        result.push({
+          title: strings.MyLinks,
+          links: this._myLinks,
+        });
       }
+    } else {
+      // if no personal links are available, initialize the list of personal links with an empty array
+      this._myLinks = [];
     }
 
     return (result);
