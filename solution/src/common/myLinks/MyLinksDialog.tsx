@@ -352,16 +352,19 @@ export default class MyLinksDialog extends BaseDialog {
 
   // to keep track of the initial links in case user will cancel
   private initialLinks: IMyLink[];
+  public links: IMyLink[];
+  public isSave: boolean;
 
   /**
    * Constructor for the dialog window
    */
-  constructor(public links: Array<IMyLink>, public isSave?: boolean) {
+  constructor(links: Array<IMyLink>) {
     // Blocking or else click outside causes error in 1.7
     super({isBlocking: true});
 
     // clone the initial list of links we've got
-    this.initialLinks = (this.links != null) ? this.links.concat([]) : [];
+    this.initialLinks = (links != null) ? links.concat([]) : [];
+    this.links = (links != null) ? links.concat([]) : [];
   }
 
   public render(): void {
@@ -391,7 +394,7 @@ export default class MyLinksDialog extends BaseDialog {
   @autobind
   private _save(links: Array<IMyLink>): void {
     this.isSave = true;
-    // Fix for all browsers regarding SP Dialog not being to open twice    
+    // Fix for all browsers regarding SP Dialog not being to open twice
     ReactDOM.unmountComponentAtNode(this.domElement);
     this.links = links;
     this.close();
