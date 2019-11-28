@@ -1,6 +1,6 @@
 {
   "name": "react-recently-visited-sites",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -22,7 +22,8 @@
     "@microsoft/sp-lodash-subset": "1.9.1",
     "@microsoft/sp-office-ui-fabric-core": "1.9.1",
     "@types/webpack-env": "1.13.1",
-    "@types/es6-promise": "0.0.33"
+    "@types/es6-promise": "0.0.33",
+    "@pnp/spfx-controls-react": "1.15.0"
   },
   "resolutions": {
     "@types/react": "16.8.8"
