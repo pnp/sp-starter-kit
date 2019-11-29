@@ -4,7 +4,7 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneDropdown
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'FollowedSitesWebPartStrings';
@@ -12,16 +12,31 @@ import FollowedSites from './components/FollowedSites';
 import { IFollowedSitesProps } from './components/IFollowedSitesProps';
 
 export interface IFollowedSitesWebPartProps {
-  description: string;
+  title: string;
+  nrOfItems: number;
+  sortOrder: number;
+}
+
+export enum SortOrder {
+  default = 1,
+  name
 }
 
 export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowedSitesWebPartProps> {
-
+  
+  private propertyFieldNumber;
   public render(): void {
-    const element: React.ReactElement<IFollowedSitesProps > = React.createElement(
+    const element: React.ReactElement<IFollowedSitesProps> = React.createElement(
       FollowedSites,
       {
-        description: this.properties.description
+        title: this.properties.title,
+        nrOfItems: this.properties.nrOfItems,
+        sortOrder: this.properties.sortOrder,
+        context: this.context,
+        displayMode: this.displayMode,
+        updateProperty: (value: string) => {
+          this.properties.title = value;
+        }
       }
     );
 
@@ -35,7 +50,17 @@ export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowe
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
+  //executes only before property pane is loaded.
+  protected async loadPropertyPaneResources(): Promise<void> {
+    // import additional controls/components
 
+    const { PropertyFieldNumber } = await import(
+      /* webpackChunkName: 'pnp-propcontrols-number' */
+      '@pnp/spfx-property-controls/lib/propertyFields/number'
+    );
+
+    this.propertyFieldNumber = PropertyFieldNumber;
+  }
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -45,10 +70,25 @@ export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowe
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                this.propertyFieldNumber("nrOfItems", {
+                  key: "nrOfItems",
+                  label: strings.NrOfFollowedItemsLabel,
+                  value: this.properties.nrOfItems
+                }),
+                PropertyPaneDropdown('sortOrder', {
+                  label: strings.SortOrderFollowedItemsLabel,
+                  selectedKey: this.properties.sortOrder,
+                  options: [
+                    {
+                      key: SortOrder.default,
+                      text: strings.SortOrderDefaultLabel
+                    },
+                    {
+                      key: SortOrder.name,
+                      text: strings.SortOrderNameLabel
+                    }
+                  ]
                 })
               ]
             }
