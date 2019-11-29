@@ -34,13 +34,15 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-followed-sites | Elio Struyf
+react-followed-sites | Beau Cameron
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+1.0|May, 2018|Initial release
+2.0|November 29, 2019| v2.0
 
 ## Disclaimer
 
