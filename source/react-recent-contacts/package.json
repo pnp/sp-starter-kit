@@ -1,6 +1,6 @@
 {
   "name": "react-recent-contacts",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -22,7 +22,13 @@
     "@microsoft/sp-lodash-subset": "1.9.1",
     "@microsoft/sp-office-ui-fabric-core": "1.9.1",
     "@types/webpack-env": "1.13.1",
-    "@types/es6-promise": "0.0.33"
+    "@types/es6-promise": "0.0.33",
+    "@pnp/common": "1.3.7",
+    "@pnp/logging": "1.3.7",
+    "@pnp/odata": "1.3.7",
+    "@pnp/sp": "1.3.7",
+    "@pnp/spfx-controls-react": "1.15.0",
+    "@pnp/spfx-property-controls": "1.16.0"
   },
   "resolutions": {
     "@types/react": "16.8.8"
