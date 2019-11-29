@@ -122,13 +122,13 @@ class MyLinksDialogContent extends
         showCloseButton={!this.state.showDetailPanel}>
 
         <div className={styles.myLinksDialogContent}>
-          <div className="ms-Grid">
+          <div className={styles.grid}>
             {this.state.showDetailPanel ?
-              <div className="ms-Grid-row">
-                <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
-                  <div className="ms-Grid">
-                    <div className="ms-Grid-row">
-                      <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+              <div className={styles.gridRow}>
+                <div className={styles.gridColumn}>
+                  <div className={styles.grid}>
+                    <div className={styles.gridRow}>
+                      <div className={styles.gridColumn}>
                         <TextField
                           label={strings.LinkTitleLabel}
                           required={true}
@@ -139,8 +139,8 @@ class MyLinksDialogContent extends
                         />
                       </div>
                     </div>
-                    <div className="ms-Grid-row">
-                      <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+                    <div className={styles.gridRow}>
+                      <div className={styles.gridColumn}>
                         <TextField
                           label={strings.LinkUrlLabel}
                           required={true}
@@ -152,8 +152,8 @@ class MyLinksDialogContent extends
                         />
                       </div>
                     </div>
-                    <div className={`ms-Grid-row ${styles.editPanel}`}>
-                      <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+                    <div className={`${styles.gridRow} ${styles.editPanel}`}>
+                      <div className={styles.gridColumn}>
                         <DefaultButton text={strings.DialogCancelButton}
                           title={strings.DialogCancelButton} onClick={this._cancelEdit} />
                         <DefaultButton primary={true}
@@ -167,8 +167,8 @@ class MyLinksDialogContent extends
               </div>
               : null}
             {!this.state.showDetailPanel ?
-              <div className="ms-Grid-row">
-                <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+              <div className={styles.gridRow}>
+                <div className={styles.gridColumn}>
                   <CommandBar items={[
                     {
                       key: 'addRow',
@@ -195,8 +195,8 @@ class MyLinksDialogContent extends
               </div>
               : null}
             {!this.state.showDetailPanel ?
-              <div className="ms-Grid-row">
-                <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+              <div className={styles.gridRow}>
+                <div className={styles.gridColumn}>
                   <DetailsList
                     items={this.state.links}
                     columns={_linksColumns}
@@ -391,7 +391,7 @@ export default class MyLinksDialog extends BaseDialog {
   @autobind
   private _save(links: Array<IMyLink>): void {
     this.isSave = true;
-    // Fix for all browsers regarding SP Dialog not being to open twice    
+    // Fix for all browsers regarding SP Dialog not being to open twice
     ReactDOM.unmountComponentAtNode(this.domElement);
     this.links = links;
     this.close();
