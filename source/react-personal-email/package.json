@@ -1,6 +1,6 @@
 {
   "name": "react-personal-email",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -12,17 +12,19 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "react": "16.8.5",
-    "react-dom": "16.8.5",
-    "@types/react": "16.8.8",
-    "@types/react-dom": "16.8.3",
-    "office-ui-fabric-react": "6.189.2",
     "@microsoft/sp-core-library": "1.9.1",
-    "@microsoft/sp-webpart-base": "1.9.1",
     "@microsoft/sp-lodash-subset": "1.9.1",
     "@microsoft/sp-office-ui-fabric-core": "1.9.1",
+    "@microsoft/sp-webpart-base": "1.9.1",
+    "@pnp/spfx-controls-react": "^1.15.0",
+    "@pnp/spfx-property-controls": "^1.16.0",
+    "@types/es6-promise": "0.0.33",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.3",
     "@types/webpack-env": "1.13.1",
-    "@types/es6-promise": "0.0.33"
+    "office-ui-fabric-react": "6.189.2",
+    "react": "16.8.5",
+    "react-dom": "16.8.5"
   },
   "resolutions": {
     "@types/react": "16.8.8"

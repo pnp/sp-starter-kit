@@ -38,14 +38,15 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-personal-email| Waldek Mastykarz
+react-personal-email| Beau Cameron
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
-
+1.0|May, 2018|Initial release
+2.0|November 29, 2019|v2.0
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
