@@ -24,13 +24,15 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+./src/webparts/banner | Elio Struyf @eliostruyf
+./source/react-banner | Eric Overfield @ericoverfield
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+1.0|May 2018|Initial release
+2.0|November 30, 2019| SP2019 and SPO compatible
 
 ## Disclaimer
 

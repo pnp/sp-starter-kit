@@ -17,10 +17,14 @@
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
     "title": { "default": "Banner" },
-    "description": { "default": "Provides simple image and text combination presentation" },
+    "description": { "default": "Renders a banner style presentation with text and image" },
     "officeFabricIconFontName": "PanoIndicator",
     "properties": {
-      "description": "Banner"
+      "bannerText": "",
+      "bannerImage": "",
+      "bannerLink": "",
+      "bannerHeight": 280,
+      "useParallax": true
     }
   }]
 }
