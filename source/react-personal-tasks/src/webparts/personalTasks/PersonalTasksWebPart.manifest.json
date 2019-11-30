@@ -4,6 +4,8 @@
   "alias": "PersonalTasksWebPart",
   "componentType": "WebPart",
 
+  "supportsThemeVariants": true,
+
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",
   "manifestVersion": 2,
@@ -17,11 +19,14 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "PersonalTasks" },
+    "title": { "default": "Personal Tasks" },
     "description": { "default": "Personal tasks of the user" },
     "officeFabricIconFontName": "TaskManager",
     "properties": {
-      "description": "PersonalTasks"
+      "webPartTitle": "My Tasks",
+      "allowEditing": false,
+      "dataSource": "planner",
+      "hideHeader": true
     }
   }]
 }

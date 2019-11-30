@@ -1,10 +1,10 @@
 # Personal Tasks web part
 
-This web part provides you the ability to add a particular user's personal tasks on a web page. The web part may be configured to show all tasks or to exclude completed tasks. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
+This web part provides you the ability to add a particular user's personal tasks on a web page. The web part may be configured to show tasks from Planner or To Do. This web part is powered by the Microsoft Graph.
 
 v2 web part is modified to use Graph Toolkit to expose the personal tasks, which simplifies the implementation.
 
-![Personal Tasks](../../assets/images/components/part-personal-tasks.gif)
+![Personal Tasks](./assets/personal-tasks-demo.gif)
 
 ## How to use this web part on your web pages
 
@@ -19,7 +19,13 @@ The `Personal Tasks` web part can be configured with the following properties:
 | Label | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- | ---- |
 | My Tasks | title | string | no | The web part title, editable inline with the web part itself |
-| Show completed tasks | showCompleted | bool | no | Default: false - If true, will show completed tasks as well |
+| Data source | dataSource | 'planner' \| 'todo' | yes | Web part's data source: Planner or To Do. Default: planner |
+| Allow editing | allowEditing | boolean | no | Flag if editing is allowed. Default is false. |
+| Hide filter | hideHeader | boolean | no | Flag if the header on MS Graph Toolkit Personal Tasks component should be hidden. The header contains a filter and "Add" button. Default is true. |
+| Initially displayed Plan or ToDo Folder id | initialId | string | no | A string id to set the initially displayed planner or folder to the provided ID. |
+| Initially displayed bucket id | initialBucketId | string | no | A string id to set the initially displayed bucket (Planner Data-Source Only) to the provided ID. |
+| Source Plan or ToDo Folder id | targetId | string | no | A string id to lock the tasks interface to the provided planner or folder ID. |
+| Source bucket id | targetBucketId | string | no | A string ID to lock the tasks interface to the provided bucket ID (Planner Data-Source Only). |
 
 ## Used SharePoint Framework Version
 
@@ -40,7 +46,7 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-personal-tasks | PnP Starter Kit Team
 
 ## Version history
 
@@ -60,16 +66,18 @@ Version|Date|Comments
 * Move to solution folder
 * in the command line run:
   * `npm install`
+  * `gulp bundle`
+  * `gulp package-solution`
+  * Upload solution to the SharePoint App Catalog
+  * Approve needed permissions in SharePoint Admin Center
   * `gulp serve`
-
-> Include any additional steps as needed.
 
 ## Features
 
 Description of the web part with possible additional details than in short summary. 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using Microsoft Graph from the web parts
+* Using Microsoft Graph Toolkit from the web parts
 * Hosting SharePoint Framework components as Microsoft Teams tabs
 * Using app pages in SharePoint Online
 
