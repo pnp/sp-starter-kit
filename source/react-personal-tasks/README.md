@@ -46,7 +46,7 @@ none
 
 Solution|Author(s)
 --------|---------
-react-personal-tasks | PnP Starter Kit Team
+react-personal-tasks | Waldek Mastykarz, Alex Terentiev
 
 ## Version history
 
