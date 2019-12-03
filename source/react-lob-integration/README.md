@@ -1,53 +1,66 @@
 # LOB Integration webpart
 
-This web part allows you to learn how to consume 3rd party APIs, secured with Azure Active Directory, in the context of SharePoint Framework.
-
-It leverages two different back-end REST APIs:
-
-- An ApiController built in Microsoft ASP.NET MVC, which is defined in a .NET solution that you can find [here](../../sample-lob-service/SharePointPnP.LobScenario/SharePointPnP.LobScenario.sln)
-- An Azure Function, which is based on the code defined [here](../../sample-lob-service/LIstNorthwindCustomers)
+The purpose of this web part is to show how you can consume LOB (Line of Business) solutions and on-premises data within SharePoint Framework.
 
 ![LOB Integration](../../assets/images/components/part-lob-integration.png)
 
-The purpose of this web part is to show how you can consume LOB (Line of Business) solutions and on-premises data within SharePoint Framework.
+The web part leverages a back-end REST API, built using a ASP.NET Core 3.0 WebAPI project that you can find [here](../../sample-lob-service/SharePointPnP.LobScenario/SharePointPnP.LobScenario.sln). This API is representative of LOB data exposed via a web service and consumed using Http calls.
 
-In order to leverage this web part, you will need to configure a couple of applications in Azure Active Directory of your target tenant:
+## LOB service - Application Registration
 
-- **SPFx-LOB-WebAPI**: for the .NET web application
-  - Publish the ASP.NET MVC application on an Azure App Service
-  - Register the AAD app providing the URL of the above Azure App Service
-  - Choose a valid App ID Uri for the app
-  - Configure that App ID Uri in the [LobIntegration.tsx](../../solution/src/webparts/lobIntegration/components/LobIntegration.tsx#L145) React component
-  - Update the App manifest of the Azure AD app configuring the **oauth2Permissions** property with a value like the following one:
+The LOB service is protected via the Microsoft Identity Platform. An application registration is required to implement this protection. Peform the following steps to register an application in a tenant.
 
-```json
-  "oauth2Permissions": [
-    {
-      "adminConsentDescription": "Allow the application to read customers through SPFx-LOB-WebAPI on behalf of the signed-in user.",
-      "adminConsentDisplayName": "Read customers from SPFx-LOB-WebAPI",
-      "id": "7510eb34-4403-44d5-a745-a62d0895351c",
-      "isEnabled": true,
-      "type": "User",
-      "userConsentDescription": "Allow the application to access SPFx-LOB-WebAPI on your behalf.",
-      "userConsentDisplayName": "Access SPFx-LOB-WebAPI",
-      "value": "Customers.Read"
-    }
-  ],
-```
-- **SPFx-LOB-Function**: for the Azure Function
-  - Create an Azure Function and configure it with Azure AD Authentication, registering it in your target AAD tenant
-  - Register the AAD app providing the URL of the above Azure Function
-  - Choose a valid App ID Uri for the app
-  - Configure that App ID Uri in the [LobIntegration.tsx](../../solution/src/webparts/lobIntegration/components/LobIntegration.tsx#L99) React component
+> If you are not an administrator of a Microsoft 365 tenant, you can get a tenant at no charge as part of the [Microsoft 365 Developer Program](https://developer.microsoft.com/en-us/office/dev-program).
+
+1. Log in to the Azure Active Directory admin center at https://aad.portal.azure.com/.
+1. In the left-hand navigation bar, select **Azure Active Directory**, then **App Registrations**.
+
+  ![Screenshot of the left navigation in the Azure Active Directory admin center](../../assets/images/sample-lob-service/figure1.png)
+
+1. Select **New Registration** from the toolbar.
+1. Enter a name for the application. In this example, the name is **SharePointPnP-LobScenario**. 
+1. For **Supported account types**, select **Accounts in this organizational directory only (Single tenant)**.
+1. Select **Register**.
+
+  ![Screenshot of the New Application pane in the Azure Active Directory admin center](../../assets/images/sample-lob-service/figure2.png)
+
+1. In the application overview blade, select **Expose an API**.
+1. Select **Add a scope**.
+1. The portal will display a panel requesting an Application ID URI. Leave the suggested default (api://{{app-id}}).
+1. Select **Save and continue**.
+
+  ![Screenshot of the Add a scope pane in the Azure Active Directory admin center](../../assets/images/sample-lob-service/figure3.png)
+
+1. For **Scope name**, enter `access_as_user`.
+1. Complete the Consent fields as appropriate. 
+1. Select **Add scope** to complete the configuration.
+
+  ![Screenshot of the Add a scope pane in the Azure Active Directory admin center](../../assets/images/sample-lob-service/figure4.png)
+
+1. Select **Overview** in the application menu. Make note of the following values for configuring the service code:
+   1. Display name
+   1. Application (client) ID
+   1. Directory (tenant) ID
+
+  ![Screenshot of the application overview in the Azure Active Directory admin center](../../assets/images/sample-lob-service/figure5.png)
+
+## LOB service - Code configuration
+
+The [LOB service](../../sample-lob-service/SharePointPnP.LobScenario/SharePointPnP.LobScenario.sln) code must be configured with the application registration values.
+
+1. Open the `appsettings.json` file.
+1. Modify the TenantId and ClientId properties of the AzureAd object in the file.
+
+Once updated, deploy or start the application. Make note of the service URL. (If run locally, the address will be https://localhost:5001).
+
+## SharePoint Service Principal configuration
   
-Moreover, in order to make this web part working properly, you need to grant permissions to the SharePoint Service Application Principal to access them. You can do that using the PnP PowerShell command lets (or Office 365 CLI) with the following syntax:
+The SharePoint Service Principal must have a permission grant before getting an access token for the service. The following PowerShell commands will configure the service principal (the **Resource** and **Scope** parameters must match the values from the application registration):
 
 ```PowerShell
-Connect-PnPOnline "https://[your-tenant].sharepoint.com/"
+Connect-SPOService -Url "https://[your-tenant].sharepoint.com/"
 
-Grant-PnPTenantServicePrincipalPermission -Resource "SPFx-LOB-WebAPI" -Scope "Customers.Read"
-Grant-PnPTenantServicePrincipalPermission -Resource "SPFx-LOB-Function" -Scope "user_impersonation"
-
+Approve-SPOTenantServicePrincipalPermissionGrant -Resource "SharePointPnP-LobScenario" -Scope "access_as_user"
 ```
 
 ## How to use this web part on your web pages
