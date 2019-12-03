@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-site-information-client-side-solution",
     "id": "09938b42-5d02-4ca4-a040-61914367cf6f",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },
