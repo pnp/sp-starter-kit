@@ -45,6 +45,7 @@ Alert is is created automatically to the root of the site collection if it's mis
 Solution|Author(s)
 --------|---------
 folder name | Author details
+./source/react-application-alerts | Robert Schouten @rfjschouten
 
 ## Version history
 
