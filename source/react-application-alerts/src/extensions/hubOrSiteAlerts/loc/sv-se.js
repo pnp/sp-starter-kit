@@ -1,5 +1,5 @@
 define([], function() {
   return {
-    "MoreInformation": "More information"
+    "MoreInformation": "Mer information"
   }
 });
