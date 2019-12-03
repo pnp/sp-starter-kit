@@ -37,13 +37,15 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-people-directory | Waldek Mastykarz
+react-people-directory | David Warner II
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+1.0|March 27, 2018|Initial release
+2.0|December 3, 2019|v2.0
 
 ## Disclaimer
 

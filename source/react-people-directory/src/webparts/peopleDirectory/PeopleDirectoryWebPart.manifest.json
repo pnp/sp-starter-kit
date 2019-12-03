@@ -17,11 +17,11 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "PeopleDirectory" },
+    "title": { "default": "People Directory" },
     "description": { "default": "Search people in the corporate directory" },
     "officeFabricIconFontName": "CompanyDirectory",
     "properties": {
-      "description": "PeopleDirectory"
+      "title": "People Directory"
     }
   }]
 }
