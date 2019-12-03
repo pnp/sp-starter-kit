@@ -8,11 +8,10 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'PeopleDirectoryWebPartStrings';
-import PeopleDirectory from './components/PeopleDirectory';
-import { IPeopleDirectoryProps } from './components/IPeopleDirectoryProps';
+import { PeopleDirectory, IPeopleDirectoryProps } from './components/PeopleDirectory/';
 
 export interface IPeopleDirectoryWebPartProps {
-  description: string;
+  title: string;
 }
 
 export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopleDirectoryWebPartProps> {
@@ -21,7 +20,16 @@ export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopl
     const element: React.ReactElement<IPeopleDirectoryProps > = React.createElement(
       PeopleDirectory,
       {
-        description: this.properties.description
+        webUrl: this.context.pageContext.web.absoluteUrl,
+        spHttpClient: this.context.spHttpClient,
+        title: this.properties.title,
+        displayMode: this.displayMode,
+        locale: this.getLocaleId(),
+        onTitleUpdate: (newTitle: string) => {
+          // after updating the web part title in the component
+          // persist it in web part properties
+          this.properties.title = newTitle;
+        }
       }
     );
 
@@ -36,25 +44,13 @@ export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopl
     return Version.parse('1.0');
   }
 
+  protected getLocaleId() : string {
+    return this.context.pageContext.cultureInfo.currentUICultureName;
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
-      pages: [
-        {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
-        }
-      ]
+      pages: []
     };
   }
 }
