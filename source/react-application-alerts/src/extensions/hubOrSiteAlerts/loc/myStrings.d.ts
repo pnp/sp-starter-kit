@@ -1,5 +1,5 @@
 declare interface IHubOrSiteAlertsApplicationCustomizerStrings {
-  Title: string;
+  MoreInformation: string;
 }
 
 declare module 'HubOrSiteAlertsApplicationCustomizerStrings' {

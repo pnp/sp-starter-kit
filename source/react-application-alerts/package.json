@@ -1,6 +1,6 @@
 {
   "name": "react-application-alerts",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -12,6 +12,10 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "react": "15.6.2",
+    "react-dom": "15.6.2",
+    "@types/react": "15.6.6",
+    "@types/react-dom": "15.5.6",
     "@microsoft/sp-core-library": "~1.4.0",
     "@microsoft/decorators": "~1.4.0",
     "@types/webpack-env": "1.13.1",
