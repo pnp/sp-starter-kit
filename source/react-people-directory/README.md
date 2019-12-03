@@ -45,7 +45,7 @@ react-people-directory | David Warner II
 Version|Date|Comments
 -------|----|--------
 1.0|March 27, 2018|Initial release
-2.0|December 3, 2018|v2.0
+2.0|December 3, 2019|v2.0
 
 ## Disclaimer
 
