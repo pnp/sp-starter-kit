@@ -1,3 +1,9 @@
+import { WebPartContext } from "@microsoft/sp-webpart-base";
+
 export interface ILobIntegrationProps {
-  description: string;
+  webapiUri: string;
+  needsConfiguration: boolean;
+  context: WebPartContext;
+  configureHandler: () => void;
+  errorHandler: (errorMessage: string) => void;
 }
