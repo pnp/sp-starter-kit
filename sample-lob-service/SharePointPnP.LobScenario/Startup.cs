@@ -70,12 +70,14 @@ namespace SharePointPnP.LobScenario
 				app.UseDeveloperExceptionPage();
 			}
 
-			app
-				.UseHttpsRedirection()
-				.UseRouting()
-				.UseCors("AllowSubdomain")
-				.UseAuthentication()
-				.UseAuthorization();
+			app.UseHttpsRedirection();
+
+			app.UseRouting();
+
+			app.UseCors("AllowSubdomain");
+
+			app.UseAuthentication()
+				 .UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
 			{
