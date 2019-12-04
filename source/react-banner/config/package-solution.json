@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-banner-client-side-solution",
     "id": "b50504bb-cf4d-4b53-b47a-70d2d903b8d7",
-    "version": "2.0.0.0",
+    "version": "2.0.0.1",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },
