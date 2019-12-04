@@ -2,9 +2,9 @@ define([], function() {
   return {
     "PropertyPaneDescription": "Integration LOB",
     "BasicGroupName": "Réglages généraux",
-    "WebApiUriFieldLabel": "Web API URI",
+    "ApplicationUriFieldLabel": "Application URI",
     "FunctionUriFieldLabel": "URI de la fonction",
-    "ServiceTypeFieldLabel": "Type de service",
+    "ServiceUrlFieldLabel": "Service Url",
 
     "PlaceholderIconName":"Editez",
     "PlaceholderIconText":"Configurez votre partie Web",
@@ -26,6 +26,6 @@ define([], function() {
     "ContactNameColumnAriaLabel": "Contacte",
     "CountryColumn": "Pays",
     "CountryColumnAriaLabel": "Pays",
-  
+
   }
 });

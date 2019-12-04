@@ -2,9 +2,9 @@ define([], function() {
   return {
     "PropertyPaneDescription": "Integración LOB",
     "BasicGroupName": "Configuración general",
-    "WebApiUriFieldLabel": "Web API URI",
+    "ApplicationUriFieldLabel": "Application URI",
     "FunctionUriFieldLabel": "Function URI",
-    "ServiceTypeFieldLabel": "Tipo de Servicio",
+    "ServiceUrlFieldLabel": "Service Url",
 
     "PlaceholderIconName":"Editar",
     "PlaceholderIconText":"Configure su elementoi web",
@@ -19,13 +19,13 @@ define([], function() {
     "ListDescription": "Lista de clientes de sistema LOB",
 
     "CustomerIDColumn": "Customer ID",
-    "CustomerIDColumnAriaLabel": "Cliente ID,
+    "CustomerIDColumnAriaLabel": "Cliente ID",
     "CompanyNameColumn": "Company",
     "CompanyNameColumnAriaLabel": "Compañia",
     "ContactNameColumn": "Contact",
     "ContactNameColumnAriaLabel": "Contacto",
     "CountryColumn": "Country",
     "CountryColumnAriaLabel": "País",
-  
+
   }
 });

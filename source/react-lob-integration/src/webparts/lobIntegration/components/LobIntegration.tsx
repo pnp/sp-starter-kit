@@ -16,7 +16,8 @@ import {
   Label,
   DetailsList,
   DetailsListLayoutMode,
-  IColumn
+  IColumn,
+  SelectionMode
 } from 'office-ui-fabric-react';
 import { AadHttpClient, HttpClientResponse, IHttpClientOptions } from "@microsoft/sp-http";
 import { ILobServiceResponse } from '../ILobServiceResponse';
@@ -77,7 +78,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
   }
 
   public componentDidMount(): void {
-    this._listCustomers();
+    // this._listCustomers();
   }
 
   private _onSearchForChanged(newValue: string): void {
@@ -87,16 +88,9 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
     });
   }
 
-  private async _listCustomers(): Promise<void> {
-    // update the component state while listing customers
-    this.setState({
-      customers: null,
-      loading: true,
-    });
-
+  private async _callService(requestUrl: string): Promise<ILobServiceResponse> {
     // create an AadHttpClient object to consume the 3rd party API
-    //const aadClient: AadHttpClient = await this.props.context.aadHttpClientFactory.getClient("https://officedevpnp.onmicrosoft.com/spfx-lob-function");
-    const aadClient: AadHttpClient = await this.props.context.aadHttpClientFactory.getClient("api://ea09f67b-5217-47b4-8fd9-f1604c0145ae");
+    const aadClient: AadHttpClient = await this.props.context.aadHttpClientFactory.getClient(this.props.applicationUri);
 
     console.log("Created aadClient");
 
@@ -110,14 +104,22 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
     // get the list of customers
     const httpResponse: HttpClientResponse = await aadClient
       .get(
-        this.props.webapiUri,
+        requestUrl,
         AadHttpClient.configurations.v1,
         requestOptions
       );
 
-    const response: ILobServiceResponse = await httpResponse.json();
+    return await httpResponse.json();
+  }
 
-    var paul = "debug";
+  private async _listCustomers(): Promise<void> {
+    // update the component state while listing customers
+    this.setState({
+      customers: null,
+      loading: true,
+    });
+
+    const response:ILobServiceResponse = await this._callService(this.props.serviceUrl);
 
     // update the component state accordingly to the result
     this.setState({
@@ -137,27 +139,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
       loading: true,
     });
 
-    // create an AadHttpClient object to consume the 3rd party API
-    const aadClient: AadHttpClient = await this.props.context.aadHttpClientFactory.getClient("api://ea09f67b-5217-47b4-8fd9-f1604c0145ae");
-
-    console.log("Created aadClient");
-
-    const requestHeaders: Headers = new Headers();
-    requestHeaders.append('Accept', 'application/json');
-
-    const requestOptions: IHttpClientOptions = {
-      headers: requestHeaders,
-    };
-
-    // get the list of customers
-    const httpResponse: HttpClientResponse = await aadClient
-      .get(
-        `${this.props.webapiUri}/search/${this.state.searchFor}`,
-        AadHttpClient.configurations.v1,
-        requestOptions
-      );
-
-    const response: ILobServiceResponse = await httpResponse.json();
+    const response: ILobServiceResponse = await this._callService(`${this.props.serviceUrl}/search/${this.state.searchFor}`);
 
     // update the component state accordingly to the result
     this.setState({
@@ -180,24 +162,35 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
             <div className={styles.container}>
               <div className={styles.row}>
 
-                  <div className={styles.column}>
-                    <span className={styles.title}>{strings.SearchDescription}</span>
-                    <p className={styles.form}>
-                      <TextField
-                        label={strings.SearchFor}
-                        required={true}
-                        value={this.state.searchFor}
-                        onChanged={() => this._onSearchForChanged}
-                      />
-                    </p>
-                    <p className={styles.form}>
-                      <PrimaryButton
-                        text={strings.SearchButtonText}
-                        title={strings.SearchButtonText}
-                        onClick={() => this._searchCustomers}
-                      />
-                    </p>
-                  </div>
+                <div className={styles.column}>
+                  <span className={styles.title}>{strings.ListDescription}</span>
+                  <p className={styles.form}>
+                    <PrimaryButton
+                      text={strings.ListButtonText}
+                      title={strings.ListButtonText}
+                      onClick={() => this._listCustomers()}
+                    />
+                  </p>
+                </div>
+
+                <div className={styles.column}>
+                  <span className={styles.title}>{strings.SearchDescription}</span>
+                  <p className={styles.form}>
+                    <TextField
+                      label={strings.SearchFor}
+                      required={true}
+                      value={this.state.searchFor}
+                      onChange={(ev, newValue: string) => this._onSearchForChanged(newValue)}
+                    />
+                  </p>
+                  <p className={styles.form}>
+                    <PrimaryButton
+                      text={strings.SearchButtonText}
+                      title={strings.SearchButtonText}
+                      onClick={() => this._searchCustomers()}
+                    />
+                  </p>
+                </div>
 
               </div>
               {
@@ -210,6 +203,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
                         <DetailsList
                           items={this.state.customers}
                           columns={_customersColumns}
+                          selectionMode={SelectionMode.none}
                           layoutMode={DetailsListLayoutMode.justified} />
                       </div>
                     </div>
@@ -239,7 +233,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
               iconText={strings.PlaceholderIconText}
               description={strings.PlaceholderDescription}
               buttonLabel={strings.PlaceholderButtonLabel}
-              onConfigure={this.props.configureHandler} />
+              onConfigure={() => this.props.configureHandler()} />
           }
           {contents}
         </div>

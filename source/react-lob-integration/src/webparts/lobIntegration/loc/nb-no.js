@@ -2,9 +2,9 @@ define([], function() {
   return {
     "PropertyPaneDescription": "LOB Integrasjon",
     "BasicGroupName": "Generelle innstillinger",
-    "WebApiUriFieldLabel": "Web API URI",
+    "ApplicationUriFieldLabel": "Application URI",
     "FunctionUriFieldLabel": "Funksjon URI",
-    "ServiceTypeFieldLabel": "Type tjeneste",
+    "ServiceUrlFieldLabel": "Service Url",
 
     "PlaceholderIconName":"Rediger",
     "PlaceholderIconText":"Konfigurer webdelen",

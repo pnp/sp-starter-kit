@@ -1,3 +1,4 @@
 export interface ILobIntegrationWebPartProps {
-    webapiUri: string;
+    applicationUri: string;
+    serviceUrl: string;
 }

@@ -2,9 +2,9 @@ define([], function() {
   return {
     "PropertyPaneDescription": "LOB Entegrasyon",
     "BasicGroupName": "Genel Ayarlar",
-    "WebApiUriFieldLabel": "Web API URI",
+    "ApplicationUriFieldLabel": "Application URI",
     "FunctionUriFieldLabel": "Fonksiyon URI",
-    "ServiceTypeFieldLabel": "Servis Tipi",
+    "ServiceUrlFieldLabel": "Service Url",
 
     "PlaceholderIconName":"Düzenle",
     "PlaceholderIconText":"Web bölümünü yapılandır",
@@ -26,6 +26,6 @@ define([], function() {
     "ContactNameColumnAriaLabel": "Yetkili",
     "CountryColumn": "Ülke",
     "CountryColumnAriaLabel": "Ülke",
-  
+
   }
 });

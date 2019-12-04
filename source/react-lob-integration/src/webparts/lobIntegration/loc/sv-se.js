@@ -2,9 +2,9 @@ define([], function() {
   return {
     "PropertyPaneDescription": "LOB Integration",
     "BasicGroupName": "Generella Inställningar",
-    "WebApiUriFieldLabel": "Web API URI",
+    "ApplicationUriFieldLabel": "Application URI",
     "FunctionUriFieldLabel": "Function URI",
-    "ServiceTypeFieldLabel": "Typ av tjänst",
+    "ServiceUrlFieldLabel": "Service Url",
 
     "PlaceholderIconName":"Redigera",
     "PlaceholderIconText":"Konfigurera din webbdel",
@@ -26,6 +26,6 @@ define([], function() {
     "ContactNameColumnAriaLabel": "Kontakt",
     "CountryColumn": "Land",
     "CountryColumnAriaLabel": "Land",
-  
+
   }
 });

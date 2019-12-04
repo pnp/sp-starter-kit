@@ -4,7 +4,7 @@ The purpose of this web part is to show how you can consume LOB (Line of Busines
 
 ![LOB Integration](../../assets/images/components/part-lob-integration.png)
 
-The web part leverages a back-end REST API, built using a ASP.NET Core 3.0 WebAPI project that you can find [here](../../sample-lob-service/SharePointPnP.LobScenario/SharePointPnP.LobScenario.sln). This API is representative of LOB data exposed via a web service and consumed using Http calls.
+The web part leverages a back-end REST API, built using a ASP.NET Core 3.0 WebAPI project that you can find [here](../../sample-lob-service/SharePointPnP.LobScenario/). This API is representative of LOB data exposed via a web service and consumed using Http calls.
 
 ## LOB service - Application Registration
 
@@ -19,6 +19,7 @@ The LOB service is protected via the Microsoft Identity Platform. An application
 
 1. Select **New Registration** from the toolbar.
 1. Enter a name for the application. In this example, the name is **SharePointPnP-LobScenario**. 
+    > This value, known as the **_Application Name_**, is required later in the SharePoint Service Principal configuration.
 1. For **Supported account types**, select **Accounts in this organizational directory only (Single tenant)**.
 1. Select **Register**.
 
@@ -26,19 +27,20 @@ The LOB service is protected via the Microsoft Identity Platform. An application
 
 1. In the application overview blade, select **Expose an API**.
 1. Select **Add a scope**.
-1. The portal will display a panel requesting an Application ID URI. Leave the suggested default (api://{{app-id}}).
+1. The portal will display a panel requesting an Application ID URI. Leave the suggested default (`api://{app-id}`).
+    > This value, known as the **_Application URI_**, is required as a web part property.
 1. Select **Save and continue**.
 
   ![Screenshot of the Add a scope pane in the Azure Active Directory admin center](../../assets/images/sample-lob-service/figure3.png)
 
 1. For **Scope name**, enter `access_as_user`.
+    > This value, known as the **_Application Scope_**, is required later in the SharePoint Service Principal configuration.
 1. Complete the Consent fields as appropriate. 
 1. Select **Add scope** to complete the configuration.
 
   ![Screenshot of the Add a scope pane in the Azure Active Directory admin center](../../assets/images/sample-lob-service/figure4.png)
 
 1. Select **Overview** in the application menu. Make note of the following values for configuring the service code:
-   1. Display name
    1. Application (client) ID
    1. Directory (tenant) ID
 
@@ -46,12 +48,15 @@ The LOB service is protected via the Microsoft Identity Platform. An application
 
 ## LOB service - Code configuration
 
-The [LOB service](../../sample-lob-service/SharePointPnP.LobScenario/SharePointPnP.LobScenario.sln) code must be configured with the application registration values.
+The [LOB service](../../sample-lob-service/SharePointPnP.LobScenario/) code must be configured with the application registration values.
 
 1. Open the `appsettings.json` file.
-1. Modify the TenantId and ClientId properties of the AzureAd object in the file.
+1. Set the TenantId property to the **_Directory (tenant) ID_** value.
+1. Set the ClientId property to the **_Application (client) ID_** value.
 
-Once updated, deploy or start the application. Make note of the service URL. (If run locally, the address will be https://localhost:5001).
+Once updated, deploy or start the solution. The service must use the https scheme. Make note of the address (url).
+
+> This value, known as the **_Service Url_**, is required as a web part property.
 
 ## SharePoint Service Principal configuration
   
@@ -60,7 +65,7 @@ The SharePoint Service Principal must have a permission grant before getting an 
 ```PowerShell
 Connect-SPOService -Url "https://[your-tenant].sharepoint.com/"
 
-Approve-SPOTenantServicePrincipalPermissionGrant -Resource "SharePointPnP-LobScenario" -Scope "access_as_user"
+Approve-SPOTenantServicePrincipalPermissionGrant -Resource "[Application Name]" -Scope "[Application Scope]"
 ```
 
 ## How to use this web part on your web pages
@@ -71,19 +76,18 @@ Approve-SPOTenantServicePrincipalPermissionGrant -Resource "SharePointPnP-LobSce
 
 ## Configurable Properties
 
-The `LobIntegration` webpart can be configured with the following properties:
+The `LobIntegration` webpart must be configured with the following properties:
 
-| Label | Property | Type | Required | Description |
-| ---- | ---- | ---- | ---- | ---- |
-| Web API URI | webapiUri | string | yes | The URL of the web API. Should be something like https://[your-app-service].azurewebsites.net/api/customers |
-| Function URI | functionUri | string | yes | The URL of the Azure Function. Should be something like https://[your-azure-function].azurewebsites.net/api/ListNorthwindCustomers |
-| Service Type | serviceType | choice | yes | Defines the service to use. It can be "ASP.NET REST API" or "Azure Function" |
+| Label           | Property   | Type   | Required | Description |
+| --------------- | ---------- | ------ | -------- | ----------- |
+| Service Url     | serviceUrl | string | yes      | The hosting address of the LOB service. (The address must use the https scheme.)        |
+| Application URI | webapiUri  | string | yes      | The value from the application registration in the Azure Active Directory admin center. |
 
 ## Used SharePoint Framework Version
 
 ![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
 
-* Does only work at SharePoint Online due to dependency on API permission management
+* SharePoint Online only due to dependency on API permission management
 
 ## Applies to
 
@@ -92,19 +96,19 @@ The `LobIntegration` webpart can be configured with the following properties:
 
 ## Prerequisites
 
-WebAPI or Azure Function configuration as secured assets in the same Azure AD instance as where web part is hosted.
+WebAPI configured as secured asset in the same Azure AD instance as where web part is hosted.
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-lob-integration | Paul Schaeflein (Technical Architect, AddIn365) / Microsoft MVP (Office Development) / @paulschaeflein
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+2.0|December 25, 2019|Initial release
 
 ## Disclaimer
 
