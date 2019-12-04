@@ -1,6 +1,6 @@
 {
   "name": "react-banner",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -21,7 +21,9 @@
     "@microsoft/sp-lodash-subset": "~1.4.0",
     "@microsoft/sp-office-ui-fabric-core": "~1.4.0",
     "@types/webpack-env": "1.13.1",
-    "@types/es6-promise": "0.0.33"
+    "@types/es6-promise": "0.0.33",
+    "@pnp/spfx-controls-react": "^1.15.0",
+    "@pnp/spfx-property-controls": "^1.16.0"
   },
   "resolutions": {
     "@types/react": "15.6.6"
