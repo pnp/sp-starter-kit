@@ -45,13 +45,15 @@ Alert is is created automatically to the root of the site collection if it's mis
 Solution|Author(s)
 --------|---------
 folder name | Author details
+./solution/src/extensions/alertNotification | Waldek Mastykarz @waldekm
 ./source/react-application-alerts | Robert Schouten @rfjschouten
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release for SharePoint Starter Kit v2
+1.0|Appril 1, 2018|Initial release for SharePoint Starter Kit v1
+2.0|December 25, 2019|Initial release for SharePoint Starter Kit v2
 
 ## Disclaimer
 
