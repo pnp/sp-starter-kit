@@ -38,13 +38,24 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+solution/src/webparts/recentContacts | Elio Struyf (@estruyf)
+solution/src/webparts/recentContacts | Waldek Mastykarz (@waldekm)
+solution/src/webparts/recentContacts | Simon Agren (@agrenpoint)
+solution/src/webparts/recentContacts | Jérémy Crestel (@j_crestel)
+solution/src/webparts/recentContacts | Daniel Laskewitz (@laskewitz)
+solution/src/webparts/recentContacts | Vardhaman Deshpande (@vrdmn)
+solution/src/webparts/recentContacts | Jakob Nøtseth (@net_freak)
+solution/src/webparts/recentContacts | Mikael Svenson (@mikaelsvenson)
+solution/src/webparts/recentContacts | Özgür Ersoy (@moersoy)
+solution/src/webparts/recentContacts | Guido Zambarda
+source/react-recent-contacts | Yannick Reekmans (@yannickreekmans)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+1.0|April 7, 2018|Initial release
+2.0|December 4, 2019|v2.0
 
 ## Disclaimer
 
