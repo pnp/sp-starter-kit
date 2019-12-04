@@ -4,8 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # Developer settings files
-/Vostok1.WorkHub.Bots.v4/appsettings.paul.json
-/Vostok1.WorkHub.Bots.v4/appsettings.wes.json
+appsettings.Development.json
 
 # User-specific files
 *.suo

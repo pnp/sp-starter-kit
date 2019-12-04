@@ -73,7 +73,7 @@ namespace SharePointPnP.LobScenario
 			app
 				.UseHttpsRedirection()
 				.UseRouting()
-				.UseCors()
+				.UseCors("AllowSubdomain")
 				.UseAuthentication()
 				.UseAuthorization();
 
