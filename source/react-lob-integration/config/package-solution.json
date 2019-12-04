@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-lob-integration-client-side-solution",
     "id": "9cd26e88-b530-474a-8bd0-55a5b87df80d",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false

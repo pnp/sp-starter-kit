@@ -3,9 +3,9 @@ declare interface ILobIntegrationWebPartStrings {
   // Property Pane labels and strings
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  WebApiUriFieldLabel: string;
+  ApplicationUriFieldLabel: string;
   FunctionUriFieldLabel: string;
-  ServiceTypeFieldLabel: string;
+  ServiceUrlFieldLabel: string;
 
   // Placeholder labels and strings
   PlaceholderIconName: string;

@@ -12,20 +12,20 @@ import { ILobIntegrationWebPartProps } from './ILobIntegrationWebPartProps';
 import LobIntegration from './components/LobIntegration';
 import { ILobIntegrationProps } from './components/ILobIntegrationProps';
 
-
 export default class LobIntegrationWebPart extends BaseClientSideWebPart<ILobIntegrationWebPartProps> {
 
   // method to determine if the web part has to be configured
   private needsConfiguration(): boolean {
     // as long as we don't have the configuration settings
-    return (!this.properties.webapiUri);
+    return (!this.properties.applicationUri || !this.properties.serviceUrl);
   }
 
   public render(): void {
     const element: React.ReactElement<ILobIntegrationProps > = React.createElement(
       LobIntegration,
       {
-        webapiUri: this.properties.webapiUri,
+        applicationUri: this.properties.applicationUri,
+        serviceUrl: this.properties.serviceUrl,
         needsConfiguration: this.needsConfiguration(),
         context: this.context,
         configureHandler: () => {
@@ -63,9 +63,12 @@ export default class LobIntegrationWebPart extends BaseClientSideWebPart<ILobInt
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('webapiUri', {
-                  label: strings.WebApiUriFieldLabel
+                PropertyPaneTextField('serviceUrl', {
+                  label: strings.ServiceUrlFieldLabel
                 }),
+                PropertyPaneTextField('applicationUri', {
+                  label: strings.ApplicationUriFieldLabel
+                })
               ]
             }
           ]
