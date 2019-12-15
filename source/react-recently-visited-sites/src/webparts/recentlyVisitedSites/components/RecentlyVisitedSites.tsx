@@ -30,10 +30,9 @@ export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesP
       this.setState({
         loading: true
       });
-      // Calling: beta/me/insights/used?$filter=ResourceVisualization/Type eq 'Web'
+      // Calling: v1.0/me/insights/used?$filter=ResourceVisualization/Type eq 'Web'
       this.props.graphClient
       .api("me/insights/used")
-      .version("beta") // API is currently only available in BETA
       .filter(`ResourceVisualization/Type eq 'Web'`)
       .top(30)
       .get((err, res: IRecentWebs) => {
