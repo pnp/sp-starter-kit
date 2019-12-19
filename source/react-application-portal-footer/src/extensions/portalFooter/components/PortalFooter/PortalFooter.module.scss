@@ -1,0 +1,54 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.portalFooter {
+
+  .main {
+    // inherit theme colors
+    background-color: $ms-color-themePrimary;
+    @include ms-fontColor-white;
+    padding-left: 10px;
+  }
+
+  .supportButton {
+    color: inherit;
+
+    &:hover {
+      background-color: $ms-color-themeDark;
+    }
+
+    &:hover i, i {
+      color: inherit;
+    }
+  }
+
+  .copyright {
+    color: inherit;
+    line-height: 30px;
+  }
+
+  .filler {
+    color: inherit;
+    line-height: 30px;
+  }
+
+  // put the toggle control on the right hand side
+  .toggleControl {
+    float: right;
+    width: 1em;
+    margin-right: 0.5em;
+
+    .toggleButton {
+      background-color: transparent;
+      border: 0;
+      color: inherit;
+      padding: 0;
+      min-width: 0;
+
+      div {
+        width: 1em;
+        height: 40px;
+        line-height: 40px;
+      }
+    }
+  }
+}
