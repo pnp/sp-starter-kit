@@ -9,7 +9,8 @@
         "6638da67-06f4-4f55-a1df-485d568e8b72": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "sourceTermSet": "PnP-CollabFooter-SharedLinks",
+            "personalItemsStorageProperty" : "PnP-CollabFooter-MyLinks"
           }
         }
       }
@@ -20,7 +21,8 @@
         "6638da67-06f4-4f55-a1df-485d568e8b72": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "sourceTermSet": "PnP-CollabFooter-SharedLinks",
+            "personalItemsStorageProperty" : "PnP-CollabFooter-MyLinks"
           }
         }
       }
