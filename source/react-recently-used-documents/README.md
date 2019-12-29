@@ -38,13 +38,15 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+solution/src/webparts/recentlyUsedDocuments | Elio Struyf (@struyf)
+react-recently-used-documents | Sébastien Levert (@sebastienlevert)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+1.0|March 28, 2018|Initial release
+2.0|December 29, 2019|v2.0
 
 ## Disclaimer
 
