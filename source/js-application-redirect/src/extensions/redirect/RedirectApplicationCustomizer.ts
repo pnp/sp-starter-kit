@@ -40,7 +40,8 @@ export default class RedirectApplicationCustomizer
     this._web = Web(this.context.pageContext.web.absoluteUrl);
 
     // search for a redirection rule for the current page, if any
-    const redirection: IRedirection = await this.loadRedirectionForCurrentPage(this.properties.redirectionsListTitle, currentPageRelativeUrl);
+    const redirection: IRedirection = await this.loadRedirectionForCurrentPage(
+      this.properties.redirectionsListTitle, currentPageRelativeUrl);
 
     if (redirection != null) {
       console.log(redirection);
@@ -50,7 +51,8 @@ export default class RedirectApplicationCustomizer
     }
   }
 
-  private async loadRedirectionForCurrentPage(redirectionsListTitle: string, currentPageRelativeUrl: string): Promise<IRedirection> {
+  private async loadRedirectionForCurrentPage(redirectionsListTitle: string, currentPageRelativeUrl: string): 
+    Promise<IRedirection> {
 
     let result: IRedirection = null;
 
@@ -82,7 +84,7 @@ export default class RedirectApplicationCustomizer
         const queryResult: any[] = await this._web.lists.getByTitle(redirectionsListTitle).getItemsByCAMLQuery(query);
         if (queryResult != null && queryResult.length > 0) {
           // if there are any items, get the first one only to build the result
-          let firstResult: any = queryResult[0];
+          const firstResult: any = queryResult[0];
           result = {
             sourceRelativeUrl: firstResult["PnPSourceUrl"]["Url"],
             destinationUrl: firstResult["PnPDestinationUrl"]["Url"],
