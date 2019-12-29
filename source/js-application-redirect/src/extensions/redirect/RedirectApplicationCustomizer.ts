@@ -4,7 +4,7 @@ import {
   BaseApplicationCustomizer
 } from '@microsoft/sp-application-base';
 
-import { sp } from "@pnp/sp/presets/all";
+import { IWeb, Web } from "@pnp/sp/webs";
 import { ICamlQuery, IListEnsureResult } from "@pnp/sp/lists";
 import { IFieldAddResult, UrlFieldFormatType, IField } from "@pnp/sp/fields";
 import { AadTokenProvider } from "@microsoft/sp-http";
@@ -19,12 +19,11 @@ const LOG_SOURCE: string = 'RedirectApplicationCustomizer';
 export default class RedirectApplicationCustomizer
   extends BaseApplicationCustomizer<IRedirectApplicationCustomizerProperties> {
 
+  private _web: IWeb;
+
   @override
   public async onInit(): Promise<void> {
     await super.onInit();
-
-    // initialize PnP JS library to play with SPFx contenxt
-    sp.setup(this.context);
 
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
@@ -36,6 +35,9 @@ export default class RedirectApplicationCustomizer
 
     // read the server relative URL of the current page from Legacy Page Context
     const currentPageRelativeUrl: string = this.context.pageContext.legacyPageContext.serverRequestPath;
+
+    // Getting the current SharePoint Web URL
+    this._web = Web(this.context.pageContext.web.absoluteUrl);
 
     // search for a redirection rule for the current page, if any
     const redirection: IRedirection = await this.loadRedirectionForCurrentPage(this.properties.redirectionsListTitle, currentPageRelativeUrl);
@@ -77,7 +79,7 @@ export default class RedirectApplicationCustomizer
         };
 
         // search for items matching the query
-        const queryResult: any[] = await sp.web.lists.getByTitle(redirectionsListTitle).getItemsByCAMLQuery(query);
+        const queryResult: any[] = await this._web.lists.getByTitle(redirectionsListTitle).getItemsByCAMLQuery(query);
         if (queryResult != null && queryResult.length > 0) {
           // if there are any items, get the first one only to build the result
           let firstResult: any = queryResult[0];
@@ -100,7 +102,7 @@ export default class RedirectApplicationCustomizer
     let result: boolean = false;
 
     try {
-      const ensureResult: IListEnsureResult = await sp.web.lists.ensure(redirectionsListTitle,
+      const ensureResult: IListEnsureResult = await this._web.lists.ensure(redirectionsListTitle,
         "Redirections",
         100,
         true);
