@@ -1,6 +1,6 @@
 {
   "name": "react-application-collab-footer",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -17,7 +17,12 @@
     "@types/webpack-env": "1.13.1",
     "@types/es6-promise": "0.0.33",
     "@microsoft/sp-dialog": "~1.4.0",
-    "@microsoft/sp-application-base": "~1.4.0"
+    "@microsoft/sp-application-base": "~1.4.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.4.1",
+    "@types/react": "15.6.6",
+    "@types/react-dom": "15.5.6",
+    "react": "15.6.2",
+    "react-dom": "15.6.2"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.4.1",

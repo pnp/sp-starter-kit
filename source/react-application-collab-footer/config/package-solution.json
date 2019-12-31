@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-application-collab-footer-client-side-solution",
     "id": "8b5fa72c-26f0-488a-a952-6ec68c81f623",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "features": [
