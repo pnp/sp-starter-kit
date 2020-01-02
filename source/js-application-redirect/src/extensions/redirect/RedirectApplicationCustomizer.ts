@@ -4,10 +4,14 @@ import {
   BaseApplicationCustomizer
 } from '@microsoft/sp-application-base';
 
+import "@pnp/sp/webs";
 import { IWeb, Web } from "@pnp/sp/webs";
-import { ICamlQuery, IListEnsureResult } from "@pnp/sp/lists";
+
+import "@pnp/sp/lists";
+import { ICamlQuery, IListEnsureResult, Lists } from "@pnp/sp/lists";
+
+import "@pnp/sp/fields";
 import { IFieldAddResult, UrlFieldFormatType, IField } from "@pnp/sp/fields";
-import { AadTokenProvider } from "@microsoft/sp-http";
 
 import * as strings from 'RedirectApplicationCustomizerStrings';
 import { IRedirectApplicationCustomizerProperties } from './IRedirectApplicationCustomizerProperties';
