@@ -4,14 +4,14 @@ import {
   BaseApplicationCustomizer
 } from '@microsoft/sp-application-base';
 
-import "@pnp/sp/webs";
-import { IWeb, Web } from "@pnp/sp/webs";
+import '@pnp/sp/webs';
+import { IWeb, Web } from '@pnp/sp/webs';
 
-import "@pnp/sp/lists";
-import { ICamlQuery, IListEnsureResult, Lists } from "@pnp/sp/lists";
+import '@pnp/sp/lists';
+import { ICamlQuery, IListEnsureResult } from '@pnp/sp/lists';
 
-import "@pnp/sp/fields";
-import { IFieldAddResult, UrlFieldFormatType, IField } from "@pnp/sp/fields";
+import '@pnp/sp/fields';
+import { IFieldAddResult, UrlFieldFormatType, IField } from '@pnp/sp/fields';
 
 import * as strings from 'RedirectApplicationCustomizerStrings';
 import { IRedirectApplicationCustomizerProperties } from './IRedirectApplicationCustomizerProperties';
@@ -23,6 +23,9 @@ const LOG_SOURCE: string = 'RedirectApplicationCustomizer';
 export default class RedirectApplicationCustomizer
   extends BaseApplicationCustomizer<IRedirectApplicationCustomizerProperties> {
 
+  private readonly FIELD_INTERNALNAME_SOURCEURL: string = 'PnPSourceUrl';
+  private readonly FIELD_INTERNALNAME_DESTINATIONURL: string = 'PnPDestinationUrl';
+  private readonly FIELD_INTERNALNAME_REDIRECTIONENABLED: string = 'PnPRedirectionEnabled';
   private _web: IWeb;
 
   @override
@@ -47,21 +50,19 @@ export default class RedirectApplicationCustomizer
     const redirection: IRedirection = await this.loadRedirectionForCurrentPage(
       this.properties.redirectionsListTitle, currentPageRelativeUrl);
 
-    if (redirection != null) {
-      console.log(redirection);
-
+    if (redirection) {
       // redirect to the target page, if any
       location.href = redirection.destinationUrl;
     }
   }
 
-  private async loadRedirectionForCurrentPage(redirectionsListTitle: string, currentPageRelativeUrl: string): 
+  private async loadRedirectionForCurrentPage(redirectionsListTitle: string, currentPageRelativeUrl: string):
     Promise<IRedirection> {
 
-    let result: IRedirection = null;
+    let result: IRedirection = undefined;
 
     // first of all, exclude redirection for the list of redirections
-    if (currentPageRelativeUrl.indexOf('Lists/PnPRedirections/AllItems.aspx') < 0) {
+    if (currentPageRelativeUrl.indexOf(`Lists/${redirectionsListTitle}/AllItems.aspx`) < 0) {
 
       // ensures that the PnPRedirections lists exists
       if (await this.ensureRedirectionsList(redirectionsListTitle)) {
@@ -71,11 +72,11 @@ export default class RedirectApplicationCustomizer
           <Where>
             <And>
               <Eq>
-                <FieldRef Name='PnPRedirectionEnabled'/>
+                <FieldRef Name='${this.FIELD_INTERNALNAME_REDIRECTIONENABLED}'/>
                 <Value Type='Boolean'>1</Value>
               </Eq>
               <Contains>
-                <FieldRef Name='PnPSourceUrl'/>
+                <FieldRef Name='${this.FIELD_INTERNALNAME_SOURCEURL}'/>
                 <Value Type='URL'>${currentPageRelativeUrl}</Value>
               </Contains>
             </And>
@@ -86,13 +87,13 @@ export default class RedirectApplicationCustomizer
 
         // search for items matching the query
         const queryResult: any[] = await this._web.lists.getByTitle(redirectionsListTitle).getItemsByCAMLQuery(query);
-        if (queryResult != null && queryResult.length > 0) {
+        if (queryResult && queryResult.length > 0) {
           // if there are any items, get the first one only to build the result
           const firstResult: any = queryResult[0];
           result = {
-            sourceRelativeUrl: firstResult["PnPSourceUrl"]["Url"],
-            destinationUrl: firstResult["PnPDestinationUrl"]["Url"],
-            enabled: firstResult["PnPRedirectionEnabled"],
+            sourceRelativeUrl: firstResult[this.FIELD_INTERNALNAME_SOURCEURL].Url,
+            destinationUrl: firstResult[this.FIELD_INTERNALNAME_DESTINATIONURL].Url,
+            enabled: firstResult[this.FIELD_INTERNALNAME_REDIRECTIONENABLED]
           };
         }
       }
@@ -109,39 +110,42 @@ export default class RedirectApplicationCustomizer
 
     try {
       const ensureResult: IListEnsureResult = await this._web.lists.ensure(redirectionsListTitle,
-        "Redirections",
+        'Redirections',
         100,
         true);
 
       // if we've got the list
-      if (ensureResult.list != null) {
+      if (ensureResult.list) {
         // if the list has just been created
         if (ensureResult.created) {
           // we need to add the custom fields to the list
           const sourceUrlFieldAddResult: IFieldAddResult = await ensureResult.list.fields.addUrl(
-            "PnPSourceUrl", UrlFieldFormatType.Hyperlink,
+            this.FIELD_INTERNALNAME_SOURCEURL, UrlFieldFormatType.Hyperlink,
             { Required: true });
-          await sourceUrlFieldAddResult.field.update({ Title: "Source URL"});
+          await sourceUrlFieldAddResult.field.update({ Title: strings.FieldSourceUrlTitle});
           const destinationUrlFieldAddResult: IFieldAddResult = await ensureResult.list.fields.addUrl(
-            "PnPDestinationUrl", UrlFieldFormatType.Hyperlink,
+            this.FIELD_INTERNALNAME_DESTINATIONURL, UrlFieldFormatType.Hyperlink,
             { Required: true });
-          await destinationUrlFieldAddResult.field.update({ Title: "Destination URL"});
+          await destinationUrlFieldAddResult.field.update({ Title: strings.FieldDestinationUrlTitle});
           const redirectionEnabledFieldAddResult: IFieldAddResult = await ensureResult.list.fields.addBoolean(
-            "PnPRedirectionEnabled",
+            this.FIELD_INTERNALNAME_REDIRECTIONENABLED,
             { Required: true });
-          await redirectionEnabledFieldAddResult.field.update({ Title: "Redirection Enabled"});
+          await redirectionEnabledFieldAddResult.field.update({ Title: strings.FieldRedirectionEnabledTitle});
 
           // the list is ready to be used
           result = true;
         } else {
           // the list already exists, double check the fields
           try {
-            const sourceUrlField: IField = ensureResult.list.fields.getByInternalNameOrTitle("PnPSourceUrl");
-            const destinationUrlField: IField = ensureResult.list.fields.getByInternalNameOrTitle("PnPDestinationUrl");
-            const redirectionEnabledField: IField = ensureResult.list.fields.getByInternalNameOrTitle("PnPRedirectionEnabled");
+            const sourceUrlField: IField = ensureResult.list.fields.getByInternalNameOrTitle(
+              this.FIELD_INTERNALNAME_SOURCEURL);
+            const destinationUrlField: IField = ensureResult.list.fields.getByInternalNameOrTitle(
+              this.FIELD_INTERNALNAME_DESTINATIONURL);
+            const redirectionEnabledField: IField = ensureResult.list.fields.getByInternalNameOrTitle(
+              this.FIELD_INTERNALNAME_REDIRECTIONENABLED);
 
             // if it is all good, then the list is ready to be used
-            result = true;
+            result = (sourceUrlField && destinationUrlField && redirectionEnabledField) !== undefined;
           } catch (e) {
             // if any of the fields does not exist, raise an exception in the console log
             console.log(`The ${redirectionsListTitle} list does not match the expected fields definition.`);

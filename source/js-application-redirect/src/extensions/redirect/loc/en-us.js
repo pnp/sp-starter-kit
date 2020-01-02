@@ -1,5 +1,8 @@
 define([], function() {
   return {
-    "Title": "RedirectApplicationCustomizer"
+    FieldRedirectionEnabledTitle: "Redirection Enabled",
+    FieldDestinationUrlTitle: "Destination URL",
+    FieldSourceUrlTitle: "Source URL",
+    Title: "RedirectApplicationCustomizer"
   }
 });
