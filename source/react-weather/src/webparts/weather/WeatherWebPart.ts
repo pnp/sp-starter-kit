@@ -145,7 +145,7 @@ export default class WeatherWebPart extends BaseClientSideWebPart<IWeatherWebPar
       !this.properties.unit ||
       this.properties.unit.length === 0 ||
       !this.properties.apikey ||
-      this.properties.apikey.length === 0 ||;
+      this.properties.apikey.length === 0;
   }
 }
 
