@@ -2,8 +2,8 @@ define([], function() {
   return {
     "PropertyPaneDescription": "Weather",
     "DataGroupName": "Data",
-    "LocationFieldLabel": "Location",
-    "UnitFieldLabel": "Unit",
+    "LocationFieldLabel": "Add a location",
+    "UnitFieldLabel": "Display temperature as",
     "UnitFieldCelsius": "Celsius",
     "UnitFieldFahrenheit": "Fahrenheit",
     "ConfigGroupName": "Configuration",
