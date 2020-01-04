@@ -20,7 +20,8 @@
     "description": { "default": "Shows weather information for the specified location" },
     "officeFabricIconFontName": "Sunny",
     "properties": {
-      "description": "Weather"
+      "location": "",
+      "unit": "c"
     }
   }]
 }
