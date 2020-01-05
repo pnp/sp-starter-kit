@@ -4,16 +4,17 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneDropdown,
+  IPropertyPaneDropdownOption
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'WorldClockWebPartStrings';
 import WorldClock from './components/WorldClock';
 import { IWorldClockProps } from './components/IWorldClockProps';
 
-export interface IWorldClockWebPartProps {
-  description: string;
-}
+import {IWorldClockWebPartProps} from './IWorldClockWebPartProps';
+import * as timeZones from './components/Timezones';
 
 export default class WorldClockWebPart extends BaseClientSideWebPart<IWorldClockWebPartProps> {
 
@@ -21,19 +22,33 @@ export default class WorldClockWebPart extends BaseClientSideWebPart<IWorldClock
     const element: React.ReactElement<IWorldClockProps > = React.createElement(
       WorldClock,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        timeZoneOffset: this.properties.timeZoneOffset,
+        errorHandler: (errorMessage: string) => {
+          this.context.statusRenderer.renderError(this.domElement, errorMessage);
+        }
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected onDispose(): void {
-    ReactDom.unmountComponentAtNode(this.domElement);
-  }
+  // protected onDispose(): void {
+  //   ReactDom.unmountComponentAtNode(this.domElement);
+  // }
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
+  }
+
+  private getTimeZones(): Array<IPropertyPaneDropdownOption> {
+    var result: Array<IPropertyPaneDropdownOption> = new Array<IPropertyPaneDropdownOption>();
+
+    for (let tz of timeZones.TimeZones.zones) {
+      result.push({ key: tz.id, text: tz.displayName});
+    }
+
+    return(result);
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -49,6 +64,10 @@ export default class WorldClockWebPart extends BaseClientSideWebPart<IWorldClock
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneDropdown('timeZoneOffset', {
+                  label: strings.TimeZoneOffsetFieldLabel,
+                  options: this.getTimeZones()
                 })
               ]
             }

@@ -20,7 +20,8 @@
     "description": { "default": "Time across the world" },
     "officeFabricIconFontName": "WorldClock",
     "properties": {
-      "description": "World Clock"
+      "description": "UTC Time",
+      "timeZoneOffset": 0
     }
   }]
 }
