@@ -25,19 +25,17 @@ export default class WorldClock extends React.Component < IWorldClockProps, {} >
 
   // this method determines the minutes offset of the selected time zone
   private convertTimeZoneIdToOffset(id: number): number {
-
+  
     let result: number = 0;
-    
+
     const matchingItems: timeZones.ITimeZone[] = timeZones.TimeZones.zones.filter((e: timeZones.ITimeZone, i: number) => {
       return(e.id === id);
     });
-    
+
     if (matchingItems && matchingItems.length > 0) {
       result = matchingItems[0].offsetMinutes;
     }
-    
+
     return(result);
   }
-    
-
 }

@@ -41,16 +41,6 @@ export default class WorldClockWebPart extends BaseClientSideWebPart<IWorldClock
     return Version.parse('1.0');
   }
 
-  private getTimeZones(): Array<IPropertyPaneDropdownOption> {
-    var result: Array<IPropertyPaneDropdownOption> = new Array<IPropertyPaneDropdownOption>();
-
-    for (let tz of timeZones.TimeZones.zones) {
-      result.push({ key: tz.id, text: tz.displayName});
-    }
-
-    return(result);
-  }
-
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -75,5 +65,15 @@ export default class WorldClockWebPart extends BaseClientSideWebPart<IWorldClock
         }
       ]
     };
+  }
+
+  private getTimeZones(): Array<IPropertyPaneDropdownOption> {
+    let result: Array<IPropertyPaneDropdownOption> = new Array<IPropertyPaneDropdownOption>();
+
+    for (let tz of timeZones.TimeZones.zones) {
+      result.push({ key: tz.id, text: tz.displayName});
+    }
+
+    return(result);
   }
 }
