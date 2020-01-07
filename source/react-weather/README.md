@@ -1,8 +1,8 @@
 # Weather Information web part
 
-This web part provides you the ability to display basic weather information for one location on a web page. The web part depends on a service provided by [Yahoo Weather API](https://developer.yahoo.com/weather/).
+This web part provides you the ability to display basic weather information for one location on a web page. The web part depends on a service provided by [OpenWeatherMap API](https://openweathermap.org/current/). The API requires authentication, and for that reason it is necessary to register for free plan to be able to obtain API Key that will be used to authenticate the calls. API Key has to be entered in web part configuration.
 
-By default, the `Weather Information` web part will use the location **Seatle** during the Starter Kit provisioning process and can be overriden when the [-WeatherCity](https://github.com/SharePoint/sp-starter-kit/tree/master/provisioning#-weathercity) parameter is provided.
+
 
 ![Weather Information](../../assets/images/components/part-weather.gif)
 
@@ -10,7 +10,7 @@ By default, the `Weather Information` web part will use the location **Seatle** 
 
 1. Place the page you want to add this web part to in edit mode.
 2. Search for and insert the **Weather** web part.
-3. Configure the web part to update its properties.
+3. Configure the web part to update its properties - location name, unit and API key.
 
 ## Configurable Properties
 
@@ -18,8 +18,9 @@ The `Weather Information` web part can be configured with the following properti
 
 | Label | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| Add a location | location | string | no | Inline editable location for weather request |
-| Display temperature as | unit | string | no | The requested temperature unit, Celsius or Fahrenheit |
+| Add a location | location | string | yes | Inline editable location for weather request |
+| Display temperature as | unit | choice | yes | The requested temperature unit, Celsius or Fahrenheit |
+| API Key | apikey | string | yes | API key to authenticate the API call |
 
 ## Installing the web part
 
@@ -51,13 +52,15 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+/solution/src/webparts/weatherInformation/ | Waldek Mastykarz (@waldekmastykarz), Vardhaman Deshpande (@vman)
+react-weather | Dragan Panjkov (@panjkov)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+1.0|April 2018|Initial release
+2.0|December 2019/January 2020|Standalone web part, OpenWeatherMap API
 
 ## Disclaimer
 
