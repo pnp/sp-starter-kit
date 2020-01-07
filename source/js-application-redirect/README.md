@@ -8,6 +8,8 @@ Original v1 implementation located at https://github.com/SharePoint/sp-starter-k
 
 In v2 release repackaged as it's own solution to provide more flexibility from deployment perspective.
 
+![Redirection Extension](../../assets/images/components/ext-redirect.gif)
+
 ## Used SharePoint Framework Version
 
 ![drop](https://img.shields.io/badge/version-1.4-green.svg)
@@ -28,13 +30,15 @@ Extension creates the needed list automatically if it's missing and user has suf
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+solution/src/extensions/redirect | Paolo Pialorsi (@PaoloPia)
+js-application-redirect | Sébastien Levert (@sebastienlevert)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release for SharePoint Starter Kit v2
+1.0|April 22, 2018|Initial release
+2.0|December 29, 2019|v2.0
 
 ## Disclaimer
 

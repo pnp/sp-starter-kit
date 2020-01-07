@@ -1,4 +1,7 @@
 declare interface IRedirectApplicationCustomizerStrings {
+  FieldRedirectionEnabledTitle: string;
+  FieldDestinationUrlTitle: string;
+  FieldSourceUrlTitle: string;
   Title: string;
 }
 

@@ -4,23 +4,23 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://contoso.sharepoint.com/sites/pnp-starter-kit/SitePages/Home.aspx",
       "customActions": {
         "27f45dfa-839e-45c2-a379-fbfe627ed97c": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "redirectionsListTitle": "PnPRedirections"
           }
         }
       }
     },
     "redirect": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://contoso.sharepoint.com/sites/pnp-starter-kit/SitePages/Home.aspx",
       "customActions": {
         "27f45dfa-839e-45c2-a379-fbfe627ed97c": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "redirectionsListTitle": "PnPRedirections"
           }
         }
       }
