@@ -49,13 +49,13 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-world-clock | Dragan Panjkov (@panjkov)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+1.0|January 5, 2020|Initial release (extract web part from Starter Kit v1)
 
 ## Disclaimer
 
