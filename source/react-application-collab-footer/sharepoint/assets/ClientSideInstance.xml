@@ -4,6 +4,6 @@
         Title="CollaborationFooter"
         Location="ClientSideExtension.ApplicationCustomizer"
         ComponentId="6638da67-06f4-4f55-a1df-485d568e8b72"
-        Properties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+        Properties="{&quot;sourceTermSet&quot;:&quot;PnP-CollabFooter-SharedLinks&quot;,&quot;personalItemsStorageProperty&quot;:&quot;PnP-CollabFooter-MyLinks&quot;}">
     </ClientSideComponentInstance>
 </Elements>
