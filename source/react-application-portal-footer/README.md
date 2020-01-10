@@ -4,8 +4,6 @@ This application customizer provides you the ability to include a footer designe
 
 Portal footer has extending UI experience if user clicks the top arrow in the footer. 
 
-Personalized property capability only works in SharePoint Online as SP2019 does not have support for user profile property access using CSOM/REST.
-
 ![Collaboration Footer](../../assets/images/components/ext-portal-footer.gif)
 
 Screenshot is from the v1 version, which worked using taxonomy term set (updated when v2 avaialble). Taxonomy dependency is removed from the v2 implementation to simplify the implementation.
@@ -28,21 +26,27 @@ In v2 release repackaged as it's own solution to provide more flexibility from d
 
 ## Prerequisites
 
-Personalized links only works if a custom property called `PnP-CollabFooter-MyLinks` has been added on the user profile service. This is string based property with maximum lenght. As there's no APIs to automate the property creation to the user profile service, this property will need to be manually created to enable the personalized links capability.
+## Prerequisites
 
-Personalized links capability does not also work in on-premises as there's no APIs to access the user profile service remotely.In SharePoint Online this is performed using CSOM APIs which are abstracted by using PnPjs library.
+The shared links are retrieved from a list called `PnP-PortalFooter-Links`. The webpart will first look to see if the site is part of a hub site and get the data from the list from that hub site. If no hub site is available it falls back to the local site as the source. If you have not applied the starterkit.pnp package you can find the xml used to provision the list [here](../../provisioning/starterkit.xml)
+
+Personalized links only works if a custom property called `PnP-CollabFooter-MyLinks` has been added on the user profile service. This is string based property with maximum lenght. As there's no APIs to automate the property creation to the user profile service, this property will need to be manually created to enable the personalized links capability. Instructions to set up the custom property can be found [here](../../documentation/tenant-settings.md#create-a-custom-property-in-the-user-profile-service).
+
+Both component property names can be changed in the SPFx extension properties. 
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-application-portal-footer | Waldek Mastykarz
+react-application-portal-footer | Paolo Pialorsi
+react-application-portal-footer | David Opdendries
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release for SharePoint Starter Kit v2
+1.0|January 12, 2019|Initial release for SharePoint Starter Kit v2
 
 ## Disclaimer
 

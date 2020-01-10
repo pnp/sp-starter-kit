@@ -315,7 +315,7 @@ class MyLinksDialogContent extends
       addingNewItem: true,
       title: "",
       url: "",
-      selectedLink: null,
+      selectedLink: null
     });
   }
 
@@ -326,7 +326,7 @@ class MyLinksDialogContent extends
       showDetailPanel: true,
       addingNewItem: false,
       title: this.state.selectedLink.title,
-      url: this.state.selectedLink.url,
+      url: this.state.selectedLink.url
     });
   }
 
@@ -391,7 +391,7 @@ export default class MyLinksDialog extends BaseDialog {
   @autobind
   private _save(links: Array<IMyLink>): void {
     this.isSave = true;
-    // Fix for all browsers regarding SP Dialog not being to open twice    
+    // Fix for all browsers regarding SP Dialog not being to open twice
     ReactDOM.unmountComponentAtNode(this.domElement);
     this.links = links;
     this.close();
