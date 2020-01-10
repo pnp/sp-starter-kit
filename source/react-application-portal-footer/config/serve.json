@@ -4,7 +4,7 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://m365x431922.sharepoint.com",
+      "pageUrl": "https://contoso.sharepoint.com",
       "customActions": {
         "df889434-1b1c-4f5b-ada3-086d948e4270": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -18,12 +18,15 @@
       }
     },
     "portalFooter": {
-      "pageUrl": "https://m365x431922.sharepoint.com",
+      "pageUrl": "https://contoso.sharepoint.com",
       "customActions": {
         "df889434-1b1c-4f5b-ada3-086d948e4270": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "linksListTitle": "PnP-PortalFooter-Links",
+            "personalItemsStorageProperty": "PnP-CollabFooter-MyLinks",
+            "copyright": "2019",
+            "support" :"help@contoso.com"
           }
         }
       }
