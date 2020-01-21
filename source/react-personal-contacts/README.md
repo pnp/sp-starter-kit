@@ -64,11 +64,16 @@ Version|Date|Comments
 
 ## Features
 
-Description of the web part with possible additional details than in short summary. 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 * Using Microsoft Graph from the web parts
 * Hosting SharePoint Framework components as Microsoft Teams tabs
 * Using app pages in SharePoint Online
+
+## Permissions Requested
+
+Resource | Permission
+--------|---------
+Microsoft Graph | Contacts.Read
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-personal-contacts" />
