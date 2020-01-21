@@ -38,13 +38,13 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-personal-contacts | Vardhaman Deshpande ([@vrdmn](https://twitter.com/vrdmn))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+1.0|January 21, 2019|Initial release
 
 ## Disclaimer
 

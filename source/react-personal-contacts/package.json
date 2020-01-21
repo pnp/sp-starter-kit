@@ -21,6 +21,8 @@
     "@microsoft/sp-webpart-base": "1.9.1",
     "@microsoft/sp-lodash-subset": "1.9.1",
     "@microsoft/sp-office-ui-fabric-core": "1.9.1",
+    "@pnp/spfx-controls-react": "^1.11.0",
+    "@pnp/spfx-property-controls": "^1.13.1",
     "@types/webpack-env": "1.13.1",
     "@types/es6-promise": "0.0.33"
   },
