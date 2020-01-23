@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { IPortalFooterProps, IPortalFooterState } from '.';
 import styles from './PortalFooter.module.scss';
-import { CommandBar,
+import {
+  CommandBar,
   IContextualMenuItem,
   DefaultButton,
   ActionButton,
   Label,
   MessageBar,
   MessageBarType,
-  autobind} from 'office-ui-fabric-react';
+  autobind
+} from 'office-ui-fabric-react';
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
 import { ILinkGroup } from './ILinkGroup';
 import { Links } from '../Links';
@@ -56,19 +58,19 @@ export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFoo
       window.setTimeout(() => {
         this.setState({
           myLinksSaved: null,
-          });
-        }, 2000);
+        });
+      }, 2000);
     }
   }
 
   public render(): React.ReactElement<IPortalFooterProps> {
     return (
       <div className={styles.portalFooter}>
-        { this.state.myLinksSaved != null ? (this.state.myLinksSaved ?
-            <MessageBar
-              messageBarType={ MessageBarType.success }>{ strings.MyLinksSaveSuccess }</MessageBar> :
-            <MessageBar
-              messageBarType={ MessageBarType.error }>{ strings.MyLinksSaveFailed }</MessageBar>) : null }
+        {this.state.myLinksSaved != null ? (this.state.myLinksSaved ?
+          <MessageBar
+            messageBarType={MessageBarType.success}>{strings.MyLinksSaveSuccess}</MessageBar> :
+          <MessageBar
+            messageBarType={MessageBarType.error}>{strings.MyLinksSaveFailed}</MessageBar>) : null}
         <Links links={this.state.links}
           loadingLinks={this.state.loadingLinks}
           visible={this.state.expanded}
@@ -76,21 +78,21 @@ export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFoo
         <div className={styles.main}>
           <div className={styles.linksContainer}>
             <div className={styles.linksContainerRow}>
-              <div className={styles.copyrightContainer} onClick={ this._handleToggle }>
+              <div className={styles.copyrightContainer} onClick={this._handleToggle}>
                 <Label className={styles.copyright}>{this.props.copyright}</Label>
               </div>
               <div className={styles.supportButtonContainer}>
                 <ActionButton
                   iconProps={{ iconName: 'Headset' }}
                   className={styles.supportButton}
-                  onClick={ this._handleSupport }>
+                  onClick={this._handleSupport}>
                   {this.props.support}
                 </ActionButton>
               </div>
-              <div className={styles.fillerContainer} onClick={ this._handleToggle }>
+              <div className={styles.fillerContainer} onClick={this._handleToggle}>
                 <Label className={styles.filler}>&nbsp;</Label>
               </div>
-              <div className={styles.toggleButtonContainer} onClick={ this._handleToggle }>
+              <div className={styles.toggleButtonContainer} onClick={this._handleToggle}>
                 <div className={styles.toggleControl}>
                   <DefaultButton
                     iconProps={{ iconName: this.state.toggleButtonIconName }}
