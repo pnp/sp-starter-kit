@@ -94,77 +94,77 @@ export interface IDatePickerRequiredExampleState {
 
 export class DateTimePicker extends React.Component<IDateTimePickerProps, IDateTimePickerState> {
 
-    /**
-     * Constructor
-     */
-    constructor(props: IDateTimePickerProps) {
-        super(props);
+  /**
+   * Constructor
+   */
+  constructor(props: IDateTimePickerProps) {
+    super(props);
 
-        this.state = {
-            date: (this.props.initialDateTime != null) ? this.props.initialDateTime : null,
-            hours: (this.props.initialDateTime != null) ? this.props.initialDateTime.getHours() : 0,
-            minutes: (this.props.initialDateTime != null) ? this.props.initialDateTime.getMinutes() : 0,
-            seconds: (this.props.initialDateTime != null) ? this.props.initialDateTime.getSeconds() : 0,
-        };
-    }
+    this.state = {
+      date: (this.props.initialDateTime != null) ? this.props.initialDateTime : null,
+      hours: (this.props.initialDateTime != null) ? this.props.initialDateTime.getHours() : 0,
+      minutes: (this.props.initialDateTime != null) ? this.props.initialDateTime.getMinutes() : 0,
+      seconds: (this.props.initialDateTime != null) ? this.props.initialDateTime.getSeconds() : 0,
+    };
+  }
 
   public render(): React.ReactElement<IDateTimePickerProps> {
     return (
-        <div className="ms-Grid">
-            <div className="ms-Grid-row">
-                <div className={ (this.props.showTime) ? "ms-Grid-col ms-u-sm6 ms-u-md6 ms-u-lg6" : "ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12" }>
-                    <DatePicker
-                        value={ this.state.date }
-                        onSelectDate={ this._dateSelected }
-                        label={ this.props.dateLabel }
-                        isRequired={ this.props.isRequired }
-                        firstDayOfWeek={ DayOfWeek.Sunday }
-                        strings={ DayPickerStrings }
-                        placeholder={ this.props.datePlaceholder } />
-                </div>
-                { (this.props.showTime) ?
-                    <div className={ (this.props.includeSeconds) ? "ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2" : "ms-Grid-col ms-u-sm3 ms-u-md3 ms-u-lg3" }>
-                        <TextField
-                          type="number"
-                          label={ this.props.hoursLabel }
-                          onChanged={ this._hoursChanged }
-                          onGetErrorMessage={ this._getErrorMessageHours }
-                          min="0" 
-                          max="23" />
-                    </div>
-                    : null
-                }
-                { (this.props.showTime) ?
-                    <div className={ (this.props.includeSeconds) ? "ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2" : "ms-Grid-col ms-u-sm3 ms-u-md3 ms-u-lg3" }>
-                        <TextField
-                          type="number"
-                          label={ this.props.minutesLabel }
-                          onChanged={ this._minutesChanged }
-                          onGetErrorMessage={ this._getErrorMessageMinutes }
-                          min="0" 
-                          max="59" />
-                    </div>
-                    : null
-                }
-                { (this.props.showTime && this.props.includeSeconds) ?
-                    <div className="ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2">
-                        <TextField
-                          type="number"
-                          label={ this.props.secondsLabel }
-                          onChanged={ this._secondsChanged }
-                          onGetErrorMessage={ this._getErrorMessageSeconds }
-                          min="0"
-                          max="59" />
-                    </div>
-                    : null
-                }
+      <div className="ms-Grid">
+        <div className="ms-Grid-row">
+          <div className={(this.props.showTime) ? "ms-Grid-col ms-u-sm6 ms-u-md6 ms-u-lg6" : "ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"}>
+            <DatePicker
+              value={this.state.date}
+              onSelectDate={this._dateSelected}
+              label={this.props.dateLabel}
+              isRequired={this.props.isRequired}
+              firstDayOfWeek={DayOfWeek.Sunday}
+              strings={DayPickerStrings}
+              placeholder={this.props.datePlaceholder} />
+          </div>
+          {(this.props.showTime) ?
+            <div className={(this.props.includeSeconds) ? "ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2" : "ms-Grid-col ms-u-sm3 ms-u-md3 ms-u-lg3"}>
+              <TextField
+                type="number"
+                label={this.props.hoursLabel}
+                onChanged={this._hoursChanged}
+                onGetErrorMessage={this._getErrorMessageHours}
+                min="0"
+                max="23" />
             </div>
+            : null
+          }
+          {(this.props.showTime) ?
+            <div className={(this.props.includeSeconds) ? "ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2" : "ms-Grid-col ms-u-sm3 ms-u-md3 ms-u-lg3"}>
+              <TextField
+                type="number"
+                label={this.props.minutesLabel}
+                onChanged={this._minutesChanged}
+                onGetErrorMessage={this._getErrorMessageMinutes}
+                min="0"
+                max="59" />
+            </div>
+            : null
+          }
+          {(this.props.showTime && this.props.includeSeconds) ?
+            <div className="ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2">
+              <TextField
+                type="number"
+                label={this.props.secondsLabel}
+                onChanged={this._secondsChanged}
+                onGetErrorMessage={this._getErrorMessageSeconds}
+                min="0"
+                max="59" />
+            </div>
+            : null
+          }
         </div>
+      </div>
     );
   }
 
   @autobind
-  private _dateSelected (date: Date): void {
+  private _dateSelected(date: Date): void {
     if (date == null) {
       return;
     }
