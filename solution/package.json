@@ -36,7 +36,8 @@
     "@types/webpack-env": "1.13.1",
     "@uifabric/utilities": "5.33.0",
     "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "react-dom": "^16.8.5",
+    "tslib": "~1.10.0"
   },
   "devDependencies": {
     "@microsoft/microsoft-graph-types": "^1.8.0",
