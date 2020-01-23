@@ -9,7 +9,7 @@ export class Links extends React.Component<ILinksProps, {}> {
 
   @autobind
   private async _handleEdit(): Promise<void> {
-    return(await this.props.onMyLinksEdit());
+    return (await this.props.onMyLinksEdit());
   }
 
   public render(): React.ReactElement<ILinksProps> {
