@@ -8,7 +8,6 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import * as strings from 'LobIntegrationWebPartStrings';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import {
-  autobind,
   Spinner,
   SpinnerSize,
   PrimaryButton,
@@ -77,8 +76,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
     };
   }
 
-  @autobind
-  private _onSearchForChanged(newValue: string): void {
+  private _onSearchForChanged = (newValue: string): void => {
 
     // update the component state accordingly to the current user's input
     this.setState({
@@ -86,8 +84,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
     });
   }
 
-  @autobind
-  private async _listCustomers(): Promise<void> {
+  private _listCustomers = async (): Promise<void> => {
 
     // update the component state while listing customers
     this.setState({
@@ -132,8 +129,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
     return;
   }
 
-  @autobind
-  private async _searchCustomers(): Promise<void> {
+  private _searchCustomers = async (): Promise<void> => {
 
     // update the component state while searching customers
     this.setState({

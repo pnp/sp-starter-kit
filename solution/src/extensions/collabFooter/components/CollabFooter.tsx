@@ -7,7 +7,7 @@ import { ICollabFooterEditResult } from './ICollabFooterEditResult';
 import * as strings from 'CollabFooterApplicationCustomizerStrings';
 
 // import additional controls/components
-import { CommandBar, IContextualMenuItem, ContextualMenuItemType, MessageBar, MessageBarType, autobind } from 'office-ui-fabric-react';
+import { CommandBar, IContextualMenuItem, ContextualMenuItemType, MessageBar, MessageBarType } from 'office-ui-fabric-react';
 import MyLinksDialog from '../../../common/myLinks/MyLinksDialog';
 
 export default class CollabFooter extends React.Component<ICollabFooterProps, ICollabFooterState> {
@@ -84,7 +84,6 @@ export default class CollabFooter extends React.Component<ICollabFooterProps, IC
   }
 
   // method used to edit and save personal items
-  @autobind
   private _editMyLinks = (): void => {
     this.props.editMyLinks()
       .then((editResult: ICollabFooterEditResult): void => {

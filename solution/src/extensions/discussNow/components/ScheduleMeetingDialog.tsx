@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BaseDialog, IDialogConfiguration } from '@microsoft/sp-dialog';
 import {
-  autobind,
   PrimaryButton,
   CommandButton,
   TextField,
@@ -110,8 +109,7 @@ class ScheduleMeetingDialogContent extends
     </div>);
   }
 
-  @autobind
-  private _onChangedSubject(newValue: string): void {
+  private _onChangedSubject = (newValue: string): void => {
     this.setState({
       subject: newValue,
     });
@@ -123,15 +121,13 @@ class ScheduleMeetingDialogContent extends
       : `${strings.ScheduleMeetingSubjectValidationErrorMessage} ${value.length}.`;
   }
 
-  @autobind
-  private _onChangedScheduledDateTime(newValue: Date): void {
+  private _onChangedScheduledDateTime = (newValue: Date): void => {
     this.setState({
       dateTime: newValue,
     });
   }
 
-  @autobind
-  private _onChangedScheduleDuration(option: IDropdownOption, index?: number): void {
+  private _onChangedScheduleDuration = (option: IDropdownOption, index?: number): void => {
     const duration: number = Number(option.key);
 
     this.setState({
@@ -160,8 +156,7 @@ export default class ScheduleMeetingDialog extends BaseDialog {
     };
   }
 
-  @autobind
-  private async _submit(subject: string, dateTime: Date, duration: number): Promise<void> {
+  private _submit = async (subject: string, dateTime: Date, duration: number): Promise<void> => {
 
     // *******************************************
     // schedule the meeting with Microsoft Graph
