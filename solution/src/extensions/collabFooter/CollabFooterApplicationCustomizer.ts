@@ -141,19 +141,10 @@ export default class CollabFooterApplicationCustomizer
     const myLinksDialog: MyLinksDialog = new MyLinksDialog(this._myLinks);
     await myLinksDialog.show();
 
-    // update the local list of links
-    let resultingLinks: IMyLink[] = myLinksDialog.links;
-
-    if (this._myLinks !== resultingLinks) {
-      this._myLinks = resultingLinks;
-
-      // map the taxonomy items to the menu items
-      this._myLinksMenuItems = this._myLinks.map((i) => {
-        return (this.projectMyLinkToMenuItem(i, ContextualMenuItemType.Normal));
-      });
-
-      // update the result
-      result.myLinks = this._myLinksMenuItems;
+    if (myLinksDialog.isSave)
+    {
+      // update the local list of links
+      this._myLinks = myLinksDialog.links;
 
       // save the personal links in the UPS, if there are any updates
       let upsService: SPUserProfileService = new SPUserProfileService(this.context);
@@ -161,6 +152,14 @@ export default class CollabFooterApplicationCustomizer
         'String',
         JSON.stringify(this._myLinks));
     }
+
+    // map the taxonomy items to the menu items
+    this._myLinksMenuItems = this._myLinks.map((i) => {
+      return(this.projectMyLinkToMenuItem(i, ContextualMenuItemType.Normal));
+    });
+
+    // update the result
+    result.myLinks = this._myLinksMenuItems;
 
     return (result);
   }
