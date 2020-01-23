@@ -57,7 +57,7 @@ export default class CollabFooterApplicationCustomizer
     }
 
     // call render method for generating the needed html elements
-    return(await this._renderPlaceHolders());
+    return (await this._renderPlaceHolders());
   }
 
   private async getMenuItems(): Promise<IContextualMenuItem[]> {
@@ -68,7 +68,7 @@ export default class CollabFooterApplicationCustomizer
 
     // map the taxonomy items to the menu items
     const sharedMenuItems: IContextualMenuItem[] = terms.map((i) => {
-      return(this.projectTermToMenuItem(i, ContextualMenuItemType.Header));
+      return (this.projectTermToMenuItem(i, ContextualMenuItemType.Header));
     });
 
     // prepare the result
@@ -84,7 +84,7 @@ export default class CollabFooterApplicationCustomizer
 
         // map the taxonomy items to the menu items
         this._myLinksMenuItems = this._myLinks.map((i) => {
-          return(this.projectMyLinkToMenuItem(i, ContextualMenuItemType.Normal));
+          return (this.projectMyLinkToMenuItem(i, ContextualMenuItemType.Normal));
         });
       } else {
         // if there are no personal items for my links, just provide an empty array that can be customized
@@ -93,12 +93,12 @@ export default class CollabFooterApplicationCustomizer
       }
     }
 
-    return(result);
+    return (result);
   }
 
   // projects a Taxonomy term into an object of type IContextualMenuItem for the CommandBar
   private projectTermToMenuItem(menuItem: ITerm, itemType: ContextualMenuItemType): IContextualMenuItem {
-    return({
+    return ({
       key: menuItem.Id,
       name: menuItem.Name,
       itemType: itemType,
@@ -108,20 +108,20 @@ export default class CollabFooterApplicationCustomizer
           : null)
       },
       href: menuItem.Terms.length === 0 ?
-          (menuItem.LocalCustomProperties["_Sys_Nav_SimpleLinkUrl"] !== undefined ?
-              menuItem.LocalCustomProperties["_Sys_Nav_SimpleLinkUrl"]
-              : null)
-          : null,
+        (menuItem.LocalCustomProperties["_Sys_Nav_SimpleLinkUrl"] !== undefined ?
+          menuItem.LocalCustomProperties["_Sys_Nav_SimpleLinkUrl"]
+          : null)
+        : null,
       subMenuProps: menuItem.Terms.length > 0 ?
-          { items : menuItem.Terms.map((i) => { return(this.projectTermToMenuItem(i, ContextualMenuItemType.Normal)); }) }
-          : null,
+        { items: menuItem.Terms.map((i) => { return (this.projectTermToMenuItem(i, ContextualMenuItemType.Normal)); }) }
+        : null,
       isSubMenu: itemType !== ContextualMenuItemType.Header,
     });
   }
 
   // projects a personal link item into an object of type IContextualMenuItem for the CommandBar
   private projectMyLinkToMenuItem(menuItem: IMyLink, itemType: ContextualMenuItemType): IContextualMenuItem {
-    return({
+    return ({
       key: menuItem.title,
       name: menuItem.title,
       itemType: itemType,
@@ -150,7 +150,7 @@ export default class CollabFooterApplicationCustomizer
 
       // map the taxonomy items to the menu items
       this._myLinksMenuItems = this._myLinks.map((i) => {
-        return(this.projectMyLinkToMenuItem(i, ContextualMenuItemType.Normal));
+        return (this.projectMyLinkToMenuItem(i, ContextualMenuItemType.Normal));
       });
 
       // update the result
