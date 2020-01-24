@@ -56,13 +56,13 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-links | Fabio Franzini (@fabiofranzini)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+2.0|January 24, 2020|Initial release (extract web part from Starter Kit v1)
 
 ## Disclaimer
 
