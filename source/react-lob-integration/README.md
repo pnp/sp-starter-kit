@@ -4,7 +4,7 @@ The purpose of this web part is to show how you can consume LOB (Line of Busines
 
 ![LOB Integration](../../assets/images/components/part-lob-integration.png)
 
-The web part leverages a back-end REST API, built using a ASP.NET Core 3.0 WebAPI project that you can find [here](../../sample-lob-service/SharePointPnP.LobScenario/). This API is representative of LOB data exposed via a web service and consumed using Http calls.
+The web part leverages a back-end REST API, built using a ASP.NET Core 3.1 WebAPI project that you can find [here](../../sample-lob-service/SharePointPnP.LobScenario/). This API is representative of LOB data exposed via a web service and consumed using Http calls. Visual Studio 2019 version 16.4 or higher required for Visual Studio based deployment to Azure.
 
 ## LOB service - Application Registration
 
@@ -63,7 +63,7 @@ Once updated, deploy or start the solution. The service must use the https schem
 The SharePoint Service Principal must have a permission grant before getting an access token for the service. The following PowerShell commands will configure the service principal (the **Resource** and **Scope** parameters must match the values from the application registration):
 
 ```PowerShell
-Connect-SPOService -Url "https://[your-tenant].sharepoint.com/"
+Connect-SPOService -Url "https://[your-tenant]-admin.sharepoint.com/"
 
 Approve-SPOTenantServicePrincipalPermissionGrant -Resource "[Application Name]" -Scope "[Application Scope]"
 ```
