@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { Version, DisplayMode } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -8,20 +8,36 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'LobIntegrationWebPartStrings';
+import { ILobIntegrationWebPartProps } from './ILobIntegrationWebPartProps';
 import LobIntegration from './components/LobIntegration';
 import { ILobIntegrationProps } from './components/ILobIntegrationProps';
 
-export interface ILobIntegrationWebPartProps {
-  description: string;
-}
-
 export default class LobIntegrationWebPart extends BaseClientSideWebPart<ILobIntegrationWebPartProps> {
+
+  // method to determine if the web part has to be configured
+  private needsConfiguration(): boolean {
+    // as long as we don't have the configuration settings
+    return (!this.properties.applicationUri || !this.properties.serviceUrl);
+  }
 
   public render(): void {
     const element: React.ReactElement<ILobIntegrationProps > = React.createElement(
       LobIntegration,
       {
-        description: this.properties.description
+        applicationUri: this.properties.applicationUri,
+        serviceUrl: this.properties.serviceUrl,
+        needsConfiguration: this.needsConfiguration(),
+        context: this.context,
+        configureHandler: () => {
+          this.context.propertyPane.open();
+        },
+        errorHandler: (errorMessage: string) => {
+          if (this.displayMode === DisplayMode.Edit) {
+            this.context.statusRenderer.renderError(this.domElement, errorMessage);
+          } else {
+            // nothing to do, if we are not in edit Mode
+          }
+        }
       }
     );
 
@@ -47,8 +63,11 @@ export default class LobIntegrationWebPart extends BaseClientSideWebPart<ILobInt
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('serviceUrl', {
+                  label: strings.ServiceUrlFieldLabel
+                }),
+                PropertyPaneTextField('applicationUri', {
+                  label: strings.ApplicationUriFieldLabel
                 })
               ]
             }
@@ -57,4 +76,5 @@ export default class LobIntegrationWebPart extends BaseClientSideWebPart<ILobInt
       ]
     };
   }
+
 }
