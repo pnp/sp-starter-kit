@@ -38,6 +38,7 @@ none
 
 Solution|Author(s)
 --------|---------
+react-personal-contacts | Waldek Mastykarz ([@waldekm](https://twitter.com/waldekm))
 react-personal-contacts | Vardhaman Deshpande ([@vrdmn](https://twitter.com/vrdmn))
 
 ## Version history
