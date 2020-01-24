@@ -44,7 +44,8 @@ react-personal-contacts | Vardhaman Deshpande ([@vrdmn](https://twitter.com/vrdm
 
 Version|Date|Comments
 -------|----|--------
-1.0|January 21, 2019|Initial release
+1.0|May 2018| Initial release
+2.0|January 2020| Upgrade to V2
 
 ## Disclaimer
 

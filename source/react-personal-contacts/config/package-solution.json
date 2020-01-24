@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-personal-contacts-client-side-solution",
     "id": "05a9dee1-2de3-40f0-bee3-d511aca62e0a",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
