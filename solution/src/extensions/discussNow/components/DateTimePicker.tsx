@@ -8,8 +8,7 @@ import { IDateTimePickerState } from './IDateTimePickerState';
  */
 import {
   BaseComponent,
-  assign,
-  autobind
+  assign
 } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
@@ -94,77 +93,76 @@ export interface IDatePickerRequiredExampleState {
 
 export class DateTimePicker extends React.Component<IDateTimePickerProps, IDateTimePickerState> {
 
-    /**
-     * Constructor
-     */
-    constructor(props: IDateTimePickerProps) {
-        super(props);
+  /**
+   * Constructor
+   */
+  constructor(props: IDateTimePickerProps) {
+    super(props);
 
-        this.state = {
-            date: (this.props.initialDateTime != null) ? this.props.initialDateTime : null,
-            hours: (this.props.initialDateTime != null) ? this.props.initialDateTime.getHours() : 0,
-            minutes: (this.props.initialDateTime != null) ? this.props.initialDateTime.getMinutes() : 0,
-            seconds: (this.props.initialDateTime != null) ? this.props.initialDateTime.getSeconds() : 0,
-        };
-    }
+    this.state = {
+      date: (this.props.initialDateTime != null) ? this.props.initialDateTime : null,
+      hours: (this.props.initialDateTime != null) ? this.props.initialDateTime.getHours() : 0,
+      minutes: (this.props.initialDateTime != null) ? this.props.initialDateTime.getMinutes() : 0,
+      seconds: (this.props.initialDateTime != null) ? this.props.initialDateTime.getSeconds() : 0,
+    };
+  }
 
   public render(): React.ReactElement<IDateTimePickerProps> {
     return (
-        <div className="ms-Grid">
-            <div className="ms-Grid-row">
-                <div className={ (this.props.showTime) ? "ms-Grid-col ms-u-sm6 ms-u-md6 ms-u-lg6" : "ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12" }>
-                    <DatePicker
-                        value={ this.state.date }
-                        onSelectDate={ this._dateSelected }
-                        label={ this.props.dateLabel }
-                        isRequired={ this.props.isRequired }
-                        firstDayOfWeek={ DayOfWeek.Sunday }
-                        strings={ DayPickerStrings }
-                        placeholder={ this.props.datePlaceholder } />
-                </div>
-                { (this.props.showTime) ?
-                    <div className={ (this.props.includeSeconds) ? "ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2" : "ms-Grid-col ms-u-sm3 ms-u-md3 ms-u-lg3" }>
-                        <TextField
-                          type="number"
-                          label={ this.props.hoursLabel }
-                          onChanged={ this._hoursChanged }
-                          onGetErrorMessage={ this._getErrorMessageHours }
-                          min="0" 
-                          max="23" />
-                    </div>
-                    : null
-                }
-                { (this.props.showTime) ?
-                    <div className={ (this.props.includeSeconds) ? "ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2" : "ms-Grid-col ms-u-sm3 ms-u-md3 ms-u-lg3" }>
-                        <TextField
-                          type="number"
-                          label={ this.props.minutesLabel }
-                          onChanged={ this._minutesChanged }
-                          onGetErrorMessage={ this._getErrorMessageMinutes }
-                          min="0" 
-                          max="59" />
-                    </div>
-                    : null
-                }
-                { (this.props.showTime && this.props.includeSeconds) ?
-                    <div className="ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2">
-                        <TextField
-                          type="number"
-                          label={ this.props.secondsLabel }
-                          onChanged={ this._secondsChanged }
-                          onGetErrorMessage={ this._getErrorMessageSeconds }
-                          min="0"
-                          max="59" />
-                    </div>
-                    : null
-                }
+      <div className="ms-Grid">
+        <div className="ms-Grid-row">
+          <div className={(this.props.showTime) ? "ms-Grid-col ms-u-sm6 ms-u-md6 ms-u-lg6" : "ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"}>
+            <DatePicker
+              value={this.state.date}
+              onSelectDate={this._dateSelected}
+              label={this.props.dateLabel}
+              isRequired={this.props.isRequired}
+              firstDayOfWeek={DayOfWeek.Sunday}
+              strings={DayPickerStrings}
+              placeholder={this.props.datePlaceholder} />
+          </div>
+          {(this.props.showTime) ?
+            <div className={(this.props.includeSeconds) ? "ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2" : "ms-Grid-col ms-u-sm3 ms-u-md3 ms-u-lg3"}>
+              <TextField
+                type="number"
+                label={this.props.hoursLabel}
+                onChange={this._hoursChanged}
+                onGetErrorMessage={this._getErrorMessageHours}
+                min="0"
+                max="23" />
             </div>
+            : null
+          }
+          {(this.props.showTime) ?
+            <div className={(this.props.includeSeconds) ? "ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2" : "ms-Grid-col ms-u-sm3 ms-u-md3 ms-u-lg3"}>
+              <TextField
+                type="number"
+                label={this.props.minutesLabel}
+                onChange={this._minutesChanged}
+                onGetErrorMessage={this._getErrorMessageMinutes}
+                min="0"
+                max="59" />
+            </div>
+            : null
+          }
+          {(this.props.showTime && this.props.includeSeconds) ?
+            <div className="ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2">
+              <TextField
+                type="number"
+                label={this.props.secondsLabel}
+                onChange={this._secondsChanged}
+                onGetErrorMessage={this._getErrorMessageSeconds}
+                min="0"
+                max="59" />
+            </div>
+            : null
+          }
         </div>
+      </div>
     );
   }
 
-  @autobind
-  private _dateSelected (date: Date): void {
+  private _dateSelected = (date: Date): void => {
     if (date == null) {
       return;
     }
@@ -174,45 +172,39 @@ export class DateTimePicker extends React.Component<IDateTimePickerProps, IDateT
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _hoursChanged(value: string): void {
+  private _hoursChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value?: string): void => {
     this.setState({
       hours: Number(value)
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _getErrorMessageHours(value: string): string {
+  private _getErrorMessageHours = (value: string): string => {
     let hoursValue: Number = Number(value);
     return (hoursValue >= 0 && hoursValue <= 23)
       ? ''
       : `${this.props.hoursValidationError}.`;
   }
 
-  @autobind
-  private _minutesChanged(newValue: string): void {
+  private _minutesChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
     this.setState({
       minutes: Number(newValue)
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _getErrorMessageMinutes(value: string): string {
+  private _getErrorMessageMinutes = (value: string): string => {
     let minutesValue: Number = Number(value);
     return (minutesValue >= 0 && minutesValue <= 59)
       ? ''
       : `${this.props.minutesValidationError}.`;
   }
 
-  @autobind
-  private _secondsChanged(newValue: string): void {
+  private _secondsChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
     this.setState({
       seconds: Number(newValue)
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _getErrorMessageSeconds(value: string): string {
+  private _getErrorMessageSeconds = (value: string): string => {
     let secondsValue: Number = Number(value);
     return (secondsValue >= 0 && secondsValue <= 59)
       ? ''

@@ -7,14 +7,14 @@ import { ICollabFooterEditResult } from './ICollabFooterEditResult';
 import * as strings from 'CollabFooterApplicationCustomizerStrings';
 
 // import additional controls/components
-import { CommandBar, IContextualMenuItem, ContextualMenuItemType, MessageBar, MessageBarType, autobind } from 'office-ui-fabric-react';
+import { CommandBar, IContextualMenuItem, ContextualMenuItemType, MessageBar, MessageBarType } from 'office-ui-fabric-react';
 import MyLinksDialog from '../../../common/myLinks/MyLinksDialog';
 
 export default class CollabFooter extends React.Component<ICollabFooterProps, ICollabFooterState> {
 
-   /**
-   * Main constructor for the component
-   */
+  /**
+  * Main constructor for the component
+  */
   constructor(props: ICollabFooterProps) {
     super(props);
 
@@ -52,17 +52,17 @@ export default class CollabFooter extends React.Component<ICollabFooterProps, IC
 
     if (menuItems != null && menuItems.length > 0) {
       return (
-        <div className={ styles.collabFooter }>
-          <div className={ styles.collabFooterContainer }>
-            { this.state.myLinksSaved != null ? (this.state.myLinksSaved ?
-                <MessageBar
-                  messageBarType={ MessageBarType.success }>{ strings.MyLinksSaveSuccess }</MessageBar> :
-                <MessageBar
-                  messageBarType={ MessageBarType.error }>{ strings.MyLinksSaveFailed }</MessageBar>) : null }
+        <div className={styles.collabFooter}>
+          <div className={styles.collabFooterContainer}>
+            {this.state.myLinksSaved != null ? (this.state.myLinksSaved ?
+              <MessageBar
+                messageBarType={MessageBarType.success}>{strings.MyLinksSaveSuccess}</MessageBar> :
+              <MessageBar
+                messageBarType={MessageBarType.error}>{strings.MyLinksSaveFailed}</MessageBar>) : null}
             <CommandBar
-              className={ styles.commandBar }
-              items={ menuItems }
-              farItems={ (this.props.myLinks != null ? [
+              className={styles.commandBar}
+              items={menuItems}
+              farItems={(this.props.myLinks != null ? [
                 {
                   key: "editMyLinks",
                   name: strings.EditMyLinks,
@@ -73,8 +73,8 @@ export default class CollabFooter extends React.Component<ICollabFooterProps, IC
                   isSubMenu: false,
                   onClick: this._editMyLinks,
                 }
-              ] : []) }
-              />
+              ] : [])}
+            />
           </div>
         </div>
       );
@@ -84,8 +84,7 @@ export default class CollabFooter extends React.Component<ICollabFooterProps, IC
   }
 
   // method used to edit and save personal items
-  @autobind
-  private _editMyLinks(): void {
+  private _editMyLinks = (): void => {
     this.props.editMyLinks()
       .then((editResult: ICollabFooterEditResult): void => {
         // show result message
@@ -99,8 +98,8 @@ export default class CollabFooter extends React.Component<ICollabFooterProps, IC
           window.setTimeout(() => {
             this.setState({
               myLinksSaved: null,
-              });
-            }, 2000);
+            });
+          }, 2000);
         }
       });
   }

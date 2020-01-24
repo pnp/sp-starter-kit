@@ -36,11 +36,11 @@
     "@types/webpack-env": "1.13.1",
     "@uifabric/utilities": "5.33.0",
     "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "react-dom": "^16.8.5",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@microsoft/microsoft-graph-types": "^1.8.0",
-    "@microsoft/rush-stack-compiler-2.7": "^0.6.6",
     "@microsoft/rush-stack-compiler-2.9": "^0.7.16",
     "@microsoft/sp-build-web": "^1.9.1",
     "@microsoft/sp-module-interfaces": "^1.9.1",

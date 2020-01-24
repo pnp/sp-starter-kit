@@ -3,13 +3,11 @@ import styles from './Links.module.scss';
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ILinksProps } from '.';
-import { autobind } from '@uifabric/utilities';
 
 export class Links extends React.Component<ILinksProps, {}> {
 
-  @autobind
-  private async _handleEdit(): Promise<void> {
-    return(await this.props.onMyLinksEdit());
+  private _handleEdit = async (): Promise<void> => {
+    return (await this.props.onMyLinksEdit());
   }
 
   public render(): React.ReactElement<ILinksProps> {
