@@ -1,7 +1,10 @@
 declare interface IPersonalContactsWebPartStrings {
+  Error: string;
+  Loading: string;
+  NoContacts: string;
+  NrOfContactsToShow: string;
   PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  ViewAll: string;
 }
 
 declare module 'PersonalContactsWebPartStrings' {

@@ -38,13 +38,15 @@ none
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-personal-contacts | Waldek Mastykarz ([@waldekm](https://twitter.com/waldekm))
+react-personal-contacts | Vardhaman Deshpande ([@vrdmn](https://twitter.com/vrdmn))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 25, 2019|Initial release
+1.0|May 2018| Initial release
+2.0|January 2020| Upgrade to V2
 
 ## Disclaimer
 
@@ -64,11 +66,16 @@ Version|Date|Comments
 
 ## Features
 
-Description of the web part with possible additional details than in short summary. 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 * Using Microsoft Graph from the web parts
 * Hosting SharePoint Framework components as Microsoft Teams tabs
 * Using app pages in SharePoint Online
+
+## Permissions Requested
+
+Resource | Permission
+--------|---------
+Microsoft Graph | Contacts.Read
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-personal-contacts" />
