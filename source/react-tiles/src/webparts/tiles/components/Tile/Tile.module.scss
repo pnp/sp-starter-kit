@@ -1,0 +1,62 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.tile {
+  @include ms-Grid-col;
+  @include ms-sm4;
+  display: flex;
+  margin-bottom: 16px;
+  flex-basis: 130px;
+
+  a {
+    background-color: $ms-color-themePrimary;
+    box-sizing: border-box;
+    color: $ms-color-white;
+    display: block;
+    min-height: 123px;
+    overflow: hidden;
+    padding: 15px;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+
+    &:hover,
+    &:visited {
+      color: $ms-color-white;
+      text-decoration: none;
+    }
+  }
+
+  .tileIcon {
+    @include ms-fontSize-su;
+    text-align: center;
+  }
+
+  .tileTitle {
+    @include ms-fontSize-m;
+    bottom: 0;
+    left: 0;
+    padding: 15px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+  }
+
+  .overflow {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    color: white;
+    height: 100%;
+    left: 0;
+    padding: 15px;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    transition: all 0.5s ease;
+  }
+
+  &:hover {
+    .overflow {
+      top: 0;
+    }
+  }
+}

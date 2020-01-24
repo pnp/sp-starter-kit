@@ -1,25 +1,37 @@
 import * as React from 'react';
+import * as strings from 'TilesWebPartStrings';
 import styles from './Tiles.module.scss';
+import { Tile } from './Tile/Tile';
+import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
+import { Placeholder } from '@pnp/spfx-controls-react/lib/Placeholder';
 import { ITilesProps } from './ITilesProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 
-export default class Tiles extends React.Component<ITilesProps, {}> {
+export class Tiles extends React.Component<ITilesProps, {}> {
+
   public render(): React.ReactElement<ITilesProps> {
     return (
-      <div className={styles.tiles} >
-        <div className={styles.container}>
-          <div className={styles.row}>
-            <div className={styles.column}>
-              <span className={styles.title}>Tiles!</span>
-              <p className={styles.subTitle}>Customize SharePoint experiences using Web Parts.</p>
-              <p className={styles.description}>{escape(this.props.description)}</p>
-              <a href='https://aka.ms/spfx' className={styles.button}>
-                <span className={styles.label}>Learn more</span>
-              </a>
+      <div className={styles.tiles}>
+        <WebPartTitle displayMode={this.props.displayMode}
+          title={this.props.title}
+          updateProperty={this.props.fUpdateProperty} />
+        {
+          this.props.collectionData && this.props.collectionData.length > 0 ? (
+            <div className={styles.tilesList}>
+              {
+                this.props.collectionData.map((tile, idx) =>
+                  <Tile key={idx} item={tile} height={this.props.tileHeight} />)
+              }
             </div>
-          </div>
-        </div>
-      </div >
+          ) : (
+              <Placeholder
+                iconName='Edit'
+                iconText={strings.noTilesIconText}
+                description={strings.noTilesConfigured}
+                buttonLabel={strings.noTilesBtn}
+                onConfigure={this.props.fPropertyPaneOpen} />
+            )
+        }
+      </div>
     );
   }
 }
