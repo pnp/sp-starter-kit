@@ -56,12 +56,14 @@ none
 
 Solution|Author(s)
 --------|---------
-react-links | Fabio Franzini (@fabiofranzini)
+react-links V1 | Elio Struyf (@estruyf)
+react-links V2 | Fabio Franzini (@fabiofranzini)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.0|May 18th, 2018|Initial release (extract web part from Starter Kit v1)
 2.0|January 24, 2020|Initial release (extract web part from Starter Kit v1)
 
 ## Disclaimer

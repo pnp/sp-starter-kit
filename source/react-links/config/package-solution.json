@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-links-client-side-solution",
     "id": "941e9447-0430-498e-b380-a154b73983fe",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },

@@ -54,12 +54,14 @@ none
 
 Solution|Author(s)
 --------|---------
-react-tiles | Fabio Franzini (@fabiofranzini)
+react-tiles V1 | Elio Struyf (@estruyf)
+react-tiles V2 | Fabio Franzini (@fabiofranzini)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.0|April 13th, 2018|Initial release
 2.0|January 24, 2020|Initial release (extract web part from Starter Kit v1)
 
 ## Disclaimer
