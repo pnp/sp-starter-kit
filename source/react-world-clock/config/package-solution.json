@@ -3,7 +3,7 @@
   "solution": {
     "name": "world-clock-client-side-solution",
     "id": "55d6757f-94de-4bde-95bf-f8802db4a8f4",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },

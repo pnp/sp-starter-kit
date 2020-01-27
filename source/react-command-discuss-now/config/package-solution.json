@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-command-discuss-now-client-side-solution",
     "id": "76b85695-0232-4c4a-8e24-5458cf1dcbba",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -12,7 +12,7 @@
         "title": "Application Extension - Deployment of custom action.",
         "description": "Deploys a custom action with ClientSideComponentId association",
         "id": "89733413-9b66-4c6a-8bac-ecd0844ef752",
-        "version": "1.0.0.0",
+        "version": "2.0.0.0",
         "assets": {
           "elementManifests": [
             "elements.xml",

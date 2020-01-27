@@ -3,7 +3,7 @@
   "solution": {
     "name": "js-application-redirect-client-side-solution",
     "id": "16ba7527-a398-43f7-9f20-7b050e49887e",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "features": [
@@ -11,7 +11,7 @@
         "title": "Application Extension - Deployment of custom action.",
         "description": "Deploys a custom action with ClientSideComponentId association",
         "id": "c2d231d3-39ae-4f69-a958-44c5762354e0",
-        "version": "1.0.0.0",
+        "version": "2.0.0.0",
         "assets": {
           "elementManifests": [
             "elements.xml"

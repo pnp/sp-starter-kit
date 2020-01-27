@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-weather-client-side-solution",
     "id": "d47b1e90-b473-4855-bcd2-aa34ae942e5d",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },

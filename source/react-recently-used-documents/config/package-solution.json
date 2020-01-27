@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-recently-used-documents-client-side-solution",
     "id": "9ff0a6e2-52d6-40fe-81a0-1df792f81da0",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false
