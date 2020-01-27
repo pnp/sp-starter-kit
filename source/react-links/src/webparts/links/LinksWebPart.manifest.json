@@ -17,10 +17,10 @@
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
     "title": { "default": "Links" },
-    "description": { "default": "LIst of links based on collection control configured in the web part properties" },
+    "description": { "default": "List of links based on collection control configured in the web part properties" },
     "officeFabricIconFontName": "Link",
     "properties": {
-      "description": "Links"
+      "title": "Links"
     }
   }]
 }
