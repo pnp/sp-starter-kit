@@ -134,7 +134,7 @@ class MyLinksDialogContent extends
                           value={this.state.title}
                           minLength={150}
                           className={styles.textField}
-                          onChanged={this._onChangedTitle}
+                          onChange={this._onChangedTitle}
                         />
                       </div>
                     </div>
@@ -146,7 +146,7 @@ class MyLinksDialogContent extends
                           value={this.state.url}
                           minLength={150}
                           className={styles.textField}
-                          onChanged={this._onChangedUrl}
+                          onChange={this._onChangedUrl}
                           onGetErrorMessage={this._getErrorMessageUrl}
                         />
                       </div>
@@ -277,13 +277,13 @@ class MyLinksDialogContent extends
     }
   }
 
-  private _onChangedTitle = (newValue: string): void => {
+  private _onChangedTitle = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
     this.setState({
       title: newValue,
     });
   }
 
-  private _onChangedUrl = (newValue: string): void => {
+  private _onChangedUrl = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
     this.setState({
       url: newValue,
     });

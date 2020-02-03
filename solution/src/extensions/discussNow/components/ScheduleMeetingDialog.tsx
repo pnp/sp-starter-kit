@@ -61,7 +61,7 @@ class ScheduleMeetingDialogContent extends
                     label={ strings.ScheduleMeetingSubjectLabel }
                     required={ true }
                     value={ this.state.subject }
-                    onChanged={ this._onChangedSubject }
+                    onChange={ this._onChangedSubject }
                     onGetErrorMessage={ this._getErrorMessageSubject }
                   />
                 </div>
@@ -109,7 +109,7 @@ class ScheduleMeetingDialogContent extends
       </div>);
     }
 
-    private _onChangedSubject = (newValue: string): void => {
+    private _onChangedSubject = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
       this.setState({
         subject: newValue,
       });

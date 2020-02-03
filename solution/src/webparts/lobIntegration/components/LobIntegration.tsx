@@ -76,7 +76,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
     };
   }
 
-  private _onSearchForChanged = (newValue: string): void => {
+  private _onSearchForChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
 
     // update the component state accordingly to the current user's input
     this.setState({
@@ -187,7 +187,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
                         label={ strings.SearchFor }
                         required={ true }
                         value={ this.state.searchFor }
-                        onChanged={ this._onSearchForChanged }
+                        onChange={ this._onSearchForChanged }
                       />
                   </p>
                   <p className={ styles.form }>
