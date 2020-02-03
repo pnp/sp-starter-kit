@@ -8,8 +8,7 @@ import { IDateTimePickerState } from './IDateTimePickerState';
  */
 import {
   BaseComponent,
-  assign,
-  autobind
+  assign
 } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
@@ -163,8 +162,7 @@ export class DateTimePicker extends React.Component<IDateTimePickerProps, IDateT
     );
   }
 
-  @autobind
-  private _dateSelected (date: Date): void {
+  private _dateSelected = (date: Date): void => {
     if (date == null) {
       return;
     }
@@ -174,45 +172,39 @@ export class DateTimePicker extends React.Component<IDateTimePickerProps, IDateT
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _hoursChanged(value: string): void {
+  private _hoursChanged = (value: string): void => {
     this.setState({
       hours: Number(value)
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _getErrorMessageHours(value: string): string {
+  private _getErrorMessageHours = (value: string): string => {
     let hoursValue: Number = Number(value);
     return (hoursValue >= 0 && hoursValue <= 23)
       ? ''
       : `${this.props.hoursValidationError}.`;
   }
 
-  @autobind
-  private _minutesChanged(newValue: string): void {
+  private _minutesChanged = (newValue: string): void => {
     this.setState({
       minutes: Number(newValue)
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _getErrorMessageMinutes(value: string): string {
+  private _getErrorMessageMinutes = (value: string): string => {
     let minutesValue: Number = Number(value);
     return (minutesValue >= 0 && minutesValue <= 59)
       ? ''
       : `${this.props.minutesValidationError}.`;
   }
 
-  @autobind
-  private _secondsChanged(newValue: string): void {
+  private _secondsChanged = (newValue: string): void => {
     this.setState({
       seconds: Number(newValue)
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _getErrorMessageSeconds(value: string): string {
+  private _getErrorMessageSeconds = (value: string): string => {
     let secondsValue: Number = Number(value);
     return (secondsValue >= 0 && secondsValue <= 59)
       ? ''

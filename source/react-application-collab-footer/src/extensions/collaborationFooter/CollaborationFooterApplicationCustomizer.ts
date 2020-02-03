@@ -15,7 +15,7 @@ import { ICollabFooterProps } from './components/ICollabFooterProps';
 import { ICollabFooterEditResult } from './components/ICollabFooterEditResult';
 
 // import additional controls/components
-import { IContextualMenuItem, ContextualMenuItemType, autobind } from 'office-ui-fabric-react';
+import { IContextualMenuItem, ContextualMenuItemType } from 'office-ui-fabric-react';
 import SPTaxonomyService from '../../services/SPTaxonomyService';
 import {ITerm } from '../../services/SPTaxonomyTypes';
 import SPUserProfileService from '../../services/SPUserProfileService';
@@ -129,8 +129,7 @@ export default class CollaborationFooterApplicationCustomizer
       });
     }
 
-    @autobind
-    private async _editMyLinks(): Promise<ICollabFooterEditResult> {
+    private _editMyLinks = async (): Promise<ICollabFooterEditResult> => {
 
       let result: ICollabFooterEditResult = {
         editResult: null,
