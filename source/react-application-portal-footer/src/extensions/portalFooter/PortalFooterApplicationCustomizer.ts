@@ -23,7 +23,6 @@ import { ILinkListItem } from './ILinkListItem';
 import SPUserProfileService from '../../services/SPUserProfileService';
 import MyLinksDialog from './components/myLinks/MyLinksDialog';
 import IMyLink from './components/myLinks/IMyLink';
-import { autobind } from '@uifabric/utilities';
 import { IPortalFooterEditResult } from './components/PortalFooter/IPortalFooterEditResult';
 
 
@@ -91,8 +90,7 @@ export default class PortalFooterApplicationCustomizer
     return (await this._renderPlaceHolders());
   }
 
-  @autobind
-  private async _editLinks(): Promise<IPortalFooterEditResult> {
+  private _editLinks = async (): Promise<IPortalFooterEditResult> => {
 
     let result: IPortalFooterEditResult = {
       editResult: null,

@@ -7,8 +7,8 @@ import { CommandBar,
   ActionButton,
   Label, 
   MessageBar,
-  MessageBarType,
-  autobind} from 'office-ui-fabric-react';
+  MessageBarType
+} from 'office-ui-fabric-react';
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
 import { ILinkGroup } from './ILinkGroup';
 import { Links } from '../Links';
@@ -35,15 +35,13 @@ export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFoo
     });
   }
 
-  @autobind
-  private _handleSupport(): void {
+  private _handleSupport = (): void => {
     const supportUrl: string = `mailto:${this.props.support}`;
     location.href = supportUrl;
     console.log(supportUrl);
   }
 
-  @autobind
-  private async _handleLinksEdit(): Promise<void> {
+  private _handleLinksEdit = async (): Promise<void> => {
 
     let editResult: IPortalFooterEditResult = await this.props.onLinksEdit();
     if (editResult != null) {

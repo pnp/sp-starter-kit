@@ -8,8 +8,7 @@ import { IDateTimePickerState } from './IDateTimePickerState';
  */
 import {
   BaseComponent,
-  assign,
-  autobind
+  assign
 } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
@@ -127,7 +126,7 @@ export class DateTimePicker extends React.Component<IDateTimePickerProps, IDateT
                         <TextField
                           type="number"
                           label={ this.props.hoursLabel }
-                          onChanged={ this._hoursChanged }
+                          onChange={ this._hoursChanged }
                           onGetErrorMessage={ this._getErrorMessageHours }
                           min="0" 
                           max="23" />
@@ -139,7 +138,7 @@ export class DateTimePicker extends React.Component<IDateTimePickerProps, IDateT
                         <TextField
                           type="number"
                           label={ this.props.minutesLabel }
-                          onChanged={ this._minutesChanged }
+                          onChange={ this._minutesChanged }
                           onGetErrorMessage={ this._getErrorMessageMinutes }
                           min="0" 
                           max="59" />
@@ -151,7 +150,7 @@ export class DateTimePicker extends React.Component<IDateTimePickerProps, IDateT
                         <TextField
                           type="number"
                           label={ this.props.secondsLabel }
-                          onChanged={ this._secondsChanged }
+                          onChange={ this._secondsChanged }
                           onGetErrorMessage={ this._getErrorMessageSeconds }
                           min="0"
                           max="59" />
@@ -163,8 +162,7 @@ export class DateTimePicker extends React.Component<IDateTimePickerProps, IDateT
     );
   }
 
-  @autobind
-  private _dateSelected (date: Date): void {
+  private _dateSelected = (date: Date): void => {
     if (date == null) {
       return;
     }
@@ -174,45 +172,39 @@ export class DateTimePicker extends React.Component<IDateTimePickerProps, IDateT
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _hoursChanged(value: string): void {
+  private _hoursChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value?: string): void => {
     this.setState({
       hours: Number(value)
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _getErrorMessageHours(value: string): string {
+  private _getErrorMessageHours = (value: string): string => {
     let hoursValue: Number = Number(value);
     return (hoursValue >= 0 && hoursValue <= 23)
       ? ''
       : `${this.props.hoursValidationError}.`;
   }
 
-  @autobind
-  private _minutesChanged(newValue: string): void {
+private _minutesChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
     this.setState({
       minutes: Number(newValue)
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _getErrorMessageMinutes(value: string): string {
+  private _getErrorMessageMinutes = (value: string): string => {
     let minutesValue: Number = Number(value);
     return (minutesValue >= 0 && minutesValue <= 59)
       ? ''
       : `${this.props.minutesValidationError}.`;
   }
 
-  @autobind
-  private _secondsChanged(newValue: string): void {
+  private _secondsChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
     this.setState({
       seconds: Number(newValue)
     }, () => { this.saveFullDate(); });
   }
 
-  @autobind
-  private _getErrorMessageSeconds(value: string): string {
+  private _getErrorMessageSeconds = (value: string): string => {
     let secondsValue: Number = Number(value);
     return (secondsValue >= 0 && secondsValue <= 59)
       ? ''

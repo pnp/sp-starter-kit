@@ -9,7 +9,6 @@ import * as strings from 'MyLinksStrings';
 // import additional controls/components
 import { BaseDialog, Dialog, IDialogConfiguration } from '@microsoft/sp-dialog';
 import {
-  autobind,
   DefaultButton,
   TextField,
   Label,
@@ -224,8 +223,7 @@ class MyLinksDialogContent extends
     </div>);
   }
 
-  @autobind
-  private _cancelEdit(): void {
+  private _cancelEdit = (): void => {
     // disable the detail panel
     this.setState({
       showDetailPanel: false,
@@ -234,8 +232,7 @@ class MyLinksDialogContent extends
     });
   }
 
-  @autobind
-  private _saveEdit(): void {
+  private _saveEdit = (): void => {
 
     if (!this.state.addingNewItem) {
 
@@ -280,29 +277,25 @@ class MyLinksDialogContent extends
     }
   }
 
-  @autobind
-  private _onChangedTitle(newValue: string): void {
+  private _onChangedTitle = (newValue: string): void => {
     this.setState({
       title: newValue
     });
   }
 
-  @autobind
-  private _onChangedUrl(newValue: string): void {
+  private _onChangedUrl = (newValue: string): void => {
     this.setState({
       url: newValue
     });
   }
 
-  @autobind
-  private _getErrorMessageUrl(value: string): string {
+  private _getErrorMessageUrl = (value: string): string => {
     // validate the URL with a specific Regular Expression
     const regEx: RegExp = /(https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
     return (value == null || value.length === 0 || regEx.test(value) ? "" : strings.InvalidUrlError);
   }
 
-  @autobind
-  private addLink(): void {
+  private addLink = (): void => {
     if (this.state.selectedLink != null &&
       this.state.links != null &&
       this.state.links.length > 0) {
@@ -319,8 +312,7 @@ class MyLinksDialogContent extends
     });
   }
 
-  @autobind
-  private editLink(): void {
+  private editLink = (): void => {
     // enable the detail panel
     this.setState({
       showDetailPanel: true,
@@ -330,8 +322,7 @@ class MyLinksDialogContent extends
     });
   }
 
-  @autobind
-  private deleteLink(): void {
+  private deleteLink = (): void => {
     // delete the selected link
     this.state.links.splice(this.state.links.indexOf(this.state.selectedLink), 1);
 
@@ -379,8 +370,7 @@ export default class MyLinksDialog extends BaseDialog {
     };
   }
 
-  @autobind
-  private _cancel(): void {
+  private _cancel = (): void => {
     this.isSave = false;
     this.links = this.initialLinks;
     // Fix for all browsers regarding SP Dialog not being to open twice
@@ -388,8 +378,7 @@ export default class MyLinksDialog extends BaseDialog {
     this.close();
   }
 
-  @autobind
-  private _save(links: Array<IMyLink>): void {
+  private _save = (links: Array<IMyLink>): void => {
     this.isSave = true;
     // Fix for all browsers regarding SP Dialog not being to open twice
     ReactDOM.unmountComponentAtNode(this.domElement);
