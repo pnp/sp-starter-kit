@@ -11,7 +11,10 @@ export class AlertNotifications extends React.Component<IAlertNotificationsProps
         {this.props.alerts.map(alert => <MessageBar
           messageBarType={alert.type === AlertType.Urgent ? MessageBarType.severeWarning : MessageBarType.warning}
           isMultiline={false}
-        >{alert.message} {alert.moreInformationUrl ? <a href={alert.moreInformationUrl}>{strings.MoreInformation}</a> : ''}</MessageBar>)}
+        >
+          {alert.message}
+          {alert.moreInformationUrl ? <a href={alert.moreInformationUrl}>{strings.MoreInformation}</a> : ''}
+        </MessageBar>)}
       </div>
     );
   }
