@@ -4,14 +4,7 @@ import {
   BaseApplicationCustomizer
 } from '@microsoft/sp-application-base';
 
-import '@pnp/sp/webs';
-import { IWeb, Web } from '@pnp/sp/webs';
-
-import '@pnp/sp/lists';
-import { ICamlQuery, IListEnsureResult } from '@pnp/sp/lists';
-
-import '@pnp/sp/fields';
-import { IFieldAddResult, UrlFieldFormatType, IField } from '@pnp/sp/fields';
+import { sp, CamlQuery, ListEnsureResult, UrlFieldFormatType, Field, FieldAddResult } from '@pnp/sp';
 
 import * as strings from 'RedirectApplicationCustomizerStrings';
 import { IRedirectApplicationCustomizerProperties } from './IRedirectApplicationCustomizerProperties';
@@ -26,7 +19,7 @@ export default class RedirectApplicationCustomizer
   private readonly FIELD_INTERNALNAME_SOURCEURL: string = 'PnPSourceUrl';
   private readonly FIELD_INTERNALNAME_DESTINATIONURL: string = 'PnPDestinationUrl';
   private readonly FIELD_INTERNALNAME_REDIRECTIONENABLED: string = 'PnPRedirectionEnabled';
-  private _web: IWeb;
+  // private _web: IWeb;
 
   @override
   public async onInit(): Promise<void> {
@@ -40,11 +33,17 @@ export default class RedirectApplicationCustomizer
       return;
     }
 
+    sp.setup({
+      spfxContext: this.context
+    });
+
     // read the server relative URL of the current page from Legacy Page Context
     const currentPageRelativeUrl: string = this.context.pageContext.legacyPageContext.serverRequestPath;
 
+    // currentPageRelativeUrl will look similar to: /sites/contosoportal/SitePages/Home.aspx
+
     // Getting the current SharePoint Web URL
-    this._web = Web(this.context.pageContext.web.absoluteUrl);
+    // this._web = Web(this.context.pageContext.web.absoluteUrl);
 
     // search for a redirection rule for the current page, if any
     const redirection: IRedirection = await this.loadRedirectionForCurrentPage(
@@ -52,7 +51,7 @@ export default class RedirectApplicationCustomizer
 
     if (redirection) {
       // redirect to the target page, if any
-      location.href = redirection.destinationUrl;
+      window.location.href = redirection.destinationUrl;
     }
   }
 
@@ -66,8 +65,9 @@ export default class RedirectApplicationCustomizer
 
       // ensures that the PnPRedirections lists exists
       if (await this.ensureRedirectionsList(redirectionsListTitle)) {
+
         // define a CAML query to get the redirection item for the current page, if any
-        const query: ICamlQuery = {
+        const query: CamlQuery = {
           ViewXml: `<View><Query>
           <Where>
             <And>
@@ -86,9 +86,13 @@ export default class RedirectApplicationCustomizer
         };
 
         // search for items matching the query
-        const queryResult: any[] = await this._web.lists.getByTitle(redirectionsListTitle).getItemsByCAMLQuery(query);
+        // tslint:disable-next-line: no-any
+        const queryResult: any = await sp.web.lists.getByTitle(redirectionsListTitle).getItemsByCAMLQuery(query);
+
         if (queryResult && queryResult.length > 0) {
+
           // if there are any items, get the first one only to build the result
+          // tslint:disable-next-line: no-any
           const firstResult: any = queryResult[0];
           result = {
             sourceRelativeUrl: firstResult[this.FIELD_INTERNALNAME_SOURCEURL].Url,
@@ -109,7 +113,7 @@ export default class RedirectApplicationCustomizer
     let result: boolean = false;
 
     try {
-      const ensureResult: IListEnsureResult = await this._web.lists.ensure(redirectionsListTitle,
+      const ensureResult: ListEnsureResult = await sp.web.lists.ensure(redirectionsListTitle,
         'Redirections',
         100,
         true);
@@ -119,15 +123,15 @@ export default class RedirectApplicationCustomizer
         // if the list has just been created
         if (ensureResult.created) {
           // we need to add the custom fields to the list
-          const sourceUrlFieldAddResult: IFieldAddResult = await ensureResult.list.fields.addUrl(
+          const sourceUrlFieldAddResult: FieldAddResult = await ensureResult.list.fields.addUrl(
             this.FIELD_INTERNALNAME_SOURCEURL, UrlFieldFormatType.Hyperlink,
             { Required: true });
           await sourceUrlFieldAddResult.field.update({ Title: strings.FieldSourceUrlTitle});
-          const destinationUrlFieldAddResult: IFieldAddResult = await ensureResult.list.fields.addUrl(
+          const destinationUrlFieldAddResult: FieldAddResult = await ensureResult.list.fields.addUrl(
             this.FIELD_INTERNALNAME_DESTINATIONURL, UrlFieldFormatType.Hyperlink,
             { Required: true });
           await destinationUrlFieldAddResult.field.update({ Title: strings.FieldDestinationUrlTitle});
-          const redirectionEnabledFieldAddResult: IFieldAddResult = await ensureResult.list.fields.addBoolean(
+          const redirectionEnabledFieldAddResult: FieldAddResult = await ensureResult.list.fields.addBoolean(
             this.FIELD_INTERNALNAME_REDIRECTIONENABLED,
             { Required: true });
           await redirectionEnabledFieldAddResult.field.update({ Title: strings.FieldRedirectionEnabledTitle});
@@ -137,11 +141,11 @@ export default class RedirectApplicationCustomizer
         } else {
           // the list already exists, double check the fields
           try {
-            const sourceUrlField: IField = ensureResult.list.fields.getByInternalNameOrTitle(
+            const sourceUrlField: Field = ensureResult.list.fields.getByInternalNameOrTitle(
               this.FIELD_INTERNALNAME_SOURCEURL);
-            const destinationUrlField: IField = ensureResult.list.fields.getByInternalNameOrTitle(
+            const destinationUrlField: Field = ensureResult.list.fields.getByInternalNameOrTitle(
               this.FIELD_INTERNALNAME_DESTINATIONURL);
-            const redirectionEnabledField: IField = ensureResult.list.fields.getByInternalNameOrTitle(
+            const redirectionEnabledField: Field = ensureResult.list.fields.getByInternalNameOrTitle(
               this.FIELD_INTERNALNAME_REDIRECTIONENABLED);
 
             // if it is all good, then the list is ready to be used
