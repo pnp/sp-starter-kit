@@ -6,12 +6,12 @@ All examples are based on running the following commands in PowerShell, where `[
 
 ```powershell
 Connect-PnPOnline https://[yourtenant].sharepoint.com
-Apply-PnPProvisioningHierarchy -Path starterkit.pnp
+Apply-PnPTenantTemplate -Path starterkit.pnp
 ```
 
 ## Successful provisioning
 
-If all[`pre-requirements`](../#pre-requirements) have been addressed and met, no errors should be generated.
+If all [`pre-requirements`](../#pre-requirements) have been addressed and met, no errors should be generated.
 
 ![Successful Deployment](../assets/images/provision-ps-success.png)
 
@@ -21,7 +21,7 @@ If all[`pre-requirements`](../#pre-requirements) have been addressed and met, no
 
 1. Ensure you are connecting to your tenant site using a tenant admin account.
 
-1. Ensure that you have the latest PnP PowerShell commandlets. You might need to remove the PnP PowerShell commandlets and re-install to ensure you have the latest. [`PnP PowerShell - Recommended 3.2.1810.0 or later`](https://github.com/SharePoint/PnP-PowerShell/releases).
+1. Ensure that you have the latest PnP PowerShell commandlets. You might need to remove the PnP PowerShell commandlets and re-install to ensure you have the latest. [`PnP PowerShell - Recommended 3.19.2003 or later`](https://github.com/SharePoint/PnP-PowerShell/releases).
 
 1. Your tenant must be set to `targeted release` for all users, and you must wait at least 24 hours after setting targeted release for all users before running deploy.ps1.
 
@@ -40,11 +40,11 @@ Set-PnPTraceLog -On -Level Debug
 
 ## ERROR: Inproper version of PnP PowerShell installed
 
-[`PnP PowerShell - Recommended 3.2.1810.0 or later`](https://github.com/SharePoint/PnP-PowerShell/releases) is required for SP Starter Kit to properly provision. It is recommended that you have only the latest version of PnP PowerShell installed on your workstation as well.
+[`PnP PowerShell - Recommended 3.19.2003 or later`](https://github.com/SharePoint/PnP-PowerShell/releases) is required for SP Starter Kit to properly provision. It is recommended that you have only the latest version of PnP PowerShell installed on your workstation as well.
 
 If you do not have the proper version of PnP PowerShell installed, you may receive errors similar to:
 
-`Apply-PnPProvisioningHierarchy : The term 'Apply-PnPProvisioningHierarchy' is not recognized as the name of a cmdlet, function, script file, or
+`Apply-PnPTenantTemplate : The term 'Apply-PnPTenantTemplate' is not recognized as the name of a cmdlet, function, script file, or
 operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
 again. 
 
@@ -79,14 +79,18 @@ Alternatively you can decide to uninstall all installed version of PnP PowerShel
 ```powershell
 Uninstall-Module -Name "SharePointPnPPowerShellOnline" -AllVersions
 Install-Module -Name "SharePointPnPPowerShellOnline"
+```
 
 ## ERROR: App Catalog Required
 
-The SP Starter Kit includes a SPFx solution package, `sharepoint-starter-kit.sppkg`. By default this package will be deployed to the tenant app catalog by the `Apply-PnPProvisioningHierarchy` cmdlet in to your tenant App Catalog.
+The SP Starter Kit includes multiple SPFx solution packages, `*.sppkg`. By default these packages will be deployed to the tenant app catalog by the `Apply-PnPTenantTemplate` cmdlet in to your tenant App Catalog.
 
 If you have not completed this task, you might receive an error that includes:
 
-```WARNING: Tenant app catalog doesn't exist. ALM step will be skipped!```
+```
+WARNING: Tenant app catalog doesn't exist. ALM step will be skipped!
+Apply-PnPTenantTemplate : There is no app catalog site for this tenant.
+```
 
 ![App catalog required](../assets/images/provision-ps-failed-no-app-catalog.png)
 
@@ -94,12 +98,14 @@ If you have not completed this task, you might receive an error that includes:
 
 [`Create a tenant app catalog`](./manual-deploy-sppkg-solution.md) and wait for deployment to complete, which may take minutes, hours, or possibly a day.
 
-If you provision `sharepoint-starter-kit.sppkg` manually to your tenant app catalog, you may then have the SP Starter Kit deployment script skip the package deployment by utilizing the `-SkipSolutionDeployment` parameter, i.e.
+`Note`: If you recently created a new tenant or an [Office 365 Developer tenant](https://docs.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program), you may receive an error similar to:
 
-```powershell
-.\deploy.ps1 -TenantUrl https://[yourtenant].sharepoint.com -SkipSolutionDeployment
+```
+Sorry, something went wrong
+Updates are currently disallowed on GET requests.  To allow updates on a GET, set the 'AllowUnsafeUpdates' property on SPWeb.
 ```
 
+You may need to wait a few hours, possibly up to 24+ hours, after a new SharePoint tenant is created before creating a tenant app catalog as it takes a while for your SharePoint tenant to fully deploy.
 
 ## ERROR: Term Set Permissions Required
 

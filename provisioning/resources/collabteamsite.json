@@ -9,7 +9,7 @@
             "verb": "associateExtension",
             "title": "Collab Footer",
             "location": "ClientSideExtension.ApplicationCustomizer",
-            "clientSideComponentId": "c0ab3b94-8609-40cf-861e-2a1759170b43",
+            "clientSideComponentId": "6638da67-06f4-4f55-a1df-485d568e8b72",
             "clientSideComponentProperties": "{\"sourceTermSet\":\"PnP-CollabFooter-SharedLinks\",\"personalItemsStorageProperty\":\"PnP-CollabFooter-MyLinks\"}",
             "scope": "Site"
         }
