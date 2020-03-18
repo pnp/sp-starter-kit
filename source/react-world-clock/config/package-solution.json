@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "world-clock-client-side-solution",
+    "name": "react-world-clock-client-side-solution",
     "id": "55d6757f-94de-4bde-95bf-f8802db4a8f4",
     "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },
   "paths": {
-    "zippedPackage": "solution/world-clock.sppkg"
+    "zippedPackage": "solution/react-world-clock.sppkg"
   }
 }

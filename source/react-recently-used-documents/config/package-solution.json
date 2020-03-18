@@ -6,7 +6,13 @@
     "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-recently-used-documents.sppkg"
