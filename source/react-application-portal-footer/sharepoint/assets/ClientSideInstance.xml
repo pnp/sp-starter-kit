@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-    <ClientSideComponentInstance
-        Title="PortalFooter"
-        Location="ClientSideExtension.ApplicationCustomizer"
-        ComponentId="df889434-1b1c-4f5b-ada3-086d948e4270"
-        Properties="{&quot;linksListTitle&quot;:&quot;PnP-PortalFooter-Links&quot;,&quot;personalItemsStorageProperty&quot;:&quot;PnP-CollabFooter-MyLinks&quot;,&quot;copyright&quot;:&quot;2019&quot;,&quot;support&quot;:&quot;help@contoso.com&quot;}">
-    </ClientSideComponentInstance>
 </Elements>
