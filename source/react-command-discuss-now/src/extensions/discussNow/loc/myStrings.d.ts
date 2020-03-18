@@ -1,6 +1,21 @@
 declare interface IDiscussNowCommandSetStrings {
-  Command1: string;
-  Command2: string;
+  DiscussNowCommand: string;
+
+  DiscussNowDialogTitle: string;
+  DiscussNowDialogDescription: string;
+
+  ScheduleMeetingSubjectLabel: string;
+  ScheduleMeetingSubjectPlaceholder: string;
+  ScheduleMeetingSubjectValidationErrorMessage: string;
+  ScheduleMeetingDateLabel: string;
+  ScheduleMeetingHoursLabel: string;
+  ScheduleMeetingHoursValidationError: string;
+  ScheduleMeetingMinutesLabel: string;
+  ScheduleMeetingMinutesValidationError: string;
+  ScheduleMeetingDurationLabel: string;
+
+  ScheduleMeetingOkButtonText: string;
+  ScheduleMeetingCancelButtonText: string;
 }
 
 declare module 'DiscussNowCommandSetStrings' {
