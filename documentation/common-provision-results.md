@@ -9,11 +9,13 @@ Connect-PnPOnline https://[yourtenant].sharepoint.com
 Apply-PnPTenantTemplate -Path starterkit.pnp
 ```
 
+
 ## Successful provisioning
 
 If all [`pre-requirements`](../#pre-requirements) have been addressed and met, no errors should be generated.
 
 ![Successful Deployment](../assets/images/provision-ps-success.png)
+
 
 ## ERROR: General cascading errors
 
@@ -21,7 +23,7 @@ If all [`pre-requirements`](../#pre-requirements) have been addressed and met, n
 
 1. Ensure you are connecting to your tenant site using a tenant admin account.
 
-1. Ensure that you have the latest PnP PowerShell commandlets. You might need to remove the PnP PowerShell commandlets and re-install to ensure you have the latest. [`PnP PowerShell - Recommended 3.19.2003 or later`](https://github.com/SharePoint/PnP-PowerShell/releases).
+1. Ensure that you have the latest PnP PowerShell commandlets. You might need to remove the PnP PowerShell commandlets and re-install to ensure you have the latest. [`PnP PowerShell - Recommended 3.19.2003.0 or later`](https://github.com/PnP/PnP-PowerShell/releases).
 
 1. Your tenant must be set to `targeted release` for all users, and you must wait at least 24 hours after setting targeted release for all users before running deploy.ps1.
 
@@ -33,22 +35,23 @@ If all [`pre-requirements`](../#pre-requirements) have been addressed and met, n
 
 1. If you believe the error is new and not addressed below or in the [`issues list`](https://github.com/SharePoint/sp-starter-kit/issues), please submit a [`new issue`](https://github.com/SharePoint/sp-starter-kit/issues). If the error appears to be an error reported in PowerShell, please enable the PnP Trace Log before running the deploy.ps1 script and report those findings in your new issue.
 
-```powershell
-Set-PnPTraceLog -On -Level Debug
-```
+   ```powershell
+   Set-PnPTraceLog -On -Level Debug
+   ```
 
 
-## ERROR: Inproper version of PnP PowerShell installed
+## ERROR: Improper version of PnP PowerShell installed
 
-[`PnP PowerShell - Recommended 3.19.2003 or later`](https://github.com/SharePoint/PnP-PowerShell/releases) is required for SP Starter Kit to properly provision. It is recommended that you have only the latest version of PnP PowerShell installed on your workstation as well.
+[`PnP PowerShell - Recommended 3.19.2003.0 or later`](https://github.com/PnP/PnP-PowerShell/releases) is required for SP Starter Kit to properly provision. It is recommended that you have only the latest version of PnP PowerShell installed on your workstation as well.
 
 If you do not have the proper version of PnP PowerShell installed, you may receive errors similar to:
 
 `Apply-PnPTenantTemplate : The term 'Apply-PnPTenantTemplate' is not recognized as the name of a cmdlet, function, script file, or
 operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
-again. 
+again.`
 
 ![Invalid PnP PS](../assets/images/provision-ps-failed-invalid-pnpps-version.png)
+
 
 ### Recommended solution
 
@@ -81,6 +84,7 @@ Uninstall-Module -Name "SharePointPnPPowerShellOnline" -AllVersions
 Install-Module -Name "SharePointPnPPowerShellOnline"
 ```
 
+
 ## ERROR: App Catalog Required
 
 The SP Starter Kit includes multiple SPFx solution packages, `*.sppkg`. By default these packages will be deployed to the tenant app catalog by the `Apply-PnPTenantTemplate` cmdlet in to your tenant App Catalog.
@@ -93,6 +97,7 @@ Apply-PnPTenantTemplate : There is no app catalog site for this tenant.
 ```
 
 ![App catalog required](../assets/images/provision-ps-failed-no-app-catalog.png)
+
 
 ### Recommended solution
 
@@ -107,6 +112,7 @@ Updates are currently disallowed on GET requests.  To allow updates on a GET, se
 
 You may need to wait a few hours, possibly up to 24+ hours, after a new SharePoint tenant is created before creating a tenant app catalog as it takes a while for your SharePoint tenant to fully deploy.
 
+
 ## ERROR: Term Set Permissions Required
 
 The deployment script includes a PnP provisioning template that attempts to configure demo terms within the managed metadata service / term store. For this to succeed, the account used to connect to your tenant must have been manually added as a term store administator. If you have not completed this task, you might receive an error that includes:
@@ -115,9 +121,11 @@ The deployment script includes a PnP provisioning template that attempts to conf
 
 ![Term store permission required](../assets/images/provision-ps-failed-not-termset-admin.png)
 
+
 ### Recommended solution
 
 Verify that the account you are using to provision SP Starter Kit is a term store administrator.
+
 
 ## ERROR: Not Targeted Release
 
@@ -131,11 +139,12 @@ An error may appear similar to the following:
 
 `This error can also appear if the login account is not an owner of the 'App Catalog' for the tenant
 
+
 ### Invalid App package installation - API Management missing
 
-Deployment of the included SPFx solution `sharepoint-starter-kit.sppkg` may be  [`completed manually`](./manual-deploy-sppkg-solution.md). If you do not have `Targeted Release` enabled for all users, or if you have enabled Targeted Release for all users but have not waited at least 24 hours to full roll out, you may encounter errors when manually deploying the .sppgk package, or attempting to find API Management.
+Deployment of the included SPFx solutions `.\source\[component]\sharepoint\solution\[component].sppkg` may be  [`completed manually`](./manual-deploy-sppkg-solution.md). If you do not have `Targeted Release` enabled for all users, or if you have enabled Targeted Release for all users but have not waited at least 24 hours to full roll out, you may encounter errors when manually deploying the .sppgk packages, or attempting to find API Management.
 
-`Manually deploying sharepoint-starter-kit.sppkg`
+`Manually deploying .sppkg packages`
 
 Although you will be able to upload the SPFx package to the tenant app catalog, an error will be thrown.
 
@@ -146,6 +155,7 @@ Although you will be able to upload the SPFx package to the tenant app catalog, 
 Without Targeted Release enabled, you will be unable to find `API Management` in the Preview Admin Center.
 
 ![SPFx deployment error API Management](../assets/images/provision-error-api-management-missing.png)
+
 
 ### Recommended solution
 

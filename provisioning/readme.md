@@ -1,6 +1,6 @@
-# SP Starter Kit Provisioning Guidance
+# SP Starter Kit Provisioning Guidance - SharePoint Online
 
-The following documentation provides guidance related to the the provisioning process of **SP Starter Kit**.
+The following documentation provides guidance related to the provisioning process of **SP Starter Kit**.
 
 **For SharePoint Online only**
 
@@ -10,15 +10,17 @@ This document provides guidance on installing a full installation for **SP Start
 
 It is recommended you read this entire document before installing the starter kit, in particular pay close attention to [Common notes](#common-notes) and [Fixing provisioning errors](#fixing-provisioning-errors).
 
+
 ## Choose the right method depending on your requirements
 
-- **[Default installation](#minimal-path-to-success)** - SharePoint Online only, full installation, SPFx solution per component.
+- **[Default installation](#minimal-path-to-success)** - SharePoint Online only, full installation, one SPFx solution per component.
 
 - [SharePoint 2019](../readme-sp2019.md) - SharePoint 2019 ready, limited featureset.
 
-- [Only SPFx components](../readme-spfx-only.md) - Advanced - Only install SPFx solutions.
+- [Only SPFx components](../readme-spfx-only.md) - Advanced - Only install SPFx solutions to tenant app catalog, will not provision site designs, site scripts, sites, or content.
 
-- [Single solution installation - deprecated](../readme-single-solution.md) - SharePoint Online only, deprecated full installation, on SPFx solution for all components.
+- [Single solution installation - deprecated v1 starter kit](../readme-single-solution.md) - SharePoint Online only, deprecated full installation, one SPFx solution for all components.
+
 
 ## Minimal path to success
 
@@ -26,7 +28,7 @@ It is recommended you read this entire document before installing the starter ki
 
 2. Open PowerShell and run the following commands, changing the tenant url to your primary SharePoint tenant site.
 
-   In order to successfully install the SP Starter Kit, you are required to install the latest PnP PowerShell for SharePoint Online (version 3.19.2003 or higher), which can be installed with the following PowerShell command:
+   In order to successfully install the SP Starter Kit, you are required to install the latest PnP PowerShell for SharePoint Online (validated at version 3.19.2003.0 or higher), which can be installed with the following PowerShell command:
 
    ```powershell
    Install-Module -Name SharePointPnPPowerShellOnline
@@ -44,7 +46,8 @@ It is recommended you read this entire document before installing the starter ki
    Apply-PnPTenantTemplate -Path starterkit.pnp
    ```
 
-## Common notes
+
+## Important notes
 
 - By default the starter kit will create three site collections, using a common prefix of 'Contoso'. These sites will be called 'contosoportal' (a communications site), 'contosohr' (a team site), and 'contosomarketing' (a team site). 
 
@@ -58,7 +61,7 @@ It is recommended you read this entire document before installing the starter ki
 
 - The tenant site you connect to via PowerShell, i.e. **https://[yourtenant].sharepoint.com**, is only used to create the initial connection to your tenant. During application of the starter kit, the three demo sites previously mentioned will be created within the connected tenant. If any of the site collections already exist, the starter kit provisioning process will reuse the existing site collections.
 
-- The site hierarchy of the sites created by the deployment process will be read from the starterkit.pnp file. If you want to modify this template you will have to modify and repackage **starterkit.xml** found in this project's ./source/template folder, into a new starterkit.pnp file. This may be accomplished with the following PowerShell commandlets:
+- The site hierarchy of the sites created by the deployment process will be read from the starterkit.pnp file. If you want to modify this template you will have to modify and repackage **starterkit.xml** found in this project's **./source/templates** folder, into a new starterkit.pnp file. This may be accomplished with the following PowerShell commandlets:
 
   ```powershell
   $kit = Read-PnPTenantTemplate -Path ..\source\templates\starterkit.xml
@@ -67,6 +70,7 @@ It is recommended you read this entire document before installing the starter ki
 
 - Ensure the credentials you use to connect to your tenant have **tenant administrative rights**. We require this to provision the taxonomy parts.
 
+
 ## Fixing provisioning errors
 
 - If you run into errors during provisioning, refer to ['Common SP Starter Kit Provisioning results'](../documentation/common-provision-results.md) for additional suggestions and common mistakes
@@ -74,6 +78,7 @@ It is recommended you read this entire document before installing the starter ki
 - Refer to the ['Issues List'](https://github.com/SharePoint/sp-starter-kit/issues) to see if anyone else has run into a similar issue, and if so possible paths to success
 
 - ['Submit a new issue'](https://github.com/SharePoint/sp-starter-kit/issues) if you are unable to find a solution to your specific error or question
+
 
 ## Pre-providing credentials
 
@@ -86,6 +91,7 @@ $creds = Get-Credential
 Connect-PnPOnline https://[yourtenant].sharepoint.com -Credentials $creds
 Apply-PnPTenantTemplate -Path .\starterkit.pnp
 ```
+
 
 ## Provisioning Parameters
 

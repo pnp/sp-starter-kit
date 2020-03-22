@@ -1,19 +1,22 @@
 # SharePoint Starter Kit v2
 
-The SharePoint Starter Kit (starter kit) is a comprehensive solution designed for SharePoint Online and SharePoint 2019 which provides numerous SharePoint Framework (SPFx) web parts, extensions, and other components, as well as [PnP PowerShell](https://github.com/sharepoint/pnp-powershell) driven provisioning which you can use as an example and inspiration for your own customizations. 
-
-> Version 1 includes a comprenshive strategy for only SharePoint Online, as well as a simngle SPFx solution that encapsulates all webparts and extensions into a single package. Version 1 may be accessed via the [v1 branch](https://github.com/SharePoint/sp-starter-kit/tree/v1) for legacy purposes and will not be maintained beyond April 2020.
-
-> Notice: the starter kit adds **tenant level settings** including themes, site designs, taxonomy term sets, and other adjustments. Therefore, it is recommended to test the starter kit in an **isolated test tenant and not immediately execute it within your production environment**.
+The SharePoint Starter Kit (starter kit) is a comprehensive solution designed for SharePoint Online and SharePoint 2019 which provides numerous SharePoint Framework (SPFx) web parts, extensions, and other components, as well as [PnP PowerShell](https://github.com/pnp/pnp-powershell) driven provisioning which you can use as an example and inspiration for your own customizations. 
 
 ![PnP Starter Pack Front Page](./assets/images/default-front-page-contoso.png)
+
+> Starter Kit Version 1 includes a comprenshive strategy for only SharePoint Online, as well as a single SPFx solution that encapsulates all webparts and extensions into a single package. Version 1 may be accessed via the [v1 branch](https://github.com/SharePoint/sp-starter-kit/tree/v1) for legacy purposes and will not be maintained beyond April 2020.
+
+> Notice: There currently **is not** a direct path for upgrading an existing SharePoint Online tenant with the starter kit v1 to v2. V2 may be installed into a tenant with v1 already installed, by default, this will add a tenant wide duplicate all of webparts and extensions. It is recommended that the starter kit v1 be removed from a tenant before adding v2, or creating a custom installation of v2.
+
+> Notice: the starter kit adds **tenant level settings** including themes, site designs, taxonomy term sets, and other adjustments. Therefore, it is recommended to test the starter kit in an **isolated test tenant and not immediately execute it within your production environment**.
 
 
 ## Objectives of this solution
 
-SharePoint Communication Sites have great out-of-the-box capabilities, but the out-of-the-box capabilities may not always be sufficient for your scenarios. This is exactly why you are able to include your own customizations. This solution addresses common scenarios and tasks you may encounter when introducing those customizations, and provides examples and guidance on how you might address them including:
+SharePoint Communication Sites and Team Sites have great out-of-the-box capabilities, although the out-of-the-box capabilities may not always be sufficient for your scenarios. This is exactly why SharePoint may be extended and you are able to include your own customizations. This solution addresses common scenarios and tasks you may encounter when introducing those customizations, and provides examples and guidance on how you might address and provision them including:
 
 - Automated provisioning of simple demo content within a communication site
+- Automated provisioning of multiple team sites with pre-configuration and hub site association
 - Automated provisioning of the whole solution to any tenant within minutes
 - Automated configuration of Site Scripts and Site Designs at the tenant level using the PnP Remote Provisioning engine (SharePoint Online only)
 - Implementation of different customizations for SharePoint
@@ -28,7 +31,7 @@ SharePoint Communication Sites have great out-of-the-box capabilities, but the o
 * Demonstrate new SharePoint Online UX design and layout capabilities - (*not yet available*)
 * SharePoint 2019 compatible starter kit with web parts and components supported by SharePoint 2019 - (*not yet available*)
 * Support web parts and extensions to be deployed one-by-one to tenants or farms
-* Demonstrate teams tab development with SharePoint Framework for suitable web parts
+* Demonstrate teams tab development with SharePoint Framework for suitable web parts in SharePoint Online
 * Demonstrate Microsoft Graph API and Graph Toolkit usage in SharePoint Online
 
 
@@ -43,22 +46,23 @@ Here are current pre-requirements for making this solution work in your tenant.
     - All solutions and web parts are also English in the current implementation
     - For tenants that have English but have a different default language, the [term set provisioning may be modified to assist with installation](./documentation/term-store.md#non-english-tenants)
 
-- Release preferences for your tenant will need to be set as "Targeted release for everyone" option (also known as First Release)
+- Release preferences for your SharePoint Online tenant will need to be set as "Targeted release for everyone" option (also known as First Release)
 
-- Add the tenant administrator account used during provisioning as Term Store Administrator in the Taxonomy Term Store through the SharePoint Admin Center
+- Add the tenant administrator account used during provisioning as Term Store Administrator in the Taxonomy Term Store through the SharePoint Admin Center (SPO) or Central Admin (SP2019)
 
-- A tenant 'App Catalog' must have been created within the 'Apps' option of the SharePoint Admin Center
+- A tenant 'App Catalog' must have been created within the 'Apps' option of the SharePoint Admin Center (SPO) or Central Admin (SP2019)
 
 > It is recommended that you wait up to 24 hours before attempting to provision this solution if any of the following are true
 > - Your SharePoint tenant was just created
 > - You just created your SharePoint tenant app catalog
-> - You just set your tenant as "Targeted release for everyone"
+> - You just set your tenant as "Targeted release for everyone" (SPO)
+
 
 ## Getting started
 
 Shortest path to success for SharePoint Online - The following steps will help you get started in any SharePoint Online tenant as fast as possible.
 
-> For [SharePoint 2019 installation instructions, refer to ./provisioning/readme-sp2019.md](./provisioning/readme-sp2019.md)
+> For SharePoint 2019 tenant,  [refer to the SharePoint 2019 installation instructions](./provisioning/readme-sp2019.md)
 
 - Ensure you meet the [Pre-requirements](#Pre-requirements)
 
@@ -87,7 +91,13 @@ Shortest path to success for SharePoint Online - The following steps will help y
 - This solution will automatically install multiple SPFx webparts that require API permissisons to the Graph API. After installing this solution, access your API Management page in your SharePoint Admin Center and approve the pending requests.
 
 > Notice that the starter kit also adds tenant level settings like themes, site designs, taxonomy term sets, and other adjustments. Therefore, it is recommended to test the starter kit in an **isolated test tenant and not immediately execute it within your production environment**.
- 
+
+
+## Learn more
+
+- [Detailed provisioning instructions for SharePoint Online](./provisioning/readme.md)
+- [Detailed provisioning instructions for SharePoint 2019](./provisioning/readme-2019.md)
+
 ## Custom Web Parts
 
 Here are the custom web parts currently included in the solution package.
@@ -112,6 +122,7 @@ Screenshot |  Web Part |  Description  | Compatibility | Code
 ![](assets/images/components/part-weather.png) | [Weather Information](documentation/components/wp-weather-information.md) | Weather information web part which is using Yahoo Weather APIs to get the forecast information. | SPO / SP 2019 | [code](./source/react-weather)
 ![](assets/images/components/part-world-time.png) | [World Time](documentation/components/wp-world-time.md) | Clock web part to show the time in specific time zone. | SPO / SP 2019 | [code](./source/react-world-clock)
 
+
 ## SharePoint Framework Extensions
 
 Screenshot |  Extension |  Description  | Compatibility | Code
@@ -123,6 +134,7 @@ Screenshot |  Extension |  Description  | Compatibility | Code
 Not available | Redirect | Can be used to perform automatic redirections of URLs in the site based on a custom list. | SPO / SP 2019 | [code](./source/react-application-portal-footer)
 ![](assets/images/components/ext-classification.png) | [Site Classification (deprecated)](documentation/components/ext-classification.md) | Renders a header with site classification information. This has been replaced by out-of-the-box SharePoint Online header functionality | SPO only | [code](./solution/src/extensions/siteClassification/SiteClassificationApplicationCustomizer.ts)
 Not available | Tab Page (deprecated) | Renders a header with links between two different pages in the site. | SPO only | [code](./solution/src/extensions/tabPage/TabPageApplicationCustomizer.ts)
+
 
 ## Support and SLA for this project
 
