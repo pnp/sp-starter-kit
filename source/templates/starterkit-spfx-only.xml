@@ -1,13 +1,7 @@
 ﻿<?xml version="1.0"?>
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/03/ProvisioningSchema" Author="SharePoint PnP" Generator="SharePoint PnP" Version="1.0" Description="SharePoint Starter Kit" DisplayName="SharePoint Starter Kit" ImagePreviewUrl="https://raw.githubusercontent.com/SharePoint/sp-dev-provisioning-templates/master/tenant/SP-Starter-Kit/sp-starter-kit-front-page-16x9.png">
-  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.1.1809.0, Culture=neutral, PublicKeyToken=null">
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema" Author="SharePoint PnP" Generator="SharePoint PnP" Version="2.0" Description="SharePoint Starter Kit for SharePoint Online" DisplayName="SharePoint Starter Kit" ImagePreviewUrl="https://raw.githubusercontent.com/SharePoint/sp-dev-provisioning-templates/master/tenant/SP-Starter-Kit/sp-starter-kit-front-page-16x9.png">
+  <pnp:Preferences Generator="SharePoint PnP">
     <pnp:Parameters>
-      <pnp:Parameter Key="Company">Contoso Electronics</pnp:Parameter>
-      <pnp:Parameter Key="PORTALURL">/sites/contosoportal</pnp:Parameter>
-      <pnp:Parameter Key="MARKETINGALIAS">contosomarketing</pnp:Parameter>
-      <pnp:Parameter Key="HRALIAS">contosohr</pnp:Parameter>
-      <pnp:Parameter Key="WeatherCity">Seattle</pnp:Parameter>
-      <pnp:Parameter Key="StockSymbol">MSFT</pnp:Parameter>
       <pnp:Parameter Key="lcid">1033</pnp:Parameter>
     </pnp:Parameters>
   </pnp:Preferences>
@@ -34,10 +28,6 @@
     
     
     <pnp:AppCatalog>
-      <!--
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\package\sharepoint-starter-kit.sppkg" SkipFeatureDeployment="true"/>
-      -->
-
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-banner\sharepoint\solution\react-banner.sppkg" SkipFeatureDeployment="true"/>
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-followed-sites\sharepoint\solution\react-followed-sites.sppkg" SkipFeatureDeployment="true"/>
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-links\sharepoint\solution\react-links.sppkg" SkipFeatureDeployment="true"/>
@@ -60,20 +50,27 @@
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-recent-contacts\sharepoint\solution\react-recent-contacts.sppkg" SkipFeatureDeployment="true"/>
       
       <!--Sites.Read.All-->
-      <!--needs to be rebuilt as aad requirements not in package-solution.json-->
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-recently-used-documents\sharepoint\solution\react-recently-used-documents.sppkg" SkipFeatureDeployment="true"/>
       
       <!--Sites.Read.All-->
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-recently-visited-sites\sharepoint\solution\react-recently-visited-sites.sppkg" SkipFeatureDeployment="true"/>
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-site-information\sharepoint\solution\react-site-information.sppkg" SkipFeatureDeployment="true"/>
-
-      <!--sppkg isn't in solution-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-tiles\sharepoint\solution\react-tiles.sppkg" SkipFeatureDeployment="true"/>
-
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-weather\sharepoint\solution\react-weather.sppkg" SkipFeatureDeployment="true"/>
       
-      <!--renamed sppkg-->
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-site-information\sharepoint\solution\react-site-information.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-tiles\sharepoint\solution\react-tiles.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-weather\sharepoint\solution\react-weather.sppkg" SkipFeatureDeployment="true"/>
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-world-clock\sharepoint\solution\react-world-clock.sppkg" SkipFeatureDeployment="true"/>
+
+      <!--extensions-->
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-application-collab-footer\sharepoint\solution\react-application-collab-footer.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-application-portal-footer\sharepoint\solution\react-application-portal-footer.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\js-application-redirect\sharepoint\solution\js-application-redirect.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-application-alerts\sharepoint\solution\react-application-alerts.sppkg" SkipFeatureDeployment="true"/>
+
+      <!--Group.ReadWrite.All-->
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-command-discuss-now\sharepoint\solution\react-command-discuss-now.sppkg" SkipFeatureDeployment="true"/>
+
+      <!--depricated-->
+      <!--site information (classification banner header)-->
 
     </pnp:AppCatalog>
   </pnp:Tenant>
