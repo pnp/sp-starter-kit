@@ -1,7 +1,20 @@
 declare interface ISpStarterKitSharedLibraryStrings {
-  PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+
+  // general labels
+  HeaderImageUrlField: string;
+  HeaderLinkField: string;
+
+  GeneralPlaceholderIconText: string;
+  GeneralPlaceholderBtnLabel: string;
+
+  // banner webpart
+  BannerConfigName: string;
+  BannerTextField: string;
+  BannerPlaceholderDescription: string;
+
+  BannerNumberField: string;
+  BannerParallaxField: string;
+  BannerValidationNotImage: string;
 }
 
 declare module 'SpStarterKitSharedLibraryStrings' {

@@ -3,7 +3,7 @@
   "solution": {
     "name": "library-starter-kit-shared-client-side-solution",
     "id": "3e313dee-8a65-4ee7-a5c2-59670e43c6d2",
-    "version": "1.0.0.0",
+    "version": "0.0.1.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false
