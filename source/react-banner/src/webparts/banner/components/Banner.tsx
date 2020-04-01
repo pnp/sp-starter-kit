@@ -3,7 +3,7 @@ import styles from './Banner.module.scss';
 import { IBannerProps } from '.';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { Placeholder } from '@pnp/spfx-controls-react/lib/Placeholder';
-import * as strings from 'BannerWebPartStrings';
+import { SpStarterKitSharedLibrary, LocaleKeys } from '@starter-kit/shared-library';
 
 export class Banner extends React.Component<IBannerProps, {}> {
   private _scrollElm: HTMLElement = undefined;
@@ -59,9 +59,9 @@ export class Banner extends React.Component<IBannerProps, {}> {
       );
     } else {
       return <Placeholder iconName='ImagePixel'
-                          iconText={strings.BannerPlaceholderIconText}
-                          description={strings.BannerPlaceholderDescription}
-                          buttonLabel={strings.BannerPlaceholderBtnLabel}
+                          iconText={SpStarterKitSharedLibrary.getLocale(LocaleKeys.BannerPlaceholderIconText)}
+                          description={SpStarterKitSharedLibrary.getLocale(LocaleKeys.BannerPlaceholderDescription)}
+                          buttonLabel={SpStarterKitSharedLibrary.getLocale(LocaleKeys.BannerPlaceholderBtnLabel)}
                           onConfigure={this._onConfigure} />;
     }
   }

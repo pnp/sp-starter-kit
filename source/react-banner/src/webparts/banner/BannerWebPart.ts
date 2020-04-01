@@ -9,8 +9,9 @@ import {
   IWebPartPropertiesMetadata
 } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'BannerWebPartStrings';
 import { Banner, IBannerProps } from './components';
+
+import { SpStarterKitSharedLibrary, LocaleKeys } from '@starter-kit/shared-library';
 
 export interface IBannerWebPartProps {
   bannerText: string;
@@ -77,32 +78,32 @@ export default class BannerWebPart extends BaseClientSideWebPart<IBannerWebPartP
         {
           groups: [
             {
-              groupName: strings.BannerConfigName,
+              groupName: SpStarterKitSharedLibrary.getLocale(LocaleKeys.BannerConfigName),
               groupFields: [
                 PropertyPaneTextField('bannerText', {
-                  label: strings.BannerTextField,
+                  label: SpStarterKitSharedLibrary.getLocale(LocaleKeys.BannerTextField),
                   multiline: true,
                   maxLength: 200,
                   value: this.properties.bannerText
                 }),
                 PropertyPaneTextField('bannerImage', {
-                  label: strings.BannerImageUrlField,
+                  label: SpStarterKitSharedLibrary.getLocale(LocaleKeys.BannerImageUrlField),
                   onGetErrorMessage: this._validateImageField,
                   value: this.properties.bannerImage
                 }),
                 PropertyPaneTextField('bannerLink', {
-                  label: strings.BannerLinkField,
+                  label: SpStarterKitSharedLibrary.getLocale(LocaleKeys.BannerLinkField),
                   value: this.properties.bannerLink
                 }),
                 this.propertyFieldNumber('bannerHeight', {
                   key: 'bannerHeight',
-                  label: strings.BannerNumberField,
+                  label: SpStarterKitSharedLibrary.getLocale(LocaleKeys.BannerNumberField),
                   value: this.properties.bannerHeight,
                   maxValue: 500,
                   minValue: 100
                 }),
                 PropertyPaneToggle('useParallax', {
-                  label: strings.BannerParallaxField,
+                  label: SpStarterKitSharedLibrary.getLocale(LocaleKeys.BannerParallaxField),
                   checked: this.properties.useParallax
                 })
               ]
@@ -122,7 +123,7 @@ export default class BannerWebPart extends BaseClientSideWebPart<IBannerWebPartP
       if (urlSplit && urlSplit.length > 0) {
         const extName: string = urlSplit.pop().toLowerCase();
         if (['jpg', 'jpeg', 'png', 'gif'].indexOf(extName) === -1) {
-          return strings.BannerValidationNotImage;
+          return SpStarterKitSharedLibrary.getLocale(LocaleKeys.BannerValidationNotImage);
         }
       }
     }

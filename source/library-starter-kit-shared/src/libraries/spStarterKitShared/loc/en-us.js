@@ -8,13 +8,19 @@ define([], function() {
     "GeneralPlaceholderBtnLabel": "Configure",
 
     // banner webpart
-    "BannerConfigName": "Banner configuration new",
+    "BannerConfigName": "Banner configuration",
     "BannerTextField": "Overlay image text",
-    "BannerPlaceholderDescription": "Please specify the banner configuration.",
-
-
+    "BannerImageUrlField": "Image URL",
+    "BannerLinkField": "Link URL",
     "BannerNumberField": "Banner height",
     "BannerParallaxField": "Enable parallax effect",
-    "BannerValidationNotImage": "Please provide a link to an image"
+
+    // Validation
+    "BannerValidationNotImage": "Please provide a link to an image",
+
+    // React component strings
+    "BannerPlaceholderIconText": "Configure your web part",
+    "BannerPlaceholderDescription": "Please specify the banner configuration.",
+    "BannerPlaceholderBtnLabel": "Configure"
   }
 });
