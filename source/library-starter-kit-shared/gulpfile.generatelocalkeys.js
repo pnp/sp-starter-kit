@@ -77,7 +77,22 @@ const generateLocaleKeys = build.task('generateLocaleKeys', {
         }
         enumInfo.push(keys.join(`,\n`))
         enumInfo.push(`}`);
-        fs.writeFileSync(path.join(__dirname, './src/libraries/spStarterKitShared/loc/LocaleKeys.ts'), enumInfo.join(`\n`));
+
+        // only rebuild LocaleKeys.ts if a change has occurred
+        var buildEnum = true;
+        try {
+          const existingFileContents = fs.readFileSync(path.join(__dirname, './src/libraries/spStarterKitShared/loc/LocaleKeys.ts'), { encoding: "utf8" });
+          if (existingFileContents && existingFileContents == enumInfo.join(`\n`)) {
+            buildEnum = false;
+          }
+        }
+        catch (err) {
+        }
+
+        if (buildEnum) {
+          fs.writeFileSync(path.join(__dirname, './src/libraries/spStarterKitShared/loc/LocaleKeys.ts'), enumInfo.join(`\n`));
+        }
+
       }
     }
   }
