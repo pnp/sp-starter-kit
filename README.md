@@ -1,3 +1,13 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- typescript
+extensions:
+  contentType: samples
+  createdDate: 2/27/2018 12:23:10 PM
+---
 # SharePoint Starter Kit
 
 This is a solution designed for SharePoint Online which provides numerous web parts, extensions, and other components which you can use as an example and inspiration for your own customizations. 
