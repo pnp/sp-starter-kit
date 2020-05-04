@@ -108,10 +108,14 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
 
     return <div className={`${styles.meetingWrapper} ${item.showAs}`}>
       <Link href={item.webLink} className={styles.meeting} target='_blank'>
-        <div className={styles.start}>{`${startTime.getHours()}:${minutes < 10 ? '0' + minutes : minutes}`}</div>
-        <div className={styles.subject}>{item.subject}</div>
-        <div className={styles.duration}>{this._getDuration(item)}</div>
-        <div className={styles.location}>{item.location.displayName}</div>
+        <div className={styles.linkWrapper}>
+          <div className={styles.start}>{`${startTime.getHours()}:${minutes < 10 ? '0' + minutes : minutes}`}</div>
+          <div>
+            <div className={styles.subject}>{item.subject}</div>
+            <div className={styles.duration}>{this._getDuration(item)}</div>
+            <div className={styles.location}>{item.location.displayName}</div>
+          </div>
+        </div>
       </Link>
     </div>;
   }
