@@ -7,6 +7,10 @@
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "webApiPermissionRequests": [{
+      "resource": "Microsoft Graph",
+      "scope": "Group.ReadWrite.All"
+    }],
     "features": [
       {
         "title": "Application Extension - Deployment of custom action.",

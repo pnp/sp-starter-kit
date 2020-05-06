@@ -10,15 +10,17 @@ import { Dialog } from '@microsoft/sp-dialog';
 
 import * as strings from 'DiscussNowCommandSetStrings';
 
+import ScheduleMeetingDialog from './components/ScheduleMeetingDialog';
+
+
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
  * it will be deserialized into the BaseExtension.properties object.
  * You can define an interface to describe it.
  */
 export interface IDiscussNowCommandSetProperties {
-  // This is an example; replace with your own properties
-  sampleTextOne: string;
-  sampleTextTwo: string;
+  // This is an example; replace with your own property
+  disabledCommandIds: string[] | undefined;
 }
 
 const LOG_SOURCE: string = 'DiscussNowCommandSet';
@@ -33,24 +35,30 @@ export default class DiscussNowCommandSet extends BaseListViewCommandSet<IDiscus
 
   @override
   public onListViewUpdated(event: IListViewCommandSetListViewUpdatedParameters): void {
-    const compareOneCommand: Command = this.tryGetCommand('COMMAND_1');
-    if (compareOneCommand) {
-      // This command should be hidden unless exactly one row is selected.
-      compareOneCommand.visible = event.selectedRows.length === 1;
-    }
+    // show the command just in case a single item is selected
+    const scheduleMeetingCommand: Command | undefined = this.tryGetCommand('DISCUSS_NOW');
+    scheduleMeetingCommand.visible = event.selectedRows.length == 1;
   }
 
   @override
   public onExecute(event: IListViewCommandSetExecuteEventParameters): void {
     switch (event.itemId) {
-      case 'COMMAND_1':
-        Dialog.alert(`${this.properties.sampleTextOne}`);
-        break;
-      case 'COMMAND_2':
-        Dialog.alert(`${this.properties.sampleTextTwo}`);
-        break;
-      default:
-        throw new Error('Unknown command');
+      case 'DISCUSS_NOW':
+
+        const id: number = event.selectedRows[0].getValueByName("ID");
+        const fileName: string = event.selectedRows[0].getValueByName("FileLeafRef");
+        const filePath: string = event.selectedRows[0].getValueByName("ServerRedirectedEmbedUrl");
+
+        const dialog: ScheduleMeetingDialog = new ScheduleMeetingDialog();
+        dialog.fileName = fileName;
+        dialog.filePath = filePath;
+        dialog.context = this.context;
+
+        dialog.show();
+
+      break;
+    default:
+      throw new Error('Unknown command');
     }
   }
 }

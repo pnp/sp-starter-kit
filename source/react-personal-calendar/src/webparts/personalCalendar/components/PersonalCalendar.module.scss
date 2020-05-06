@@ -44,9 +44,15 @@
     }
   }
 
+  .linkWrapper {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
   .start {
-    float: left;
+    flex: 0 0 auto;
     height: 1.5em;
+    width: 2.5em;
     margin-right: 0.5em;
   }
 

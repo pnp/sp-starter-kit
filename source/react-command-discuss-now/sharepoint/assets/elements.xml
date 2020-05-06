@@ -2,10 +2,10 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
     <CustomAction
         Title="DiscussNow"
-        RegistrationId="100"
+        RegistrationId="101"
         RegistrationType="List"
         Location="ClientSideExtension.ListViewCommandSet.CommandBar"
         ClientSideComponentId="84de6bad-859f-4c3b-934c-f6c6ae935c72"
-        ClientSideComponentProperties="{&quot;sampleTextOne&quot;:&quot;One item is selected in the list.&quot;, &quot;sampleTextTwo&quot;:&quot;This command is always visible.&quot;}">
+        ClientSideComponentProperties="{}">
     </CustomAction>
 </Elements>

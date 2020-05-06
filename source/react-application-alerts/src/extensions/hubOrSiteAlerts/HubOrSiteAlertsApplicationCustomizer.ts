@@ -48,8 +48,9 @@ export default class HubOrSiteAlertsApplicationCustomizer
      * If the is not connected to a hub sites, returns null;
      */
     private _getConnectedHubSiteData(): Promise<IHubSiteData> {
-      return new Promise<IHubSiteData>((resolve: (connectedHubSiteData: IHubSiteData) => void,
-                                        reject: (error: any) => void): void => {
+
+      // tslint:disable-next-line: no-any max-line-length
+      return new Promise<IHubSiteData>((resolve: (connectedHubSiteData: IHubSiteData) => void, reject: (error: any) => void): void => {
         // suppress loading metadata to minimize the amount of data sent over the network
         const headers: Headers = new Headers();
         headers.append('accept', 'application/json;odata.metadata=none');
@@ -63,8 +64,8 @@ export default class HubOrSiteAlertsApplicationCustomizer
           })
           .then((res: IHubSiteDataResponse): void => {
             // the site is not connected to a hub site and is not a hub site itself
-            if (res["@odata.null"] === true) {
-              resolve(null);
+            if (res['@odata.null'] === true) {
+              resolve(undefined);
               return;
             }
 
@@ -72,7 +73,7 @@ export default class HubOrSiteAlertsApplicationCustomizer
               // parse the hub site data from the value property to JSON
               const hubSiteData: IHubSiteData = JSON.parse(res.value);
               resolve(hubSiteData);
-            } catch(e) {
+            } catch (e) {
               reject(e);
             }
           })
@@ -87,8 +88,9 @@ export default class HubOrSiteAlertsApplicationCustomizer
      * @param hubSiteUrl URL of the hub site to which the current site is connected
      */
     private _loadUpcomingAlerts(hubSiteUrl: string): Promise<IAlert[]> {
-      return new Promise<IAlert[]>((resolve: (upcomingAlerts: IAlert[]) => void,
-                                    reject: (error: any) => void): void => {
+
+      // tslint:disable-next-line: no-any max-line-length
+      return new Promise<IAlert[]>((resolve: (upcomingAlerts: IAlert[]) => void, reject: (error: any) => void): void => {
         // suppress loading metadata to minimize the amount of data sent over the network
         const headers: Headers = new Headers();
         headers.append('accept', 'application/json;odata.metadata=none');
@@ -115,11 +117,12 @@ export default class HubOrSiteAlertsApplicationCustomizer
               return {
                 type: AlertType[alert.PnPAlertType],
                 message: alert.PnPAlertMessage,
-                moreInformationUrl: alert.PnPAlertMoreInformation ? alert.PnPAlertMoreInformation.Url : null
+                moreInformationUrl: alert.PnPAlertMoreInformation ? alert.PnPAlertMoreInformation.Url : undefined
               };
             });
             resolve(upcomingAlerts);
           })
+          // tslint:disable-next-line: no-any
           .catch((error: any): void => {
             reject(error);
           });
@@ -169,6 +172,7 @@ export default class HubOrSiteAlertsApplicationCustomizer
           // render the UI using a React component
           ReactDom.render(element, HubOrSiteAlertsApplicationCustomizer._topPlaceholder.domElement);
         })
+        // tslint:disable-next-line: no-any
         .catch((error: any): void => {
           if (error === HubOrSiteAlertsApplicationCustomizer.NO_HUBSITE_DATA) {
             console.log(`Current site is not connected to a hub site and is not a hub site itself.

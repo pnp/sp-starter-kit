@@ -16,8 +16,15 @@
     "@microsoft/decorators": "1.9.1",
     "@types/webpack-env": "1.13.1",
     "@types/es6-promise": "0.0.33",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.3",
     "@microsoft/sp-listview-extensibility": "1.9.1",
-    "@microsoft/sp-dialog": "1.9.1"
+    "@microsoft/sp-dialog": "1.9.1",
+    "react": "16.8.5",
+    "react-dom": "16.8.5"
+  },
+  "resolutions": {
+    "@types/react": "16.8.8"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.9.1",

@@ -5,6 +5,6 @@ define([], function() {
     "NoContacts": "Keine Kontake gefunden",
     "NrOfContactsToShow": "Anzahl der anzuzeigenden Kontakte",
     "PropertyPaneDescription": "Kontakte Web Part Konfiguration",
-    "ViewAll": "Zeige die gesammte Liste"
+    "ViewAll": "Vollständige Liste anzeigen"
   }
 });

@@ -1,4 +1,4 @@
-import { IAlert } from "../IAlert";
+import { IAlert } from '../IAlert';
 
 export interface IAlertNotificationsProps {
   alerts: IAlert[];
