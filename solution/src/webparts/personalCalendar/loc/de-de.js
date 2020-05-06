@@ -11,6 +11,6 @@ define([], function() {
     "NumMeetings": "Wieviele Besprechungen sollen angezeigt werden? 0 - Zeige alle abgerufenen Besprechungen",
     "RefreshInterval": "Wie oft soll nach bevorstehenden Besprechungen geprüft werden(in Minuten)",
     "PropertyPaneDescription": "Besprechungen Web Part Konfiguration",
-    "ViewAll": "Zeige die gesammte Liste"
+    "ViewAll": "Vollständige Liste anzeigen"
   }
 });
