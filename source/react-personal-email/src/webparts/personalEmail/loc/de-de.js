@@ -5,6 +5,6 @@ define([], function() {
     "NoMessages": "Keine Nachrichten gefunden",
     "NrOfMessagesToShow": "Anzahl der anzuzeigenden Nachrichten",
     "PropertyPaneDescription": "Nachrichten Web Part Konfiguration",
-    "ViewAll": "Zeige die gesammte Liste"  }
+    "ViewAll": "Vollständige Liste anzeigen"  }
 });
 
