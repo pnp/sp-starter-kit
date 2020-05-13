@@ -2,7 +2,7 @@
 
 The SharePoint Starter Kit (starter kit) is a comprehensive solution designed for SharePoint Online and SharePoint 2019 which provides numerous SharePoint Framework (SPFx) web parts, extensions, and other components, as well as [PnP PowerShell](https://github.com/pnp/pnp-powershell) driven provisioning which you can use as an example and inspiration for your own customizations. 
 
-![PnP Starter Pack Front Page](./assets/images/default-front-page-contoso.png)
+![PnP Starter Pack Front Page](./assets/images/default-front-page-v2.png)
 
 > Starter Kit Version 1 includes a comprenshive strategy for only SharePoint Online, as well as a single SPFx solution that encapsulates all webparts and extensions into a single package. Version 1 may be accessed via the [v1 branch](https://github.com/SharePoint/sp-starter-kit/tree/v1) for legacy purposes and will not be maintained beyond April 2020.
 
