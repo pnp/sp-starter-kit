@@ -1,4 +1,4 @@
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .personalEmail {
   .title, .viewAll, .newEmail {
@@ -59,16 +59,16 @@
   .isRead{
     .from {
       @include ms-fontWeight-semilight;
-    }   
+    }
 
     .subject {
       @include ms-fontWeight-semilight;
     }
-    
+
     .date {
       @include ms-fontWeight-semilight;
     }
-    
+
     .preview {
       @include ms-fontWeight-light;
     }
