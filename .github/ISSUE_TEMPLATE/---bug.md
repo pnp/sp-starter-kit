@@ -47,7 +47,7 @@ assignees: ''
 ## Environment Details (*Development & Target environment*)
 
 > **DELETE THIS LINE BEFORE SUBMITTING** - Complete the following (*if ignored you'll be prompted for it before we can address your issue... save the time and provide it in your initial submission*).
-
+- **Starter kit version**: [e.g. v2 for current version, v1 for legacy solution]
 - **OS**: [e.g. Windows 10 | MacOS 10.15.x]
 - **Target Environment**:[SharePoint Server 2019 | SharePoint Online]
 - **Framework**: [Node.js v6/v8/v10/v12]
