@@ -34,6 +34,10 @@
     </pnp:WebApiPermissions>
     
     <pnp:AppCatalog>
+      <!--SPFx Library-->
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\library-starter-kit-shared\sharepoint\solution\library-starter-kit-shared.sppkg" SkipFeatureDeployment="true"/>
+
+      <!--General SPFx webparts-->
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-banner\sharepoint\solution\react-banner.sppkg" SkipFeatureDeployment="true"/>
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-followed-sites\sharepoint\solution\react-followed-sites.sppkg" SkipFeatureDeployment="true"/>
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-links\sharepoint\solution\react-links.sppkg" SkipFeatureDeployment="true"/>

@@ -5,7 +5,7 @@
     "sp-starter-kit-shared-library": {
       "components": [
         {
-          "entrypoint": "./lib/libraries/spStarterKitShared/SpStarterKitSharedLibrary.js",
+          "entrypoint": "./lib/index.js",
           "manifest": "./src/libraries/spStarterKitShared/SpStarterKitSharedLibrary.manifest.json"
         }
       ]

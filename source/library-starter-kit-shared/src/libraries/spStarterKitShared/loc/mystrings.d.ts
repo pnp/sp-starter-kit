@@ -1,8 +1,4 @@
-declare interface ISpStarterKitSharedLibraryStrings {
-  PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
-}
+declare interface ISpStarterKitSharedLibraryStrings {}
 
 declare module 'SpStarterKitSharedLibraryStrings' {
   const strings: ISpStarterKitSharedLibraryStrings;

@@ -5,9 +5,7 @@ declare interface IBannerWebPartStrings {
   BannerLinkField: string;
   BannerNumberField: string;
   BannerParallaxField: string;
-
   BannerValidationNotImage: string;
-
   BannerPlaceholderIconText: string;
   BannerPlaceholderDescription: string;
   BannerPlaceholderBtnLabel: string;

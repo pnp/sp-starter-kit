@@ -2,10 +2,6 @@
     "$schema": "schema.json",
     "actions": [
         {
-            "verb": "joinHubSite",
-            "hubSiteId": "{SiteCollectionId}"
-        },
-        {
             "verb": "associateExtension",
             "title": "Portal Footer",
             "location": "ClientSideExtension.ApplicationCustomizer",

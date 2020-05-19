@@ -9,8 +9,9 @@ import {
   IWebPartPropertiesMetadata
 } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'BannerWebPartStrings';
 import { Banner, IBannerProps } from './components';
+
+import * as strings from 'BannerWebPartStrings';
 
 export interface IBannerWebPartProps {
   bannerText: string;
@@ -80,29 +81,29 @@ export default class BannerWebPart extends BaseClientSideWebPart<IBannerWebPartP
               groupName: strings.BannerConfigName,
               groupFields: [
                 PropertyPaneTextField('bannerText', {
-                  label: strings.BannerTextField,
+                  label:  strings.BannerTextField,
                   multiline: true,
                   maxLength: 200,
                   value: this.properties.bannerText
                 }),
                 PropertyPaneTextField('bannerImage', {
-                  label: strings.BannerImageUrlField,
+                  label:  strings.BannerImageUrlField,
                   onGetErrorMessage: this._validateImageField,
                   value: this.properties.bannerImage
                 }),
                 PropertyPaneTextField('bannerLink', {
-                  label: strings.BannerLinkField,
+                  label:  strings.BannerLinkField,
                   value: this.properties.bannerLink
                 }),
                 this.propertyFieldNumber('bannerHeight', {
                   key: 'bannerHeight',
-                  label: strings.BannerNumberField,
+                  label:  strings.BannerNumberField,
                   value: this.properties.bannerHeight,
                   maxValue: 500,
                   minValue: 100
                 }),
                 PropertyPaneToggle('useParallax', {
-                  label: strings.BannerParallaxField,
+                  label:  strings.BannerParallaxField,
                   checked: this.properties.useParallax
                 })
               ]

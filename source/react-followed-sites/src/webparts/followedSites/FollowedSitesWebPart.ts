@@ -7,9 +7,10 @@ import {
   PropertyPaneDropdown
 } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'FollowedSitesWebPartStrings';
 import FollowedSites from './components/FollowedSites';
 import { IFollowedSitesProps } from './components/IFollowedSitesProps';
+
+import { SpStarterKitSharedLibrary, LocaleKeys } from '@starter-kit/shared-library';
 
 export interface IFollowedSitesWebPartProps {
   title: string;
@@ -23,9 +24,10 @@ export enum SortOrder {
 }
 
 export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowedSitesWebPartProps> {
-  
+
   private propertyFieldNumber;
   public render(): void {
+
     const element: React.ReactElement<IFollowedSitesProps> = React.createElement(
       FollowedSites,
       {
@@ -66,27 +68,27 @@ export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowe
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: SpStarterKitSharedLibrary.getLocale(LocaleKeys.PropertyPaneDescription),
           },
           groups: [
             {
               groupFields: [
                 this.propertyFieldNumber("nrOfItems", {
                   key: "nrOfItems",
-                  label: strings.NrOfFollowedItemsLabel,
+                  label: SpStarterKitSharedLibrary.getLocale(LocaleKeys.NrOfFollowedItemsLabel),
                   value: this.properties.nrOfItems
                 }),
                 PropertyPaneDropdown('sortOrder', {
-                  label: strings.SortOrderFollowedItemsLabel,
+                  label: SpStarterKitSharedLibrary.getLocale(LocaleKeys.SortOrderFollowedItemsLabel),
                   selectedKey: this.properties.sortOrder,
                   options: [
                     {
                       key: SortOrder.default,
-                      text: strings.SortOrderDefaultLabel
+                      text: SpStarterKitSharedLibrary.getLocale(LocaleKeys.SortOrderDefaultLabel)
                     },
                     {
                       key: SortOrder.name,
-                      text: strings.SortOrderNameLabel
+                      text: SpStarterKitSharedLibrary.getLocale(LocaleKeys.SortOrderNameLabel)
                     }
                   ]
                 })

@@ -28,3 +28,23 @@ Solution |  Description  | Environment
 [react-tiles](react-tiles/README.md) | Renders set of tiles. Icons are from Office UI Fabric and you can configure tiles using collection editor in web part properties. | SPO & SP2019
 [react-weather](react-weather/README.md) | Weather web part targeted for SP2019 as SPO has out-of-the-box one. | SP2019
 [react-tiles](react-world-clock/README.md) | World clock web part targeted for SP2019 as SPO has out-of-the-box one. | SP2019
+
+## Installation
+
+In order to run the project locally, we make use of [lerna](https://github.com/lerna/lerna). This tool will automatically set the `npm` linking correctly for the SPFx library component. 
+
+Follow the next steps when you want to run this project on your own machine:
+
+- Clone the project: `git clone https://github.com/SharePoint/sp-starter-kit`
+- Navigate with your terminal to the cloned repository
+- Run: `npm i`
+- Once the root project dependencies are installed, you can run `npm run initialize`
+- Once all the packages are installed, you are ready to start developing
+
+## Localization
+
+All localization keys and labels are managed from one library project [library-starter-kit-shared](./library-starter-kit-shared). In order to add/update new keys, all you have to do is add them to the appropriate localization files like `en-us.js`.
+
+Once added, run `gulp build` or run `npm run localization` on the root of the project. This ensures that the project updates the `LocaleKeys` enum.
+
+> **Important**: The version of the localization project should always be in sync in the projects which make use of it.

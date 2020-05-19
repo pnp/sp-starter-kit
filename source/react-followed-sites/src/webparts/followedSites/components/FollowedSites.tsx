@@ -5,10 +5,10 @@ import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { SortOrder } from '../FollowedSitesWebPart';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { TextField } from 'office-ui-fabric-react/lib/components/TextField';
-import * as strings from 'FollowedSitesWebPartStrings';
 import { IFollowedSitesProps, IFollowedSitesState, IFollowedResult, IFollowed } from '.';
 import { Paging } from './paging';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { SpStarterKitSharedLibrary, LocaleKeys } from '@starter-kit/shared-library';
 
 export default class FollowedSites extends React.Component<IFollowedSitesProps, IFollowedSitesState> {
   private _allFollowing: IFollowedResult[] = [];
@@ -63,14 +63,14 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
         // Error occured while fetching personal sites
         this.setState({
           loading: false,
-          error: strings.error
+          error: SpStarterKitSharedLibrary.getLocale(LocaleKeys.SitesLoadingError)
         });
       }
     })
     .catch((err) => {
       this.setState({
         loading: false,
-        error: strings.error
+        error: SpStarterKitSharedLibrary.getLocale(LocaleKeys.SitesLoadingError)
       });
     });
   }
@@ -156,7 +156,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
 
         {
           this.state.loading && (
-            <Spinner label={strings.loading} size={SpinnerSize.large} />
+            <Spinner label={SpStarterKitSharedLibrary.getLocale(LocaleKeys.SitesLoading)} size={SpinnerSize.large} />
           )
         }
 
@@ -164,7 +164,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
           this.state.following ? (
             <div className={styles.list}>
               <div className={styles.filter}>
-                <TextField placeholder={strings.SitesFilterLabel}
+                <TextField placeholder={SpStarterKitSharedLibrary.getLocale(LocaleKeys.SitesFilterLabel)}
                            iconProps={{ iconName: 'Filter' }}
                            underlined
                            onChanged={this._onFilterChanged} />
@@ -179,7 +179,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
                       </li>
                     ))
                   ) : (
-                    <li className={styles.site}>{strings.NoFollowSitesFoundMsg}</li>
+                    <li className={styles.site}>{SpStarterKitSharedLibrary.getLocale(LocaleKeys.NoFollowSitesFoundMsg)}</li>
                   )
                 }
               </ul>
@@ -192,7 +192,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
             !this.state.loading && (
               this.state.error ?
                 <span className={styles.error}>{this.state.error}</span> :
-                <span className={styles.noSites}>{strings.NoFollowedSitesMsg}</span>
+                <span className={styles.noSites}>{SpStarterKitSharedLibrary.getLocale(LocaleKeys.NoFollowedSitesMsg)}</span>
             )
           )
         }
