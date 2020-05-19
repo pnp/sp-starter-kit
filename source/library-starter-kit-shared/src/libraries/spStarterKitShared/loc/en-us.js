@@ -1,22 +1,21 @@
 define([], function() {
   return {
     // general labels
-    "HeaderImageUrlField": "Image URL",
-    "HeaderLinkField": "Link URL",
+    "PropertyPaneDescription": "Web part configuration",
 
-    "GeneralPlaceholderIconText": "Configure your web part",
-    "GeneralPlaceholderBtnLabel": "Configure",
+    // Followed Sites Webpart
+    "NrOfFollowedItemsLabel": "Number of followed sites to retrieve",
+    "SortOrderFollowedItemsLabel": "Specify the sort order of the retrieved sites",
+    "SortOrderDefaultLabel": "Default",
+    "SortOrderNameLabel": "Name",
 
-    // banner webpart
-    "BannerConfigName": "Banner configuration",
-    "BannerTextField": "Overlay image text",
-    "BannerImageUrlField": "Image URL",
-    "BannerLinkField": "Link URL",
-    "BannerNumberField": "Banner height",
-    "BannerParallaxField": "Enable parallax effect",
+    "NoFollowedSitesMsg": "You are not following any sites",
+    "SitesFilterLabel": "Filter sites by their name",
+    "NoFollowSitesFoundMsg": "No corresponding sites found",
+    "SitesLoading": "Loading followed sites",
+    "SitesLoadingError": "Sorry, something went wrong retrieving your followed sites.",
 
     // Validation
-    "BannerValidationNotImage": "Please provide a link to an image",
 
     // React component strings
     "BannerPlaceholderIconText": "Configure your web part",

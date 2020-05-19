@@ -16,7 +16,7 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "FollowedSites" },
+    "title": { "default": "Followed Sites" },
     "description": { "default": "Followed sites for user" },
     "officeFabricIconFontName": "FavoriteStarFill",
     "properties": {

@@ -1,48 +1,44 @@
 export enum LocaleKeys {
   /**
-   * Label value: "Image URL"
+   * Label value: "Web part configuration"
    */
-  HeaderImageUrlField = "HeaderImageUrlField",
+  PropertyPaneDescription = "PropertyPaneDescription",
   /**
-   * Label value: "Link URL"
+   * Label value: "Number of followed sites to retrieve"
    */
-  HeaderLinkField = "HeaderLinkField",
+  NrOfFollowedItemsLabel = "NrOfFollowedItemsLabel",
   /**
-   * Label value: "Configure your web part"
+   * Label value: "Specify the sort order of the retrieved sites"
    */
-  GeneralPlaceholderIconText = "GeneralPlaceholderIconText",
+  SortOrderFollowedItemsLabel = "SortOrderFollowedItemsLabel",
   /**
-   * Label value: "Configure"
+   * Label value: "Default"
    */
-  GeneralPlaceholderBtnLabel = "GeneralPlaceholderBtnLabel",
+  SortOrderDefaultLabel = "SortOrderDefaultLabel",
   /**
-   * Label value: "Banner configuration"
+   * Label value: "Name"
    */
-  BannerConfigName = "BannerConfigName",
+  SortOrderNameLabel = "SortOrderNameLabel",
   /**
-   * Label value: "Overlay image text"
+   * Label value: "You are not following any sites"
    */
-  BannerTextField = "BannerTextField",
+  NoFollowedSitesMsg = "NoFollowedSitesMsg",
   /**
-   * Label value: "Image URL"
+   * Label value: "Filter sites by their name"
    */
-  BannerImageUrlField = "BannerImageUrlField",
+  SitesFilterLabel = "SitesFilterLabel",
   /**
-   * Label value: "Link URL"
+   * Label value: "No corresponding sites found"
    */
-  BannerLinkField = "BannerLinkField",
+  NoFollowSitesFoundMsg = "NoFollowSitesFoundMsg",
   /**
-   * Label value: "Banner height"
+   * Label value: "Loading followed sites"
    */
-  BannerNumberField = "BannerNumberField",
+  SitesLoading = "SitesLoading",
   /**
-   * Label value: "Enable parallax effect"
+   * Label value: "Sorry, something went wrong retrieving your followed sites."
    */
-  BannerParallaxField = "BannerParallaxField",
-  /**
-   * Label value: "Please provide a link to an image"
-   */
-  BannerValidationNotImage = "BannerValidationNotImage",
+  SitesLoadingError = "SitesLoadingError",
   /**
    * Label value: "Configure your web part"
    */
