@@ -15,11 +15,11 @@ It is recommended you read this entire document before installing the starter ki
 
 - **[Default installation](#minimal-path-to-success)** - SharePoint Online only, full installation, one SPFx solution per component.
 
-- [SharePoint 2019](../readme-sp2019.md) - SharePoint 2019 ready, limited featureset.
+- [SharePoint 2019](./readme-sp2019.md) - SharePoint 2019 ready, limited featureset.
 
-- [Only SPFx components](../readme-spfx-only.md) - Advanced - Only install SPFx solutions to tenant app catalog, will not provision site designs, site scripts, sites, or content.
+- [Only SPFx components](./readme-spfx-only.md) - Advanced - Only install SPFx solutions to tenant app catalog, will not provision site designs, site scripts, sites, or content.
 
-- [Single solution installation - deprecated v1 starter kit](../readme-single-solution.md) - SharePoint Online only, deprecated full installation, one SPFx solution for all components.
+- [Single solution installation - deprecated v1 starter kit](./readme-single-solution.md) - SharePoint Online only, deprecated full installation, one SPFx solution for all components.
 
 
 ## Minimal path to success
