@@ -319,7 +319,7 @@
       </pnp:Lists>
     </pnp:ProvisioningTemplate>
     
-    <pnp:ProvisioningTemplate ID="ROOT-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="{Company} Technologies" Description="" Scope="RootSite" TemplateCultureInfo="1033">
+    <pnp:ProvisioningTemplate ID="ROOT-TEMPLATE" Version="1.0" BaseSiteTemplate="SITEPAGEPUBLISHING#0" ImagePreviewUrl="https://preview.png" DisplayName="{parameter:Company} Technologies" Description="" Scope="RootSite" TemplateCultureInfo="1033">
     
       <pnp:WebSettings WelcomePage="SitePages/Home.aspx" Title="{parameter:Company}" SiteLogo="{site}/SiteAssets/contoso_sitelogo.png" NoCrawl="false" CommentsOnSitePagesDisabled="false" QuickLaunchEnabled="true" SearchScope="DefaultScope" SearchBoxInNavBar="Inherit" />
       
@@ -487,7 +487,11 @@
         <pnp:ClientSidePage PromoteAsNewsArticle="false" PromoteAsTemplate="false" Overwrite="true" Layout="Home" EnableComments="false" Title="Home" ThumbnailUrl="" PageName="Home.aspx">
           <pnp:Header Type="Default" LayoutType="FullWidthImage" TextAlignment="Center" ShowTopicHeader="false" ShowPublishDate="false" TopicHeader="" AlternativeText="" Authors="[]" AuthorByLine="[]" AuthorByLineId="-1" />
           <pnp:Sections>
-            <pnp:Section Order="1" Type="TwoColumnLeftVerticalSection" VerticalSectionEmphasis="Soft">
+            <!--
+              valid values for VerticalSectionEmphasis:
+              "Neutral" "Soft" "Strong"
+            -->
+            <pnp:Section Order="1" Type="TwoColumnLeftVerticalSection" VerticalSectionEmphasis="Neutral">
               <pnp:Controls>
                 <pnp:CanvasControl
                   WebPartType="News"
@@ -1044,7 +1048,7 @@
               </pnp:Controls>
             </pnp:Section>
 
-            <pnp:Section Order="2" Type="OneColumn">
+            <pnp:Section Order="2" Type="OneColumn" BackgroundEmphasis="Strong">
               <pnp:Controls>
                 <pnp:CanvasControl
                   WebPartType="Events"
