@@ -1,0 +1,17 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.myLinksDialogRoot {
+  .myLinksDialogContent {
+      text-align: left;
+      vertical-align: top;
+
+      .editPanel {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .textField {
+        width: 250px;
+      }
+  }
+}

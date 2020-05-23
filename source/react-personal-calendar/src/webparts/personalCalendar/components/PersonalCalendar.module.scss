@@ -1,0 +1,82 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.personalCalendar {
+  @include ms-font-m;
+
+  .list {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .meetingWrapper {
+    padding-left: 7px;
+
+    &:global(.tentative) {
+      background: $ms-color-themePrimary url('data:image/gif;base64,R0lGODlhBwAHAIABAP///////yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpDMUQ3NUMxRTk5MDExMUUwOTI0OEIzRjU5RDg0NTg0MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpDMUQ3NUMxRjk5MDExMUUwOTI0OEIzRjU5RDg0NTg0MCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkMxRDc1QzFDOTkwMTExRTA5MjQ4QjNGNTlEODQ1ODQwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkMxRDc1QzFEOTkwMTExRTA5MjQ4QjNGNTlEODQ1ODQwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAAAQAsAAAAAAcABwAAAgyMgRYIyp6gWk1CUAAAOw==')
+    }
+
+    &:global(.busy) {
+      background: $ms-color-themePrimary;
+    }
+
+    &:global(.oof) {
+      background: indigo;
+    }
+
+    &:global(.workingElsewhere) {
+      background: $ms-color-themePrimary url('data:image/gif;base64,R0lGODlhAwAEAIABAP///////yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowQTIxMjhEQkEwMkUxMUUwQURCNUFBRDk1NjM2OTRBNSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowQTIxMjhEQ0EwMkUxMUUwQURCNUFBRDk1NjM2OTRBNSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjBBMjEyOEQ5QTAyRTExRTBBREI1QUFEOTU2MzY5NEE1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjBBMjEyOERBQTAyRTExRTBBREI1QUFEOTU2MzY5NEE1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAAAQAsAAAAAAMABAAAAgQMjmBXADs=');
+    }
+
+    &:global(.free) {
+      background: white;
+    }
+  }
+
+  .meeting {
+    display: block;
+    padding: 0.5em 10px;
+    color: $ms-color-black;
+    background: $ms-color-white;
+
+    &:hover {
+      color: inherit;
+      background: $ms-color-neutralLight;
+    }
+  }
+
+  .linkWrapper {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  .start {
+    flex: 0 0 auto;
+    height: 1.5em;
+    width: 2.5em;
+    margin-right: 0.5em;
+  }
+
+  .subject {
+    @include ms-fontWeight-bold;
+  }
+
+  .duration {
+    @include ms-fontWeight-light;
+    display: inline;
+    padding-right: 1em;
+  }
+
+  .location {
+    @include ms-fontWeight-light;
+    display: inline;
+  }
+
+  .noMeetings {
+    @include ms-font-m;
+  }
+
+  .error {
+    @include ms-font-m;
+    color: $ms-color-alert;
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "onprem19",
+    "version": "1.9.1",
+    "libraryName": "react-weather",
+    "libraryId": "d47b1e90-b473-4855-bcd2-aa34ae942e5d",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

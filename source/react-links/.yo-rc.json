@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "onprem19",
+    "version": "1.9.1",
+    "libraryName": "react-links",
+    "libraryId": "941e9447-0430-498e-b380-a154b73983fe",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

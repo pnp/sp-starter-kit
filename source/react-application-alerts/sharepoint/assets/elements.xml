@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="HubOrSiteAlerts"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="29df5d8b-1d9b-4d32-971c-d66162396ed3"
+        ClientSideComponentProperties="{}">
+    </CustomAction>
+</Elements>

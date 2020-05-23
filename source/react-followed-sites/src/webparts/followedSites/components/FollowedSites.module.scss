@@ -1,0 +1,42 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.followedSites {
+  .list {
+    @include ms-Grid-row;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .filter {
+    @include ms-Grid-col;
+    @include ms-sm12;
+    margin-bottom: 15px;
+  }
+
+  .site {
+    @include ms-Grid-col;
+    @include ms-sm12;
+
+    a {
+      display: block;
+      padding: 5px 12px;
+
+      &:hover {
+        background-color: $ms-color-neutralLighterAlt;
+      }
+    }
+  }
+
+  .noSites {
+    @include ms-font-m;
+  }
+
+  .error {
+    @include ms-font-m;
+    color: $ms-color-alert;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "library-starter-kit-shared-client-side-solution",
+    "id": "3e313dee-8a65-4ee7-a5c2-59670e43c6d2",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/library-starter-kit-shared.sppkg"
+  }
+}

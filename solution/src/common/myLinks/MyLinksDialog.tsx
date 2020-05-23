@@ -121,13 +121,13 @@ class MyLinksDialogContent extends
         showCloseButton={!this.state.showDetailPanel}>
 
         <div className={styles.myLinksDialogContent}>
-          <div className={styles.grid}>
+          <div className="ms-Grid">
             {this.state.showDetailPanel ?
-              <div className={styles.gridRow}>
-                <div className={styles.gridColumn}>
-                  <div className={styles.grid}>
-                    <div className={styles.gridRow}>
-                      <div className={styles.gridColumn}>
+              <div className="ms-Grid-row">
+                <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+                  <div className="ms-Grid">
+                    <div className="ms-Grid-row">
+                      <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
                         <TextField
                           label={strings.LinkTitleLabel}
                           required={true}
@@ -138,8 +138,8 @@ class MyLinksDialogContent extends
                         />
                       </div>
                     </div>
-                    <div className={styles.gridRow}>
-                      <div className={styles.gridColumn}>
+                    <div className="ms-Grid-row">
+                      <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
                         <TextField
                           label={strings.LinkUrlLabel}
                           required={true}
@@ -151,8 +151,8 @@ class MyLinksDialogContent extends
                         />
                       </div>
                     </div>
-                    <div className={`${styles.gridRow} ${styles.editPanel}`}>
-                      <div className={styles.gridColumn}>
+                    <div className={`ms-Grid-row ${styles.editPanel}`}>
+                      <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
                         <DefaultButton text={strings.DialogCancelButton}
                           title={strings.DialogCancelButton} onClick={this._cancelEdit} />
                         <DefaultButton primary={true}
@@ -166,8 +166,8 @@ class MyLinksDialogContent extends
               </div>
               : null}
             {!this.state.showDetailPanel ?
-              <div className={styles.gridRow}>
-                <div className={styles.gridColumn}>
+              <div className="ms-Grid-row">
+                <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
                   <CommandBar items={[
                     {
                       key: 'addRow',
@@ -194,8 +194,8 @@ class MyLinksDialogContent extends
               </div>
               : null}
             {!this.state.showDetailPanel ?
-              <div className={styles.gridRow}>
-                <div className={styles.gridColumn}>
+              <div className="ms-Grid-row">
+                <div className="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
                   <DetailsList
                     items={this.state.links}
                     columns={_linksColumns}
@@ -277,7 +277,7 @@ class MyLinksDialogContent extends
     }
   }
 
-  private _onChangedTitle = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string): void => {
+  private _onChangedTitle = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
     this.setState({
       title: newValue,
     });
@@ -343,19 +343,16 @@ export default class MyLinksDialog extends BaseDialog {
 
   // to keep track of the initial links in case user will cancel
   private initialLinks: IMyLink[];
-  public links: IMyLink[];
-  public isSave: boolean;
 
   /**
    * Constructor for the dialog window
    */
-  constructor(links: Array<IMyLink>) {
+  constructor(public links: Array<IMyLink>, public isSave?: boolean) {
     // Blocking or else click outside causes error in 1.7
-    super({ isBlocking: true });
+    super({isBlocking: true});
 
     // clone the initial list of links we've got
-    this.initialLinks = (links != null) ? links.concat([]) : [];
-    this.links = (links != null) ? links.concat([]) : [];
+    this.initialLinks = (this.links != null) ? this.links.concat([]) : [];
   }
 
   public render(): void {
@@ -383,7 +380,7 @@ export default class MyLinksDialog extends BaseDialog {
 
   private _save = (links: Array<IMyLink>): void => {
     this.isSave = true;
-    // Fix for all browsers regarding SP Dialog not being to open twice
+    // Fix for all browsers regarding SP Dialog not being to open twice    
     ReactDOM.unmountComponentAtNode(this.domElement);
     this.links = links;
     this.close();

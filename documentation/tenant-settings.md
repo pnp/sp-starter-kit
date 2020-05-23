@@ -1,8 +1,8 @@
 # Preparing your tenant for the PnP SharePoint Starter Kit
 
-In this document you can find detailed information about preparing your tenant to run the PnP SharePoint Starter Kit. In the main [ReadMe](./README.md) file of this repository you can find general information about the project.
+In this document you can find detailed information about preparing your tenant to provision and utilize the PnP SharePoint Starter Kit. In the main [ReadMe](./README.md) file of this repository you can find general information about the project.
 
-In fact, here is the list of requirements, which need some manual steps, to be accomplished in order to properly run the solution:
+In fact, here is the list of requirements, which need some manual steps, to be accomplished in order to properly provision the solution:
 
 * You need to [create a custom property in the User Profile Service](#UPSCustomProperty).
 * If you want to use the StockInformation Web Part, you need to [request a custom API key to Alpha Vantage](#APIKeyAlphaVantage), which is the provider for live stocks data.

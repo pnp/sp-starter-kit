@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="PortalFooter"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="df889434-1b1c-4f5b-ada3-086d948e4270"
+        ClientSideComponentProperties="{&quot;linksListTitle&quot;:&quot;PnP-PortalFooter-Links&quot;,&quot;personalItemsStorageProperty&quot;:&quot;PnP-CollabFooter-MyLinks&quot;,&quot;copyright&quot;:&quot;2019&quot;,&quot;support&quot;:&quot;help@contoso.com&quot;}">
+    </CustomAction>
+</Elements>

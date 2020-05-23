@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="CollaborationFooter"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="6638da67-06f4-4f55-a1df-485d568e8b72"
+        ClientSideComponentProperties="{&quot;sourceTermSet&quot;:&quot;PnP-CollabFooter-SharedLinks&quot;,&quot;personalItemsStorageProperty&quot;:&quot;PnP-CollabFooter-MyLinks&quot;}">
+    </CustomAction>
+</Elements>

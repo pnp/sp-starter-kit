@@ -1,0 +1,69 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.personalTasks {
+  background: inherit;
+}
+
+.webPartHeader {
+  display: flex;
+  align-items: baseline;
+}
+
+.webPartTitle {
+  font-size: 14px;
+  font-weight: 100;
+  margin-bottom: 11px;
+  color: "[theme:neutralPrimary, default: #333333]";
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+
+  @media (min-width: 320px) {
+    font-size: 21px;
+  }
+
+  @media (min-width: 480px) {
+    font-size: 24px;
+  }
+
+  // Edit mode
+  textarea {
+    background-color: transparent;
+    border: none;
+    box-sizing: border-box;
+    color: inherit;
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    height: 40px;
+    line-height: inherit;
+    margin: 0;
+    outline: 0;
+    overflow: hidden;
+    resize: none;
+    text-align: inherit;
+    white-space: pre;
+    width: 100%;
+
+    &::placeholder,
+    &::-webkit-input-placeholder {
+      color: "[theme: neutralSecondary, default: #666666]"!important;
+    }
+  }
+
+  // View mode
+  span {
+    // Nothing at the moment
+
+    a:link {
+      text-decoration: none;
+    }
+  }
+
+  .moreLink {
+    margin-bottom: 11px;
+  }
+}

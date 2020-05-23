@@ -1,0 +1,54 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.banner {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+
+  .bannerImg {
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    will-change: transform;
+  }
+
+  .bannerOverlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+
+  .bannerText {
+    @include ms-fontSize-su;
+    @include ms-fontWeight-light;
+    box-sizing: border-box;
+    color: #fff;
+    position: relative;
+    margin: 0 auto 12px auto;
+    max-width: 1284px;
+    padding: 0 40px;
+    width: 100%;
+    word-break: break-word;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+
+      &:visited {
+        color: #fff;
+      }
+
+      &:hover {
+        color: #fff;
+        border-bottom: 1px solid #fff;
+      }
+    }
+  }
+}

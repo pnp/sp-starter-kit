@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="DiscussNow"
+        RegistrationId="101"
+        RegistrationType="List"
+        Location="ClientSideExtension.ListViewCommandSet.CommandBar"
+        ClientSideComponentId="84de6bad-859f-4c3b-934c-f6c6ae935c72"
+        ClientSideComponentProperties="{}">
+    </CustomAction>
+</Elements>

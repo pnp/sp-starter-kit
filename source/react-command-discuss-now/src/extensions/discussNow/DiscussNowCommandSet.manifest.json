@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/command-set-extension-manifest.schema.json",
+
+  "id": "84de6bad-859f-4c3b-934c-f6c6ae935c72",
+  "alias": "DiscussNowCommandSet",
+  "componentType": "Extension",
+  "extensionType": "ListViewCommandSet",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+
+  "items": {
+    "DISCUSS_NOW": {
+      "title": { "default": "Discuss Now" },
+      "iconImageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG4AAABkCAYAAABnwAWdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAAACfElEQVR4Xu3cMW7CQBRF0SyMHVDBFkC0LIQCiYaGlpI1Okxl5fHDKLHH/s/c4jSf8cjjmyJWIr66roOhcIj8wiHyC4fILxwiv3CI/MIh8guHyC8ctrTdbrvVavXD4/F4fhSvz6rcs56jnE3XtRIOWyLcOMJhS4QbRzhsiXDjCIctEW4c4bCVctj1ev1y4PP5/Pw4viarcs96jnK2qX4Iw+Fv9vv9y81iXOUZ63OPhMPfEK49wpkinCnCmZos3Ol0en4Ur49sNpuXPe73+/OjeH1W5Z71HOVsuu6d8ux0j8nCXS6X50fx+kj0HqdrXOg5/voeV56d7kG4Ceg5CGdCz0E4E3qORYc7Ho/dbrf7Qde40HOUs+mad6zCoUc4U4QzRThThDM1a7jD4dBdr1f8Q3l2+jwnC4dxEc4U4UwRzhThTE0W7q9/SEXP6g+p6PECbopwpghninCmPi6c3kOha2pa7LHof10Yg95DoWtqWuxBuAq9h0LX1LTYg3AVeg+FrqlpsQfhKvQeCl1T02IPwn0IwpkinCnCmSKcKcKZsgpXfmXWPXRNjV6fZY9Fvw4Qrke4JHsQrkKvz7IH4Sr0+ix7LDrc7XZ7+R96XVOj12fZo5xN17xjFQ49wpkinCnCmSKcKatwY3zPiV6fZY9Ff88J73E9wiXZg3AVen2WPQhXoddn2WPR4fjlpGcVDj3CmSKcKcKZIpwpq3BL+kPqUFbhlvQeNxThZtpjKMLNtMdQhJtpj6EIN9MeQ1mFQ49wpghninCmCGdq1nB8Q+z/zfoNsRgX4UwRzhThTBHOVJNwyCMcIr9wiPzCIfILh8gvHCK/cIj8wiGy676+ARlkLSkcz5VlAAAAAElFTkSuQmCC",
+      "type": "command"
+    }
+  }
+}

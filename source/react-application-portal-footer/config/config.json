@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "portal-footer-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/portalFooter/PortalFooterApplicationCustomizer.js",
+          "manifest": "./src/extensions/portalFooter/PortalFooterApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PortalFooterApplicationCustomizerStrings": "lib/extensions/portalFooter/loc/{locale}.js",
+    "MyLinksStrings": "lib/extensions/portalFooter/components/myLinks/loc/{locale}.js"
+  }
+}

@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharePointPnP.LobScenario.Web", "SharePointPnP.LobScenario.Web\SharePointPnP.LobScenario.Web.csproj", "{B427AA29-FB38-4521-9AFF-28C2AB7F3E3E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharePointPnP.LobScenario.Data", "SharePointPnP.LobScenario.Data\SharePointPnP.LobScenario.Data.csproj", "{CDCF4E00-C10F-46E3-A64B-E2FA93A97C08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharePointPnP.LobScenario", "SharePointPnP.LobScenario.csproj", "{CC02B119-8511-4975-868A-F5248CD6C861}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B427AA29-FB38-4521-9AFF-28C2AB7F3E3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B427AA29-FB38-4521-9AFF-28C2AB7F3E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B427AA29-FB38-4521-9AFF-28C2AB7F3E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B427AA29-FB38-4521-9AFF-28C2AB7F3E3E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CDCF4E00-C10F-46E3-A64B-E2FA93A97C08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CDCF4E00-C10F-46E3-A64B-E2FA93A97C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CDCF4E00-C10F-46E3-A64B-E2FA93A97C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CDCF4E00-C10F-46E3-A64B-E2FA93A97C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC02B119-8511-4975-868A-F5248CD6C861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC02B119-8511-4975-868A-F5248CD6C861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC02B119-8511-4975-868A-F5248CD6C861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC02B119-8511-4975-868A-F5248CD6C861}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F2C449B7-857A-4C56-84D8-59CF3D48EABF}
+		SolutionGuid = {6289362E-6162-4286-AECC-14C70C914E2B}
 	EndGlobalSection
 EndGlobal

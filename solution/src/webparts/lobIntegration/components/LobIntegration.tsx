@@ -114,7 +114,7 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
 
     const response: IListNorthwindCustomersResponse = await httpResponse.json();
     const nameClaims: IClaim[] = response.CurrentPrincipalClaims.filter((i) => {
-      return (i.m_type === "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name");
+      return(i.m_type === "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name");
     });
     const username: string = nameClaims.length > 0 ? nameClaims[0].m_value : "";
 
@@ -151,11 +151,11 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
 
     // get the list of customers
     const httpResponse: HttpClientResponse = await aadClient
-      .get(
-        `${this.props.webapiUri}/search/${this.state.searchFor}`,
-        AadHttpClient.configurations.v1,
-        requestOptions
-      );
+    .get(
+      `${this.props.webapiUri}/search/${this.state.searchFor}`,
+      AadHttpClient.configurations.v1,
+      requestOptions
+    );
 
     const response: ISearchNorthwindCustomersResponse = await httpResponse.json();
 
@@ -177,63 +177,63 @@ export default class LobIntegration extends React.Component<ILobIntegrationProps
     if (!this.props.needsConfiguration) {
       contents = (
         <div className={styles.lobIntegration}>
-          <div className={styles.container}>
-            <div className={styles.row}>
-              {this.props.serviceType === serviceType.AspNetRestAPI ?
-                <div className={styles.column}>
-                  <span className={styles.title}>{strings.SearchDescription}</span>
-                  <p className={styles.form}>
+          <div className={ styles.container }>
+            <div className={ styles.row }>
+              { this.props.serviceType === serviceType.AspNetRestAPI ?
+                <div className={ styles.column }>
+                  <span className={ styles.title }>{ strings.SearchDescription }</span>
+                  <p className={ styles.form }>
                     <TextField
-                      label={strings.SearchFor}
-                      required={true}
-                      value={this.state.searchFor}
-                      onChange={this._onSearchForChanged}
-                    />
+                        label={ strings.SearchFor }
+                        required={ true }
+                        value={ this.state.searchFor }
+                        onChange={ this._onSearchForChanged }
+                      />
                   </p>
-                  <p className={styles.form}>
+                  <p className={ styles.form }>
                     <PrimaryButton
-                      text={strings.SearchButtonText}
-                      title={strings.SearchButtonText}
-                      onClick={this._searchCustomers}
-                    />
+                        text={ strings.SearchButtonText }
+                        title={ strings.SearchButtonText }
+                        onClick={ this._searchCustomers }
+                      />
                   </p>
                 </div> :
-                <div className={styles.column}>
-                  <span className={styles.title}>{strings.ListDescription}</span>
-                  <p className={styles.form}>
+                <div className={ styles.column }>
+                  <span className={ styles.title }>{ strings.ListDescription }</span>
+                  <p className={ styles.form }>
                     <PrimaryButton
-                      text={strings.ListButtonText}
-                      title={strings.ListButtonText}
-                      onClick={this._listCustomers}
-                    />
+                        text={ strings.ListButtonText }
+                        title={ strings.ListButtonText }
+                        onClick={ this._listCustomers }
+                      />
                   </p>
                 </div>
               }
             </div>
             {
               (this.state.customers != null) ?
-                <div className={styles.row}>
-                  <div className={styles.column}>
-                    <div><Label>Username: {this.state.username}</Label></div>
-                    <div><Label>Request DateTime: {this.state.requestDateTime}</Label></div>
+                <div className={ styles.row }>
+                  <div className={ styles.column }>
+                    <div><Label>Username: { this.state.username }</Label></div>
+                    <div><Label>Request DateTime: { this.state.requestDateTime }</Label></div>
                     <div>
-                      <DetailsList
-                        items={this.state.customers}
-                        columns={_customersColumns}
-                        layoutMode={DetailsListLayoutMode.justified} />
+                    <DetailsList
+                      items={ this.state.customers }
+                      columns={ _customersColumns }
+                      layoutMode={ DetailsListLayoutMode.justified } />
                     </div>
                   </div>
                 </div>
-                : null
+              : null
             }
             {
               (this.state.loading) ?
-                <div className={styles.row}>
-                  <div className={styles.column}>
-                    <Spinner size={SpinnerSize.large} label={strings.LoadingDataLabel} className={styles.spinner} />
+                <div className={ styles.row }>
+                  <div className={ styles.column }>
+                    <Spinner size={ SpinnerSize.large } label={ strings.LoadingDataLabel } className={ styles.spinner } />
                   </div>
                 </div>
-                : null
+              : null
             }
           </div>
         </div>

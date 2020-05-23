@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "onprem19",
+    "version": "1.9.1",
+    "libraryName": "react-banner",
+    "libraryId": "b50504bb-cf4d-4b53-b47a-70d2d903b8d7",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

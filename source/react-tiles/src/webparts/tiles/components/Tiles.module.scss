@@ -1,0 +1,18 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.tiles {
+  .message {
+    @include ms-font-m;
+  }
+
+  .error {
+    @include ms-font-m;
+    color: $ms-color-alert;
+  }
+
+  .tilesList {
+    @include ms-Grid-row;
+    display: block;
+    flex-wrap: wrap;
+  }
+}
