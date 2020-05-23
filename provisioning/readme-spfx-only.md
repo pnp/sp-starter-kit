@@ -8,8 +8,13 @@ Additional installation options exist, including the default provisioning method
 
 This document provides guidance on installing only the SPFx solution packages (`.sppkg files`) for the **SP Starter Kit** for only **SharePoint Online**. The installation includes one SPFx bundled solution per SPFx component, i.e. webpart, extension, library.
 
-It is recommended you read this entire document before installing the starter kit, in particular pay close attention to [Common notes](#common-notes) and [Fixing provisioning errors](#fixing-provisioning-errors).
+It is recommended you read this entire document before installing the starter kit, in particular pay close attention to [Important notes](#important-notes) and [Fixing provisioning errors](#fixing-provisioning-errors).
 
+# Table of contents
+
+- [Minimal path to success](#minimal-path-to-success)
+- [Important notes](#important-notes)
+- [Fixing provisioning errors](#fixing-provisioning-errors)
 
 ## Minimal path to success
 
@@ -53,7 +58,7 @@ It is recommended you read this entire document before installing the starter ki
   Save-PnPTenantTemplate -Template $kit -Out yourstarterkit.pnp
   ```
 
-- Ensure the credentials you use to connect to your tenant have **tenant administrative rights**. We require this to provision to the tenant app catalog.
+- Ensure the credentials you use to connect to your tenant have **tenant administrative rights**, or be a site collection administrator of the tenant app catalog site collection. This is required to provision to the tenant app catalog.
 
 
 ## Fixing provisioning errors

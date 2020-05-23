@@ -1,16 +1,22 @@
-# SP Starter Kit Provisioning Guidance
-
-The following documentation provides guidance related to the the provisioning process of **SP Starter Kit**.
-
-## Installing the Starter Kit in a SharePoint 2019 Environment
+# SP Starter Kit Provisioning Guidance - SharePoint 2019 Only
 
 **TODO** provide documentation for SharePoint 2019 - also note the limitations
+
+The following documentation provides guidance related to the the provisioning process of **SP Starter Kit**.
 
 **For SharePoint 2019 only**
 
 This document provides guidance on installing a full installation for **SP Starter Kit** for only **SharePoint 2019**. The installation includes one SPFx bundled solution per SPFx component, i.e. webpart or extentsion. Additional options exist, refer to [Choose the right method depending on your requirements](./readme.md#choose-the-right-method-depending-on-your-requirements).
 
-It is recommended you read this entire document before installing the starter kit, in particular pay close attention to [Common notes](#common-notes) and [Fixing provisioning errors](#fixing-provisioning-errors)
+It is recommended you read this entire document before installing the starter kit, in particular pay close attention to [Important notes](#important-notes) and [Fixing provisioning errors](#fixing-provisioning-errors)
+
+# Table of contents
+
+- [Choose the right method depending on your requirements](#choose-the-right-method-depending-on-your-requirements)
+- [Minimal path to success](#minimal-path-to-success)
+- [Important notes](#important-notes)
+- [Fixing provisioning errors](#fixing-provisioning-errors)
+- [Provisioning Parameters](#provisioning-parameters)
 
 ## Choose the right method depending on your requirements
 
@@ -26,7 +32,7 @@ It is recommended you read this entire document before installing the starter ki
 
 **TODO**
 
-## Common notes
+## Important notes
 
 **TODO**
 

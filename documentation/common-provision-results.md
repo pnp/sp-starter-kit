@@ -9,6 +9,16 @@ Connect-PnPOnline https://[yourtenant].sharepoint.com
 Apply-PnPTenantTemplate -Path starterkit.pnp
 ```
 
+# Table of contents
+
+- [Successful provisioning](#successful-provisioning)
+- [ERROR: General cascading errors](#error-general-cascading-errors)
+- [ERROR: Improper version of PnP PowerShell installed](#error-improper-version-of-pnp-powershell-installed)
+- [ERROR: App Catalog Required](#error-app-catalog-required)
+- [ERROR: Term Set Permissions Required](#error-term-set-permissions-required)
+- [ERROR: Not Targeted Release](#error-not-targeted-release)
+- [Invalid App package installation - API Management missing](#invalid-app-package-installation---api-management-missing)
+
 
 ## Successful provisioning
 
@@ -140,7 +150,7 @@ An error may appear similar to the following:
 `This error can also appear if the login account is not an owner of the 'App Catalog' for the tenant
 
 
-### Invalid App package installation - API Management missing
+## Invalid App package installation - API Management missing
 
 Deployment of the included SPFx solutions `.\source\[component]\sharepoint\solution\[component].sppkg` may be  [`completed manually`](./manual-deploy-sppkg-solution.md). If you do not have `Targeted Release` enabled for all users, or if you have enabled Targeted Release for all users but have not waited at least 24 hours to full roll out, you may encounter errors when manually deploying the .sppgk packages, or attempting to find API Management.
 

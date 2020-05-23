@@ -10,6 +10,15 @@ This document provides guidance on installing a full installation for **SP Start
 
 It is recommended you read this entire document before installing the starter kit, in particular pay close attention to [Common notes](#common-notes) and [Fixing provisioning errors](#fixing-provisioning-errors).
 
+# Table of contents
+
+- [Choose the right method depending on your requirements](#choose-the-right-method-depending-on-your-requirements)
+- [Minimal path to success](#minimal-path-to-success)
+- [Important notes](#important-notes)
+- [Fixing provisioning errors](#fixing-provisioning-errors)
+- [Pre-providing credentials](#pre-providing-credentials)
+- [Provisioning Parameters](#provisioning-parameters)
+
 
 ## Choose the right method depending on your requirements
 
