@@ -17,6 +17,7 @@ Apply-PnPTenantTemplate -Path starterkit.pnp
 - [ERROR: App Catalog Required](#error-app-catalog-required)
 - [ERROR: Term Set Permissions Required](#error-term-set-permissions-required)
 - [ERROR: Not Targeted Release](#error-not-targeted-release)
+- [ERROR: Culture is not supported and/or (0x0c00) is an invalid culture identifier.](#error-culture-is-not-supported)
 - [Invalid App package installation - API Management missing](#invalid-app-package-installation---api-management-missing)
 
 
@@ -149,6 +150,50 @@ An error may appear similar to the following:
 
 `This error can also appear if the login account is not an owner of the 'App Catalog' for the tenant
 
+### Recommended solution
+
+Ensure that your tenant is set to targeted release for all users.
+
+`NOTE:` You will need to wait at least 24 hours after setting your tenant to targeted release before all required updates are provisioned to your tenant before the deploy script will execute correctly.
+
+
+## ERROR: Culture is not supported
+
+The SP Starter Kit end to end provisioning only works with tenants that are configured with the dafault language set to English, i.e. those with culture code 1033 enabled. It is possible that certain tenants have English available, while the default language is not set to 1033. This can cause issues when the provisioning process adds terms to to the term store.
+
+You may receive an error in PowerShell similar to the following:
+
+```powershell
+Culture is not supported
+```
+
+```powershell
+(0x0c00) is an invalid culture identifier.
+```
+
+### Recommended solution
+
+Check to see that the current culture for your instance of PowerShell is ready for the template. Run "Get-Culture" in PowerShell
+
+```powershell
+Get-Culture
+```
+
+The expected output should be
+
+```powershell
+LCID             Name             DisplayName
+----             ----             -----------
+1033             en-US            English (Unitied States)
+```
+
+You can temporarily change to en-US for the provisioning process to continue.
+
+```powershell
+Set-Culture -CultureInfo en-US
+```
+
+Try to provision the Starter Kit again.
 
 ## Invalid App package installation - API Management missing
 
