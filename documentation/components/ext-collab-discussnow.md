@@ -44,7 +44,7 @@ Add-PnPCustomAction -Title "DiscussNow" -Name "DiscussNow" -Location "ClientSide
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/extensions/alertNotification
+https://github.com/pnp/sp-starter-kit/tree/v2/source/react-command-discuss-now
 
 # Minimal Path to Awesome
 
