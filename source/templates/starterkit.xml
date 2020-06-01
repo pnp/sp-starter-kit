@@ -117,9 +117,9 @@
       </pnp:SiteCollection>
       <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite" ProvisioningId="HR" IsPublic="false"
                           Alias="{parameter:HRALIAS}"  
-                          DisplayName =""
+                          DisplayName ="{parameter:HRALIAS}"
                           Title ="Human Resources"
-                          Description="">
+                          Description="Needs to be filled for team site">
         <pnp:Templates>
           <pnp:ProvisioningTemplateReference ID="COLLAB-TEMPLATE"/>
           <pnp:ProvisioningTemplateReference ID="COLLAB-HR-LOGO-TEMPLATE"/>
@@ -128,9 +128,9 @@
       </pnp:SiteCollection>
       <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite" ProvisioningId="MARKETING" IsPublic="false"
                           Alias="{parameter:MARKETINGALIAS}"
-                          DisplayName =""
+                          DisplayName ="{parameter:MARKETINGALIAS}"
                           Title ="Marketing"
-                          Description="">
+                          Description="Needs to be filled for team site">
         <pnp:Templates>
           <pnp:ProvisioningTemplateReference ID="COLLAB-TEMPLATE"/>
           <pnp:ProvisioningTemplateReference ID="COLLAB-MARKETING-LOGO-TEMPLATE"/>
