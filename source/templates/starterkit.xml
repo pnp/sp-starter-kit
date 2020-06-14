@@ -104,10 +104,13 @@
 
   <pnp:Sequence ID="sp-starter-kit-sequence">
     <pnp:SiteCollections>
-      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:CommunicationSite" ProvisioningId="PORTAL" IsHubSite="true" Owner="{CurrentUserLoginName}"
-                          Title="{parameter:Company}"
-                          Description=""
+      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:CommunicationSite"
+                          ProvisioningId="PORTAL"
                           Url="{parameter:PORTALURL}"
+                          Owner="{CurrentUserLoginName}"
+                          Title="{parameter:Company}"
+                          Description="Company communication hub site"
+                          IsHubSite="true"
                           SiteDesign="Topic">
         <pnp:Templates>
           <pnp:ProvisioningTemplateReference ID="ROOT-TEMPLATE"/>
@@ -115,22 +118,26 @@
           <pnp:ProvisioningTemplateReference ID="STARTERKIT-THEME" />
         </pnp:Templates>
       </pnp:SiteCollection>
-      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite" ProvisioningId="HR" IsPublic="false"
+      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite"
+                          ProvisioningId="HR"
                           Alias="{parameter:HRALIAS}"  
                           DisplayName ="{parameter:HRALIAS}"
+                          IsPublic="false"
                           Title ="Human Resources"
-                          Description="Needs to be filled for team site">
+                          Description="Human Resouces team site">
         <pnp:Templates>
           <pnp:ProvisioningTemplateReference ID="COLLAB-TEMPLATE"/>
           <pnp:ProvisioningTemplateReference ID="COLLAB-HR-LOGO-TEMPLATE"/>
           <pnp:ProvisioningTemplateReference ID="STARTERKIT-THEME" />
         </pnp:Templates>
       </pnp:SiteCollection>
-      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite" ProvisioningId="MARKETING" IsPublic="false"
+      <pnp:SiteCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pnp:TeamSite"
+                          ProvisioningId="MARKETING"
                           Alias="{parameter:MARKETINGALIAS}"
                           DisplayName ="{parameter:MARKETINGALIAS}"
+                          IsPublic="false"
                           Title ="Marketing"
-                          Description="Needs to be filled for team site">
+                          Description="Marketing team site">
         <pnp:Templates>
           <pnp:ProvisioningTemplateReference ID="COLLAB-TEMPLATE"/>
           <pnp:ProvisioningTemplateReference ID="COLLAB-MARKETING-LOGO-TEMPLATE"/>
