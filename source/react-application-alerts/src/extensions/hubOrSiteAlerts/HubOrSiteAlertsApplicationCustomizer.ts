@@ -101,11 +101,11 @@ export default class HubOrSiteAlertsApplicationCustomizer
         // from the Alerts list in the hub site, load the list of upcoming alerts sorted
         // ascending by their end time so that alerts that expire first, are shown on top
         this.context.spHttpClient
-          .get(`${hubSiteUrl}/_api/web/lists/getByTitle('Alerts')/items?
-            $filter=PnPAlertStartDateTime le datetime'${nowString}'
-              and PnPAlertEndDateTime ge datetime'${nowString}'
-            &$select=PnPAlertType,PnPAlertMessage,PnPAlertMoreInformation&$orderby=PnPAlertEndDateTime`
-            , SPHttpClient.configurations.v1, {
+          .get(hubSiteUrl + '/_api/web/lists/getByTitle(\'Alerts\')/items?' +
+            '$filter=PnPAlertStartDateTime le datetime\'' + nowString + '\' ' +
+            'and PnPAlertEndDateTime ge datetime\'' + nowString + '\' ' +
+            '&$select=PnPAlertType,PnPAlertMessage,PnPAlertMoreInformation&$orderby=PnPAlertEndDateTime',
+            SPHttpClient.configurations.v1, {
             headers: headers
           })
           .then((res: SPHttpClientResponse): Promise<{ value: IAlertItem[] }> => {
