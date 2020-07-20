@@ -9,7 +9,7 @@ This application customizer provides you the ability to add a header with site c
 
 ## Extension details
 
-This extension requires no external dependencies nor requires confiruration as there are no custom properties.
+This extension requires no external dependencies nor requires configuration as there are no custom properties.
 
 | Description | Name | Type | Required | Description |
 | ---- | ---- | ---- | ---- | ---- |
