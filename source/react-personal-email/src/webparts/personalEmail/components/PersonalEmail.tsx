@@ -8,6 +8,10 @@ import { List } from 'office-ui-fabric-react/lib/components/List';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 
 export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersonalEmailState> {
+
+  protected readonly outlookLink: string = "https://outlook.office.com/owa/";
+  protected readonly outlookNewEmailLink: string = "https://outlook.office.com/mail/deeplink/compose";
+
   constructor(props: IPersonalEmailProps) {
     super(props);
 
@@ -116,10 +120,10 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
           this.state.messages &&
             this.state.messages.length > 0 ? (
               <div>
-                <Link href='https://outlook.office.com/owa/?viewmodel=IMailComposeViewModelFactory' target='_blank' className={styles.newEmail}>{strings.NewEmail}</Link>
+                <Link href={this.outlookNewEmailLink} target='_blank' className={styles.newEmail}>{strings.NewEmail}</Link>
                 <List items={this.state.messages}
                   onRenderCell={this._onRenderCell} className={styles.list} />
-                <Link href='https://outlook.office.com/owa/' target='_blank' className={styles.viewAll}>{strings.ViewAll}</Link>
+                <Link href={this.outlookLink} target='_blank' className={styles.viewAll}>{strings.ViewAll}</Link>
               </div>
             ) : (
               !this.state.loading && (
