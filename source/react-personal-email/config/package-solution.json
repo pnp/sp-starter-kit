@@ -3,11 +3,11 @@
   "solution": {
     "name": "react-personal-email-client-side-solution",
     "id": "7c886936-7bcd-4ef5-ac98-e802299dc5ad",
-    "version": "2.0.0.0",
+    "version": "2.0.1.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
-    "webApiPermissionRequests": [   
+    "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",
         "scope": "Mail.Read"
