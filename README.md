@@ -58,6 +58,7 @@ Here are current pre-requirements for making this solution work in your tenant.
 
 1. You will need to be a tenant administrator to be able to deploy this solution
     - Notice that you can get free developer tenant from [Office 365 developer program](https://developer.microsoft.com/en-us/office/dev-program), if needed.
+    - **Notice** - at this time due to limitations of the PnP provisioning engine and PnP PowerShell, **MFA** accounts are **not supported**, nor are AAD applications. The Starter Kit V2 requires a tenant administrative account that would **not required** -UseWebLogin or -PnPO365ManagementShell when connecting to your SharePoint tenant.
 
 1. Automatic end-to-end provisioning only works with English tenants
     - All solutions and web parts are also English in the current implementation
@@ -92,6 +93,7 @@ Shortest path to success for SharePoint Online - The following steps will help y
   ```powershell
   Connect-PnPOnline https://contosodemosk.sharepoint.com
   ```
+  - **Notice** - at this time due to limitations of the PnP provisioning engine and PnP PowerShell, **MFA** accounts are **not supported**, nor are AAD applications. The Starter Kit V2 requires a tenant administrative account that would **not required** -UseWebLogin or -PnPO365ManagementShell when connecting to your SharePoint tenant.
 
 - Change to the `provisioning` folder found in this solution's root and execute the following command (using your own tenant url and the prefix of your choosing):
 
