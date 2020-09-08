@@ -33,7 +33,7 @@ It is recommended you read this entire document before installing the starter ki
 
 ## Minimal path to success
 
-1. Ensure that you have met all **[Pre-requirements](../readme.md#pre-requirements)**
+1. Ensure that you have met all **[Pre-requirements](../README.md#Pre-requirements)**
 
 2. Open PowerShell and run the following commands, changing the tenant url to your primary SharePoint tenant site.
 
