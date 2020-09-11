@@ -46,7 +46,7 @@ Configurable properties for each collection row within the `collectionData` coll
 
 See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit). 
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part does not have external dependencies.
+You can also download just the [SharePoint Framework solution package (sppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/source/react-links/sharepoint/solution/react-links.sppkg) and install that to your tenant. This web part does not have external dependencies.
 
 # Screenshots
 
@@ -54,7 +54,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/links
+https://github.com/pnp/sp-starter-kit/tree/master/source/react-links
 
 # Minimal Path to Awesome
 

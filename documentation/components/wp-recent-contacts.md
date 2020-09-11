@@ -23,7 +23,7 @@ The `Recent Contacts` web part can be configured with the following properties:
 
 See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit). 
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part requires access to the Microsoft Graph.
+You can also download just the [SharePoint Framework solution package (sppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/source/react-recent-contacts/sharepoint/solution/react-recent-contacts.sppkg) and install that to your tenant. This web part requires access to the Microsoft Graph.
 
 # Screenshots
 
@@ -31,7 +31,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/recentContacts
+https://github.com/pnp/sp-starter-kit/tree/master/source/react-recent-contacts
 
 # Minimal Path to Awesome
 
