@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="Redirect"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="27f45dfa-839e-45c2-a379-fbfe627ed97c"
+        ClientSideComponentProperties="{&quot;redirectionsListTitle&quot;:&quot;PnP Redirect Links&quot;}">
+    </CustomAction>
+</Elements>

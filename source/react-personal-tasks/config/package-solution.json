@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-personal-tasks-client-side-solution",
+    "id": "95cfc0f9-4052-476f-8443-8f23245e2a87",
+    "version": "2.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [{
+      "resource": "Microsoft Graph",
+      "scope": "Group.ReadWrite.All"
+    }, {
+      "resource": "Microsoft Graph",
+      "scope": "Tasks.ReadWrite"
+    }, {
+      "resource": "Microsoft Graph",
+      "scope": "People.Read"
+    }]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-personal-tasks.sppkg"
+  }
+}

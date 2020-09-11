@@ -1,0 +1,9 @@
+{
+  "id": "849381c3-2209-441c-a559-2dc6a5c0cb63",
+  "alias": "SpStarterKitSharedLibrary",
+  "componentType": "Library",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2
+}

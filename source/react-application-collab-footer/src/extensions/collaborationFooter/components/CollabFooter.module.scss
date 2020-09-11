@@ -1,0 +1,12 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.collabFooter {
+    .collabFooterContainer {
+        background-color: $ms-color-neutralLighter;
+        color: $ms-color-neutralPrimary;
+    }
+
+    .commandBar {
+        width: 100%;
+    }
+}

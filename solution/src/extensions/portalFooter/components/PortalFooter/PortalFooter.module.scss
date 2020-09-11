@@ -1,4 +1,4 @@
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .portalFooter {
 
@@ -48,6 +48,34 @@
         width: 1em;
         height: 40px;
         line-height: 40px;
+      }
+    }
+  }
+
+  .linksContainer {
+    @include ms-Grid;
+
+    .linksContainerRow {
+      @include ms-Grid-row;
+
+      .copyrightContainer {
+        @include ms-Grid-col;
+        @include ms-sm3;
+      }
+
+      .supportButtonContainer {
+        @include ms-Grid-col;
+        @include ms-sm2;
+      }
+
+      .fillerContainer {
+        @include ms-Grid-col;
+        @include ms-sm6;
+      }
+
+      .toggleButtonContainer {
+        @include ms-Grid-col;
+        @include ms-sm1;
       }
     }
   }

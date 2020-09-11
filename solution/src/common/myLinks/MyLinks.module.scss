@@ -1,4 +1,4 @@
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .myLinksDialogRoot {
   .myLinksDialogContent {
@@ -12,6 +12,21 @@
 
       .textField {
         width: 250px;
+      }
+
+      .grid {
+        @include ms-Grid;
+
+        .gridRow {
+          @include ms-Grid-row;
+
+          .gridColumn {
+            @include ms-Grid-col;
+            @include ms-sm12;
+            @include ms-md12;
+            @include ms-lg12;
+          }
+        }
       }
   }
 }

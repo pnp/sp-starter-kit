@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "personal-contacts-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/personalContacts/PersonalContactsWebPart.js",
+          "manifest": "./src/webparts/personalContacts/PersonalContactsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PersonalContactsWebPartStrings": "lib/webparts/personalContacts/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "lob-integration-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/lobIntegration/LobIntegrationWebPart.js",
+          "manifest": "./src/webparts/lobIntegration/LobIntegrationWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "LobIntegrationWebPartStrings": "lib/webparts/lobIntegration/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

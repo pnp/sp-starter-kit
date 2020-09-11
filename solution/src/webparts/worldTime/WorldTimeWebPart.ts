@@ -2,12 +2,13 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
+  BaseClientSideWebPart
+} from '@microsoft/sp-webpart-base';
+import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneDropdown,
-  IPropertyPaneDropdownOption
-} from '@microsoft/sp-webpart-base';
+  IPropertyPaneDropdownOption } from "@microsoft/sp-property-pane";
 
 import * as strings from 'WorldTimeWebPartStrings';
 import WorldTime from './components/WorldTime';

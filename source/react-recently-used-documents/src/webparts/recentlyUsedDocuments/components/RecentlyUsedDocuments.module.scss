@@ -1,0 +1,27 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.recentlyUsedDocuments {
+  .document {
+    margin-bottom: 15px;
+  }
+
+  .documentPreview {
+    min-width: 144px;
+  }
+
+  .documentDetails {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .noDocs {
+    @include ms-font-m;
+  }
+
+  .error {
+    @include ms-font-m;
+    color: $ms-color-alert;
+  }
+}

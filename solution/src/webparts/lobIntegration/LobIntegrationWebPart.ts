@@ -2,11 +2,13 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
+  BaseClientSideWebPart
+} from '@microsoft/sp-webpart-base';
+import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneChoiceGroup
-} from '@microsoft/sp-webpart-base';
+  PropertyPaneChoiceGroup } from "@microsoft/sp-property-pane";
+
 import { DisplayMode } from '@microsoft/sp-core-library';
 
 import * as strings from 'LobIntegrationWebPartStrings';

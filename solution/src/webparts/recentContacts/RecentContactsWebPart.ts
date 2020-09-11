@@ -2,10 +2,12 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  BaseClientSideWebPart
 } from '@microsoft/sp-webpart-base';
+import {
+  IPropertyPaneConfiguration
+} from "@microsoft/sp-property-pane";
+
 import * as strings from 'RecentContactsWebPartStrings';
 import { RecentContacts, IRecentContactsProps } from './components';
 
@@ -19,7 +21,7 @@ export interface IRecentContactsWebPartProps {
 export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecentContactsWebPartProps> {
   private graphClient: MSGraphClient;
   private propertyFieldNumber;
-  
+
   public onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory

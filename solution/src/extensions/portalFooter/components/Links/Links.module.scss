@@ -1,4 +1,4 @@
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .links {
   background-color: $ms-color-neutralLighter;
@@ -50,5 +50,18 @@
     right: 0.5em;
     padding: 0.5em;
     min-width: 0;
+  }
+
+  .linksContainer {
+    @include ms-Grid;
+
+    .linksContainerRow {
+      @include ms-Grid-row;
+
+      .linksGroupContainer {
+        @include ms-Grid-col;
+        @include ms-sm3;
+      }
+    }
   }
 }

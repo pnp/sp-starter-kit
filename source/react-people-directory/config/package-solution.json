@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-people-directory-client-side-solution",
+    "id": "bf076fcb-c67e-4b89-b1ff-2ab5242945c5",
+    "version": "2.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-people-directory.sppkg"
+  }
+}

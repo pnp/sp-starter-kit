@@ -1,0 +1,15 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.worldTime {
+  .container {
+    max-width: 700px;
+    margin: 0px auto;
+  }
+
+  .description {
+    @include ms-font-l;
+    color: $ms-color-black;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}

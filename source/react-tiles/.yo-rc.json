@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "onprem19",
+    "version": "1.9.1",
+    "libraryName": "react-tiles",
+    "libraryId": "b0c8359d-6380-4b12-baba-c79e4fd5f179",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

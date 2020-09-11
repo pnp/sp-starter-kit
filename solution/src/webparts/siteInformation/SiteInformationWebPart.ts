@@ -3,10 +3,12 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IWebPartPropertiesMetadata,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  IWebPartPropertiesMetadata
 } from '@microsoft/sp-webpart-base';
+import {
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField } from "@microsoft/sp-property-pane";
+
 import { DisplayMode } from '@microsoft/sp-core-library';
 
 import * as strings from 'SiteInformationWebPartStrings';
@@ -23,7 +25,7 @@ export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteI
   public onInit(): Promise<void> {
 
     return super.onInit().then(async (_) => {
-      
+
       //chunk shared by all web parts
       const { sp } = await import(
         /* webpackChunkName: 'pnp-sp' */
@@ -87,7 +89,7 @@ export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteI
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
-  
+
   //executes only before property pane is loaded.
   protected async loadPropertyPaneResources(): Promise<void> {
     // import additional controls/components

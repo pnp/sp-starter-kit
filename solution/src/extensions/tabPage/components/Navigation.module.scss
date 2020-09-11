@@ -1,7 +1,9 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
 .navigation {
   a {
     width: 10em;
-    
+
     :global {
       .ms-Button-label {
         font-weight: normal;

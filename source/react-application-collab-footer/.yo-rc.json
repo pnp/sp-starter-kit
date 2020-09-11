@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "onprem19",
+    "version": "1.9.1",
+    "libraryName": "react-application-collab-footer",
+    "libraryId": "8b5fa72c-26f0-488a-a952-6ec68c81f623",
+    "packageManager": "npm",
+    "componentType": "extension",
+    "extensionType": "ApplicationCustomizer"
+  }
+}

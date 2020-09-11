@@ -2,10 +2,11 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  BaseClientSideWebPart
 } from '@microsoft/sp-webpart-base';
+import {
+  IPropertyPaneConfiguration
+} from "@microsoft/sp-property-pane";
 
 import * as strings from 'PeopleDirectoryWebPartStrings';
 import { PeopleDirectory, IPeopleDirectoryProps } from './components/PeopleDirectory/';

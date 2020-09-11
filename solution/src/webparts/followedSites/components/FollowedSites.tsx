@@ -114,7 +114,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
     }
   }
 
-  private _onFilterChanged = (val: string): void => {
+  private _onFilterChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, val?: string): void => {
     // Check if a value was provided
     if (val) {
       const allSites = [...this._allFollowing];
@@ -167,7 +167,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
                 <TextField placeholder={strings.SitesFilterLabel}
                            iconProps={{ iconName: 'Filter' }}
                            underlined
-                           onChanged={this._onFilterChanged} />
+                           onChange={this._onFilterChanged} />
               </div>
 
               <ul>

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "726c9a2a-cf33-4928-86a5-fa7c283c610e",
+  "alias": "RecentContactsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "SharePointFullPage", "TeamsTab"],
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Recent contacts" },
+    "description": { "default": "Lists recent contacts of the user" },
+    "officeFabricIconFontName": "ContactLink",
+    "properties": {
+      "title": "Recent contacts",
+      "nrOfContacts": 5
+    }
+  }]
+}

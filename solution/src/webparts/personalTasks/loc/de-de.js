@@ -8,7 +8,7 @@ define([], function() {
     "NotStarted": "Nicht begonnen",
     "ShowCompleted": "Zeige abgeschlossene Aufgaben",
     "PropertyPaneDescription": "Aufgaben Web Part Konfiguration",
-    "ViewAll": "Zeige die gesammte Liste"
+    "ViewAll": "Vollständige Liste anzeigen"
   }
 });
 

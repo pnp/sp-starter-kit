@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "onprem19",
+    "version": "1.9.1",
+    "libraryName": "react-application-alerts",
+    "libraryId": "bc996340-c1e8-488d-9d62-ebd5293617fd",
+    "packageManager": "npm",
+    "componentType": "extension",
+    "extensionType": "ApplicationCustomizer"
+  }
+}
