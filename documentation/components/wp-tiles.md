@@ -38,7 +38,7 @@ Configurable properties for each tile row within the `collectionData` collection
 
 See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit). 
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part requires access to the Microsoft Graph.
+You can also download just the [SharePoint Framework solution package (sppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/source/react-tiles/sharepoint/solution/react-tiles.sppkg) and install that to your tenant. This web part requires access to the Microsoft Graph.
 
 # Screenshots
 
@@ -46,7 +46,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/tiles
+https://github.com/pnp/sp-starter-kit/tree/master/source/react-tiles
 
 # Minimal Path to Awesome
 
