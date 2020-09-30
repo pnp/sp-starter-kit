@@ -95,7 +95,10 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
     // if no search query has been specified, retrieve people whose last name begins with the
     // specified letter. if a search query has been specified, escape any ' (single quotes)
     // by replacing them with two '' (single quotes). Without this, the search query would fail
-    const query: string = searchQuery === null ? `LastName:${index}*` : searchQuery.replace(/'/g, `''`);
+    let query: string = searchQuery === null ? `LastName:${index}*` : searchQuery.replace(/'/g, `''`);
+    if (query.lastIndexOf('*') !== query.length - 1) {
+      query += '*';
+    }
 
     // retrieve information about people using SharePoint People Search
     // sort results ascending by the last name
