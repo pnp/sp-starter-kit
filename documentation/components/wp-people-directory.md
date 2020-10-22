@@ -22,7 +22,7 @@ The `People Directory` web part can be configured with the following properties:
 
 See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit). 
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part does not have external dependencies.
+You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/source/react-people-directory/sharepoint/solution/react-people-directory.sppkg) and install that to your tenant. This web part does not have external dependencies.
 
 # Screenshots
 
@@ -30,7 +30,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/peopleDirectory
+https://github.com/pnp/sp-starter-kit/tree/master/source/react-people-directory
 
 # Minimal Path to Awesome
 

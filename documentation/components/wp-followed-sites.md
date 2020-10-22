@@ -24,7 +24,7 @@ The `Followed Sites` webpart can be configured with the following properties:
 
 See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit).
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part utilizes the SharePoint Rest API, `/_api/social.following/my/followed(types=4)`, endpoint.
+You can also download just the [SharePoint Framework solution package (sppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/source/react-followed-sites/sharepoint/solution/react-followed-sites.sppkg) and install that to your tenant. This web part utilizes the SharePoint Rest API, `/_api/social.following/my/followed(types=4)`, endpoint.
 
 # Screenshots
 
@@ -32,7 +32,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/followedSites
+https://github.com/pnp/sp-starter-kit/tree/master/source/react-followed-sites
 
 # Minimal Path to Awesome
 

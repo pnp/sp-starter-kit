@@ -2,7 +2,7 @@
 
 This application customizer provides you the ability to include a footer designed for group associated teams sites. The footer includes sets of links. One set of links provides company wide links which are configured using a managed metadata / taxonomy term set. A second set of links are personalized links, unqiue to each user, stored within each user's user profile within a user profile property.
 
-By default, this application customizer is associated with group associated team sites created using the custom site design i.e. `{Company name} Team Site`, provided in this project. The custom site design is provisioined as a part of the [deployment process](../../provisioning) while applying the PnP Provisioning template, [hubsite.xml](../../provisioning/hubsite.xml).
+By default, this application customizer is associated with group associated team sites created using the custom site design i.e. `{Company name} Team Site`, provided in this project. The custom site design is provisioned as a part of the [deployment process](../../provisioning) while applying the PnP Provisioning template, [hubsite.xml](../../provisioning/hubsite.xml).
 
 ![Collaboration Footer](../../assets/images/components/ext-collab-footer.gif)
 
@@ -24,7 +24,7 @@ This extension is dependent on an explicit `source` term set for common links an
 
 See getting started from the [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit).
 
-You can also download the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install the SPFx solution to your tenant. This extension depends on the managed metadata service and the user profile to store common and user specific links.
+You can also download the [SharePoint Framework solution package (sppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/source/react-application-collab-footer/sharepoint/solution/react-application-collab-footer.sppkg) and install the SPFx solution to your tenant. This extension depends on the managed metadata service and the user profile to store common and user specific links.
 
 > As this is a SharePoint Framework extension, you will need to explicitly enable this extension for a specific site using CSOM or REST APIs. You may also auto enable this extension with defined custom properties as a part of a site script using the `associateExtension` verb. See [collabteamsite.json Site Script](../../provisioning/collabteamsite.json) for an example.
 
@@ -34,7 +34,7 @@ You can also download the [SharePoint Framework solution package (spppkg) file](
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/extensions/collabFooter
+https://github.com/pnp/sp-starter-kit/tree/master/source/react-application-collab-footer
 
 # Minimal Path to Awesome
 

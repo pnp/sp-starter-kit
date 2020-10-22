@@ -21,7 +21,7 @@ This extension requires access to the Microsoft Graph and must target a specific
 
 See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit).
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This extension depends on access to Microsoft Graph.
+You can also download just the [SharePoint Framework solution package (sppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/source/react-command-discuss-now/sharepoint/solution/react-command-discuss-now.sppkg) and install that to your tenant. This extension depends on access to Microsoft Graph.
 
 > As this is a SharePoint Framework extension, you will need to explicitly enable this extension for a specific site using CSOM or REST APIs. 
 
@@ -44,7 +44,7 @@ Add-PnPCustomAction -Title "DiscussNow" -Name "DiscussNow" -Location "ClientSide
 
 # Source Code
 
-https://github.com/pnp/sp-starter-kit/tree/v2/source/react-command-discuss-now
+https://github.com/pnp/sp-starter-kit/tree/master/source/react-command-discuss-now
 
 # Minimal Path to Awesome
 

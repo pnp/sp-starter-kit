@@ -40,7 +40,7 @@ This extension is dependent on a explicit `PnP-PortalFooter-Links` list that mus
 
 See getting started from the [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit).
 
-You can also download the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install the SPFx solution to your tenant. This extension depends on a SharePoint list and the user profile to store common and user specific links.
+You can also download the [SharePoint Framework solution package (sppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/source/react-application-portal-footer/sharepoint/solution/react-application-portal-footer.sppkg) and install the SPFx solution to your tenant. This extension depends on a SharePoint list and the user profile to store common and user specific links.
 
 > As this is a SharePoint Framework extension, you will need to explicitly enable this extension for a specific site using CSOM or REST APIs. You may also auto enable this extension with defined custom properties as a part of a site script using the `associateExtension` verb. See [collabcommunicationsite.json Site Script](../../provisioning/resources/collabcommunicationsite.json) for an example.
 
@@ -50,7 +50,7 @@ You can also download the [SharePoint Framework solution package (spppkg) file](
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/extensions/portalFooter
+https://github.com/pnp/sp-starter-kit/tree/master/source/react-application-portal-footer
 
 # Minimal Path to Awesome
 
