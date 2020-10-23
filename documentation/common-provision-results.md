@@ -19,6 +19,8 @@ Apply-PnPTenantTemplate -Path starterkit.pnp
 - [ERROR: Not Targeted Release](#error-not-targeted-release)
 - [ERROR: Culture is not supported and/or (0x0c00) is an invalid culture identifier.](#error-culture-is-not-supported)
 - [Invalid App package installation - API Management missing](#invalid-app-package-installation---api-management-missing)
+- [ERROR: The user or administrator has not consented to use the application](#error-the-user-or-administrator-has-not-consented-to-use-the-application)
+- [ERROR: Apply-PnPTenantTemplate : The remote server returned an error: (401) Unauthorized](#error-apply-pnptenanttemplate-:-the-remote-server-returned-an-error:-401-unauthorized)
 
 
 ## Successful provisioning
@@ -94,6 +96,12 @@ Alternatively you can decide to uninstall all installed version of PnP PowerShel
 Uninstall-Module -Name "SharePointPnPPowerShellOnline" -AllVersions
 Install-Module -Name "SharePointPnPPowerShellOnline"
 ```
+
+> Notice - versions of PnP PowerShell released in 2020 may throw errors related to [permissions](#error-the-user-or-administrator-has-not-consented-to-use-the-application).
+
+Recommended versions of PnP PowerShell include:
+- 3.23.2007.1
+- 3.25.2009.1 - Note: you may have to [grant consent](#error-the-user-or-administrator-has-not-consented-to-use-the-application)
 
 
 ## ERROR: App Catalog Required
@@ -217,3 +225,57 @@ Without Targeted Release enabled, you will be unable to find `API Management` in
 Ensure that your tenant is set to targeted release for all users.
 
 `NOTE:` You will need to wait at least 24 hours after setting your tenant to targeted release before all required updates are provisioned to your tenant before the deploy script will execute correctly.
+
+
+
+## ERROR: The user or administrator has not consented to use the application
+
+Certain versions of PnP PowerShell released in 2020 contained PnP Core authentication methods that utilze a AAD application. If you receive an error similar to:
+
+```powershell
+The user or administrator has not consented to use the application with ID '31359c7f-bd7e-475c-86db-fdb8c937548e' named 'PnP Management Shell'. Send an interactive authorization request for this user and resource.
+```
+
+You should consider the following solution based on recommendations provided in issue 436: https://github.com/pnp/sp-starter-kit/issues/436
+
+### Recommended solution
+
+You can downgrade to a previous version of PnP PowerShell. A validated version includes PnP PowerShell 3.23.2007.1
+
+```powershell
+Install-Module -Name "SharePointPnPPowerShellOnline" -RequiredVersion 3.23.2007.1
+```
+
+If you are using a PnP PS version after 3.23.2007.1, e.g. 3.25.2009.1, use the following steps to grant the proper permissions.
+
+```powershell
+Connect-PnPOnline -Url "https://.sharepoint.com/" -PnPManagementShell
+```
+
+Follow the instructions provided during the Mangement Shell login, including completing the device login, and consent the SharePoint Online permission requests.
+
+```powershell
+Disconnect-PnPOnline
+Connect-PnPOnline -Graph
+```
+
+Follow the instructions provided during the Graph loging, inclduing completing the device login again, and consent the Microsoft Graph permission requests.
+
+```powershell
+Disconnect-PnPOnline
+```
+
+Once this has been completed, the standard Starter Kit provisioning process should proceed as expected.
+
+
+## ERROR: Apply-PnPTenantTemplate : The remote server returned an error: (401) Unauthorized
+
+A common error if you are using an account that has MFA enabled, or recently was configured for MFA is:
+
+```powershell
+Apply-PnPTenantTemplate : The remote server returned an error: (401) Unauthorized
+```
+
+PnP Core / PnP PS do not currently appear to support MFA tokens when connecting to aspects of the tenant required but the kit, including access to the app catalog to provision .sppkg's. This includes when attempting to connect to your site using -PnPManagementShell or -UseWebLogin. 
+
+At this time, the best resolution is to use a SharePoint global admin account that does not, nor has had, MFA enabled to apply the Starter Kit tenant template.
