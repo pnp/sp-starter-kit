@@ -147,7 +147,7 @@ export default class HubOrSiteAlertsApplicationCustomizer
       this
         ._getConnectedHubSiteData()
         .then((connectedHubSiteData: IHubSiteData): Promise<IAlert[]> => {
-          if (connectedHubSiteData === null) {
+          if (!connectedHubSiteData || connectedHubSiteData === undefined) {
             // Current site is not connected to a hub site and is not a hub site
             // itself. Exit the promise chain by rejecting the promise with a known
             // error code.
