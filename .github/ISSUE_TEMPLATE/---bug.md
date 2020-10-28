@@ -51,6 +51,7 @@ assignees: ''
 - **OS**: [e.g. Windows 10 | MacOS 10.15.x]
 - **Target Environment**:[SharePoint Server 2019 | SharePoint Online]
 - **Framework**: [Node.js v6/v8/v10/v12]
+- **PnPPowerShell Version** : [e.g 3.22.2006.2.]
 - **Browser(s)**: [e.g. Chrome v79 | Safari v22 | FireFox v31 | IE v11 | Edge | Chromium Edge v79]
 - **Additional details**: *The more context you can provide, the easier it is (and therefore quicker) to help.*
 
