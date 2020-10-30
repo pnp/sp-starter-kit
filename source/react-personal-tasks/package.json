@@ -12,7 +12,7 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@microsoft/mgt": "^1.1.0-preview.2",
+    "@microsoft/mgt-react": "^2.0.0-preview.3",
     "@microsoft/sp-core-library": "1.9.1",
     "@microsoft/sp-lodash-subset": "1.9.1",
     "@microsoft/sp-office-ui-fabric-core": "1.9.1",
@@ -29,7 +29,7 @@
     "@types/react": "16.8.8"
   },
   "devDependencies": {
-    "@microsoft/rush-stack-compiler-3.3": "0.4.9",
+    "@microsoft/rush-stack-compiler-3.4": "^0.8.31",
     "@microsoft/sp-build-web": "1.9.1",
     "@microsoft/sp-module-interfaces": "1.9.1",
     "@microsoft/sp-tslint-rules": "1.9.1",
