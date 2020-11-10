@@ -1,12 +1,69 @@
-import * as React from 'react';
-import styles from './PersonalCalendar.module.scss';
-import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
-import * as strings from 'PersonalCalendarWebPartStrings';
-import { IPersonalCalendarProps, IPersonalCalendarState, IMeeting, IMeetings } from '.';
+import { Providers } from '@microsoft/mgt';
+import { Agenda, MgtTemplateProps } from '@microsoft/mgt-react';
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
-import { List } from 'office-ui-fabric-react/lib/components/List';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import * as strings from 'PersonalCalendarWebPartStrings';
+import * as React from 'react';
+import { IPersonalCalendarProps, IPersonalCalendarState } from '.';
+import { Event } from '@microsoft/microsoft-graph-types';
+import styles from './PersonalCalendar.module.scss';
+
+const EventInfo = (props: MgtTemplateProps) => {
+  /**
+   * Get user-friendly string that represents the duration of an event
+   * < 1h: x minutes
+   * >= 1h: 1 hour (y minutes)
+   * all day: All day
+   */
+  const getDuration = (_event: Event): string => {
+    if (_event.isAllDay) {
+      return strings.AllDay;
+    }
+
+    const _startDateTime: Date = new Date(_event.start.dateTime);
+    const _endDateTime: Date = new Date(_event.end.dateTime);
+    // get duration in minutes
+    const _duration: number = Math.round((_endDateTime as any) - (_startDateTime as any)) / (1000 * 60);
+    if (_duration <= 0) {
+      return '';
+    }
+
+    if (_duration < 60) {
+      return `${_duration} ${strings.Minutes}`;
+    }
+
+    const _hours: number = Math.floor(_duration / 60);
+    const _minutes: number = Math.round(_duration % 60);
+    let durationString: string = `${_hours} ${_hours > 1 ? strings.Hours : strings.Hour}`;
+    if (_minutes > 0) {
+      durationString += ` ${_minutes} ${strings.Minutes}`;
+    }
+
+    return durationString;
+  };
+
+  const event: Event | undefined = props.dataContext ? props.dataContext.event : undefined;
+
+  if (!event) {
+    return <div />;
+  }
+
+  const startTime: Date = new Date(event.start.dateTime);
+  const minutes: number = startTime.getMinutes();
+
+  return <div className={`${styles.meetingWrapper} ${event.showAs}`}>
+    <Link href={event.webLink} className={styles.meeting} target='_blank'>
+      <div className={styles.linkWrapper}>
+        <div className={styles.start}>{`${startTime.getHours()}:${minutes < 10 ? '0' + minutes : minutes}`}</div>
+        <div>
+          <div className={styles.subject}>{event.subject}</div>
+          <div className={styles.duration}>{getDuration(event)}</div>
+          <div className={styles.location}>{event.location.displayName}</div>
+        </div>
+      </div>
+    </Link>
+  </div>;
+};
 
 export default class PersonalCalendar extends React.Component<IPersonalCalendarProps, IPersonalCalendarState> {
   private _interval: number;
@@ -15,9 +72,8 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
     super(props);
 
     this.state = {
-      meetings: [],
-      loading: false,
       error: undefined,
+      loading: true,
       renderedDateTime: new Date()
     };
   }
@@ -27,130 +83,18 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
    */
   private _getTimeZone(): Promise<string> {
     return new Promise<string>((resolve, reject) => {
-      this.props.graphClient
+      Providers.globalProvider.graph
         // get the mailbox settings
         .api(`me/mailboxSettings`)
         .version("v1.0")
         .get((err: any, res: microsoftgraph.MailboxSettings): void => {
+          if (err) {
+            return reject(err);
+          }
+
           resolve(res.timeZone);
         });
     });
-  }
-
-  /**
-   * Load recent messages for the current user
-   */
-  private _loadMeetings(): void {
-    if (!this.props.graphClient) {
-      return;
-    }
-
-    // update state to indicate loading and remove any previously loaded
-    // meetings
-    this.setState({
-      error: null,
-      loading: true,
-      meetings: []
-    });
-
-    const date: Date = new Date();
-    const now: string = date.toISOString();
-    // set the date to midnight today to load all upcoming meetings for today
-    date.setUTCHours(23);
-    date.setUTCMinutes(59);
-    date.setUTCSeconds(0);
-    date.setDate(date.getDate() + (this.props.daysInAdvance || 0));
-    const midnight: string = date.toISOString();
-
-    this._getTimeZone().then(timeZone => {
-      this.props.graphClient
-        // get all upcoming meetings for the rest of the day today
-        .api(`me/calendar/calendarView?startDateTime=${now}&endDateTime=${midnight}`)
-        .version("v1.0")
-        .select('subject,start,end,showAs,webLink,location,isAllDay')
-        .top(this.props.numMeetings > 0 ? this.props.numMeetings : 100)
-        .header("Prefer", "outlook.timezone=" + '"' + timeZone + '"')
-        // sort ascending by start time
-        .orderby("start/dateTime")
-        .get((err: any, res: IMeetings): void => {
-          if (err) {
-            // Something failed calling the MS Graph
-            this.setState({
-              error: err.message ? err.message : strings.Error,
-              loading: false
-            });
-            return;
-          }
-
-          // Check if a response was retrieved
-          if (res && res.value && res.value.length > 0) {
-            this.setState({
-              meetings: res.value,
-              loading: false
-            });
-          }
-          else {
-            // No meetings found
-            this.setState({
-              loading: false
-            });
-          }
-        });
-    });
-  }
-
-  /**
-   * Render meeting item
-   */
-  private _onRenderCell = (item: IMeeting, index: number | undefined): JSX.Element => {
-    const startTime: Date = new Date(item.start.dateTime);
-    const minutes: number = startTime.getMinutes();
-
-    return <div className={`${styles.meetingWrapper} ${item.showAs}`}>
-      <Link href={item.webLink} className={styles.meeting} target='_blank'>
-        <div className={styles.linkWrapper}>
-          <div className={styles.start}>{`${startTime.getHours()}:${minutes < 10 ? '0' + minutes : minutes}`}</div>
-          <div>
-            <div className={styles.subject}>{item.subject}</div>
-            <div className={styles.duration}>{this._getDuration(item)}</div>
-            <div className={styles.location}>{item.location.displayName}</div>
-          </div>
-        </div>
-      </Link>
-    </div>;
-  }
-
-  /**
-   * Get user-friendly string that represents the duration of the meeting
-   * < 1h: x minutes
-   * >= 1h: 1 hour (y minutes)
-   * all day: All day
-   */
-  private _getDuration = (meeting: IMeeting): string => {
-    if (meeting.isAllDay) {
-      return strings.AllDay;
-    }
-
-    const startDateTime: Date = new Date(meeting.start.dateTime);
-    const endDateTime: Date = new Date(meeting.end.dateTime);
-    // get duration in minutes
-    const duration: number = Math.round((endDateTime as any) - (startDateTime as any)) / (1000 * 60);
-    if (duration <= 0) {
-      return '';
-    }
-
-    if (duration < 60) {
-      return `${duration} ${strings.Minutes}`;
-    }
-
-    const hours: number = Math.floor(duration / 60);
-    const minutes: number = Math.round(duration % 60);
-    let durationString: string = `${hours} ${hours > 1 ? strings.Hours : strings.Hour}`;
-    if (minutes > 0) {
-      durationString += ` ${minutes} ${strings.Minutes}`;
-    }
-
-    return durationString;
   }
 
   /**
@@ -174,12 +118,20 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
       refreshInterval = 5;
     }
     // refresh the component every x minutes
-    this._interval = setInterval(this._reRender, refreshInterval * 1000 * 60);
+    this._interval = window.setInterval(this._reRender, refreshInterval * 1000 * 60);
     this._reRender();
   }
 
   public componentDidMount(): void {
     this._setInterval();
+    this
+      ._getTimeZone()
+      .then((_timeZone: string): void => {
+        this.setState({
+          timeZone: _timeZone,
+          loading: false
+        });
+      });
   }
 
   public componentWillUnmount(): void {
@@ -195,40 +147,45 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
       this._setInterval();
       return;
     }
-
-    // reload data on new render interval
-    if (prevState.renderedDateTime !== this.state.renderedDateTime) {
-      this._loadMeetings();
-    }
   }
 
   public render(): React.ReactElement<IPersonalCalendarProps> {
+    const date: Date = new Date();
+    const now: string = date.toISOString();
+    // set the date to midnight today to load all upcoming meetings for today
+    date.setUTCHours(23);
+    date.setUTCMinutes(59);
+    date.setUTCSeconds(0);
+    date.setDate(date.getDate() + (this.props.daysInAdvance || 0));
+    const midnight: string = date.toISOString();
+
     return (
       <div className={styles.personalCalendar}>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
           updateProperty={this.props.updateProperty} />
         {
-          this.state.loading &&
-          <Spinner label={strings.Loading} size={SpinnerSize.large} />
+          !this.state.loading &&
+          <>
+            <Link href='https://outlook.office.com/owa/?#viewmodel=IComposeCalendarItemViewModelFactory' target='_blank'>{strings.NewMeeting}</Link>
+            <div className={styles.list}>
+              <Agenda
+                preferredTimezone={this.state.timeZone}
+                eventQuery={`me/calendar/calendarView?startDateTime=${now}&endDateTime=${midnight}`}
+                showMax={this.props.numMeetings > 0 ? this.props.numMeetings : undefined}>
+                <EventInfo template='event' />
+              </Agenda>
+            </div>
+            <Link href='https://outlook.office.com/owa/?path=/calendar/view/Day' target='_blank'>{strings.ViewAll}</Link>
+          </>
         }
-
         {
-          this.state.meetings &&
-            this.state.meetings.length > 0 ? (
-              <div>
-                <Link href='https://outlook.office.com/owa/?#viewmodel=IComposeCalendarItemViewModelFactory' target='_blank'>{strings.NewMeeting}</Link>
-                <List items={this.state.meetings}
-                  onRenderCell={this._onRenderCell} className={styles.list} />
-                <Link href='https://outlook.office.com/owa/?path=/calendar/view/Day' target='_blank'>{strings.ViewAll}</Link>
-              </div>
-            ) : (
-              !this.state.loading && (
-                this.state.error ?
-                  <span className={styles.error}>{this.state.error}</span> :
-                  <span className={styles.noMeetings}>{strings.NoMeetings}</span>
-              )
-            )
+          !this.state.loading &&
+          this.state.error &&
+          <>
+            <span className={styles.error}>{this.state.error}</span> :
+            <span className={styles.noMeetings}>{strings.NoMeetings}</span>
+          </>
         }
       </div>
     );

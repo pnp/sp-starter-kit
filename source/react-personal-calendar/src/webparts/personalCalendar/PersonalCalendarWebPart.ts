@@ -12,6 +12,7 @@ import { SpStarterKitSharedLibrary } from '@starter-kit/shared-library';
 import PersonalCalendar from './components/PersonalCalendar';
 import { IPersonalCalendarProps } from './components/IPersonalCalendarProps';
 import { MSGraphClient } from '@microsoft/sp-http';
+import { Providers, SharePointProvider } from '@microsoft/mgt';
 
 export interface IPersonalCalendarWebPartProps {
   title: string;
@@ -21,18 +22,11 @@ export interface IPersonalCalendarWebPartProps {
 }
 
 export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPersonalCalendarWebPartProps> {
-  private graphClient: MSGraphClient;
   private propertyFieldNumber;
 
   public onInit(): Promise<void> {
-    return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
-      this.context.msGraphClientFactory
-        .getClient()
-        .then((client: MSGraphClient): void => {
-          this.graphClient = client;
-          resolve();
-        }, err => reject(err));
-    });
+    Providers.globalProvider = new SharePointProvider(this.context);
+    return Promise.resolve();
   }
 
   public render(): void {
@@ -46,8 +40,6 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
         // pass the current display mode to determine if the title should be
         // editable or not
         displayMode: this.displayMode,
-        // pass the reference to the MSGraphClient
-        graphClient: this.graphClient,
         // handle updated web part title
         updateProperty: (value: string): void => {
           // store the new title in the title web part property

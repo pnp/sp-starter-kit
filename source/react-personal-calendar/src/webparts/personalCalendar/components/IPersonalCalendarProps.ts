@@ -4,6 +4,5 @@ import { MSGraphClient } from "@microsoft/sp-http";
 
 export interface IPersonalCalendarProps extends IPersonalCalendarWebPartProps {
   displayMode: DisplayMode;
-  graphClient: MSGraphClient;
   updateProperty: (value: string) => void;
 }
