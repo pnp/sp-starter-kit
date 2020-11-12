@@ -1,20 +1,34 @@
-import * as React from 'react';
-import styles from './PersonalTasks.module.scss';
-import { IPersonalTasksProps } from './IPersonalTasksProps';
 import { DisplayMode } from '@microsoft/sp-core-library';
 import * as strings from 'PersonalTasksWebPartStrings';
+import * as React from 'react';
+import { IPersonalTasksProps } from './IPersonalTasksProps';
+import styles from './PersonalTasks.module.scss';
+import { TasksSource, TasksStringResource, TaskFilter } from '@microsoft/mgt';
+import { wrapMgt } from '@microsoft/mgt-react/dist/es6/Mgt';
 
-//
-// declaration to use MGT components
-//
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'mgt-tasks': any;
-    }
-  }
-}
+// temporary until mgt-react fixes the type issue with dataSource
+export type TasksProps = {
+  res?: TasksStringResource;
+  isNewTaskVisible?: boolean;
+  readOnly?: boolean;
+  dataSource?: TasksSource;
+  targetId?: string;
+  targetBucketId?: string;
+  initialId?: string;
+  initialBucketId?: string;
+  hideHeader?: boolean;
+  hideOptions?: boolean;
+  groupId?: string;
+  taskFilter?: TaskFilter;
+  useShadowRoot?: boolean;
+  taskAdded?: (e: Event) => void;
+  taskChanged?: (e: Event) => void;
+  taskClick?: (e: Event) => void;
+  taskRemoved?: (e: Event) => void;
+};
 
+// required until https://github.com/microsoftgraph/microsoft-graph-toolkit/pull/730 is merged
+export const Tasks = wrapMgt<TasksProps>('mgt-tasks');
 
 export class PersonalTasks extends React.Component<IPersonalTasksProps, {}> {
   public render(): React.ReactElement<IPersonalTasksProps> {
@@ -38,7 +52,7 @@ export class PersonalTasks extends React.Component<IPersonalTasksProps, {}> {
     const backgroundColor: string | null = (!!themeVariant && themeVariant.semanticColors.bodyBackground) || null;
 
     return (
-      <div className={styles.personalTasks} style={{backgroundColor: backgroundColor}}>
+      <div className={styles.personalTasks} style={{ backgroundColor: backgroundColor }}>
         {(webPartTitle || displayMode === DisplayMode.Edit) &&
           <div className={styles.webPartHeader}>
             <div className={styles.webPartTitle} style={{ color: color }}>
@@ -54,29 +68,14 @@ export class PersonalTasks extends React.Component<IPersonalTasksProps, {}> {
             </div>
           </div>
         }
-        <mgt-tasks
-          data-source={dataSource}
-          initial-id={initialId}
-          initial-bucket-id={initialBucketId}
-          target-id={targetId}
-          target-bucket-id={targetBucketId}
-          ref={el => {
-            if (el) { // setting read-only and hide-header attributes if needed
-              if (!allowEditing) {
-                el.setAttribute('read-only', '');
-              }
-              else {
-                el.removeAttribute('read-only');
-              }
-              if (hideHeader) {
-                el.setAttribute('hide-header', '');
-              }
-              else {
-                el.removeAttribute('hide-header');
-              }
-            }
-          }}
-        ></mgt-tasks>
+        <Tasks
+          dataSource={TasksSource[dataSource]}
+          initialId={initialId}
+          initialBucketId={initialBucketId}
+          targetId={targetId}
+          targetBucketId={targetBucketId}
+          readOnly={!allowEditing}
+          hideHeader={hideHeader} />
       </div>
     );
   }

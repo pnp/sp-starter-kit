@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-personal-tasks-client-side-solution",
     "id": "95cfc0f9-4052-476f-8443-8f23245e2a87",
-    "version": "2.0.0.0",
+    "version": "2.1.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

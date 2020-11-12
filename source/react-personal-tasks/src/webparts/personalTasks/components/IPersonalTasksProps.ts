@@ -1,5 +1,6 @@
-import { DisplayMode } from '@microsoft/sp-core-library';
+import { TasksSource } from '@microsoft/mgt';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
+import { DisplayMode } from '@microsoft/sp-core-library';
 
 export interface IPersonalTasksProps {
   /**
@@ -9,7 +10,7 @@ export interface IPersonalTasksProps {
   /**
    * Tasks' data source - Planner or ToDo
    */
-  dataSource: 'todo' | 'planner';
+  dataSource: TasksSource;
   /**
    * Flag if editing is allowed. Default is false.
    */
