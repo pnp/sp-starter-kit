@@ -4,6 +4,8 @@ This web part provides you the ability to add a particular user's personal tasks
 
 v2 web part is modified to use Graph Toolkit to expose the personal tasks, which simplifies the implementation.
 
+This webpart is a technology demostrator of Microsoft Graph Toolkit React components, in particular "Tasks". This webpart uses the @microsoft/mgt-react package, which is currently in preview and subject to change.
+
 ![Personal Tasks](./assets/personal-tasks-demo.gif)
 
 ## How to use this web part on your web pages
@@ -26,6 +28,10 @@ The `Personal Tasks` web part can be configured with the following properties:
 | Initially displayed bucket id | initialBucketId | string | no | A string id to set the initially displayed bucket (Planner Data-Source Only) to the provided ID. |
 | Source Plan or ToDo Folder id | targetId | string | no | A string id to lock the tasks interface to the provided planner or folder ID. |
 | Source bucket id | targetBucketId | string | no | A string ID to lock the tasks interface to the provided bucket ID (Planner Data-Source Only). |
+
+## Configuration suggestions
+
+* When "hide filter" is selected, the filter header will be hidden from view (default setting). With the filter hidden, you remove the ability for a visitor to filter task results by all tasks or tasks for the current user. By default, if a planner id is not specified, a visitor will see only their tasks. If a specific planner id is set in the webpart properties, all tasks within that planner are displayed. To allow for filtering in this scenario, you will want to sure that the filter is not hidden (unchecked).
 
 ## Used SharePoint Framework Version
 
