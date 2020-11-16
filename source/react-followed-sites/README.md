@@ -2,6 +2,8 @@
 
 This web part provides you the ability to display a list of site administrator defined number of sites that a given user is following, with paging as well as inline filtering of sites by keyword or phrase. Currently the list of followed sites includes classic as well as modern communication sites but does not include group enabled (modern) team sites.
 
+> `NOTE:` This webpart includes the use of a custom SPFx library, [library-starter-kit-shared](../library-starter-kit-shared). If you need to rebuild / bundle / package this solution, refer to [Minimal Path to Awesome](#Minimal-Path-to-Awesome)
+
 ![Bannner](../../assets/images/components/part-followed-sites.gif)
 
 
@@ -28,7 +30,89 @@ The `Followed Sites` webpart can be configured with the following properties:
 
 ## Prerequisites
 
-none
+* [library-starter-kit-shared](../library-starter-kit-shared) - this is provided by default in the solution. If you need to rebuild / bundle / package this solution, refer to [Minimal Path to Awesome](#Minimal-Path-to-Awesome)
+
+
+## Minimal Path to Awesome
+
+This solution uses a SPFx library, [library-starter-kit-shared](../library-starter-kit-shared). As such, additional steps are required to rebuild this project.
+
+1. Clone this entire project
+2. Within the [library-starter-kit-shared](../library-starter-kit-shared) source, i.e. [./source/library-starter-kit-shared](../library-starter-kit-shared)
+  
+  ```powershell
+  npm install
+  gulp build
+  gulp bundle
+  npm link
+  ```
+
+3. Within this SPFx solution folder [react-followed-sites](./), i.e. [./source/react-followed-sites](../react-followed-sites)
+  * in the command line run:
+  
+  ```powershell
+  npm install
+  npm link @starter-kit/shared-library
+  ```
+
+4. Edit package.json found at the root of the [react-followed-sites](./), i.e. [./source/react-followed-sites/package.json](../react-followed-sites/package.json)
+
+  - Add a new dependancy to the project: "@starter-kit/shared-library": "1.0.0"
+
+  **Example**:
+
+  ```xml
+    "dependencies": {
+      "@microsoft/sp-core-library": "1.9.1",
+      ...
+      "react": "16.8.5",
+      "react-dom": "16.8.5"
+    }
+  ```
+
+  to:
+
+  ```xml
+    "dependencies": {
+      "@microsoft/sp-core-library": "1.9.1",
+      ...
+      "react": "16.8.5",
+      "react-dom": "16.8.5",
+      "@starter-kit/shared-library": "1.0.0"
+    }
+  ```
+
+5. Within this SPFx solution folder [react-followed-sites](./), i.e. [./source/react-followed-sites](../react-followed-sites)
+  
+  * in the command line run:
+  
+  ```powershell
+  gulp serve
+  ```
+
+6. To rebundle the webpart, within this SPFx solution folder [react-followed-sites](./), i.e. [./source/react-followed-sites](../react-followed-sites)
+  * in the command line run:
+  
+  ```powershell
+  gulp bundle
+  gulp package-solution
+  ```
+
+> If you add this webpart's sppkg to your app catalog, the sppkg for the [shared library](../library-starter-kit-shared) must also be installed. The [library](../library-starter-kit-shared) may be built, bundled, and packaged similar to a standard SPFx webpart or extension.
+
+> The package.json within this SPFx solution file must be manually updated for if the library dependency was included by default with the project, **npm install** would fail as the [library-starter-kit-shared](../library-starter-kit-shared) package would not be found. Linking the two projects allows this webpart to reference the library during **development**, while the package.json reference is required for **bundling and packaging**.
+
+
+## Features
+
+Description of the web part with possible additional details than in short summary. 
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+* Using Microsoft Graph within a web part
+* Using [SharePoint Framework library components](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/library-component-overview_)
+* Hosting SharePoint Framework components as Microsoft Teams tabs
+* Using app pages in SharePoint Online
+
 
 ## Solution
 
@@ -49,22 +133,5 @@ Version|Date|Comments
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
-
-## Minimal Path to Awesome
-
-* Clone this repository
-* Move to solution folder
-* in the command line run:
-  * `npm install`
-  * `gulp serve`
-
-> Include any additional steps as needed.
-
-## Features
-
-Description of the web part with possible additional details than in short summary. 
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
-
-* Microsoft Graph usage with the web parts
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-followed-sites" />
