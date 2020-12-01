@@ -64,42 +64,44 @@ export default class RedirectApplicationCustomizer
     if (currentPageRelativeUrl.indexOf(`Lists/${redirectionsListTitle}/AllItems.aspx`) < 0) {
 
       // ensures that the PnPRedirections lists exists
-      if (await this.ensureRedirectionsList(redirectionsListTitle)) {
+      // it will fail if a user doesn't have correct permissions, but we won't limit this to prevent subsequent execution
+      await this.ensureRedirectionsList(redirectionsListTitle).catch(error=>{
+        console.log("Unable to call Ensure(). User does not have enough permissions.");
+      });
 
-        // define a CAML query to get the redirection item for the current page, if any
-        const query: CamlQuery = {
-          ViewXml: `<View><Query>
-          <Where>
-            <And>
-              <Eq>
-                <FieldRef Name='${this.FIELD_INTERNALNAME_REDIRECTIONENABLED}'/>
-                <Value Type='Boolean'>1</Value>
-              </Eq>
-              <Contains>
-                <FieldRef Name='${this.FIELD_INTERNALNAME_SOURCEURL}'/>
-                <Value Type='URL'>${currentPageRelativeUrl}</Value>
-              </Contains>
-            </And>
-          </Where>
-          <RowLimit>1</RowLimit>
-          </Query></View>`
-        };
+      // define a CAML query to get the redirection item for the current page, if any
+      const query: CamlQuery = {
+        ViewXml: `<View><Query>
+        <Where>
+          <And>
+            <Eq>
+              <FieldRef Name='${this.FIELD_INTERNALNAME_REDIRECTIONENABLED}'/>
+              <Value Type='Boolean'>1</Value>
+            </Eq>
+            <Contains>
+              <FieldRef Name='${this.FIELD_INTERNALNAME_SOURCEURL}'/>
+              <Value Type='URL'>${currentPageRelativeUrl}</Value>
+            </Contains>
+          </And>
+        </Where>
+        <RowLimit>1</RowLimit>
+        </Query></View>`
+      };
 
-        // search for items matching the query
+      // search for items matching the query
+      // tslint:disable-next-line: no-any
+      const queryResult: any = await sp.web.lists.getByTitle(redirectionsListTitle).getItemsByCAMLQuery(query);
+
+      if (queryResult && queryResult.length > 0) {
+
+        // if there are any items, get the first one only to build the result
         // tslint:disable-next-line: no-any
-        const queryResult: any = await sp.web.lists.getByTitle(redirectionsListTitle).getItemsByCAMLQuery(query);
-
-        if (queryResult && queryResult.length > 0) {
-
-          // if there are any items, get the first one only to build the result
-          // tslint:disable-next-line: no-any
-          const firstResult: any = queryResult[0];
-          result = {
-            sourceRelativeUrl: firstResult[this.FIELD_INTERNALNAME_SOURCEURL].Url,
-            destinationUrl: firstResult[this.FIELD_INTERNALNAME_DESTINATIONURL].Url,
-            enabled: firstResult[this.FIELD_INTERNALNAME_REDIRECTIONENABLED]
-          };
-        }
+        const firstResult: any = queryResult[0];
+        result = {
+          sourceRelativeUrl: firstResult[this.FIELD_INTERNALNAME_SOURCEURL].Url,
+          destinationUrl: firstResult[this.FIELD_INTERNALNAME_DESTINATIONURL].Url,
+          enabled: firstResult[this.FIELD_INTERNALNAME_REDIRECTIONENABLED]
+        };
       }
     }
 
