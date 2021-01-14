@@ -967,7 +967,7 @@
                       &quot;renderItemsSliderValue&quot;:4,
                       &quot;webId&quot;:&quot;{siteid}&quot;,
                       &quot;siteId&quot;:&quot;{sitecollectionid}&quot;,
-                      &quot;pinnedItems&quot;:[],
+                      &quot;pinnedItems&quot;:[]
                     },
                     &quot;serverProcessedContent&quot;:{
                       &quot;htmlStrings&quot;:{},
