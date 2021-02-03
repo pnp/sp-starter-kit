@@ -16,7 +16,8 @@
     }
 
     &:global(.busy) {
-      background: $ms-color-themePrimary;
+      //background: $ms-color-themePrimary;
+      background:"[theme: themeSecondary, default: #0078d7]";
     }
 
     &:global(.oof) {
@@ -35,9 +36,6 @@
   .meeting {
     display: block;
     padding: 0.5em 10px;
-    color: $ms-color-black;
-    background: $ms-color-white;
-
     &:hover {
       color: inherit;
       background: $ms-color-neutralLight;

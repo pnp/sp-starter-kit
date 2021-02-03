@@ -7,8 +7,13 @@ import * as React from 'react';
 import { IPersonalCalendarProps, IPersonalCalendarState } from '.';
 import { Event } from '@microsoft/microsoft-graph-types';
 import styles from './PersonalCalendar.module.scss';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
-const EventInfo = (props: MgtTemplateProps) => {
+export interface IAgendaTemplateProps extends MgtTemplateProps {
+  themeVariant: IReadonlyTheme | undefined;
+}
+
+const EventInfo = (props: IAgendaTemplateProps) => {
   /**
    * Get user-friendly string that represents the duration of an event
    * < 1h: x minutes
@@ -50,10 +55,13 @@ const EventInfo = (props: MgtTemplateProps) => {
 
   const startTime: Date = new Date(event.start.dateTime);
   const minutes: number = startTime.getMinutes();
+  
+  const backgroundColor: string | null = (!!props.themeVariant && props.themeVariant.semanticColors.bodyBackground) || null;
+  const color: string | null = (!!props.themeVariant && props.themeVariant.semanticColors.bodyText) || null;
 
   return <div className={`${styles.meetingWrapper} ${event.showAs}`}>
-    <Link href={event.webLink} className={styles.meeting} target='_blank'>
-      <div className={styles.linkWrapper}>
+    <Link href={event.webLink} className={styles.meeting} target='_blank' style={{backgroundColor:backgroundColor}} >
+      <div className={styles.linkWrapper} style={{color:color}}>
         <div className={styles.start}>{`${startTime.getHours()}:${minutes < 10 ? '0' + minutes : minutes}`}</div>
         <div>
           <div className={styles.subject}>{event.subject}</div>
@@ -158,12 +166,12 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
     date.setUTCSeconds(0);
     date.setDate(date.getDate() + (this.props.daysInAdvance || 0));
     const midnight: string = date.toISOString();
-
+    
     return (
       <div className={styles.personalCalendar}>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
-          updateProperty={this.props.updateProperty} />
+          updateProperty={this.props.updateProperty} themeVariant={this.props.themeVariant} />
         {
           !this.state.loading &&
           <>
@@ -173,7 +181,7 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
                 preferredTimezone={this.state.timeZone}
                 eventQuery={`me/calendar/calendarView?startDateTime=${now}&endDateTime=${midnight}`}
                 showMax={this.props.numMeetings > 0 ? this.props.numMeetings : undefined}>
-                <EventInfo template='event' />
+                <EventInfo template='event' themeVariant={this.props.themeVariant}/>
               </Agenda>
             </div>
             <Link href='https://outlook.office.com/owa/?path=/calendar/view/Day' target='_blank'>{strings.ViewAll}</Link>
