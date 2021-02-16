@@ -1,7 +1,10 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '~office-ui-fabric-core/dist/sass/References';
 
 .personalCalendar {
   @include ms-font-m;
+  color: $ms-color-gray160;
+  padding: 1em;
 
   .list {
     margin-top: 1em;
@@ -31,6 +34,14 @@
       background: white;
     }
   }
+
+  // Override for PnP SPFX webPartTitle font
+  .personalCalendarTitle {
+    div span {
+      font-size: 20px !important;
+      font-weight: 600 !important;
+    }
+	}
 
   .meeting {
     display: block;

@@ -12,6 +12,7 @@ define([], function() {
     "NumMeetings": "How many meetings to show? 0 - show all retrieved meetings",
     "RefreshInterval": "How often to check for new upcoming meetings (in minutes)",
     "PropertyPaneDescription": "Meetings web part configuration",
-    "ViewAll": "View the full list"
+    "ViewAll": "View the full list",
+    "ShowCalendar": "Show Calendar"
   }
 });

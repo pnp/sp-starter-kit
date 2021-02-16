@@ -2,16 +2,16 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneSlider
+  BaseClientSideWebPart, 
+  IPropertyPaneConfiguration, 
+  PropertyPaneSlider,
+  PropertyPaneCheckbox
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'PersonalCalendarWebPartStrings';
 import { SpStarterKitSharedLibrary } from '@starter-kit/shared-library';
 import PersonalCalendar from './components/PersonalCalendar';
 import { IPersonalCalendarProps } from './components/IPersonalCalendarProps';
-import { MSGraphClient } from '@microsoft/sp-http';
 import { Providers, SharePointProvider } from '@microsoft/mgt';
 
 export interface IPersonalCalendarWebPartProps {
@@ -19,6 +19,7 @@ export interface IPersonalCalendarWebPartProps {
   refreshInterval: number;
   daysInAdvance: number;
   numMeetings: number;
+  showCalendar: boolean;
 }
 
 export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPersonalCalendarWebPartProps> {
@@ -37,6 +38,7 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
         refreshInterval: this.properties.refreshInterval,
         daysInAdvance: this.properties.daysInAdvance,
         numMeetings: this.properties.numMeetings,
+        showCalendar: this.properties.showCalendar,
         // pass the current display mode to determine if the title should be
         // editable or not
         displayMode: this.displayMode,
@@ -98,6 +100,10 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
                   max: 20,
                   step: 1,
                   value: this.properties.numMeetings
+                }),
+                PropertyPaneCheckbox('showCalendar', {
+                  text: strings.ShowCalendar,
+                  checked: this.properties.showCalendar
                 })
               ]
             }
