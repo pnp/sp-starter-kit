@@ -1,13 +1,12 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart, 
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { 
   IPropertyPaneConfiguration, 
   PropertyPaneSlider,
   PropertyPaneCheckbox
-} from '@microsoft/sp-webpart-base';
-
+} from "@microsoft/sp-property-pane";
 import * as strings from 'PersonalCalendarWebPartStrings';
 import { SpStarterKitSharedLibrary } from '@starter-kit/shared-library';
 import PersonalCalendar from './components/PersonalCalendar';
