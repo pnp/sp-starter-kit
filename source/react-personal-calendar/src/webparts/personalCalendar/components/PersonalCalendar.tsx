@@ -8,7 +8,7 @@ import { IPersonalCalendarProps, IPersonalCalendarState, IMeetings } from '.';
 import { Event } from '@microsoft/microsoft-graph-types';
 import styles from './PersonalCalendar.module.scss';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
-import MeetingsList from './MeetingsList/MeetingsList';
+import format from 'date-fns/format';
 import { IIconProps } from 'office-ui-fabric-react/lib/components/Icon';
 import { ActionButton } from 'office-ui-fabric-react/lib/components/Button';
 import SimpleCalendar from './SimpleCalendar'
@@ -56,19 +56,38 @@ const EventInfo = (props: MgtTemplateProps) => {
   const startTime: Date = new Date(event.start.dateTime);
   const minutes: number = startTime.getMinutes();
 
-  return <div className={`${styles.meetingWrapper} ${event.showAs}`}>
-    <Link href={event.webLink} className={styles.meeting} target='_blank'>
+  return <div>
+    <Link href={event.webLink} className={styles.meeting} target='_blank'>      
       <div className={styles.linkWrapper}>
-        <div className={styles.start}>{`${startTime.getHours()}:${minutes < 10 ? '0' + minutes : minutes}`}</div>
+        <div className={styles.timeDetails}>
+          <div className={styles.start}>
+            {event.isAllDay ? 'All day' : `${startTime.getHours()}:${minutes < 10 ? '0' + minutes : minutes}`}
+          </div>
+          <div className={styles.duration}>
+            {getDuration(event)}
+          </div>
+        </div>
+        <div className={`${styles.divider} ${event.showAs}`}></div>
         <div>
           <div className={styles.subject}>{event.subject}</div>
-          <div className={styles.duration}>{getDuration(event)}</div>
           <div className={styles.location}>{event.location.displayName}</div>
         </div>
       </div>
     </Link>
   </div>;
+            
 };
+
+const HeaderInfo = (props: MgtTemplateProps) => {
+  const day: string | undefined = props.dataContext ? props.dataContext.header : undefined;
+  return <div className={styles.meetingDate}>
+    { format(new Date(day), 'iiii, MMMM d, yyyy') }
+  </div>;
+}
+
+const LoadingTemplate = (props: MgtTemplateProps) => {
+  return <Spinner label={strings.Loading} size={SpinnerSize.large} />
+}
 
 export default class PersonalCalendar extends React.Component<IPersonalCalendarProps, IPersonalCalendarState> {
   private _interval: number;
@@ -156,21 +175,17 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
       this._setInterval();
       return;
     }
-    // reload data on new render interval
-    if (prevState.renderedDateTime !== this.state.renderedDateTime) {      
-      this._loadMeetings();
-    }
   }
 
   public render(): React.ReactElement<IPersonalCalendarProps> {
-    // const date: Date = new Date();
-    // const now: string = date.toISOString();
-    // // set the date to midnight today to load all upcoming meetings for today
-    // date.setUTCHours(23);
-    // date.setUTCMinutes(59);
-    // date.setUTCSeconds(0);
-    // date.setDate(date.getDate() + (this.props.daysInAdvance || 0));
-    // const midnight: string = date.toISOString();
+    const date: Date = new Date();
+    const now: string = date.toISOString();
+    // set the date to midnight today to load all upcoming meetings for today
+    date.setUTCHours(23);
+    date.setUTCMinutes(59);
+    date.setUTCSeconds(0);
+    date.setDate(date.getDate() + (this.props.daysInAdvance || 0));
+    const midnight: string = date.toISOString();
 
     return (
       <div className={styles.personalCalendar}>
@@ -181,102 +196,26 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
 
         <ActionButton text={strings.NewMeeting} iconProps={this.addIcon} onClick={this.openNewEvent} />
         <ActionButton text={strings.ViewAll} iconProps={this.viewList} onClick={this.openList} />
-        {this.props.showCalendar && <SimpleCalendar /> }
+        { this.props.showCalendar && <SimpleCalendar /> }
         {
-          // !this.state.loading &&
-          // <>
-          //   <Link href='https://outlook.office.com/owa/?#viewmodel=IComposeCalendarItemViewModelFactory' target='_blank'>{strings.NewMeeting}</Link>
-          //   <div className={styles.list}>
-          //     <Agenda
-          //       preferredTimezone={this.state.timeZone}
-          //       eventQuery={`me/calendar/calendarView?startDateTime=${now}&endDateTime=${midnight}`}
-          //       showMax={this.props.numMeetings > 0 ? this.props.numMeetings : undefined}>
-          //       <EventInfo template='event' />
-          //     </Agenda>
-          //   </div>
-          //   <Link href='https://outlook.office.com/owa/?path=/calendar/view/Day' target='_blank'>{strings.ViewAll}</Link>
-          // </>
-          this.state.loading &&
-          <Spinner label={strings.Loading} size={SpinnerSize.large} />
-        }
-        {
-          // !this.state.loading &&
-          // this.state.error &&
-          // <>
-          this.state.meetings &&
-            this.state.meetings.length > 0 ? (
-              <div>
-                <MeetingsList meetings={this.state.meetings} />
-              </div>
-            ) : (
-              !this.state.loading && (
-                this.state.error ?
-                  <span className={styles.error}>{this.state.error}</span> :
-                  <span className={styles.noMeetings}>{strings.NoMeetings}</span>
-              )
-            )
+          !this.state.loading &&
+          <>
+            <div className={styles.list}>
+              <Agenda
+                groupByDay
+                preferredTimezone={this.state.timeZone}
+                eventQuery={`me/calendarView?startDateTime=${now}&endDateTime=${midnight}&orderby=start/dateTime&top=${this.props.numMeetings > 0 ? this.props.numMeetings : 100}`}                
+                >
+                <HeaderInfo template='header' />
+                <EventInfo template='event' />
+                <LoadingTemplate template='loading'/>
+              </Agenda>
+            </div>
+            <Link href='https://outlook.office.com/owa/?path=/calendar/view/Day' target='_blank'>{strings.ViewAll}</Link>
+          </>          
         }
       </div>
     );
-  }
-
-  /**
-   * Load recent messages for the current user
-   */
-  private _loadMeetings(): void {
-    // update state to indicate loading and remove any previously loaded meetings
-
-    console.log("loadMeetings called");
-    this.setState({
-      error: null,
-      loading: true,
-      meetings: []
-    });
-
-    const date: Date = new Date();
-    const now: string = date.toISOString();
-    // set the date to midnight today to load all upcoming meetings for today
-    date.setUTCHours(23);
-    date.setUTCMinutes(59);
-    date.setUTCSeconds(0);
-    date.setDate(date.getDate() + (this.props.daysInAdvance || 0));
-    const midnight: string = date.toISOString();
-
-    this._getTimeZone().then(timeZone => {
-      Providers.globalProvider.graph
-        // get all upcoming meetings for the rest of the day today
-        .api(`me/calendar/calendarView?startDateTime=${now}&endDateTime=${midnight}`)
-        .version("v1.0")
-        .select('subject,start,end,showAs,webLink,location,isAllDay')
-        .top(this.props.numMeetings > 0 ? this.props.numMeetings : 100)
-        .header("Prefer", "outlook.timezone=" + '"' + timeZone + '"')
-        // sort ascending by start time
-        .orderby("start/dateTime")
-        .get((err: any, res: IMeetings): void => {
-          if (err) {
-            // Something failed calling the MS Graph
-            this.setState({
-              error: err.message ? err.message : strings.Error,
-              loading: false
-            });
-            return;
-          }
-
-          // Check if a response was retrieved
-          if (res && res.value && res.value.length > 0) {
-            this.setState({
-              meetings: res.value,
-              loading: false
-            });
-          }
-          else {
-            // No meetings found
-            this.setState({
-              loading: false
-            });
-          }
-        });
-    });
   }
 
   private openNewEvent = () => {
