@@ -4,6 +4,10 @@ export enum LocaleKeys {
    */
   PropertyPaneDescription = "PropertyPaneDescription",
   /**
+   * Label value: "Refresh interval (in minutes)"
+   */
+  RefreshInterval = "RefreshInterval",
+  /**
    * Label value: "Number of followed sites to retrieve"
    */
   NrOfFollowedItemsLabel = "NrOfFollowedItemsLabel",
