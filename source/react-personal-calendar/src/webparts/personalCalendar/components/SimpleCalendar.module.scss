@@ -1,0 +1,43 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.calendarContainer {
+	display: grid;
+	grid-template-columns: repeat(7, auto);
+	font-weight: bold;
+
+	.dayContainer {
+		position: relative;
+		width: 100%;
+	}
+
+	.dayWrapper {
+		height: 36px;
+		width: 36px;
+		text-align: center;
+		margin: auto;
+	}
+
+	.day {
+		text-align: center;
+		padding: 9px 0;
+	}
+
+	.weekend, .past {
+		color: grey;
+	}
+
+	.today {
+		background-color: $ms-color-neutralLight;
+		border-radius: 50%;
+	}
+
+	.monthText {
+		text-align: center;
+		font-size: 10px;
+    padding-top: 4px;
+	}
+
+	.monthText + .day {
+		padding-top: 0;
+	}
+}

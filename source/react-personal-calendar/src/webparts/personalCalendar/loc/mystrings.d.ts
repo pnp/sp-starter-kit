@@ -12,6 +12,7 @@ declare interface IPersonalCalendarWebPartStrings {
   RefreshInterval: string;
   PropertyPaneDescription: string;
   ViewAll: string;
+  ShowCalendar: string;
 }
 
 declare module 'PersonalCalendarWebPartStrings' {
