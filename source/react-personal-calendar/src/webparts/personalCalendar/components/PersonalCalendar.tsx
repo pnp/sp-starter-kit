@@ -4,14 +4,14 @@ import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import * as strings from 'PersonalCalendarWebPartStrings';
 import * as React from 'react';
-import { IPersonalCalendarProps, IPersonalCalendarState, IMeetings } from '.';
+import { IPersonalCalendarProps, IPersonalCalendarState } from '.';
 import { Event } from '@microsoft/microsoft-graph-types';
 import styles from './PersonalCalendar.module.scss';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import format from 'date-fns/format';
 import { IIconProps } from 'office-ui-fabric-react/lib/components/Icon';
 import { ActionButton } from 'office-ui-fabric-react/lib/components/Button';
-import SimpleCalendar from './SimpleCalendar'
+import SimpleCalendar from './SimpleCalendar';
 
 const EventInfo = (props: MgtTemplateProps) => {
   /**
@@ -186,9 +186,15 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
     date.setUTCSeconds(0);
     date.setDate(date.getDate() + (this.props.daysInAdvance || 0));
     const midnight: string = date.toISOString();
+    
+    const varientStyles = {
+      "--varientBGColor": this.props.themeVariant.semanticColors.bodyBackground
+      , "--varientFontcolor": this.props.themeVariant.semanticColors.bodyText
+      , "--varientDividerColor": this.props.themeVariant.isInverted ? this.props.themeVariant.palette.neutralLight : this.props.themeVariant.palette.themePrimary
+    } as React.CSSProperties;
 
-    return (
-      <div className={styles.personalCalendar}>
+    return (      
+      <div className={styles.personalCalendar} style={ varientStyles }>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
           className={styles.personalCalendarTitle}
@@ -214,7 +220,7 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
             <Link href='https://outlook.office.com/owa/?path=/calendar/view/Day' target='_blank'>{strings.ViewAll}</Link>
           </>          
         }
-      </div>
+      </div>      
     );
   }
 
