@@ -12,7 +12,12 @@ import { SpStarterKitSharedLibrary } from '@starter-kit/shared-library';
 import PersonalCalendar from './components/PersonalCalendar';
 import { IPersonalCalendarProps } from './components/IPersonalCalendarProps';
 import { Providers, SharePointProvider } from '@microsoft/mgt';
-import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme, ISemanticColors } from '@microsoft/sp-component-base';
+import { loadTheme } from "office-ui-fabric-react";
+import {
+  IReadonlyTheme,
+  ThemeChangedEventArgs,
+  ThemeProvider
+} from "@microsoft/sp-component-base";
 
 export interface IPersonalCalendarWebPartProps {
   title: string;
@@ -24,11 +29,9 @@ export interface IPersonalCalendarWebPartProps {
 
 export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPersonalCalendarWebPartProps> {
   private propertyFieldNumber;
-  // theme provider
   private _themeProvider: ThemeProvider;
-  // current theme
   private _themeVariant: IReadonlyTheme | undefined;
-  
+
   public onInit(): Promise<void> {
     // Consume the new ThemeProvider service
     this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
@@ -40,7 +43,18 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
     this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
     
     Providers.globalProvider = new SharePointProvider(this.context);
-   
+
+    this._themeProvider = this.context.serviceScope.consume(
+      ThemeProvider.serviceKey
+    );
+    // If it exists, get the theme variant
+    this._themeVariant = this._themeProvider.tryGetTheme();
+    // Register a handler to be notified if the theme variant changes
+    this._themeProvider.themeChangedEvent.add(
+      this,
+      this._handleThemeChangedEvent
+    );
+
     return Promise.resolve();
   }
 
@@ -128,8 +142,10 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
       ]
     };
   }
-  protected _handleThemeChangedEvent = (args: ThemeChangedEventArgs): void => {
+
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
     this._themeVariant = args.theme;
+
     this.render();
   }
 }
