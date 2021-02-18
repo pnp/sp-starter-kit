@@ -1,16 +1,19 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration
-} from '@microsoft/sp-webpart-base';
-
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
 import * as strings from 'PersonalEmailWebPartStrings';
 import { PersonalEmail, IPersonalEmailProps } from './components';
 import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
 import { PropertyFieldToggleWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldToggleWithCallout';
 import { MSGraphClient } from '@microsoft/sp-http';
+import { loadTheme } from "office-ui-fabric-react";
+import {
+  IReadonlyTheme,
+  ThemeChangedEventArgs,
+  ThemeProvider
+} from "@microsoft/sp-component-base";
 
 export interface IPersonalEmailWebPartProps {
   title: string;
@@ -21,6 +24,8 @@ export interface IPersonalEmailWebPartProps {
 export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersonalEmailWebPartProps> {
   private graphClient: MSGraphClient;
   private propertyFieldNumber;
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
 
   public onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
@@ -30,6 +35,17 @@ export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersona
           this.graphClient = client;
           resolve();
         }, err => reject(err));
+
+        this._themeProvider = this.context.serviceScope.consume(
+          ThemeProvider.serviceKey
+        );
+        // If it exists, get the theme variant
+        this._themeVariant = this._themeProvider.tryGetTheme();
+        // Register a handler to be notified if the theme variant changes
+        this._themeProvider.themeChangedEvent.add(
+          this,
+          this._handleThemeChangedEvent
+        );
     });
   }
 
@@ -43,6 +59,7 @@ export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersona
         // pass the current display mode to determine if the title should be
         // editable or not
         displayMode: this.displayMode,
+        themeVariant: this._themeVariant,
         // pass the reference to the MSGraphClient
         graphClient: this.graphClient,
         // handle updated web part title
@@ -102,5 +119,11 @@ export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersona
         }
       ]
     };
+  }
+
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+
+    this.render();
   }
 }
