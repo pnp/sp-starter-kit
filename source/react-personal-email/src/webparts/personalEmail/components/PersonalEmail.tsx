@@ -6,6 +6,8 @@ import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import { List } from 'office-ui-fabric-react/lib/components/List';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import { IIconProps } from 'office-ui-fabric-react/lib/components/Icon';
+import { ActionButton } from 'office-ui-fabric-react/lib/components/Button';
 
 export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersonalEmailState> {
 
@@ -21,6 +23,9 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
       error: undefined
     };
   }
+
+  private addIcon: IIconProps = { iconName: 'Add' };
+  private viewList: IIconProps = { iconName: 'AllApps' };
 
   /**
    * Load recent messages for the current user
@@ -106,24 +111,31 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
   }
 
   public render(): React.ReactElement<IPersonalEmailProps> {
+    const varientStyles = {
+      "--varientBGColor": this.props.themeVariant.semanticColors.bodyBackground
+      , "--varientFontColor": this.props.themeVariant.semanticColors.bodyText
+      , "--varientBGHovered": this.props.themeVariant.semanticColors.listItemBackgroundHovered    
+    } as React.CSSProperties;
+
+    
     return (
-      <div className={styles.personalEmail}>
+      <div className={styles.personalEmail} style={ varientStyles }>
         <WebPartTitle displayMode={this.props.displayMode}
-          title={this.props.title}
+          title={this.props.title}               
           updateProperty={this.props.updateProperty} className={styles.title} />
+        
+        <ActionButton text={strings.NewEmail} iconProps={this.addIcon} onClick={this.openNewEmail} />
+        <ActionButton text={strings.ViewAll} iconProps={this.viewList} onClick={this.openList} />
         {
           this.state.loading &&
           <Spinner label={strings.Loading} size={SpinnerSize.large} />
         }
-
         {
           this.state.messages &&
             this.state.messages.length > 0 ? (
               <div>
-                <Link href={this.outlookNewEmailLink} target='_blank' className={styles.newEmail}>{strings.NewEmail}</Link>
                 <List items={this.state.messages}
                   onRenderCell={this._onRenderCell} className={styles.list} />
-                <Link href={this.outlookLink} target='_blank' className={styles.viewAll}>{strings.ViewAll}</Link>
               </div>
             ) : (
               !this.state.loading && (
@@ -135,5 +147,13 @@ export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersona
         }
       </div>
     );
+  }
+
+  private openNewEmail = () => {
+    window.open(this.outlookNewEmailLink, "_blank");
+  }
+
+  private openList = () => {
+    window.open(this.outlookLink, "_blank");
   }
 }
