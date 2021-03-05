@@ -118,11 +118,19 @@ export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesP
    * Default React render method
    */
   public render(): React.ReactElement<IRecentlyVisitedSitesProps> {
+   
+    //
+    // supporting different themes for page's section
+    //
+    const color: string | null = (!!this.props.themeVariant && this.props.themeVariant.semanticColors.bodyText) || null;
+    const backgroundColor: string | null = (!!this.props.themeVariant && this.props.themeVariant.semanticColors.bodyBackground) || null;
+
     return (
       <div className={ styles.recentlyVisitedSites }>
         <WebPartTitle displayMode={this.props.displayMode}
                       title={this.props.title}
-                      updateProperty={this.props.updateProperty} />
+                      updateProperty={this.props.updateProperty}
+                      themeVariant={this.props.themeVariant} />
 
         {
           this.state.loading && <Spinner label={strings.Loading} size={SpinnerSize.large} />
@@ -130,12 +138,12 @@ export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesP
 
         {
           this.state.usedSites && this.state.usedSites.length > 0 ? (
-            <div className={styles.list}>
+            <div className={styles.list} style={{backgroundColor:backgroundColor}}>
               <ul>
                 {
                   this.state.usedSites.map(site => (
-                    <li key={site.id} className={styles.site}>
-                      <Link href={site.path} title={site.title}>{site.title}</Link>
+                    <li key={site.id} className={styles.site} style={{background:backgroundColor}}>
+                      <Link href={site.path} title={site.title} style={{color:color}}>{site.title}</Link>
                     </li>
                   ))
                 }
