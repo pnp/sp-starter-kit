@@ -68,7 +68,7 @@ const EventInfo = (props: MgtTemplateProps) => {
           </div>
         </div>
         <div className={`${styles.divider} ${event.showAs}`}></div>
-        <div>
+        <div style={{"wordBreak": 'break-word', 'width': '75%'}}>
           <div className={styles.subject}>{event.subject}</div>
           <div className={styles.location}>{event.location.displayName}</div>
         </div>
@@ -83,11 +83,11 @@ const HeaderInfo = (props: MgtTemplateProps) => {
   return <div className={styles.meetingDate}>
     { format(new Date(day), 'iiii, MMMM d, yyyy') }
   </div>;
-}
+};
 
 const LoadingTemplate = (props: MgtTemplateProps) => {
-  return <Spinner label={strings.Loading} size={SpinnerSize.large} />
-}
+  return <Spinner label={strings.Loading} size={SpinnerSize.large} />;
+};
 
 export default class PersonalCalendar extends React.Component<IPersonalCalendarProps, IPersonalCalendarState> {
   private _interval: number;

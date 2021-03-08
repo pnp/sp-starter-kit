@@ -34,7 +34,7 @@
         }
     }
     .linkWrapper {
-        display: flex;
+        display: -webkit-box;
         flex-flow: row nowrap;
     }
     .timeDetails {
