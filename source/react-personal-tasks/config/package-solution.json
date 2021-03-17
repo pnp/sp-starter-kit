@@ -16,6 +16,9 @@
     }, {
       "resource": "Microsoft Graph",
       "scope": "People.Read"
+    }, {
+      "resource": "Microsoft Graph",
+      "scope": "User.ReadBasic.All"
     }]
   },
   "paths": {
