@@ -12,6 +12,7 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "@microsoft/mgt": "^2.0.1",
     "@microsoft/mgt-react": "^2.0.0-preview.5",
     "@microsoft/sp-core-library": "1.9.1",
     "@microsoft/sp-lodash-subset": "1.9.1",
@@ -26,7 +27,8 @@
     "@types/webpack-env": "1.13.1",
     "office-ui-fabric-react": "6.189.2",
     "react": "16.8.5",
-    "react-dom": "16.8.5"
+    "react-dom": "16.8.5",
+    "@starter-kit/shared-library": "1.0.0"
   },
   "resolutions": {
     "@types/react": "16.8.8"

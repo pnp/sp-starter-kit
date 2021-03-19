@@ -13,6 +13,7 @@ import PersonalCalendar from './components/PersonalCalendar';
 import { IPersonalCalendarProps } from './components/IPersonalCalendarProps';
 import { MSGraphClient } from '@microsoft/sp-http';
 import { Providers, SharePointProvider } from '@microsoft/mgt';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme, ISemanticColors } from '@microsoft/sp-component-base';
 
 export interface IPersonalCalendarWebPartProps {
   title: string;
@@ -23,13 +24,28 @@ export interface IPersonalCalendarWebPartProps {
 
 export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPersonalCalendarWebPartProps> {
   private propertyFieldNumber;
-
+  // theme provider
+  private _themeProvider: ThemeProvider;
+  // current theme
+  private _themeVariant: IReadonlyTheme | undefined;
+  
   public onInit(): Promise<void> {
+    // Consume the new ThemeProvider service
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+
+    // If it exists, get the theme variant
+    this._themeVariant = this._themeProvider.tryGetTheme();
+
+    // Register a handler to be notified if the theme variant changes
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+    
     Providers.globalProvider = new SharePointProvider(this.context);
+   
     return Promise.resolve();
   }
 
   public render(): void {
+    
     const element: React.ReactElement<IPersonalCalendarProps> = React.createElement(
       PersonalCalendar,
       {
@@ -40,6 +56,7 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
         // pass the current display mode to determine if the title should be
         // editable or not
         displayMode: this.displayMode,
+        themeVariant: this._themeVariant,
         // handle updated web part title
         updateProperty: (value: string): void => {
           // store the new title in the title web part property
@@ -105,5 +122,9 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
         }
       ]
     };
+  }
+  protected _handleThemeChangedEvent = (args: ThemeChangedEventArgs): void => {
+    this._themeVariant = args.theme;
+    this.render();
   }
 }

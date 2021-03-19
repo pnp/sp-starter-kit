@@ -8,14 +8,29 @@ import {
 import { RecentlyVisitedSites, IRecentlyVisitedSitesProps } from './components';
 import { MSGraphClient } from '@microsoft/sp-http';
 
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme, ISemanticColors } from '@microsoft/sp-component-base';
+
 export interface IRecentlyVisitedSitesWebPartProps {
   title: string;
 }
 
 export default class RecentlyVisitedSitesWebPart extends BaseClientSideWebPart<IRecentlyVisitedSitesWebPartProps> {
   private graphClient: MSGraphClient;
+  // theme provider
+  private _themeProvider: ThemeProvider;
+  // current theme
+  private _themeVariant: IReadonlyTheme | undefined;
 
   public onInit(): Promise<void> {
+    // Consume the new ThemeProvider service
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+
+    // If it exists, get the theme variant
+    this._themeVariant = this._themeProvider.tryGetTheme();
+
+    // Register a handler to be notified if the theme variant changes
+    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
         .getClient()
@@ -33,6 +48,7 @@ export default class RecentlyVisitedSitesWebPart extends BaseClientSideWebPart<I
         title: this.properties.title,
         graphClient: this.graphClient,
         displayMode: this.displayMode,
+        themeVariant: this._themeVariant,
         updateProperty: (value: string) => {
           this.properties.title = value;
         }
@@ -50,5 +66,10 @@ export default class RecentlyVisitedSitesWebPart extends BaseClientSideWebPart<I
     return {
       pages: []
     };
+  }
+
+  protected _handleThemeChangedEvent = (args: ThemeChangedEventArgs): void => {
+    this._themeVariant = args.theme;
+    this.render();
   }
 }

@@ -1,6 +1,6 @@
 # SharePoint Starter Kit v2
 
-The SharePoint Starter Kit (starter kit) is a comprehensive solution designed for SharePoint Online and SharePoint 2019 which provides numerous SharePoint Framework (SPFx) web parts, extensions, and other components, as well as [PnP PowerShell](https://github.com/pnp/pnp-powershell) driven provisioning which you can use as an example and inspiration for your own customizations. 
+The SharePoint Starter Kit (starter kit) is a comprehensive solution designed for SharePoint Online and SharePoint 2019 which provides numerous SharePoint Framework (SPFx) web parts, extensions, and other components, as well as [PnP PowerShell](https://github.com/pnp/powershell) driven provisioning which you can use as an example and inspiration for your own customizations. 
 
 ![PnP Starter Pack Front Page](./assets/images/default-front-page-v2.png)
 
@@ -58,13 +58,10 @@ Here are current pre-requirements for making this solution work in your tenant.
 
 1. You will need to be a tenant administrator to be able to deploy this solution
     - Notice that you can get free developer tenant from [Office 365 developer program](https://developer.microsoft.com/en-us/office/dev-program), if needed.
-    - **Notice** - at this time due to limitations of the PnP provisioning engine and PnP PowerShell, **MFA** accounts are **not supported**, nor are AAD applications. The Starter Kit V2 requires a tenant administrative account that would **not required** -UseWebLogin or -PnPO365ManagementShell when connecting to your SharePoint tenant.
 
 1. Automatic end-to-end provisioning only works with English tenants
     - All solutions and web parts are also English in the current implementation
     - For tenants that have English but have a different default language, the [term set provisioning may be modified to assist with installation](./documentation/term-store.md#non-english-tenants)
-
-1. Release preferences for your SharePoint Online tenant will need to be set as "Targeted release for everyone" option (also known as First Release)
 
 1. Add the tenant administrator account used during provisioning as Term Store Administrator in the Taxonomy Term Store through the SharePoint Admin Center (SPO) or Central Admin (SP2019)
 
@@ -73,32 +70,29 @@ Here are current pre-requirements for making this solution work in your tenant.
 > **It is recommended that you wait up to 24 hours before attempting to provision this solution if any of the following are true**
 > - Your SharePoint tenant was just created
 > - You just created your SharePoint tenant app catalog
-> - You just set your tenant as "Targeted release for everyone" (SPO)
-
 
 ## Getting started
 
 Shortest path to success for SharePoint Online - The following steps will help you get started in any SharePoint Online tenant as fast as possible.
 
-> For SharePoint 2019 tenant,  [refer to the SharePoint 2019 installation instructions](./provisioning/readme-sp2019.md)
+> For SharePoint 2019 tenant,  [refer to the SharePoint 2019 installation instructions](./provisioning/readme-2019.md)
 
 - Ensure you meet the [Pre-requirements](#Pre-requirements)
 
-- Ensure that you meet the [requirements for SharePoint Framework development](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) and are using the latest version of [PnP PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps)
+- Ensure that you meet the [requirements for SharePoint Framework development](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) and are using the latest version of [PnP PowerShell](https://pnp.github.io/powershell/articles/installation.html)
 
 - Prepare your tenant, by accomplishing the tasks highlighted in document [Preparing your tenant for the PnP SharePoint Starter Kit](./documentation/tenant-settings.md)
 
-- Open PowerShell, and use PnP PowerShell to connect to any site in your tenant with the [`Connect-PnPOnline` cmdlet](https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/connect-pnponline?view=sharepoint-ps) using your own tenant url
+- Open PowerShell, and use PnP PowerShell to connect to any site in your tenant with the [`Connect-PnPOnline` cmdlet](https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/connect-pnponline?view=sharepoint-ps) using your own tenant url. For more information on authenticating with PnP PowerShell, see [documentation](https://pnp.github.io/powershell/articles/authentication.html) 
 
   ```powershell
   Connect-PnPOnline https://contosodemosk.sharepoint.com
   ```
-  - **Notice** - at this time due to limitations of the PnP provisioning engine and PnP PowerShell, **MFA** accounts are **not supported**, nor are AAD applications. The Starter Kit V2 requires a tenant administrative account that would **not required** -UseWebLogin or -PnPO365ManagementShell when connecting to your SharePoint tenant.
 
 - Change to the `provisioning` folder found in this solution's root and execute the following command (using your own tenant url and the prefix of your choosing):
 
   ```powershell
-  Apply-PnPTenantTemplate -Path .\starterkit.pnp
+  Invoke-PnPTenantTemplate -Path .\starterkit.pnp
   ```
 
   This will provision three site collections with urls of `/sites/demoportal`, `/sites/demohr`, and `/sites/demomarketing`. Your urls may vary depending on the managed path you selected for team sites in your tenant administration (this defaults to 'sites').

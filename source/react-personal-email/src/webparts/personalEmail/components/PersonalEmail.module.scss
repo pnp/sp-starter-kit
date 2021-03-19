@@ -1,85 +1,80 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
-
 .personalEmail {
-  .title, .viewAll, .newEmail {
-    padding-left: 10px;
-  }
-
-  .list {
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-
-  .message {
-    display: block;
-    padding: 0.5em 10px;
-    color: $ms-color-black;
-
-    &:hover {
-      color: inherit;
-      background: $ms-color-neutralLight;
+    --varientBGColor: $ms-color-primary;
+    --varientFontColor: black;
+    --varientBGHovered: black;
+    background-color: var(--varientBGColor);
+    color: var(--varientFontColor) !important;
+    .title,
+    .viewAll,
+    .list {
+        margin-top: 1em;
+        margin-bottom: 1em;
     }
-  }
-
-  .from {
-    @include ms-font-l;
-    @include ms-fontWeight-semibold;
-  }
-
-  .subject {
-    @include ms-font-s;
-    @include ms-fontWeight-semibold;
-    color: $ms-color-themePrimary;
-    float: left;
-    width: 80%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .date {
-    @include ms-font-s;
-    @include ms-fontWeight-semibold;
-    color: $ms-color-themePrimary;
-    float: right;
-    width: 20%;
-    text-align: right;
-    word-break: keep-all;
-  }
-
-  .preview {
-    @include ms-font-s;
-    @include ms-fontWeight-light;
-    clear: both;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .isRead{
+    .title * {
+        color: var(--varientFontColor) !important;
+    }
+    button * {
+        color: var(--varientFontColor) !important;
+    }
+    .message {
+        display: block;
+        padding: 0.5em 10px;
+        color: var(--varientFontColor);
+        &:hover {
+            background: var(--varientBGHovered);
+        }
+    }
     .from {
-      @include ms-fontWeight-semilight;
-    }   
-
+        @include ms-font-l;
+        @include ms-fontWeight-semibold;
+    }
     .subject {
-      @include ms-fontWeight-semilight;
+        @include ms-font-s;
+        @include ms-fontWeight-semibold;
+        font-weight: bold;
+        float: left;
+        width: 80%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
-    
     .date {
-      @include ms-fontWeight-semilight;
+        @include ms-font-s;
+        @include ms-fontWeight-semibold;
+        font-weight: bold;
+        float: right;
+        width: 20%;
+        text-align: right;
+        word-break: keep-all;
     }
-    
     .preview {
-      @include ms-fontWeight-light;
+        @include ms-font-s;
+        @include ms-fontWeight-light;
+        clear: both;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
-  }
-
-  .noMessages {
-    @include ms-font-m;
-  }
-
-  .error {
-    @include ms-font-m;
-    color: $ms-color-alert;
-  }
+    .isRead {
+        .from {
+            @include ms-fontWeight-semilight;
+        }
+        .subject {
+            @include ms-fontWeight-semilight;
+        }
+        .date {
+            @include ms-fontWeight-semilight;
+        }
+        .preview {
+            @include ms-fontWeight-light;
+        }
+    }
+    .noMessages {
+        @include ms-font-m;
+    }
+    .error {
+        @include ms-font-m;
+        color: $ms-color-alert;
+    }
 }
