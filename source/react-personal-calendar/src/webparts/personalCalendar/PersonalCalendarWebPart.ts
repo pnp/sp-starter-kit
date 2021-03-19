@@ -33,15 +33,6 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
   private _themeVariant: IReadonlyTheme | undefined;
 
   public onInit(): Promise<void> {
-    // Consume the new ThemeProvider service
-    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
-
-    // If it exists, get the theme variant
-    this._themeVariant = this._themeProvider.tryGetTheme();
-
-    // Register a handler to be notified if the theme variant changes
-    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
-    
     Providers.globalProvider = new SharePointProvider(this.context);
 
     this._themeProvider = this.context.serviceScope.consume(
@@ -59,7 +50,6 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
   }
 
   public render(): void {
-    
     const element: React.ReactElement<IPersonalCalendarProps> = React.createElement(
       PersonalCalendar,
       {

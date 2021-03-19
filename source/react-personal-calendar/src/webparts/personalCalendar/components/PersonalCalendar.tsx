@@ -7,18 +7,14 @@ import * as React from 'react';
 import { IPersonalCalendarProps, IPersonalCalendarState } from '.';
 import { Event } from '@microsoft/microsoft-graph-types';
 import styles from './PersonalCalendar.module.scss';
-import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import format from 'date-fns/format';
 import { IIconProps } from 'office-ui-fabric-react/lib/components/Icon';
 import { ActionButton } from 'office-ui-fabric-react/lib/components/Button';
 import SimpleCalendar from './SimpleCalendar';
 
-export interface IAgendaTemplateProps extends MgtTemplateProps {
-  themeVariant: IReadonlyTheme | undefined;
-}
 
-const EventInfo = (props: IAgendaTemplateProps) => {
+const EventInfo = (props: MgtTemplateProps) => {
   /**
    * Get user-friendly string that represents the duration of an event
    * < 1h: x minutes
@@ -61,9 +57,6 @@ const EventInfo = (props: IAgendaTemplateProps) => {
   const startTime: Date = new Date(event.start.dateTime);
   const minutes: number = startTime.getMinutes();
   
-  const backgroundColor: string | null = (!!props.themeVariant && props.themeVariant.semanticColors.bodyBackground) || null;
-  const color: string | null = (!!props.themeVariant && props.themeVariant.semanticColors.bodyText) || null;
-
   return <div>
     <Link href={event.webLink} className={styles.meeting} target='_blank'>      
       <div className={styles.linkWrapper}>
