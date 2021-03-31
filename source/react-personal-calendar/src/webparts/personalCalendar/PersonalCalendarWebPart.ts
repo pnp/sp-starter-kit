@@ -1,51 +1,55 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneSlider
-} from '@microsoft/sp-webpart-base';
-
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { 
+  IPropertyPaneConfiguration, 
+  PropertyPaneSlider,
+  PropertyPaneCheckbox
+} from "@microsoft/sp-property-pane";
 import * as strings from 'PersonalCalendarWebPartStrings';
 import { SpStarterKitSharedLibrary } from '@starter-kit/shared-library';
 import PersonalCalendar from './components/PersonalCalendar';
 import { IPersonalCalendarProps } from './components/IPersonalCalendarProps';
-import { MSGraphClient } from '@microsoft/sp-http';
 import { Providers, SharePointProvider } from '@microsoft/mgt';
-import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme, ISemanticColors } from '@microsoft/sp-component-base';
+import { loadTheme } from "office-ui-fabric-react";
+import {
+  IReadonlyTheme,
+  ThemeChangedEventArgs,
+  ThemeProvider
+} from "@microsoft/sp-component-base";
 
 export interface IPersonalCalendarWebPartProps {
   title: string;
   refreshInterval: number;
   daysInAdvance: number;
   numMeetings: number;
+  showCalendar: boolean;
 }
 
 export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPersonalCalendarWebPartProps> {
   private propertyFieldNumber;
-  // theme provider
   private _themeProvider: ThemeProvider;
-  // current theme
   private _themeVariant: IReadonlyTheme | undefined;
-  
-  public onInit(): Promise<void> {
-    // Consume the new ThemeProvider service
-    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
 
+  public onInit(): Promise<void> {
+    Providers.globalProvider = new SharePointProvider(this.context);
+
+    this._themeProvider = this.context.serviceScope.consume(
+      ThemeProvider.serviceKey
+    );
     // If it exists, get the theme variant
     this._themeVariant = this._themeProvider.tryGetTheme();
-
     // Register a handler to be notified if the theme variant changes
-    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
-    
-    Providers.globalProvider = new SharePointProvider(this.context);
-   
+    this._themeProvider.themeChangedEvent.add(
+      this,
+      this._handleThemeChangedEvent
+    );
+
     return Promise.resolve();
   }
 
   public render(): void {
-    
     const element: React.ReactElement<IPersonalCalendarProps> = React.createElement(
       PersonalCalendar,
       {
@@ -53,6 +57,7 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
         refreshInterval: this.properties.refreshInterval,
         daysInAdvance: this.properties.daysInAdvance,
         numMeetings: this.properties.numMeetings,
+        showCalendar: this.properties.showCalendar,
         // pass the current display mode to determine if the title should be
         // editable or not
         displayMode: this.displayMode,
@@ -115,6 +120,10 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
                   max: 20,
                   step: 1,
                   value: this.properties.numMeetings
+                }),
+                PropertyPaneCheckbox('showCalendar', {
+                  text: strings.ShowCalendar,
+                  checked: this.properties.showCalendar
                 })
               ]
             }
@@ -123,8 +132,10 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
       ]
     };
   }
-  protected _handleThemeChangedEvent = (args: ThemeChangedEventArgs): void => {
+
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
     this._themeVariant = args.theme;
+
     this.render();
   }
 }

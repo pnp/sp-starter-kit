@@ -22,6 +22,7 @@ The `Personal Calendar` web part can be configured with the following properties
 | How often to check for new upcoming meetings (in minutes) | refreshInterval | number | no | Default: 5 - the interval in minutes between auto refresh |
 | How many days in advance to retrieve meetings for? 0 - today only | daysInAdvance | number | no | Default: 0 (Today only) - the interval in minutes between auto refresh |
 | How many meetings to show? 0 - show all retrieved meetings | numMeetings | number | no | Default: 0 (all) - the interval in minutes between auto refresh |
+| Show Calendar | showCalendar | bool | no | Show or hide the calendar component |
 
 ## Used SharePoint Framework Version
 
