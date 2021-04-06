@@ -71,7 +71,7 @@ You can also download just the [extension (sppkg) file](./sharepoint/solution/re
 
 ## Prerequisites
 
-Alert is is created automatically to the root of the site collection if it's missing where the extension is executed. This requires that the person using hte extension will have sufficient permissions. If permissions are missing, then application customizer will not render anything.
+Alert is is created automatically to the root of the site collection if it's missing where the extension is executed. This requires that the person using the extension will have sufficient permissions. If permissions are missing, then application customizer will not render anything.
 
 ## Solution
 
