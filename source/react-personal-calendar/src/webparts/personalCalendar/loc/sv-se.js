@@ -7,10 +7,12 @@ define([], function() {
     "Hours": "timmar",
     "Loading": "Hämtar dina kommande möten",
     "Minutes": "minuter",
-    "NoMessages": "Du har inga kommande möten",
+    "NoMeetings": "Du har inga kommande möten",
     "NumMeetings": "Hur många möten ska visas? 0 - alla hämtade möten visas",
     "RefreshInterval": "Hur ofta skall det kontrolleras om det finns nya kommande möten (i minuter)",
     "PropertyPaneDescription": "Möten webbdelskonfiguration",
-    "ViewAll": "Visa hela listan"
+    "ViewAll": "Visa hela listan",
+    "NewMeeting": "New meeting",
+    "ShowCalendar": "Show Calendar"
   }
 });

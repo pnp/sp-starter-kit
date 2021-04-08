@@ -8,10 +8,11 @@ define([], function() {
     "Loading": "Yaklaşan toplantınız alınıyor",
     "Minutes": "dakika",
     "NewMeeting": "Yeni toplantı",
-    "NoMessages": "Yaklaşan toplantınız yok",
+    "NoMeetings": "Yaklaşan toplantınız yok",
     "NumMeetings": "Gösterilecek kaç toplantı var? 0 - tüm alınan toplantıları göster",
     "RefreshInterval": "Yaklaşan yeni toplantıların ne sıklıkta kontrol edileceği (dakika olarak)",
     "PropertyPaneDescription": "Toplantılar web bölümü yapılandırması",
-    "ViewAll": "Tam listeyi görüntüle"
+    "ViewAll": "Tam listeyi görüntüle",
+    "ShowCalendar": "Show Calendar"
   }
 });

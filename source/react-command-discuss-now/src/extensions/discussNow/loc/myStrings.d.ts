@@ -5,7 +5,6 @@ declare interface IDiscussNowCommandSetStrings {
   DiscussNowDialogDescription: string;
 
   ScheduleMeetingSubjectLabel: string;
-  ScheduleMeetingSubjectPlaceholder: string;
   ScheduleMeetingSubjectValidationErrorMessage: string;
   ScheduleMeetingDateLabel: string;
   ScheduleMeetingHoursLabel: string;

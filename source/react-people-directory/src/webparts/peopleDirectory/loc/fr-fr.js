@@ -4,7 +4,7 @@ define([], function() {
     "LoadingSpinnerLabel": "Chargement du répertoire de personnes ...",
     "NoPeopleFoundLabel": "Aucune personne trouvée",
     "SearchBoxPlaceholder": "Chercher",
-    "Error": "Erreur",
+    "ErrorLabel": "Erreur",
     "SkillsLabel": "Compétences",
     "ProjectsLabel": "Projets",
     "CopyEmailLabel": "Copier l'email dans le presse papier",

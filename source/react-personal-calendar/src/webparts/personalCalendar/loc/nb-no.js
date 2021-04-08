@@ -8,10 +8,11 @@ define([], function() {
     "Loading": "Henter dine kommende møter",
     "Minutes": "minutter",
     "NewMeeting": "Nytt møte",
-    "NoMessages": "Du har ingen kommende møter",
+    "NoMeetings": "Du har ingen kommende møter",
     "NumMeetings": "Hvor mange møter skal vises? 0 - vis alle hentede møter",
     "RefreshInterval": "Hvor ofte skal du sjekke etter nye kommende møter (i minutter)",
     "PropertyPaneDescription": "Konfigurer møte webdelen",
-    "ViewAll": "Vis hele listen"
+    "ViewAll": "Vis hele listen",
+    "ShowCalendar": "Show Calendar"
   }
 });

@@ -4,7 +4,7 @@ define([], function() {
     "LoadingSpinnerLabel": "Loading people directory...",
     "NoPeopleFoundLabel": "No people found",
     "SearchBoxPlaceholder": "Search",
-    "Error": "Error",
+    "ErrorLabel": "Error",
     "SkillsLabel": "Skills",
     "ProjectsLabel": "Projects",
     "CopyEmailLabel": "Copy email to clipboard",

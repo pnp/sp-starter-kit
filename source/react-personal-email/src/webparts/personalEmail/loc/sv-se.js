@@ -5,6 +5,9 @@ define([], function() {
     "NoMessages": "Inga meddelanden hittades",
     "NrOfMessagesToShow": "Antal meddelanden att visa",
     "PropertyPaneDescription": "Meddelanden webbdelskonfiguration",
-    "ViewAll": "Visa hela listan"
+    "ViewAll": "Visa hela listan",
+    "NewEmail": "New e-mail",
+    "ShowInboxOnly": "Show e-mail from Inbox only",
+    "ShowInboxOnlyCallout": "When selected, only e-mails from Inbox will be shown."
   }
 });

@@ -5,6 +5,9 @@ define([], function() {
     "NoMessages": "No se encontraron mensajes",
     "NrOfMessagesToShow": "Numero de mensajes a mostrar",
     "PropertyPaneDescription": "Configuracion del elemento web de Mensajes",
-    "ViewAll": "Ver la lista completa"
+    "ViewAll": "Ver la lista completa",
+    "NewEmail": "New e-mail",
+    "ShowInboxOnly": "Show e-mail from Inbox only",
+    "ShowInboxOnlyCallout": "When selected, only e-mails from Inbox will be shown."
   }
 });

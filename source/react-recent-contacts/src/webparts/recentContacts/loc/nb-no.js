@@ -1,6 +1,6 @@
 define([], function() {
   return {
-    "DescriptionFieldLabel": "Kontakter webdel konfigurasjon",
+    "PropertyPaneDescription": "Kontakter webdel konfigurasjon",
     "NrOfContactsToShow": "Angi hvor mange kontakter som skal vises",
     "NoContacts": "Ingen kontakter funnet.",
     "Loading": "Henter dine kontakter",

@@ -4,7 +4,7 @@ define([], function() {
     "LoadingSpinnerLabel": "Laster personkatalogen...",
     "NoPeopleFoundLabel": "Ingen personer funnet",
     "SearchBoxPlaceholder": "Søk",
-    "Error": "Feil",
+    "ErrorLabel": "Feil",
     "SkillsLabel": "Kompetanser",
     "ProjectsLabel": "Prosjekter",
     "CopyEmailLabel": "Kopier e-post adresse til utklippstavlen",

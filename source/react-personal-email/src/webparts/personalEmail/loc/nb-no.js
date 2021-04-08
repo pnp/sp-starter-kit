@@ -6,6 +6,8 @@ define([], function() {
     "NoMessages": "Ingen e-poster funnet",
     "NrOfMessagesToShow": "Antall e-poster som skal vises",
     "PropertyPaneDescription": "Konfigurer e-post webdelen",
-    "ViewAll": "Vis hele listen"
+    "ViewAll": "Vis hele listen",
+    "ShowInboxOnly": "Show e-mail from Inbox only",
+    "ShowInboxOnlyCallout": "When selected, only e-mails from Inbox will be shown."
   }
 });

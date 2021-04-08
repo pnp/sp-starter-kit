@@ -8,10 +8,11 @@ define([], function() {
     "Loading": "Récupération de votre prochaine réunion",
     "Minutes": "minutes",
     "NewMeeting": "Nouvelle réunion",
-    "NoMessages": "Vous n'avez aucune réunion à venir",
+    "NoMeetings": "Vous n'avez aucune réunion à venir",
     "NumMeetings": "Combien de réunions à montrer? 0 - afficher toutes les réunions récupérées",
     "RefreshInterval": "À quelle fréquence vérifier les nouvelles réunions à venir (en minutes)",
     "PropertyPaneDescription": "Configuration de réunions de la partie Web",
-    "ViewAll": "Voir toute la liste"
+    "ViewAll": "Voir toute la liste",
+    "ShowCalendar": "Show Calendar"
   }
 });

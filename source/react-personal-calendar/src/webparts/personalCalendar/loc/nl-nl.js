@@ -8,10 +8,11 @@ define([], function() {
       "Loading": "Aankomende meeting(s) aan het ophalen",
       "Minutes": "minuten",
       "NewMeeting": "Nieuwe meeting",
-      "NoMessages": "Je hebt geen aankomende meetings",
+      "NoMeetings": "Je hebt geen aankomende meetings",
       "NumMeetings": "Hoeveel meetings wil je tonen? 0 = laat alle opgehaalde meetings zien",
       "RefreshInterval": "Hoe vaak wil je aankomende meetings ophalen (in minuten)",
       "PropertyPaneDescription": "Meetings webpart configuratie",
-      "ViewAll": "Bekijk de volledige lijst"
+      "ViewAll": "Bekijk de volledige lijst",
+      "ShowCalendar": "Show Calendar"
     }
   });

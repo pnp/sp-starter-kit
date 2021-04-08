@@ -7,10 +7,12 @@ define([], function() {
     "Hours": "Stunden",
     "Loading": "Rufe bevorstehend Besprechungen auf",
     "Minutes": "Minuten",
-    "NoMessages": "Sie haben keine  bevorstehend Besprechungen",
+    "NoMeetings": "Sie haben keine  bevorstehend Besprechungen",
     "NumMeetings": "Wieviele Besprechungen sollen angezeigt werden? 0 - Zeige alle abgerufenen Besprechungen",
     "RefreshInterval": "Wie oft soll nach bevorstehenden Besprechungen geprüft werden(in Minuten)",
     "PropertyPaneDescription": "Besprechungen Web Part Konfiguration",
-    "ViewAll": "Vollständige Liste anzeigen"
+    "ViewAll": "Vollständige Liste anzeigen",
+    "NewMeeting": "New meeting",
+    "ShowCalendar": "Show Calendar"
   }
 });

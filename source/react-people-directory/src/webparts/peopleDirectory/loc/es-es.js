@@ -4,6 +4,11 @@ define([], function() {
     "LoadingSpinnerLabel": "Cargando directorio de personas...",
     "NoPeopleFoundLabel": "No se ha encontrado personas",
     "SearchBoxPlaceholder": "Buscar",
-    "Error": "Error"
+    "ErrorLabel": "Error",
+    "SkillsLabel": "Skills",
+    "ProjectsLabel": "Projects",
+    "CopyEmailLabel": "Copy email to clipboard",
+    "CopyPhoneLabel": "Copy phone to clipboard",
+    "CopyMobileLabel": "Copy mobile to clipboard"
   }
 });

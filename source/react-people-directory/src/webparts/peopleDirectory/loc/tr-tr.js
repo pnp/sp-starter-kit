@@ -4,7 +4,7 @@ define([], function() {
     "LoadingSpinnerLabel": "Kişi dizini yükleniyor...",
     "NoPeopleFoundLabel": "Hiç kimse bulunamadı",
     "SearchBoxPlaceholder": "Arama",
-    "Error": "Hata",
+    "ErrorLabel": "Hata",
     "SkillsLabel": "Yetenekler",
     "ProjectsLabel": "Projeler",
     "CopyEmailLabel": "E-postayı panoya kopyala",
