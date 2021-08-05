@@ -49,10 +49,10 @@ It is recommended you read this entire document before installing the starter ki
    Connect-PnPOnline -Url https://[yourtenant].sharepoint.com
    ```
 
-4. Install the starter kit using the **Apply-PnPTenantTemplate** PowerShell commandlet from this project's **./provisioning** folder:
+4. Install the starter kit using the **Invoke-PnPTenantTemplate** PowerShell commandlet from this project's **./provisioning** folder:
 
    ```powershell
-   Apply-PnPTenantTemplate -Path starterkit.pnp
+   Invoke-PnPTenantTemplate -Path starterkit.pnp
    ```
 
 
@@ -63,7 +63,7 @@ It is recommended you read this entire document before installing the starter ki
   To customize the site collection urls, use the **-Parameters** commandlet parameter as follows:
 
   ```powershell
-  Apply-PnPTenantTemplate -Path starterkit.pnp -Parameters @{"PORTALURL"="/sites/contosoportal"; "MARKETINGALIAS"="contosomarketing";   "HRALIAS"="contosohr" }
+  Invoke-PnPTenantTemplate -Path starterkit.pnp -Parameters @{"PORTALURL"="/sites/contosoportal"; "MARKETINGALIAS"="contosomarketing";   "HRALIAS"="contosohr" }
   ```
 
   Replace the values of **"PORTALURL"**, **"MARKETINGALIAS"**, and **"HRALIAS"** with your own custom site paths. The **PORTALURL** parameter is the tenant relative url for your main site collection. The two alias parameters are used to create modern team sites with connected Office 365 unified groups.
@@ -98,7 +98,7 @@ Credentials may be provided via the command line, or by using the ['Windows cred
 ```powershell
 $creds = Get-Credential
 Connect-PnPOnline https://[yourtenant].sharepoint.com -Credentials $creds
-Apply-PnPTenantTemplate -Path .\starterkit.pnp
+Invoke-PnPTenantTemplate -Path .\starterkit.pnp
 ```
 
 
@@ -124,5 +124,5 @@ You can override certain parameters, including:
 Override one or more setting using the **-Parameters** parameter similar to the following. Each paramater must be separated by a semicolon, i.e. **;**:
 
 ```powershell
-Apply-PnPTenantTemplate -Path .\starterkit.pnp -Parameters @{"Company"="Your Company Name";"SiteUrlPrefix"="YourCompany";"WeatherCity"="Stockholm"}
+Invoke-PnPTenantTemplate -Path .\starterkit.pnp -Parameters @{"Company"="Your Company Name";"SiteUrlPrefix"="YourCompany";"WeatherCity"="Stockholm"}
 ```
