@@ -28,7 +28,7 @@ It is recommended you read this entire document before installing the starter ki
 
 - [Only SPFx components](./readme-spfx-only.md) - Advanced - Only install SPFx solutions to tenant app catalog, will not provision site designs, site scripts, sites, or content.
 
-- [Single solution installation - deprecated v1 starter kit](./readme-single-solution.md) - SharePoint Online only, deprecated full installation, one SPFx solution for all components.
+- [Single solution installation - deprecated v1 starter kit](https://github.com/pnp/sp-starter-kit/tree/v1/provisioning/) - SharePoint Online only, deprecated full installation, one SPFx solution for all components.
 
 
 ## Minimal path to success
