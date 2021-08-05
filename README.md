@@ -75,7 +75,7 @@ Here are current pre-requirements for making this solution work in your tenant.
 
 Shortest path to success for SharePoint Online - The following steps will help you get started in any SharePoint Online tenant as fast as possible.
 
-> For SharePoint 2019 tenant,  [refer to the SharePoint 2019 installation instructions](./provisioning/readme-2019.md)
+> For SharePoint 2019 tenant,  [refer to the SharePoint 2019 installation instructions](./provisioning/readme-sp2019.md)
 
 - Ensure you meet the [Pre-requirements](#Pre-requirements)
 
@@ -109,8 +109,8 @@ Shortest path to success for SharePoint Online - The following steps will help y
 ## Learn more
 
 - [Detailed provisioning instructions for SharePoint Online](./provisioning/readme.md)
-- [Detailed provisioning instructions for SharePoint 2019](./provisioning/readme-2019.md)
-- [Additional documentation and how-tos](./documenation/README.md)
+- [Detailed provisioning instructions for SharePoint 2019](./provisioning/readme-sp2019.md)
+- [Additional documentation and how-tos](./documentation/README.md)
 
 ## Custom Web Parts
 
@@ -153,8 +153,8 @@ Not available | Tab Page (deprecated) | Renders a header with links between two 
 ## SharePoint Framework Libraries
 
 Extension |  Description  | Compatibility | Code
------------- | ----------- | ----------- | ----------- | -----------
-[Shared library](documentation/components/lib-shared.md) | A shared library that includes shared locatization strings, consumabled by any other SPFx webpart or extension. | SPO | [code](./source/library-starter-kit.shared)
+------------ | ----------- | ----------- | -----------
+[Shared library](./documentation/components/lib-shared.md) | A shared library that includes shared locatization strings, consumabled by any other SPFx webpart or extension. | SPO | [code](./source/library-starter-kit-shared)
 
 
 ## Support and SLA for this project
