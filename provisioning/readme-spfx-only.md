@@ -22,10 +22,10 @@ It is recommended you read this entire document before installing the starter ki
 
 2. Open PowerShell and run the following commands, changing the tenant url to your primary SharePoint tenant site.
 
-   In order to successfully install the SP Starter Kit, you are required to install the latest PnP PowerShell for SharePoint Online (validated at version 3.19.2003.0 or higher), which can be installed with the following PowerShell command:
+   In order to successfully install the SP Starter Kit, you are required to install the latest [PnP PowerShell](https://github.com/pnp/powershell) (validated at version 1.7.0 or higher), which can be installed with the following PowerShell command:
 
    ```powershell
-   Install-Module -Name SharePointPnPPowerShellOnline
+   Install-Module -Name PnP.PowerShell
    ```
 
 3. After successfully installing PnP PowerShell, you need to connect to your tenant **using authorization credentials that have tenant administrative rigths**. This level of access is required to provision taxonomy.
@@ -34,10 +34,10 @@ It is recommended you read this entire document before installing the starter ki
    Connect-PnPOnline -Url https://[yourtenant].sharepoint.com
    ```
 
-4. Install the spfx only starter kit using the **Apply-PnPTenantTemplate** PowerShell commandlet from this project's **./provisioning** folder:
+4. Install the spfx only starter kit using the **Invoke-PnPTenantTemplate** PowerShell commandlet from this project's **./provisioning** folder:
 
    ```powershell
-   Apply-PnPTenantTemplate -Path starterkit-spfx-only.pnp
+   Invoke-PnPTenantTemplate -Path starterkit-spfx-only.pnp
    ```
 
 5. Upon successful provisioning, no error messages should appear. Validate all solution packages were installed by validating your tenant App Catalog

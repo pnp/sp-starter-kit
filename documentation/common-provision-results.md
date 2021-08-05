@@ -6,7 +6,7 @@ All examples are based on running the following commands in PowerShell, where `[
 
 ```powershell
 Connect-PnPOnline https://[yourtenant].sharepoint.com
-Apply-PnPTenantTemplate -Path starterkit.pnp
+Invoke-PnPTenantTemplate -Path starterkit.pnp
 ```
 
 # Table of contents
@@ -20,7 +20,7 @@ Apply-PnPTenantTemplate -Path starterkit.pnp
 - [ERROR: Culture is not supported and/or (0x0c00) is an invalid culture identifier.](#error-culture-is-not-supported)
 - [Invalid App package installation - API Management missing](#invalid-app-package-installation---api-management-missing)
 - [ERROR: The user or administrator has not consented to use the application](#error-the-user-or-administrator-has-not-consented-to-use-the-application)
-- [ERROR: Apply-PnPTenantTemplate : The remote server returned an error: (401) Unauthorized](#error-apply-pnptenanttemplate-:-the-remote-server-returned-an-error:-401-unauthorized)
+- [ERROR: Invoke-PnPTenantTemplate : The remote server returned an error: (401) Unauthorized](#error-invoke-pnptenanttemplate-:-the-remote-server-returned-an-error:-401-unauthorized)
 
 
 ## Successful provisioning
@@ -36,9 +36,9 @@ If all [`pre-requirements`](../#pre-requirements) have been addressed and met, n
 
 1. Ensure you are connecting to your tenant site using a tenant admin account.
 
-1. Ensure that you have the latest PnP PowerShell commandlets. You might need to remove the PnP PowerShell commandlets and re-install to ensure you have the latest. [`PnP PowerShell - Recommended 3.19.2003.0 or later`](https://github.com/PnP/PnP-PowerShell/releases).
+1. Ensure that you have the latest PnP PowerShell commandlets. You might need to remove the PnP PowerShell commandlets and re-install to ensure you have the latest. [`PnP PowerShell - Recommended 1.7.0 or later`](https://github.com/pnp/powershell/releases).
 
-1. Your tenant must be set to `targeted release` for all users, and you must wait at least 24 hours after setting targeted release for all users before running deploy.ps1.
+1. Your tenant must be set to `targeted release` for all users, and you must wait at least 24 hours after setting targeted release for all users before running Invoke-PnPTenantTemplate.
 
 1. Verify you have already created your `tenant app catalog`.
 
@@ -55,11 +55,11 @@ If all [`pre-requirements`](../#pre-requirements) have been addressed and met, n
 
 ## ERROR: Improper version of PnP PowerShell installed
 
-[`PnP PowerShell - Recommended 3.19.2003.0 or later`](https://github.com/PnP/PnP-PowerShell/releases) is required for SP Starter Kit to properly provision. It is recommended that you have only the latest version of PnP PowerShell installed on your workstation as well.
+[`PnP PowerShell - Recommended 1.7.0 or later`](https://github.com/pnp/powershell) is required for SP Starter Kit to properly provision. It is recommended that you have only the latest version of PnP PowerShell installed on your workstation as well.
 
 If you do not have the proper version of PnP PowerShell installed, you may receive errors similar to:
 
-`Apply-PnPTenantTemplate : The term 'Apply-PnPTenantTemplate' is not recognized as the name of a cmdlet, function, script file, or
+`Invoke-PnPTenantTemplate : The term 'Invoke-PnPTenantTemplate' is not recognized as the name of a cmdlet, function, script file, or
 operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
 again.`
 
@@ -68,51 +68,50 @@ again.`
 
 ### Recommended solution
 
-Verify you have the latest PnP PS commandlets installed, as well as look for competeting, older versions. If you receive any error that references that a given `term` is not `recognized as the name of a cmdlet, function, script file, or
+Verify you have the latest PnP PowerShell commandlets installed, as well as look for competeting, older versions. If you receive any error that references that a given `term` is not `recognized as the name of a cmdlet, function, script file, or
 operable program`, you have an issue with how PnP PowerShell is installed on your workstation.
 
 ```powershell
-Get-Module SharePointPnPPowerShell* -ListAvailable | Select-Object Name,Version | Sort-Object Version -Descending
+Get-Module PnP.PowerShell* -ListAvailable | Select-Object Name,Version | Sort-Object Version -Descending
 ```
 
-![Multiple PnP PS](../assets/images/provision-ps-failed-invalid-pnpps-multiple.png)
+![Multiple PnP PowerShell](../assets/images/provision-ps-failed-invalid-pnpps-multiple.png)
 
 `Update PnP PowerShell'
 
 ```powershell
-Update-Module SharePointPnPPowerShell*
+Update-Module PnP.PowerShell*
 ```
 
 `Remove older verions(s) of PnP PowerShell'
 
-Based on the example above, we can see there are two versions of PnP PS installed. We could remove version  2.23.1802.0 with the following command:
+Based on the example above, we can see there are two versions of PnP PowerShell installed. We could remove version 1.6.0 with the following command:
 
 ```powershell
-Get-InstalledModule -Name "SharePointPnPPowerShellOnline" -RequiredVersion 2.23.1802.0 | Uninstall-Module
+Get-InstalledModule -Name "PnP.PowerShell" -RequiredVersion 1.6.0 | Uninstall-Module
 ```
 
 Alternatively you can decide to uninstall all installed version of PnP PowerShell and reinstall the latest module
 ```powershell
-Uninstall-Module -Name "SharePointPnPPowerShellOnline" -AllVersions
-Install-Module -Name "SharePointPnPPowerShellOnline"
+Uninstall-Module -Name "PnP.PowerShell" -AllVersions
+Install-Module -Name "PnP.PowerShell"
 ```
 
-> Notice - versions of PnP PowerShell released in 2020 may throw errors related to [permissions](#error-the-user-or-administrator-has-not-consented-to-use-the-application).
+> Notice - versions of the legacy PnP PowerShell released in 2020 may throw errors related to [permissions](#error-the-user-or-administrator-has-not-consented-to-use-the-application).
 
 Recommended versions of PnP PowerShell include:
-- 3.23.2007.1
-- 3.25.2009.1 - Note: you may have to [grant consent](#error-the-user-or-administrator-has-not-consented-to-use-the-application)
+- 1.7.0 - Note: you may have to [grant consent](#error-the-user-or-administrator-has-not-consented-to-use-the-application)
 
 
 ## ERROR: App Catalog Required
 
-The SP Starter Kit includes multiple SPFx solution packages, `*.sppkg`. By default these packages will be deployed to the tenant app catalog by the `Apply-PnPTenantTemplate` cmdlet in to your tenant App Catalog.
+The SP Starter Kit includes multiple SPFx solution packages, `*.sppkg`. By default these packages will be deployed to the tenant app catalog by the `Invoke-PnPTenantTemplate` cmdlet in to your tenant App Catalog.
 
 If you have not completed this task, you might receive an error that includes:
 
 ```
 WARNING: Tenant app catalog doesn't exist. ALM step will be skipped!
-Apply-PnPTenantTemplate : There is no app catalog site for this tenant.
+Invoke-PnPTenantTemplate : There is no app catalog site for this tenant.
 ```
 
 ![App catalog required](../assets/images/provision-ps-failed-no-app-catalog.png)
@@ -122,7 +121,7 @@ Apply-PnPTenantTemplate : There is no app catalog site for this tenant.
 
 [`Create a tenant app catalog`](./manual-deploy-sppkg-solution.md) and wait for deployment to complete, which may take minutes, hours, or possibly a day.
 
-`Note`: If you recently created a new tenant or an [Office 365 Developer tenant](https://docs.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program), you may receive an error similar to:
+`Note`: If you recently created a new tenant or an [Microsoft 365 developer tenant](https://docs.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program), you may receive an error similar to:
 
 ```
 Sorry, something went wrong
@@ -240,13 +239,13 @@ You should consider the following solution based on recommendations provided in 
 
 ### Recommended solution
 
-You can downgrade to a previous version of PnP PowerShell. A validated version includes PnP PowerShell 3.23.2007.1
+You can downgrade to a previous version of PnP PowerShell. A validated version includes PnP PowerShell 1.7.0
 
 ```powershell
-Install-Module -Name "SharePointPnPPowerShellOnline" -RequiredVersion 3.23.2007.1
+Install-Module -Name "PnP.PowerShell" -RequiredVersion 1.7.0
 ```
 
-If you are using a PnP PS version after 3.23.2007.1, e.g. 3.25.2009.1, use the following steps to grant the proper permissions.
+If you are using a PnP PS version after 1.7.0, use the following steps to grant the proper permissions.
 
 ```powershell
 Connect-PnPOnline -Url "https://.sharepoint.com/" -PnPManagementShell
@@ -268,12 +267,12 @@ Disconnect-PnPOnline
 Once this has been completed, the standard Starter Kit provisioning process should proceed as expected.
 
 
-## ERROR: Apply-PnPTenantTemplate : The remote server returned an error: (401) Unauthorized
+## ERROR: Invoke-PnPTenantTemplate : The remote server returned an error: (401) Unauthorized
 
 A common error if you are using an account that has MFA enabled, or recently was configured for MFA is:
 
 ```powershell
-Apply-PnPTenantTemplate : The remote server returned an error: (401) Unauthorized
+Invoke-PnPTenantTemplate : The remote server returned an error: (401) Unauthorized
 ```
 
 PnP Core / PnP PS do not currently appear to support MFA tokens when connecting to aspects of the tenant required but the kit, including access to the app catalog to provision .sppkg's. This includes when attempting to connect to your site using -PnPManagementShell or -UseWebLogin. 
