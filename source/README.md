@@ -1,6 +1,6 @@
 # Individual solutions of the Starter Kit
 
-Starting from SharePoint Starter Kit v2, each web part and be taken into use independently without requirement to deploy them all to your tenant.Those solutions which do not have cloud dependencies, can be also used in on-premises on SharePoint 2019 platform. Supportability of each solution is explicitly called out in the solution level.
+Starting from SharePoint Starter Kit v2, each web part and be taken into use independently without requirement to deploy them all to your tenant. Those solutions which do not have cloud dependencies, can be also used in on-premises on SharePoint 2019 platform. Supportability of each solution is explicitly called out in the solution level.
 
 Solution structure as as follows:
 

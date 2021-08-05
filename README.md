@@ -57,7 +57,7 @@ SharePoint Communication Sites and Team Sites have great out-of-the-box capabili
 Here are current pre-requirements for making this solution work in your tenant.
 
 1. You will need to be a tenant administrator to be able to deploy this solution
-    - Notice that you can get free developer tenant from [Office 365 developer program](https://developer.microsoft.com/en-us/office/dev-program), if needed.
+    - Notice that you can get free developer tenant from [Microsoft 365 Developer Program](https://developer.microsoft.com/en-us/office/dev-program), if needed.
 
 1. Automatic end-to-end provisioning only works with English tenants
     - All solutions and web parts are also English in the current implementation
@@ -79,7 +79,7 @@ Shortest path to success for SharePoint Online - The following steps will help y
 
 - Ensure you meet the [Pre-requirements](#Pre-requirements)
 
-- Ensure that you meet the [requirements for SharePoint Framework development](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) and are using the latest version of [PnP PowerShell](https://pnp.github.io/powershell/articles/installation.html)
+- Ensure that you meet the [requirements for SharePoint Framework development](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) and are using the latest version of [PnP PowerShell](https://pnp.github.io/powershell/articles/installation.html). **Latest confirmed version of PnP PowerShell: 1.7.0**.
 
 - Prepare your tenant, by accomplishing the tasks highlighted in document [Preparing your tenant for the PnP SharePoint Starter Kit](./documentation/tenant-settings.md)
 
