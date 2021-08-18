@@ -4,6 +4,8 @@ This web part provides you the ability to add a particular user's personal calen
 
 > `NOTE:` This webpart includes the use of a custom SPFx library, [library-starter-kit-shared](../library-starter-kit-shared). If you need to rebuild / bundle / package this solution, refer to [Minimal Path to Awesome](#Minimal-Path-to-Awesome)
 
+> `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React, [@microsoft/mgt-react](https://www.npmjs.com/package/@microsoft/mgt-react).
+
 ![Personal Calendar](../../assets/images/components/part-personal-calendar.gif)
 
 ## How to use this web part on your web pages

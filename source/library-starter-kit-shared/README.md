@@ -37,10 +37,16 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-* Clone this repository
-* Move to correct folder where solution exists
-* in the command line run:
-  * `npm install`
+1. Clone this repository
+2. Within the [library-starter-kit-shared](../library-starter-kit-shared) source, i.e. [./source/library-starter-kit-shared](../library-starter-kit-shared)
+3. in the command line run:
+  ```powershell
+  npm install
+  gulp build
+  gulp bundle
+  npm link
+  ```
+4. This project may now we consumed by another SPFx project. For an example, refer to the included SPFx webpart, [./source/react-followed-sites](../react-followed-sites)
 * Reference library component in other solutions to make things work - https://docs.microsoft.com/en-us/sharepoint/dev/spfx/library-component-tutorial 
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/library-starter-kit-shared" />

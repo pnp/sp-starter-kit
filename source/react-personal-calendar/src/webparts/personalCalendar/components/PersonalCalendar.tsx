@@ -1,5 +1,5 @@
-import { Providers } from '@microsoft/mgt';
-import { Agenda, MgtTemplateProps } from '@microsoft/mgt-react';
+import { Providers } from '@microsoft/mgt-spfx';
+import { Agenda, MgtTemplateProps } from '@microsoft/mgt-react/dist/es6/spfx';
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import * as strings from 'PersonalCalendarWebPartStrings';
