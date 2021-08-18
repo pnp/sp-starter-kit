@@ -2,7 +2,7 @@
 
 This project includes multiple SPFx solutions including webparts, extensions, and libraries that come pre-included and deployed to the tenant app catalog with a [default installation of the SP Starter Kit](../provisioning).
 
-You may also consider [mManually deploying the SP Starter Kit .sppkg SPFx solution packages to the tenant App Catalog](./manual-deploy-sppkg-solution.md)
+You may also consider [Manually deploying the SP Starter Kit .sppkg SPFx solution packages to the tenant App Catalog](./manual-deploy-sppkg-solution.md)
 
 ## Notes and recommendations
 
