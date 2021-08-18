@@ -4,6 +4,10 @@ This web part provides you the ability to add a particular user's personal calen
 
 > `NOTE:` This webpart includes the use of a custom SPFx library, [library-starter-kit-shared](../library-starter-kit-shared). If you need to rebuild / bundle / package this solution, refer to [Minimal Path to Awesome](#Minimal-Path-to-Awesome)
 
+> `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React, [@microsoft/mgt-react](https://www.npmjs.com/package/@microsoft/mgt-react).
+
+> `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React SPFx, [@microsoft/mgt-spfx](../mgt-spfx/README.md) with a dependency on [mgt-spfx-2.2.1.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) that must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
+
 ![Personal Calendar](../../assets/images/components/part-personal-calendar.gif)
 
 ## How to use this web part on your web pages
@@ -39,6 +43,8 @@ The `Personal Calendar` web part can be configured with the following properties
 ## Prerequisites
 
 * [library-starter-kit-shared](../library-starter-kit-shared) - this is provided by default in the solution. If you need to rebuild / bundle / package this solution, refer to [Minimal Path to Awesome](#Minimal-Path-to-Awesome)
+
+* [mgt-spfx-2.2.1.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
 
 
 ## Minimal Path to Awesome
@@ -128,6 +134,7 @@ Solution|Author(s)
 --------|---------
 react-personal-calendar | Waldek Mastykarz
 react-personal-calendar | Beau Cameron
+react-personal-calendar | Eric Overfield
 
 
 ## Version history
@@ -137,6 +144,7 @@ Version|Date|Comments
 1.0|May, 2018|Initial release
 2.0|November 29,2019|v2.0
 2.1|November 2020|Include Microsoft Graph Toolkit React components
+2.3|August 2021|Upgrade to MGT 2.2.1
 
 ## Disclaimer
 

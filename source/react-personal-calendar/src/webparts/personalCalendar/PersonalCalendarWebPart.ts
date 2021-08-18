@@ -11,7 +11,7 @@ import * as strings from 'PersonalCalendarWebPartStrings';
 import { SpStarterKitSharedLibrary } from '@starter-kit/shared-library';
 import PersonalCalendar from './components/PersonalCalendar';
 import { IPersonalCalendarProps } from './components/IPersonalCalendarProps';
-import { Providers, SharePointProvider } from '@microsoft/mgt';
+import { Providers, SharePointProvider } from '@microsoft/mgt-spfx';
 import { loadTheme } from "office-ui-fabric-react";
 import {
   IReadonlyTheme,
