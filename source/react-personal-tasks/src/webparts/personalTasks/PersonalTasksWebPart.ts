@@ -16,11 +16,10 @@ import { PersonalTasks } from './components/PersonalTasks';
 import { IPersonalTasksProps } from './components/IPersonalTasksProps';
 
 // import the providers at the top of the page
-import { Providers, SharePointProvider } from '@microsoft/mgt';
+import { Providers, SharePointProvider } from '@microsoft/mgt-spfx';
 import { PropertyPaneHorizontalRule } from '@microsoft/sp-property-pane';
 
-// required until https://github.com/microsoftgraph/microsoft-graph-toolkit/pull/730 is merged
-import { TasksSource } from '@microsoft/mgt';
+import { TasksSource } from '@microsoft/mgt-spfx';
 
 export interface IPersonalTasksWebPartProps {
   /**

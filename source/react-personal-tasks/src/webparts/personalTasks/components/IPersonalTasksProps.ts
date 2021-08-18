@@ -1,4 +1,4 @@
-import { TasksSource } from '@microsoft/mgt';
+import { TasksSource } from '@microsoft/mgt-spfx';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { DisplayMode } from '@microsoft/sp-core-library';
 

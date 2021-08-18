@@ -2,9 +2,11 @@
 
 This web part provides you the ability to add a particular user's personal tasks on a web page. The web part may be configured to show tasks from Planner or To Do. This web part is powered by the Microsoft Graph.
 
-v2 web part is modified to use Graph Toolkit to expose the personal tasks, which simplifies the implementation.
+This webpart is a technology demostrator of Microsoft Graph Toolkit React components, in particular "Tasks". This webpart uses the @microsoft/mgt-react and @microsoft/mgt-spfx packages, currently version 2.2.1.
 
-This webpart is a technology demostrator of Microsoft Graph Toolkit React components, in particular "Tasks". This webpart uses the @microsoft/mgt-react package, which is currently in preview and subject to change.
+> `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React, [@microsoft/mgt-react](https://www.npmjs.com/package/@microsoft/mgt-react).
+
+> `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React SPFx, [@microsoft/mgt-spfx](../mgt-spfx/README.md) with a dependency on [mgt-spfx-2.2.1.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) that must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
 
 ![Personal Tasks](./assets/personal-tasks-demo.gif)
 
@@ -46,19 +48,22 @@ The `Personal Tasks` web part can be configured with the following properties:
 
 ## Prerequisites
 
-none
+* [mgt-spfx-2.2.1.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-react-personal-tasks | Waldek Mastykarz, Alex Terentiev
+react-personal-tasks | Waldek Mastykarz
+react-personal-tasks | Alex Terentiev
+react-personal-tasks | Eric Overfield
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|December 25, 2019|Initial release
+2.2|August 2021|Upgrade to MGT 2.2.1
 
 ## Disclaimer
 
