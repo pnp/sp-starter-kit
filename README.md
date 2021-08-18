@@ -49,7 +49,7 @@ SharePoint Communication Sites and Team Sites have great out-of-the-box capabili
 * SharePoint 2019 compatible starter kit with web parts and components supported by SharePoint 2019 - (*provisioning template coming soon*)
 * Support web parts, extensions, and libraries (SPO only) to be deployed one-by-one to tenants or farms
 * Demonstrate teams tab development with SharePoint Framework for suitable web parts in SharePoint Online
-* Demonstrate Microsoft Graph API and Graph Toolkit usage in SharePoint Online
+* Demonstrate Microsoft Graph API and Graph Toolkit (current version mgt-react 2.2.1) usage in SharePoint Online
 
 
 ## Pre-requirements
@@ -70,6 +70,8 @@ Here are current pre-requirements for making this solution work in your tenant.
 > **It is recommended that you wait up to 24 hours before attempting to provision this solution if any of the following are true**
 > - Your SharePoint tenant was just created
 > - You just created your SharePoint tenant app catalog
+
+> **This project will install [Microsoft Graph Toolkit for SPFx version 2.2.1](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) into the app catalog. If you have another version already installed, you will want to remove that package before installing the Starter Kit**
 
 ## Getting started
 

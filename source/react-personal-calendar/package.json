@@ -20,7 +20,6 @@
         "@pnp/pnpjs": "1.3.7",
         "@pnp/spfx-controls-react": "^1.15.0",
         "@pnp/spfx-property-controls": "^1.16.0",
-        "@starter-kit/shared-library": "1.0.0",
         "@types/es6-promise": "0.0.33",
         "@types/react": "16.8.8",
         "@types/react-dom": "16.8.3",

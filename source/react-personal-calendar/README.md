@@ -77,7 +77,7 @@ This solution uses a SPFx library, [library-starter-kit-shared](../library-start
 
   ```xml
     "dependencies": {
-      "@microsoft/mgt-react": "^2.0.0-preview.5",
+      "@microsoft/mgt-react": "^2.2.1",
       ...
       "react": "16.8.5",
       "react-dom": "16.8.5"
@@ -88,7 +88,7 @@ This solution uses a SPFx library, [library-starter-kit-shared](../library-start
 
   ```xml
     "dependencies": {
-      "@microsoft/mgt-react": "^2.0.0-preview.5",
+      "@microsoft/mgt-react": "^2.1.1",
       ...
       "react": "16.8.5",
       "react-dom": "16.8.5",

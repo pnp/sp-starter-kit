@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema" Author="SharePoint PnP" Generator="SharePoint PnP" Version="2.0" Description="SharePoint Starter Kit for SharePoint Online" DisplayName="SharePoint Starter Kit" ImagePreviewUrl="https://raw.githubusercontent.com/SharePoint/sp-dev-provisioning-templates/master/tenant/SP-Starter-Kit/sp-starter-kit-front-page-16x9.png">
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema" Author="SharePoint PnP" Generator="SharePoint PnP" Version="2.0" Description="SharePoint Starter Kit for SharePoint Online" DisplayName="SharePoint Starter Kit" ImagePreviewUrl="https://raw.githubusercontent.com/SharePoint/sp-dev-provisioning-templates/master/tenant/SP-Starter-Kit/sp-starter-kit-front-page-16x9.png">
   <pnp:Preferences Generator="SharePoint PnP">
     <pnp:Parameters>
       <pnp:Parameter Key="Company">Contoso Electronics</pnp:Parameter>
@@ -34,50 +34,52 @@
     </pnp:WebApiPermissions>
     
     <pnp:AppCatalog>
-      <!--SPFx Library-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\library-starter-kit-shared\sharepoint\solution\library-starter-kit-shared.sppkg" SkipFeatureDeployment="true"/>
+      <!--MGT SPFx-->
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\mgt-spfx\mgt-spfx-2.2.1.sppkg" SkipFeatureDeployment="true"/>
+
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\library-starter-kit-shared\sharepoint\solution\library-starter-kit-shared.sppkg" SkipFeatureDeployment="true"/>
 
       <!--General SPFx webparts-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-banner\sharepoint\solution\react-banner.sppkg" SkipFeatureDeployment="true"/>
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-followed-sites\sharepoint\solution\react-followed-sites.sppkg" SkipFeatureDeployment="true"/>
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-links\sharepoint\solution\react-links.sppkg" SkipFeatureDeployment="true"/>
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-lob-integration\sharepoint\solution\react-lob-integration.sppkg" SkipFeatureDeployment="true"/>
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-people-directory\sharepoint\solution\react-people-directory.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-banner\sharepoint\solution\react-banner.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-followed-sites\sharepoint\solution\react-followed-sites.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-links\sharepoint\solution\react-links.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-lob-integration\sharepoint\solution\react-lob-integration.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-people-directory\sharepoint\solution\react-people-directory.sppkg" SkipFeatureDeployment="true"/>
       
       <!--MailboxSettings.Read, Calendars.Read-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-personal-calendar\sharepoint\solution\react-personal-calendar.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-personal-calendar\sharepoint\solution\react-personal-calendar.sppkg" SkipFeatureDeployment="true"/>
       
       <!--Contacts.Read-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-personal-contacts\sharepoint\solution\react-personal-contacts.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-personal-contacts\sharepoint\solution\react-personal-contacts.sppkg" SkipFeatureDeployment="true"/>
       
       <!--Mail.Read-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-personal-email\sharepoint\solution\react-personal-email.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-personal-email\sharepoint\solution\react-personal-email.sppkg" SkipFeatureDeployment="true"/>
       
       <!--Group.ReadWrite.All, Tasks.ReadWrite, People.Read-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-personal-tasks\sharepoint\solution\react-personal-tasks.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-personal-tasks\sharepoint\solution\react-personal-tasks.sppkg" SkipFeatureDeployment="true"/>
       
       <!--People.Read, User.Read-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-recent-contacts\sharepoint\solution\react-recent-contacts.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-recent-contacts\sharepoint\solution\react-recent-contacts.sppkg" SkipFeatureDeployment="true"/>
       
       <!--Sites.Read.All-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-recently-used-documents\sharepoint\solution\react-recently-used-documents.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-recently-used-documents\sharepoint\solution\react-recently-used-documents.sppkg" SkipFeatureDeployment="true"/>
       
       <!--Sites.Read.All-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-recently-visited-sites\sharepoint\solution\react-recently-visited-sites.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-recently-visited-sites\sharepoint\solution\react-recently-visited-sites.sppkg" SkipFeatureDeployment="true"/>
       
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-site-information\sharepoint\solution\react-site-information.sppkg" SkipFeatureDeployment="true"/>
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-tiles\sharepoint\solution\react-tiles.sppkg" SkipFeatureDeployment="true"/>
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-weather\sharepoint\solution\react-weather.sppkg" SkipFeatureDeployment="true"/>
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-world-clock\sharepoint\solution\react-world-clock.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-site-information\sharepoint\solution\react-site-information.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-tiles\sharepoint\solution\react-tiles.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-weather\sharepoint\solution\react-weather.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-world-clock\sharepoint\solution\react-world-clock.sppkg" SkipFeatureDeployment="true"/>
 
       <!--extensions-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-application-collab-footer\sharepoint\solution\react-application-collab-footer.sppkg" SkipFeatureDeployment="true"/>
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-application-portal-footer\sharepoint\solution\react-application-portal-footer.sppkg" SkipFeatureDeployment="true"/>
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\js-application-redirect\sharepoint\solution\js-application-redirect.sppkg" SkipFeatureDeployment="true"/>
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-application-alerts\sharepoint\solution\react-application-alerts.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-application-collab-footer\sharepoint\solution\react-application-collab-footer.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-application-portal-footer\sharepoint\solution\react-application-portal-footer.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\js-application-redirect\sharepoint\solution\js-application-redirect.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-application-alerts\sharepoint\solution\react-application-alerts.sppkg" SkipFeatureDeployment="true"/>
 
       <!--Group.ReadWrite.All-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\source\react-command-discuss-now\sharepoint\solution\react-command-discuss-now.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\react-command-discuss-now\sharepoint\solution\react-command-discuss-now.sppkg" SkipFeatureDeployment="true"/>
 
       <!--depricated-->
       <!--site information (classification banner header)-->
