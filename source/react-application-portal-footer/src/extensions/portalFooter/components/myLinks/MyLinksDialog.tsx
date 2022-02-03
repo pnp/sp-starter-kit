@@ -97,7 +97,7 @@ class MyLinksDialogContent extends
     });
 
     this.state = {
-      links: this.props.links,
+      links: this.props.links && this.props.links.length > 0 ? this.props.links : [],
       showDetailPanel: false,
     };
   }
