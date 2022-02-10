@@ -202,6 +202,10 @@ export default class PortalFooterApplicationCustomizer
           });
         }
       }
+      else {
+        // if there are no personal items for my links, just provide an empty array that can be customized
+        this._myLinks = [];
+      }
     }
 
     return (result);
