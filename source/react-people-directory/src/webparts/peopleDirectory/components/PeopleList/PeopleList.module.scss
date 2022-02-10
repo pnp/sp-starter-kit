@@ -8,9 +8,10 @@
   margin-bottom: 1rem;
   padding: 1rem;
   position: relative;
-  @media (min-width: $ms-screen-min-lg){
-    max-width: 50%;
-  }
+	max-width: var(--maxPersonaWidth);
+  // @media (min-width: $ms-screen-min-lg){
+  //   max-width: 50%;
+  // }
   .persona{
     align-items: center;
     display: inline-flex;
