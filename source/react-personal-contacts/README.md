@@ -21,7 +21,7 @@ The `Personal Contacts` web part can be configured with the following properties
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.13.1-green.svg)
 
 * Only supported in SharePoint Online due to dependency on the Microsoft Graph APIs
 
