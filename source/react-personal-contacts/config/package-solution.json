@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-personal-contacts-client-side-solution",
+    "name": "Starter Kit - Personal Contacts",
     "id": "05a9dee1-2de3-40f0-bee3-d511aca62e0a",
     "version": "3.0.0.0",
     "developer": {
@@ -9,7 +9,7 @@
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "websiteUrl": "",
-      "mpnId": "Undefined-1.13.1"
+      "mpnId": "spfx-1.13.1"
     },
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
