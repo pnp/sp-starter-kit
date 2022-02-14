@@ -1,5 +1,5 @@
 {
-  "extends": "@microsoft/sp-tslint-rules/base-tslint.json",
+  "extends": "./node_modules/@microsoft/sp-tslint-rules/base-tslint.json",
   "rules": {
     "class-name": false,
     "export-name": false,
@@ -13,11 +13,11 @@
     "no-eval": false,
     "no-function-expression": true,
     "no-internal-module": true,
-    "no-shadowed-variable": true,
-    "no-switch-case-fall-through": true,
+    "no-shadowed-variable": false,
+    "no-switch-case-fall-through": false,
     "no-unnecessary-semicolons": true,
-    "no-unused-expression": true,
-    "no-use-before-declare": true,
+    "no-unused-expression": false,
+    "no-use-before-declare": false,
     "no-with-statement": true,
     "semicolon": true,
     "trailing-comma": false,

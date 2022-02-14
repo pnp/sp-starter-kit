@@ -10,6 +10,7 @@ node_modules
 dist
 lib
 temp
+release
 
 # Coverage directory used by tools like istanbul
 coverage
