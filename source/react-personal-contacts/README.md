@@ -21,7 +21,7 @@ The `Personal Contacts` web part can be configured with the following properties
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.13.1-green.svg)
 
 * Only supported in SharePoint Online due to dependency on the Microsoft Graph APIs
 
@@ -40,6 +40,7 @@ Solution|Author(s)
 --------|---------
 react-personal-contacts | Waldek Mastykarz ([@waldekm](https://twitter.com/waldekm))
 react-personal-contacts | Vardhaman Deshpande ([@vrdmn](https://twitter.com/vrdmn))
+react-presonal-contacts | Don Kirkham ([@DonKirkham](https://twitter.com/donkirkham))
 
 ## Version history
 
@@ -47,6 +48,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|May 2018| Initial release
 2.0|January 2020| Upgrade to V2
+3.0|February 2022| Upgrade to SPFx1.13.1
 
 ## Disclaimer
 
