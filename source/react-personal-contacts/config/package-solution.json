@@ -1,27 +1,27 @@
 {
-	"$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
-	"solution": {
-		"name": "react-personal-contacts-client-side-solution",
-		"id": "05a9dee1-2de3-40f0-bee3-d511aca62e0a",
-		"version": "3.0.0.0",
-		"developer": {
-			"name": "",
-			"privacyUrl": "",
-			"termsOfUseUrl": "",
-			"websiteUrl": "",
-			"mpnId": "Undefined-1.13.1"
-		},
-		"includeClientSideAssets": true,
-		"skipFeatureDeployment": true,
-		"isDomainIsolated": false,
-		"webApiPermissionRequests": [
-			{
-				"resource": "Microsoft Graph",
-				"scope": "Contacts.Read"
-			}
-		]
-	},
-	"paths": {
-		"zippedPackage": "solution/react-personal-contacts.sppkg"
-	}
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-personal-contacts-client-side-solution",
+    "id": "05a9dee1-2de3-40f0-bee3-d511aca62e0a",
+    "version": "3.0.0.0",
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.13.1"
+    },
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Contacts.Read"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-personal-contacts.sppkg"
+  }
 }
