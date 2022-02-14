@@ -48,6 +48,7 @@ Version|Date|Comments
 1.0|March 27, 2018|Initial release
 2.0|December 3, 2019|v2.0
 3.0|February 7, 2022|Upgrade solution to SPFx v1.13.1
+3.1|February 10, 2022|Adjust controls to be responsive
 
 ## Disclaimer
 

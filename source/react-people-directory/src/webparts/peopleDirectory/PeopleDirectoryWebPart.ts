@@ -13,6 +13,16 @@ export interface IPeopleDirectoryWebPartProps {
 
 export default class PeopleDirectoryWebPart extends BaseClientSideWebPart<IPeopleDirectoryWebPartProps> {
 
+	protected onInit(): Promise<void> {
+		document.documentElement.style
+			.setProperty('--maxPersonaWidth', this.width > 640 ? "50%" : "100");
+		return Promise.resolve();
+	}
+	protected onAfterResize(newWidth: number) {
+		console.log("New web part width: " + newWidth);
+		document.documentElement.style
+			.setProperty('--maxPersonaWidth', newWidth > 640 ? "50%" : "100");
+	}
 	public render(): void {
 		const element: React.ReactElement<IPeopleDirectoryProps> = React.createElement(
 			PeopleDirectory,

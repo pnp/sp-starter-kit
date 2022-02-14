@@ -1,11 +1,17 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
 .indexNavigation {
-    margin-bottom: 1em;
-    ul{
-        white-space: normal !important;
-        button:last-child{
-            font-weight: 600;
-        }
+  margin-bottom: 1em;
+
+  div[role^='tablist'] {
+    white-space: normal;
+
+    button:last-child {
+      font-weight: 600;
     }
+  }
+
+	[class^='ms-SearchBox'] {
+		max-width: 100%;
+	}
 }
