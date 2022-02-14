@@ -194,3 +194,4 @@ orleans.codegen.cs
 # MSBuild Binary and Structured Log
 *.binlog
 *.yaml
+package-lock.json
