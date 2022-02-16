@@ -16,30 +16,42 @@ export class IndexNavigation extends React.Component<IIndexNavigationProps, {}> 
   public shouldComponentUpdate(nextProps: IIndexNavigationProps, nextState: {}, nextContext: any): boolean {
     // Component should update only if the selected tab has changed.
     // This check helps to avoid unnecessary renders
-    return this.props.selectedIndex !== nextProps.selectedIndex;
+    return this.props.selectedIndex !== nextProps.selectedIndex || this.props.searchOnly !== nextProps.searchOnly;
   }
 
   public render(): React.ReactElement<IIndexNavigationProps> {
-    // build the list of alphabet letters A..Z
-    const az = Array.apply(null, { length: 26 }).map((x: string, i: number): string => { return String.fromCharCode(65 + i); });
-    if (this.props.locale === "sv-SE") {
-      az.push('Å', 'Ä', 'Ö');
+    let indexes: JSX.Element[] = [];
+    if (!this.props.searchOnly) {
+      // build the list of alphabet letters A..Z
+      const az = Array.apply(null, { length: 26 }).map((x: string, i: number): string => { return String.fromCharCode(65 + i); });
+      if (this.props.locale === "sv-SE") {
+        az.push('Å', 'Ä', 'Ö');
+      }
+      // for each letter, create a PivotItem component
+      indexes = az.map(index => <PivotItem linkText={index} itemKey={index} key={index} />);
+      // as the last tab in the navigation, add the Search option
+      indexes.push(<PivotItem linkText={strings.SearchButtonText} itemKey='Search'>
+        <Search
+          searchQuery={this.props.searchQuery}
+          onSearch={this.props.onSearch}
+          onClear={this.props.onSearchClear} />
+      </PivotItem>);
     }
-    // for each letter, create a PivotItem component
-    const indexes: JSX.Element[] = az.map(index => <PivotItem linkText={index} itemKey={index} key={index} />);
-    // as the last tab in the navigation, add the Search option
-    indexes.push(<PivotItem linkText={strings.SearchButtonText} itemKey='Search'>
-      <Search
-        searchQuery={this.props.searchQuery}
-        onSearch={this.props.onSearch}
-        onClear={this.props.onSearchClear} />
-    </PivotItem>);
 
     return (
       <div className={styles.indexNavigation}>
-        <Pivot onLinkClick={this._handleIndexSelect} selectedKey={this.props.selectedIndex}>
-          {indexes}
-        </Pivot>
+        {
+          this.props.searchOnly &&
+          <Search
+            searchQuery={this.props.searchQuery}
+            onSearch={this.props.onSearch}
+            onClear={this.props.onSearchClear} />
+        }
+        {!this.props.searchOnly &&
+          <Pivot onLinkClick={this._handleIndexSelect} selectedKey={this.props.selectedIndex}>
+            {indexes}
+          </Pivot>
+        }
       </div>
     );
   }

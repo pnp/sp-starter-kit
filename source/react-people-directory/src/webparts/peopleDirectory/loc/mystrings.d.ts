@@ -8,7 +8,8 @@ declare interface IPeopleDirectoryWebPartStrings {
   ProjectsLabel: string;
   CopyEmailLabel: string;
   CopyPhoneLabel: string;
-  CopyMobileLabel: string;
+	CopyMobileLabel: string;
+	SearchOnlyLabel: string;
 }
 
 declare module 'PeopleDirectoryWebPartStrings' {
