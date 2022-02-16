@@ -20,8 +20,9 @@
     position: absolute;
     right: 1rem;
     width: 1.4rem;
-    img {
+    svg {
       color: '[theme:themeSecondary, default: #2b88d8]';
+      fill: '[theme:themeSecondary, default: #2b88d8]';
       cursor: pointer;
       height: 32px;
       width: 32px;
