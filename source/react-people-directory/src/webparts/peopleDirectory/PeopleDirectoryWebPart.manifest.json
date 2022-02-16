@@ -21,7 +21,7 @@
     "description": { "default": "Search people in the corporate directory" },
     "officeFabricIconFontName": "CompanyDirectory",
     "properties": {
-      "title": "People Directory"
+      "searchOnly": false
     }
   }]
 }

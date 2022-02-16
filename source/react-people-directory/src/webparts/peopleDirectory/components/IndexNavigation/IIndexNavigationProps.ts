@@ -25,5 +25,9 @@ export interface IIndexNavigationProps {
   /**
    * Event handler for clearing the search query
    */
-  onSearchClear: () => void;
+	onSearchClear: () => void;
+	/**
+ * Turns off alpha index when true, showing only search box
+ */
+	searchOnly: boolean;
 }

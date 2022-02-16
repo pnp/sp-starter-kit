@@ -28,7 +28,7 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
     this.state = {
       loading: false,
       errorMessage: null,
-      selectedIndex: 'A',
+      selectedIndex: this.props.searchOnly ? 'Search' : 'A',
       searchQuery: '',
       people: []
     };
@@ -229,14 +229,17 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
         <WebPartTitle
           displayMode={this.props.displayMode}
           title={this.props.title}
-          updateProperty={this.props.onTitleUpdate} />
+          updateProperty={this.props.onTitleUpdate}
+        />
         <IndexNavigation
           selectedIndex={selectedIndex}
           searchQuery={searchQuery}
+          searchOnly={this.props.searchOnly}
           onIndexSelect={this._handleIndexSelect}
           onSearch={this._handleSearch}
           onSearchClear={this._handleSearchClear}
-          locale={this.props.locale} />
+          locale={this.props.locale}
+        />
         {loading &&
           // if the component is loading its data, show the spinner
           <Spinner size={SpinnerSize.large} label={strings.LoadingSpinnerLabel} />
@@ -248,7 +251,8 @@ export class PeopleDirectory extends React.Component<IPeopleDirectoryProps, IPeo
           <PeopleList
             selectedIndex={selectedIndex}
             hasSearchQuery={searchQuery !== ''}
-            people={people} />
+            people={people}
+          />
         }
       </div>
     );
