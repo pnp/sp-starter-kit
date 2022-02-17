@@ -1,18 +1,18 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
-.persona_card{
+.persona_card {
   align-items: center;
-  border: 1px solid "[theme:neutralLight, default: #eaeaea]";
+  border: 1px solid '[theme:neutralLight, default: #eaeaea]';
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
   padding: 1rem;
   position: relative;
-	max-width: var(--maxPersonaWidth);
+  max-width: var(--maxPersonaWidth);
   // @media (min-width: $ms-screen-min-lg){
   //   max-width: 50%;
   // }
-  .persona{
+  .persona {
     align-items: center;
     display: inline-flex;
     height: 1.4rem;
@@ -20,10 +20,12 @@
     position: absolute;
     right: 1rem;
     width: 1.4rem;
-    i{
-      color: "[theme:themeSecondary, default: #2b88d8]";
+    svg {
+      color: '[theme:themeSecondary, default: #2b88d8]';
+      fill: '[theme:themeSecondary, default: #2b88d8]';
       cursor: pointer;
-      font-size: 1.4rem;
+      height: 32px;
+      width: 32px;
     }
   }
   .callout {
