@@ -30,5 +30,6 @@ export interface IPeopleDirectoryProps {
   /**
    * Event handler for changing the web part title
    */
-  onTitleUpdate: (newTitle: string) => void;
+	onTitleUpdate: (newTitle: string) => void;
+	searchOnly: boolean;
 }
