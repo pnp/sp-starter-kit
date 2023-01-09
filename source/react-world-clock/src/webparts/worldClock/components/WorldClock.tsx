@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styles from './WorldClock.module.scss';
 import { IWorldClockProps } from './IWorldClockProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 
 // import strings from localized resources
 import * as strings from 'WorldClockWebPartStrings';

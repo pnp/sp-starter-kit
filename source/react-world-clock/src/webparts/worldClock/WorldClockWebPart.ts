@@ -1,13 +1,8 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneDropdown,
-  IPropertyPaneDropdownOption
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneDropdown, IPropertyPaneDropdownOption } from "@microsoft/sp-property-pane";
 
 import * as strings from 'WorldClockWebPartStrings';
 import WorldClock from './components/WorldClock';
@@ -68,9 +63,9 @@ export default class WorldClockWebPart extends BaseClientSideWebPart<IWorldClock
   }
 
   private getTimeZones(): Array<IPropertyPaneDropdownOption> {
-    let result: Array<IPropertyPaneDropdownOption> = new Array<IPropertyPaneDropdownOption>();
+    const result: Array<IPropertyPaneDropdownOption> = new Array<IPropertyPaneDropdownOption>();
 
-    for (let tz of timeZones.TimeZones.zones) {
+    for (const tz of timeZones.TimeZones.zones) {
       result.push({ key: tz.id, text: tz.displayName});
     }
 
