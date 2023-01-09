@@ -5,7 +5,37 @@
     "id": "55d6757f-94de-4bde-95bf-f8802db4a8f4",
     "version": "2.0.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "world-clock description"
+      },
+      "longDescription": {
+        "default": "world-clock description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "world-clock WorldClockWebPart Feature",
+        "description": "The feature that activates WorldClockWebPart from the world-clock solution.",
+        "id": "7d2fb8db-010c-41d1-a464-e98b80e87647",
+        "version": "2.0.0.0",
+        "componentIds": [
+          "7d2fb8db-010c-41d1-a464-e98b80e87647"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-world-clock.sppkg"
