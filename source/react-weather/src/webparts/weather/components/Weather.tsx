@@ -1,7 +1,5 @@
 import * as React from 'react';
 import styles from './Weather.module.scss';
-import { escape } from '@microsoft/sp-lodash-subset';
-
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import {
   Spinner,
@@ -22,8 +20,8 @@ import * as strings from 'WeatherWebPartStrings';
 
 
 export default class Weather extends React.Component < IWeatherProps, IWeatherState > {
-  constructor() {
-  super();
+  constructor(props: IWeatherProps) {
+  super(props);
 
   this.state = {
     loading: false
@@ -149,6 +147,7 @@ public render(): React.ReactElement<IWeatherProps> {
       // render the retrieved weather information
       const weather: IWeatherDescription = this.state.weather;
       const location: IWeatherLocation = this.state.coord;
+      console.log(location)
       const main: IWeatherCondition = this.state.main;
       const name: string = this.state.name;
       const image: any = 'http://openweathermap.org/img/w/' + weather.icon + '.png';

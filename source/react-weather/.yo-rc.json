@@ -1,11 +1,21 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
-    "environment": "onprem19",
-    "version": "1.9.1",
+    "nodeVersion": "16.19.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
     "libraryName": "react-weather",
     "libraryId": "d47b1e90-b473-4855-bcd2-aa34ae942e5d",
+    "environment": "onprem19",
     "packageManager": "npm",
+    "solutionName": "react-weather",
+    "solutionShortDescription": "react-weather description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
     "componentType": "webpart"
   }
 }
