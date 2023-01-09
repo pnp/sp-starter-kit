@@ -44,7 +44,6 @@
     "@types/react-dom": "17.0.17",
     "eslint-plugin-react-hooks": "4.3.0",
     "@microsoft/sp-module-interfaces": "1.16.1",
-    "@microsoft/sp-webpart-workbench": "~1.4.1",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38"
   }
