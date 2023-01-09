@@ -68,9 +68,9 @@ export default class WorldClockWebPart extends BaseClientSideWebPart<IWorldClock
   }
 
   private getTimeZones(): Array<IPropertyPaneDropdownOption> {
-    let result: Array<IPropertyPaneDropdownOption> = new Array<IPropertyPaneDropdownOption>();
+    const result: Array<IPropertyPaneDropdownOption> = new Array<IPropertyPaneDropdownOption>();
 
-    for (let tz of timeZones.TimeZones.zones) {
+    for (const tz of timeZones.TimeZones.zones) {
       result.push({ key: tz.id, text: tz.displayName});
     }
 
