@@ -1,11 +1,19 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
-    "environment": "onprem19",
-    "version": "1.9.1",
+    "nodeVersion": "16.19.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "environment": "spo",
     "libraryName": "react-site-information",
     "libraryId": "09938b42-5d02-4ca4-a040-61914367cf6f",
     "packageManager": "npm",
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
   }
 }

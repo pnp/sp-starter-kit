@@ -3,9 +3,39 @@
   "solution": {
     "name": "react-site-information-client-side-solution",
     "id": "09938b42-5d02-4ca4-a040-61914367cf6f",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-site-information description"
+      },
+      "longDescription": {
+        "default": "react-site-information description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-site-information SiteInformationWebPart Feature",
+        "description": "The feature that activates SiteInformationWebPart from the react-site-information solution.",
+        "id": "f91c48b4-3ffd-4446-8577-375b07a62c9f",
+        "version": "3.0.0.0",
+        "componentIds": [
+          "f91c48b4-3ffd-4446-8577-375b07a62c9f"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-site-information.sppkg"
