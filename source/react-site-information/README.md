@@ -45,6 +45,7 @@ Solution|Author(s)
 --------|---------
 react-site-information | Paolo Pialorsi
 react-site-information | David Warner II
+react-site-information | Chandani Prajapati
 
 ## Version history
 
@@ -52,6 +53,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|April 7, 2018|Initial release
 2.0|December 3, 2019|v2.0
+3.0|January 10, 2023|Upgraded to SPFx 1.16.1
 
 ## Disclaimer
 

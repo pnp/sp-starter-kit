@@ -16,9 +16,9 @@ import { ISiteInformationWebPartProps } from './ISiteInformationWebPartProps';
 
 export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteInformationWebPartProps> {
 
-  private propertyFieldTermPicker;
-  private propertyFieldPeoplePicker;
-  private principalType;
+  private propertyFieldTermPicker : any;
+  private propertyFieldPeoplePicker : any;
+  private principalType: any;
 
   public onInit(): Promise<void> {
 
