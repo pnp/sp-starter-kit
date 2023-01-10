@@ -5,7 +5,25 @@
     "id": "b0c8359d-6380-4b12-baba-c79e4fd5f179",
     "version": "2.0.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-tiles description"
+      },
+      "longDescription": {
+        "default": "react-tiles description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-tiles.sppkg"
