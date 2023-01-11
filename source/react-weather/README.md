@@ -53,7 +53,8 @@ none
 Solution|Author(s)
 --------|---------
 /solution/src/webparts/weatherInformation/ | Waldek Mastykarz (@waldekmastykarz), Vardhaman Deshpande (@vman)
-react-weather | Dragan Panjkov (@panjkov)
+react-weather | Dragan Panjkov (@panjkov) 
+react-weather | Chandani Prajapati(@Chandani_SPD)
 
 ## Version history
 
@@ -61,6 +62,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|April 2018|Initial release
 2.0|December 2019/January 2020|Standalone web part, OpenWeatherMap API
+3.0|January 2023|Upgraded to SPFx 1.16.1
 
 ## Disclaimer
 
