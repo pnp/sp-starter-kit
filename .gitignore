@@ -185,6 +185,7 @@ ClientBin/
 *.pfx
 *.publishsettings
 orleans.codegen.cs
+package-lock.json
 
 # SQL Server files
 *.mdf
