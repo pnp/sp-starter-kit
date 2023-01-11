@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './RecentlyVisitedSites.module.scss';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import { escape, uniqBy } from '@microsoft/sp-lodash-subset';
+import { uniqBy } from '@microsoft/sp-lodash-subset';
 import * as strings from 'RecentlyVisitedSitesWebPartStrings';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { IRecentlyVisitedSitesProps, IRecentlyVisitedSitesState, IRecentWebs, IRecentWeb, IWebs } from '.';
@@ -35,7 +35,7 @@ export class RecentlyVisitedSites extends React.Component<IRecentlyVisitedSitesP
       .api("me/insights/used")
       .filter(`ResourceVisualization/Type eq 'Web'`)
       .top(30)
-      .get((err, res: IRecentWebs) => {
+      .get((err: { message: string; }, res: IRecentWebs) => {
         if (err) {
           // Something failed calling the MS Graph
           this.setState({
