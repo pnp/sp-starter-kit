@@ -41,12 +41,14 @@ Solution|Author(s)
 react-application-portal-footer | Waldek Mastykarz
 react-application-portal-footer | Paolo Pialorsi
 react-application-portal-footer | David Opdendries
+react-application-portal-footer | Chandani Prajapati
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|January 12, 2019|Initial release for SharePoint Starter Kit v2
+2.0|January 11, 2013|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 

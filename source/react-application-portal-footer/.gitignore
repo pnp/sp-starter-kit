@@ -33,5 +33,5 @@ obj
 # Styles Generated Code
 *.scss.ts
 
-# Package Lock
+# Package Lock file
 package-lock.json

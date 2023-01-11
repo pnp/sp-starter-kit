@@ -27,6 +27,9 @@
     "react-dom": "17.0.1",
     "tslib": "2.3.1"
   },
+  "resolutions": {
+    "@types/react": "16.8.8"
+  },
   "devDependencies": {
     "@microsoft/eslint-config-spfx": "1.16.1",
     "@microsoft/eslint-plugin-spfx": "1.16.1",
