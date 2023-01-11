@@ -6,8 +6,6 @@ import { Log } from '@microsoft/sp-core-library';
 import {
   BaseApplicationCustomizer, PlaceholderContent, PlaceholderName
 } from '@microsoft/sp-application-base';
-import { Dialog } from '@microsoft/sp-dialog';
-
 import * as strings from 'CollaborationFooterApplicationCustomizerStrings';
 
 import CollabFooter from './components/CollabFooter';
@@ -15,7 +13,7 @@ import { ICollabFooterProps } from './components/ICollabFooterProps';
 import { ICollabFooterEditResult } from './components/ICollabFooterEditResult';
 
 // import additional controls/components
-import { IContextualMenuItem, ContextualMenuItemType } from 'office-ui-fabric-react';
+import { ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 import SPTaxonomyService from '../../services/SPTaxonomyService';
 import {ITerm } from '../../services/SPTaxonomyTypes';
 import SPUserProfileService from '../../services/SPUserProfileService';
