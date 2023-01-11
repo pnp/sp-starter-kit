@@ -1,28 +1,28 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
   "port": 4321,
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://pmpoc1.sharepoint.com/SitePages/KS-Test.aspx",
       "customActions": {
         "6638da67-06f4-4f55-a1df-485d568e8b72": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
             "sourceTermSet": "PnP-CollabFooter-SharedLinks",
-            "personalItemsStorageProperty" : "PnP-CollabFooter-MyLinks"
+            "personalItemsStorageProperty": "PnP-CollabFooter-MyLinks"
           }
         }
       }
     },
     "collaborationFooter": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://pmpoc1.sharepoint.com/SitePages/KS-Test.aspx",
       "customActions": {
         "6638da67-06f4-4f55-a1df-485d568e8b72": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
             "sourceTermSet": "PnP-CollabFooter-SharedLinks",
-            "personalItemsStorageProperty" : "PnP-CollabFooter-MyLinks"
+            "personalItemsStorageProperty": "PnP-CollabFooter-MyLinks"
           }
         }
       }
