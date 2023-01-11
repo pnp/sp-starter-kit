@@ -115,7 +115,7 @@ export default class SPTaxonomyService {
             SPHttpClient.configurations.v1, httpPostOptions);
       let serviceJSONResponse: Array<any> = await serviceResponse.json();
 
-      let result: Array<ITerm> = new Array<ITerm>();
+      //let result: Array<ITerm> = new Array<ITerm>();
 
       // extract the object of type SP.Taxonomy.TermSetCollection from the array
       let termSetsCollections: ITermSets[] = serviceJSONResponse.filter(
