@@ -1,11 +1,18 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
+    "nodeVersion": "16.19.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
     "environment": "spo",
-    "version": "1.9.1",
     "libraryName": "react-recently-visited-sites",
     "libraryId": "d8d9d358-fbb2-4e77-a66d-69f24e508bfa",
     "packageManager": "npm",
+    "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "webpart"
   }

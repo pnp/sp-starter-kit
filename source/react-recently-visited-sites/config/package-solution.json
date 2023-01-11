@@ -3,10 +3,39 @@
   "solution": {
     "name": "react-recently-visited-sites-client-side-solution",
     "id": "d8d9d358-fbb2-4e77-a66d-69f24e508bfa",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-recently-visited-sites description"
+      },
+      "longDescription": {
+        "default": "react-recently-visited-sites description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-recently-visited-sites RecentlyVisitedSitesWebPart Feature",
+        "description": "The feature that activates RecentlyVisitedSitesWebPart from the react-recently-visited-sites solution.",
+        "id": "49089f35-4213-425b-a5c0-706b25803484",
+        "version": "3.0.0.0",
+        "componentIds": [
+          "49089f35-4213-425b-a5c0-706b25803484"
+        ]
+      }
+    ],
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",
