@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { IPortalFooterProps, IPortalFooterState } from '.';
 import styles from './PortalFooter.module.scss';
-import { CommandBar,
-  IContextualMenuItem,
+import { 
   DefaultButton,
   ActionButton,
   Label, 
@@ -10,7 +9,6 @@ import { CommandBar,
   MessageBarType
 } from 'office-ui-fabric-react';
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
-import { ILinkGroup } from './ILinkGroup';
 import { Links } from '../Links';
 import { IPortalFooterEditResult } from '../PortalFooter/IPortalFooterEditResult';
 

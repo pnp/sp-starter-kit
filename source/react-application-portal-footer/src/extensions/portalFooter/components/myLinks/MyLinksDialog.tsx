@@ -7,13 +7,11 @@ import styles from './MyLinks.module.scss';
 import * as strings from 'MyLinksStrings';
 
 // import additional controls/components
-import { BaseDialog, Dialog, IDialogConfiguration } from '@microsoft/sp-dialog';
+import { BaseDialog, IDialogConfiguration } from '@microsoft/sp-dialog';
 import {
   DefaultButton,
   TextField,
-  Label,
   CommandBar,
-  IContextualMenuItem,
   DetailsList,
   DetailsListLayoutMode,
   Selection,
@@ -134,7 +132,7 @@ class MyLinksDialogContent extends
                           value={this.state.title}
                           minLength={150}
                           className={styles.textField}
-                          onChanged={this._onChangedTitle}
+                          onChange={this._onChangedTitle}
                         />
                       </div>
                     </div>
@@ -146,7 +144,7 @@ class MyLinksDialogContent extends
                           value={this.state.url}
                           minLength={150}
                           className={styles.textField}
-                          onChanged={this._onChangedUrl}
+                          onChange={this._onChangedUrl}
                           onGetErrorMessage={this._getErrorMessageUrl}
                         />
                       </div>
@@ -277,13 +275,13 @@ class MyLinksDialogContent extends
     }
   }
 
-  private _onChangedTitle = (newValue: string): void => {
+  private _onChangedTitle = (event: React.FormEvent<HTMLElement>, newValue?: string) => {
     this.setState({
       title: newValue,
     });
   }
 
-  private _onChangedUrl = (newValue: string): void => {
+  private _onChangedUrl = (event: React.FormEvent<HTMLElement>, newValue?: string) => {
     this.setState({
       url: newValue,
     });
@@ -349,7 +347,7 @@ export default class MyLinksDialog extends BaseDialog {
    */
   constructor(public links: Array<IMyLink>, public isSave?: boolean) {
     // Blocking or else click outside causes error in 1.7
-    super({isBlocking: true});
+    super({ isBlocking: true });
 
     // clone the initial list of links we've got
     this.initialLinks = (this.links != null) ? this.links.concat([]) : [];
