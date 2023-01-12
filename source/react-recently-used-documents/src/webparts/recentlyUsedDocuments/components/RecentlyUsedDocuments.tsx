@@ -1,14 +1,13 @@
 import * as React from 'react';
 import styles from './RecentlyUsedDocuments.module.scss';
-import { escape } from '@microsoft/sp-lodash-subset';
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import * as strings from 'RecentlyUsedDocumentsWebPartStrings';
-import { List } from 'office-ui-fabric-react/lib/List';
-import { DocumentCard, DocumentCardActivity, DocumentCardPreview, DocumentCardTitle, IDocumentCardPreviewProps } from 'office-ui-fabric-react/lib/DocumentCard';
-import { ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { DocumentCardType } from 'office-ui-fabric-react/lib/components/DocumentCard';
+import { List } from '@fluentui/react/lib/List';
+import { DocumentCard, DocumentCardActivity, DocumentCardPreview, DocumentCardTitle, IDocumentCardPreviewProps } from '@fluentui/react/lib/DocumentCard';
+import { ImageFit } from '@fluentui/react/lib/Image';
+import { DocumentCardType } from '@fluentui/react/lib/DocumentCard';
 import { IRecentlyUsedDocumentsProps, IRecentlyUsedDocumentsState, IRecentDocuments, IRecentDocument, BrandIcons } from '.';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 
 export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsedDocumentsProps, IRecentlyUsedDocumentsState> {
   private _excludeTypes: string[] = ["Web", "spsite", "Folder", "Archive", "Image", "Other"];
@@ -38,7 +37,7 @@ export default class RecentlyUsedDocuments extends React.Component<IRecentlyUsed
       this.props.graphClient
       .api("me/insights/used")
       .filter(`resourceVisualization/containerType eq 'Site' and ${filter}`)
-      .get((err, res: IRecentDocuments) => {
+      .get((err: { message: string; }, res: IRecentDocuments) => {
         if (err) {
           // Something failed calling the MS Graph
           this.setState({

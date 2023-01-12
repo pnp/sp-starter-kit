@@ -1,15 +1,13 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 
 import * as strings from 'RecentlyUsedDocumentsWebPartStrings';
 import RecentlyUsedDocuments from './components/RecentlyUsedDocuments';
 import { IRecentlyUsedDocumentsProps } from './components/IRecentlyUsedDocumentsProps';
-import { MSGraphClient } from '@microsoft/sp-http';
+import { MSGraphClientV3 } from '@microsoft/sp-http';
 
 export interface IRecentlyUsedDocumentsWebPartProps {
   title: string;
@@ -17,14 +15,14 @@ export interface IRecentlyUsedDocumentsWebPartProps {
 }
 
 export default class RecentlyUsedDocumentsWebPart extends BaseClientSideWebPart<IRecentlyUsedDocumentsWebPartProps> {
-  private graphClient: MSGraphClient;
-  private propertyFieldNumber;
+  private graphClient: MSGraphClientV3;
+  private propertyFieldNumber : any;
 
   public onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
-        .getClient()
-        .then((client: MSGraphClient): void => {
+        .getClient('3')
+        .then((client: MSGraphClientV3): void => {
           this.graphClient = client;
           resolve();
         }, err => reject(err));
