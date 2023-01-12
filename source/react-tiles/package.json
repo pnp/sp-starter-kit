@@ -1,6 +1,6 @@
 {
   "name": "react-tiles",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "engines": {
     "node": ">=16.13.0 <17.0.0"
@@ -22,7 +22,6 @@
     "@types/react": "15.6.6",
     "@types/react-dom": "15.5.6",
     "@types/webpack-env": "1.13.1",
-    "office-ui-fabric-react": "^7.199.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "tslib": "2.3.1"

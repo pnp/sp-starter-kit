@@ -3,15 +3,15 @@
   "solution": {
     "name": "react-tiles-client-side-solution",
     "id": "b0c8359d-6380-4b12-baba-c79e4fd5f179",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "developer": {
-      "name": "",
+      "name": "PnP Starter Kit",
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "websiteUrl": "",
-      "mpnId": "Undefined-1.15.0"
+      "mpnId": "pnpsk"
     },
     "metadata": {
       "shortDescription": {
@@ -23,7 +23,18 @@
       "screenshotPaths": [],
       "videoUrl": "",
       "categories": []
-    }
+    },
+    "features": [
+      {
+        "title": "react-tiles TilesWebPart Feature",
+        "description": "The feature that activates TilesWebPart from the react-tiles solution.",
+        "id": "61c36e66-16fd-4542-b50a-b8cd61359737",
+        "version": "3.0.0.0",
+        "componentIds": [
+          "61c36e66-16fd-4542-b50a-b8cd61359737"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-tiles.sppkg"

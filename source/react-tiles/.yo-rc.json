@@ -10,6 +10,7 @@
     "version": "1.16.1",
     "libraryName": "react-tiles",
     "libraryId": "b0c8359d-6380-4b12-baba-c79e4fd5f179",
+    "environment": "spo",
     "packageManager": "npm",
     "componentType": "webpart",
     "skipFeatureDeployment": true,
