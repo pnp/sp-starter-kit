@@ -4,7 +4,7 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://pmpoc1.sharepoint.com/SitePages/KS-Test.aspx",
+      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
       "customActions": {
         "6638da67-06f4-4f55-a1df-485d568e8b72": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -16,7 +16,7 @@
       }
     },
     "collaborationFooter": {
-      "pageUrl": "https://pmpoc1.sharepoint.com/SitePages/KS-Test.aspx",
+      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
       "customActions": {
         "6638da67-06f4-4f55-a1df-485d568e8b72": {
           "location": "ClientSideExtension.ApplicationCustomizer",
