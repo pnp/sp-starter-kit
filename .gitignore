@@ -185,6 +185,7 @@ ClientBin/
 *.pfx
 *.publishsettings
 orleans.codegen.cs
+package-lock.json
 
 # SQL Server files
 *.mdf
@@ -194,3 +195,5 @@ orleans.codegen.cs
 # MSBuild Binary and Structured Log
 *.binlog
 *.yaml
+package-lock.json
+package-lock.json

@@ -20,7 +20,7 @@ The `People Directory` web part can be configured with the following properties:
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.13.1-green.svg)
 
 * Works only on SharePoint Online due to dependency on GraphMicrosoft Graph APIs
 
@@ -39,6 +39,7 @@ Solution|Author(s)
 --------|---------
 react-people-directory | Waldek Mastykarz
 react-people-directory | David Warner II
+react-people-directory | Don Kirkham
 
 ## Version history
 
@@ -46,6 +47,8 @@ Version|Date|Comments
 -------|----|--------
 1.0|March 27, 2018|Initial release
 2.0|December 3, 2019|v2.0
+3.0|February 7, 2022|Upgrade solution to SPFx v1.13.1
+3.1|February 10, 2022|Adjust controls to be responsive
 
 ## Disclaimer
 

@@ -3,16 +3,16 @@
   "solution": {
     "name": "react-weather-client-side-solution",
     "id": "d47b1e90-b473-4855-bcd2-aa34ae942e5d",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "developer": {
-      "name": "",
+      "name": "PnP Starter Kit",
       "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.16.1"
+      "mpnId": "pnpsk"
     },
     "metadata": {
       "shortDescription": {
@@ -30,7 +30,7 @@
         "title": "react-weather WeatherWebPart Feature",
         "description": "The feature that activates WeatherWebPart from the react-weather solution.",
         "id": "3ec11027-02d1-4595-97d3-d758095cb52b",
-        "version": "2.0.0.0",
+        "version": "3.0.0.0",
         "componentIds": [
           "3ec11027-02d1-4595-97d3-d758095cb52b"
         ]

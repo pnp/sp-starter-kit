@@ -4,7 +4,7 @@ import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import {
   Spinner,
   SpinnerSize
-} from 'office-ui-fabric-react/lib/Spinner';
+} from '@fluentui/react/lib/Spinner';
 import { HttpClientResponse, HttpClient } from '@microsoft/sp-http';
 import {
   IWeatherState,
