@@ -57,7 +57,7 @@ react-world-clock | Chandani Prajapati (@Chandani_SPD)
 Version|Date|Comments
 -------|----|--------
 1.0|January 5, 2020|Initial release (extract web part from Starter Kit v1)
-2.0|January 9, 2023|Upgraded to SPFx 1.16.1
+2.0|January 12, 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
