@@ -40,6 +40,7 @@ Solution|Author(s)
 --------|---------
 solution/src/webparts/recentlyUsedDocuments | Elio Struyf (@struyf)
 react-recently-used-documents | Sébastien Levert (@sebastienlevert)
+react-recently-used-documents | Chandani Prajapati (@Chandani_SPD)
 
 ## Version history
 
@@ -47,6 +48,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|March 28, 2018|Initial release
 2.0|December 29, 2019|v2.0
+3.0|January 13, 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 

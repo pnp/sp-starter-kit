@@ -3,10 +3,39 @@
   "solution": {
     "name": "react-recently-used-documents-client-side-solution",
     "id": "9ff0a6e2-52d6-40fe-81a0-1df792f81da0",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-recently-used-documents description"
+      },
+      "longDescription": {
+        "default": "react-recently-used-documents description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-recently-used-documents RecentlyUsedDocumentsWebPart Feature",
+        "description": "The feature that activates RecentlyUsedDocumentsWebPart from the react-recently-used-documents solution.",
+        "id": "7b36c4ce-93b6-4f4a-8e66-d760a172333c",
+        "version": "3.0.0.0",
+        "componentIds": [
+          "7b36c4ce-93b6-4f4a-8e66-d760a172333c"
+        ]
+      }
+    ],
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",
