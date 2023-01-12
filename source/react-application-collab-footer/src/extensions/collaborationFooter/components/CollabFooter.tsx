@@ -7,7 +7,9 @@ import { ICollabFooterEditResult } from './ICollabFooterEditResult';
 import * as strings from 'CollaborationFooterApplicationCustomizerStrings';
 
 // import additional controls/components
-import { CommandBar, IContextualMenuItem, ContextualMenuItemType, MessageBar, MessageBarType } from 'office-ui-fabric-react';
+import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
+import { CommandBar } from '@fluentui/react/lib/CommandBar';
+import { ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 
 export default class CollabFooter extends React.Component<ICollabFooterProps, ICollabFooterState> {
   

@@ -13,7 +13,7 @@ import { ICollabFooterProps } from './components/ICollabFooterProps';
 import { ICollabFooterEditResult } from './components/ICollabFooterEditResult';
 
 // import additional controls/components
-import { IContextualMenuItem, ContextualMenuItemType } from 'office-ui-fabric-react';
+import { ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 import SPTaxonomyService from '../../services/SPTaxonomyService';
 import {ITerm } from '../../services/SPTaxonomyTypes';
 import SPUserProfileService from '../../services/SPUserProfileService';

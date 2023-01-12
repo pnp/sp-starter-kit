@@ -8,18 +8,11 @@ import * as strings from 'MyLinksStrings';
 
 // import additional controls/components
 import { BaseDialog, IDialogConfiguration } from '@microsoft/sp-dialog';
-import {
-  DefaultButton,
-  TextField,
-  CommandBar,
-  DetailsList,
-  DetailsListLayoutMode,
-  Selection,
-  SelectionMode,
-  IColumn,
-  DialogFooter,
-  DialogContent
-} from 'office-ui-fabric-react';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { CommandBar } from '@fluentui/react/lib/CommandBar';
+import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from '@fluentui/react/lib/DetailsList';
+import { DialogContent, DialogFooter } from '@fluentui/react/lib/Dialog';
 
 /**
  * Define the columns that will be used to render the list of links
