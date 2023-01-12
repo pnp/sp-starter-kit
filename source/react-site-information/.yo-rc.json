@@ -8,7 +8,7 @@
       "@microsoft/teams-js": "2.4.1"
     },
     "version": "1.16.1",
-    "environment": "onprem19",
+    "environment": "spo",
     "libraryName": "react-site-information",
     "libraryId": "09938b42-5d02-4ca4-a040-61914367cf6f",
     "packageManager": "npm",

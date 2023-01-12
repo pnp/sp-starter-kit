@@ -53,7 +53,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|April 7, 2018|Initial release
 2.0|December 3, 2019|v2.0
-3.0|January 10, 2023|Upgraded to SPFx 1.16.1
+3.0|January 12, 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
