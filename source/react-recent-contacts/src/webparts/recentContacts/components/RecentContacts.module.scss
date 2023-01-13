@@ -1,8 +1,53 @@
-@import '~@fluentui/react/dist/sass/References.scss';
+@import "~@fluentui/react/dist/sass/References.scss";
 
 .recentContacts {
   .persona {
     margin-bottom: 5px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  .personaDetails {
+    padding: 0px 24px 0px 16px;
+    min-width: 0px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .titleText {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: rgb(51, 51, 51);
+      font-weight: 400;
+      font-size: 20px;
+    }
+
+    .emailText {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: $ms-color-themePrimary;
+      font-weight: 400;
+      font-size: 14px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .contactText {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: $ms-color-themePrimary;
+      font-weight: 400;
+      font-size: 14px;
+    }
   }
 
   .noContacts {
@@ -12,5 +57,11 @@
   .error {
     @include ms-font-m;
     color: $ms-color-alert;
+  }
+
+  mgt-person {
+    --avatar-size: 72px;
+    --font-size: 28px;
+    --font-weight: 800;
   }
 }

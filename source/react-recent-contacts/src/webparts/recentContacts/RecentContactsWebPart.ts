@@ -5,25 +5,21 @@ import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import * as strings from 'RecentContactsWebPartStrings';
 import { RecentContacts, IRecentContactsProps } from './components';
-import { MSGraphClientV3 } from '@microsoft/sp-http';
+import { Providers, SharePointProvider } from '@microsoft/mgt-spfx';
+
 export interface IRecentContactsWebPartProps {
   title: string;
   nrOfContacts: number;
 }
 
 export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecentContactsWebPartProps> {
-  private graphClient: MSGraphClientV3;
-  private propertyFieldNumber : any;
-  
-  public onInit(): Promise<void> {
-    return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
-      this.context.msGraphClientFactory
-        .getClient('3')
-        .then((client: MSGraphClientV3): void => {
-          this.graphClient = client;
-          resolve();
-        }, err => reject(err));
-    });
+  private propertyFieldNumber: any;
+
+  protected onInit(): Promise<void> {
+    if (!Providers.globalProvider) {
+      Providers.globalProvider = new SharePointProvider(this.context);
+    }
+    return super.onInit();
   }
 
   public render(): void {
@@ -32,7 +28,6 @@ export default class RecentContactsWebPart extends BaseClientSideWebPart<IRecent
       {
         title: this.properties.title,
         nrOfContacts: this.properties.nrOfContacts,
-        graphClient: this.graphClient,
         displayMode: this.displayMode,
         updateProperty: (value: string) => {
           this.properties.title = value;
