@@ -7,8 +7,7 @@ import * as strings from 'PersonalEmailWebPartStrings';
 import { PersonalEmail, IPersonalEmailProps } from './components';
 import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
 import { PropertyFieldToggleWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldToggleWithCallout';
-import { MSGraphClient } from '@microsoft/sp-http';
-import { loadTheme } from "office-ui-fabric-react";
+import { MSGraphClientV3 } from '@microsoft/sp-http';
 import {
   IReadonlyTheme,
   ThemeChangedEventArgs,
@@ -22,16 +21,16 @@ export interface IPersonalEmailWebPartProps {
 }
 
 export default class PersonalEmailWebPart extends BaseClientSideWebPart<IPersonalEmailWebPartProps> {
-  private graphClient: MSGraphClient;
-  private propertyFieldNumber;
+  private graphClient: MSGraphClientV3;
+  private propertyFieldNumber: any;
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
 
   public onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
-        .getClient()
-        .then((client: MSGraphClient): void => {
+        .getClient('3')
+        .then((client: MSGraphClientV3): void => {
           this.graphClient = client;
           resolve();
         }, err => reject(err));
