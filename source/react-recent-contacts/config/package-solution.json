@@ -3,10 +3,39 @@
   "solution": {
     "name": "react-recent-contacts-client-side-solution",
     "id": "a9a1f9c1-f04b-4308-8029-2b15c1f93e20",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-recent-contacts description"
+      },
+      "longDescription": {
+        "default": "react-recent-contacts description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-recent-contacts RecentContactsWebPart Feature",
+        "description": "The feature that activates RecentContactsWebPart from the react-recent-contacts solution.",
+        "id": "726c9a2a-cf33-4928-86a5-fa7c283c610e",
+        "version": "3.0.0.0",
+        "componentIds": [
+          "726c9a2a-cf33-4928-86a5-fa7c283c610e"
+        ]
+      }
+    ],
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",
