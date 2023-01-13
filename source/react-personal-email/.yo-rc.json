@@ -1,11 +1,18 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
+    "nodeVersion": "16.19.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
     "environment": "spo",
-    "version": "1.9.1",
     "libraryName": "react-personal-email",
     "libraryId": "7c886936-7bcd-4ef5-ac98-e802299dc5ad",
     "packageManager": "npm",
+    "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "webpart"
   }

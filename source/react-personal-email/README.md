@@ -40,6 +40,7 @@ Solution|Author(s)
 --------|---------
 react-personal-email| Waldek Mastykarz
 react-personal-email| Beau Cameron
+react-personal-email| Chandani Prajapati
 
 ## Version history
 
@@ -47,6 +48,8 @@ Version|Date|Comments
 -------|----|--------
 1.0|May, 2018|Initial release
 2.0|November 29, 2019|v2.0
+3.0|January 13, 2013|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

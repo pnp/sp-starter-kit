@@ -3,11 +3,11 @@ import styles from './PersonalEmail.module.scss';
 import * as strings from 'PersonalEmailWebPartStrings';
 import { IPersonalEmailProps, IPersonalEmailState, IMessage, IMessages } from '.';
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
-import { List } from 'office-ui-fabric-react/lib/components/List';
-import { Link } from 'office-ui-fabric-react/lib/components/Link';
-import { IIconProps } from 'office-ui-fabric-react/lib/components/Icon';
-import { ActionButton } from 'office-ui-fabric-react/lib/components/Button';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { List } from '@fluentui/react/lib/List';
+import { Link } from '@fluentui/react/lib/Link';
+import { IIconProps } from '@fluentui/react/lib/Icon';
+import { ActionButton } from '@fluentui/react/lib/Button';
 
 export class PersonalEmail extends React.Component<IPersonalEmailProps, IPersonalEmailState> {
 
