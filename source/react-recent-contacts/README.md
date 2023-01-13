@@ -49,6 +49,7 @@ solution/src/webparts/recentContacts | Mikael Svenson (@mikaelsvenson)
 solution/src/webparts/recentContacts | Özgür Ersoy (@moersoy)
 solution/src/webparts/recentContacts | Guido Zambarda
 source/react-recent-contacts | Yannick Reekmans (@yannickreekmans)
+react-recent-contacts | Chandani Prajapati (@Chandani_SPD)
 
 ## Version history
 
@@ -56,6 +57,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|April 7, 2018|Initial release
 2.0|December 4, 2019|v2.0
+3.0|January 13, 2013|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
