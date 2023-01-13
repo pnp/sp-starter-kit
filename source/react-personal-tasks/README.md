@@ -57,6 +57,7 @@ Solution|Author(s)
 react-personal-tasks | Waldek Mastykarz
 react-personal-tasks | Alex Terentiev
 react-personal-tasks | Eric Overfield
+react-personal-tasks | Chandani Prajapati
 
 ## Version history
 
@@ -64,6 +65,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|December 25, 2019|Initial release
 2.2|August 2021|Upgrade to MGT 2.2.1
+3.0|January 13, 2013|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1 and MGT 2.9.0)
 
 ## Disclaimer
 
