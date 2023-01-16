@@ -5,7 +5,7 @@ import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import * as strings from 'PersonalContactsWebPartStrings';
 import { PersonalContacts, IPersonalContactsProps } from './components/PersonalContacts';
-import { MSGraphClient } from '@microsoft/sp-http';
+import { MSGraphClientV3 } from '@microsoft/sp-http';
 
 export interface IPersonalContactsWebPartProps {
   title: string;
@@ -13,14 +13,14 @@ export interface IPersonalContactsWebPartProps {
 }
 
 export default class PersonalContactsWebPart extends BaseClientSideWebPart<IPersonalContactsWebPartProps> {
-  private graphClient: MSGraphClient;
-  private propertyFieldNumber;
+  private graphClient: MSGraphClientV3;
+  private propertyFieldNumber : any;
 
   public onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
       this.context.msGraphClientFactory
-        .getClient()
-        .then((client: MSGraphClient): void => {
+        .getClient('3')
+        .then((client: MSGraphClientV3): void => {
           this.graphClient = client;
           resolve();
         }, err => reject(err));

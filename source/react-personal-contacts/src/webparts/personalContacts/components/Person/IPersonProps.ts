@@ -1,7 +1,7 @@
-import { MSGraphClient } from '@microsoft/sp-http';
+import { MSGraphClientV3 } from '@microsoft/sp-http';
 import { IContact } from "..";
 
 export interface IPersonProps {
-  graphClient: MSGraphClient;
+  graphClient: MSGraphClientV3;
   person: IContact;
 }

@@ -1,9 +1,9 @@
 import { DisplayMode } from '@microsoft/sp-core-library';
 import { IPersonalContactsWebPartProps } from '../../PersonalContactsWebPart';
-import { MSGraphClient } from '@microsoft/sp-http';
+import { MSGraphClientV3 } from '@microsoft/sp-http';
 
 export interface IPersonalContactsProps extends IPersonalContactsWebPartProps {
   displayMode: DisplayMode;
-  graphClient: MSGraphClient;
+  graphClient: MSGraphClientV3;
   updateProperty: (value: string) => void;
 }
