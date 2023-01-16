@@ -11,7 +11,7 @@ import {
 import * as strings from 'PersonalCalendarWebPartStrings';
 import PersonalCalendar from './components/PersonalCalendar';
 import { IPersonalCalendarProps } from './components/IPersonalCalendarProps';
-import { MSGraphClient } from '@microsoft/sp-http';
+import { MSGraphClientV3 } from '@microsoft/sp-http';
 
 export interface IPersonalCalendarWebPartProps {
   title: string;
@@ -21,14 +21,14 @@ export interface IPersonalCalendarWebPartProps {
 }
 
 export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPersonalCalendarWebPartProps> {
-  private graphClient: MSGraphClient;
+  private graphClient: MSGraphClientV3;
   private propertyFieldNumber;
 
   public onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error: any) => void): void => {
-      this.context.msGraphClientFactory
-        .getClient()
-        .then((client: MSGraphClient): void => {
+      this.context.MSGraphClientV3Factory
+        .getClient('3')
+        .then((client: MSGraphClientV3): void => {
           this.graphClient = client;
           resolve();
         }, err => reject(err));
@@ -46,7 +46,7 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
         // pass the current display mode to determine if the title should be
         // editable or not
         displayMode: this.displayMode,
-        // pass the reference to the MSGraphClient
+        // pass the reference to the MSGraphClientV3
         graphClient: this.graphClient,
         // handle updated web part title
         updateProperty: (value: string): void => {

@@ -1,16 +1,16 @@
 import { Providers } from '@microsoft/mgt-spfx';
 import { Agenda, MgtTemplateProps } from '@microsoft/mgt-react/dist/es6/spfx';
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
-import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import { Link } from '@fluentui/react/lib/Link';
 import * as strings from 'PersonalCalendarWebPartStrings';
 import * as React from 'react';
 import { IPersonalCalendarProps, IPersonalCalendarState } from '.';
 import { Event } from '@microsoft/microsoft-graph-types';
 import styles from './PersonalCalendar.module.scss';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 import format from 'date-fns/format';
-import { IIconProps } from 'office-ui-fabric-react/lib/components/Icon';
-import { ActionButton } from 'office-ui-fabric-react/lib/components/Button';
+import { IIconProps } from '@fluentui/react/lib/Icon';
+import { ActionButton } from '@fluentui/react/lib/Button';
 import SimpleCalendar from './SimpleCalendar';
 
 
@@ -118,7 +118,11 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
         .version("v1.0")
         .get((err: any, res: microsoftgraph.MailboxSettings): void => {
           if (err) {
+            console.log("Error:", err)
             return reject(err);
+          }
+          else{
+            console.log("Response:", res)
           }
           
           resolve(res.timeZone);
@@ -156,6 +160,7 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
     this
       ._getTimeZone()
       .then((_timeZone: string): void => {
+        console.log("TimeZone:", _timeZone)
         this.setState({
           timeZone: _timeZone,
           loading: false

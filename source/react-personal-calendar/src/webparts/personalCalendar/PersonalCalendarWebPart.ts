@@ -8,11 +8,10 @@ import {
   PropertyPaneCheckbox
 } from "@microsoft/sp-property-pane";
 import * as strings from 'PersonalCalendarWebPartStrings';
-import { SpStarterKitSharedLibrary } from '@starter-kit/shared-library';
+//import { SpStarterKitSharedLibrary } from '@starter-kit/shared-library';
 import PersonalCalendar from './components/PersonalCalendar';
 import { IPersonalCalendarProps } from './components/IPersonalCalendarProps';
 import { Providers, SharePointProvider } from '@microsoft/mgt-spfx';
-import { loadTheme } from "office-ui-fabric-react";
 import {
   IReadonlyTheme,
   ThemeChangedEventArgs,
@@ -28,7 +27,7 @@ export interface IPersonalCalendarWebPartProps {
 }
 
 export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPersonalCalendarWebPartProps> {
-  private propertyFieldNumber;
+  private propertyFieldNumber: any;
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
 
@@ -102,7 +101,7 @@ export default class PersonalCalendarWebPart extends BaseClientSideWebPart<IPers
                 this.propertyFieldNumber("refreshInterval", {
                   key: "refreshInterval",
                   // label: strings.RefreshInterval,
-                  label: SpStarterKitSharedLibrary.getLocale('RefreshInterval'),
+                  label: "SpStarterKitSharedLibrary.getLocale('RefreshInterval')",
                   value: this.properties.refreshInterval,
                   minValue: 1,
                   maxValue: 60
