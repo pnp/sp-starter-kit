@@ -58,6 +58,7 @@ Solution|Author(s)
 --------|---------
 react-links V1 | Elio Struyf (@estruyf)
 react-links V2 | Fabio Franzini (@fabiofranzini)
+react-links V3 | Chandani Prajapati (@Chandani_SPD)
 
 ## Version history
 
@@ -65,6 +66,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|May 18th, 2018|Initial release (extract web part from Starter Kit v1)
 2.0|January 24, 2020|Initial release (extract web part from Starter Kit v1)
+3.0|January 16, 2013|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
