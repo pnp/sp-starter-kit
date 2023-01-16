@@ -24,11 +24,11 @@ function SimpleCalendar () {
 			<div className={styles.day}>T</div>
 			<div className={styles.day}>F</div>
 			<div className={`${styles.day} ${styles.weekend}`}>S</div>
-			{eachDayOfInterval({start: startDate, end: endDate}).map((date, index) => {
+			{eachDayOfInterval({start: startDate, end: endDate}).map((date: any, index: any) => {
 				const isFirstOfMonth = getDate(date) === 1;
 				const isPast = differenceInCalendarDays(today, date) > 0;
 				return (
-					<div className={`${styles.dayContainer}  ${isPast ? styles.past : ''}`}>
+					<div key={index} className={`${styles.dayContainer} ${isPast ? styles.past : ''}`}>
 						<div className={`${styles.dayWrapper} ${isToday(date) ? styles.today : ''}`}>
 							{isFirstOfMonth && <div className={styles.monthText}>{format(date, 'MMM')}</div>}
 							<div className={styles.day}>{format(date, 'd')}</div>
