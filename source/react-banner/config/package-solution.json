@@ -3,9 +3,39 @@
   "solution": {
     "name": "react-banner-client-side-solution",
     "id": "b50504bb-cf4d-4b53-b47a-70d2d903b8d7",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-banner description"
+      },
+      "longDescription": {
+        "default": "react-banner description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-banner BannerWebPart Feature",
+        "description": "The feature that activates BannerWebPart from the react-banner solution.",
+        "id": "84a626d0-e973-4429-91cc-5adc610d437c",
+        "version": "3.0.0.0",
+        "componentIds": [
+          "84a626d0-e973-4429-91cc-5adc610d437c"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-banner.sppkg"
