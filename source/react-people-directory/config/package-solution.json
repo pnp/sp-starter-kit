@@ -5,12 +5,34 @@
 		"id": "bf076fcb-c67e-4b89-b1ff-2ab5242945c5",
 		"version": "3.0.0.0",
 		"developer": {
-			"name": "",
+			"name": "PnP Starter Kit",
 			"privacyUrl": "",
 			"termsOfUseUrl": "",
 			"websiteUrl": "",
-			"mpnId": "spfx-1.13.1"
+			"mpnId": "pnpsk"
 		},
+		"metadata": {
+			"shortDescription": {
+				"default": "react-people-directory description"
+			},
+			"longDescription": {
+				"default": "react-people-directory description"
+			},
+			"screenshotPaths": [],
+			"videoUrl": "",
+			"categories": []
+		},
+		"features": [
+			{
+				"title": "react-people-directory PeopleDirectoryWebPart Feature",
+				"description": "The feature that activates PeopleDirectoryWebPart from the react-people-directory solution.",
+				"id": "52b26049-6e2e-4302-8258-e9f8861a881f",
+				"version": "3.0.0.0",
+				"componentIds": [
+					"52b26049-6e2e-4302-8258-e9f8861a881f"
+				]
+			}
+		],
 		"includeClientSideAssets": true,
 		"skipFeatureDeployment": true,
 		"isDomainIsolated": false
