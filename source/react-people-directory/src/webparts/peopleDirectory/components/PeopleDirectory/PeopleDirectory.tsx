@@ -4,11 +4,11 @@ import styles from './PeopleDirectory.module.scss';
 import {
   Spinner,
   SpinnerSize
-} from 'office-ui-fabric-react/lib/Spinner';
+} from '@fluentui/react/lib/Spinner';
 import {
   MessageBar,
   MessageBarType
-} from 'office-ui-fabric-react/lib/MessageBar';
+} from '@fluentui/react/lib/MessageBar';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import {
   IPeopleDirectoryProps,
