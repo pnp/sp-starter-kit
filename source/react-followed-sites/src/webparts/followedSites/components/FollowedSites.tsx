@@ -3,11 +3,11 @@ import styles from './FollowedSites.module.scss';
 import { SPHttpClientResponse, SPHttpClient } from '@microsoft/sp-http';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { SortOrder } from '../FollowedSitesWebPart';
-import { Link } from 'office-ui-fabric-react/lib/components/Link';
-import { TextField } from 'office-ui-fabric-react/lib/components/TextField';
+import { Link } from '@fluentui/react/lib/Link';
+import { TextField } from '@fluentui/react/lib/TextField';
 import { IFollowedSitesProps, IFollowedSitesState, IFollowedResult, IFollowed } from '.';
 import { Paging } from './paging';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib//Spinner';
 import { SpStarterKitSharedLibrary, LocaleKeys } from '@starter-kit/shared-library';
 
 export default class FollowedSites extends React.Component<IFollowedSitesProps, IFollowedSitesState> {
@@ -114,7 +114,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
     }
   }
 
-  private _onFilterChanged = (val: string): void => {
+  private _onFilterChanged = (event: React.FormEvent<HTMLElement>, val?: string) => {
     // Check if a value was provided
     if (val) {
       const allSites = [...this._allFollowing];
@@ -167,7 +167,7 @@ export default class FollowedSites extends React.Component<IFollowedSitesProps, 
                 <TextField placeholder={SpStarterKitSharedLibrary.getLocale(LocaleKeys.SitesFilterLabel)}
                            iconProps={{ iconName: 'Filter' }}
                            underlined
-                           onChanged={this._onFilterChanged} />
+                           onChange={this._onFilterChanged} />
               </div>
 
               <ul>
