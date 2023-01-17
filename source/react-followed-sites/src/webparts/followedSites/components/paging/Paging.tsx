@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './Paging.module.scss';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { DefaultButton } from '@fluentui/react/lib//Button';
+import { Icon } from '@fluentui/react/lib//Icon';
 import { IPagingProps, IPagingState } from '.';
 
 export class Paging extends React.Component<IPagingProps, IPagingState> {

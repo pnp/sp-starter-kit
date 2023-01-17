@@ -1,12 +1,8 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneDropdown
-} from '@microsoft/sp-webpart-base';
-
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneDropdown } from "@microsoft/sp-property-pane";
 import FollowedSites from './components/FollowedSites';
 import { IFollowedSitesProps } from './components/IFollowedSitesProps';
 
@@ -25,7 +21,7 @@ export enum SortOrder {
 
 export default class FollowedSitesWebPart extends BaseClientSideWebPart<IFollowedSitesWebPartProps> {
 
-  private propertyFieldNumber;
+  private propertyFieldNumber : any;
   public render(): void {
 
     const element: React.ReactElement<IFollowedSitesProps> = React.createElement(
