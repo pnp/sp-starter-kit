@@ -26,6 +26,7 @@ Solution|Author(s)
 --------|---------
 ./src/webparts/banner | Elio Struyf @eliostruyf
 ./source/react-banner | Eric Overfield @ericoverfield
+./source/react-banner | Chandani Prajapati @Chandani_SPD
 
 ## Version history
 
@@ -33,7 +34,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|May 2018|Initial release
 2.0|November 30, 2019| SP2019 and SPO compatible
-
+3.0|January 17, 2013|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
