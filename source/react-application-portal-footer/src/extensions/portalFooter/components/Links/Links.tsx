@@ -3,7 +3,7 @@ import styles from './Links.module.scss';
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { ILinksProps } from '.';
-
+import '@fluentui/react/dist/css/fabric.css';
 export class Links extends React.Component<ILinksProps, {}> {
 
   private _handleEdit = async (): Promise<void> => {
@@ -11,6 +11,7 @@ export class Links extends React.Component<ILinksProps, {}> {
   }
 
   public render(): React.ReactElement<ILinksProps> {
+    alert("Hey")
     return (
       <div className={`${styles.links} ${this.props.visible ? styles.visible : styles.hidden}`}>
         <div className={styles.content}>
