@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IAlertNotificationsProps } from '.';
 import * as strings from 'HubOrSiteAlertsApplicationCustomizerStrings';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
 import { AlertType } from '../IAlert';
 
 export class AlertNotifications extends React.Component<IAlertNotificationsProps, {}> {
