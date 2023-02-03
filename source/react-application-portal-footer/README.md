@@ -4,7 +4,7 @@ This application customizer provides you the ability to include a footer designe
 
 Portal footer has extending UI experience if user clicks the top arrow in the footer. 
 
-![Collaboration Footer](../../assets/images/components/ext-portal-footer.gif)
+![Portal Footer](../../assets/images/components/ext-portal-footer.gif)
 
 Details on implementation at https://github.com/SharePoint/sp-starter-kit/blob/master/documentation/components/ext-portal-footer.md
 
@@ -60,6 +60,7 @@ react-application-portal-footer | Chandani Prajapati
 Version|Date|Comments
 -------|----|--------
 1.0|January 2019|Initial release for SharePoint Starter Kit v2
+2.0|January 1, 2020|Initial release for SharePoint Starter Kit v2
 3.0|February 2023|v3 - Upgraded to SPFx 1.16.1
 
 ## Disclaimer
@@ -82,5 +83,6 @@ Key features demostrated by this solution:
 
 * PnPjs usage in the solution
 * Dynamic creation of the list if it's missing
+* Work with data from user property
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-application-portal-footer" />

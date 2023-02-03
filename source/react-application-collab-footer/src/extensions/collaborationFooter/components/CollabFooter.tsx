@@ -26,8 +26,8 @@ export default class CollabFooter extends React.Component<ICollabFooterProps, IC
 
   public render(): React.ReactElement<ICollabFooterProps> {
     
-    console.log("CollabFooter.render");
-    console.log(this.state.myLinks);
+    // console.log("CollabFooter.render");
+    // console.log(this.state.myLinks);
 
     let menuItems: IContextualMenuItem[] = this.props.sharedLinks;
 
@@ -48,7 +48,7 @@ export default class CollabFooter extends React.Component<ICollabFooterProps, IC
         }
       ]);
 
-      console.log(menuItems);
+      // console.log(menuItems);
     }
 
     if (menuItems != null && menuItems.length > 0) {

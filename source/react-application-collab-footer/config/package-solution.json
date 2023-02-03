@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-application-collab-footer-client-side-solution",
+    "name": "Starter Kit - Collaboration Footer",
     "id": "8b5fa72c-26f0-488a-a952-6ec68c81f623",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
