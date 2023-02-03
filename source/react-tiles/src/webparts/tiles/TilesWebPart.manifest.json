@@ -20,7 +20,8 @@
     "description": { "default": "Lists links in tile format" },
     "officeFabricIconFontName": "Tiles",
     "properties": {
-      "title": "Useful tools"
+      "title": "Useful tools",
+      "tileHeight": 200
     }
   }]
 }
