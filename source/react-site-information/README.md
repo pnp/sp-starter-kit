@@ -26,18 +26,18 @@ The `Site Information` web part can be configured with the following properties:
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
-* Only supported in SharePoint Online due to dependency on the Microsoft Graph APIs
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
-none
+This solution relies on a term set named **PnP-Organizations** found within the term group **PnPTermSets**. These terms are added by default during a standard provisioning of the [PnP Starter Kit](../../provisioning). If you have not applied the starterkit.pnp package you can find the xml used to provision the terms [here](../templates/starterkit.xml)
 
 ## Solution
 
@@ -45,6 +45,7 @@ Solution|Author(s)
 --------|---------
 react-site-information | Paolo Pialorsi
 react-site-information | David Warner II
+react-site-information | Chandani Prajapati
 
 ## Version history
 
@@ -52,6 +53,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|April 7, 2018|Initial release
 2.0|December 3, 2019|v2.0
+3.0|February 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
@@ -67,15 +69,10 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve`
 
-> Include any additional steps as needed.
-
 ## Features
 
-Description of the web part with possible additional details than in short summary. 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using Microsoft Graph from the web parts
-* Hosting SharePoint Framework components as Microsoft Teams tabs
-* Using app pages in SharePoint Online
+* PnP Property Controls - @pnp/spfx-property-controls: Term picker and People picker
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-site-information" />

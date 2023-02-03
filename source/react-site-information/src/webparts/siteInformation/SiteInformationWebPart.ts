@@ -1,12 +1,8 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IWebPartPropertiesMetadata,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart, IWebPartPropertiesMetadata } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 import { DisplayMode } from '@microsoft/sp-core-library';
 
 import * as strings from 'SiteInformationWebPartStrings';
@@ -16,9 +12,9 @@ import { ISiteInformationWebPartProps } from './ISiteInformationWebPartProps';
 
 export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteInformationWebPartProps> {
 
-  private propertyFieldTermPicker;
-  private propertyFieldPeoplePicker;
-  private principalType;
+  private propertyFieldTermPicker : any;
+  private propertyFieldPeoplePicker : any;
+  private principalType: any;
 
   public onInit(): Promise<void> {
 
