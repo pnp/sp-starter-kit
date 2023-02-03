@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './Tile.module.scss';
-import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
+import { Icon } from '@fluentui/react/lib/Icon';
 import { ITileProps } from './ITileProps';
 
 export class Tile extends React.Component<ITileProps, {}> {

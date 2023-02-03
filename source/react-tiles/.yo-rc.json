@@ -1,11 +1,19 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
-    "environment": "onprem19",
-    "version": "1.9.1",
+    "nodeVersion": "16.19.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
     "libraryName": "react-tiles",
     "libraryId": "b0c8359d-6380-4b12-baba-c79e4fd5f179",
+    "environment": "spo",
     "packageManager": "npm",
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
   }
 }
