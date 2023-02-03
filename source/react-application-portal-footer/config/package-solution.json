@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-application-portal-footer-client-side-solution",
+    "name": "Starter Kit - Portal Footer",
     "id": "4d7c1cea-0ef5-4143-88f6-43411d978b2f",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
