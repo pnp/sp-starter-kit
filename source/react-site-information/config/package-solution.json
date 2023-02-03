@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-site-information-client-side-solution",
+    "name": "Starter Kit - Site Information",
     "id": "09938b42-5d02-4ca4-a040-61914367cf6f",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "react-site-information SiteInformationWebPart Feature",
-        "description": "The feature that activates SiteInformationWebPart from the react-site-information solution.",
+        "title": "Starter Kit - Site Information WebPart Feature",
+        "description": "The feature that activates Site Information WebPart from the Starter Kit - Site Information solution.",
         "id": "f91c48b4-3ffd-4446-8577-375b07a62c9f",
         "version": "3.0.0.0",
         "componentIds": [
