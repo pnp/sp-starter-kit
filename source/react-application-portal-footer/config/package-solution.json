@@ -1,17 +1,36 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-application-portal-footer-client-side-solution",
+    "name": "Starter Kit - Portal Footer",
     "id": "4d7c1cea-0ef5-4143-88f6-43411d978b2f",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-application-portal-footer description"
+      },
+      "longDescription": {
+        "default": "react-application-portal-footer description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
     "features": [
       {
         "title": "Application Extension - Deployment of custom action.",
         "description": "Deploys a custom action with ClientSideComponentId association",
         "id": "5716e6ec-8ef5-4ce3-9064-02bd771988e8",
-        "version": "2.0.0.0",
+        "version": "3.0.0.0",
         "assets": {
           "elementManifests": [
             "elements.xml",

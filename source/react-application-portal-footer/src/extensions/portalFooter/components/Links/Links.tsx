@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './Links.module.scss';
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { ILinksProps } from '.';
 
 export class Links extends React.Component<ILinksProps, {}> {
