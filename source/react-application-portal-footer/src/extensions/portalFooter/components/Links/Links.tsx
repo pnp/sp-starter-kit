@@ -11,7 +11,6 @@ export class Links extends React.Component<ILinksProps, {}> {
   }
 
   public render(): React.ReactElement<ILinksProps> {
-    alert("Hey")
     return (
       <div className={`${styles.links} ${this.props.visible ? styles.visible : styles.hidden}`}>
         <div className={styles.content}>
