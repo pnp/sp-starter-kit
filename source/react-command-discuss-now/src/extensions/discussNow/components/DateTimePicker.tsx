@@ -9,18 +9,18 @@ import { IDateTimePickerState } from './IDateTimePickerState';
 import {
   BaseComponent,
   assign
-} from 'office-ui-fabric-react/lib/Utilities';
+} from '@fluentui/react/lib/Utilities';
 
 /**
  * Label
  */
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Label } from '@fluentui/react/lib/Label';
 
 /**
  * Text Field
  */
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Icon } from '@fluentui/react/lib/Icon';
 
 /**
  * Date Picker
@@ -29,7 +29,7 @@ import {
   DatePicker,
   DayOfWeek,
   IDatePickerStrings
-} from 'office-ui-fabric-react/lib/DatePicker';
+} from '@fluentui/react/lib/DatePicker';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [

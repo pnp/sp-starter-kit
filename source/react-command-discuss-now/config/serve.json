@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
   "port": 4321,
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://pmspkit02.sharepoint.com/sites/uatMarketing/Shared%20Documents/Forms/AllItems.aspx",
       "customActions": {
         "84de6bad-859f-4c3b-934c-f6c6ae935c72": {
           "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
@@ -16,7 +16,7 @@
       }
     },
     "discussNow": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://pmspkit02.sharepoint.com/sites/uatMarketing/Shared%20Documents/Forms/AllItems.aspx",
       "customActions": {
         "84de6bad-859f-4c3b-934c-f6c6ae935c72": {
           "location": "ClientSideExtension.ListViewCommandSet.CommandBar",

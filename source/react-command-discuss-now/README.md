@@ -34,12 +34,14 @@ none
 Solution|Author(s)
 --------|---------
 folder name | Author details
+react-command-discuss-now | Chandani Prajapati
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|December 25, 2019|Initial release
+2.0|February 3, 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
