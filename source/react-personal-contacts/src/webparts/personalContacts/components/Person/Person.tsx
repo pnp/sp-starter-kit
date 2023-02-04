@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styles from './Person.module.scss';
 import { IPersonProps, IPersonState } from '.';
-import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/components/Persona';
-import { Link } from 'office-ui-fabric-react/lib/components/Link';
-import { GraphError } from '@microsoft/microsoft-graph-client/lib/src/common';
+import { Persona, PersonaSize, IPersonaProps } from '@fluentui/react/lib/Persona';
+import { Link } from '@fluentui/react/lib/Link';
+import { GraphError } from '@microsoft/microsoft-graph-client/lib/src';
 
 export class Person extends React.Component<IPersonProps, IPersonState> {
   constructor(props: IPersonProps) {
@@ -60,7 +60,7 @@ export class Person extends React.Component<IPersonProps, IPersonState> {
       .api(`me/contacts/${person.id}/photo/$value`)
       .version('v1.0')
       .responseType('blob')
-      .get((err: GraphError, res, rawResponse): void => {
+      .get((err: GraphError, res: any, rawResponse: any): void => {
         if (err && err.statusCode === 404) {
           // no photo set on the contact, try retrieving from the user object
 
@@ -74,7 +74,7 @@ export class Person extends React.Component<IPersonProps, IPersonState> {
             .api(`users/${person.emailAddresses[0].address}/photo/$value`)
             .version('v1.0')
             .responseType('blob')
-            .get((err2: GraphError, res2, rawResponse2): void => {
+            .get((err2: GraphError, res2: any, rawResponse2: any): void => {
               this._setPhoto(rawResponse2);
             });
         }

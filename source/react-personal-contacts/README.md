@@ -41,6 +41,7 @@ Solution|Author(s)
 react-personal-contacts | Waldek Mastykarz ([@waldekm](https://twitter.com/waldekm))
 react-personal-contacts | Vardhaman Deshpande ([@vrdmn](https://twitter.com/vrdmn))
 react-presonal-contacts | Don Kirkham ([@DonKirkham](https://twitter.com/donkirkham))
+react-presonal-contacts | Chandani Prajapati ([@Chandani_SPD](https://twitter.com/Chandani_SPD))
 
 ## Version history
 
@@ -49,6 +50,7 @@ Version|Date|Comments
 1.0|May 2018| Initial release
 2.0|January 2020| Upgrade to V2
 3.0|February 2022| Upgrade to SPFx1.13.1
+4.0|January 16, 2013|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 

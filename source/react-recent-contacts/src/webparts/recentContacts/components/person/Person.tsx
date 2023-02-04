@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPersonProps, IPersonState } from '.';
-import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/components/Persona';
-import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import { Persona, PersonaSize, IPersonaProps } from '@fluentui/react/lib/Persona';
+import { Link } from '@fluentui/react/lib/Link';
 
 export class Person extends React.Component<IPersonProps, IPersonState> {
   constructor(props: IPersonProps) {
@@ -43,7 +43,7 @@ export class Person extends React.Component<IPersonProps, IPersonState> {
       // Check if the image can be retrieved
       const { personType } = person;
       if (personType && personType.class.toLowerCase() === "person" && personType.subclass.toLowerCase() === "organizationuser") {
-        graphClient.api(`users/${person.id}/photo/$value`).version("v1.0").responseType('blob').get((err, res, rawResponse) => {
+        graphClient.api(`users/${person.id}/photo/$value`).version("v1.0").responseType('blob').get((err: any, res: any, rawResponse: { xhr: { response: Blob | MediaSource; }; }) => {
           // Check if the image was retrieved
           if (rawResponse && rawResponse.xhr && rawResponse.xhr.response) {
             const url = window.URL;

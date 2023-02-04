@@ -1,6 +1,6 @@
 # Recent Contacts web part
 
-This web part provides you the ability to display list of a particular user's recent contacts on a web page. The web part may be configured to display a pre-defined number of contacts at a time. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
+This web part provides you the ability to display list of a particular user's recent contacts on a web page. The web part may be configured to display a pre-defined number of contacts at a time. This web part is powered by the Microsoft Graph and uses the **v1.0/me/people** endpoint.
 
 ![Recent Contacts](../../assets/images/components/part-recent-contacts.gif)
 
@@ -21,14 +21,14 @@ The `Recent Contacts` web part can be configured with the following properties:
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
-* Only supported in SharePoint Online due to dependency on the Microsoft Graph APIs
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -49,6 +49,7 @@ solution/src/webparts/recentContacts | Mikael Svenson (@mikaelsvenson)
 solution/src/webparts/recentContacts | Özgür Ersoy (@moersoy)
 solution/src/webparts/recentContacts | Guido Zambarda
 source/react-recent-contacts | Yannick Reekmans (@yannickreekmans)
+react-recent-contacts | Chandani Prajapati (@Chandani_SPD)
 
 ## Version history
 
@@ -56,6 +57,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|April 7, 2018|Initial release
 2.0|December 4, 2019|v2.0
+3.0|February 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
@@ -78,8 +80,6 @@ Version|Date|Comments
 Description of the web part with possible additional details than in short summary. 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using Microsoft Graph from the web parts
-* Hosting SharePoint Framework components as Microsoft Teams tabs
-* Using app pages in SharePoint Online
+* Using Microsoft Graph from the web parts using msGraphClientFactory
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-recent-contacts" />

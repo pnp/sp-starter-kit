@@ -3,8 +3,8 @@ import styles from './RecentContacts.module.scss';
 import { IRecentContactsProps, IRecentContactsState, IContacts, IContact } from '.';
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import * as strings from 'RecentContactsWebPartStrings';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
-import { List } from 'office-ui-fabric-react/lib/components/List';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { List } from '@fluentui/react/lib/List';
 import { Person } from './person';
 
 export class RecentContacts extends React.Component<IRecentContactsProps, IRecentContactsState> {
@@ -33,7 +33,7 @@ export class RecentContacts extends React.Component<IRecentContactsProps, IRecen
         .version("v1.0")
         .select("id,displayName,scoredEmailAddresses,phones,personType")
         .top(this.props.nrOfContacts || 5)
-        .get((err, res: IContacts) => {
+        .get((err: { message: string; }, res: IContacts) => {
           if (err) {
             // Something failed calling the MS Graph
             this.setState({
