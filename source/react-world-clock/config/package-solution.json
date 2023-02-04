@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-world-clock-client-side-solution",
+    "name": "Starter Kit - World Clock",
     "id": "55d6757f-94de-4bde-95bf-f8802db4a8f4",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "world-clock WorldClockWebPart Feature",
-        "description": "The feature that activates WorldClockWebPart from the world-clock solution.",
+        "title": "Starter Kit - World Clock webpart Feature",
+        "description": "The feature that activates World Clock WebPart from the Starter Kit - World Clock solution.",
         "id": "7d2fb8db-010c-41d1-a464-e98b80e87647",
         "version": "3.0.0.0",
         "componentIds": [

@@ -1,5 +1,5 @@
 {
-  "name": "world-clock",
+  "name": "react-world-clock",
   "version": "3.0.0",
   "private": true,
   "main": "lib/index.js",
