@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-recently-visited-sites-client-side-solution",
+    "name": "Starter Kit - Recently Visited Sites",
     "id": "d8d9d358-fbb2-4e77-a66d-69f24e508bfa",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "react-recently-visited-sites RecentlyVisitedSitesWebPart Feature",
-        "description": "The feature that activates RecentlyVisitedSitesWebPart from the react-recently-visited-sites solution.",
+        "title": "Starter Kit - Recently Visited Sites WebPart Feature",
+        "description": "The feature that activates Recently Visited Sites Webpart from the Starter Kit - Recently Visited Sites solution.",
         "id": "49089f35-4213-425b-a5c0-706b25803484",
         "version": "3.0.0.0",
         "componentIds": [
