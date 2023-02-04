@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-recent-contacts-client-side-solution",
+    "name": "Starter Kit - Recent Contacts",
     "id": "a9a1f9c1-f04b-4308-8029-2b15c1f93e20",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "react-recent-contacts RecentContactsWebPart Feature",
-        "description": "The feature that activates RecentContactsWebPart from the react-recent-contacts solution.",
+        "title": "Starter Kit Starter Kit - Recent Contacts Webpart Feature",
+        "description": "The feature that activates Recent Contacts Webpart from the Starter Kit - Recent Contacts solution.",
         "id": "726c9a2a-cf33-4928-86a5-fa7c283c610e",
         "version": "3.0.0.0",
         "componentIds": [
