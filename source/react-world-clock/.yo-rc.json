@@ -1,8 +1,14 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
-    "environment": "onprem19",
-    "version": "1.9.1",
+    "nodeVersion": "14.15.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "environment": "spo",
     "libraryName": "world-clock",
     "libraryId": "55d6757f-94de-4bde-95bf-f8802db4a8f4",
     "packageManager": "npm",

@@ -31,15 +31,14 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.4-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
-* Works also at SharePoint 2019
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
-* [SharePoint 2019](https://docs.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-2019-development-platform)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -50,12 +49,14 @@ none
 Solution|Author(s)
 --------|---------
 react-world-clock | Dragan Panjkov (@panjkov)
+react-world-clock | Chandani Prajapati (@Chandani_SPD)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|January 5, 2020|Initial release (extract web part from Starter Kit v1)
+3.0|February 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
@@ -78,6 +79,6 @@ Version|Date|Comments
 Description of the web part with possible additional details than in short summary. 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* PnP property control usage
+* Use of SVG and CSS rotation to display a ticking clock
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-world-clock" />
