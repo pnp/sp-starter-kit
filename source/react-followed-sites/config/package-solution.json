@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-followed-sites-client-side-solution",
+    "name": "Starter Kit - Followed Sites",
     "id": "c818b178-6ea2-4722-8c55-32fdf5cfcc9d",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "react-followed-sites FollowedSitesWebPart Feature",
-        "description": "The feature that activates FollowedSitesWebPart from the react-followed-sites solution.",
+        "title": "Starter Kit - Followed Sites Webpart Feature",
+        "description": "The feature that activates Followed Sites Webpart from the Starter Kit - Followed Sites solution.",
         "id": "93c8302a-ab02-4a85-8cc2-184eb0e4e13d",
         "version": "3.0.0.0",
         "componentIds": [

@@ -8,11 +8,11 @@ export class SpStarterKitSharedLibrary {
    *
    * @param localeKey
    */
-  public static getLocale(localeKey: LocaleKeys | string, returnNull: boolean = false): string {
+  public static getLocale(localeKey: LocaleKeys | string, returnNull = false): string {
     if (!returnNull) {
-      return strings[localeKey] || `Locale key not defined`;
+      return strings[localeKey as keyof ISpStarterKitSharedLibraryStrings] || `Locale key not defined`;
     } else {
-      return strings[localeKey] || null;
+      return strings[localeKey as keyof ISpStarterKitSharedLibraryStrings] || null;
     }
   }
 

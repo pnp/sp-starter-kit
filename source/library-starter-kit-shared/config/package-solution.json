@@ -1,12 +1,41 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "library-starter-kit-shared-client-side-solution",
+    "name": "Starter Kit - Shared Library",
     "id": "3e313dee-8a65-4ee7-a5c2-59670e43c6d2",
-    "version": "1.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "library-starter-kit-shared-client-side-solution description"
+      },
+      "longDescription": {
+        "default": "library-starter-kit-shared-client-side-solution description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "@starter-kit/shared-library  Feature",
+        "description": "The feature that activates Shared Library from the @starter-kit/shared-library solution.",
+        "id": "849381c3-2209-441c-a559-2dc6a5c0cb63",
+        "version": "1.0.0.0",
+        "componentIds": [
+          "849381c3-2209-441c-a559-2dc6a5c0cb63"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/library-starter-kit-shared.sppkg"
