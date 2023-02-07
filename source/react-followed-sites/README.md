@@ -1,10 +1,10 @@
 # Followed Sites webpart
 
-This web part provides you the ability to display a list of site administrator defined number of sites that a given user is following, with paging as well as inline filtering of sites by keyword or phrase. Currently the list of followed sites includes classic as well as modern communication sites but does not include group enabled (modern) team sites.
+This web part provides you the ability to display a list of site administrator defined number of sites that a given user is following, with paging as well as inline filtering of sites by keyword or phrase. Currently the list of followed sites includes sites that returned by the SharePoint api endpoint: `/_api/social.following/my/followed(types=4)`
 
 > `NOTE:` This webpart includes the use of a custom SPFx library, [library-starter-kit-shared](../library-starter-kit-shared). If you need to rebuild / bundle / package this solution, refer to [Minimal Path to Awesome](#Minimal-Path-to-Awesome)
 
-![Bannner](../../assets/images/components/part-followed-sites.gif)
+![Follwed Sites](../../assets/images/components/part-followed-sites.gif)
 
 
 ## Configurable Properties
@@ -57,16 +57,16 @@ This solution uses a SPFx library, [library-starter-kit-shared](../library-start
 
 4. Edit package.json found at the root of the [react-followed-sites](./), i.e. [./source/react-followed-sites/package.json](../react-followed-sites/package.json)
 
-  - Add a new dependancy to the project: "@starter-kit/shared-library": "1.0.0"
+  - Add a new dependancy to the project: "@starter-kit/shared-library": "3.0.0"
 
   **Example**:
 
   ```xml
     "dependencies": {
-      "@microsoft/sp-core-library": "1.9.1",
+      "@microsoft/sp-core-library": "1.16.1",
       ...
-      "react": "16.8.5",
-      "react-dom": "16.8.5"
+      "react": "17.0.1",
+      "react-dom": "17.0.1"
     }
   ```
 
@@ -74,11 +74,11 @@ This solution uses a SPFx library, [library-starter-kit-shared](../library-start
 
   ```xml
     "dependencies": {
-      "@microsoft/sp-core-library": "1.9.1",
+      "@microsoft/sp-core-library": "1.16.1",
       ...
-      "react": "16.8.5",
-      "react-dom": "16.8.5",
-      "@starter-kit/shared-library": "1.0.0"
+      "react": "17.0.1",
+      "react-dom": "17.0.1"
+      "@starter-kit/shared-library": "3.0.0"
     }
   ```
 
@@ -102,18 +102,6 @@ This solution uses a SPFx library, [library-starter-kit-shared](../library-start
 
 > The package.json within this SPFx solution file must be manually updated for if the library dependency was included by default with the project, **npm install** would fail as the [library-starter-kit-shared](../library-starter-kit-shared) package would not be found. Linking the two projects allows this webpart to reference the library during **development**, while the package.json reference is required for **bundling and packaging**.
 
-
-## Features
-
-Description of the web part with possible additional details than in short summary. 
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
-
-* Using Microsoft Graph within a web part
-* Using [SharePoint Framework library components](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/library-component-overview_)
-* Hosting SharePoint Framework components as Microsoft Teams tabs
-* Using app pages in SharePoint Online
-
-
 ## Solution
 
 Solution|Author(s)
@@ -121,13 +109,25 @@ Solution|Author(s)
 react-followed-sites | Elio Struyf
 react-followed-sites | Beau Cameron
 react-followed-sites | Chandani Prajapati
+
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|May, 2018|Initial release
 2.0|November 29, 2019| v2.0
-3.0|January 17, 2023| Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
+3.0|February 2023| Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
+
+## Features
+
+Description of the web part with possible additional details than in short summary. 
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+* Using SharePoint APIs and spHttpClient within a web part
+* Using [SharePoint Framework library components](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/library-component-overview_)
+* Hosting SharePoint Framework components as Microsoft Teams tabs
+* Using app pages in SharePoint Online
+
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

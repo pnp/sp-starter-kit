@@ -27,10 +27,10 @@
     },
     "features": [
       {
-        "title": "@starter-kit/shared-library  Feature",
+        "title": "@starter-kit/shared-library Shared Library Feature",
         "description": "The feature that activates Shared Library from the @starter-kit/shared-library solution.",
         "id": "849381c3-2209-441c-a559-2dc6a5c0cb63",
-        "version": "1.0.0.0",
+        "version": "3.0.0.0",
         "componentIds": [
           "849381c3-2209-441c-a559-2dc6a5c0cb63"
         ]

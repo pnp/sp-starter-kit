@@ -2,16 +2,18 @@
 
 ## Summary
 
-Used for shared capabilities targeted for SharePoint Online as library component is not supported with SharePoint 2019.
+A SharePoint Framework shared library that includes an approach to share langauge strings across multiple SharePoint Framework webparts. Currently used by the [Followed Sites webpart](../react-followed-sites/README.md)
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
+
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -21,13 +23,14 @@ Only works in SharePoint Online due to version dependency.
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+library-starter-kit-shared | Eric Overfield
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|December 25, 2019|Initial release for SharePoint Starter Kit v2
+3.0|February 2023|Update to SPFx 1.16.1 - V3 of Starter Kit
 
 ## Disclaimer
 
@@ -47,6 +50,6 @@ Version|Date|Comments
   npm link
   ```
 4. This project may now we consumed by another SPFx project. For an example, refer to the included SPFx webpart, [./source/react-followed-sites](../react-followed-sites)
-* Reference library component in other solutions to make things work - https://docs.microsoft.com/en-us/sharepoint/dev/spfx/library-component-tutorial 
+* Reference library component in other solutions to make things work - https://learn.microsoft.com/en-us/sharepoint/dev/spfx/library-component-tutorial
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/library-starter-kit-shared" />
