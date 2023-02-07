@@ -14,7 +14,7 @@
   "requiresCustomScript": false,
 
   "supportsFullBleed": true,
-  //"supportedHosts": ["SharePointWebPart","TeamsTab"],
+  "supportedHosts": ["SharePointWebPart", "TeamsTab", "TeamsPersonalApp", "SharePointFullPage"],
   "hiddenFromToolbox": true,
 
   "preconfiguredEntries": [{
