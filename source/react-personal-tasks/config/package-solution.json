@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-personal-tasks-client-side-solution",
+    "name": "Stareter Kit - Personal Tasks",
     "id": "95cfc0f9-4052-476f-8443-8f23245e2a87",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "react-personal-tasks PersonalTasksWebPart Feature",
-        "description": "The feature that activates PersonalTasksWebPart from the react-personal-tasks solution.",
+        "title": "Stareter Kit - Personal Tasks Webpart Feature",
+        "description": "The feature that activates Personal Tasks from the Stareter Kit - Personal Tasks solution.",
         "id": "9eac8961-60e7-45b8-990e-175340d7c4a0",
         "version": "3.0.0.0",
         "componentIds": [

@@ -2,11 +2,11 @@
 
 This web part provides you the ability to add a particular user's personal tasks on a web page. The web part may be configured to show tasks from Planner or To Do. This web part is powered by the Microsoft Graph.
 
-This webpart is a technology demostrator of Microsoft Graph Toolkit React components, in particular "Tasks". This webpart uses the @microsoft/mgt-react and @microsoft/mgt-spfx packages, currently version 2.2.1.
+This webpart is a technology demostrator of Microsoft Graph Toolkit React components, in particular "Tasks". This webpart uses the @microsoft/mgt-react and @microsoft/mgt-spfx packages, currently version 2.9.0.
 
 > `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React, [@microsoft/mgt-react](https://www.npmjs.com/package/@microsoft/mgt-react).
 
-> `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React SPFx, [@microsoft/mgt-spfx](../mgt-spfx/README.md) with a dependency on [mgt-spfx-2.2.1.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) that must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
+> `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React SPFx, [@microsoft/mgt-spfx](../mgt-spfx/README.md) with a dependency on [mgt-spfx-2.9.0.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) that must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
 
 ![Personal Tasks](./assets/personal-tasks-demo.gif)
 
@@ -37,18 +37,18 @@ The `Personal Tasks` web part can be configured with the following properties:
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
-* Only supported in SharePoint Online due to dependency on the Microsoft Graph APIs
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
-* [mgt-spfx-2.2.1.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
+* [mgt-spfx-2.9.0.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
 
 ## Solution
 
@@ -65,7 +65,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|December 25, 2019|Initial release
 2.2|August 2021|Upgrade to MGT 2.2.1
-3.0|January 13, 2013|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1 and MGT 2.9.0)
+3.0|February 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1 and MGT 2.9.0)
 
 ## Disclaimer
 
