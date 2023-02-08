@@ -3,7 +3,7 @@ import styles from './Search.module.scss';
 import { ISearchProps } from '.';
 import {
   SearchBox
-} from 'office-ui-fabric-react/lib/SearchBox';
+} from '@fluentui/react/lib/SearchBox';
 import * as strings from 'PeopleDirectoryWebPartStrings';
 
 export class Search extends React.Component<ISearchProps, {}> {

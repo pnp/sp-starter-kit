@@ -3,12 +3,13 @@ import { IPeopleListProps } from '.';
 import {
   Persona,
   PersonaSize
-} from 'office-ui-fabric-react/lib/Persona';
+} from '@fluentui/react/lib/Persona';
 import * as strings from 'PeopleDirectoryWebPartStrings';
 import styles from './PeopleList.module.scss';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IPeopleListState } from './IPeopleListState';
 import { PeopleCallout } from '../PeopleCallout';
+import { IPerson } from '../PeopleDirectory';
 
 export class PeopleList extends React.Component<IPeopleListProps, IPeopleListState> {
   constructor(props: IPeopleListProps) {
@@ -44,7 +45,7 @@ export class PeopleList extends React.Component<IPeopleListProps, IPeopleListSta
             const phone: string = p.phone && p.mobile ? `${p.phone}/${p.mobile}`: p.phone ? p.phone: p.mobile;
             // const toggleClassName: string = this.state.toggleClass ? `ms-Icon--ChromeClose ${styles.isClose}` : "ms-Icon--ContactInfo";
             return (
-              <div className={styles.persona_card}>
+              <div key={i} className={styles.persona_card}>
                 <Persona primaryText={p.name} secondaryText={p.email} tertiaryText={phone} imageUrl={p.photoUrl} imageAlt={p.name} size={PersonaSize.size72} />
                 <div id={`callout${i}`} onClick={this._onPersonaClicked(i, p)} className={styles.persona}>
                   <i className="ms-Icon ms-Icon--ContactInfo" aria-hidden="true"></i>
@@ -72,7 +73,7 @@ export class PeopleList extends React.Component<IPeopleListProps, IPeopleListSta
     );
   }
 
-  private _onPersonaClicked = (index, person) => event => {
+  private _onPersonaClicked = (index: number, person: IPerson) => (_event: any) => {
     this.setState({
       showCallOut: !this.state.showCallOut,
       calloutElement: index,
@@ -80,7 +81,7 @@ export class PeopleList extends React.Component<IPeopleListProps, IPeopleListSta
     });
   }
 
-  private _onCalloutDismiss = (event) => {
+  private _onCalloutDismiss = (_event: any) => {
     this.setState({
       showCallOut: false,
     });

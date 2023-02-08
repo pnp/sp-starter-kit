@@ -68,7 +68,7 @@ export class PeopleCallout extends React.Component<IPeopleCalloutProps, IPeopleC
     );
   }
 
-  private _onCopyClicked = (elementName: string) => event => {
+  private _onCopyClicked = (elementName: string) => (event: any) => {
     let copyText = document.getElementById(elementName);
     var range = document.createRange();
     range.selectNode(copyText);
