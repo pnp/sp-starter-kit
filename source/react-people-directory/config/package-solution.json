@@ -24,8 +24,8 @@
 		},
 		"features": [
 			{
-				"title": "react-people-directory PeopleDirectoryWebPart Feature",
-				"description": "The feature that activates PeopleDirectoryWebPart from the react-people-directory solution.",
+				"title": "Starter Kit - People Directory WebPart Feature",
+				"description": "The feature that activates People Directory WebPart from the Starter Kit - People Directory solution.",
 				"id": "52b26049-6e2e-4302-8258-e9f8861a881f",
 				"version": "3.0.0.0",
 				"componentIds": [

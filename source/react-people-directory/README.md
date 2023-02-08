@@ -1,6 +1,6 @@
 # People Directory web part
 
-This web part provides you the ability to add a searchable people directory. A people search box and alphabet list are provided to enable both searching by name as well as selecting a specific letter. This web part requires no configuration and utilizes the people search API to surface people results.
+This web part provides you the ability to add a searchable people directory. A people search box and alphabet list are provided to enable both searching by name as well as selecting a specific letter. This web part requires no configuration and utilizes the people search API to surface people results, i.e. `/_api/search/query`.
 
 ![People Directory](../../assets/images/components/part-people-directory.gif)
 
@@ -20,14 +20,14 @@ The `People Directory` web part can be configured with the following properties:
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.13.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
-* Works only on SharePoint Online due to dependency on GraphMicrosoft Graph APIs
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -48,9 +48,9 @@ Version|Date|Comments
 -------|----|--------
 1.0|March 27, 2018|Initial release
 2.0|December 3, 2019|v2.0
-3.0|February 7, 2022|Upgrade solution to SPFx v1.13.1
-3.1|February 10, 2022|Adjust controls to be responsive
-3.2|January 17, 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
+2.1|February 7, 2022|Upgrade solution to SPFx v1.13.1
+2.2|February 10, 2022|Adjust controls to be responsive
+3.0|February 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
@@ -73,8 +73,8 @@ Version|Date|Comments
 Description of the web part with possible additional details than in short summary. 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using Microsoft Graph from the web parts
-* Hosting SharePoint Framework components as Microsoft Teams tabs
-* Using app pages in SharePoint Online
+* SharePoint Search API
+* PnP React Controls
+* Fluint UI Controls
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-people-directory" />
