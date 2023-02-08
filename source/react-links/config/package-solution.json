@@ -1,11 +1,41 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-links-client-side-solution",
+    "name": "Starter Kit - React Links",
     "id": "941e9447-0430-498e-b380-a154b73983fe",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-links description"
+      },
+      "longDescription": {
+        "default": "react-links description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Starter Kit - React Links WebPart Feature",
+        "description": "The feature that activates React Links Webpart from the Starter Kit - React Links solution.",
+        "id": "659e9e2c-9656-4ce1-9f80-7d13a0574d7a",
+        "version": "3.0.0.0",
+        "componentIds": [
+          "659e9e2c-9656-4ce1-9f80-7d13a0574d7a"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-links.sppkg"
