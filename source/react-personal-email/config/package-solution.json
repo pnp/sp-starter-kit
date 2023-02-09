@@ -1,7 +1,7 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
     "solution": {
-        "name": "react-personal-email-client-side-solution",
+        "name": "Starter Kit - Personal Email",
         "id": "7c886936-7bcd-4ef5-ac98-e802299dc5ad",
         "version": "3.0.0.0",
         "includeClientSideAssets": true,
@@ -27,8 +27,8 @@
         },
         "features": [
             {
-                "title": "react-personal-email PersonalEmailWebPart Feature",
-                "description": "The feature that activates PersonalEmailWebPart from the react-personal-email solution.",
+                "title": "Starter Kit - Personal Email WebPart Feature",
+                "description": "The feature that activates Personal Email Webpart from the Starter Kit - Personal Email solution.",
                 "id": "0a4ad3e5-1677-4829-b173-55cbb3ffc317",
                 "version": "3.0.0.0",
                 "componentIds": [
