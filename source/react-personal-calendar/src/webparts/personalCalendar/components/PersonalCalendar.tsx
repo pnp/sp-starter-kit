@@ -12,6 +12,7 @@ import format from 'date-fns/format';
 import { IIconProps } from '@fluentui/react/lib/Icon';
 import { ActionButton } from '@fluentui/react/lib/Button';
 import SimpleCalendar from './SimpleCalendar';
+import { findIana } from 'windows-iana';
 
 
 const EventInfo = (props: MgtTemplateProps) => {
@@ -56,9 +57,9 @@ const EventInfo = (props: MgtTemplateProps) => {
 
   const startTime: Date = new Date(event.start.dateTime);
   const minutes: number = startTime.getMinutes();
-  
+
   return <div>
-    <Link href={event.webLink} className={styles.meeting} target='_blank'>      
+    <Link href={event.webLink} className={styles.meeting} target='_blank'>
       <div className={styles.linkWrapper}>
         <div className={styles.timeDetails}>
           <div className={styles.start}>
@@ -69,20 +70,20 @@ const EventInfo = (props: MgtTemplateProps) => {
           </div>
         </div>
         <div className={`${styles.divider} ${event.showAs}`}></div>
-        <div style={{"wordBreak": 'break-word', 'width': '75%'}}>
+        <div style={{ "wordBreak": 'break-word', 'width': '75%' }}>
           <div className={styles.subject}>{event.subject}</div>
           <div className={styles.location}>{event.location.displayName}</div>
         </div>
       </div>
     </Link>
   </div>;
-            
+
 };
 
 const HeaderInfo = (props: MgtTemplateProps) => {
   const day: string | undefined = props.dataContext ? props.dataContext.header : undefined;
   return <div className={styles.meetingDate}>
-    { format(new Date(day), 'iiii, MMMM d, yyyy') }
+    {format(new Date(day), 'iiii, MMMM d, yyyy')}
   </div>;
 };
 
@@ -121,11 +122,11 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
             console.log("Error:", err)
             return reject(err);
           }
-          else{
+          else {
             console.log("Response:", res)
           }
-          
-          resolve(res.timeZone);
+
+          resolve(res?.timeZone);
         });
     });
   }
@@ -160,9 +161,9 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
     this
       ._getTimeZone()
       .then((_timeZone: string): void => {
-        console.log("TimeZone:", _timeZone)
+        const convertedTimeZone = findIana(_timeZone);
         this.setState({
-          timeZone: _timeZone,
+          timeZone: convertedTimeZone?.length > 1 ? convertedTimeZone[0] : convertedTimeZone[0],
           loading: false
         });
       });
@@ -192,15 +193,15 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
     date.setUTCSeconds(0);
     date.setDate(date.getDate() + (this.props.daysInAdvance || 0));
     const midnight: string = date.toISOString();
-    
+
     const varientStyles = {
       "--varientBGColor": this.props.themeVariant.semanticColors.bodyBackground
       , "--varientFontcolor": this.props.themeVariant.semanticColors.bodyText
       , "--varientDividerColor": this.props.themeVariant.isInverted ? this.props.themeVariant.palette.neutralLight : this.props.themeVariant.palette.themePrimary
     } as React.CSSProperties;
 
-    return (      
-      <div className={styles.personalCalendar} style={ varientStyles }>
+    return (
+      <div className={styles.personalCalendar} style={varientStyles}>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
           className={styles.personalCalendarTitle}
@@ -208,25 +209,24 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
 
         <ActionButton text={strings.NewMeeting} iconProps={this.addIcon} onClick={this.openNewEvent} />
         <ActionButton text={strings.ViewAll} iconProps={this.viewList} onClick={this.openList} />
-        { this.props.showCalendar && <SimpleCalendar /> }
+        {this.props.showCalendar && <SimpleCalendar />}
         {
-          !this.state.loading &&
           <>
             <div className={styles.list}>
               <Agenda
                 groupByDay
-                preferredTimezone={this.state.timeZone}
-                eventQuery={`me/calendarView?startDateTime=${now}&endDateTime=${midnight}&orderby=start/dateTime&top=${this.props.numMeetings > 0 ? this.props.numMeetings : 100}`}                
-                >
+                preferredTimezone={this.state.timeZone && this.state.timeZone}
+                eventQuery={`me/calendarView?startDateTime=${now}&endDateTime=${midnight}&orderby=start/dateTime&top=${this.props.numMeetings > 0 ? this.props.numMeetings : 100}`}
+              >
                 <HeaderInfo template='header' />
                 <EventInfo template='event' />
-                <LoadingTemplate template='loading'/>
+                <LoadingTemplate template='loading' />
               </Agenda>
             </div>
             <Link href='https://outlook.office.com/owa/?path=/calendar/view/Day' target='_blank'>{strings.ViewAll}</Link>
-          </>          
+          </>
         }
-      </div>      
+      </div>
     );
   }
 
