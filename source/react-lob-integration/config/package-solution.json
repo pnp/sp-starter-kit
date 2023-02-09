@@ -3,10 +3,39 @@
   "solution": {
     "name": "react-lob-integration-client-side-solution",
     "id": "9cd26e88-b530-474a-8bd0-55a5b87df80d",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-lob-integration description"
+      },
+      "longDescription": {
+        "default": "react-lob-integration description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-lob-integration LobIntegrationWebPart Feature",
+        "description": "The feature that activates LobIntegrationWebPart from the react-lob-integration solution.",
+        "id": "748e6953-56aa-4a34-93bc-668966484f88",
+        "version": "3.0.0.0",
+        "componentIds": [
+          "748e6953-56aa-4a34-93bc-668966484f88"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-lob-integration.sppkg"

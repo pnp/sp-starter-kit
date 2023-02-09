@@ -2,13 +2,11 @@ import * as React from 'react';
 import styles from './LobIntegration.module.scss';
 import { ILobIntegrationProps } from './ILobIntegrationProps';
 import { ILobIntegrationState } from './ILobIntegrationState';
-import { escape } from '@microsoft/sp-lodash-subset';
 
 // import additional controls/components
 import * as strings from 'LobIntegrationWebPartStrings';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import {
-  autobind,
   Spinner,
   SpinnerSize,
   PrimaryButton,
@@ -18,7 +16,7 @@ import {
   DetailsListLayoutMode,
   IColumn,
   SelectionMode
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { AadHttpClient, HttpClientResponse, IHttpClientOptions } from "@microsoft/sp-http";
 import { ILobServiceResponse } from '../ILobServiceResponse';
 
