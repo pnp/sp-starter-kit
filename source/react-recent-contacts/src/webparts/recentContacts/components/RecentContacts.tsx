@@ -5,120 +5,64 @@ import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import * as strings from 'RecentContactsWebPartStrings';
 import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 import { List } from '@fluentui/react/lib/List';
-import { Person } from './person';
+import { Get, MgtTemplateProps, Person } from '@microsoft/mgt-react/dist/es6/spfx';
+import { Link } from '@fluentui/react/lib/Link';
 
-export class RecentContacts extends React.Component<IRecentContactsProps, IRecentContactsState> {
+export class RecentContacts extends React.Component<IRecentContactsProps> {
   constructor(props: IRecentContactsProps) {
     super(props);
-
-    this.state = {
-      recentContacts: [],
-      error: null,
-      loading: true
-    };
   }
 
-  /**
-   * Fetch the recently used contacts for the user
-   */
-  private _fetchRecentContacts(): void {
-    if (this.props.graphClient) {
-      this.setState({
-        error: null,
-        loading: true
-      });
+  private PersonComponent(props: MgtTemplateProps) {
+    const data = props.dataContext;
 
-      this.props.graphClient
-        .api("me/people")
-        .version("v1.0")
-        .select("id,displayName,scoredEmailAddresses,phones,personType")
-        .top(this.props.nrOfContacts || 5)
-        .get((err: { message: string; }, res: IContacts) => {
-          if (err) {
-            // Something failed calling the MS Graph
-            this.setState({
-              error: err.message ? err.message : strings.Error,
-              recentContacts: [],
-              loading: false
-            });
-            return;
-          }
+    return (
+      <div className={styles.header} >
+        <Person
+          key={data.id}
+          personQuery={data.displayName}
+          avatarSize={'large'}
+          fetchImage={true}
+        />
+        <div className={styles.personaDetails}>
+          <div className={styles.titleText}> {data.displayName}</div>
+          {data?.emailAddresses.length && data.emailAddresses[0].address && <Link href={`mailto:${data.emailAddresses[0].address}`}>{data.emailAddresses[0].address}</Link>}
+          {data?.phones?.length ? <Link href={`tel:${data.phones[0].number}`}>{data.phones[0].number}</Link> : ''}
+        </div>
+      </div >
+    )
 
-          // Check if a response was retrieved
-          if (res && res.value && res.value.length > 0) {
-            this._processContactResults(res.value);
-          } else {
-            // No documents retrieved
-            this.setState({
-              recentContacts: [],
-              loading: false
-            });
-          }
-        });
-    }
   }
 
-  /**
-   * Process the retrieved MS Graph Contacts
-   * @param contacts
-   */
-  private _processContactResults(contacts: IContact[]): void {
-    this.setState({
-      recentContacts: contacts,
-      loading: false
-    });
+  private LoaderComponent(props: MgtTemplateProps) {
+    return (<Spinner label={strings.Loading} size={SpinnerSize.large} />);
   }
 
-  /**
-   * Renders the list cell for the persona's
-   */
-  private _onRenderCell = (item: IContact, index: number | undefined): JSX.Element => {
-    return <Person className={styles.persona} person={item} graphClient={this.props.graphClient} />;
+  private ErrorComponent(props: MgtTemplateProps) {
+    return (<span className={styles.error}>{JSON.parse(props?.dataContext?.body).message || strings.Error}</span>);
   }
-
-  /**
-   * componentDidMount lifecycle hook
-   */
-  public componentDidMount(): void {
-    this._fetchRecentContacts();
-  }
-
-  /**
-   * componentDidUpdate lifecycle hook
-   */
-  public componentDidUpdate(prevProps: IRecentContactsProps, prevState: IRecentContactsState): void {
-    if (prevProps.nrOfContacts !== this.props.nrOfContacts) {
-      this._fetchRecentContacts();
-    }
-  }
+  
 
   /**
    * Default React render method
    */
   public render(): React.ReactElement<IRecentContactsProps> {
+    const noOfContact = this.props.nrOfContacts || 5;
+    const peopleEndpointUrl = `/me/people?$top=${noOfContact}`;
+
     return (
       <div className={styles.recentContacts}>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
           updateProperty={this.props.updateProperty} />
 
-        {
-          this.state.loading && <Spinner label={strings.Loading} size={SpinnerSize.large} />
-        }
-
-        {
-          this.state.recentContacts && this.state.recentContacts.length > 0 ? (
-            <List items={this.state.recentContacts}
-              renderedWindowsAhead={4}
-              onRenderCell={this._onRenderCell} />
-          ) : (
-              !this.state.loading && (
-                this.state.error ?
-                  <span className={styles.error}>{this.state.error}</span> :
-                  <span className={styles.noContacts}>{strings.NoContacts}</span>
-              )
-            )
-        }
+        <div className={styles.personaDetails}>
+          <Get resource={peopleEndpointUrl} version="beta" scopes={["People.Read.All"]} >
+            <this.PersonComponent template='value' ></this.PersonComponent>
+            <this.LoaderComponent template='loading'></this.LoaderComponent>
+            <this.ErrorComponent template='error'></this.ErrorComponent>
+          </Get>
+        </div>
       </div>
     );
   }
