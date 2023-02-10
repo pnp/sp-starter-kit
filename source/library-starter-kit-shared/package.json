@@ -7,7 +7,7 @@
     "node": ">=16.13.0 <17.0.0"
   },
   "browser": {
-    "[module-name]": false   
+    "[module-name]": false
   },
   "scripts": {
     "build": "gulp bundle",
@@ -34,4 +34,3 @@
     "ajv": "6.12.5"
   }
 }
-
