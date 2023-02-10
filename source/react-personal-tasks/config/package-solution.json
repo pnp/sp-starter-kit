@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "Stareter Kit - Personal Tasks",
+    "name": "Starter Kit - Personal Tasks",
     "id": "95cfc0f9-4052-476f-8443-8f23245e2a87",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "Stareter Kit - Personal Tasks Webpart Feature",
-        "description": "The feature that activates Personal Tasks from the Stareter Kit - Personal Tasks solution.",
+        "title": "Starter Kit - Personal Tasks Webpart Feature",
+        "description": "The feature that activates Personal Tasks from the Starter Kit - Personal Tasks solution.",
         "id": "9eac8961-60e7-45b8-990e-175340d7c4a0",
         "version": "3.0.0.0",
         "componentIds": [
