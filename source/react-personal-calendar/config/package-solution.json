@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-personal-calendar-client-side-solution",
+    "name": "Starter Kit - Personal Calendar",
     "id": "a30bc805-c1fb-46ef-9278-8226be832374",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "react-personal-calendar PersonalCalendarWebPart Feature",
-        "description": "The feature that activates PersonalCalendarWebPart from the react-personal-calendar solution.",
+        "title": "Starter Kit - Personal Calendar WebPart Feature",
+        "description": "The feature that activates Personal Calendar Webpart from the Starter Kit - Personal Calendar solution.",
         "id": "6d28e73b-ed80-494e-8238-c0106c26b36a",
         "version": "3.0.0.0",
         "componentIds": [

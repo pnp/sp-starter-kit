@@ -12,20 +12,20 @@
         "test": "gulp test"
     },
     "dependencies": {
-        "@microsoft/mgt-react": "^2.9.0",
-        "@microsoft/mgt-spfx": "^2.9.0",
+        "@microsoft/mgt-react": "2.9.0",
+        "@microsoft/mgt-spfx": "2.9.0",
         "@microsoft/sp-core-library": "1.16.1",
         "@microsoft/sp-lodash-subset": "1.16.1",
         "@microsoft/sp-office-ui-fabric-core": "1.16.1",
         "@microsoft/sp-property-pane": "1.16.1",
         "@microsoft/sp-webpart-base": "1.16.1",
-        "@pnp/spfx-controls-react": "^3.12.0",
-        "@pnp/spfx-property-controls": "^3.11.0",
-        "date-fns": "^2.29.3",
+        "@pnp/spfx-controls-react": "3.12.0",
+        "@pnp/spfx-property-controls": "3.11.0",
+        "date-fns": "2.29.3",
         "react": "17.0.1",
         "react-dom": "17.0.1",
         "tslib": "2.3.1",
-        "windows-iana": "^5.1.0"
+        "windows-iana": "5.1.0"
     },
     "resolutions": {
         "@types/react": "16.8.8"
@@ -42,7 +42,6 @@
         "@types/react-dom": "17.0.17",
         "@types/webpack-env": "1.15.2",
         "ajv": "6.12.5",
-        "eslint": "8.7.0",
         "eslint-plugin-react-hooks": "4.3.0",
         "gulp": "4.0.2",
         "typescript": "4.5.5"

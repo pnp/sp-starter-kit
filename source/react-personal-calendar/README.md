@@ -1,12 +1,14 @@
 # Personal Calendar web part
 
-This web part provides you the ability to add a particular user's personal calendar on a web page. The web part may be configured to automatically refresh, as well as display up to seven days of events and a pre-defined number of events at a time. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
+This web part provides you the ability to add a particular user's personal calendar on a web page. The web part may be configured to automatically refresh, as well as display up to seven days of events and a pre-defined number of events at a time. This web part is powered by the Microsoft Graph.
+
+This webpart is a technology demostrator of Microsoft Graph Toolkit React components, in particular "Agenda". This webpart uses the @microsoft/mgt-react and @microsoft/mgt-spfx packages, currently version 2.9.0.
 
 > `NOTE:` This webpart includes the use of a custom SPFx library, [library-starter-kit-shared](../library-starter-kit-shared). If you need to rebuild / bundle / package this solution, refer to [Minimal Path to Awesome](#Minimal-Path-to-Awesome)
 
 > `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React, [@microsoft/mgt-react](https://www.npmjs.com/package/@microsoft/mgt-react).
 
-> `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React SPFx, [@microsoft/mgt-spfx](../mgt-spfx/README.md) with a dependency on [mgt-spfx-2.2.1.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) that must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
+> `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React SPFx, [@microsoft/mgt-spfx](../mgt-spfx/README.md) with a dependency on [mgt-spfx-2.9.0.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) that must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
 
 ![Personal Calendar](../../assets/images/components/part-personal-calendar.gif)
 
@@ -30,21 +32,21 @@ The `Personal Calendar` web part can be configured with the following properties
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
-* Only supported in SharePoint Online due to dependency on the Microsoft Graph APIs
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## Prerequisites
 
-* [library-starter-kit-shared](../library-starter-kit-shared) - this is provided by default in the solution. If you need to rebuild / bundle / package this solution, refer to [Minimal Path to Awesome](#Minimal-Path-to-Awesome)
+* [library-starter-kit-shared](../library-starter-kit-shared) - must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency. If you need to rebuild / bundle / package this solution, refer to [Minimal Path to Awesome](#Minimal-Path-to-Awesome)
 
-* [mgt-spfx-2.2.1.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
+* [mgt-spfx-2.9.0.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
 
 
 ## Minimal Path to Awesome
@@ -71,16 +73,17 @@ This solution uses a SPFx library, [library-starter-kit-shared](../library-start
 
 4. Edit package.json found at the root of the [react-personal-calendar](./), i.e. [./source/react-personal-calendar/package.json](../react-personal-calendar/package.json)
 
-  - Add a new dependancy to the project: "@starter-kit/shared-library": "1.0.0"
+  - Add a new dependancy to the project: "@starter-kit/shared-library": "3.0.0"
 
   **Example**:
 
   ```xml
     "dependencies": {
-      "@microsoft/mgt-react": "^2.2.1",
+      "@microsoft/mgt-react": "2.9.0",
+      "@microsoft/mgt-spfx": "2.9.0",
       ...
-      "react": "16.8.5",
-      "react-dom": "16.8.5"
+      "react": "17.0.1",
+      "react-dom": "17.0.1"
     }
   ```
 
@@ -88,11 +91,12 @@ This solution uses a SPFx library, [library-starter-kit-shared](../library-start
 
   ```xml
     "dependencies": {
-      "@microsoft/mgt-react": "^2.1.1",
+      "@microsoft/mgt-react": "2.9.0",
+      "@microsoft/mgt-spfx": "2.9.0",
       ...
-      "react": "16.8.5",
-      "react-dom": "16.8.5",
-      "@starter-kit/shared-library": "1.0.0"
+      "react": "17.0.1",
+      "react-dom": "17.0.1"
+      "@starter-kit/shared-library": "3.0.0"
     }
   ```
 
@@ -124,9 +128,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 * Using Microsoft Graph and the Microsoft Graph Toolkit React components within a web part
 * Using [SharePoint Framework library components](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/library-component-overview_)
-* Hosting SharePoint Framework components as Microsoft Teams tabs
-* Using app pages in SharePoint Online
-
 
 ## Solution
 
@@ -145,6 +146,7 @@ Version|Date|Comments
 2.0|November 29,2019|v2.0
 2.1|November 2020|Include Microsoft Graph Toolkit React components
 2.3|August 2021|Upgrade to MGT 2.2.1
+3.0|February 2023|Upgrade to SPFx v1.16.1
 
 ## Disclaimer
 
