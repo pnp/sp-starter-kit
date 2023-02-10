@@ -59,7 +59,7 @@ export class PersonalTasks extends React.Component<IPersonalTasksProps, {}> {
     );
   }
 
-  private _onTitleChange = (event): void => {
+  private _onTitleChange = (event: { target: { value: any; }; }): void => {
     this.props.onTitleChange(event.target.value);
   }
 }

@@ -4,6 +4,10 @@ This web part provides you the ability to add a per instance listing of links wi
 
 Links and groups are both customizable.
 
+Icons are from Fluent UI Icons, those icons that should be available within at least Fluent UI version 7.3.
+
+View [Fluent UI Icons](https://developer.microsoft.com/en-us/fluentui#/styles/web/icons) for icon names.
+
 ![Links](../../assets/images/components/part-links.gif)
 
 ## Configurable Properties
@@ -38,15 +42,14 @@ Configurable properties for each collection row within the `collectionData` coll
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.4-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
-* Works also at SharePoint 2019
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
-* [SharePoint 2019](https://docs.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-2019-development-platform)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -58,6 +61,7 @@ Solution|Author(s)
 --------|---------
 react-links V1 | Elio Struyf (@estruyf)
 react-links V2 | Fabio Franzini (@fabiofranzini)
+react-links V3 | Chandani Prajapati (@Chandani_SPD)
 
 ## Version history
 
@@ -65,6 +69,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|May 18th, 2018|Initial release (extract web part from Starter Kit v1)
 2.0|January 24, 2020|Initial release (extract web part from Starter Kit v1)
+3.0|February 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
@@ -80,13 +85,12 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve`
 
-> Include any additional steps as needed.
-
 ## Features
 
 Description of the web part with possible additional details than in short summary. 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 * PnP property control usage
+* Fluent UI React controls
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-links" />

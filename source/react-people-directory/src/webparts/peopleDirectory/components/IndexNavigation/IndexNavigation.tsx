@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './IndexNavigation.module.scss';
 import { IIndexNavigationProps } from '.';
 import { Search } from '../Search';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
+import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import * as strings from 'PeopleDirectoryWebPartStrings';
 
 export class IndexNavigation extends React.Component<IIndexNavigationProps, {}> {
@@ -26,7 +26,7 @@ export class IndexNavigation extends React.Component<IIndexNavigationProps, {}> 
       az.push('Å', 'Ä', 'Ö');
     }
     // for each letter, create a PivotItem component
-    const indexes: JSX.Element[] = az.map(index => <PivotItem linkText={index} itemKey={index} key={index} />);
+    const indexes: JSX.Element[] = az.map((index: any) => <PivotItem linkText={index} itemKey={index} key={index} />);
     // as the last tab in the navigation, add the Search option
     indexes.push(<PivotItem linkText={strings.SearchButtonText} itemKey='Search'>
       <Search

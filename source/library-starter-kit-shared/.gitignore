@@ -28,3 +28,7 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+
+.heft
+library
+package-lock.json

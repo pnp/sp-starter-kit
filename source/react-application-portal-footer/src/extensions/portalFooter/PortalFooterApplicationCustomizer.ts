@@ -5,7 +5,6 @@ import { Log } from '@microsoft/sp-core-library';
 import {
   BaseApplicationCustomizer, PlaceholderContent, PlaceholderName
 } from '@microsoft/sp-application-base';
-import { Dialog } from '@microsoft/sp-dialog';
 
 import * as strings from 'PortalFooterApplicationCustomizerStrings';
 
@@ -134,7 +133,7 @@ export default class PortalFooterApplicationCustomizer
       // deserialize JSON response and, if any, get the URL of the hub site
       const hubSiteDataResponse: IHubSiteDataResponse = await response.json();
       if (hubSiteDataResponse) {
-        let hubSiteData: IHubSiteData = JSON.parse(hubSiteDataResponse.value);
+        let hubSiteData: IHubSiteData = hubSiteDataResponse.value && JSON.parse(hubSiteDataResponse.value);
         if (hubSiteData) {
           result = hubSiteData.url;
         }

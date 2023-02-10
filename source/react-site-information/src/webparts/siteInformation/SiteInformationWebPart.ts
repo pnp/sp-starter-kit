@@ -1,41 +1,37 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IWebPartPropertiesMetadata,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart, IWebPartPropertiesMetadata } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 import { DisplayMode } from '@microsoft/sp-core-library';
 
 import * as strings from 'SiteInformationWebPartStrings';
 import SiteInformation from './components/SiteInformation';
 import { ISiteInformationProps } from './components/ISiteInformationProps';
 import { ISiteInformationWebPartProps } from './ISiteInformationWebPartProps';
-
+import "@pnp/sp/webs";
 export default class SiteInformationWebPart extends BaseClientSideWebPart<ISiteInformationWebPartProps> {
 
-  private propertyFieldTermPicker;
-  private propertyFieldPeoplePicker;
-  private principalType;
+  private propertyFieldTermPicker : any;
+  private propertyFieldPeoplePicker : any;
+  private principalType: any;
 
   public onInit(): Promise<void> {
 
     return super.onInit().then(async (_) => {
       // chunk shared by all web parts
-      const { sp } = await import(
+      const { spfi, SPFx  } = await import(
         /* webpackChunkName: 'pnp-sp' */
         '@pnp/sp');
 
-      // initialize the PnP JS library
-      sp.setup({
-        spfxContext: this.context
-      });
+      await super.onInit();
 
+      // initialize the PnP JS library
+      const sp = spfi().using(SPFx(this.context));
+      
       // initialize the Site Title property reading the current site title via PnP JS
       if (!this.properties.siteTitle) {
-        sp.web.select('Title').get().then((r) => {
+        sp.web.select('Title')().then((r) => {
           this.properties.siteTitle = r.Title;
         });
       }

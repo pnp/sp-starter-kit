@@ -1,10 +1,9 @@
 import * as React from 'react';
 import styles from './RecentContacts.module.scss';
-import { IRecentContactsProps, IRecentContactsState, IContacts, IContact } from '.';
+import { IRecentContactsProps } from '.';
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import * as strings from 'RecentContactsWebPartStrings';
 import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
-import { List } from '@fluentui/react/lib/List';
 import { Get, MgtTemplateProps, Person } from '@microsoft/mgt-react/dist/es6/spfx';
 import { Link } from '@fluentui/react/lib/Link';
 

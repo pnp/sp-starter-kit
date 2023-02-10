@@ -5,12 +5,34 @@
     "id": "05a9dee1-2de3-40f0-bee3-d511aca62e0a",
     "version": "3.0.0.0",
     "developer": {
-      "name": "",
+      "name": "PnP Starter Kit",
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "websiteUrl": "",
-      "mpnId": "spfx-1.13.1"
+      "mpnId": "pnpsk"
     },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-personal-contacts description"
+      },
+      "longDescription": {
+        "default": "react-personal-contacts description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-personal-contacts PersonalContactsWebPart Feature",
+        "description": "The feature that activates PersonalContactsWebPart from the react-personal-contacts solution.",
+        "id": "156030ad-510a-49b6-b1ef-33097667c829",
+        "version": "3.0.0.0",
+        "componentIds": [
+          "156030ad-510a-49b6-b1ef-33097667c829"
+        ]
+      }
+    ],
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

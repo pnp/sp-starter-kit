@@ -1,12 +1,41 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-personal-calendar-client-side-solution",
+    "name": "Starter Kit - Personal Calendar",
     "id": "a30bc805-c1fb-46ef-9278-8226be832374",
-    "version": "2.3.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-personal-calendar description"
+      },
+      "longDescription": {
+        "default": "react-personal-calendar description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Starter Kit - Personal Calendar WebPart Feature",
+        "description": "The feature that activates Personal Calendar Webpart from the Starter Kit - Personal Calendar solution.",
+        "id": "6d28e73b-ed80-494e-8238-c0106c26b36a",
+        "version": "3.0.0.0",
+        "componentIds": [
+          "6d28e73b-ed80-494e-8238-c0106c26b36a"
+        ]
+      }
+    ],
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",

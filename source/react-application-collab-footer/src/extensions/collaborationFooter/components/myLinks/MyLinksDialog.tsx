@@ -7,21 +7,12 @@ import styles from './MyLinks.module.scss';
 import * as strings from 'MyLinksStrings';
 
 // import additional controls/components
-import { BaseDialog, Dialog, IDialogConfiguration } from '@microsoft/sp-dialog';
-import {
-  DefaultButton,
-  TextField,
-  Label,
-  CommandBar,
-  IContextualMenuItem,
-  DetailsList,
-  DetailsListLayoutMode,
-  Selection,
-  SelectionMode,
-  IColumn,
-  DialogFooter,
-  DialogContent
-} from 'office-ui-fabric-react';
+import { BaseDialog, IDialogConfiguration } from '@microsoft/sp-dialog';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { CommandBar } from '@fluentui/react/lib/CommandBar';
+import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from '@fluentui/react/lib/DetailsList';
+import { DialogContent, DialogFooter } from '@fluentui/react/lib/Dialog';
 
 /**
  * Define the columns that will be used to render the list of links
@@ -134,7 +125,7 @@ class MyLinksDialogContent extends
                           value={this.state.title}
                           minLength={150}
                           className={styles.textField}
-                          onChanged={this._onChangedTitle}
+                          onChange={this._onChangedTitle}
                         />
                       </div>
                     </div>
@@ -146,7 +137,7 @@ class MyLinksDialogContent extends
                           value={this.state.url}
                           minLength={150}
                           className={styles.textField}
-                          onChanged={this._onChangedUrl}
+                          onChange={this._onChangedUrl}
                           onGetErrorMessage={this._getErrorMessageUrl}
                         />
                       </div>
@@ -277,13 +268,13 @@ class MyLinksDialogContent extends
     }
   }
 
-  private _onChangedTitle = (newValue: string): void => {
+  private _onChangedTitle = (event: React.FormEvent<HTMLElement>, newValue?: string) => {
     this.setState({
       title: newValue
     });
   }
 
-  private _onChangedUrl = (newValue: string): void => {
+  private _onChangedUrl = (event: React.FormEvent<HTMLElement>, newValue?: string) => {
     this.setState({
       url: newValue
     });

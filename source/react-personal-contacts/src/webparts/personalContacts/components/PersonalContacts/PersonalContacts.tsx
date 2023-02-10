@@ -4,10 +4,9 @@ import * as strings from 'PersonalContactsWebPartStrings';
 import { IPersonalContactsProps, IPersonalContactsState } from '.';
 import { IContact, IContacts } from '..';
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
-import { List } from 'office-ui-fabric-react/lib/components/List';
-import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/components/Persona';
-import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { List } from '@fluentui/react/lib/List';
+import { Link } from '@fluentui/react/lib/Link';
 import { Person } from '../Person';
 
 export class PersonalContacts extends React.Component<IPersonalContactsProps, IPersonalContactsState> {
@@ -81,24 +80,24 @@ export class PersonalContacts extends React.Component<IPersonalContactsProps, IP
   /**
    * Renders the secondary field as mail
    */
-  private _renderMail = (props: IPersonaProps): JSX.Element => {
-    if (props.secondaryText) {
-      return <Link href={`mailto:${props.secondaryText}`}>{props.secondaryText}</Link>;
-    }
+  // private _renderMail = (props: IPersonaProps): JSX.Element => {
+  //   if (props.secondaryText) {
+  //     return <Link href={`mailto:${props.secondaryText}`}>{props.secondaryText}</Link>;
+  //   }
 
-    return <div />;
-  }
+  //   return <div />;
+  // }
 
   /**
    * Renders the tertiary field as mail
    */
-  private _renderPhone = (props: IPersonaProps): JSX.Element => {
-    if (props.tertiaryText) {
-      return <Link href={`tel:${props.tertiaryText}`}>{props.tertiaryText}</Link>;
-    }
+  // private _renderPhone = (props: IPersonaProps): JSX.Element => {
+  //   if (props.tertiaryText) {
+  //     return <Link href={`tel:${props.tertiaryText}`}>{props.tertiaryText}</Link>;
+  //   }
 
-    return <div />;
-  }
+  //   return <div />;
+  // }
 
   public componentDidMount(): void {
     // load data initially after the component has been instantiated

@@ -1,12 +1,41 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-recently-visited-sites-client-side-solution",
+    "name": "Starter Kit - Recently Visited Sites",
     "id": "d8d9d358-fbb2-4e77-a66d-69f24e508bfa",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-recently-visited-sites description"
+      },
+      "longDescription": {
+        "default": "react-recently-visited-sites description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Starter Kit - Recently Visited Sites WebPart Feature",
+        "description": "The feature that activates Recently Visited Sites Webpart from the Starter Kit - Recently Visited Sites solution.",
+        "id": "49089f35-4213-425b-a5c0-706b25803484",
+        "version": "3.0.0.0",
+        "componentIds": [
+          "49089f35-4213-425b-a5c0-706b25803484"
+        ]
+      }
+    ],
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",

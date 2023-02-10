@@ -13,9 +13,7 @@
     "outDir": "lib",
     "inlineSources": false,
     "strictNullChecks": false,
-    "noImplicitAny": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
+    "noImplicitAny": true,
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"

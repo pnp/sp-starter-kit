@@ -12,7 +12,7 @@ import {
   Persona,
   PersonaSize,
   PersonaPresence
-} from 'office-ui-fabric-react/lib/Persona';
+} from '@fluentui/react/lib/Persona';
 
 export default class SiteInformation extends React.Component<ISiteInformationProps, {}> {
 
