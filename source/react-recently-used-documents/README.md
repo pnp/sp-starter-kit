@@ -1,6 +1,6 @@
 # Recently Used Documents web part
 
-This web part provides you the ability to display a list of a particular user's recently used documents on a web page. The web part may be configured to display a pre-defined number of documents at a time. This web part is powered by the Microsoft Graph.
+This web part provides you the ability to display a list of a particular user's recently used documents on a web page. The web part may be configured to display a pre-defined number of documents at a time. This web part is powered by the Microsoft Graph and uses the me/insights/used Graph endpoint, while filtering out document types including: "Web", "spsite", "Folder", "Archive", "Image", and "Other".
 
 ![Recently Used Documents](../../assets/images/components/part-recently-used-documents.gif)
 
@@ -21,18 +21,18 @@ The `Recently Used Documents` web part can be configured with the following prop
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
-* Only supported in SharePoint Online due to dependency on the Microsoft Graph APIs
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
-none
+Premissions to Microsoft Graph - scope: "Sites.Read.All"
 
 ## Solution
 
@@ -48,7 +48,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|March 28, 2018|Initial release
 2.0|December 29, 2019|v2.0
-3.0|January 13, 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
+3.0|February 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
@@ -64,15 +64,14 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve`
 
-> Include any additional steps as needed.
-
 ## Features
 
 Description of the web part with possible additional details than in short summary. 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using Microsoft Graph from the web parts
-* Hosting SharePoint Framework components as Microsoft Teams tabs
-* Using app pages in SharePoint Online
+* Using Microsoft Graph from the web parts with queries and filters
+* Using Lists from FluentUI
+* Using Webpack Chunking for bundle management
+* Using PnP Property Controls (number)
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-recently-used-documents" />
