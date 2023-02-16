@@ -1,6 +1,12 @@
 # Recent Contacts web part
 
-This web part provides you the ability to display list of a particular user's recent contacts on a web page. The web part may be configured to display a pre-defined number of contacts at a time. This web part is powered by the Microsoft Graph and uses the **v1.0/me/people** endpoint.
+This web part provides you the ability to display list of a particular user's recent contacts on a web page. The web part may be configured to display a pre-defined number of contacts at a time. This web part is powered by the Microsoft Graph, in particular the **/me/people** endpoint
+
+This webpart is a technology demostrator of Microsoft Graph Toolkit React components, in particular "Get" and "Person". This webpart uses the @microsoft/mgt-react and @microsoft/mgt-spfx packages, currently version 2.9.0.
+
+> `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React, [@microsoft/mgt-react](https://www.npmjs.com/package/@microsoft/mgt-react).
+
+> `NOTE:` This webpart includes the use the Microsoft Graph Toolkit with React SPFx, [@microsoft/mgt-spfx](../mgt-spfx/README.md) with a dependency on [mgt-spfx-2.9.0.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) that must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
 
 ![Recent Contacts](../../assets/images/components/part-recent-contacts.gif)
 
@@ -30,9 +36,12 @@ The `Recent Contacts` web part can be configured with the following properties:
 * [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
+
 ## Prerequisites
 
-none
+* [mgt-spfx-2.9.0.sppkg](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) must be installed to the tenant app catalog. By default the Starter Kit will install this additional dependency.
+
+Permissions to Microsoft Graph - scope: "People.Read" and "User.Read"
 
 ## Solution
 
@@ -73,13 +82,13 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve`
 
-> Include any additional steps as needed.
-
 ## Features
 
 Description of the web part with possible additional details than in short summary. 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using Microsoft Graph from the web parts using msGraphClientFactory
+* Using Microsoft Graph and the Microsoft Graph Toolkit React components within a web part
+* Using Webpack Chunking for bundle management
+* Using PnP Property Controls (number)
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-recent-contacts" />

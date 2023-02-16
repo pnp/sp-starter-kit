@@ -124,7 +124,7 @@ module.exports = {
         //
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         '@typescript-eslint/no-unused-vars': [
-          1,
+          0,
           {
             'vars': 'all',
             // Unused function arguments often indicate a mistake in JavaScript code.  However in TypeScript code,

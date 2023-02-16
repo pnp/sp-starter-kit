@@ -32,7 +32,7 @@ The `Recently Used Documents` web part can be configured with the following prop
 
 ## Prerequisites
 
-Premissions to Microsoft Graph - scope: "Sites.Read.All"
+Permissions to Microsoft Graph - scope: "Sites.Read.All"
 
 ## Solution
 
