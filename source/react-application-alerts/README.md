@@ -1,6 +1,6 @@
 # Alerts Application Customizers
 
-This application customizer provides you the ability to show notifications on content pages in the top / header area within a hub site and it's associated sites.
+This application customizer provides you the ability to show notifications on content pages in the top / header area within a hub site and its associated sites.
 
 The notifications that are to be displayed are administered via a SharePoint list named "Alerts" that is hosted by a hub site. The "Alerts" list within a hub site supports the hub site and all sites associated with the hub site that have activated the Alerts application customizer.
 
@@ -27,12 +27,11 @@ This extension is dependent on a explicit `Alerts` list that must be located in 
 | End date-time | PnPAlertEndDateTime | date time | yes | The Date/Time the alert stops showing in the header placeholder |
 | More information link | PnPAlertMoreInformation | URL | no | Provides a clickable link at the end of the alert message |
 
-> Notice that in default SharePoint Starter Kit installation this list is automatically provisioned on the hub site in the case of SharePoint Online solution. As SharePoint 2019 does NOT support hub sites, alert will not yet work.
+> Notice that in default SharePoint Starter Kit installation this list is automatically provisioned on the hub site in the case of SharePoint Online solution.
 
 Original v1 implementation located at https://github.com/SharePoint/sp-starter-kit/blob/master/documentation/components/ext-alert.md
 
 In the v2 release, this extension has been repackaged as its own solution to provide more flexibility from deployment perspective.
-
 
 ## Installing the extension
 
@@ -59,15 +58,14 @@ You can also download just the [extension (sppkg) file](./sharepoint/solution/re
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.4-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
-* Supported with SharePoint 2019
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
-* [SharePoint 2019](https://docs.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-2019-development-platform)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -80,6 +78,7 @@ Solution|Author(s)
 folder name | Author details
 ./solution/src/extensions/alertNotification | Waldek Mastykarz @waldekm
 ./source/react-application-alerts | Robert Schouten @rfjschouten
+./source/react-application-alerts | Chandani Prajapati @Chandani_SPD
 
 ## Version history
 
@@ -87,6 +86,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|Appril 1, 2018|Initial release for SharePoint Starter Kit v1
 2.0|December 25, 2019|Initial release for SharePoint Starter Kit v2
+3.0|February 2023|Initial release for SharePoint Starter Kit v3
 
 ## Disclaimer
 
@@ -108,5 +108,6 @@ Key features demostrated by this solution:
 
 * PnPjs usage in the solution
 * Dynamic creation of the list if it's missing
+* SPFx application customizer that includes a header driven by a SharePoint list
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-application-alerts" />

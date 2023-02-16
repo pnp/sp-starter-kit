@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
   "port": 4321,
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://pmspkit02.sharepoint.com/sites/uatMarketing/SitePages/World-Clock-1.16.1.aspx",
       "customActions": {
         "29df5d8b-1d9b-4d32-971c-d66162396ed3": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -15,7 +15,7 @@
       }
     },
     "hubOrSiteAlerts": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://pmspkit02.sharepoint.com/sites/uatMarketing/SitePages/World-Clock-1.16.1.aspx",
       "customActions": {
         "29df5d8b-1d9b-4d32-971c-d66162396ed3": {
           "location": "ClientSideExtension.ApplicationCustomizer",

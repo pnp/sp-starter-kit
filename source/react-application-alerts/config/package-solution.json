@@ -1,17 +1,36 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-application-alerts-client-side-solution",
+    "name": "Starter Kit - Alerts",
     "id": "bc996340-c1e8-488d-9d62-ebd5293617fd",
-    "version": "2.0.1.1",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-application-alerts description"
+      },
+      "longDescription": {
+        "default": "react-application-alerts description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
     "features": [
       {
-        "title": "Application Extension - Deployment of custom action.",
-        "description": "Deploys a custom action with ClientSideComponentId association",
+        "title": "Application Extension - Starter Kit - Alerts - Deployment of custom action.",
+        "description": "Deploys a custom action within Starter Kit - Alerts",
         "id": "f15797fb-d6a8-4359-86fa-895111433c04",
-        "version": "2.0.1.1",
+        "version": "3.0.0.0",
         "assets": {
           "elementManifests": [
             "elements.xml"
