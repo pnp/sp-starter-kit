@@ -1,3 +1,5 @@
+import { BrandIcons } from "./BrandIcons";
+
 /**
  * Microsoft Graph Insights Interface
  */
@@ -21,7 +23,7 @@ export interface IRecentDocuments {
   
   export interface ResourceVisualization {
     title: string;
-    type: string;
+    type: keyof typeof BrandIcons;
     mediaType: string;
     previewImageUrl: string;
     previewText: string;
