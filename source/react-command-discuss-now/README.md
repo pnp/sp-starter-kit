@@ -2,9 +2,9 @@
 
 # Discuss Now List View Command Set
 
-This List View Command Set provides you the ability to add a custom dialog to start a discussion on a specific document within a document library by creating a discussion on the chosen team at Microsoft Team.
+This List View Command Set provides you the ability to add a custom dialog to start a discussion on a specific document within a document library by creating a discussion on the choosen team at Microsoft Team.
 
-The message is added to the team by using Microsoft Graph APIs based on chosen list of items.
+The message is added to the team by using Microsoft Graph APIs based on choosen list of items.
 
 The command set extension is designed for group associated team sites.
 
@@ -16,30 +16,31 @@ Details on the v1 version of the extension from https://github.com/SharePoint/sp
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
-* Only supported in SharePoint Online as uses Microsoft Graph APIs.
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
-none
+Permissions to Microsoft Graph - scope: "Group.ReadWrite.All"
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-command-discuss-now | Chandani Prajapati
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|December 25, 2019|Initial release
+2.0|February 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
@@ -55,5 +56,11 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
+
+## Features
+
+This Application customizer illustrates the following concepts on top of the SharePoint Framework:
+
+* Using Microsoft Graph within an application customizer command set
 
 <img src="https://telemetry.sharepointpnp.com/sp-starter-kit/source/react-command-discuss-now" />

@@ -1,22 +1,42 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-command-discuss-now-client-side-solution",
+    "name": "Starter Kit - Discuss Now command set",
     "id": "76b85695-0232-4c4a-8e24-5458cf1dcbba",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
-    "webApiPermissionRequests": [{
-      "resource": "Microsoft Graph",
-      "scope": "Group.ReadWrite.All"
-    }],
+    "developer": {
+      "name": "PnP Starter Kit",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-command-discuss-now description"
+      },
+      "longDescription": {
+        "default": "react-command-discuss-now description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Group.ReadWrite.All"
+      }
+    ],
     "features": [
       {
-        "title": "Application Extension - Deployment of custom action.",
-        "description": "Deploys a custom action with ClientSideComponentId association",
+        "title": "Application Extension - Deployment of Starter Kit - Discuss Now command set custom action",
+        "description": "Deploys a custom action within Starter Kit - Discuss Now command set",
         "id": "89733413-9b66-4c6a-8bac-ecd0844ef752",
-        "version": "2.0.0.0",
+        "version": "3.0.0.0",
         "assets": {
           "elementManifests": [
             "elements.xml",
