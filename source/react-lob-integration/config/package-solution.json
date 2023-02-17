@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-lob-integration-client-side-solution",
+    "name": "Starter Kit - LOB Integration",
     "id": "9cd26e88-b530-474a-8bd0-55a5b87df80d",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "react-lob-integration LobIntegrationWebPart Feature",
-        "description": "The feature that activates LobIntegrationWebPart from the react-lob-integration solution.",
+        "title": "Starter Kit - LOB Integration WebPart Feature",
+        "description": "The feature that activates LOB Integration WebPart from the Starter Kit - LOB Integration solution.",
         "id": "748e6953-56aa-4a34-93bc-668966484f88",
         "version": "3.0.0.0",
         "componentIds": [
