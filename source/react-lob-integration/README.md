@@ -1,6 +1,6 @@
 # LOB Integration webpart
 
-The purpose of this web part is to show how you can consume LOB (Line of Business) solutions and on-premises data within SharePoint Framework.
+The purpose of this web part is to show how you can consume LOB (Line of Business) solutions and external (on-premises, cloud based, etc) data within SharePoint Framework.
 
 ![LOB Integration](../../assets/images/components/part-lob-integration.png)
 
@@ -85,7 +85,7 @@ The `LobIntegration` webpart must be configured with the following properties:
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
 * SharePoint Online only due to dependency on API permission management
 
@@ -103,12 +103,14 @@ WebAPI configured as secured asset in the same Azure AD instance as where web pa
 Solution|Author(s)
 --------|---------
 react-lob-integration | Paul Schaeflein (Technical Architect, AddIn365) / Microsoft MVP (Office Development) / @paulschaeflein
+react-lob-integration | Chandani Prajapati / @Chandani_SPD
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 2.0|December 25, 2019|Initial release
+3.0|February 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 
 ## Disclaimer
 
