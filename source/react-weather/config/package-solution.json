@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-weather-client-side-solution",
+    "name": "Starter Kit - Weather",
     "id": "d47b1e90-b473-4855-bcd2-aa34ae942e5d",
     "version": "3.0.0.0",
     "includeClientSideAssets": true,
@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "react-weather WeatherWebPart Feature",
-        "description": "The feature that activates WeatherWebPart from the react-weather solution.",
+        "title": "Starter Kit - Weather webpart Feature",
+        "description": "The feature that activates Weather webpart from the Starter Kit - Weather solution.",
         "id": "3ec11027-02d1-4595-97d3-d758095cb52b",
         "version": "3.0.0.0",
         "componentIds": [
