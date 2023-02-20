@@ -27,6 +27,7 @@ Original v1 implementation located at https://github.com/SharePoint/sp-starter-k
 
 In v2 release repackaged as its own solution to provide more flexibility from deployment perspective.
 
+In v3 release, SPFx was upgraded to version 1.16.1.
 
 ## Creating a redirection entry
 
@@ -66,15 +67,14 @@ You can also download just the [extension (sppkg) file](./sharepoint/solution/js
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.4-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
-* Supported with SharePoint 2019
+* Supported in SharePoint Online
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
-* [SharePoint 2019](https://docs.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-2019-development-platform)
+* [SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -86,6 +86,7 @@ Solution|Author(s)
 --------|---------
 solution/src/extensions/redirect | Paolo Pialorsi (@PaoloPia)
 js-application-redirect | Sébastien Levert (@sebastienlevert)
+js-application-redirect | Chandani Prajapati (@Chandani_SPD)
 
 ## Version history
 
@@ -93,7 +94,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|April 22, 2018|Initial release
 2.0|December 29, 2019|v2.0
-
+3.0|February 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

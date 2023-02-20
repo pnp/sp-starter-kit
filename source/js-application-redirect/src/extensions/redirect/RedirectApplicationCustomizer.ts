@@ -4,11 +4,11 @@ import {
   BaseApplicationCustomizer
 } from '@microsoft/sp-application-base';
 
-import { sp, CamlQuery, ListEnsureResult, UrlFieldFormatType, Field, FieldAddResult } from '@pnp/sp';
-
 import * as strings from 'RedirectApplicationCustomizerStrings';
 import { IRedirectApplicationCustomizerProperties } from './IRedirectApplicationCustomizerProperties';
 import { IRedirection } from './IRedirection';
+import { IListEnsureResult, SPFI, spfi, SPFx } from '@pnp/sp/presets/all';
+import { UrlFieldFormatType, IFieldAddResult, IField } from "@pnp/sp/fields";
 
 const LOG_SOURCE: string = 'RedirectApplicationCustomizer';
 
@@ -19,6 +19,7 @@ export default class RedirectApplicationCustomizer
   private readonly FIELD_INTERNALNAME_SOURCEURL: string = 'PnPSourceUrl';
   private readonly FIELD_INTERNALNAME_DESTINATIONURL: string = 'PnPDestinationUrl';
   private readonly FIELD_INTERNALNAME_REDIRECTIONENABLED: string = 'PnPRedirectionEnabled';
+  private _sp : SPFI;
   // private _web: IWeb;
 
   @override
@@ -33,9 +34,7 @@ export default class RedirectApplicationCustomizer
       return;
     }
 
-    sp.setup({
-      spfxContext: this.context
-    });
+    this._sp = spfi().using(SPFx(this.context));
 
     // read the server relative URL of the current page from Legacy Page Context
     const currentPageRelativeUrl: string = this.context.pageContext.legacyPageContext.serverRequestPath;
@@ -70,7 +69,7 @@ export default class RedirectApplicationCustomizer
       });
 
       // define a CAML query to get the redirection item for the current page, if any
-      const query: CamlQuery = {
+      const query = {
         ViewXml: `<View><Query>
         <Where>
           <And>
@@ -90,7 +89,7 @@ export default class RedirectApplicationCustomizer
 
       // search for items matching the query
       // tslint:disable-next-line: no-any
-      const queryResult: any = await sp.web.lists.getByTitle(redirectionsListTitle).getItemsByCAMLQuery(query);
+      const queryResult: any = await this._sp.web.lists.getByTitle(redirectionsListTitle).getItemsByCAMLQuery(query);
 
       if (queryResult && queryResult.length > 0) {
 
@@ -115,7 +114,7 @@ export default class RedirectApplicationCustomizer
     let result: boolean = false;
 
     try {
-      const ensureResult: ListEnsureResult = await sp.web.lists.ensure(redirectionsListTitle,
+      const ensureResult: IListEnsureResult = await this._sp.web.lists.ensure(redirectionsListTitle,
         'Redirections',
         100,
         true);
@@ -125,29 +124,29 @@ export default class RedirectApplicationCustomizer
         // if the list has just been created
         if (ensureResult.created) {
           // we need to add the custom fields to the list
-          const sourceUrlFieldAddResult: FieldAddResult = await ensureResult.list.fields.addUrl(
-            this.FIELD_INTERNALNAME_SOURCEURL, UrlFieldFormatType.Hyperlink,
-            { Required: true });
-          await sourceUrlFieldAddResult.field.update({ Title: strings.FieldSourceUrlTitle});
-          const destinationUrlFieldAddResult: FieldAddResult = await ensureResult.list.fields.addUrl(
-            this.FIELD_INTERNALNAME_DESTINATIONURL, UrlFieldFormatType.Hyperlink,
-            { Required: true });
-          await destinationUrlFieldAddResult.field.update({ Title: strings.FieldDestinationUrlTitle});
-          const redirectionEnabledFieldAddResult: FieldAddResult = await ensureResult.list.fields.addBoolean(
+          const sourceUrlFieldAddResult: IFieldAddResult = await ensureResult.list.fields.addUrl(
+            this.FIELD_INTERNALNAME_SOURCEURL, { DisplayFormat: UrlFieldFormatType.Hyperlink, Required: true }
+          );
+          await sourceUrlFieldAddResult.field.update({ Title: strings.FieldSourceUrlTitle });
+          const destinationUrlFieldAddResult: IFieldAddResult = await ensureResult.list.fields.addUrl(
+            this.FIELD_INTERNALNAME_DESTINATIONURL, { DisplayFormat: UrlFieldFormatType.Hyperlink, Required: true }
+          );
+          await destinationUrlFieldAddResult.field.update({ Title: strings.FieldDestinationUrlTitle });
+          const redirectionEnabledFieldAddResult: IFieldAddResult = await ensureResult.list.fields.addBoolean(
             this.FIELD_INTERNALNAME_REDIRECTIONENABLED,
             { Required: true });
-          await redirectionEnabledFieldAddResult.field.update({ Title: strings.FieldRedirectionEnabledTitle});
+          await redirectionEnabledFieldAddResult.field.update({ Title: strings.FieldRedirectionEnabledTitle });
 
           // the list is ready to be used
           result = true;
         } else {
           // the list already exists, double check the fields
           try {
-            const sourceUrlField: Field = ensureResult.list.fields.getByInternalNameOrTitle(
+            const sourceUrlField: IField = ensureResult.list.fields.getByInternalNameOrTitle(
               this.FIELD_INTERNALNAME_SOURCEURL);
-            const destinationUrlField: Field = ensureResult.list.fields.getByInternalNameOrTitle(
+            const destinationUrlField: IField = ensureResult.list.fields.getByInternalNameOrTitle(
               this.FIELD_INTERNALNAME_DESTINATIONURL);
-            const redirectionEnabledField: Field = ensureResult.list.fields.getByInternalNameOrTitle(
+            const redirectionEnabledField: IField = ensureResult.list.fields.getByInternalNameOrTitle(
               this.FIELD_INTERNALNAME_REDIRECTIONENABLED);
 
             // if it is all good, then the list is ready to be used
