@@ -1,15 +1,34 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "js-application-redirect-client-side-solution",
+    "name": "Starter Kit - JS Redirect app customizer",
     "id": "16ba7527-a398-43f7-9f20-7b050e49887e",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP Starter Kit",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "pnpsk"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "js-application-redirect description"
+      },
+      "longDescription": {
+        "default": "js-application-redirect description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
     "features": [
       {
-        "title": "Application Extension - Deployment of custom action.",
-        "description": "Deploys a custom action with ClientSideComponentId association",
+        "title": "Starter Kit - JS Redirect app customizer - Deployment of custom action.",
+        "description": "Deploys a custom action within the Starter Kit - JS Redirect app customizer solution",
         "id": "c2d231d3-39ae-4f69-a958-44c5762354e0",
         "version": "2.0.0.0",
         "assets": {
