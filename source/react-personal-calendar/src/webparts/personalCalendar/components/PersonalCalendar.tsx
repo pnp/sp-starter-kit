@@ -119,12 +119,12 @@ export default class PersonalCalendar extends React.Component<IPersonalCalendarP
         .version("v1.0")
         .get((err: any, res: microsoftgraph.MailboxSettings): void => {
           if (err) {
-            console.log("Error:", err)
+            console.error("Error:", err)
             return reject(err);
           }
-          else {
-            console.log("Response:", res)
-          }
+          // else {
+          //   console.log("Response:", res)
+          // }
 
           resolve(res?.timeZone);
         });
