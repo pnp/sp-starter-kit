@@ -66,7 +66,7 @@ You can also download just the [extension (sppkg) file](./sharepoint/solution/js
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.4-green.svg)
+![drop](https://img.shields.io/badge/version-1.16.1-green.svg)
 
 * Supported with SharePoint 2019
 
@@ -86,14 +86,14 @@ Solution|Author(s)
 --------|---------
 solution/src/extensions/redirect | Paolo Pialorsi (@PaoloPia)
 js-application-redirect | Sébastien Levert (@sebastienlevert)
-
+js-application-redirect | Chandani Prajapati (@Chandani_SPD)
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|April 22, 2018|Initial release
 2.0|December 29, 2019|v2.0
-
+3.0|February, 2023|Initial release for SharePoint Starter Kit v3 (Upgraded to SPFx 1.16.1)
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
