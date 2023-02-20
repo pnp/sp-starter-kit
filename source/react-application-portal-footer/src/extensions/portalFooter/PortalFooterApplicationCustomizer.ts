@@ -24,7 +24,6 @@ import MyLinksDialog from './components/myLinks/MyLinksDialog';
 import IMyLink from './components/myLinks/IMyLink';
 import { IPortalFooterEditResult } from './components/PortalFooter/IPortalFooterEditResult';
 
-
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
  * it will be deserialized into the BaseExtension.properties object.
@@ -62,18 +61,6 @@ export default class PortalFooterApplicationCustomizer
       console.log('Current site is not part of an hub and the footer will fallback to local list of links.');
       hubSiteUrl = this.context.pageContext.web.absoluteUrl;
     }
-
-    const { sp } = await import(
-      /* webpackChunkName: 'pnp-sp' */
-      "@pnp/sp");
-
-    // initialize PnP JS library to play with SPFx contenxt
-    sp.setup({
-      spfxContext: this.context,
-      sp: {
-        baseUrl: hubSiteUrl,
-      },
-    });
 
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
@@ -147,9 +134,12 @@ export default class PortalFooterApplicationCustomizer
 
   // loads the groups of links from the hub site reference list
   private async loadLinks(): Promise<ILinkGroup[]> {
-    const { sp } = await import(
+    const { spfi, SPFx } = await import(
       /* webpackChunkName: 'pnp-sp' */
-      "@pnp/sp");
+      "@pnp/sp/presets/all");
+
+    // initialize PnP JS library to play with SPFx contenxt
+    const sp = spfi().using(SPFx(this.context));
 
     // prepare the result variable
     let result: ILinkGroup[] = [];
@@ -159,9 +149,9 @@ export default class PortalFooterApplicationCustomizer
       .lists.getByTitle(this.properties.linksListTitle)
       .items.select("Title", "PnPPortalLinkGroup", "PnPPortalLinkUrl").top(100)
       .orderBy("PnPPortalLinkGroup", true)
-      .orderBy("Title", true)
-      .usingCaching({ key: "PnP-PortalFooter-Links" })
-      .get();
+      .orderBy("Title", true)();
+
+    // console.log("ITEMS: >>", items);
 
     // map the list items to the results
     items.map((v, i, a) => {
