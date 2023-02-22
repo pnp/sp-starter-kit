@@ -36,17 +36,15 @@ If all [`pre-requirements`](../#pre-requirements) have been addressed and met, n
 
 1. Ensure you are connecting to your tenant site using a tenant admin account.
 
-1. Ensure that you have the latest PnP PowerShell commandlets. You might need to remove the PnP PowerShell commandlets and re-install to ensure you have the latest. [`PnP PowerShell - Recommended 1.7.0 or later`](https://github.com/pnp/powershell/releases).
-
-1. Your tenant must be set to `targeted release` for all users, and you must wait at least 24 hours after setting targeted release for all users before running Invoke-PnPTenantTemplate.
+1. Ensure that you have the latest PnP PowerShell commandlets. You might need to remove the PnP PowerShell commandlets and re-install to ensure you have the latest. [`PnP PowerShell - Recommended 1.12.0 or later`](https://github.com/pnp/powershell/releases).
 
 1. Verify you have already created your `tenant app catalog`.
 
 1. Verify that the account you are using has Admin rights to the Site Collection for tenant app catalog (eg. /sites/appcatalog)
 
-1. Verify the account you are using to connect to your tenant site has already been added as a term store administrator.
+1. Verify the account you are using to connect to your tenant site has already been added as a **term store administrator**.
 
-1. If you believe the error is new and not addressed below or in the [`issues list`](https://github.com/SharePoint/sp-starter-kit/issues), please submit a [`new issue`](https://github.com/SharePoint/sp-starter-kit/issues). If the error appears to be an error reported in PowerShell, please enable the PnP Trace Log before running the deploy.ps1 script and report those findings in your new issue.
+1. If you believe the error is new and not addressed below or in the [`issues list`](https://github.com/pnp/sp-starter-kit/issues), please submit a [`new issue`](https://github.com/pnp/sp-starter-kit/issues). If the error appears to be an **error reported in PowerShell**, please enable the **PnP Trace Log** before running the deploy.ps1 script and **report those findings** in your new issue.
 
    ```powershell
    Set-PnPTraceLog -On -Level Debug
@@ -55,7 +53,7 @@ If all [`pre-requirements`](../#pre-requirements) have been addressed and met, n
 
 ## ERROR: Improper version of PnP PowerShell installed
 
-[`PnP PowerShell - Recommended 1.7.0 or later`](https://github.com/pnp/powershell) is required for SP Starter Kit to properly provision. It is recommended that you have only the latest version of PnP PowerShell installed on your workstation as well.
+[`PnP PowerShell - Recommended 1.12.0 or later`](https://github.com/pnp/powershell) is required for SP Starter Kit to properly provision. It is recommended that you have only the latest version of PnP PowerShell installed on your workstation as well.
 
 If you do not have the proper version of PnP PowerShell installed, you may receive errors similar to:
 
@@ -100,7 +98,7 @@ Install-Module -Name "PnP.PowerShell"
 > Notice - versions of the legacy PnP PowerShell released in 2020 may throw errors related to [permissions](#error-the-user-or-administrator-has-not-consented-to-use-the-application).
 
 Recommended versions of PnP PowerShell include:
-- 1.7.0 - Note: you may have to [grant consent](#error-the-user-or-administrator-has-not-consented-to-use-the-application)
+- 1.12.0 - Note: you may have to [grant consent](#error-the-user-or-administrator-has-not-consented-to-use-the-application)
 
 
 ## ERROR: App Catalog Required
@@ -121,7 +119,7 @@ Invoke-PnPTenantTemplate : There is no app catalog site for this tenant.
 
 [`Create a tenant app catalog`](./manual-deploy-sppkg-solution.md) and wait for deployment to complete, which may take minutes, hours, or possibly a day.
 
-`Note`: If you recently created a new tenant or an [Microsoft 365 developer tenant](https://docs.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program), you may receive an error similar to:
+`Note`: If you recently created a new tenant or an [Microsoft 365 developer tenant](https://learn.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program), you may receive an error similar to:
 
 ```
 Sorry, something went wrong
@@ -147,9 +145,9 @@ Verify that the account you are using to provision SP Starter Kit is a term stor
 
 ## ERROR: Not Targeted Release
 
-SP Starter Kit requires that your tenant be set to `Targeted Release` for all users. When the deployment script attempts to provision solution.xml to your tenant, included is an action to upload the included .sppkg SPFx solution to your tenant app catalog as well as approve API permissions. This step fails if you have not properly configured your tenant to `Targeted Release`.
+SP Starter Kit V2- required that your tenant be set to `Targeted Release` for all users. When the deployment script attempts to provision solution.xml to your tenant, included is an action to upload the included .sppkg SPFx solution to your tenant app catalog as well as approve API permissions. This step could fail if you have a legacy tenant that has not properly configured your tenant to `Targeted Release`.
 
-An error may appear similar to the following:
+If you encounter an error similar to the following, you might need to set your tenant to targetted release for all users:
 
 `Apply-PnPProvisioningHierarchy : {"error":{"code":"-2147024891, System.UnauthorizedAccessException","message":"{"lang","en-us","value":"Access denied. You do not have permissions to perform this action or access this resource."}}}`
 
@@ -204,7 +202,7 @@ Try to provision the Starter Kit again.
 
 ## Invalid App package installation - API Management missing
 
-Deployment of the included SPFx solutions `.\source\[component]\sharepoint\solution\[component].sppkg` may be  [`completed manually`](./manual-deploy-sppkg-solution.md). If you do not have `Targeted Release` enabled for all users, or if you have enabled Targeted Release for all users but have not waited at least 24 hours to full roll out, you may encounter errors when manually deploying the .sppgk packages, or attempting to find API Management.
+Deployment of the included SPFx solutions `.\source\[component]\sharepoint\solution\[component].sppkg` may be  [`completed manually`](./manual-deploy-sppkg-solution.md). In legacy tenants, if you do not have `Targeted Release` enabled for all users, or if you have enabled Targeted Release for all users but have not waited at least 24 hours to full roll out, you may encounter errors when manually deploying the .sppgk packages, or attempting to find API Management.
 
 `Manually deploying .sppkg packages`
 
@@ -239,13 +237,13 @@ You should consider the following solution based on recommendations provided in 
 
 ### Recommended solution
 
-You can downgrade to a previous version of PnP PowerShell. A validated version includes PnP PowerShell 1.7.0
+You can downgrade to a previous version of PnP PowerShell. A validated version includes PnP PowerShell 1.12.0
 
 ```powershell
-Install-Module -Name "PnP.PowerShell" -RequiredVersion 1.7.0
+Install-Module -Name "PnP.PowerShell" -RequiredVersion 1.12.0
 ```
 
-If you are using a PnP PS version after 1.7.0, use the following steps to grant the proper permissions.
+If you are using a PnP PS version after 1.12.0, use the following steps to grant the proper permissions.
 
 ```powershell
 Connect-PnPOnline -Url "https://.sharepoint.com/" -PnPManagementShell

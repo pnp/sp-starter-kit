@@ -1,6 +1,6 @@
-# SP Starter Kit Provisioning Guidance - SharePoint 2019 Only
+# SP Starter Kit Provisioning Guidance - SharePoint 2019 Only - Starter Kit V2 only
 
-**TODO** provide documentation for SharePoint 2019 - also note the limitations
+Provided documentation for SharePoint 2019 - also note the limitations
 
 The following documentation provides guidance related to the the provisioning process of **SP Starter Kit**.
 

@@ -35,7 +35,7 @@
     
     <pnp:AppCatalog>
       <!--MGT SPFx-->
-      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\mgt-spfx\mgt-spfx-2.2.1.sppkg" SkipFeatureDeployment="true"/>
+      <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\mgt-spfx\mgt-spfx-v2.9.0.sppkg" SkipFeatureDeployment="true"/>
 
       <pnp:Package Action="UploadAndPublish" Overwrite="true" Src="..\library-starter-kit-shared\sharepoint\solution\library-starter-kit-shared.sppkg" SkipFeatureDeployment="true"/>
 

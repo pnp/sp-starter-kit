@@ -22,7 +22,7 @@ It is recommended you read this entire document before installing the starter ki
 
 2. Open PowerShell and run the following commands, changing the tenant url to your primary SharePoint tenant site.
 
-   In order to successfully install the SP Starter Kit, you are required to install the latest [PnP PowerShell](https://github.com/pnp/powershell) (validated at version 1.7.0 or higher), which can be installed with the following PowerShell command:
+   In order to successfully install the SP Starter Kit, you are required to install the latest [PnP PowerShell](https://github.com/pnp/powershell) (validated at version 1.12.0 or higher), which can be installed with the following PowerShell command:
 
    ```powershell
    Install-Module -Name PnP.PowerShell

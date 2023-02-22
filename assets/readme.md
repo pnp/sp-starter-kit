@@ -1,1 +1,1 @@
-Just a placeholder.
+SP Starter Kit Assets folder

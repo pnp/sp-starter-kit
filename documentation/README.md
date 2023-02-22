@@ -1,4 +1,4 @@
-# SharePoint Starter Kit v2 Additional Documentation
+# SharePoint Starter Kit v3 Additional Documentation
 
 # Table of contents
 

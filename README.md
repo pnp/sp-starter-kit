@@ -1,19 +1,25 @@
-# SharePoint Starter Kit v2
+# SharePoint Starter Kit v3
 
-The SharePoint Starter Kit (starter kit) is a comprehensive solution designed for SharePoint Online and SharePoint 2019 which provides numerous SharePoint Framework (SPFx) web parts, extensions, and other components, as well as [PnP PowerShell](https://github.com/pnp/powershell) driven provisioning which you can use as an example and inspiration for your own customizations. 
+The SharePoint Starter Kit (starter kit) is a comprehensive solution designed for SharePoint Online which provides numerous SharePoint Framework (SPFx) web parts, extensions, and other components, as well as [PnP PowerShell](https://github.com/pnp/powershell) driven provisioning which you can use as an example and inspiration for your own customizations. 
 
 ![PnP Starter Pack Front Page](./assets/images/default-front-page-v2.png)
 
-> Starter Kit Version 1 includes a comprenshive strategy for only SharePoint Online, as well as a single SPFx solution that encapsulates all webparts and extensions into a single package. Version 1 may be accessed via the [v1 branch](https://github.com/SharePoint/sp-starter-kit/tree/v1) for legacy purposes and will not be maintained beyond April 2020.
+> Starter Kit V3 **does not** support SharePoint 2019 and SharePoint Server Subscription Edition.
 
-> Notice: There currently **is not** a direct path for upgrading an existing SharePoint Online tenant with the starter kit v1 to v2. V2 may be installed into a tenant with v1 already installed, by default, this will add a tenant wide duplicate all of webparts and extensions. It is recommended that the starter kit v1 be removed from a tenant before adding v2, or creating a custom installation of v2.
+> Starter Kit Version 1 includes a comprenshive strategy for only SharePoint Online, as well as a single SPFx solution that encapsulates all webparts and extensions into a single package. Version 1 may be accessed via the [v1 branch](https://github.com/pnp/sp-starter-kit/tree/v1) for legacy purposes and will not be maintained beyond April 2020.
+
+> Notice: There currently **is not** a direct path for upgrading an existing SharePoint Online tenant with the starter kit v1 to v3. V3 may be installed into a tenant with v1 already installed, by default, this will add a tenant wide duplicate all of webparts and extensions. It is recommended that the starter kit v1 be removed from a tenant before adding v3, or creating a custom installation of v3.
+
+> Starter Kit Version 2 includes a strategy for SharePoint Online and SharePoint 2019 and includes individual SPFx solutions for each webpart and application customizer. Version 2 may be accessed via the [v2 branch](https://github.com/pnp/sp-starter-kit/tree/v2) for legacy purposes and will not be maintained beyond February 2023. Starter Kit Version 2 is the only version that supports SharePoint 2019.
+
+> Notice: The direct path for upgrading an existing SharePoint Online tenant with the starter kit v2 to v3 is to only install / invoke the [starterkit-spfx-only.pnp](./provisioning/starterkit-spfx-only.pnp) provisioning template found in the [./provisioning](./provisioning) folder. This provisioning template will only upgrade the existing SPFx solutions to V3 (SPFx version 1.16.1), and will not recreate the sample sites.
 
 > Notice: the starter kit adds **tenant level settings** including themes, site designs, taxonomy term sets, and other adjustments. Therefore, it is recommended to test the starter kit in an **isolated test tenant and not immediately execute it within your production environment**.
 
 # Table of contents
 
 - [Objectives of this solution](#objectives-of-this-solution)
-- [SharePoint Starter Kit v2 objectives](#sharePoint-starter-kit-v2-has-following-objectives)
+- [SharePoint Starter Kit v3 objectives](#sharepoint-starter-kit-v3-has-following-objectives)
 - [Pre-requirements](#pre-requirements)
 - [Getting started](#getting-started)
 - [Learn more](#learn-more)
@@ -33,23 +39,22 @@ SharePoint Communication Sites and Team Sites have great out-of-the-box capabili
 - Automated provisioning of the whole solution to any tenant within minutes
 - Automated configuration of Site Scripts and Site Designs at the tenant level using the PnP Remote Provisioning engine (SharePoint Online only)
 - Implementation of different customizations for SharePoint
-- Usage of Office UI Fabric and reusable PnP SPFx controls within the customizations
+- Usage of Fluent UI and reusable PnP SPFx controls within the customizations
 
 > Additional high resolution screenshots are also available: [front page](./assets/images/default-front-page-v2.png).
 
 
-## SharePoint Starter Kit v2 has following objectives
+## SharePoint Starter Kit v3 has following objectives
 
-* Extend the success of v1 by providing developers a customization and provisioning strategy for SharePoint
+* Extend the success of v1 and v2 by providing developers a customization and provisioning strategy for SharePoint Online
 * Demonstrate new SharePoint Online UX design and layout capabilities including:
    * Full height vertical columns
    * Compact headers 
    * Mega menus
    * Background theming
-* SharePoint 2019 compatible starter kit with web parts and components supported by SharePoint 2019 - (*provisioning template coming soon*)
-* Support web parts, extensions, and libraries (SPO only) to be deployed one-by-one to tenants or farms
+* Support web parts, extensions, and libraries to be deployed one-by-one to tenants or farms
 * Demonstrate teams tab development with SharePoint Framework for suitable web parts in SharePoint Online
-* Demonstrate Microsoft Graph API and Graph Toolkit (current version mgt-react 2.2.1) usage in SharePoint Online
+* Demonstrate Microsoft Graph API and Graph Toolkit (current version mgt-react 2.9.0) usage in SharePoint Online
 
 
 ## Pre-requirements
@@ -57,35 +62,35 @@ SharePoint Communication Sites and Team Sites have great out-of-the-box capabili
 Here are current pre-requirements for making this solution work in your tenant.
 
 1. You will need to be a tenant administrator to be able to deploy this solution
-    - Notice that you can get free developer tenant from [Microsoft 365 Developer Program](https://developer.microsoft.com/en-us/office/dev-program), if needed.
+    - Notice that you can get free developer tenant from [Microsoft 365 Developer Program](https://developer.microsoft.com/en-us/microsoft-365/dev-program), if needed.
 
 1. Automatic end-to-end provisioning only works with English tenants
     - All solutions and web parts are also English in the current implementation
     - For tenants that have English but have a different default language, the [term set provisioning may be modified to assist with installation](./documentation/term-store.md#non-english-tenants)
 
-1. Add the tenant administrator account used during provisioning as Term Store Administrator in the Taxonomy Term Store through the SharePoint Admin Center (SPO) or Central Admin (SP2019)
+1. Add the tenant administrator account used during provisioning as Term Store Administrator in the Taxonomy Term Store through the SharePoint Admin Center.
 
-1. A tenant 'App Catalog' must have been created within the 'Apps' option of the SharePoint Admin Center (SPO) or Central Admin (SP2019)
+1. A tenant 'App Catalog' must have been created within the 'Apps' option of the SharePoint Admin Center.
 
 > **It is recommended that you wait up to 24 hours before attempting to provision this solution if any of the following are true**
 > - Your SharePoint tenant was just created
 > - You just created your SharePoint tenant app catalog
 
-> **This project will install [Microsoft Graph Toolkit for SPFx version 2.2.1](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) into the app catalog. If you have another version already installed, you will want to remove that package before installing the Starter Kit**
+> **This project will install [Microsoft Graph Toolkit for SPFx version 2.9.0](https://github.com/microsoftgraph/microsoft-graph-toolkit/releases) into the app catalog. If you have another version already installed, you will want to remove that package before installing the Starter Kit**
 
 ## Getting started
 
 Shortest path to success for SharePoint Online - The following steps will help you get started in any SharePoint Online tenant as fast as possible.
 
-> For SharePoint 2019 tenant,  [refer to the SharePoint 2019 installation instructions](./provisioning/readme-sp2019.md)
+> Starter Kit v3 no longer supports SharePoint 2019,  [refer to the SharePoint 2019 installation instructions for v2](https://github.com/pnp/sp-starter-kit/blob/v2/provisioning/readme-sp2019.md)
 
 - Ensure you meet the [Pre-requirements](#Pre-requirements)
 
-- Ensure that you meet the [requirements for SharePoint Framework development](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) and are using the latest version of [PnP PowerShell](https://pnp.github.io/powershell/articles/installation.html). **Latest confirmed version of PnP PowerShell: 1.7.0**.
+- Ensure that you meet the [requirements for SharePoint Framework development](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) and are using the latest version of [PnP PowerShell](https://pnp.github.io/powershell/articles/installation.html). **Latest confirmed version of PnP PowerShell: 1.12.0**.
 
 - Prepare your tenant, by accomplishing the tasks highlighted in document [Preparing your tenant for the PnP SharePoint Starter Kit](./documentation/tenant-settings.md)
 
-- Open PowerShell, and use PnP PowerShell to connect to any site in your tenant with the [`Connect-PnPOnline` cmdlet](https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/connect-pnponline?view=sharepoint-ps) using your own tenant url. For more information on authenticating with PnP PowerShell, see [documentation](https://pnp.github.io/powershell/articles/authentication.html) 
+- Open PowerShell, and use PnP PowerShell to connect to any site in your tenant with the [`Connect-PnPOnline` cmdlet](https://pnp.github.io/powershell/cmdlets/Connect-PnPOnline.html) using your own tenant url. For more information on authenticating with PnP PowerShell, see [documentation](https://pnp.github.io/powershell/articles/authentication.html) 
 
   ```powershell
   Connect-PnPOnline https://contosodemosk.sharepoint.com
@@ -111,7 +116,6 @@ Shortest path to success for SharePoint Online - The following steps will help y
 ## Learn more
 
 - [Detailed provisioning instructions for SharePoint Online](./provisioning/readme.md)
-- [Detailed provisioning instructions for SharePoint 2019](./provisioning/readme-sp2019.md)
 - [Additional documentation and how-tos](./documentation/README.md)
 
 ## Custom Web Parts
@@ -120,11 +124,11 @@ Here are the custom web parts currently included in the solution package.
 
 Screenshot |  Web Part |  Description  | Compatibility | Code
 ------------ | ----------- | ----------- | ----------- | -----------
-![](assets/images/components/part-banner.png) | [Banner](documentation/components/wp-banner.md) | Creates a banner with an image and overlaid text. | SPO / SP 2019 | [code](./source/react-banner)
-![](assets/images/components/part-followed-sites.png) | [Followed Sites](documentation/components/wp-followed-sites.md) | Shows the list of sites which particular user is following | SPO / SP 2019 | [code](./source/react-followed-sites)
-![](assets/images/components/part-links.png) | [Links](documentation/components/wp-links.md)  | Link list web part which is using collection data editor and stores the links in web part properties | SPO / SP 2019 | [code](./source/react-links)
+![](assets/images/components/part-banner.png) | [Banner](documentation/components/wp-banner.md) | Creates a banner with an image and overlaid text. | SPO only | [code](./source/react-banner)
+![](assets/images/components/part-followed-sites.png) | [Followed Sites](documentation/components/wp-followed-sites.md) | Shows the list of sites which particular user is following | SPO only | [code](./source/react-followed-sites)
+![](assets/images/components/part-links.png) | [Links](documentation/components/wp-links.md)  | Link list web part which is using collection data editor and stores the links in web part properties | SPO only | [code](./source/react-links)
 ![](assets/images/components/part-lob-integration.png) | [LOB integration](documentation/components/wp-lob-integration.md) | Sample web part to surface LOB information from API hosted in Azure. | SPO only | [code](./source/react-lob-integration)
-![](assets/images/components/part-people-directory.png) | [People Directory](documentation/components/wp-people-directory.md) | People directory web part uses the people search API to get list of people to show.  | SPO / SP 2019 | [code](./source/react-people-directory)
+![](assets/images/components/part-people-directory.png) | [People Directory](documentation/components/wp-people-directory.md) | People directory web part uses the people search API to get list of people to show.  | SPO only | [code](./source/react-people-directory)
 ![](assets/images/components/part-personal-calendar.png) | [Personal Calendar](documentation/components/wp-personal-calendar.md) | Shows upcoming calendar meetings for the particular user using Microsoft Graph. | SPO only | [code](./source/react-personal-calendar)
 ![](assets/images/components/part-personal-contacts.png) | [Personal Contacts](documentation/components/wp-personal-contacts.md) | Personal contacts for particular user using Microsoft Graph. | SPO only |[code](./source/react-personal-contacts)
 ![](assets/images/components/part-personal-email.png) | [Personal Email](documentation/components/wp-personal-email.md) | List latest personal emails for the current user using Microsoft Graph. | SPO only | [code](./source/react-personal-email)
@@ -132,22 +136,22 @@ Screenshot |  Web Part |  Description  | Compatibility | Code
 ![](assets/images/components/part-recent-contacts.png) | [Recent Contacts](documentation/components/wp-recent-contacts.md) | Show recent contacts for the current user using Microsoft Graph. | SPO only | [code](./source/react-recent-contacts)
 ![](assets/images/components/part-recently-used-documents.png) | [Recently Used Documents](documentation/components/wp-recently-used-documents.md) | Show recently used documents for the current user using Microsoft Graph. | SPO only | [code](./source/react-recently-used-documents)
 ![](assets/images/components/part-recently-visited-sites.png) | [Recently Visited Sites](documentation/components/wp-recently-visited-sites.md) | Show recently visited sites for current user using Microsoft Graph. | SPO only | [code](./source/react-recently-visited-sites)
-![](assets/images/components/part-site-information.png) | [Site Information](documentation/components/wp-site-information.md) | Intended to collect and present additional metadata for group associated team sites. | SPO / SP 2019 | [code](./source/react-site-information)
+![](assets/images/components/part-site-information.png) | [Site Information](documentation/components/wp-site-information.md) | Intended to collect and present additional metadata for group associated team sites. | SPO only | [code](./source/react-site-information)
 ![](assets/images/components/part-stock.png) | [Stock Information (deprecated)](documentation/components/wp-stock-information.md) | Display stock information by using the live stocks service provided by [Alpha Advantage](https://www.alphavantage.co/). You will need to register for a custom key for this to work at the Alpha Advantage site and then include the key in the tenant properties. | SPO ony| [code](solution/src/webparts/stockInformation/StockInformationWebPart.ts)
-![](assets/images/components/part-tiles.png) | [Tiles](documentation/components/wp-tiles.md) | Renders set of tiles. Icons are from Office UI Fabric and you can configure tiles using collection editor in web part properties. | SPO / SP 2019 |[code](./source/react-tiles)
-![](assets/images/components/part-weather.png) | [Weather Information](documentation/components/wp-weather-information.md) | Weather information web part which is using Yahoo Weather APIs to get the forecast information. | SPO / SP 2019 | [code](./source/react-weather)
-![](assets/images/components/part-world-time.png) | [World Time](documentation/components/wp-world-time.md) | Clock web part to show the time in specific time zone. | SPO / SP 2019 | [code](./source/react-world-clock)
+![](assets/images/components/part-tiles.png) | [Tiles](documentation/components/wp-tiles.md) | Renders set of tiles. Icons are from Office UI Fabric and you can configure tiles using collection editor in web part properties. | SPO only |[code](./source/react-tiles)
+![](assets/images/components/part-weather.png) | [Weather Information](documentation/components/wp-weather-information.md) | Weather information web part which is using Yahoo Weather APIs to get the forecast information. | SPO only | [code](./source/react-weather)
+![](assets/images/components/part-world-time.png) | [World Time](documentation/components/wp-world-time.md) | Clock web part to show the time in specific time zone. | SPO only | [code](./source/react-world-clock)
 
 
 ## SharePoint Framework Extensions
 
 Screenshot |  Extension |  Description  | Compatibility | Code
 ------------ | ----------- | ----------- | ----------- | -----------
-![](assets/images/components/ext-alert.png) | [Alert Notification](documentation/components/ext-alert.md) | Shows informational or important messages in the header section of pages based on a custom list information in the hub site. | SPO / SP 2019 | [code](./source/react-application-alerts)
-![](assets/images/components/ext-collab-footer.png) | [Collaboration Footer](documentation/components/ext-collab-footer.md) | Shows company wide links which are configured using Taxonomy service. Includes also  personalized links which are stored in user profile property if set. By default associated to group associated team sites when a custom Site Design is selected for new sites. | SPO / SP 2019 | [code](./source/react-application-collab-footer)
+![](assets/images/components/ext-alert.png) | [Alert Notification](documentation/components/ext-alert.md) | Shows informational or important messages in the header section of pages based on a custom list information in the hub site. | SPO only | [code](./source/react-application-alerts)
+![](assets/images/components/ext-collab-footer.png) | [Collaboration Footer](documentation/components/ext-collab-footer.md) | Shows company wide links which are configured using Taxonomy service. Includes also  personalized links which are stored in user profile property if set. By default associated to group associated team sites when a custom Site Design is selected for new sites. | SPO only | [code](./source/react-application-collab-footer)
 ![](assets/images/components/ext-collab-discussnow.png) | [Discuss Now](documentation/components/ext-collab-discussnow.md) | Custom list view command set to add new custom dialog for document library that utilizes the Graph API. | SPO only | [code](./source/react-command-discuss-now)
-![](assets/images/components/ext-portal-footer.png) | [Portal Footer](documentation/components/ext-portal-footer.md) | Expanding footer for communication site. Show standard company links and also supports personalized links for the current user which are stored in User Profile. | SPO / SP 2019 | [code](./source/react-appication-portal-footer)
-Not available | Redirect | Can be used to perform automatic redirections of URLs in the site based on a custom list. | SPO / SP 2019 | [code](./source/react-application-portal-footer)
+![](assets/images/components/ext-portal-footer.png) | [Portal Footer](documentation/components/ext-portal-footer.md) | Expanding footer for communication site. Show standard company links and also supports personalized links for the current user which are stored in User Profile. | SPO only | [code](./source/react-appication-portal-footer)
+Not available | Redirect | Can be used to perform automatic redirections of URLs in the site based on a custom list. | SPO only | [code](./source/react-application-portal-footer)
 ![](assets/images/components/ext-classification.png) | [Site Classification (deprecated)](documentation/components/ext-classification.md) | Renders a header with site classification information. This has been replaced by out-of-the-box SharePoint Online header functionality | SPO only | [code](./solution/src/extensions/siteClassification/SiteClassificationApplicationCustomizer.ts)
 Not available | Tab Page (deprecated) | Renders a header with links between two different pages in the site. | SPO only | [code](./solution/src/extensions/tabPage/TabPageApplicationCustomizer.ts)
 
@@ -156,7 +160,7 @@ Not available | Tab Page (deprecated) | Renders a header with links between two 
 
 Extension |  Description  | Compatibility | Code
 ------------ | ----------- | ----------- | -----------
-[Shared library](./documentation/components/lib-shared.md) | A shared library that includes shared locatization strings, consumabled by any other SPFx webpart or extension. | SPO | [code](./source/library-starter-kit-shared)
+[Shared library](./documentation/components/lib-shared.md) | A shared library that includes shared locatization strings, consumabled by any other SPFx webpart or extension. | SPO only | [code](./source/library-starter-kit-shared)
 
 
 ## Support and SLA for this project

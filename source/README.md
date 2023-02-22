@@ -1,17 +1,17 @@
 # Individual solutions of the Starter Kit
 
-Starting from SharePoint Starter Kit v2, each web part and be taken into use independently without requirement to deploy them all to your tenant. Those solutions which do not have cloud dependencies, can be also used in on-premises on SharePoint 2019 platform. Supportability of each solution is explicitly called out in the solution level.
+Starting from SharePoint Starter Kit v2, each web part and be taken into use independently without requirement to deploy them all to your tenant. Those solutions which do not have cloud dependencies, and with V3, may only be used on SharePoint Online. On-premises SharePoint is no longer supported. Supportability of each solution is explicitly called out in the solution level.
 
 Solution structure as as follows:
 
 Solution |  Description  | Environment
 ----------- | ----------- | -----------
-[js-application-redirect](js-application-redirect/README.md) | Can be used to perform automatic redirections of URLs in the site based on a custom list. | SPO & SP2019
+[js-application-redirect](js-application-redirect/README.md) | Can be used to perform automatic redirections of URLs in the site based on a custom list. | SPO
 [library-starter-kit-shared](library-starter-kit-shared/README.md) | Shows the list of sites which particular user is following | SPO
-[rest-application-alerts](rest-application-alerts/README.md) | Shows informational or important messages in the header section of pages based on a custom list information in the hub site. | SPO & SP2019
-[react-application-collab-footer](react-application-collab-footer/README.md) | Shows company wide links which are configured using Taxonomy service. Includes also personalized links which are stored in user profile property if set. | SPO & SP2019
-[react-application-portal-footer](react-application-portal-footer/README.md) | Expanding footer for communication site. Show standard company links and also supports personalized links for the current user which are stored in User Profile. | SPO & SP2019
-[react-banner](react-banner/README.md) | Creates a banner with an image and overlaid text. | SPO & SP2019
+[rest-application-alerts](rest-application-alerts/README.md) | Shows informational or important messages in the header section of pages based on a custom list information in the hub site. | SPO
+[react-application-collab-footer](react-application-collab-footer/README.md) | Shows company wide links which are configured using Taxonomy service. Includes also personalized links which are stored in user profile property if set. | SPO
+[react-application-portal-footer](react-application-portal-footer/README.md) | Expanding footer for communication site. Show standard company links and also supports personalized links for the current user which are stored in User Profile. | SPO
+[react-banner](react-banner/README.md) | Creates a banner with an image and overlaid text. | SPO
 [react-command-discuss-now](react-command-discuss-now/README.md) | Custom list view command set to add new custom dialog for document library to start discussion around the document in Microsoft Teams using Graph APIs | SPO
 [react-followed-sites](react-followed-sites/README.md) | Shows the list of sites which particular user is following. | SPO
 [react-links](react-links/README.md) | Link list web part which is using collection data editor and stores the links in web part properties. | SPO
@@ -24,10 +24,10 @@ Solution |  Description  | Environment
 [react-recent-contacts](react-recent-contacts/README.md) | Show recent contacts for the current user using Microsoft Graph. | SPO
 [react-recently-used-documents](react-recently-used-documents/README.md) | Show recently used documents for the current user using Microsoft Graph. | SPO
 [react-recently-visited-sites](react-recently-visited-sites/README.md) | Show recently visited sites for current user using Microsoft Graph. | SPO
-[react-site-information](react-site-information/README.md) | Intended to collect and present additional metadata for group associated or normal team sites. | SPO & SP2019
-[react-tiles](react-tiles/README.md) | Renders set of tiles. Icons are from Office UI Fabric and you can configure tiles using collection editor in web part properties. | SPO & SP2019
-[react-weather](react-weather/README.md) | Weather web part targeted for SP2019 as SPO has out-of-the-box one. | SP2019
-[react-tiles](react-world-clock/README.md) | World clock web part targeted for SP2019 as SPO has out-of-the-box one. | SP2019
+[react-site-information](react-site-information/README.md) | Intended to collect and present additional metadata for group associated or normal team sites. | SPO
+[react-tiles](react-tiles/README.md) | Renders set of tiles. Icons are from Office UI Fabric and you can configure tiles using collection editor in web part properties. | SPO
+[react-weather](react-weather/README.md) | Weather web part targeted for SP2019 as SPO has out-of-the-box one. | SPO
+[react-tiles](react-world-clock/README.md) | World clock web part targeted for SP2019 as SPO has out-of-the-box one. | SPO
 
 ## Installation
 

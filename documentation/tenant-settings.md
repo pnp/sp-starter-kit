@@ -17,7 +17,7 @@ There, you need to select the *User Profiles* menu item on the left menu and sel
 
 ![The User Profiles Admin UI](../assets/images/UPS-Custom-Property-01.png)
 
-In the *Manage User Properties* page, select to     create a *New Property* as it is illustrated in the following figure.
+In the *Manage User Properties* page, select to *New Property* create a **New Property** as it is illustrated in the following figure.
 
 ![The add New Property button](../assets/images/UPS-Custom-Property-02.png)
 

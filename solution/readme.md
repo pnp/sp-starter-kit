@@ -1,8 +1,8 @@
-## sp-starter-kit
+## sp-starter-kit - V1
 
-This is where you include your WebPart documentation.
+This is a legacy project and is left for historical purposes. Use source from [source](../source) folder.
 
-### Building the code
+### Building the legacy project
 
 ```bash
 git clone the repo

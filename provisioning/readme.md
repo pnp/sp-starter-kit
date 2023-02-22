@@ -4,8 +4,6 @@ The following documentation provides guidance related to the provisioning proces
 
 **For SharePoint Online only**
 
-Additional installation options exist, including for **SharePoint 2019**. Refer to [Choose the right method depending on your requirements](#choose-the-right-method-depending-on-your-requirements).
-
 This document provides guidance on installing a full installation for **SP Starter Kit** for only **SharePoint Online**. The installation includes one SPFx bundled solution per SPFx component, i.e. webpart, extension, library.
 
 It is recommended you read this entire document before installing the starter kit, in particular pay close attention to [Common notes](#common-notes) and [Fixing provisioning errors](#fixing-provisioning-errors).
@@ -24,11 +22,11 @@ It is recommended you read this entire document before installing the starter ki
 
 - **[Default installation](#minimal-path-to-success)** - SharePoint Online only, full installation, one SPFx solution per component.
 
-- [SharePoint 2019](./readme-sp2019.md) - SharePoint 2019 ready, limited featureset.
-
 - [Only SPFx components](./readme-spfx-only.md) - Advanced - Only install SPFx solutions to tenant app catalog, will not provision site designs, site scripts, sites, or content.
 
 - [Single solution installation - deprecated v1 starter kit](https://github.com/pnp/sp-starter-kit/tree/v1/provisioning/) - SharePoint Online only, deprecated full installation, one SPFx solution for all components.
+
+- [SharePoint 2019 - deprecated v2 starter kit](.https://github.com/pnp/sp-starter-kit/tree/v1/provisioning/readme-sp2019.md) - SharePoint 2019 ready, limited featureset.
 
 
 ## Minimal path to success
@@ -37,7 +35,7 @@ It is recommended you read this entire document before installing the starter ki
 
 2. Open PowerShell and run the following commands, changing the tenant url to your primary SharePoint tenant site.
 
-   In order to successfully install the SP Starter Kit, you are required to install the latest [PnP PowerShell](https://github.com/pnp/powershell) (validated at version 1.7.0 or higher), which can be installed with the following PowerShell command:
+   In order to successfully install the SP Starter Kit, you are required to install the latest [PnP PowerShell](https://github.com/pnp/powershell) (validated at version 1.12.0 or higher), which can be installed with the following PowerShell command:
 
    ```powershell
    Install-Module -Name PnP.PowerShell
